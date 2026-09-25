@@ -143,9 +143,9 @@
       "archive": {
         "url": "archives/templates/photographer-portfolio-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "3fe9afe4bae7a99c700d6bfcf6c60200fa479e3b76c79aa376e81c3748ee47c5",
-        "size": 1044992,
-        "files": 52
+        "sha256": "149febb8fdd01161abe3b8ed2e58e55ebcf92b9f96b371e3c41c7022ed8dd6cb",
+        "size": 258048,
+        "files": 43
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -233,9 +233,9 @@
       "archive": {
         "url": "archives/templates/sdk-scaffold-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "294017e53f4616c42effdc782e7a4a86ec710dea4479a14bd6699cb384577fbb",
-        "size": 1048576,
-        "files": 50
+        "sha256": "c7f01f290a5c65222d51d8bfb36b023203cd8cc52f3adeb2bfd02bc5ab3ff678",
+        "size": 272896,
+        "files": 46
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

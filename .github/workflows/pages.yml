@@ -18,7 +18,9 @@ jobs:
         with:
           node-version: 22
       - run: npm test
-      # Fails when an item changed and json/ was not regenerated with it.
+      # Fails when an item changed and the committed site — json/, archives/,
+      # index.html — was not regenerated with it. The repository IS the site:
+      # Pages deploys it from the branch as committed (see README).
       - run: npm run check
       - name: Build every template
         run: |
@@ -28,29 +30,3 @@ jobs:
             echo "::endgroup::"
           done
 
-  deploy:
-    if: github.event_name != 'pull_request'
-    needs: check
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    concurrency:
-      group: pages
-      cancel-in-progress: false
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-      - run: npm run site
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: _site
-      - id: deployment
-        uses: actions/deploy-pages@v4
