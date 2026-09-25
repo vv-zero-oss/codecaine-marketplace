@@ -5,6 +5,77 @@
   "items": [
     {
       "type": "template",
+      "id": "kids-camera",
+      "name": "Kids Camera",
+      "version": "0.1.0",
+      "description": "A one-page story site for a physical product made for children: a wide two-line hero with a sticker, a pinned scene that inks its sentence in word by word, a before-and-after photo pair, a dark run with the product reveal, a sign-up, the makers and a drawing wall.",
+      "designedFor": [
+        "Hardware and toy makers launching one product with a story rather than a spec sheet",
+        "Pre-order and waitlist pages that ask for an email twice, once where the story has earned it",
+        "Brands whose voice is quiet, warm and photographic",
+        "Starting a scroll-driven page the editor can read section by section"
+      ],
+      "sdkVersion": "0.1.0",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "product",
+        "hardware",
+        "children",
+        "launch",
+        "waitlist",
+        "scroll",
+        "framer-motion",
+        "lenis",
+        "shadcn",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Landing Page",
+        "Product"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3120
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "path": "templates/kids-camera",
+      "iconUrl": "templates/kids-camera/icon.svg",
+      "archive": {
+        "url": "archives/templates/kids-camera-0.1.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "82bd279d67681c6800545a473a92d35111aa171611e00a9a3110416bf173fc64",
+        "size": 308736,
+        "files": 52
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "templates/kids-camera"
+      }
+    },
+    {
+      "type": "template",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
       "version": "1.1.0",
