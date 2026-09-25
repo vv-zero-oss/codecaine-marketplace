@@ -53,9 +53,41 @@ const MAX_OPTION_LENGTH = 64;
 /** How many components one answer describes. */
 const MAX_COMPONENTS = 400;
 
+/**
+ * The files the editor keeps in a project's own folder, relative to its root:
+ * the design, the project's manifest, and the pictures it stores beside them.
+ * The same names as `electron/project-io.ts` and `electron/assets.ts` write;
+ * the SDK cannot import the editor, so they are repeated here.
+ */
+export const EDITOR_FILES = ["document.json", "canvas-builder.config.json"];
+export const EDITOR_DIRS = ["codecaine"];
+
+/**
+ * Whether the dev server should look away from `file`: one of the editor's
+ * own files, at the root it was served from.
+ *
+ * A template opened as a project is one folder with two tenants — the editor
+ * saves `document.json` into it after every gesture, and the dev server
+ * serving it watches it. Tailwind's Vite plugin scans every file in the root
+ * for class names, `document.json` among them, and answers a change to a
+ * scanned file that is not a module with a full page reload. So every drag of
+ * the framed page on the board reloaded the page inside it: the application
+ * lost its state, the frame flickered, and the Layers panel lost the
+ * component names until the SDK answered again. Ignored at the watcher, so no
+ * plugin hears of these files, rather than taught to one plugin.
+ */
+export function isEditorFile(root: string, file: string): boolean {
+  const relative = path.relative(root, file).split(path.sep).join("/");
+  if (EDITOR_FILES.includes(relative)) return true;
+  return EDITOR_DIRS.some((dir) => relative === dir || relative.startsWith(`${dir}/`));
+}
+
 interface Plugin {
   name: string;
   apply?: "serve" | "build";
+  config?: (config: { root?: string }) => {
+    server: { watch: { ignored: Array<(file: string) => boolean> } };
+  };
   configResolved?: (config: { root: string }) => void;
   transformIndexHtml?: unknown;
   handleHotUpdate?: (context: { file: string }) => void;
@@ -88,6 +120,15 @@ export function canvasPropOptions(): Plugin {
   return {
     name: "canvas-prop-options",
     apply: "serve",
+
+    // The SDK's one plugin is its whole presence in the dev server, so it also
+    // keeps the server off the editor's files — see `isEditorFile`. Merged
+    // with the project's own `ignored` rather than replacing it: Vite
+    // concatenates arrays when it merges a plugin's config.
+    config(config) {
+      const served = path.resolve(config.root ?? process.cwd());
+      return { server: { watch: { ignored: [(file: string) => isEditorFile(served, file)] } } };
+    },
 
     configResolved(config) {
       root = config.root;

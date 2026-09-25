@@ -3,7 +3,7 @@
   "type": "template",
   "id": "photographer-portfolio",
   "name": "Photographer Portfolio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
   "designedFor": [
     "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
