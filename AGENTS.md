@@ -52,6 +52,8 @@ writing any UI: `npx skills add emilkowalski/skill -s '*' -a claude-code -y --co
 
 - Every animation is designed with the skill above (`animate`, then
   `review-animations`).
+- When the reference is a video, its motion is copied exactly — easing,
+  duration, path and timing, read off its frames (see section 5).
 - Smooth scroll is **Lenis** (`lenis`). For a bolder, more expressive page,
   Lenis always carries the scroll.
 - Motion is **Framer Motion** (`motion` / `framer-motion`) — entrances,
@@ -105,6 +107,44 @@ every time. The screenshot shows the feel; the code shows the numbers.
 - **You cannot move away from the aesthetics of the given example.** That is
   the rule the others serve. A template that is "inspired by" the reference
   but looks like something else has failed.
+
+#### A video reference: the motion is copied too
+
+When the reference is a video (a screen recording, a site walkthrough, a
+Dribbble shot), the motion is part of the aesthetic — copy it as exactly as
+the colours and type. Watch it closely, frame by frame, before writing any
+animation:
+
+- **Get the frames out.** Use ffmpeg — `@ffmpeg-installer/ffmpeg`
+  (https://www.npmjs.com/package/@ffmpeg-installer/ffmpeg) gives a binary
+  without a system install; `ffprobe` (`@ffprobe-installer/ffprobe`) reads the
+  frame rate and duration. Pull frames at the video's own rate around each
+  transition (`ffmpeg -ss <start> -to <end> -i ref.mp4 -vf fps=30 frames/%04d.png`),
+  lay them out as a contact sheet (`-vf "fps=10,tile=6x4"`) to see a whole
+  move at once, and look at them.
+- **Read each animation's numbers off the frames:**
+  - **Duration** — count the frames from the first movement to rest
+    (frames ÷ fps).
+  - **Easing** — plot the element's position (or opacity, scale) per frame:
+    a fast start that settles is an ease-out, a slow start and end is
+    ease-in-out, an overshoot and settle is a spring. Turn that into a
+    `cubic-bezier` or a spring's `stiffness` / `damping` / `bounce`.
+  - **Path** — where each element starts, where it lands, and how it gets
+    there: which properties move (translate, scale, opacity, blur,
+    clip-path), by how much, and from which origin.
+  - **Timing and choreography** — delays and stagger between elements, what
+    moves first, what overlaps, and what is tied to scroll rather than time.
+  - **Scroll feel** — how smooth or heavy the scroll is, and what is pinned,
+    scrubbed or parallaxed against it.
+- **Build it with Framer Motion and Lenis** (section 3): Framer Motion for
+  the transitions, springs, stagger and scroll-linked effects; Lenis for the
+  scroll itself, tuned (`lerp` / `duration` / `easing`) to the recording's
+  feel. Put the easings and durations you measured in as tokens beside the
+  others, so every animation shares them.
+- **Compare motion as well as stills.** Record the template the same way
+  (Playwright's `recordVideo`, or frames at the same fps) and put its frames
+  next to the reference's for each transition, as in section 9. Where the
+  timing or easing differs, fix it and compare again.
 
 ### 6. Icons and logos
 
