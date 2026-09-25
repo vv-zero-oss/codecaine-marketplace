@@ -7,7 +7,7 @@
       "type": "template",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
       "designedFor": [
         "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -141,10 +141,10 @@
         ]
       },
       "archive": {
-        "url": "archives/templates/photographer-portfolio-1.0.0.tgz",
+        "url": "archives/templates/photographer-portfolio-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "149febb8fdd01161abe3b8ed2e58e55ebcf92b9f96b371e3c41c7022ed8dd6cb",
-        "size": 258048,
+        "sha256": "475761ce8bbf8bf40d2d25f7fe3f0bc819c730f513f22fbb314afbe89fd150f4",
+        "size": 260096,
         "files": 43
       },
       "source": {
@@ -157,7 +157,7 @@
       "type": "template",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
       "designedFor": [
         "Starting a SaaS or product landing page from a real, responsive layout",
@@ -231,10 +231,10 @@
         ]
       },
       "archive": {
-        "url": "archives/templates/sdk-scaffold-1.0.0.tgz",
+        "url": "archives/templates/sdk-scaffold-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "c7f01f290a5c65222d51d8bfb36b023203cd8cc52f3adeb2bfd02bc5ab3ff678",
-        "size": 272896,
+        "sha256": "708a1557c56e23ddc410c5c5aebd4bfa777d0b9c52dc7b386489125b103aef3b",
+        "size": 274944,
         "files": 46
       },
       "source": {
