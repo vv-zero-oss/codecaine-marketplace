@@ -107,6 +107,15 @@ every time. The screenshot shows the feel; the code shows the numbers.
 - **You cannot move away from the aesthetics of the given example.** That is
   the rule the others serve. A template that is "inspired by" the reference
   but looks like something else has failed.
+- **The reference leaves no trace in the code.** It is something you study,
+  not something you ship. Never write its name, URL, brand, or where a value
+  came from into the template — not in comments, class or variable names,
+  token names, file names, commit messages, `README`s, metadata or alt
+  text. And never hotlink anything from it: no `<img>`, `<video>`, font,
+  stylesheet, script or `url()` pointing at the reference's site or CDN, and
+  no copying its assets into the project. Images come from Pexels (section
+  4), fonts from Google Fonts, icons and logos from section 6 — the template
+  stands on its own.
 
 #### A video reference: the motion is copied too
 
