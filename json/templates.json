@@ -143,8 +143,8 @@
       "archive": {
         "url": "archives/templates/photographer-portfolio-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "ccf9a13d535e678163d759805fac76c22e0fce0b190e411c70b56394b827923a",
-        "size": 258560,
+        "sha256": "c44b042ad34d1ca6cf332ecf7f11f88c61c4822da6529de2f4b64b7a7f2b6fe3",
+        "size": 260608,
         "files": 43
       },
       "source": {
@@ -233,8 +233,8 @@
       "archive": {
         "url": "archives/templates/sdk-scaffold-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "ad5cf1bb2cdf61650d18b4d9e5e7b356ebf56f3c993b6bc2072be2fe28f8758f",
-        "size": 273920,
+        "sha256": "05b54e309a9ad9641b4c8796b534f4b3b7d0efcdd4385733bfd5ed7dfd84d014",
+        "size": 275968,
         "files": 46
       },
       "source": {
