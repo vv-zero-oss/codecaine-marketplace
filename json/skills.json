@@ -46,7 +46,8 @@
         "path": "skills/apply-design-md"
       },
       "skill": {
-        "name": "apply-design-md"
+        "name": "apply-design-md",
+        "registryId": "vv-zero-oss/codecaine-marketplace/apply-design-md"
       }
     },
     {
@@ -91,7 +92,8 @@
         "path": "skills/publish-to-marketplace"
       },
       "skill": {
-        "name": "publish-to-marketplace"
+        "name": "publish-to-marketplace",
+        "registryId": "vv-zero-oss/codecaine-marketplace/publish-to-marketplace"
       }
     }
   ]

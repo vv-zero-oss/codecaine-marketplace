@@ -245,7 +245,11 @@ async function validate(kind, folderName, dir, meta) {
     const front = parseFrontMatter(await readFile(path.join(dir, meta.entry ?? "SKILL.md"), "utf8").catch(() => ""))
     if (!front) errors.push("SKILL.md needs YAML front matter")
     else if (front.name !== meta.id) errors.push(`SKILL.md is named "${front.name}", marketplace.json id is "${meta.id}"`)
-    else extra.skill = { name: front.name }
+    // skills.sh indexes a GitHub repository's `skills/<name>/SKILL.md` as
+    // `<owner>/<repo>/<name>`, and that identity is what bb installs by — so
+    // the desktop editor installs a marketplace skill the way its Skills
+    // screen installs any other.
+    else extra.skill = { name: front.name, registryId: `${REPOSITORY.replace("https://github.com/", "")}/${front.name}` }
   }
   return { errors, extra }
 }
