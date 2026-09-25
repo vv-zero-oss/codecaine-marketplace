@@ -9,6 +9,11 @@
       "name": "Apply DESIGN.md",
       "version": "1.0.0",
       "description": "Teaches the assistant to turn a DESIGN.md design system into a project's theme and restyle components by its rules.",
+      "designedFor": [
+        "Restyling a project to a design system installed from the marketplace",
+        "Turning DESIGN.md tokens into a Tailwind @theme or CSS variables",
+        "Keeping an assistant inside a brand's Do's and Don'ts"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -36,7 +41,7 @@
       "archive": {
         "url": "archives/skills/apply-design-md-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "79b44b06e71b3cdacef1be5ed2ee22f186742e8ce80f950d929fd72e8da068b4",
+        "sha256": "f850431823633dab468a9f0313884dd1fe7f4554f1b099cea9cc80d30122d515",
         "size": 6656,
         "files": 2
       },
@@ -56,6 +61,11 @@
       "name": "Publish to Marketplace",
       "version": "1.0.0",
       "description": "How to add or update a template, app, design system or skill in this marketplace and regenerate the index.",
+      "designedFor": [
+        "Adding a new template, app, design system or skill to this marketplace",
+        "Bumping a version so the editor offers an update",
+        "Regenerating the catalog before a pull request"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -82,7 +92,7 @@
       "archive": {
         "url": "archives/skills/publish-to-marketplace-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "d1b72d29a2f5d53ddbe41a8bd35c17ac04392da992fdbf99361ae35e8eea5411",
+        "sha256": "a98c51dba2f2bf36ba6631f67456b588a2efc7319323b5d379cf16282f73d60b",
         "size": 5632,
         "files": 2
       },

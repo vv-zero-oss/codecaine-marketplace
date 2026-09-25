@@ -92,6 +92,19 @@ everywhere, while gzip output depends on the zlib that produced it.
    `npm run check` (run in CI) fails when `json/` is stale.
 4. Push to `main`; the **Catalog** workflow publishes to Pages.
 
+Templates also carry previews for their page in the editor — the site at
+desktop and phone width and a picture of each page. With the template's dev
+server running:
+
+```bash
+node scripts/capture-previews.mjs <id> http://localhost:<port>
+```
+
+It writes `preview.png`, `previews/` and the `previews` field of
+`marketplace.json` (Playwright required; see the script's header). Every item
+can also list `designedFor` — the "Designed for" bullets on its page — and an
+`icon`.
+
 `skills/publish-to-marketplace/SKILL.md` is the same checklist, written for
 the assistant.
 
@@ -118,5 +131,7 @@ typefaces they name are proprietary — each file's *Note on Font Substitutes*
 says what to use instead.
 
 The photographer template's photographs are Picsum placeholders keyed by seed
-(`src/content.ts`); `preview.png` was captured with those stubbed by tonal
-placeholders.
+(`src/content.ts`). Its previews were captured with `--stub-images` on a
+machine that could not reach Picsum, so they show tonal placeholders where the
+running template shows photographs; re-capture without the flag to replace
+them.

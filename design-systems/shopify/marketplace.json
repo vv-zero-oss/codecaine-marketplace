@@ -5,6 +5,11 @@
   "name": "Shopify",
   "version": "1.0.0",
   "description": "A DESIGN.md reference for Shopify's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+  "designedFor": [
+    "Commerce products that sell to merchants with confident, high-contrast pages",
+    "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+    "Studying how a mature brand reduces its UI to a handful of rules"
+  ],
   "canvasVersion": ">=0.0.1",
   "authors": [
     {

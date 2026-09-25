@@ -9,6 +9,12 @@
       "name": "Photographer Portfolio",
       "version": "1.0.0",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
+      "designedFor": [
+        "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
+        "Studios that sell packages and want pricing and FAQs on one page",
+        "Anyone who needs an enquiry form without a back end on day one",
+        "Starting a multi-page site the editor can read component by component"
+      ],
       "sdkVersion": "0.1.0",
       "canvasVersion": ">=0.0.1",
       "authors": [
@@ -70,14 +76,76 @@
           "title": "Contact"
         }
       ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Portfolio",
+            "image": "previews/pages/portfolio.jpg"
+          },
+          {
+            "title": "Gallery",
+            "image": "previews/pages/portfolio-sintra-in-september.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Services",
+            "image": "previews/pages/services.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "previews/pages/contact.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
       "path": "templates/photographer-portfolio",
       "thumbnailUrl": "templates/photographer-portfolio/preview.png",
+      "iconUrl": "templates/photographer-portfolio/icon.svg",
+      "previewUrls": {
+        "desktop": "templates/photographer-portfolio/previews/desktop.jpg",
+        "mobile": "templates/photographer-portfolio/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "templates/photographer-portfolio/previews/pages/home.jpg"
+          },
+          {
+            "title": "Portfolio",
+            "image": "templates/photographer-portfolio/previews/pages/portfolio.jpg"
+          },
+          {
+            "title": "Gallery",
+            "image": "templates/photographer-portfolio/previews/pages/portfolio-sintra-in-september.jpg"
+          },
+          {
+            "title": "About",
+            "image": "templates/photographer-portfolio/previews/pages/about.jpg"
+          },
+          {
+            "title": "Services",
+            "image": "templates/photographer-portfolio/previews/pages/services.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "templates/photographer-portfolio/previews/pages/contact.jpg"
+          }
+        ]
+      },
       "archive": {
         "url": "archives/templates/photographer-portfolio-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "5f5841fde4491cc886eb2e0232d99abd081029b3eeba5b107f71214136062311",
-        "size": 407552,
-        "files": 43
+        "sha256": "3fe9afe4bae7a99c700d6bfcf6c60200fa479e3b76c79aa376e81c3748ee47c5",
+        "size": 1044992,
+        "files": 52
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -91,6 +159,12 @@
       "name": "SDK Scaffold",
       "version": "1.0.0",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
+      "designedFor": [
+        "Starting a SaaS or product landing page from a real, responsive layout",
+        "Seeing what @canvas/react gives the editor: layers named after components, editable props",
+        "Teams who want a Radix + Tailwind v4 baseline to restyle from a DESIGN.md",
+        "Trying the editor's motion and action channels on a page that uses them"
+      ],
       "sdkVersion": "0.1.0",
       "canvasVersion": ">=0.0.1",
       "authors": [
@@ -132,14 +206,36 @@
           "title": "Home"
         }
       ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
       "path": "templates/sdk-scaffold",
       "thumbnailUrl": "templates/sdk-scaffold/preview.png",
+      "iconUrl": "templates/sdk-scaffold/icon.svg",
+      "previewUrls": {
+        "desktop": "templates/sdk-scaffold/previews/desktop.jpg",
+        "mobile": "templates/sdk-scaffold/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "templates/sdk-scaffold/previews/pages/home.jpg"
+          }
+        ]
+      },
       "archive": {
         "url": "archives/templates/sdk-scaffold-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "721ebca09b28c063335094f8b41188615a7b2b7def4c2f1d8209a466874f0bec",
-        "size": 433152,
-        "files": 46
+        "sha256": "294017e53f4616c42effdc782e7a4a86ec710dea4479a14bd6699cb384577fbb",
+        "size": 1048576,
+        "files": 50
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

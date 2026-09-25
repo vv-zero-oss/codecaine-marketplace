@@ -5,6 +5,11 @@
   "name": "Uber",
   "version": "1.0.0",
   "description": "A DESIGN.md reference for Uber's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+  "designedFor": [
+    "Consumer and mobility apps built on a strict black-and-white system",
+    "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+    "Studying how a mature brand reduces its UI to a handful of rules"
+  ],
   "canvasVersion": ">=0.0.1",
   "authors": [
     {

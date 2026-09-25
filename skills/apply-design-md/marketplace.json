@@ -5,6 +5,11 @@
   "name": "Apply DESIGN.md",
   "version": "1.0.0",
   "description": "Teaches the assistant to turn a DESIGN.md design system into a project's theme and restyle components by its rules.",
+  "designedFor": [
+    "Restyling a project to a design system installed from the marketplace",
+    "Turning DESIGN.md tokens into a Tailwind @theme or CSS variables",
+    "Keeping an assistant inside a brand's Do's and Don'ts"
+  ],
   "canvasVersion": ">=0.0.1",
   "authors": [
     {

@@ -5,6 +5,12 @@
   "name": "SDK Scaffold",
   "version": "1.0.0",
   "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
+  "designedFor": [
+    "Starting a SaaS or product landing page from a real, responsive layout",
+    "Seeing what @canvas/react gives the editor: layers named after components, editable props",
+    "Teams who want a Radix + Tailwind v4 baseline to restyle from a DESIGN.md",
+    "Trying the editor's motion and action channels on a page that uses them"
+  ],
   "sdkVersion": "0.1.0",
   "canvasVersion": ">=0.0.1",
   "authors": [
@@ -45,5 +51,16 @@
       "path": "/",
       "title": "Home"
     }
-  ]
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
 }

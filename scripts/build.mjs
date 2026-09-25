@@ -195,10 +195,30 @@ async function validate(kind, folderName, dir, meta) {
   if (meta.updated < meta.created) errors.push(`"updated" is before "created"`)
   if (meta.canvasVersion !== undefined && !text(meta.canvasVersion)) errors.push(`"canvasVersion" must be a range like ">=0.0.1"`)
   if (meta.meta !== undefined && (typeof meta.meta !== "object" || Array.isArray(meta.meta))) errors.push(`"meta" must be an object`)
-  for (const key of ["thumbnail", "entry"]) {
-    if (meta[key] === undefined) continue
-    if (!insidePath(meta[key])) errors.push(`"${key}" must be a path inside the item`)
-    else if (!(await exists(path.join(dir, meta[key])))) errors.push(`"${key}" names ${meta[key]}, which is not there`)
+  const checkFile = async (label, value) => {
+    if (!insidePath(value)) errors.push(`"${label}" must be a path inside the item`)
+    else if (!(await exists(path.join(dir, value)))) errors.push(`"${label}" names ${value}, which is not there`)
+  }
+  for (const key of ["thumbnail", "entry", "icon"]) {
+    if (meta[key] !== undefined) await checkFile(key, meta[key])
+  }
+  if (meta.designedFor !== undefined && !list(meta.designedFor)) errors.push(`"designedFor" must be a list of strings`)
+  // What an item's page shows on the left: the site at desktop width, at
+  // phone width, and a picture of each page. All optional — an item without
+  // them shows its thumbnail — but a path that is named has to be there.
+  if (meta.previews !== undefined) {
+    const previews = meta.previews
+    if (!previews || typeof previews !== "object" || Array.isArray(previews)) errors.push(`"previews" must be an object`)
+    else {
+      for (const key of ["desktop", "mobile"]) if (previews[key] !== undefined) await checkFile(`previews.${key}`, previews[key])
+      if (previews.pages !== undefined) {
+        if (!Array.isArray(previews.pages)) errors.push(`"previews.pages" must be a list`)
+        else for (const [i, page] of previews.pages.entries()) {
+          if (!page || !text(page.title)) errors.push(`"previews.pages[${i}].title" must be a string`)
+          else await checkFile(`previews.pages[${i}].image`, page.image)
+        }
+      }
+    }
   }
 
   const extra = {}
@@ -228,7 +248,21 @@ async function validate(kind, folderName, dir, meta) {
       const colors = front.colors && typeof front.colors === "object" ? front.colors : {}
       const fonts = new Set()
       for (const style of Object.values(front.typography ?? {})) if (style?.fontFamily) fonts.add(style.fontFamily)
+      // The colours a card sets the system's name in: its own primary on its
+      // own canvas. Every DESIGN.md here names `primary`; the canvas is
+      // `surface` where it has one, else white, and the typeface is the one
+      // its first (largest) type token is set in.
+      const firstStyle = Object.values(front.typography ?? {})[0]
+      const brand = {
+        primary: typeof colors.primary === "string" ? colors.primary.toUpperCase() : null,
+        surface: typeof colors.surface === "string" ? colors.surface.toUpperCase() : "#FFFFFF",
+        ink: typeof colors.ink === "string" ? colors.ink.toUpperCase() : null,
+        font: firstStyle?.fontFamily ?? null,
+        fontWeight: firstStyle?.fontWeight ? Number(firstStyle.fontWeight) : null,
+      }
+      if (!brand.primary) errors.push("DESIGN.md has no colors.primary")
       extra.designSystem = {
+        brand,
         // The swatches a card shows: every colour token, in the order the
         // file lists them, which is the order its author ranked them.
         palette: Object.entries(colors)
@@ -295,6 +329,16 @@ async function build() {
         path: where,
         ...(meta.thumbnail ? { thumbnailUrl: `${where}/${meta.thumbnail}` } : {}),
         ...(meta.entry ? { entryUrl: `${where}/${meta.entry}` } : {}),
+        ...(meta.icon ? { iconUrl: `${where}/${meta.icon}` } : {}),
+        ...(meta.previews
+          ? {
+              previewUrls: {
+                ...(meta.previews.desktop ? { desktop: `${where}/${meta.previews.desktop}` } : {}),
+                ...(meta.previews.mobile ? { mobile: `${where}/${meta.previews.mobile}` } : {}),
+                pages: (meta.previews.pages ?? []).map((page) => ({ title: page.title, image: `${where}/${page.image}` })),
+              },
+            }
+          : {}),
         archive: {
           url: archivePath,
           format: "tar+gzip",

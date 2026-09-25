@@ -5,6 +5,11 @@
   "name": "Word Count",
   "version": "1.0.0",
   "description": "Counts the words on the board and estimates how long the page takes to read.",
+  "designedFor": [
+    "Copywriters checking length before a page ships",
+    "Estimating reading time for articles and landing pages",
+    "Finding the longest text layers on a crowded board"
+  ],
   "canvasVersion": ">=0.0.1",
   "authors": [
     {
@@ -33,5 +38,6 @@
       "canvas:read",
       "ui:panel"
     ]
-  }
+  },
+  "icon": "icon.svg"
 }

@@ -9,6 +9,11 @@
       "name": "Word Count",
       "version": "1.0.0",
       "description": "Counts the words on the board and estimates how long the page takes to read.",
+      "designedFor": [
+        "Copywriters checking length before a page ships",
+        "Estimating reading time for articles and landing pages",
+        "Finding the longest text layers on a crowded board"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -38,13 +43,15 @@
           "ui:panel"
         ]
       },
+      "icon": "icon.svg",
       "path": "apps/word-count",
       "thumbnailUrl": "apps/word-count/icon.svg",
       "entryUrl": "apps/word-count/canvas-app.json",
+      "iconUrl": "apps/word-count/icon.svg",
       "archive": {
         "url": "archives/apps/word-count-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "0552ddabb0623156bf47b6b15b90089f636db3319f0ee9e938139a1c42144516",
+        "sha256": "adde03625563be1eecc68e8bd64ded1ead6b441b47f83980e240ca2e24124bd3",
         "size": 8704,
         "files": 4
       },

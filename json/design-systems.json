@@ -9,6 +9,11 @@
       "name": "Airbnb",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Airbnb's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Consumer marketplaces and booking flows that lead with photography",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -43,8 +48,8 @@
       "archive": {
         "url": "archives/design-systems/airbnb-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "2549f9b0442406c0a87b2facc551f67a17c350fd539558d62ea9d24f39ce2ab7",
-        "size": 26624,
+        "sha256": "41eca85e6dd00a18ca15e81bfba5cf607a2fc46f1dd0b4ab60b8b65974762daa",
+        "size": 27136,
         "files": 2
       },
       "source": {
@@ -53,6 +58,13 @@
         "path": "design-systems/airbnb"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#FF385C",
+          "surface": "#FFFFFF",
+          "ink": "#222222",
+          "font": "Airbnb Cereal VF",
+          "fontWeight": 500
+        },
         "palette": [
           {
             "name": "primary",
@@ -124,6 +136,11 @@
       "name": "IKEA",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for IKEA's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Retail and catalogue sites with bold, editorial product storytelling",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -157,8 +174,8 @@
       "archive": {
         "url": "archives/design-systems/ikea-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "7b910c89240a803c27bafca262715eee87d99faa62a42db4bfdcf62d375ccfe4",
-        "size": 25088,
+        "sha256": "cda8b1aff24d3b43383f52dfad0af9e5c2e0fab8364861c4d3b9df76a4369afb",
+        "size": 25600,
         "files": 2
       },
       "source": {
@@ -167,6 +184,13 @@
         "path": "design-systems/ikea"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#FFDB00",
+          "surface": "#FFFEFB",
+          "ink": "#111111",
+          "font": "Noto IKEA",
+          "fontWeight": 700
+        },
         "palette": [
           {
             "name": "primary",
@@ -238,6 +262,11 @@
       "name": "Notion",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Notion's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Productivity and B2B products that want a calm, document-like surface",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -271,8 +300,8 @@
       "archive": {
         "url": "archives/design-systems/notion-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "3785eac62c719b91684b68da69c655fa6e945ac077b8814bbfe47195a3eb9a56",
-        "size": 25600,
+        "sha256": "99d0fdca07afba6779e7f900da6dc763bad6c9ca2501a4c4b586da303518b7d9",
+        "size": 26112,
         "files": 2
       },
       "source": {
@@ -281,6 +310,13 @@
         "path": "design-systems/notion"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#0075DE",
+          "surface": "#FFFFFF",
+          "ink": "#000000",
+          "font": "NotionInter",
+          "fontWeight": 600
+        },
         "palette": [
           {
             "name": "primary",
@@ -365,6 +401,11 @@
       "name": "Railway",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Railway's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Developer tools and infrastructure products on a dark canvas",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -398,8 +439,8 @@
       "archive": {
         "url": "archives/design-systems/railway-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "bc3e3cce44f6e673000ababa7c9737544fc163cf9868177637bf8d16c705752f",
-        "size": 27136,
+        "sha256": "acd6811ca35d5aedcb976b7ef04c100a73f2c8f52c39ea50847371cb5b744e62",
+        "size": 27648,
         "files": 2
       },
       "source": {
@@ -408,6 +449,13 @@
         "path": "design-systems/railway"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#853BCE",
+          "surface": "#13111C",
+          "ink": "#FFFFFF",
+          "font": "Inter",
+          "fontWeight": 400
+        },
         "palette": [
           {
             "name": "primary",
@@ -492,6 +540,11 @@
       "name": "Shopify",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Shopify's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Commerce products that sell to merchants with confident, high-contrast pages",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -525,8 +578,8 @@
       "archive": {
         "url": "archives/design-systems/shopify-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "5efb457e426c202503e7c4c238ac7b012739eed9e8648b79af53f3dd41323520",
-        "size": 26624,
+        "sha256": "36d305f2950333835fb6e97b61df5455c6926b1a64902fa6193c0371c864ec0e",
+        "size": 27136,
         "files": 2
       },
       "source": {
@@ -535,6 +588,13 @@
         "path": "design-systems/shopify"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#008060",
+          "surface": "#FFFFFF",
+          "ink": "#000000",
+          "font": "Inter",
+          "fontWeight": 330
+        },
         "palette": [
           {
             "name": "primary",
@@ -614,6 +674,11 @@
       "name": "Stripe",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Stripe's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Fintech and developer platforms with dense pricing and product detail",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -647,8 +712,8 @@
       "archive": {
         "url": "archives/design-systems/stripe-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "c881200afa7975610d0e2d6a3b99b87e3405d5a97e56633d2173df8171dddccb",
-        "size": 26624,
+        "sha256": "5841de250ecc22bfa6aef7f49f1f0d7a310c7b554a8739dfb350d147ab7cab3a",
+        "size": 27136,
         "files": 2
       },
       "source": {
@@ -657,6 +722,13 @@
         "path": "design-systems/stripe"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#635BFF",
+          "surface": "#FFFFFF",
+          "ink": "#0A2540",
+          "font": "sohne-var",
+          "fontWeight": 700
+        },
         "palette": [
           {
             "name": "primary",
@@ -736,6 +808,11 @@
       "name": "Uber",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Uber's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Consumer and mobility apps built on a strict black-and-white system",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -768,8 +845,8 @@
       "archive": {
         "url": "archives/design-systems/uber-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "040704fdfe84852674b1b777ac6b8ff1b427740564782ace1aaf0b0b46f9c76a",
-        "size": 24576,
+        "sha256": "3812112a43aa3f2d57776284b78640162ca676eaa8fd570f346ab5f6ce1518ea",
+        "size": 25088,
         "files": 2
       },
       "source": {
@@ -778,6 +855,13 @@
         "path": "design-systems/uber"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#000000",
+          "surface": "#FFFFFF",
+          "ink": "#000000",
+          "font": "UberMove",
+          "fontWeight": 700
+        },
         "palette": [
           {
             "name": "primary",
@@ -854,6 +938,11 @@
       "name": "Vercel",
       "version": "1.0.0",
       "description": "A DESIGN.md reference for Vercel's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "designedFor": [
+        "Developer platforms that need a monochrome system with a real dark theme",
+        "Giving an assistant exact colour, type, radius and elevation tokens to build with",
+        "Studying how a mature brand reduces its UI to a handful of rules"
+      ],
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -887,8 +976,8 @@
       "archive": {
         "url": "archives/design-systems/vercel-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "517777e32476cb4e17f26862f72e2b16e781eb36f6571594c1a89855a360e69f",
-        "size": 27648,
+        "sha256": "5478b6dcb2f1cb333055b1871c794e7aa4b2f7b7026f145e5b97d8eb161f2318",
+        "size": 28160,
         "files": 2
       },
       "source": {
@@ -897,6 +986,13 @@
         "path": "design-systems/vercel"
       },
       "designSystem": {
+        "brand": {
+          "primary": "#0070F3",
+          "surface": "#FFFFFF",
+          "ink": "#171717",
+          "font": "Geist Pixel Square",
+          "fontWeight": 400
+        },
         "palette": [
           {
             "name": "primary",

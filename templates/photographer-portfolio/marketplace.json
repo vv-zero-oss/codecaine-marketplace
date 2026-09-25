@@ -5,6 +5,12 @@
   "name": "Photographer Portfolio",
   "version": "1.0.0",
   "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
+  "designedFor": [
+    "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
+    "Studios that sell packages and want pricing and FAQs on one page",
+    "Anyone who needs an enquiry form without a back end on day one",
+    "Starting a multi-page site the editor can read component by component"
+  ],
   "sdkVersion": "0.1.0",
   "canvasVersion": ">=0.0.1",
   "authors": [
@@ -65,5 +71,36 @@
       "path": "/contact",
       "title": "Contact"
     }
-  ]
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Portfolio",
+        "image": "previews/pages/portfolio.jpg"
+      },
+      {
+        "title": "Gallery",
+        "image": "previews/pages/portfolio-sintra-in-september.jpg"
+      },
+      {
+        "title": "About",
+        "image": "previews/pages/about.jpg"
+      },
+      {
+        "title": "Services",
+        "image": "previews/pages/services.jpg"
+      },
+      {
+        "title": "Contact",
+        "image": "previews/pages/contact.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
 }
