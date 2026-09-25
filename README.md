@@ -88,9 +88,10 @@ everywhere, while gzip output depends on the zlib that produced it.
 1. Make the folder under the right kind, with a `marketplace.json`.
 2. Templates: `npm install && npm run build` must pass inside it. Don't commit
    `node_modules` or `dist` (they are never packed anyway).
-3. At the root: `npm run build`, then commit the item **and** `json/`.
-   `npm run check` (run in CI) fails when `json/` is stale.
-4. Push to `main`; the **Catalog** workflow publishes to Pages.
+3. At the root: `npm run build`, then commit the item **and** what the build
+   wrote (`json/`, `archives/`, `index.html`). `npm run check` (run in CI)
+   fails when they are stale.
+4. Merge to `main`; Pages serves it as committed.
 
 Templates also carry previews for their page in the editor — the site at
 desktop and phone width and a picture of each page. With the template's dev
@@ -112,15 +113,25 @@ the assistant.
 npm test          # the builder's own tests
 npm run build     # validate + regenerate json/
 npm run check     # validate + fail if json/ is stale
-npm run site      # also write _site/, what Pages serves (archives, landing page)
+npm run site      # a standalone copy of the site in _site/, to preview it locally
 ```
 
 ## GitHub Pages
 
-One-time: **Settings → Pages → Build and deployment → Source: GitHub
-Actions**. `.github/workflows/pages.yml` then checks every push and pull
-request (tests, stale `json/`, every template builds) and deploys `_site/` on
-`main`.
+Pages is set to **Deploy from a branch: `main`, `/ (root)`**, and serves the
+repository exactly as committed, with no build step. So the site is committed:
+`npm run build` writes the catalogs to `json/`, one `.tgz` per item version to
+`archives/`, a landing page to `index.html`, and `.nojekyll`, which stops
+Jekyll turning every DESIGN.md and SKILL.md into HTML. Commit them with the
+item.
+
+`npm run check`, run by the **Catalog** workflow on every push and pull
+request, fails when any of them no longer matches the items. Every template's
+build is checked there as well.
+
+An archive is only rewritten when its contents change, because gzip output
+differs between machines even when the tar inside is identical, and the
+catalog's `sha256` is of that tar.
 
 ## Design systems
 

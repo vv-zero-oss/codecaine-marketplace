@@ -32,7 +32,7 @@
 import { createHash } from "node:crypto"
 import { cp, mkdir, readdir, readFile, rm, stat, writeFile } from "node:fs/promises"
 import path from "node:path"
-import { gzipSync } from "node:zlib"
+import { gunzipSync, gzipSync } from "node:zlib"
 
 const ROOT = path.resolve(import.meta.dirname, "..")
 const REPOSITORY = "https://github.com/vv-zero-oss/codecaine-marketplace"
@@ -318,7 +318,10 @@ async function build() {
         problems.push(...errors.map((e) => `${where}: ${e}`))
         continue
       }
-      const names = await listFiles(dir)
+      // A template's previews are pictures of it for the marketplace's own
+      // pages, not part of the project a person gets — leaving them out keeps
+      // a download to the project.
+      const names = (await listFiles(dir)).filter((n) => !n.startsWith("previews/") && n !== "preview.png")
       const files = await Promise.all(names.map(async (n) => ({ name: n, bytes: await readFile(path.join(dir, n)) })))
       const bytes = tar(files)
       const archivePath = `archives/${kind.folder}/${meta.id}-${meta.version}.tgz`
@@ -385,6 +388,67 @@ async function build() {
 }
 
 const serialise = (value) => JSON.stringify(value, null, 2) + "\n"
+
+/**
+ * The repository is the site.
+ *
+ * GitHub Pages set to "Deploy from a branch" serves the repository exactly as
+ * committed, with no build — so everything the editor downloads has to be
+ * committed: the catalogs in `json/`, the archives in `archives/`, and the
+ * landing page. Written here by `npm run build`, and held to the items by
+ * `npm run check`, so a commit that changes an item without rebuilding fails
+ * CI instead of serving a download that no longer matches its catalog.
+ *
+ * An archive is only rewritten when its contents change. The catalog's hash
+ * is of the tar, which is the same on every machine; the gzip around it is
+ * not, and rewriting it on every build would churn every archive in every
+ * commit.
+ */
+async function archiveIsCurrent(file, bytes) {
+  const existing = await readFile(file).catch(() => null)
+  if (!existing) return false
+  try {
+    return gunzipSync(existing).equals(bytes)
+  } catch {
+    return false
+  }
+}
+
+async function listArchives() {
+  const found = []
+  for (const kind of KINDS) {
+    const dir = path.join(ROOT, "archives", kind.folder)
+    for (const name of await readdir(dir).catch(() => [])) found.push(`archives/${kind.folder}/${name}`)
+  }
+  return found.sort()
+}
+
+async function writeRepoSite(json, archives) {
+  const wanted = new Set(archives.map((a) => a.path))
+  for (const stale of await listArchives()) if (!wanted.has(stale)) await rm(path.join(ROOT, stale))
+  for (const archive of archives) {
+    const file = path.join(ROOT, archive.path)
+    if (await archiveIsCurrent(file, archive.bytes)) continue
+    await mkdir(path.dirname(file), { recursive: true })
+    await writeFile(file, gzipSync(archive.bytes, { level: 9 }))
+  }
+  await writeFile(path.join(ROOT, "index.html"), landing(json))
+  // Without it Pages runs Jekyll, which turns every DESIGN.md and SKILL.md
+  // into HTML and stops serving the Markdown the editor links to.
+  await writeFile(path.join(ROOT, ".nojekyll"), "")
+}
+
+async function checkRepoSite(json, archives) {
+  const problems = []
+  const wanted = new Set(archives.map((a) => a.path))
+  for (const archive of archives) {
+    if (!(await archiveIsCurrent(path.join(ROOT, archive.path), archive.bytes))) problems.push(`${archive.path} is missing or out of date`)
+  }
+  for (const extra of await listArchives()) if (!wanted.has(extra)) problems.push(`${extra} belongs to no item`)
+  if ((await readFile(path.join(ROOT, "index.html"), "utf8").catch(() => null)) !== landing(json)) problems.push("index.html is out of date")
+  if (!(await exists(path.join(ROOT, ".nojekyll")))) problems.push(".nojekyll is missing")
+  return problems
+}
 
 async function writeSite(out, json, archives) {
   await rm(out, { recursive: true, force: true })
@@ -462,13 +526,15 @@ async function main() {
       const onDisk = await readFile(path.join(dir, name), "utf8").catch(() => null)
       if (onDisk !== serialise(value)) stale.push(name)
     }
+    stale.push(...(await checkRepoSite(json, archives)))
     if (stale.length) {
-      console.error(`json/ is out of date (${stale.join(", ")}). Run \`npm run build\` and commit the result.`)
+      console.error(`The committed site is out of date (${stale.join("; ")}). Run \`npm run build\` and commit the result.`)
       process.exit(1)
     }
   } else {
     await mkdir(dir, { recursive: true })
     for (const [name, value] of Object.entries(json)) await writeFile(path.join(dir, name), serialise(value))
+    await writeRepoSite(json, archives)
   }
   if (out) await writeSite(out, json, archives)
 
