@@ -125,14 +125,32 @@ every time. The screenshot shows the feel; the code shows the numbers.
   question the previous one raised. Pricing tables, FAQs and feature lists
   follow the conventions a visitor expects from a real product.
 
-### 8. End every template with a side-by-side comparison
+### 8. Every line of code is responsive
+
+All template code is responsive, always — no section, component or layout is
+written for one screen size only.
+
+- Build mobile-first and scale up with media queries (Tailwind's `sm:` /
+  `md:` / `lg:` / `xl:` / `2xl:`), and use container queries (`@container`,
+  `@sm:` / `@md:`) where a component should respond to the space it is given
+  rather than to the window.
+- Type, spacing, grids, images, navigation (a menu becomes a shadcn `Sheet`
+  or drawer on small screens), tables and pricing cards all adapt. Use
+  `clamp()` for fluid type and spacing where the reference scales smoothly.
+- No horizontal scroll at any width, down to 360px. Touch targets stay at
+  least 44px on mobile, and hover-only interactions have a tap equivalent.
+- Motion adapts too: heavy scroll effects are toned down on small screens.
+- Check it at 375px, 768px, 1280px and 1440px before calling it done.
+
+### 9. End every template with a side-by-side comparison
 
 A template is not done until it has been compared with the reference, and the
 person has seen the comparison.
 
 - Run the template and screenshot it (Playwright against the dev server) at
   the same viewport width as the reference image, section by section where
-  the page is long.
+  the page is long — and at mobile width too, to show the responsive layout
+  holds up.
 - Put each screenshot **next to the user's reference image** — one image with
   the two side by side, or the pair sent together — and **always show it to
   the user** in the final message (with the file tool where one is available).
