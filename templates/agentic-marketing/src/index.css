@@ -1,0 +1,255 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ─────────────────────────────────────────────────────────────────────────
+   Every colour, shadow, radius, font and spacing step lives here. Components
+   read these through Tailwind (`bg-canvas`, `shadow-float`, `rounded-card`…)
+   and never carry a raw hex or a one-off shadow of their own.
+   ───────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surfaces — a warm off-white page, a white hero, stone-grey cards */
+  --canvas: #fdfbf7;
+  --canvas-deep: #f8f6f1;
+  --surface: #ffffff;
+  --stone: #f3f1ef;
+  --stone-2: #f6f4f2;
+  --mist: #f2f4f3;
+  --mist-2: #f4f8fb;
+  --mist-3: #e6ece9;
+
+  /* Ink */
+  --ink: #171717;
+  --ink-2: #3f3f3c;
+  --ink-soft: #6b6b66;
+  --ink-faint: #9c9b95;
+  --ink-ghost: #c9c7c1;
+
+  /* Brand greens — forest for dark panels, pine for the primary button,
+     mint for the positive accents */
+  --forest: #0d2c22;
+  --forest-2: #1d3a30;
+  --forest-3: #2b4a3f;
+  --pine: #0b1f18;
+  --mint: #63c284;
+  --mint-strong: #3aae85;
+  --mint-wash: #f4f9f3;
+  --mint-tint: #dff1e3;
+  --mint-ink: #2f7a4d;
+
+  /* Signals */
+  --amber: #e2a23b;
+  --rose: #e0645a;
+  --sky: #4a7fd1;
+  --aubergine: #3d143d;
+  --footer: #171717;
+
+  /* Lines */
+  --line: rgb(23 23 23 / 0.08);
+  --line-strong: rgb(23 23 23 / 0.14);
+  --line-dark: rgb(255 255 255 / 0.1);
+
+  /* Shadows — read off the reference: soft, low-contrast, two layers */
+  --shadow-hairline: 0 0 0 1px rgb(23 23 23 / 0.06);
+  --shadow-xs: 0 1px 2px rgb(23 23 23 / 0.06);
+  --shadow-button: 0 1px 2px rgb(23 23 23 / 0.08), inset 0 0 0 1px rgb(23 23 23 / 0.1);
+  --shadow-card: 0 1px 2px rgb(23 23 23 / 0.04), 0 10px 28px -12px rgb(23 23 23 / 0.16);
+  --shadow-float: 0 1px 1px rgb(23 23 23 / 0.03), 0 20px 40px -18px rgb(23 23 23 / 0.22);
+  --shadow-window: 0 0 0 1px rgb(23 23 23 / 0.05), 0 30px 60px -24px rgb(16 32 26 / 0.22);
+  --shadow-inset: inset 0 0 0 1px rgb(23 23 23 / 0.06);
+
+  /* shadcn's semantic names, mapped onto the palette above */
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--pine);
+  --primary-foreground: #ffffff;
+  --secondary: var(--stone);
+  --secondary-foreground: var(--ink);
+  --muted: var(--stone);
+  --muted-foreground: var(--ink-soft);
+  --accent: var(--stone-2);
+  --accent-foreground: var(--ink);
+  --destructive: var(--rose);
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--mint-strong);
+  --radius: 0.5rem;
+}
+
+@theme inline {
+  --font-sans: "Geist Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "EB Garamond Variable", ui-serif, Georgia, serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, "SFMono-Regular", monospace;
+
+  --color-canvas: var(--canvas);
+  --color-canvas-deep: var(--canvas-deep);
+  --color-surface: var(--surface);
+  --color-stone: var(--stone);
+  --color-stone-2: var(--stone-2);
+  --color-mist: var(--mist);
+  --color-mist-2: var(--mist-2);
+  --color-mist-3: var(--mist-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-ghost: var(--ink-ghost);
+  --color-forest: var(--forest);
+  --color-forest-2: var(--forest-2);
+  --color-forest-3: var(--forest-3);
+  --color-pine: var(--pine);
+  --color-mint: var(--mint);
+  --color-mint-strong: var(--mint-strong);
+  --color-mint-wash: var(--mint-wash);
+  --color-mint-tint: var(--mint-tint);
+  --color-mint-ink: var(--mint-ink);
+  --color-amber: var(--amber);
+  --color-rose: var(--rose);
+  --color-sky: var(--sky);
+  --color-aubergine: var(--aubergine);
+  --color-footer: var(--footer);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-dark: var(--line-dark);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --shadow-hairline: var(--shadow-hairline);
+  --shadow-xs: var(--shadow-xs);
+  --shadow-button: var(--shadow-button);
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+  --shadow-window: var(--shadow-window);
+  --shadow-inset: var(--shadow-inset);
+
+  /* Radii: small and even — cards barely round, buttons are full pills */
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: var(--radius);
+  --radius-xl: 0.75rem;
+  --radius-card: 0.375rem;
+  --radius-panel: 0.625rem;
+  --radius-footer: 1.5rem;
+
+  /* Type scale read off the reference (1440px wide) */
+  --text-display: clamp(2.5rem, 1.6rem + 3.2vw, 3.5rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.035em;
+  --text-headline: clamp(1.75rem, 1.35rem + 1.3vw, 2.125rem);
+  --text-headline--line-height: 1.1;
+  --text-headline--letter-spacing: -0.025em;
+  --text-title: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.015em;
+  --text-faq: clamp(3rem, 2.4rem + 2vw, 4rem);
+  --text-faq--line-height: 1;
+  --text-faq--letter-spacing: -0.04em;
+
+  /* Spacing steps: the frame, its gutter, and the section rhythm */
+  --spacing-frame: 73.75rem; /* 1180px */
+  --spacing-gutter: clamp(1rem, 0.5rem + 2vw, 2rem);
+  --spacing-section: clamp(4rem, 2.8rem + 4vw, 6.5rem);
+
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --animate-accordion-down: accordion-down 200ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-live: live 2s var(--ease-out) infinite;
+}
+
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@keyframes live {
+  0% { transform: scale(1); opacity: 0.55; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-mint-tint);
+  }
+}
+
+/* Lenis — the recommended base styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* Press feedback for anything pressable */
+@utility pressable {
+  transition-property: transform, background-color, color, box-shadow, border-color;
+  transition-duration: 160ms;
+  transition-timing-function: var(--ease-out);
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

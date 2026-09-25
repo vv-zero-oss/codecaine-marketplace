@@ -5,6 +5,96 @@
   "items": [
     {
       "type": "template",
+      "id": "agentic-marketing",
+      "name": "Agentic Marketing",
+      "version": "1.0.0",
+      "description": "A one-page SaaS landing page for an AI marketing product: product-shot hero, live stats band, feature bento, setup steps, activity log, Slack integration, comparison table, testimonials, integrations and FAQ.",
+      "designedFor": [
+        "AI and automation products that need to show the product working, not just describe it",
+        "SaaS teams launching a single, long-form landing page with a comparison table",
+        "Products that live in Slack or sit on top of other platforms' APIs",
+        "Starting from shadcn/ui, Framer Motion and Lenis with every token in one CSS file"
+      ],
+      "sdkVersion": "0.1.0",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "saas",
+        "landing-page",
+        "ai",
+        "marketing",
+        "startup",
+        "shadcn",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Landing Page",
+        "SaaS"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3120
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "path": "templates/agentic-marketing",
+      "iconUrl": "templates/agentic-marketing/icon.svg",
+      "previewUrls": {
+        "desktop": "templates/agentic-marketing/previews/desktop.jpg",
+        "mobile": "templates/agentic-marketing/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "templates/agentic-marketing/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/templates/agentic-marketing-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "f0c9fffd5241d2dc135b5a5e7823c5eacd46147448358159b57369f296e942f2",
+        "size": 452608,
+        "files": 75
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "templates/agentic-marketing"
+      }
+    },
+    {
+      "type": "template",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
       "version": "1.0.1",
