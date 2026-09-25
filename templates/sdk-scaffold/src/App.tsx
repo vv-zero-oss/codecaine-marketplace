@@ -67,6 +67,9 @@ function sections() {
   return only ? SECTIONS.filter((entry) => entry.id === only) : SECTIONS
 }
 
+/** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
+ *  nothing of their own to design, so the canvas editor looks through them
+ *  to what they hold (they stay in its layers panel). See CLAUDE.md. */
 export default function App() {
   // A `requestAnimationFrame` loop owned by a bundled module, which is the one
   // kind of motion an editor cannot reach from outside the page. See
@@ -75,9 +78,9 @@ export default function App() {
   useSmoothScroll()
 
   return (
-    <div className="bg-white text-quartz-900">
+    <div className="bg-white text-quartz-900" data-canvas-ignore>
       <SiteHeader />
-      <main>
+      <main data-canvas-ignore>
         {sections().map(({ id, Section }) => (
           <Section key={id} />
         ))}

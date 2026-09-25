@@ -31,12 +31,15 @@ function Page({ pathname }: { pathname: string }) {
   return <NotFoundPage />
 }
 
+/** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
+ *  nothing of their own to design, so the canvas editor looks through them
+ *  to what they hold (they stay in its layers panel). See CLAUDE.md. */
 export default function App() {
   const pathname = usePathname()
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen" data-canvas-ignore>
       <SiteHeader />
-      <main>
+      <main data-canvas-ignore>
         <Page pathname={pathname} />
       </main>
       <SiteFooter />

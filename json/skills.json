@@ -59,7 +59,7 @@
       "type": "skill",
       "id": "publish-to-marketplace",
       "name": "Publish to Marketplace",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "How to add or update a template, app, design system or skill in this marketplace and regenerate the index.",
       "designedFor": [
         "Adding a new template, app, design system or skill to this marketplace",
@@ -90,9 +90,9 @@
       "path": "skills/publish-to-marketplace",
       "entryUrl": "skills/publish-to-marketplace/SKILL.md",
       "archive": {
-        "url": "archives/skills/publish-to-marketplace-1.0.0.tgz",
+        "url": "archives/skills/publish-to-marketplace-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "a98c51dba2f2bf36ba6631f67456b588a2efc7319323b5d379cf16282f73d60b",
+        "sha256": "e6981f26aa7e9058e855bfd00b36eb1a9444c99f2f3e20aebd3eebdd8903e10b",
         "size": 5632,
         "files": 2
       },
