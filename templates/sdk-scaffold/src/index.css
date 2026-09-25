@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --color-quartz-50: oklch(0.98 0.005 280);
+  --color-quartz-100: oklch(0.96 0.008 280);
+  --color-quartz-200: oklch(0.91 0.012 280);
+  --color-quartz-400: oklch(0.65 0.02 280);
+  --color-quartz-600: oklch(0.5 0.03 280);
+  --color-quartz-900: oklch(0.22 0.02 280);
+  --color-quartz-950: oklch(0.15 0.02 280);
+}
+
+/* Radix measures the panel and hands its height over as a custom property;
+   these are what turn that into the open and close the component animates. */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@theme {
+  --animate-accordion-down: accordion-down 200ms ease-out;
+  --animate-accordion-up: accordion-up 200ms ease-out;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}

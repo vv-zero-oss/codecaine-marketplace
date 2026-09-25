@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "design-system",
+  "id": "ikea",
+  "name": "IKEA",
+  "version": "1.0.0",
+  "description": "A DESIGN.md reference for IKEA's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "utilitarian",
+    "editorial",
+    "yellow",
+    "retail",
+    "bold-display",
+    "light"
+  ],
+  "categories": [
+    "Consumer",
+    "Retail"
+  ],
+  "created": "2026-09-25",
+  "updated": "2026-09-25",
+  "entry": "DESIGN.md",
+  "meta": {
+    "format": "design-md",
+    "formatVersion": "alpha",
+    "affiliation": "none"
+  }
+}

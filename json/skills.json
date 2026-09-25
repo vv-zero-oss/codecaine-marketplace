@@ -1,0 +1,98 @@
+{
+  "$schema": "../schemas/marketplace-catalog.schema.json",
+  "registryVersion": 1,
+  "type": "skill",
+  "items": [
+    {
+      "type": "skill",
+      "id": "apply-design-md",
+      "name": "Apply DESIGN.md",
+      "version": "1.0.0",
+      "description": "Teaches the assistant to turn a DESIGN.md design system into a project's theme and restyle components by its rules.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "design-system",
+        "design-md",
+        "tailwind",
+        "theming",
+        "tokens"
+      ],
+      "categories": [
+        "Design"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "SKILL.md",
+      "meta": {},
+      "path": "skills/apply-design-md",
+      "entryUrl": "skills/apply-design-md/SKILL.md",
+      "archive": {
+        "url": "archives/skills/apply-design-md-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "79b44b06e71b3cdacef1be5ed2ee22f186742e8ce80f950d929fd72e8da068b4",
+        "size": 6656,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "skills/apply-design-md"
+      },
+      "skill": {
+        "name": "apply-design-md"
+      }
+    },
+    {
+      "type": "skill",
+      "id": "publish-to-marketplace",
+      "name": "Publish to Marketplace",
+      "version": "1.0.0",
+      "description": "How to add or update a template, app, design system or skill in this marketplace and regenerate the index.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "marketplace",
+        "publishing",
+        "templates",
+        "workflow"
+      ],
+      "categories": [
+        "Developer"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "SKILL.md",
+      "meta": {},
+      "path": "skills/publish-to-marketplace",
+      "entryUrl": "skills/publish-to-marketplace/SKILL.md",
+      "archive": {
+        "url": "archives/skills/publish-to-marketplace-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "d1b72d29a2f5d53ddbe41a8bd35c17ac04392da992fdbf99361ae35e8eea5411",
+        "size": 5632,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "skills/publish-to-marketplace"
+      },
+      "skill": {
+        "name": "publish-to-marketplace"
+      }
+    }
+  ]
+}

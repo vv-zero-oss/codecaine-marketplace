@@ -1,0 +1,15 @@
+{
+  "name": "codecaine-marketplace",
+  "private": true,
+  "type": "module",
+  "description": "Templates, apps, design systems and skills for the canvas editor, served from GitHub Pages.",
+  "engines": {
+    "node": ">=20.11"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/build.mjs --check",
+    "site": "node scripts/build.mjs --out _site",
+    "test": "node --test scripts/*.test.mjs"
+  }
+}

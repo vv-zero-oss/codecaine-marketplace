@@ -1,0 +1,28 @@
+{
+  "$schema": "../schemas/marketplace-index.schema.json",
+  "registryVersion": 1,
+  "name": "Codecaine Marketplace",
+  "description": "Templates, apps, design systems and skills for the canvas editor.",
+  "root": "../",
+  "site": "https://vv-zero-oss.github.io/codecaine-marketplace",
+  "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+  "updated": "2026-09-25",
+  "catalogs": {
+    "template": {
+      "url": "json/templates.json",
+      "count": 2
+    },
+    "app": {
+      "url": "json/apps.json",
+      "count": 1
+    },
+    "design-system": {
+      "url": "json/design-systems.json",
+      "count": 8
+    },
+    "skill": {
+      "url": "json/skills.json",
+      "count": 2
+    }
+  }
+}

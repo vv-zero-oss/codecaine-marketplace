@@ -1,0 +1,980 @@
+{
+  "$schema": "../schemas/marketplace-catalog.schema.json",
+  "registryVersion": 1,
+  "type": "design-system",
+  "items": [
+    {
+      "type": "design-system",
+      "id": "airbnb",
+      "name": "Airbnb",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Airbnb's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "warm",
+        "friendly",
+        "rounded",
+        "coral",
+        "photography",
+        "marketplace",
+        "light"
+      ],
+      "categories": [
+        "Consumer",
+        "Travel"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/airbnb",
+      "entryUrl": "design-systems/airbnb/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/airbnb-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "2549f9b0442406c0a87b2facc551f67a17c350fd539558d62ea9d24f39ce2ab7",
+        "size": 26624,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/airbnb"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#FF385C"
+          },
+          {
+            "name": "primary-strong",
+            "value": "#DA1249"
+          },
+          {
+            "name": "ink",
+            "value": "#222222"
+          },
+          {
+            "name": "ink-black",
+            "value": "#000000"
+          },
+          {
+            "name": "body",
+            "value": "#6C6C6C"
+          },
+          {
+            "name": "muted",
+            "value": "#606060"
+          },
+          {
+            "name": "muted-light",
+            "value": "#C1C1C1"
+          },
+          {
+            "name": "disabled",
+            "value": "#D1D1D1"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface-muted",
+            "value": "#F2F2F2"
+          },
+          {
+            "name": "surface-footer",
+            "value": "#F7F7F7"
+          },
+          {
+            "name": "hairline",
+            "value": "#DDDDDD"
+          },
+          {
+            "name": "success",
+            "value": "#038026"
+          },
+          {
+            "name": "on-primary",
+            "value": "#FFFFFF"
+          }
+        ],
+        "fonts": [
+          "Airbnb Cereal VF"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "ikea",
+      "name": "IKEA",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for IKEA's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "utilitarian",
+        "editorial",
+        "yellow",
+        "retail",
+        "bold-display",
+        "light"
+      ],
+      "categories": [
+        "Consumer",
+        "Retail"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/ikea",
+      "entryUrl": "design-systems/ikea/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/ikea-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "7b910c89240a803c27bafca262715eee87d99faa62a42db4bfdcf62d375ccfe4",
+        "size": 25088,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/ikea"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#FFDB00"
+          },
+          {
+            "name": "ink",
+            "value": "#111111"
+          },
+          {
+            "name": "ink-muted",
+            "value": "#818181"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFEFB"
+          },
+          {
+            "name": "surface-inverse",
+            "value": "#000000"
+          },
+          {
+            "name": "on-primary",
+            "value": "#111111"
+          },
+          {
+            "name": "on-dark",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "link",
+            "value": "#0000EE"
+          },
+          {
+            "name": "accent-green",
+            "value": "#1A7E3B"
+          },
+          {
+            "name": "accent-lilac",
+            "value": "#D9ABFF"
+          },
+          {
+            "name": "accent-peach",
+            "value": "#FFAE66"
+          },
+          {
+            "name": "accent-yellow-soft",
+            "value": "#FFF094"
+          },
+          {
+            "name": "border",
+            "value": "#DADADA"
+          },
+          {
+            "name": "border-strong",
+            "value": "#111111"
+          }
+        ],
+        "fonts": [
+          "Noto IKEA"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "notion",
+      "name": "Notion",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Notion's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "editorial",
+        "monochrome",
+        "productivity",
+        "serif-quotes",
+        "blue",
+        "light"
+      ],
+      "categories": [
+        "SaaS",
+        "Productivity"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/notion",
+      "entryUrl": "design-systems/notion/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/notion-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "3785eac62c719b91684b68da69c655fa6e945ac077b8814bbfe47195a3eb9a56",
+        "size": 25600,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/notion"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#0075DE"
+          },
+          {
+            "name": "primary-strong",
+            "value": "#005BAB"
+          },
+          {
+            "name": "primary-alt",
+            "value": "#097FE8"
+          },
+          {
+            "name": "primary-surface",
+            "value": "#E6F3FE"
+          },
+          {
+            "name": "ink",
+            "value": "#000000"
+          },
+          {
+            "name": "ink-secondary",
+            "value": "#615D59"
+          },
+          {
+            "name": "muted",
+            "value": "#A39E98"
+          },
+          {
+            "name": "on-primary",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface-subtle",
+            "value": "#F6F5F4"
+          },
+          {
+            "name": "surface-dark",
+            "value": "#111111"
+          },
+          {
+            "name": "accent-yellow",
+            "value": "#FFB110"
+          },
+          {
+            "name": "accent-yellow-strong",
+            "value": "#E89D01"
+          },
+          {
+            "name": "accent-red",
+            "value": "#F64932"
+          },
+          {
+            "name": "accent-red-strong",
+            "value": "#E32D14"
+          },
+          {
+            "name": "accent-green",
+            "value": "#1AAE39"
+          },
+          {
+            "name": "accent-green-surface",
+            "value": "#D0F4D8"
+          }
+        ],
+        "fonts": [
+          "NotionInter",
+          "Lyon Text"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "railway",
+      "name": "Railway",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Railway's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "developer",
+        "dark",
+        "violet",
+        "purple",
+        "hairlines",
+        "mono"
+      ],
+      "categories": [
+        "Developer",
+        "Dark"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/railway",
+      "entryUrl": "design-systems/railway/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/railway-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "bc3e3cce44f6e673000ababa7c9737544fc163cf9868177637bf8d16c705752f",
+        "size": 27136,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/railway"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#853BCE"
+          },
+          {
+            "name": "primary-light",
+            "value": "#A667E4"
+          },
+          {
+            "name": "accent-green",
+            "value": "#42946E"
+          },
+          {
+            "name": "accent-green-dark",
+            "value": "#367859"
+          },
+          {
+            "name": "accent-green-surface",
+            "value": "#DFF1E9"
+          },
+          {
+            "name": "ink",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "ink-strong",
+            "value": "#0C0C0E"
+          },
+          {
+            "name": "body",
+            "value": "#DCDCE0"
+          },
+          {
+            "name": "muted",
+            "value": "#A1A0AB"
+          },
+          {
+            "name": "muted-strong",
+            "value": "#878593"
+          },
+          {
+            "name": "muted-deep",
+            "value": "#6C6B7B"
+          },
+          {
+            "name": "muted-deepest",
+            "value": "#545260"
+          },
+          {
+            "name": "surface",
+            "value": "#13111C"
+          },
+          {
+            "name": "surface-raised",
+            "value": "#1F132A"
+          },
+          {
+            "name": "surface-black",
+            "value": "#0C0C0E"
+          },
+          {
+            "name": "surface-light",
+            "value": "#F2F1F3"
+          },
+          {
+            "name": "border",
+            "value": "#33323E"
+          }
+        ],
+        "fonts": [
+          "Inter",
+          "Helvetica"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "shopify",
+      "name": "Shopify",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Shopify's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "commerce",
+        "black-and-white",
+        "green",
+        "pill-buttons",
+        "inter",
+        "light"
+      ],
+      "categories": [
+        "SaaS",
+        "Commerce"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/shopify",
+      "entryUrl": "design-systems/shopify/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/shopify-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "5efb457e426c202503e7c4c238ac7b012739eed9e8648b79af53f3dd41323520",
+        "size": 26624,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/shopify"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#008060"
+          },
+          {
+            "name": "primary-mint",
+            "value": "#36F4A4"
+          },
+          {
+            "name": "accent-violet",
+            "value": "#7126FF"
+          },
+          {
+            "name": "ink",
+            "value": "#000000"
+          },
+          {
+            "name": "ink-soft",
+            "value": "#18181B"
+          },
+          {
+            "name": "body",
+            "value": "#303030"
+          },
+          {
+            "name": "muted",
+            "value": "#71717A"
+          },
+          {
+            "name": "muted-light",
+            "value": "#A1A1AA"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface-subtle",
+            "value": "#F4F4F5"
+          },
+          {
+            "name": "surface-dark",
+            "value": "#061A1C"
+          },
+          {
+            "name": "surface-dark-slate",
+            "value": "#2E3E48"
+          },
+          {
+            "name": "hairline",
+            "value": "#E5E7EB"
+          },
+          {
+            "name": "hairline-strong",
+            "value": "#D4D4D8"
+          },
+          {
+            "name": "on-dark",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "lilac",
+            "value": "#CEC9F8"
+          }
+        ],
+        "fonts": [
+          "Inter"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "stripe",
+      "name": "Stripe",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Stripe's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "fintech",
+        "navy",
+        "indigo",
+        "layered-shadows",
+        "editorial",
+        "light"
+      ],
+      "categories": [
+        "SaaS",
+        "Fintech"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/stripe",
+      "entryUrl": "design-systems/stripe/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/stripe-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "c881200afa7975610d0e2d6a3b99b87e3405d5a97e56633d2173df8171dddccb",
+        "size": 26624,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/stripe"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#635BFF"
+          },
+          {
+            "name": "primary-strong",
+            "value": "#533AFD"
+          },
+          {
+            "name": "ink",
+            "value": "#0A2540"
+          },
+          {
+            "name": "ink-deep",
+            "value": "#061B31"
+          },
+          {
+            "name": "body",
+            "value": "#3C4F69"
+          },
+          {
+            "name": "muted",
+            "value": "#64748D"
+          },
+          {
+            "name": "muted-light",
+            "value": "#707F98"
+          },
+          {
+            "name": "footer-link",
+            "value": "#50617A"
+          },
+          {
+            "name": "slate",
+            "value": "#273951"
+          },
+          {
+            "name": "black",
+            "value": "#000000"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface-alt",
+            "value": "#F8FAFD"
+          },
+          {
+            "name": "surface-tint",
+            "value": "#E5EDF5"
+          },
+          {
+            "name": "hairline",
+            "value": "#E5EDF5"
+          },
+          {
+            "name": "link-classic",
+            "value": "#0000EE"
+          },
+          {
+            "name": "accent-orange",
+            "value": "#FF6118"
+          }
+        ],
+        "fonts": [
+          "sohne-var"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "uber",
+      "name": "Uber",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Uber's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "high-contrast",
+        "black-and-white",
+        "utilitarian",
+        "pill-buttons",
+        "mobility"
+      ],
+      "categories": [
+        "Consumer",
+        "Mobility"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/uber",
+      "entryUrl": "design-systems/uber/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/uber-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "040704fdfe84852674b1b777ac6b8ff1b427740564782ace1aaf0b0b46f9c76a",
+        "size": 24576,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/uber"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#000000"
+          },
+          {
+            "name": "on-primary",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface-muted",
+            "value": "#EFEFEF"
+          },
+          {
+            "name": "surface-dark",
+            "value": "#292929"
+          },
+          {
+            "name": "ink",
+            "value": "#000000"
+          },
+          {
+            "name": "ink-body",
+            "value": "#333333"
+          },
+          {
+            "name": "ink-muted",
+            "value": "#4A4A4A"
+          },
+          {
+            "name": "ink-subtle",
+            "value": "#5E5E5E"
+          },
+          {
+            "name": "ink-faint",
+            "value": "#A6A6A6"
+          },
+          {
+            "name": "border",
+            "value": "#EFEFEF"
+          },
+          {
+            "name": "border-strong",
+            "value": "#767676"
+          },
+          {
+            "name": "link",
+            "value": "#0000EE"
+          },
+          {
+            "name": "accent-blue",
+            "value": "#002661"
+          },
+          {
+            "name": "accent-teal",
+            "value": "#9DCDD6"
+          }
+        ],
+        "fonts": [
+          "UberMove",
+          "UberMoveText"
+        ],
+        "dark": false,
+        "formatVersion": "alpha"
+      }
+    },
+    {
+      "type": "design-system",
+      "id": "vercel",
+      "name": "Vercel",
+      "version": "1.0.0",
+      "description": "A DESIGN.md reference for Vercel's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "CC-BY-4.0",
+      "keywords": [
+        "developer",
+        "monochrome",
+        "geist",
+        "hairlines",
+        "dark-mode",
+        "blue"
+      ],
+      "categories": [
+        "Developer",
+        "SaaS"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "entry": "DESIGN.md",
+      "meta": {
+        "format": "design-md",
+        "formatVersion": "alpha",
+        "affiliation": "none"
+      },
+      "path": "design-systems/vercel",
+      "entryUrl": "design-systems/vercel/DESIGN.md",
+      "archive": {
+        "url": "archives/design-systems/vercel-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "517777e32476cb4e17f26862f72e2b16e781eb36f6571594c1a89855a360e69f",
+        "size": 27648,
+        "files": 2
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "design-systems/vercel"
+      },
+      "designSystem": {
+        "palette": [
+          {
+            "name": "primary",
+            "value": "#0070F3"
+          },
+          {
+            "name": "ink",
+            "value": "#171717"
+          },
+          {
+            "name": "ink-black",
+            "value": "#000000"
+          },
+          {
+            "name": "body",
+            "value": "#4D4D4D"
+          },
+          {
+            "name": "muted",
+            "value": "#666666"
+          },
+          {
+            "name": "muted-light",
+            "value": "#8F8F8F"
+          },
+          {
+            "name": "muted-lighter",
+            "value": "#A8A8A8"
+          },
+          {
+            "name": "muted-subtle",
+            "value": "#7D7D7D"
+          },
+          {
+            "name": "surface",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "surface-subtle",
+            "value": "#EBEBEB"
+          },
+          {
+            "name": "hairline",
+            "value": "#EBEBEB"
+          },
+          {
+            "name": "on-primary",
+            "value": "#FFFFFF"
+          },
+          {
+            "name": "accent-pink",
+            "value": "#BD2864"
+          },
+          {
+            "name": "accent-green",
+            "value": "#297A3A"
+          },
+          {
+            "name": "accent-purple",
+            "value": "#7820BC"
+          },
+          {
+            "name": "accent-blue",
+            "value": "#1D9BF0"
+          },
+          {
+            "name": "danger-surface",
+            "value": "#FFE6E6"
+          }
+        ],
+        "fonts": [
+          "Geist Pixel Square",
+          "Geist Sans",
+          "Geist Mono"
+        ],
+        "dark": true,
+        "formatVersion": "alpha"
+      }
+    }
+  ]
+}

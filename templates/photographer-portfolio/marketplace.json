@@ -1,0 +1,69 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "template",
+  "id": "photographer-portfolio",
+  "name": "Photographer Portfolio",
+  "version": "1.0.0",
+  "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
+  "sdkVersion": "0.1.0",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "photography",
+    "portfolio",
+    "gallery",
+    "wedding",
+    "editorial",
+    "multi-page",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Portfolio",
+    "Creative"
+  ],
+  "created": "2026-09-25",
+  "updated": "2026-09-25",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3110
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/portfolio",
+      "title": "Portfolio"
+    },
+    {
+      "path": "/portfolio/sintra-in-september",
+      "title": "Gallery"
+    },
+    {
+      "path": "/about",
+      "title": "About"
+    },
+    {
+      "path": "/services",
+      "title": "Services"
+    },
+    {
+      "path": "/contact",
+      "title": "Contact"
+    }
+  ]
+}

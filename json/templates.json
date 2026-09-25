@@ -1,0 +1,151 @@
+{
+  "$schema": "../schemas/marketplace-catalog.schema.json",
+  "registryVersion": 1,
+  "type": "template",
+  "items": [
+    {
+      "type": "template",
+      "id": "photographer-portfolio",
+      "name": "Photographer Portfolio",
+      "version": "1.0.0",
+      "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
+      "sdkVersion": "0.1.0",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "photography",
+        "portfolio",
+        "gallery",
+        "wedding",
+        "editorial",
+        "multi-page",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Portfolio",
+        "Creative"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3110
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/portfolio",
+          "title": "Portfolio"
+        },
+        {
+          "path": "/portfolio/sintra-in-september",
+          "title": "Gallery"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/services",
+          "title": "Services"
+        },
+        {
+          "path": "/contact",
+          "title": "Contact"
+        }
+      ],
+      "path": "templates/photographer-portfolio",
+      "thumbnailUrl": "templates/photographer-portfolio/preview.png",
+      "archive": {
+        "url": "archives/templates/photographer-portfolio-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "5f5841fde4491cc886eb2e0232d99abd081029b3eeba5b107f71214136062311",
+        "size": 407552,
+        "files": 43
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "templates/photographer-portfolio"
+      }
+    },
+    {
+      "type": "template",
+      "id": "sdk-scaffold",
+      "name": "SDK Scaffold",
+      "version": "1.0.0",
+      "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
+      "sdkVersion": "0.1.0",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "starter",
+        "saas",
+        "landing",
+        "react",
+        "vite",
+        "tailwind",
+        "radix",
+        "sdk"
+      ],
+      "categories": [
+        "Starter",
+        "Marketing"
+      ],
+      "created": "2026-09-25",
+      "updated": "2026-09-25",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3102,
+        "source": "canvas/scaffold-sdk"
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "path": "templates/sdk-scaffold",
+      "thumbnailUrl": "templates/sdk-scaffold/preview.png",
+      "archive": {
+        "url": "archives/templates/sdk-scaffold-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "721ebca09b28c063335094f8b41188615a7b2b7def4c2f1d8209a466874f0bec",
+        "size": 433152,
+        "files": 46
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "templates/sdk-scaffold"
+      }
+    }
+  ]
+}

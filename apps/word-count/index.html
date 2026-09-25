@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Word Count</title>
+  <link rel="stylesheet" href="/__canvas-app.css">
+  <script src="/__canvas-app.js"></script>
+</head>
+<body>
+  <div class="row spread">
+    <p class="muted" id="summary">Reading the board…</p>
+    <button class="tertiary compact" id="refresh">Refresh</button>
+  </div>
+
+  <h2>Totals</h2>
+  <ul class="list" id="totals"></ul>
+
+  <h2>Longest text layers</h2>
+  <ul class="list" id="longest"></ul>
+
+  <script>
+    // Read-only: canvas:read is the only thing this app asks for. Everything
+    // goes through `app.canvas`, the same API a plugin or the assistant uses.
+    const $ = (id) => document.getElementById(id);
+    // 238 words a minute is the commonly cited adult silent-reading average.
+    const WORDS_PER_MINUTE = 238;
+    const words = (text) => (text.trim().match(/\S+/g) || []).length;
+
+    function row(label, value, layerId) {
+      const li = document.createElement("li");
+      const name = document.createElement("span");
+      name.className = "truncate";
+      name.textContent = label;
+      const count = document.createElement("span");
+      count.className = "muted";
+      count.textContent = value;
+      li.append(name, count);
+      if (layerId) li.dataset.layer = layerId;
+      return li;
+    }
+
+    async function count(app) {
+      const [name, texts] = await Promise.all([
+        app.canvas.document.name(),
+        app.canvas.findAll({ type: "text" }),
+      ]);
+      const bodies = await Promise.all(texts.map((layer) => layer.text()));
+      const perLayer = texts.map((layer, i) => ({ layer, text: bodies[i], words: words(bodies[i]) }));
+      const total = perLayer.reduce((sum, entry) => sum + entry.words, 0);
+      const characters = bodies.reduce((sum, text) => sum + text.length, 0);
+      const minutes = total / WORDS_PER_MINUTE;
+
+      $("summary").className = "muted";
+      $("summary").textContent = `${total} word${total === 1 ? "" : "s"} in “${name}”`;
+      $("totals").replaceChildren(
+        row("Words", String(total)),
+        row("Characters", String(characters)),
+        row("Text layers", String(texts.length)),
+        row("Reading time", minutes < 1 ? "under a minute" : `${Math.round(minutes)} min`),
+      );
+      const longest = perLayer.sort((a, b) => b.words - a.words).slice(0, 8);
+      $("longest").replaceChildren(
+        ...(longest.length
+          ? longest.map((entry) => row(entry.text, `${entry.words}`, entry.layer.id))
+          : [row("No text yet", "")])
+      );
+    }
+
+    CanvasApp.connect().then((app) => {
+      const report = (error) => {
+        $("summary").textContent = error.message;
+        $("summary").className = "danger";
+      };
+      const run = () => count(app).catch(report);
+      app.on("documentchange", run);
+      // Hovering a row outlines its layer on the board — pointing, not editing.
+      $("longest").addEventListener("mouseover", (event) => {
+        const li = event.target.closest("li[data-layer]");
+        app.canvas.selection.hover(li ? li.dataset.layer : null).catch(report);
+      });
+      $("longest").addEventListener("mouseleave", () => app.canvas.selection.hover(null).catch(report));
+      $("refresh").addEventListener("click", run);
+      run();
+    });
+  </script>
+</body>
+</html>

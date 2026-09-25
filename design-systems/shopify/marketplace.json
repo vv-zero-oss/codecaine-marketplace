@@ -1,0 +1,36 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "design-system",
+  "id": "shopify",
+  "name": "Shopify",
+  "version": "1.0.0",
+  "description": "A DESIGN.md reference for Shopify's public marketing surface — colour, type, spacing, radius, elevation and component tokens with the rules for using them. Unofficial and unaffiliated.",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "keywords": [
+    "commerce",
+    "black-and-white",
+    "green",
+    "pill-buttons",
+    "inter",
+    "light"
+  ],
+  "categories": [
+    "SaaS",
+    "Commerce"
+  ],
+  "created": "2026-09-25",
+  "updated": "2026-09-25",
+  "entry": "DESIGN.md",
+  "meta": {
+    "format": "design-md",
+    "formatVersion": "alpha",
+    "affiliation": "none"
+  }
+}

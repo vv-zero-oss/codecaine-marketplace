@@ -1,0 +1,30 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "skill",
+  "id": "apply-design-md",
+  "name": "Apply DESIGN.md",
+  "version": "1.0.0",
+  "description": "Teaches the assistant to turn a DESIGN.md design system into a project's theme and restyle components by its rules.",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "design-system",
+    "design-md",
+    "tailwind",
+    "theming",
+    "tokens"
+  ],
+  "categories": [
+    "Design"
+  ],
+  "created": "2026-09-25",
+  "updated": "2026-09-25",
+  "entry": "SKILL.md",
+  "meta": {}
+}

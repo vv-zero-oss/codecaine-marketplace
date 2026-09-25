@@ -1,0 +1,22 @@
+{
+  "manifestVersion": 1,
+  "id": "dev.codecaine.word-count",
+  "name": "Word Count",
+  "version": "1.0.0",
+  "description": "Counts the words on the board and estimates how long the page takes to read.",
+  "publisher": {
+    "name": "Codecaine",
+    "url": "https://github.com/vv-zero-oss"
+  },
+  "icon": "icon.svg",
+  "categories": [
+    "Content"
+  ],
+  "entry": {
+    "panel": "index.html"
+  },
+  "permissions": [
+    "canvas:read",
+    "ui:panel"
+  ]
+}

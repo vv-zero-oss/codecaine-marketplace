@@ -1,0 +1,29 @@
+{
+  "name": "quartz-components",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3102 --strictPort",
+    "build": "vite build",
+    "preview": "vite preview --port 3102 --strictPort"
+  },
+  "dependencies": {
+    "@radix-ui/react-accordion": "^1.2.20",
+    "@radix-ui/react-slot": "^1.3.3",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
+    "lenis": "^1.3.26",
+    "lucide-react": "^1.34.0",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4",
+    "@vitejs/plugin-react": "^6",
+    "tailwindcss": "^4",
+    "typescript": "~5.9.3",
+    "vite": "^8"
+  }
+}
