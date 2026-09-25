@@ -9,5 +9,9 @@ import { cn } from "@/lib/utils"
  * strips, which is why the scaffolding pages are built on it.
  */
 export function Container({ className, ...props }: React.ComponentProps<"div">) {
-  return <div className={cn("mx-auto w-full max-w-6xl px-6", className)} {...props} />
+  // `data-canvas-ignore`: a centring wrapper, not a layer anyone designs. The
+  // canvas editor's pointer looks through it to the section it sits in and
+  // the content inside it; it is still in the layers panel. A caller that
+  // wants it pickable passes `data-canvas-ignore={false}`.
+  return <div data-canvas-ignore className={cn("mx-auto w-full max-w-6xl px-6", className)} {...props} />
 }

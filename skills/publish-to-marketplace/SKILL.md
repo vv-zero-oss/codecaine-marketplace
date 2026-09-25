@@ -36,6 +36,9 @@ manifest's `id` goes in `meta.appId`.
    the editor offers an update when the version moves.
 3. Templates: `npm install && npm run build` inside the template must pass, and
    `node_modules`/`dist` must not be committed.
+   Mark the template's structural wrappers — `#root`, the page wrapper,
+   `<main>`, a centring `Container` — with `data-canvas-ignore`, so the
+   editor's pointer looks through them to the content (see `CLAUDE.md`).
 4. From the repository root: `npm run build`, then `npm run check`. The build
    validates every item and rewrites `json/`; the check fails if `json/` is
    stale. Commit both the item and the regenerated `json/`.
