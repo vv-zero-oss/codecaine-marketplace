@@ -40,7 +40,7 @@ export function DesignPanel({ editing = false }: { editing?: boolean }) {
       </div>
       <div className="flex h-10 shrink-0 items-center justify-between pr-2 pl-4">
         <span className="text-[13px] font-semibold text-ed-text">ButtonLink</span>
-        <span className="grid h-8 w-[66px] place-items-center rounded-[5px] bg-ed-ink text-[11px] font-medium text-white">
+        <span className="grid h-8 w-[66px] place-items-center rounded-[5px] bg-ed-ink text-[11px] font-medium text-ed-on-ink">
           Preview
         </span>
       </div>
@@ -130,7 +130,7 @@ export function DesignPanel({ editing = false }: { editing?: boolean }) {
 
 function ButtonGroup({ icons, active, dim }: { icons: LucideIcon[]; active?: number; dim?: boolean }) {
   return (
-    <div className={cn("flex h-6 divide-x divide-white overflow-hidden rounded-[6px] bg-ed-field", dim && "opacity-60")}>
+    <div className={cn("flex h-6 divide-x divide-ed-panel overflow-hidden rounded-[6px] bg-ed-field", dim && "opacity-60")}>
       {icons.map((Icon, i) => (
         <span
           key={i}
@@ -147,7 +147,7 @@ function ColorRow({ hex }: { hex: string }) {
   return (
     <div className="flex h-6 gap-px text-[11px] text-ed-text">
       <div className="flex flex-1 items-center gap-2 rounded-l-[6px] bg-ed-field px-2">
-        <span className="size-3.5 rounded-[2px] bg-ed-ink ring-1 ring-black/10" />
+        <span className="size-3.5 rounded-[2px] bg-ed-ink ring-1 ring-ed-swatch-ring" />
         {hex}
       </div>
       <div className="flex w-14 items-center justify-center gap-1 rounded-r-[6px] bg-ed-field">

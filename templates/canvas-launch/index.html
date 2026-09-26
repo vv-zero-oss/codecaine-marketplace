@@ -3,9 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f4f4f4" />
+    <meta name="theme-color" content="#f4f4f4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0e0e10" media="(prefers-color-scheme: dark)" />
     <title>Codecaine — design the app, not a picture of it</title>
     <meta name="description" content="Codecaine puts your running app on a board. Design on the elements that are really there, then save the changes straight into your code." />
+    <script>
+      // Before first paint, so the page never flashes the wrong theme: the
+      // reader's saved choice, else their system setting (and follow it live).
+      ;(() => {
+        const root = document.documentElement
+        const media = matchMedia("(prefers-color-scheme: dark)")
+        let saved = null
+        try { saved = localStorage.getItem("theme") } catch {}
+        const apply = () => { root.dataset.theme = saved || (media.matches ? "dark" : "light") }
+        apply()
+        media.addEventListener("change", apply)
+      })()
+    </script>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
   <body>

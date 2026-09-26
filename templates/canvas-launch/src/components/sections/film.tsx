@@ -25,7 +25,15 @@ function FilmScene() {
   const shot = FILM[step]
 
   return (
-    <Scene ref={ref} beats={3} tone="dark" id="film" aria-label="Film" stageClassName="bg-night text-white">
+    <Scene
+      ref={ref}
+      beats={3.4}
+      tone="dark"
+      id="film"
+      aria-label="Film"
+      stageClassName="text-on-night"
+      backdrop={<div className="size-full bg-night" />}
+    >
       <motion.div className="absolute inset-0" style={{ scale }}>
         <AnimatePresence initial={false}>
           {shot && (
@@ -47,9 +55,9 @@ function FilmScene() {
       <Dialog>
         <DialogTrigger
           aria-label="Play the film"
-          className="group absolute top-1/2 left-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-pill outline-none focus-visible:ring-[3px] focus-visible:ring-white/60"
+          className="group absolute top-1/2 left-1/2 grid size-28 -translate-x-1/2 -translate-y-1/2 cursor-pointer place-items-center rounded-pill outline-none focus-visible:ring-[3px] focus-visible:ring-on-night/60"
         >
-          <svg viewBox="0 0 84 86" className="ml-2 w-[clamp(56px,5.8vw,84px)] fill-white transition-transform duration-200 ease-press group-hover:scale-105 group-active:scale-95">
+          <svg viewBox="0 0 84 86" className="ml-2 w-[clamp(56px,5.8vw,84px)] fill-on-night transition-transform duration-200 ease-press group-hover:scale-105 group-active:scale-95">
             <path d="M0 5.2C0 1.3 4.2-1.1 7.6.9l72.6 38c3.4 1.9 3.4 6.8 0 8.7L7.6 85.1C4.2 87.1 0 84.7 0 80.8Z" />
           </svg>
         </DialogTrigger>
@@ -73,7 +81,7 @@ function FilmScene() {
         <SwapText id="film" className="text-[clamp(36px,3.9vw,56px)]">
           Design the app, not a picture of it
         </SwapText>
-        <p className="max-w-[46ch] text-[clamp(15px,1.25vw,18px)] leading-snug text-white/90">
+        <p className="max-w-[46ch] text-[clamp(15px,1.25vw,18px)] leading-snug text-on-night/90">
           No mockup to hand over. Point Codecaine at localhost and design what is really running.
         </p>
       </div>

@@ -30,7 +30,7 @@ export function StackMarquee() {
             <img
               src={`/logos/${item.logo}`}
               alt={item.wordmark ? item.name : ""}
-              className={item.wordmark ? "h-[22px] w-auto brightness-0" : "size-[22px] brightness-0"}
+              className={item.wordmark ? "h-[22px] w-auto brightness-0 dark:invert" : "size-[22px] brightness-0 dark:invert"}
             />
             {!item.wordmark && <span>{item.name}</span>}
           </li>

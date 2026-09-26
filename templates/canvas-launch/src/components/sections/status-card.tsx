@@ -23,7 +23,7 @@ export function StatusCard({ status, className }: { status: Status; className?: 
     <motion.div
       layout
       transition={{ layout: { duration: 0.45, ease: EASE_SWAP } }}
-      className={cn("overflow-hidden rounded-card bg-white shadow-card", className)}
+      className={cn("overflow-hidden rounded-card bg-surface shadow-card", className)}
     >
       <motion.div layout="position" className="flex items-start gap-3 px-[clamp(18px,2.2vw,32px)] py-[clamp(16px,1.9vw,28px)]">
         <span className="mt-[3px] grid size-5 shrink-0 place-items-center">

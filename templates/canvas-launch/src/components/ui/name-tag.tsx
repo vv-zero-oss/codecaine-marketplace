@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
  */
 export function NameTag({
   label,
-  tone = "bg-signal text-white",
+  tone = "bg-signal text-on-accent",
   arrow = "text-signal",
   className,
   ...props

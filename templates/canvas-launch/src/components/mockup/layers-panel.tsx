@@ -56,19 +56,19 @@ type Layer = { name: string; icon: LucideIcon; depth: number; open?: boolean; le
 
 /** A framed project, read by the SDK — so the rows are its components' names. */
 const TREE: Layer[] = [
-  { name: "localhost:5173", icon: MonitorPlay, depth: 0, open: true, fill: "bg-white" },
+  { name: "localhost:5173", icon: MonitorPlay, depth: 0, open: true, fill: "bg-site-bg" },
   { name: "Navbar", icon: Columns2, depth: 1 },
   { name: "Hero", icon: Rows2, depth: 1, open: true },
   { name: "Eyebrow", icon: Type, depth: 2, leaf: true },
   { name: "SectionHeading", icon: Type, depth: 2, leaf: true },
   { name: "Lede", icon: Type, depth: 2, leaf: true },
   { name: "Actions", icon: Columns2, depth: 2, open: true },
-  { name: "ButtonLink", icon: SquareArrowOutUpRight, depth: 3, leaf: true, selected: true, fill: "bg-ed-ink" },
+  { name: "ButtonLink", icon: SquareArrowOutUpRight, depth: 3, leaf: true, selected: true, fill: "bg-site-feature" },
   { name: "Link", icon: Link, depth: 3, leaf: true },
   { name: "Pricing", icon: Frame, depth: 1, open: true },
-  { name: "PlanCard", icon: Rows2, depth: 2, fill: "bg-white" },
-  { name: "PlanCard", icon: Rows2, depth: 2, fill: "bg-white" },
-  { name: "PlanCard", icon: Rows2, depth: 2, fill: "bg-ed-ink" },
+  { name: "PlanCard", icon: Rows2, depth: 2, fill: "bg-site-bg" },
+  { name: "PlanCard", icon: Rows2, depth: 2, fill: "bg-site-bg" },
+  { name: "PlanCard", icon: Rows2, depth: 2, fill: "bg-site-feature" },
   { name: "Faq", icon: Rows2, depth: 1 },
   { name: "Footer", icon: Columns2, depth: 1 },
 ]

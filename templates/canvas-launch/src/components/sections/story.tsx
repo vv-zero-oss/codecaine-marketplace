@@ -7,7 +7,7 @@ import { Scene } from "@/components/ui/scene"
 import { SwapText } from "@/components/ui/swap-text"
 import { useSceneStep } from "@/hooks/use-scene-step"
 import { useViewport } from "@/hooks/use-viewport"
-import { CAMERA_DURATION, EASE_CAMERA, EASE_SWAP } from "@/lib/motion"
+import { AFTER_CAMERA, CAMERA_DURATION, EASE_CAMERA, EASE_SWAP } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 import { IntroMark } from "./intro"
 import { RetroWindows } from "./retro-windows"
@@ -106,7 +106,7 @@ export function Story({ onIntroDone }: { onIntroDone: () => void }) {
       : { x: view.width * (wide ? 0.55 : 0.7), y: view.height * (wide ? 0.2 : 0.62) }
 
   return (
-    <Scene ref={ref} beats={BEATS.length * 1.1 + 0.4} id="top" aria-label="Codecaine">
+    <Scene ref={ref} beats={BEATS.length * 1.1 + 0.4} id="top" aria-label="Codecaine" enter={false}>
       {/* The editor and the glow it rises out of */}
       <motion.div
         className="absolute top-0 left-0 origin-top-left will-change-transform"
@@ -163,9 +163,21 @@ export function Story({ onIntroDone }: { onIntroDone: () => void }) {
       {phase === "mark" && <IntroMark onDone={markDone} />}
 
       {/* Headlines */}
-      {ready && (
-        <Headline step={step} kind={beat.kind} line={beat.line} wide={wide} status={STATUS[step - 2]} />
-      )}
+      {/* A change of kind (hero → zoom → history → ends) fades the old group out
+          while the camera moves, as the reference does; swaps within a kind
+          are the headline's own blur swap. */}
+      <AnimatePresence>
+        {ready && (
+          <motion.div
+            key={beat.kind}
+            className="absolute inset-0"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: EASE_SWAP }}
+          >
+            <Headline step={step} kind={beat.kind} line={beat.line} wide={wide} status={STATUS[step - 2]} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* The pointer that does the editing */}
       <motion.div
@@ -218,13 +230,13 @@ function Headline({
               initial={{ opacity: 0, filter: "blur(8px)", transform: "translateY(14px)" }}
               animate={{ opacity: 1, filter: "blur(0px)", transform: "translateY(0px)" }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.6, ease: EASE_SWAP, delay: 0.25 }}
+              transition={{ duration: 0.45, ease: EASE_SWAP, delay: AFTER_CAMERA }}
             >
               <StatusCard status={status} />
             </motion.div>
           )}
         </AnimatePresence>
-        <SwapText id={step} delay={0.15} className="max-w-[17ch] text-[clamp(30px,3.35vw,48px)]">
+        <SwapText id={step} delay={AFTER_CAMERA} className="max-w-[17ch] text-[clamp(30px,3.35vw,48px)]">
           {line}
         </SwapText>
       </div>

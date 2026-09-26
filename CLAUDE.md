@@ -159,6 +159,16 @@ every time. The screenshot shows the feel; the code shows the numbers.
   3. **Shadows** — how each one is configured: offsets, blur, spread, colour
      and opacity, and how many layers are stacked.
   4. **Borders** — width, colour, style, radius, and where hairlines are used.
+- **Every colour is a CSS variable — no loose colours, in light and dark.**
+  A template's components use only colour variables defined in its global CSS
+  (`--color-*` exposed through `@theme`): never a raw hex, `rgb()`, a named
+  colour, or a stock Tailwind palette class (`bg-white`, `text-neutral-500`,
+  `bg-black/80`). Start the `@theme` block with `--color-*: initial;` so a stock
+  class cannot compile. Name the variables for what they do (`--color-paper`,
+  `--color-ink`, `--color-surface`, `--color-on-accent`), and give every one a
+  dark value in a `:root[data-theme="dark"]` block, with `data-theme` set before
+  first paint from the saved choice or `prefers-color-scheme`. Colours that stay
+  fixed in both themes (a photo overlay, brand tags) are still variables.
 - **Every colour and every shadow becomes a token** in the global CSS
   (`globals.css` / `index.css` — CSS custom properties, exposed through
   Tailwind's `@theme`), so it can be changed in one place later. No raw hex or

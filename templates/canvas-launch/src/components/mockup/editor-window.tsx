@@ -42,7 +42,7 @@ function TabStrip() {
         <House className="size-4" strokeWidth={1.5} />
       </span>
       <span className="ml-1 flex h-[39px] max-w-[224px] items-center gap-2 border-x border-ed-line bg-ed-field pr-2 pl-2.5 text-[13px] font-medium">
-        <span className="grid size-4 place-items-center rounded-full bg-ed-text-3 text-[9px] font-semibold text-white">T</span>
+        <span className="grid size-4 place-items-center rounded-full bg-ed-text-3 text-[9px] font-semibold text-ed-on-accent">T</span>
         Tidewater
         <X className="size-3.5 text-ed-text-3" strokeWidth={1.5} />
       </span>

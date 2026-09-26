@@ -80,7 +80,7 @@ const lines = (n: number, cls: string, widths = [70, 45, 60, 35, 80, 50, 65, 40,
 const BODIES: Record<Kind, { frame: string; bar: string; dots?: boolean; content: React.ReactNode }> = {
   paint: {
     frame: "bg-period-paint-frame border border-period-dark-edge",
-    bar: "bg-period-paint-bar text-white",
+    bar: "bg-period-paint-bar text-period-white",
     content: (
       <div className="flex h-full">
         <div className="grid w-[14%] grid-cols-2 content-start gap-[6%] bg-period-paint-tools p-[3%]">
@@ -94,37 +94,37 @@ const BODIES: Record<Kind, { frame: string; bar: string; dots?: boolean; content
   },
   forms: {
     frame: "bg-period-win-face border-2 border-t-white border-l-white border-r-period-win-shadow border-b-period-win-shadow",
-    bar: "bg-gradient-to-r from-period-win-title to-period-win-title-end text-white",
+    bar: "bg-gradient-to-r from-period-win-title to-period-win-title-end text-period-white",
     content: (
       <div className="flex h-full gap-[3%] p-[3%]">
         <div className="w-[38%] border border-period-win-edge bg-period-win-face p-[4%]">
-          <span className="block h-[12%] w-full border border-period-win-edge bg-white" />
+          <span className="block h-[12%] w-full border border-period-win-edge bg-period-white" />
           <span className="mt-[8%] block h-[14%] w-[55%] border-2 border-t-white border-l-white border-r-period-win-shadow border-b-period-win-shadow bg-period-win-face" />
-          <span className="mt-[8%] block h-[40%] w-full border border-period-win-edge bg-white" />
+          <span className="mt-[8%] block h-[40%] w-full border border-period-win-edge bg-period-white" />
         </div>
-        <div className="flex flex-1 flex-col gap-[4%] bg-white p-[3%]">{lines(10, "bg-period-win-title/70")}</div>
+        <div className="flex flex-1 flex-col gap-[4%] bg-period-white p-[3%]">{lines(10, "bg-period-win-title/70")}</div>
       </div>
     ),
   },
   page: {
     frame: "bg-period-win-desktop p-[2%]",
-    bar: "bg-gradient-to-r from-period-win-title to-period-win-title-end text-white",
+    bar: "bg-gradient-to-r from-period-win-title to-period-win-title-end text-period-white",
     content: (
       <div className="m-[2%] grid h-[88%] grid-cols-3 gap-[3%] border-2 border-t-white border-l-white border-r-period-win-shadow border-b-period-win-shadow bg-period-win-face p-[3%]">
-        <div className="col-span-3 bg-white p-[2%]">{lines(2, "bg-period-win-link")}</div>
-        <div className="border border-dashed border-period-win-shadow bg-white" />
-        <div className="col-span-2 flex flex-col gap-[6%] bg-white p-[3%]">{lines(5, "bg-neutral-500")}</div>
+        <div className="col-span-3 bg-period-white p-[2%]">{lines(2, "bg-period-win-link")}</div>
+        <div className="border border-dashed border-period-win-shadow bg-period-white" />
+        <div className="col-span-2 flex flex-col gap-[6%] bg-period-white p-[3%]">{lines(5, "bg-period-grey-mid")}</div>
       </div>
     ),
   },
   ide: {
     frame: "bg-gradient-to-b from-period-aqua-top to-period-aqua-bottom border border-period-aqua-edge",
-    bar: "bg-gradient-to-b from-period-light-face to-period-aqua-bar-bottom text-neutral-700",
+    bar: "bg-gradient-to-b from-period-light-face to-period-aqua-bar-bottom text-period-grey-dark",
     dots: true,
     content: (
       <div className="flex h-full gap-[2%] p-[2%]">
         <div className="flex w-[26%] flex-col gap-[5%] bg-period-aqua-list p-[3%]">{lines(8, "bg-period-aqua-ink/60")}</div>
-        <div className="flex flex-1 flex-col gap-[4%] bg-white p-[3%]">
+        <div className="flex flex-1 flex-col gap-[4%] bg-period-white p-[3%]">
           {lines(4, "bg-period-ide-keyword/60")}
           <span className="block h-[7%] w-full bg-period-ide-highlight" />
           {lines(4, "bg-period-ide-type/60")}
@@ -133,46 +133,46 @@ const BODIES: Record<Kind, { frame: string; bar: string; dots?: boolean; content
     ),
   },
   photo: {
-    frame: "bg-period-dark-frame border border-black",
-    bar: "bg-period-dark-panel text-white",
+    frame: "bg-period-dark-frame border border-period-black",
+    bar: "bg-period-dark-panel text-period-white",
     content: (
       <div className="flex h-full gap-[2%] p-[2%]">
         <div className="w-[6%] bg-period-dark-panel" />
         <div className="flex-1 bg-[linear-gradient(160deg,var(--color-period-photo-sky),var(--color-period-photo-mid)_55%,var(--color-period-photo-deep))]" />
-        <div className="flex w-[22%] flex-col gap-[5%] bg-period-dark-panel p-[3%]">{lines(6, "bg-white/30")}</div>
+        <div className="flex w-[22%] flex-col gap-[5%] bg-period-dark-panel p-[3%]">{lines(6, "bg-period-white/30")}</div>
       </div>
     ),
   },
   vector: {
     frame: "bg-period-light-face border border-period-light-edge",
-    bar: "bg-period-light-bar text-neutral-600",
+    bar: "bg-period-light-bar text-period-grey-dark",
     dots: true,
     content: (
       <div className="grid h-full grid-cols-2 gap-[6%] p-[8%]">
-        {["bg-white", "bg-white", "bg-period-vector-peach", "bg-white"].map((c, i) => (
+        {["bg-period-white", "bg-period-white", "bg-period-vector-peach", "bg-period-white"].map((c, i) => (
           <span key={i} className={cn("shadow-sm", c)} />
         ))}
       </div>
     ),
   },
   browser: {
-    frame: "bg-white border border-period-light-bar",
-    bar: "bg-period-dark-chrome text-white",
+    frame: "bg-period-white border border-period-light-bar",
+    bar: "bg-period-dark-chrome text-period-white",
     content: (
       <div className="flex h-full">
-        <div className="flex w-[20%] flex-col gap-[6%] border-r border-period-light-rule p-[3%]">{lines(7, "bg-neutral-300")}</div>
+        <div className="flex w-[20%] flex-col gap-[6%] border-r border-period-light-rule p-[3%]">{lines(7, "bg-period-grey")}</div>
         <div className="grid flex-1 grid-cols-3 gap-[5%] bg-period-light-canvas p-[6%]">
           {["bg-period-browser-mint", "bg-period-browser-peach", "bg-period-browser-lime"].map((c) => (
             <span key={c} className={cn("rounded-sm", c)} />
           ))}
         </div>
-        <div className="flex w-[20%] flex-col gap-[6%] border-l border-period-light-rule p-[3%]">{lines(7, "bg-neutral-300")}</div>
+        <div className="flex w-[20%] flex-col gap-[6%] border-l border-period-light-rule p-[3%]">{lines(7, "bg-period-grey")}</div>
       </div>
     ),
   },
   code: {
-    frame: "bg-period-code-bg border border-black",
-    bar: "bg-period-dark-bar text-white",
+    frame: "bg-period-code-bg border border-period-black",
+    bar: "bg-period-dark-bar text-period-white",
     dots: true,
     content: (
       <div className="flex h-full">

@@ -5,6 +5,7 @@ import { Sparkles, Square } from "lucide-react"
 
 import { Mark } from "@/components/ui/mark"
 import { NameTag } from "@/components/ui/name-tag"
+import { Typed } from "@/components/ui/typed"
 import { Scene } from "@/components/ui/scene"
 import { SwapText } from "@/components/ui/swap-text"
 import { useSceneStep } from "@/hooks/use-scene-step"
@@ -51,24 +52,24 @@ export function Assistant() {
         <AnimatePresence>
           {at >= 1 && (
             <motion.div
-              className="absolute top-[21px] left-1/2 flex h-[42px] -translate-x-1/2 items-center gap-2 rounded-[8px] bg-white px-3 text-[16px] font-medium whitespace-nowrap shadow-chip"
+              className="absolute top-[21px] left-1/2 flex h-[42px] items-center gap-2 rounded-[8px] bg-surface px-3 text-[16px] font-medium whitespace-nowrap shadow-chip"
               initial={{ opacity: 0, filter: "blur(6px)", transform: "translateX(-50%) translateY(8px)" }}
               animate={{ opacity: 1, filter: "blur(0px)", transform: "translateX(-50%) translateY(0px)" }}
               transition={{ duration: 0.5, ease: EASE_SWAP }}
             >
               <Sparkles className="size-3.5 text-ink-faint" strokeWidth={1.5} />
-              <Typed text={PROMPT} />
+              <Typed text={PROMPT} delay={0.25} />
             </motion.div>
           )}
         </AnimatePresence>
 
         {/* The mark becomes the thing that was asked for */}
         <motion.div
-          className="absolute top-[147px] left-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center overflow-hidden text-[16px] font-semibold text-white"
+          className="absolute top-[147px] left-1/2 grid -translate-x-1/2 -translate-y-1/2 place-items-center overflow-hidden text-[16px] font-semibold text-on-accent"
           initial={false}
           animate={
             at === 0
-              ? { width: 98, height: 98, borderRadius: 0, backgroundColor: "rgb(0 0 0 / 0)" }
+              ? { width: 98, height: 98, borderRadius: 0, backgroundColor: "color-mix(in srgb, var(--color-ink) 0%, transparent)" }
               : at === 1
                 ? { width: 124, height: 98, borderRadius: 0, backgroundColor: "var(--color-ink)" }
                 : { width: 170, height: 44, borderRadius: 8, backgroundColor: "var(--color-signal)" }
@@ -181,7 +182,7 @@ function TokenChip({ used, children }: { used: boolean; children: React.ReactNod
       transition={{ duration: 0.4, ease: EASE_SWAP }}
       className={cn(
         "flex h-9 items-center gap-2 rounded-pill pr-4 pl-2 text-[15px] transition-[background-color,color,box-shadow] duration-300",
-        used ? "bg-white text-ink shadow-chip" : "bg-white/40 text-ink-muted",
+        used ? "bg-surface text-ink shadow-chip" : "bg-surface/40 text-ink-muted",
       )}
     >
       {children}
@@ -218,21 +219,3 @@ function Dot({ x, y, className }: { x: number; y: number; className?: string }) 
   )
 }
 
-/** The prompt types itself — a character every 28ms, the pace of a quick typist. */
-function Typed({ text }: { text: string }) {
-  return (
-    <span aria-label={text}>
-      {text.split("").map((ch, i) => (
-        <motion.span
-          key={i}
-          aria-hidden
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.01, delay: 0.25 + i * 0.028 }}
-        >
-          {ch}
-        </motion.span>
-      ))}
-    </span>
-  )
-}

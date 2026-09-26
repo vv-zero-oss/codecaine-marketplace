@@ -3,8 +3,8 @@
   "type": "template",
   "id": "canvas-launch",
   "name": "Canvas Launch",
-  "version": "1.0.0",
-  "description": "A scroll-told launch page for a design tool: an opening mark that dives through its own window, the product's editor drawn in code with a camera that flies into its inspector, component name tags, a change-journal diagram, an assistant scene, a film and a waitlist on a closing gradient.",
+  "version": "1.1.0",
+  "description": "A scroll-told launch page for a design tool, every scene pinned and handed over in place: an opening mark that dives through its own window, the product's editor drawn in code with a camera that flies into its inspector, no-translation-layer and change-journal diagrams, Magic Cast, parallel assistant runs, full API control, web import, a modes line-up, bring-your-own-model, a film and a waitlist. Light and dark themes, every colour a CSS variable.",
   "designedFor": [
     "Launching a developer or design tool with a story rather than a feature grid",
     "Showing a product's real interface, drawn in code so it stays sharp at any zoom",

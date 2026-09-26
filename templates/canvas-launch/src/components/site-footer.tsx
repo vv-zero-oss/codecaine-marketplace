@@ -1,3 +1,4 @@
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Mark } from "@/components/ui/mark"
 import { FILM, WINDOW } from "@/content/photos"
 
@@ -16,7 +17,7 @@ const LINKS = [
 export function SiteFooter() {
   const credits = [...new Map([...FILM, ...WINDOW].map((p) => [p.by, p])).values()]
   return (
-    <footer data-tone="bare" className="relative flex min-h-svh flex-col justify-end px-4 pt-[clamp(140px,30svh,320px)] pb-10 sm:px-[72px] sm:pb-16">
+    <footer data-tone="bare" className="bg-closing relative flex bg-fixed min-h-svh flex-col justify-end px-4 pt-[clamp(140px,30svh,320px)] pb-10 sm:px-[72px] sm:pb-16">
       <nav aria-label="Footer" className="mb-8 sm:mb-14">
         <ul className="flex flex-wrap gap-x-[clamp(28px,6vw,86px)] gap-y-2">
           {LINKS.map((link) => (
@@ -35,6 +36,7 @@ export function SiteFooter() {
         <span>© 2026 Codecaine. All rights reserved.</span>
         <a href="#" className="inline-flex min-h-11 items-center transition-opacity hover:opacity-60 sm:min-h-0">Privacy</a>
         <a href="#" className="inline-flex min-h-11 items-center transition-opacity hover:opacity-60 sm:min-h-0">Terms</a>
+        <ThemeToggle className="sm:ml-auto" />
         {credits.length > 0 && (
           <span className="basis-full text-[12px] font-normal text-ink-soft">
             Photography from Pexels by{" "}

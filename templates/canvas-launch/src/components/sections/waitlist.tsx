@@ -36,7 +36,15 @@ export function Waitlist() {
   const masked = step >= 1
 
   return (
-    <Scene ref={ref} beats={3} tone="bare" id="access" aria-label="Request access">
+    <Scene
+      ref={ref}
+      beats={3.4}
+      tone="bare"
+      id="access"
+      aria-label="Request access"
+      backdrop={<div className="size-full bg-closing bg-fixed" />}
+      backdropExits={false}
+    >
       <div
         aria-hidden
         className="absolute top-[20svh] left-1/2 size-[clamp(200px,19.9vw,286px)] -translate-x-1/2 overflow-hidden"
@@ -98,7 +106,7 @@ function AccessForm() {
         setSent(true)
       }}
     >
-      <div className="flex h-[52px] w-full items-center rounded-pill bg-white/95 p-1 shadow-ring backdrop-blur-sm">
+      <div className="flex h-[52px] w-full items-center rounded-pill bg-surface/95 p-1 shadow-ring backdrop-blur-sm">
         <label htmlFor="access-email" className="sr-only">
           Work email
         </label>

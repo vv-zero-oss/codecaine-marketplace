@@ -17,16 +17,16 @@ import { EASE_SWAP } from "@/lib/motion"
  * gathers, in px from the centre at a 1440px-wide screen (scaled down below it).
  */
 const TAGS = [
-  { label: "Navbar", tone: "bg-tag-green text-white", arrow: "text-tag-green", from: [0.03, 0.47], to: [-415, -62] },
-  { label: "Hero", tone: "bg-tag-lime text-ink", arrow: "text-tag-lime", from: [0.17, 0.95], to: [-112, -122] },
-  { label: "PlanCard", tone: "bg-tag-pink text-white", arrow: "text-tag-pink", from: [0.93, 0.91], to: [246, -110] },
-  { label: "LogoCloud", tone: "bg-tag-sea text-white", arrow: "text-tag-sea", from: [0.02, 0.82], to: [-256, 16] },
-  { label: "FeatureCard", tone: "bg-tag-teal text-ink", arrow: "text-tag-teal", from: [0.38, 0.92], to: [138, 2] },
-  { label: "Footer", tone: "bg-tag-plum text-white", arrow: "text-tag-plum", from: [0.91, 0.21], to: [334, 16] },
-  { label: "ButtonLink", tone: "bg-signal text-white", arrow: "text-signal", from: [0.07, 0.33], to: [-330, 72], keep: true },
-  { label: "Pricing", tone: "bg-tag-yellow text-ink", arrow: "text-tag-yellow", from: [0.22, 0.04], to: [-136, 82] },
-  { label: "SectionHeading", tone: "bg-violet text-white", arrow: "text-violet", from: [0.82, 0.62], to: [-10, 134], keep: true },
-  { label: "Faq", tone: "bg-tag-orange text-white", arrow: "text-tag-orange", from: [0.66, 0.08], to: [100, 98] },
+  { label: "Navbar", tone: "bg-tag-green text-on-accent", arrow: "text-tag-green", from: [0.03, 0.47], to: [-415, -62] },
+  { label: "Hero", tone: "bg-tag-lime text-on-bright", arrow: "text-tag-lime", from: [0.17, 0.95], to: [-112, -122] },
+  { label: "PlanCard", tone: "bg-tag-pink text-on-accent", arrow: "text-tag-pink", from: [0.93, 0.91], to: [246, -110] },
+  { label: "LogoCloud", tone: "bg-tag-sea text-on-accent", arrow: "text-tag-sea", from: [0.02, 0.82], to: [-256, 16] },
+  { label: "FeatureCard", tone: "bg-tag-teal text-on-bright", arrow: "text-tag-teal", from: [0.38, 0.92], to: [138, 2] },
+  { label: "Footer", tone: "bg-tag-plum text-on-accent", arrow: "text-tag-plum", from: [0.91, 0.21], to: [334, 16] },
+  { label: "ButtonLink", tone: "bg-signal text-on-accent", arrow: "text-signal", from: [0.07, 0.33], to: [-330, 72], keep: true },
+  { label: "Pricing", tone: "bg-tag-yellow text-on-bright", arrow: "text-tag-yellow", from: [0.22, 0.04], to: [-136, 82] },
+  { label: "SectionHeading", tone: "bg-violet text-on-accent", arrow: "text-violet", from: [0.82, 0.62], to: [-10, 134], keep: true },
+  { label: "Faq", tone: "bg-tag-orange text-on-accent", arrow: "text-tag-orange", from: [0.66, 0.08], to: [100, 98] },
 ] as const
 
 const LINES = ["Not just boxes on a board", "Your components, by their own names"]

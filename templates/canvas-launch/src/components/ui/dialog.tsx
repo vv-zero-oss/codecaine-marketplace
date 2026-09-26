@@ -21,7 +21,7 @@ function DialogOverlay({ className, ...props }: React.ComponentProps<typeof Dial
     <DialogPrimitive.Overlay
       data-slot="dialog-overlay"
       className={cn(
-        "fixed inset-0 z-50 bg-black/80 transition-opacity duration-200 ease-swap data-[state=closed]:opacity-0 starting:opacity-0",
+        "fixed inset-0 z-50 bg-night/80 transition-opacity duration-200 ease-swap data-[state=closed]:opacity-0 starting:opacity-0",
         className,
       )}
       {...props}
@@ -46,7 +46,7 @@ function DialogContent({
         {...props}
       >
         {children}
-        <DialogPrimitive.Close className="absolute -top-12 right-0 grid size-11 cursor-pointer place-items-center rounded-pill text-white/80 transition-colors hover:text-white focus-visible:ring-[3px] focus-visible:ring-white/50 focus-visible:outline-none">
+        <DialogPrimitive.Close className="absolute -top-12 right-0 grid size-11 cursor-pointer place-items-center rounded-pill text-on-night/80 transition-colors hover:text-on-night focus-visible:ring-[3px] focus-visible:ring-on-night/50 focus-visible:outline-none">
           <XIcon className="size-5" />
           <span className="sr-only">Close</span>
         </DialogPrimitive.Close>

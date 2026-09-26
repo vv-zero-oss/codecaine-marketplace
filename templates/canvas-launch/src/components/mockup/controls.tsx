@@ -63,7 +63,7 @@ export function Segmented({
           key={i}
           className={cn(
             "grid flex-1 place-items-center rounded-[6px] px-2 text-[12px] font-medium",
-            i === active ? "bg-white text-ed-text shadow-ed-chip" : "text-ed-text-2",
+            i === active ? "bg-ed-panel text-ed-text shadow-ed-chip" : "text-ed-text-2",
           )}
         >
           {typeof Item === "string" ? Item : <Item className="size-4" strokeWidth={1.5} />}

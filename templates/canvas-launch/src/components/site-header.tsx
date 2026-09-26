@@ -47,7 +47,7 @@ export function SiteHeader({ visible }: { visible: boolean }) {
       transition={{ duration: 0.5, ease: EASE_SWAP }}
       className={cn(
         "pointer-events-none fixed inset-x-0 top-0 z-40 flex items-center justify-between px-4 pt-4 transition-colors duration-300 sm:px-gutter sm:pt-gutter",
-        tone === "dark" ? "text-white" : "text-ink",
+        tone === "dark" ? "text-on-night" : "text-ink",
         !visible && "invisible",
       )}
     >
@@ -57,7 +57,7 @@ export function SiteHeader({ visible }: { visible: boolean }) {
       <Button
         asChild
         variant={tone === "dark" ? "light" : tone === "bare" ? "ghost" : "default"}
-        className={cn("pointer-events-auto h-11 sm:h-[38px]", tone === "bare" && "text-white")}
+        className={cn("pointer-events-auto h-11 sm:h-[38px]", tone === "bare" && "text-on-night")}
       >
         <a href="#access">Request access</a>
       </Button>

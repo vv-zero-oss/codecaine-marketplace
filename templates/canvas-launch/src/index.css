@@ -1,11 +1,19 @@
 @import "tailwindcss";
 
+/* `dark:` follows the page theme attribute, not only the system setting */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /*
  * Every colour, shadow, radius, font and motion value the page uses lives here,
  * so the whole page is restyled from this one block. Components reach them only
  * through Tailwind utilities (`bg-paper`, `shadow-card`, `ease-swap`, …).
  */
 @theme {
+  /* No stock palette: every colour on the page is one of the variables below,
+     each with a light and a dark value, so a loose `bg-neutral-500` cannot
+     compile into the template. */
+  --color-*: initial;
+
   /* Type */
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Roboto Mono", ui-monospace, "SFMono-Regular", monospace;
@@ -17,7 +25,19 @@
   --color-ink-soft: #3d3d3d;
   --color-ink-muted: #707070;
   --color-ink-faint: #a3a3a3;
-  --color-white: #ffffff;
+  --color-surface: #ffffff;
+  --color-on-ink: #ffffff;
+  --color-on-accent: #ffffff;
+  --color-on-bright: #000000;
+  --color-on-night: #ffffff;
+  --color-danger: #dc2626;
+  --color-rec: #ff3b30;
+  --color-amber: #f59e0b;
+  --color-ai: #0e9384;
+  --color-swatch-brand: #3576ff;
+  --color-swatch-brand-dark: #4c8dff;
+  --color-swatch-paper: #f4f4f4;
+  --color-swatch-paper-dark: #0e0e10;
 
   /* The glow and the closing gradient */
   --color-glow: #3a74fb;
@@ -63,6 +83,22 @@
   --color-ed-bar-line: #444444;
   --color-ed-bar-accent: #0c8ce9;
   --color-ed-bar-accent-text: #7cc4f8;
+  --color-ed-bar-ink: #ffffff;
+  --color-ed-on-accent: #ffffff;
+  --color-ed-on-ink: #ffffff;
+  --color-ed-handle: #ffffff;
+  --color-ed-swatch-ring: #0000001a;
+
+  /* The framed project inside the mockup — somebody's own site, so it keeps
+     its own light look in both themes */
+  --color-site-bg: #ffffff;
+  --color-site-card: #fafafa;
+  --color-site-ink: #171717;
+  --color-site-soft: #404040;
+  --color-site-muted: #737373;
+  --color-site-line: #0000000f;
+  --color-site-feature: #171717;
+  --color-site-on-feature: #ffffff;
   --shadow-ed-chip: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 1px -0.5px rgb(0 0 0 / 0.06), 0 3px 3px -1.5px rgb(0 0 0 / 0.06), 0 6px 6px -3px rgb(0 0 0 / 0.06);
   --shadow-ed-bar: 0 1px 2px 0 #1b1c1d7a, 0 0 0 1px #242628;
   --shadow-ed-frame: 0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
@@ -118,6 +154,11 @@
   --color-period-win-shadow: #404040;
   --color-period-win-title: #000080;
   --color-period-win-title-end: #1084d0;
+  --color-period-white: #ffffff;
+  --color-period-black: #000000;
+  --color-period-grey: #d4d4d4;
+  --color-period-grey-mid: #737373;
+  --color-period-grey-dark: #525252;
 
   /* Radii */
   --radius-pill: 9999px;
@@ -152,6 +193,64 @@
 
   --animate-marquee: marquee 40s linear infinite;
   --animate-spin-fast: spin 0.8s linear infinite;
+  --animate-travel: travel 1.6s linear infinite;
+  --animate-breathe: breathe 1.8s ease-in-out infinite;
+}
+
+/*
+ * Dark theme: the same variables, re-pointed. `data-theme` is set on <html>
+ * before first paint (index.html) from the reader's saved choice or their
+ * system setting, and the footer's toggle flips it. Only colours and shadows
+ * change; the glow, the tags, the period chrome and the framed site keep their
+ * values in both themes.
+ */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --color-paper: #0e0e10;
+  --color-paper-deep: #0a0a0b;
+  --color-ink: #f4f4f4;
+  --color-ink-soft: #cfcfcf;
+  --color-ink-muted: #8c8c8c;
+  --color-ink-faint: #5c5c5c;
+  --color-surface: #1a1a1d;
+  --color-on-ink: #0a0a0a;
+  --color-violet-soft: #2a1650;
+  --color-slate: #4d5357;
+  --color-ai: #2dd4bf;
+
+  --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.06), 0 12px 32px -8px rgb(0 0 0 / 0.6);
+  --shadow-window: 0 0 0 1px rgb(255 255 255 / 0.08), 0 24px 60px -12px rgb(0 0 0 / 0.7);
+  --shadow-chip: 0 0 0 1px rgb(255 255 255 / 0.06), 0 4px 12px -4px rgb(0 0 0 / 0.5);
+  --shadow-ring: 0 0 0 4px rgb(255 255 255 / 0.08);
+
+  /* The editor's own dark theme (its .dark block) */
+  --color-ed-panel: #1f1f1f;
+  --color-ed-canvas: #141414;
+  --color-ed-dot: #3a3a3a;
+  --color-ed-line: #2e2e2e;
+  --color-ed-line-strong: #444444;
+  --color-ed-field: #2e2e2e;
+  --color-ed-text: #f5f5f5;
+  --color-ed-text-2: #a8a8a8;
+  --color-ed-text-3: #8a8a8a;
+  --color-ed-ink: #f5f5f5;
+  --color-ed-on-ink: #141414;
+  --color-ed-accent: #4c8dff;
+  --color-ed-accent-soft: #1c2d4d;
+  --color-ed-selected: #24406e;
+  --color-ed-state: #ff6fbe;
+  --color-ed-handle: #1f1f1f;
+  --color-ed-swatch-ring: #ffffff26;
+  --shadow-ed-chip: 0 0 0 1px rgb(255 255 255 / 0.06), 0 2px 6px rgb(0 0 0 / 0.4);
+  --shadow-ed-frame: 0 0 0 1px rgb(255 255 255 / 0.06), 0 8px 24px rgb(0 0 0 / 0.5);
+}
+
+@keyframes travel {
+  to { stroke-dashoffset: -100; }
+}
+
+@keyframes breathe {
+  50% { opacity: 0.45; }
 }
 
 @keyframes marquee {
