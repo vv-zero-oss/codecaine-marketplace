@@ -228,7 +228,7 @@
       "type": "template",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
       "designedFor": [
         "Starting a SaaS or product landing page from a real, responsive layout",
@@ -236,7 +236,7 @@
         "Teams who want a Radix + Tailwind v4 baseline to restyle from a DESIGN.md",
         "Trying the editor's motion and action channels on a page that uses them"
       ],
-      "sdkVersion": "0.1.0",
+      "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -260,7 +260,7 @@
         "Marketing"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-25",
+      "updated": "2026-09-26",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -302,9 +302,9 @@
         ]
       },
       "archive": {
-        "url": "archives/templates/sdk-scaffold-1.1.0.tgz",
+        "url": "archives/templates/sdk-scaffold-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "05b54e309a9ad9641b4c8796b534f4b3b7d0efcdd4385733bfd5ed7dfd84d014",
+        "sha256": "1b6342df31864d060213278a0c97580acef93d54ab3512a644ca8d0d92393ec4",
         "size": 275968,
         "files": 46
       },
