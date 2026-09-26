@@ -54,22 +54,24 @@ const MAX_OPTION_LENGTH = 64;
 const MAX_COMPONENTS = 400;
 
 /**
- * The files the editor keeps in a project's own folder, relative to its root:
- * the design, the project's manifest, and the pictures it stores beside them.
- * The same names as `electron/project-io.ts` and `electron/assets.ts` write;
- * the SDK cannot import the editor, so they are repeated here.
+ * The files the editor keeps in a project's own folder, relative to its root.
+ * All of it is `.codecaine/` now — the manifest, the design as one file per
+ * layer, the pictures — and the root files and `codecaine/` are where an
+ * older editor kept them, until the project is next opened and they are moved.
+ * The same names as `src/editor/schema/project-files.ts` gives; the SDK cannot
+ * import the editor, so they are repeated here.
  */
 export const EDITOR_FILES = ["document.json", "canvas-builder.config.json"];
-export const EDITOR_DIRS = ["codecaine"];
+export const EDITOR_DIRS = [".codecaine", "codecaine"];
 
 /**
  * Whether the dev server should look away from `file`: one of the editor's
  * own files, at the root it was served from.
  *
  * A template opened as a project is one folder with two tenants — the editor
- * saves `document.json` into it after every gesture, and the dev server
+ * saves its layer files into it after every gesture, and the dev server
  * serving it watches it. Tailwind's Vite plugin scans every file in the root
- * for class names, `document.json` among them, and answers a change to a
+ * for class names, the editor's among them, and answers a change to a
  * scanned file that is not a module with a full page reload. So every drag of
  * the framed page on the board reloaded the page inside it: the application
  * lost its state, the frame flickered, and the Layers panel lost the
