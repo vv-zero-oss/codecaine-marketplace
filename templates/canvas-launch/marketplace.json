@@ -1,0 +1,69 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "template",
+  "id": "canvas-launch",
+  "name": "Canvas Launch",
+  "version": "1.0.0",
+  "description": "A scroll-told launch page for a design tool: an opening mark that dives through its own window, the product's editor drawn in code with a camera that flies into its inspector, component name tags, a change-journal diagram, an assistant scene, a film and a waitlist on a closing gradient.",
+  "designedFor": [
+    "Launching a developer or design tool with a story rather than a feature grid",
+    "Showing a product's real interface, drawn in code so it stays sharp at any zoom",
+    "Waitlist and early-access pages that need one clear ask at the end",
+    "Studying pinned, scroll-triggered scenes built with Framer Motion and Lenis"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "launch",
+    "waitlist",
+    "saas",
+    "product",
+    "storytelling",
+    "scroll",
+    "motion",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "SaaS"
+  ],
+  "created": "2026-09-26",
+  "updated": "2026-09-26",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3130
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
+}

@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/*
+ * Every colour, shadow, radius, font and motion value the page uses lives here,
+ * so the whole page is restyled from this one block. Components reach them only
+ * through Tailwind utilities (`bg-paper`, `shadow-card`, `ease-swap`, …).
+ */
+@theme {
+  /* Type */
+  --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  /* Page */
+  --color-paper: #f4f4f4;
+  --color-paper-deep: #efefef;
+  --color-ink: #000000;
+  --color-ink-soft: #3d3d3d;
+  --color-ink-muted: #707070;
+  --color-ink-faint: #a3a3a3;
+  --color-white: #ffffff;
+
+  /* The glow and the closing gradient */
+  --color-glow: #3a74fb;
+  --color-glow-soft: #97b4f6;
+  --color-glow-deep: #1f3d85;
+  --color-night: #000103;
+
+  /* Accents used by the mockups */
+  --color-signal: #3576ff;
+  --color-violet: #7c1ffc;
+  --color-violet-soft: #ede3ff;
+  --color-mint: #22d196;
+  --color-mint-deep: #00c294;
+  --color-slate: #6c7377;
+
+  /* Name tags — one per component label */
+  --color-tag-green: #0f9d58;
+  --color-tag-lime: #b7d433;
+  --color-tag-pink: #e0218a;
+  --color-tag-teal: #1fd6a0;
+  --color-tag-plum: #b8468f;
+  --color-tag-sea: #2b6c8a;
+  --color-tag-yellow: #fcc419;
+  --color-tag-orange: #e2670a;
+
+  /* The editor mockup — the product's own chrome, drawn in code with its real values */
+  --color-ed-panel: #ffffff;
+  --color-ed-canvas: #e0e0e0;
+  --color-ed-dot: #cfcfcf;
+  --color-ed-line: #ededf0;
+  --color-ed-line-strong: #cfcfcf;
+  --color-ed-field: #f5f5f5;
+  --color-ed-text: #17181c;
+  --color-ed-text-2: #696969;
+  --color-ed-text-3: #a8a8a8;
+  --color-ed-ink: #141414;
+  --color-ed-accent: #155efa;
+  --color-ed-accent-soft: #eaf1ff;
+  --color-ed-selected: #dbeaff;
+  --color-ed-state: #e5399a;
+  --color-ed-page: #b14bf4;
+  --color-ed-bar: #2c2c2c;
+  --color-ed-bar-line: #444444;
+  --color-ed-bar-accent: #0c8ce9;
+  --color-ed-bar-accent-text: #7cc4f8;
+  --shadow-ed-chip: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 1px -0.5px rgb(0 0 0 / 0.06), 0 3px 3px -1.5px rgb(0 0 0 / 0.06), 0 6px 6px -3px rgb(0 0 0 / 0.06);
+  --shadow-ed-bar: 0 1px 2px 0 #1b1c1d7a, 0 0 0 1px #242628;
+  --shadow-ed-frame: 0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+
+
+  /* Period chrome — the retro tool windows and window controls in the mockups */
+  --color-period-aqua-bar-bottom: #cfcfcf;
+  --color-period-aqua-bottom: #c9c9c9;
+  --color-period-aqua-edge: #8a8a8a;
+  --color-period-aqua-ink: #3a5f8a;
+  --color-period-aqua-list: #dfe6ee;
+  --color-period-aqua-top: #e8e8e8;
+  --color-period-browser-lime: #dcedc1;
+  --color-period-browser-mint: #a8e6cf;
+  --color-period-browser-peach: #ffd3b6;
+  --color-period-code-added: #4ec9b0;
+  --color-period-code-bg: #1e1e1e;
+  --color-period-code-keyword: #569cd6;
+  --color-period-code-removed: #f14c4c;
+  --color-period-code-side: #252526;
+  --color-period-code-string: #ce9178;
+  --color-period-dark-bar: #2d2d2d;
+  --color-period-dark-chrome: #2c2c2c;
+  --color-period-dark-edge: #1a1a1a;
+  --color-period-dark-frame: #2b2b2b;
+  --color-period-dark-panel: #3c3c3c;
+  --color-period-ide-highlight: #fff59a;
+  --color-period-ide-keyword: #7a2e8a;
+  --color-period-ide-type: #1c4fa1;
+  --color-period-light-bar: #e4e4e4;
+  --color-period-light-canvas: #f5f5f5;
+  --color-period-light-close: #ff5f57;
+  --color-period-light-edge: #d6d6d6;
+  --color-period-light-face: #f2f2f2;
+  --color-period-light-max: #28c840;
+  --color-period-light-min: #febc2e;
+  --color-period-light-rule: #eee;
+  --color-period-paint-bar: #5a5a5a;
+  --color-period-paint-frame: #3b3b3b;
+  --color-period-paint-glow-1: #5d8fb8;
+  --color-period-paint-glow-2: #1d3a52;
+  --color-period-paint-glow-3: #060b10;
+  --color-period-paint-tool: #9a9a9a;
+  --color-period-paint-tools: #4a4a4a;
+  --color-period-photo-deep: #15222c;
+  --color-period-photo-mid: #2e4454;
+  --color-period-photo-sky: #6f8fa6;
+  --color-period-vector-peach: #ffd8cc;
+  --color-period-win-desktop: #008080;
+  --color-period-win-edge: #808080;
+  --color-period-win-face: #c0c0c0;
+  --color-period-win-link: #0000ee;
+  --color-period-win-shadow: #404040;
+  --color-period-win-title: #000080;
+  --color-period-win-title-end: #1084d0;
+
+  /* Radii */
+  --radius-pill: 9999px;
+  --radius-card: 22px;
+  --radius-window: 12px;
+  --radius-field: 6px;
+  --radius-chip: 8px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -8px rgb(0 0 0 / 0.08);
+  --shadow-window: 0 0 0 1px rgb(0 0 0 / 0.06), 0 24px 60px -12px rgb(0 0 0 / 0.16);
+  --shadow-field: inset 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 1px rgb(0 0 0 / 0.04);
+  --shadow-chip: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 12px -4px rgb(0 0 0 / 0.08);
+  --shadow-button-dark: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lift: 0 10px 24px -8px rgb(0 0 0 / 0.3);
+  --shadow-ring: 0 0 0 4px rgb(255 255 255 / 0.9);
+  --shadow-retro: 0 8px 24px -10px rgb(0 0 0 / 0.35);
+  --shadow-live: 0 0 0 4px color-mix(in srgb, var(--color-mint) 20%, transparent);
+  --shadow-ed-switch: 0 0 0.5px rgb(0 0 0 / 0.5), 0 1px 3px rgb(0 0 0 / 0.4), inset 0 0.5px 0 rgb(255 255 255 / 0.1);
+
+  /* Spacing steps read off the page */
+  --spacing-gutter: 38px;
+  --spacing-header: 114px;
+
+  /* Motion, measured frame by frame and shared by every animation */
+  --ease-swap: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-camera: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-dive: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-press: cubic-bezier(0.23, 1, 0.32, 1);
+  --default-transition-duration: 160ms;
+  --default-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
+
+  --animate-marquee: marquee 40s linear infinite;
+  --animate-spin-fast: spin 0.8s linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* shadcn's semantic colours, pointed at the page's tokens */
+@theme inline {
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-primary: var(--color-ink);
+  --color-primary-foreground: var(--color-white);
+  --color-muted-foreground: var(--color-ink-muted);
+  --color-border: var(--color-ed-line);
+  --color-input: var(--color-ed-line);
+  --color-ring: var(--color-signal);
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+/* The headline cut: tight, medium, display optical size */
+@utility display {
+  font-weight: 560;
+  letter-spacing: -0.04em;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* The closing gradient: night in the top-right corner, through the glow, to
+   paper — held still against the screen while the ask and the footer pass. */
+@utility bg-closing {
+  background-color: var(--color-paper);
+  background-image:
+    radial-gradient(ellipse 34% 55% at 0% 0%, color-mix(in srgb, var(--color-paper) 85%, transparent) 0%, transparent 100%),
+    linear-gradient(
+      199deg,
+      var(--color-night) 0%,
+      var(--color-night) 13%,
+      color-mix(in srgb, var(--color-glow-deep) 70%, var(--color-night)) 21%,
+      var(--color-glow) 30%,
+      var(--color-glow) 40%,
+      var(--color-glow-soft) 50%,
+      color-mix(in srgb, var(--color-glow-soft) 25%, var(--color-paper)) 58%,
+      var(--color-paper) 66%
+    );
+}

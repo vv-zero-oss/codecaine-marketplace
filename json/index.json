@@ -10,7 +10,7 @@
   "catalogs": {
     "template": {
       "url": "json/templates.json",
-      "count": 3
+      "count": 4
     },
     "app": {
       "url": "json/apps.json",

@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "types": [
+      "vite/client",
+      "node"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ],
+      "@canvas/react/hook": [
+        "./src/lib/canvas-react/install-hook.ts"
+      ],
+      "@canvas/react": [
+        "./src/lib/canvas-react/index.ts"
+      ]
+    }
+  },
+  "include": [
+    "src"
+  ]
+}
