@@ -1,0 +1,164 @@
+@import "tailwindcss";
+@import "@fontsource-variable/hanken-grotesk";
+@import "@fontsource-variable/newsreader";
+
+/*
+ * Every colour, shadow, radius, font, spacing step and easing on the page is a
+ * token here, so the whole look changes in one place. Components use the
+ * Tailwind names these produce (`bg-paper`, `text-ink`, `rounded-photo`,
+ * `ease-out-strong`) and never a raw value.
+ */
+:root {
+  /* Surfaces */
+  --paper: #f2f0e8;
+  --night: #181715;
+  --cream: #f3f2ec;
+  --pill: #1b1b16;
+  --portrait: #f5ece4;
+  --swirl: #e6e3da;
+
+  /* Type */
+  --ink: #1b1a15;
+  --ink-soft: #494741;
+  --muted: #8f8c84;
+  --muted-light: #b1aea6;
+  --cream-muted: #bdbab0;
+  --on-night: #efede5;
+  --on-night-muted: #9a978f;
+
+  /* Lines */
+  --hairline: #e2e0d8;
+  --hairline-night: #2b2a27;
+
+  /* The drawing crayons */
+  --crayon-black: #1b1913;
+  --crayon-red: #c44024;
+  --crayon-blue: #2b5abd;
+  --crayon-green: #337b42;
+  --crayon-yellow: #e3a133;
+
+  /* Shadows: the page is flat — the stickers too. The one lifted thing is
+     the play button over the product film. */
+  --shadow-play: 0 4px 16px rgb(27 26 21 / 0.16);
+
+  /* Motion: the page's one curve and its durations. */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-pill: 370ms;
+  --duration-grow: 500ms;
+  --duration-tone: 300ms;
+}
+
+@theme inline {
+  --font-sans: "Hanken Grotesk Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader Variable", "EB Garamond", ui-serif, Georgia, serif;
+
+  --color-paper: var(--paper);
+  --color-night: var(--night);
+  --color-cream: var(--cream);
+  --color-pill: var(--pill);
+  --color-portrait: var(--portrait);
+  --color-swirl: var(--swirl);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-cream-muted: var(--cream-muted);
+  --color-on-night: var(--on-night);
+  --color-on-night-muted: var(--on-night-muted);
+  --color-hairline: var(--hairline);
+  --color-hairline-night: var(--hairline-night);
+  --color-crayon-black: var(--crayon-black);
+  --color-crayon-red: var(--crayon-red);
+  --color-crayon-blue: var(--crayon-blue);
+  --color-crayon-green: var(--crayon-green);
+  --color-crayon-yellow: var(--crayon-yellow);
+
+  /* shadcn's semantic names, pointed at the same palette */
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-primary: var(--pill);
+  --color-primary-foreground: var(--cream);
+  --color-border: var(--hairline);
+  --color-input: var(--hairline);
+  --color-ring: var(--ink-soft);
+
+  --shadow-play: var(--shadow-play);
+
+  --radius-photo: 6px;
+  --radius-pill: 9999px;
+
+  /* The spacing steps the page is laid out on */
+  --spacing-gutter: 16px;
+  --spacing-row: clamp(56px, 9vw, 110px);
+  --spacing-section: clamp(96px, 16vw, 200px);
+
+  /* Type scale: small UI text, body, lead, and the fluid display sizes */
+  --text-caption: 11.5px;
+  --text-caption--line-height: 1.3;
+  --text-ui: 12.5px;
+  --text-ui--line-height: 1.3;
+  --text-label: 14px;
+  --text-label--line-height: 1.3;
+  --text-lead: clamp(18px, 1.6vw, 22px);
+  --text-lead--line-height: 1.16;
+  --text-statement: clamp(17px, 1.6vw, 19.5px);
+  --text-statement--line-height: 1.25;
+  --text-serif: clamp(22px, 2.5vw, 30px);
+  --text-serif--line-height: 1.28;
+  --text-display: clamp(52px, 10.6vw, 170px);
+  --text-display--line-height: 0.95;
+  --text-product: clamp(28px, 4.4vw, 64px);
+  --text-product--line-height: 1;
+
+  --tracking-display: -0.03em;
+  --tracking-tight: -0.01em;
+
+  --ease-out-strong: var(--ease-out-strong);
+  --ease-in-out-strong: var(--ease-in-out-strong);
+}
+
+html {
+  background: var(--paper);
+  /* Lenis carries the scroll; native smooth scrolling would fight it. */
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: clip;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* The Sheet's slide: the panel exits the way it entered. Reduced motion keeps
+   the fade and drops the travel. */
+@keyframes sheet-in {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+@keyframes sheet-out {
+  from { transform: translateX(0); }
+  to { transform: translateX(100%); }
+}
+@keyframes sheet-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [data-slot="sheet-content"] { animation-name: sheet-fade !important; }
+}
