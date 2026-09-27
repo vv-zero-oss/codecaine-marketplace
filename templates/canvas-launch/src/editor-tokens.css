@@ -1,0 +1,410 @@
+/*
+ * The editor's own tokens — Codecaine's chrome, used by the product components
+ * ported from the canvas repository (components/canvas/) and the mockups.
+ * Values are the editor's real light and dark ones (canvas src/index.css).
+ * Kept apart from the page's tokens so the two palettes never mix.
+ */
+@theme {
+  /* No stock palette: every colour in the template is a variable defined here
+     or in index.css, each with a light and a dark value, so a loose
+     `bg-neutral-500` cannot compile. This file is imported first, so the reset
+     runs before any of the template's own colours are defined. */
+  --color-*: initial;
+
+  /* The editor mockup — the product's own chrome, drawn in code with its real values */
+  --color-ed-panel: #ffffff;
+  --color-ed-canvas: #e0e0e0;
+  --color-ed-dot: #cfcfcf;
+  --color-ed-line: #ededf0;
+  --color-ed-line-strong: #cfcfcf;
+  --color-ed-field: #f5f5f5;
+  --color-ed-text: #17181c;
+  --color-ed-text-2: #696969;
+  --color-ed-text-3: #a8a8a8;
+  --color-ed-ink: #141414;
+  --color-ed-accent: #155efa;
+  --color-ed-accent-soft: #eaf1ff;
+  --color-ed-selected: #dbeaff;
+  --color-ed-state: #e5399a;
+  --color-ed-page: #b14bf4;
+  --color-ed-bar: #2c2c2c;
+  --color-ed-bar-line: #444444;
+  --color-ed-bar-accent: #0c8ce9;
+  --color-ed-bar-accent-text: #7cc4f8;
+  --color-ed-bar-ink: #ffffff;
+  --color-ed-on-accent: #ffffff;
+  --color-ed-on-ink: #ffffff;
+  --color-ed-handle: #ffffff;
+  --color-ed-swatch-ring: #0000001a;
+
+  /* The framed project inside the mockup — somebody's own site, so it keeps
+     its own light look in both themes */
+  --color-site-bg: #ffffff;
+  --color-site-card: #fafafa;
+  --color-site-ink: #171717;
+  --color-site-soft: #404040;
+  --color-site-muted: #737373;
+  --color-site-line: #0000000f;
+  --color-site-feature: #171717;
+  --color-site-on-feature: #ffffff;
+  --shadow-ed-chip: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 1px -0.5px rgb(0 0 0 / 0.06), 0 3px 3px -1.5px rgb(0 0 0 / 0.06), 0 6px 6px -3px rgb(0 0 0 / 0.06);
+  --shadow-ed-bar: 0 1px 2px 0 #1b1c1d7a, 0 0 0 1px #242628;
+  --shadow-ed-frame: 0 0 0 1px rgb(0 0 0 / 0.05), 0 1px 2px rgb(0 0 0 / 0.04), 0 8px 24px rgb(0 0 0 / 0.06);
+}
+
+:root[data-theme="dark"] {
+  /* The editor's own dark theme (its .dark block) */
+  --color-ed-panel: #1f1f1f;
+  --color-ed-canvas: #141414;
+  --color-ed-dot: #3a3a3a;
+  --color-ed-line: #2e2e2e;
+  --color-ed-line-strong: #444444;
+  --color-ed-field: #2e2e2e;
+  --color-ed-text: #f5f5f5;
+  --color-ed-text-2: #a8a8a8;
+  --color-ed-text-3: #8a8a8a;
+  --color-ed-ink: #f5f5f5;
+  --color-ed-on-ink: #141414;
+  --color-ed-accent: #4c8dff;
+  --color-ed-accent-soft: #1c2d4d;
+  --color-ed-selected: #24406e;
+  --color-ed-state: #ff6fbe;
+  --color-ed-swatch-ring: #ffffff26;
+  --shadow-ed-chip: 0 0 0 1px rgb(255 255 255 / 0.06), 0 2px 6px rgb(0 0 0 / 0.4);
+  --shadow-ed-frame: 0 0 0 1px rgb(255 255 255 / 0.06), 0 8px 24px rgb(0 0 0 / 0.5);
+}
+
+/*
+ * The rest of the editor's chrome, for the components ported whole from the
+ * canvas repository into components/canvas/. Named as the canvas names them
+ * (`--ed-border` → `--color-ed-border`, so `border-ed-border` ports verbatim),
+ * with the canvas's light values here and its `.dark` values below.
+ *
+ * `--color-ed-handle` is the page white in both themes, as it is in the
+ * editor: a handle is drawn on the page, not on the chrome.
+ */
+@theme {
+  --color-ed-border: #ededf0;
+  --color-ed-border-strong: #cfcfcf;
+  --color-ed-text-secondary: #696969;
+  --color-ed-text-tertiary: #a8a8a8;
+  --color-ed-hover: #f5f5f5;
+  --color-ed-input: #f5f5f5;
+  --color-ed-input-hover: #e0e0e0;
+  --color-ed-panel-inset: #f5f5f5;
+  --color-ed-accent-text: #155efa;
+  --color-ed-page-chrome: #b14bf4;
+  --color-ed-warning: #b45309;
+  --color-ed-ai: #0e9384;
+  --color-ed-ai-glow: #5eead4;
+  --color-ed-ai-soft: #e4fbf6;
+  /* The segmented control's lifted chip (Fluid Functionalism's surface-4). */
+  --color-ed-tab-chip: #ffffff;
+
+  /* The floating toolbar: dark on every theme, so the dark block repeats these. */
+  --color-ed-toolbar-surface: #2c2c2c;
+  --color-ed-toolbar-divider: #444444;
+  --color-ed-toolbar-active-bg: #444444;
+  --color-ed-toolbar-accent: #0c8ce9;
+  --color-ed-toolbar-accent-text: #7cc4f8;
+  --color-ed-toolbar-ink: #ffffff;
+
+  /* Magic Cast's island: its own fixed dark theme (magic-cast/design-tokens.ts). */
+  --color-ed-cast-surface: #08080a;
+  --color-ed-cast-surface-hover: rgb(255 255 255 / 0.1);
+  --color-ed-cast-text: rgb(255 255 255 / 0.92);
+  --color-ed-cast-text-secondary: rgb(255 255 255 / 0.55);
+  --color-ed-cast-emphasis: #ffffff;
+  --color-ed-cast-on-emphasis: #0a0a0c;
+  --color-ed-cast-danger: #ff6961;
+  --color-ed-cast-danger-bg: rgb(255 69 58 / 0.16);
+  --color-ed-cast-accent: #0c8ce9;
+
+  --color-ed-handle: #ffffff;
+
+  --shadow-ed-popover: 0 0 0 1px rgba(0, 0, 0, 0.06), 0 2px 6px rgba(0, 0, 0, 0.05), 0 4px 42px rgba(0, 0, 0, 0.06);
+  --shadow-ed-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-ed-toolbar: 0 1px 2px 0 #1b1c1d7a, 0 0 0 1px #242628;
+  --shadow-ed-toolbar-slider: 0 0 0.5px 0 rgba(0, 0, 0, 0.5), 0 1px 3px 0 rgba(0, 0, 0, 0.4), inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1), inset 0 0 0.5px 0 rgba(255, 255, 255, 0.3);
+  --shadow-ed-tab-chip: 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 1px -0.5px rgb(0 0 0 / 0.06), 0 3px 3px -1.5px rgb(0 0 0 / 0.06), 0 6px 6px -3px rgb(0 0 0 / 0.06);
+  --shadow-ed-cast-card: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 14px 40px -10px rgba(0, 0, 0, 0.7);
+
+  /* The editor's type, radius and weight rungs the ported chrome is set in. */
+  --text-4xs: 0.5625rem;
+  --text-3xs: 0.625rem;
+  --text-2xs: 0.6875rem;
+  --text-ed-shell: 0.8125rem;
+  --font-weight-control: 450;
+  --font-weight-label: 550;
+  --tracking-control: 0.055px;
+  --tracking-control-tight: 0.045px;
+  --radius-4xs: 2px;
+  --radius-3xs: 3px;
+  --radius-2xs: 5px;
+  --radius-input: 6px;
+  --radius-ed-chip: 7px;
+  --radius-toast: 9px;
+  --radius-shell: 10px;
+  --radius-toolbar: 13px;
+}
+
+:root[data-theme="dark"] {
+  --color-ed-border: #2e2e2e;
+  --color-ed-border-strong: #4a4a4a;
+  --color-ed-text-secondary: #a8a8a8;
+  --color-ed-text-tertiary: #8a8a8a;
+  --color-ed-hover: #2e2e2e;
+  --color-ed-input: #2e2e2e;
+  --color-ed-input-hover: #4a4a4a;
+  --color-ed-panel-inset: #2e2e2e;
+  --color-ed-accent-text: #8fb8ff;
+  --color-ed-page-chrome: #c77dff;
+  --color-ed-warning: #fbbf24;
+  --color-ed-ai: #2dd4bf;
+  --color-ed-ai-glow: #99f6e4;
+  --color-ed-ai-soft: #12332f;
+  --color-ed-tab-chip: #555555;
+
+  --color-ed-toolbar-surface: #2c2c2c;
+  --color-ed-toolbar-divider: #444444;
+  --color-ed-toolbar-active-bg: #444444;
+  --color-ed-toolbar-accent: #0c8ce9;
+  --color-ed-toolbar-accent-text: #7cc4f8;
+  --color-ed-toolbar-ink: #ffffff;
+
+  --color-ed-cast-surface: #08080a;
+  --color-ed-cast-surface-hover: rgb(255 255 255 / 0.1);
+  --color-ed-cast-text: rgb(255 255 255 / 0.92);
+  --color-ed-cast-text-secondary: rgb(255 255 255 / 0.55);
+  --color-ed-cast-emphasis: #ffffff;
+  --color-ed-cast-on-emphasis: #0a0a0c;
+  --color-ed-cast-danger: #ff6961;
+  --color-ed-cast-danger-bg: rgb(255 69 58 / 0.16);
+  --color-ed-cast-accent: #0c8ce9;
+
+  --color-ed-handle: #ffffff;
+
+  --shadow-ed-popover: 0 12px 24px 0 #00000029, 0 1px 2px 0 #0000001f, 0 0 0 1px #ffffff14;
+  --shadow-ed-sm: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --shadow-ed-toolbar: 0 1px 2px 0 #1b1c1d7a, 0 0 0 1px #242628;
+  --shadow-ed-toolbar-slider: 0 0 0.5px 0 rgba(0, 0, 0, 0.5), 0 1px 3px 0 rgba(0, 0, 0, 0.4), inset 0 0.5px 0 0 rgba(255, 255, 255, 0.1), inset 0 0 0.5px 0 rgba(255, 255, 255, 0.3);
+  --shadow-ed-tab-chip: inset 0 1px 0 0 rgba(255, 255, 255, 0.02), inset 0 0 0 1px rgba(255, 255, 255, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.14), 0 1px 1px -0.5px rgba(0, 0, 0, 0.18), 0 3px 3px -1.5px rgba(0, 0, 0, 0.18), 0 6px 6px -3px rgba(0, 0, 0, 0.18);
+  --shadow-ed-cast-card: inset 0 1px 0 rgba(255, 255, 255, 0.07), 0 14px 40px -10px rgba(0, 0, 0, 0.7);
+}
+
+/* ── The toolbar (canvas src/index.css, "Canvas toolbar") ─────────── */
+.ed-toolbar-surface,
+.ed-toast {
+  background-color: var(--color-ed-toolbar-surface);
+  box-shadow: var(--shadow-ed-toolbar);
+}
+
+.ed-toolbar-slider {
+  background-color: var(--color-ed-toolbar-surface);
+  box-shadow: var(--shadow-ed-toolbar-slider);
+}
+
+.icon-toolbar {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-toolbar-chevron {
+  width: 10px;
+  margin-left: 4px;
+}
+
+/* ── The assistant at work (canvas src/index.css) ─────────────────── */
+@property --ed-ai-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes ed-ai-spin {
+  to {
+    --ed-ai-angle: 360deg;
+  }
+}
+
+@keyframes pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ed-ai-breathe {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.ed-ai-ring {
+  --ed-ai-rim: 1.5px;
+  filter: drop-shadow(0 0 3px color-mix(in srgb, var(--color-ed-ai-glow) 70%, transparent));
+}
+
+.ed-ai-ring::before,
+.ed-ai-ring::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: var(--ed-ai-rim);
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+}
+
+.ed-ai-ring::before {
+  padding: 1px;
+  inset: 0.25px;
+  background: color-mix(in srgb, var(--color-ed-ai) 35%, transparent);
+}
+
+.ed-ai-ring::after {
+  background: conic-gradient(
+    from var(--ed-ai-angle),
+    transparent 0deg,
+    transparent 250deg,
+    color-mix(in srgb, var(--color-ed-ai-glow) 70%, transparent) 285deg,
+    var(--color-ed-accent) 318deg,
+    var(--color-ed-page-chrome) 345deg,
+    transparent 360deg
+  );
+  opacity: 0.85;
+  animation: ed-ai-spin 3.2s linear infinite;
+}
+
+@keyframes ed-ai-shine-sweep {
+  0% {
+    transform: translateX(-100%) skewX(-20deg);
+  }
+  35%,
+  100% {
+    transform: translateX(260%) skewX(-20deg);
+  }
+}
+
+.ed-ai-shine {
+  overflow: hidden;
+}
+
+.ed-ai-shine::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 40%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-ed-ai-glow) 10%, transparent) 30%,
+    color-mix(in srgb, var(--color-ed-ai-glow) 24%, transparent) 50%,
+    color-mix(in srgb, var(--color-ed-ai-glow) 10%, transparent) 70%,
+    transparent
+  );
+  animation: ed-ai-shine-sweep 4.2s ease-in-out infinite;
+}
+
+.ed-ai-ring-waiting {
+  padding: 1.5px;
+  background: var(--color-ed-warning);
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  animation: ed-ai-breathe 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ed-ai-ring-waiting {
+    animation: none;
+  }
+  .ed-ai-shine {
+    display: none;
+  }
+  .ed-ai-ring::after {
+    display: none;
+  }
+  .ed-ai-ring::before {
+    background: var(--color-ed-ai);
+  }
+}
+
+/* ── The loading state (canvas ui/LoadingState.tsx) ───────────────── */
+@keyframes pixel-on {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  35% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer-text {
+  from {
+    background-position: 150% 0;
+  }
+  to {
+    background-position: -50% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-loader-grid] > span {
+    animation: none !important;
+  }
+  [data-shimmer-label] {
+    animation: none !important;
+  }
+}
+
+/* ── Magic Cast's text swap (magic-cast/design-tokens.ts GLOBAL_STYLE_CSS) ── */
+:root {
+  --text-swap-dur: 150ms;
+  --text-swap-translate-y: 4px;
+  --text-swap-blur: 2px;
+  --text-swap-ease: ease-in-out;
+}
+.t-text-swap {
+  display: inline-block;
+  transform: translateY(0);
+  filter: blur(0);
+  opacity: 1;
+  transition:
+    transform var(--text-swap-dur) var(--text-swap-ease),
+    filter var(--text-swap-dur) var(--text-swap-ease),
+    opacity var(--text-swap-dur) var(--text-swap-ease);
+  will-change: transform, filter, opacity;
+}
+.t-text-swap.is-exit {
+  transform: translateY(calc(var(--text-swap-translate-y) * -1));
+  filter: blur(var(--text-swap-blur));
+  opacity: 0;
+}
+.t-text-swap.is-enter-start {
+  transform: translateY(var(--text-swap-translate-y));
+  filter: blur(var(--text-swap-blur));
+  opacity: 0;
+  transition: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .t-text-swap {
+    transition: none !important;
+  }
+}
+
+/* ── The editor's thin scrollbar (canvas `@utility ed-scrollbar`) ─── */
+.ed-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-ed-border-strong) transparent;
+}

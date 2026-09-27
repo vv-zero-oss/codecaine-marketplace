@@ -11,33 +11,43 @@ npm run dev     # → http://localhost:3130
 
 ## The story
 
-| Scene | File | What it says |
-|---|---|---|
-| Opening | `sections/intro.tsx` | The mark cools from blue to ink, holds, then dives through its own window onto the first line. |
-| Story | `sections/story.tsx` | The promise over a blue glow, then the camera flies into the editor's inspector while a status card narrates a save; thirty years of separate tools; "That ends here." |
-| No translation layer | `sections/real-code.tsx` | The export/file/plugin chain other canvases need, crossed out; one wire both ways; the stacks it frames. |
-| Component names | `sections/component-names.tsx` | Name tags gather round the line as you scroll (scrubbed), then all but two leave. |
-| Journal | `sections/journal.tsx` | A diagram of changes per breakpoint, drawn in, then saved back into the source line. |
-| Magic Cast | `sections/magic-cast.tsx` | See, hear, point, type — handed to the assistant as one recording; frames and a transcript. |
-| Assistant | `sections/assistant.tsx` | A prompt types itself, the mark becomes a button, and wires show which theme tokens it used. |
-| Parallel runs | `sections/parallel-runs.tsx` | @-mention a layer; three runs at once, each ringed; one waiting in amber. |
-| Full control | `sections/full-control.tsx` | The canvas API changing a frame as it types, the Variables window, WebMCP. |
-| Import | `sections/import-web.tsx` | An address in, a page filling in section by section as editable layers. |
-| Modes | `sections/modes.tsx` | Artboard, Code, Agent and Apps on one sliding switch. |
-| Own model | `sections/own-model.tsx` | The CLIs you already use behind bb; no second bill; what works without AI. |
-| Film | `sections/film.tsx` | Full-bleed footage with a play button that opens the clip in a dialog. Hidden until `content/photos.ts` has footage. |
-| Access | `sections/waitlist.tsx` | Photographs through the mark's window, then the email form and a marquee of stacks. |
-| Footer | `site-footer.tsx` | Links, the small print with photo credits, and the wordmark at page width. |
+Four acts, each scene pinned while it plays and handed to the next in place.
 
-The editor in the story is drawn in code (`components/mockup/`), at the editor's
-own sizes, so the camera can zoom into it without it going soft.
+| Act | Scene | File |
+|---|---|---|
+| I — the promise | Opening mark, hero, the camera onto the live frame, thirty years of separate tools, "That ends here" | `sections/intro.tsx`, `sections/story.tsx` |
+| II — anything that renders | Any project (WordPress, Laravel, Java…) flying onto the board | `sections/any-project.tsx` |
+| | Components by their own names | `sections/component-names.tsx` |
+| | Real elements: a working form, a live three.js scene changed by asking | `sections/real-elements.tsx` |
+| | Components from anywhere; switching a variant from the props dropdown | `sections/components-scene.tsx` |
+| | The change journal | `sections/journal.tsx` |
+| III — the assistant | Magic Cast, shot like a film: a video you love, your words, then it's on your site | `sections/magic-cast.tsx` |
+| | The assistant bubble: @ a layer, paste references, it rebuilds the layer | `sections/references.tsx` |
+| | Recreate a live page's header in your own project, scroll effect and all | `sections/recreate.tsx` |
+| | An assistant that reads your board | `sections/assistant.tsx` |
+| | Bring your own model: a gravity wall of every model bb drives | `sections/own-model.tsx` |
+| IV — the ask | A 3D gallery behind "Amazing things are possible", the form, a ticket | `sections/access.tsx` |
+
+## The editor's own components
+
+`components/canvas/` holds components ported from the Codecaine editor — the
+toolbar, the Magic Cast pill, the assistant pill, bar and mention menu, AI run
+chips and rings, the frame title and selection, the Attributes props panel —
+with their markup, classes and Hugeicons intact and the editor's colours as
+`--color-ed-*` tokens in `src/editor-tokens.css`. They take props instead of
+reading the editor's store, so scenes can act them out.
+
+`components/art/` is the artwork the scenes play: a canvas motion graphic, a
+three.js object, a matter-js gravity wall, a CSS 3D gallery, a scroll-effect
+header and a button with three variants.
 
 ## Changing it
 
 - **Colours, shadows, radii, fonts and motion** are tokens in `src/index.css`
   (`@theme`). The easings and durations there are mirrored in `src/lib/motion.ts`.
 - **Photography** lives in `src/content/photos.ts` (files in `public/photos/`),
-  credited in the footer.
+  credited in the footer. The reference images the assistant scene pastes are
+  in `public/references/`.
 - **Stack logos** are SVGL's, in `public/logos/`.
 - `hooks/use-scene-step.ts` is the one pattern every scene uses: a tall section,
   a sticky stage, and a beat index from its scroll progress. `ui/scene.tsx`

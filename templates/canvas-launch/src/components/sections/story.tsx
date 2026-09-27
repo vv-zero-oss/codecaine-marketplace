@@ -42,6 +42,11 @@ const STATUS: Status[] = [
 
 type Camera = { x: number; y: number; scale: number }
 
+/** The point in the editor (its own px) the close-up centres on: the framed page's hero. */
+const FOCUS = { x: 650, y: 300 }
+/** Where the selected button sits in the editor, for the pointer that edits it. */
+const BUTTON = { x: 500, y: 392 }
+
 /** Where the editor sits for each beat, from the screen size. */
 function camera(kind: (typeof BEATS)[number]["kind"], index: number, W: number, H: number): Camera {
   const wide = W >= 1024
@@ -51,15 +56,14 @@ function camera(kind: (typeof BEATS)[number]["kind"], index: number, W: number, 
     return { scale, x: (W - EW * scale) / 2, y: H * (wide ? 0.8 : 0.66) }
   }
   if (kind === "zoom" || kind === "history") {
-    // Close on the inspector: its right edge a little left of centre, the tab
-    // strip a third of the way down — the reference's framing of its panel.
-    const scale = wide ? (1.85 * W) / 1440 : Math.min(1.7, (W - 32) / 259)
-    const right = wide ? W * 0.43 : W - 16
-    const top = wide ? H * 0.3 : 76
-    // For the history beat the panel scrolls on and slides out left, clearing
-    // the stage for the old tools.
-    if (kind === "history") return { scale, x: -EW * scale - 40, y: top - H * 0.6 }
-    return { scale, x: right - EW * scale, y: top }
+    // Close on the running page inside the frame — the live elements, not the
+    // panels round them: the frame's hero sits in the left half of the screen.
+    const scale = wide ? (1.55 * W) / 1440 : Math.min(1.3, (W - 24) / 560)
+    const focus = { x: FOCUS.x, y: FOCUS.y }
+    const at = wide ? { x: W * 0.25, y: H * 0.56 } : { x: W / 2, y: H * 0.36 }
+    // For the history beat the frame slides out left, clearing the stage.
+    if (kind === "history") return { scale, x: -EW * scale - 40, y: at.y - focus.y * scale }
+    return { scale, x: at.x - focus.x * scale, y: at.y - focus.y * scale }
   }
   const scale = (wide ? 0.658 * W : W - 32) / EW
   const top = index === 7 ? H * (wide ? 0.07 : 0.16) : H * (wide ? 0.2 : 0.24)
@@ -97,9 +101,9 @@ export function Story({ onIntroDone }: { onIntroDone: () => void }) {
   const wide = view.width >= 1024
   const ready = phase === "ready"
 
-  // The pointer that flips the State strip to Hover, in screen space: the
-  // chip's place in the editor, through the camera.
-  const field = { x: EDITOR_SIZE.width - 259 + 128, y: 196 }
+  // The pointer on the selected button, in screen space: the button's place in
+  // the editor, through the camera.
+  const field = { x: BUTTON.x + 30, y: BUTTON.y + 14 }
   const pointer =
     step === 2
       ? { x: cam.x + field.x * cam.scale, y: cam.y + field.y * cam.scale }
@@ -137,6 +141,16 @@ export function Story({ onIntroDone }: { onIntroDone: () => void }) {
           <EditorWindow editing={step === 2} />
         </div>
       </motion.div>
+
+      {/* While the camera is close on the frame, the page fades in over the
+          right of the editor so the copy sits on paper, not on the panels. */}
+      <motion.div
+        aria-hidden
+        className="pointer-events-none absolute inset-y-0 right-0 w-[60%] bg-gradient-to-r from-transparent via-paper via-30% to-paper"
+        initial={false}
+        animate={{ opacity: wide && beat.kind === "zoom" ? 1 : 0 }}
+        transition={{ duration: CAMERA_DURATION, ease: EASE_CAMERA }}
+      />
 
       <RetroWindows show={beat.kind === "history"} compact={!wide} />
 

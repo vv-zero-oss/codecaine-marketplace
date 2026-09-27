@@ -47,7 +47,7 @@ export function SiteHeader({ visible }: { visible: boolean }) {
       transition={{ duration: 0.5, ease: EASE_SWAP }}
       className={cn(
         "pointer-events-none fixed inset-x-0 top-0 z-40 flex items-center justify-between px-4 pt-4 transition-colors duration-300 sm:px-gutter sm:pt-gutter",
-        tone === "dark" ? "text-on-night" : "text-ink",
+        tone === "dark" ? "text-on-night" : tone === "bare" ? "text-ink max-sm:text-on-night" : "text-ink",
         !visible && "invisible",
       )}
     >

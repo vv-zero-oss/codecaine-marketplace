@@ -15,6 +15,11 @@ const STACK: { logo: string; name: string; wordmark?: boolean }[] = [
   { logo: "angular.svg", name: "Angular" },
   { logo: "solidjs.svg", name: "Solid" },
   { logo: "storybook.svg", name: "Storybook" },
+  { logo: "wordpress.svg", name: "WordPress" },
+  { logo: "laravel.svg", name: "Laravel" },
+  { logo: "spring.svg", name: "Spring" },
+  { logo: "django.svg", name: "Django" },
+  { logo: "php.svg", name: "PHP" },
 ]
 
 export function StackMarquee() {

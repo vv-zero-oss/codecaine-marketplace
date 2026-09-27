@@ -1,182 +1,240 @@
-import { useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import type * as React from "react"
-import { motion } from "motion/react"
-import { Ear, Eye, Keyboard, Mic, MousePointer2, MousePointerClick, Pencil, Square, type LucideIcon } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
+import { Maximize2, Pause, Volume2 } from "lucide-react"
 
-import { Beat, Board, Wire } from "@/components/ui/diagram"
+import { KineticLoop } from "@/components/art/kinetic-loop"
+import { AiRunChip, AiRunRing } from "@/components/canvas/ai-run"
+import { FrameTitle } from "@/components/canvas/frame-chrome"
+import { MagicCastPill } from "@/components/canvas/magic-cast-pill"
 import { Scene } from "@/components/ui/scene"
-import { Typed } from "@/components/ui/typed"
 import { SceneHeadline } from "@/components/ui/scene-headline"
+import { Typed } from "@/components/ui/typed"
 import { useSceneStep } from "@/hooks/use-scene-step"
-import { useBoardScale } from "@/hooks/use-board-scale"
+import { useViewport } from "@/hooks/use-viewport"
 import { EASE_CAMERA, EASE_SWAP } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 
 /*
- * Magic Cast, told from the senses up: the four things a person does while
- * explaining a change, handed to the assistant as one recording — then what
- * comes out of it, a transcript with the frames each word pointed at.
+ * Magic Cast, shot like a short film. You're watching a motion piece and you
+ * love it. You hit record and just say so — your words run as captions, and a
+ * frame is kept the moment you say "this". It becomes a brief. Hard cut to the
+ * board: your own site, the assistant's ring round its hero, and then the same
+ * motion, running on your page.
  */
 
-const W = 1000
-const H = 470
-
-const SENSES: { icon: LucideIcon; label: string; note: string }[] = [
-  { icon: Eye, label: "See", note: "Your screen, as frames" },
-  { icon: Ear, label: "Hear", note: "Your voice, word by word" },
-  { icon: MousePointer2, label: "Point", note: "Where you were when you said “this”" },
-  { icon: Keyboard, label: "Type", note: "Straight into the chat" },
-]
-
 const LINES = [
-  { line: "You see. You hear. You point. You type." },
-  { line: "Now your assistant does too" },
-  { line: "Magic Cast: record your screen, talk, get a brief", sub: "Draw on the screen and keep using your app while it records." },
-  {
-    line: "It transcribes. It doesn't guess.",
-    sub: "Speech runs on your machine, with no API key, and works offline. Up to 20 frames, each captioned with the word that picked it.",
-  },
+  { line: "Seen something you love?" },
+  { line: "Show it. Say it." },
+  { line: "Magic Cast turns it into a brief", sub: "Your words, word for word, with the frame you were pointing at each time you said “this”." },
+  { line: "And now it's on your site" },
 ]
 
-const FRAMES = [
-  { word: "this", at: "00:03" },
-  { word: "here", at: "00:07" },
-  { word: "that one", at: "00:11" },
-]
+const CAPTIONS = ["Okay, this is so good.", "Can you put this, exactly this motion, on my hero?"]
 
 export function MagicCast() {
   const ref = useRef<HTMLElement>(null)
   const { step } = useSceneStep(ref, 5)
-  const { view, scale } = useBoardScale(W)
+  const view = useViewport()
   const at = Math.min(step, 3)
+  const wide = view.width >= 1024
+  const playerW = wide ? Math.min(700, view.width * 0.46) : view.width - 32
 
   return (
-    <Scene ref={ref} beats={4.5} id="magic-cast" aria-label="Magic Cast">
-      <SceneHeadline id={at} sub={LINES[at].sub} size={at === 0 ? "xl" : "lg"} className={at === 0 ? "sm:[&_h2]:max-w-[22ch]" : undefined}>
+    <Scene ref={ref} beats={5} id="magic-cast" aria-label="Magic Cast">
+      <SceneHeadline id={at} sub={LINES[at].sub} size={at === 0 ? "xl" : "lg"} className="top-[11svh]">
         {LINES[at].line}
       </SceneHeadline>
 
-      <Board width={W} height={H} scale={scale} top={view.width >= 1024 ? "36svh" : "44svh"}>
-        {/* The four senses, then wired into one recording */}
-        <Beat when={at <= 1}>
-          {SENSES.map((sense, i) => (
-            <motion.div
-              key={sense.label}
-              className="absolute top-0 flex w-[214px] flex-col gap-3 rounded-card bg-surface p-5 shadow-card"
-              style={{ left: 20 + i * 246 }}
-              initial={{ opacity: 0, transform: "translateY(16px)" }}
-              animate={{ opacity: 1, transform: `translateY(${at === 1 ? -10 : 0}px)` }}
-              transition={{ duration: 0.45, delay: i * 0.06, ease: EASE_SWAP }}
-            >
-              <span className="grid size-10 place-items-center rounded-pill bg-ink text-on-ink">
-                <sense.icon className="size-5" strokeWidth={1.75} />
-              </span>
-              <span className="text-[22px] font-medium tracking-[-0.02em]">{sense.label}</span>
-              <span className="text-[14px] leading-snug text-ink-muted">{sense.note}</span>
-            </motion.div>
-          ))}
-        </Beat>
-        <Beat when={at === 1}>
-          {[127, 373, 619, 865].map((x, i) => (
-            <Wire
-              key={x}
-              width={W}
-              height={H}
-              delay={i * 0.06}
-              d={`M${x} 190 V240 Q${x} 270 ${x + (500 - x) * 0.3} 280 L${500 + (x - 500) * 0.1} 330 V360`}
-              className="stroke-signal"
-            />
-          ))}
-        </Beat>
-
-        {/* The recording pill */}
-        <motion.div
-          className="absolute left-1/2 -translate-x-1/2"
-          initial={false}
-          animate={at === 0 ? { opacity: 0, top: 380 } : { opacity: 1, top: at === 1 ? 360 : 20 }}
-          transition={{ duration: 0.55, ease: EASE_CAMERA }}
-        >
-          <RecordingPill />
-        </motion.div>
-
-        {/* What comes out: frames, then the transcript */}
-        <Beat when={at >= 2}>
-          <div className="absolute top-[110px] left-0 flex w-full justify-center gap-5">
-            {FRAMES.map((f, i) => (
-              <motion.figure
-                key={f.word}
-                className="m-0 w-[230px]"
-                initial={{ opacity: 0, transform: `translateY(20px) rotate(${(i - 1) * 3}deg)` }}
-                animate={{ opacity: 1, transform: `translateY(${at === 3 ? -6 : 0}px) rotate(${(i - 1) * 2}deg)` }}
-                transition={{ duration: 0.5, delay: 0.15 + i * 0.08, ease: EASE_SWAP }}
-              >
-                <MiniScreen highlight={i} />
-                <figcaption className="mt-2 font-mono text-[12px] text-ink-muted">
-                  {f.at} · 0.25s before “{f.word}”
-                </figcaption>
-              </motion.figure>
-            ))}
-          </div>
-        </Beat>
-        <Beat when={at === 3}>
-          <div className="absolute top-[300px] left-1/2 w-[620px] -translate-x-1/2 rounded-card bg-surface p-5 font-mono text-[13px] leading-6 shadow-card">
-            <Typed as="p" delay={0.2} speed={0.014} text="[00:03] “Make this button match the one on the pricing page,”" insert={{ after: 24, node: <FrameChip n={1} /> }} />
-            <Typed as="p" delay={1.2} speed={0.014} text="[00:07] “it's right here, and use that one's shadow.”" insert={{ after: 24, node: <FrameChip n={2} /> }} />
-          </div>
-        </Beat>
-      </Board>
+      <AnimatePresence mode="popLayout">
+        {at < 3 ? (
+          <motion.div
+            key="watching"
+            className="absolute top-[29svh] left-1/2 -translate-x-1/2"
+            style={{ width: playerW }}
+            exit={{ opacity: 0, filter: "blur(10px)", scale: 1.04 }}
+            transition={{ duration: 0.45, ease: EASE_SWAP }}
+          >
+            <Player recording={at >= 1} />
+            <AnimatePresence>
+              {at >= 1 && (
+                <motion.div
+                  className="absolute top-4 left-1/2 z-10 -translate-x-1/2"
+                  initial={{ opacity: 0, y: -10, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.35, ease: EASE_SWAP }}
+                >
+                  <MagicCastPill state={at >= 2 ? "transcribing" : "recording"} elapsed={at >= 2 ? "00:09" : "00:06"} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+            {at === 1 && <Captions />}
+            {at === 2 && <Brief />}
+          </motion.div>
+        ) : (
+          <motion.div
+            key="board"
+            className="absolute inset-x-0 top-[30svh] flex justify-center px-4"
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
+            transition={{ duration: 0.5, ease: EASE_SWAP }}
+          >
+            <YourSite width={wide ? Math.min(900, view.width * 0.62) : view.width - 32} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </Scene>
   )
 }
 
-/** Magic Cast's floating pill while recording: always dark, like the editor's toolbar. */
-function RecordingPill() {
+/** A video player: the motion piece, playing, with the usual chrome. */
+function Player({ recording }: { recording: boolean }) {
   return (
-    <div className="flex h-11 items-center gap-1 rounded-pill bg-ed-bar pr-1.5 pl-4 text-ed-bar-ink shadow-ed-bar">
-      <span className="relative mr-1 grid size-3 place-items-center">
-        <span className="absolute size-3 animate-ping rounded-full bg-rec/60 motion-reduce:hidden" />
-        <span className="size-2.5 rounded-full bg-rec" />
-      </span>
-      <span className="mr-2 font-mono text-[13px] tabular-nums">00:14</span>
-      {[Mic, Pencil, MousePointerClick].map((Icon, i) => (
-        <span key={i} className="grid size-8 place-items-center rounded-pill text-ed-bar-ink/80">
-          <Icon className="size-4" strokeWidth={1.75} />
-        </span>
-      ))}
-      <span className="ml-1 grid size-8 place-items-center rounded-pill bg-rec text-on-accent">
-        <Square className="size-3 fill-current" strokeWidth={0} />
-      </span>
-    </div>
-  )
-}
-
-/** A frame the recording kept: a page, with the thing that was pointed at ringed. */
-function MiniScreen({ highlight }: { highlight: number }) {
-  return (
-    <div className="aspect-[16/10] overflow-hidden rounded-[10px] bg-site-bg p-3 shadow-card">
-      <span className="block h-1.5 w-1/3 rounded-full bg-site-ink/70" />
-      <span className="mt-2 block h-1 w-3/4 rounded-full bg-site-ink/15" />
-      <div className="mt-3 grid grid-cols-3 gap-1.5">
-        {[0, 1, 2].map((i) => (
-          <span
-            key={i}
-            className={cn(
-              "h-12 rounded-[5px] bg-site-card",
-              i === highlight && "outline-2 outline-offset-2 outline-signal outline-solid",
-            )}
-          />
-        ))}
+    <div className="overflow-hidden rounded-window bg-art-bg shadow-window">
+      <div className="relative aspect-video">
+        <KineticLoop />
+        {recording && <span aria-hidden className="pointer-events-none absolute inset-0 rounded-window ring-2 ring-rec ring-inset" />}
       </div>
-      <span className="mt-2.5 block h-3 w-12 rounded-pill bg-site-feature" />
+      <div className="flex items-center gap-3 px-4 py-3 text-art-cream">
+        <Pause className="size-4 fill-current" strokeWidth={0} />
+        <Volume2 className="size-4" strokeWidth={1.75} />
+        <span className="font-mono text-[12px] opacity-80">0:42 / 1:10</span>
+        <div className="relative h-1 flex-1 overflow-hidden rounded-full bg-art-cream/20">
+          <motion.span
+            className="absolute inset-y-0 left-0 rounded-full bg-art-coral"
+            initial={{ width: "58%" }}
+            animate={{ width: "72%" }}
+            transition={{ duration: 12, ease: "linear" }}
+          />
+        </div>
+        <span className="text-[12px] font-medium opacity-80">Motion study · loop 04</span>
+        <Maximize2 className="size-4" strokeWidth={1.75} />
+      </div>
     </div>
   )
 }
 
-
-function FrameChip({ n }: { n: number }): React.ReactNode {
+/** Live captions, and a frame kept (a flash, a thumbnail) at "this". */
+function Captions() {
+  const [flash, setFlash] = useState(0)
+  useEffect(() => {
+    const ids = [setTimeout(() => setFlash(1), 700), setTimeout(() => setFlash(2), 2300)]
+    return () => ids.forEach(clearTimeout)
+  }, [])
   return (
-    <span className="mx-1 inline-block rounded-[4px] bg-signal px-1.5 align-[1px] text-[11px] leading-4 text-on-accent">
-      frame {n}
-    </span>
+    <>
+      <AnimatePresence>
+        {flash > 0 && (
+          <motion.span
+            key={flash}
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 top-0 aspect-video rounded-window bg-on-night"
+            initial={{ opacity: 0.55 }}
+            animate={{ opacity: 0 }}
+            transition={{ duration: 0.35 }}
+          />
+        )}
+      </AnimatePresence>
+      <div className="absolute inset-x-0 -bottom-4 flex translate-y-full flex-col items-center gap-2">
+        <p className="rounded-[8px] bg-night/85 px-3 py-1.5 text-center text-[clamp(14px,1.3vw,18px)] font-medium text-on-night">
+          <Typed text={CAPTIONS[0]} delay={0.15} speed={0.03} />{" "}
+          <Typed text={CAPTIONS[1]} delay={1.2} speed={0.03} />
+        </p>
+        <div className="flex gap-2">
+          {[1, 2].map((n) => (
+            <motion.span
+              key={n}
+              className="flex h-7 items-center gap-1.5 rounded-pill bg-surface px-2.5 font-mono text-[11px] shadow-chip"
+              initial={{ opacity: 0, y: 6 }}
+              animate={flash >= n ? { opacity: 1, y: 0 } : { opacity: 0, y: 6 }}
+              transition={{ duration: 0.3, ease: EASE_SWAP }}
+            >
+              <span className="size-2 rounded-full bg-rec" />
+              frame {n} · “this”
+            </motion.span>
+          ))}
+        </div>
+      </div>
+    </>
+  )
+}
+
+/** The brief that gets sent: quoted words, with the frames they picked. */
+function Brief() {
+  return (
+    <motion.div
+      className="absolute inset-x-[6%] -bottom-6 translate-y-full rounded-card bg-surface p-5 shadow-window"
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASE_CAMERA }}
+    >
+      <p className="mb-3 font-mono text-[11px] tracking-wider text-ink-faint">BRIEF · SENT TO THE ASSISTANT</p>
+      <div className="flex gap-4">
+        <div className="grid w-[38%] shrink-0 grid-cols-2 gap-2">
+          {[1, 2].map((n) => (
+            <figure key={n} className="m-0">
+              <div className="aspect-video overflow-hidden rounded-[6px]">
+                <KineticLoop playing={false} />
+              </div>
+              <figcaption className="mt-1 font-mono text-[10px] text-ink-muted">frame {n} · 0.25s before “this”</figcaption>
+            </figure>
+          ))}
+        </div>
+        <div className="space-y-1.5 font-mono text-[12.5px] leading-5">
+          <p>
+            <span className="text-ink-faint">[00:02]</span> “Okay, this <Chip n={1} /> is so good.”
+          </p>
+          <p>
+            <span className="text-ink-faint">[00:05]</span> “Can you put this <Chip n={2} />, exactly this motion, on my hero?”
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function Chip({ n }: { n: number }): React.ReactNode {
+  return <span className="rounded-[4px] bg-signal px-1 text-[10.5px] text-on-accent">frame {n}</span>
+}
+
+/** Your site on the board: the assistant works on the hero, then it plays. */
+function YourSite({ width }: { width: number }) {
+  const [phase, setPhase] = useState<"running" | "done">("running")
+  useEffect(() => {
+    const id = setTimeout(() => setPhase("done"), 1800)
+    return () => clearTimeout(id)
+  }, [])
+  return (
+    <div style={{ width }}>
+      <FrameTitle name="my-site · localhost:3000" kind="live" />
+      <div className="overflow-hidden rounded-[8px] bg-site-bg shadow-window">
+        <div className="flex items-center justify-between border-b border-site-line px-5 py-3 text-[12px] text-site-muted">
+          <span className="text-[14px] font-semibold tracking-tight text-site-ink">Northwind</span>
+          <span className="flex gap-4">
+            <span>Product</span>
+            <span>Pricing</span>
+            <span>Log in</span>
+          </span>
+        </div>
+        <div className="relative aspect-[16/7]">
+          <div className={cn("absolute inset-0 transition-opacity duration-700", phase === "done" ? "opacity-100" : "opacity-0")}>
+            <KineticLoop />
+          </div>
+          <div className={cn("absolute inset-0 grid place-items-center bg-site-card transition-opacity duration-500", phase === "done" && "opacity-0")}>
+            <span className="h-4 w-1/3 rounded-full bg-site-ink/15" />
+          </div>
+          <div className="absolute inset-x-0 bottom-[12%] flex flex-col items-center gap-2 text-center">
+            <span className={cn("text-[clamp(20px,2.6vw,36px)] font-semibold tracking-[-0.04em] transition-colors duration-700", phase === "done" ? "text-art-cream" : "text-site-ink")}>
+              Ship the loud version
+            </span>
+          </div>
+          {phase === "running" && <AiRunRing state="running" />}
+          <div className="absolute top-3 right-3">
+            <AiRunChip label={phase === "done" ? "Hero rebuilt" : "Rebuilding the hero"} elapsed={phase === "done" ? "0:38" : "0:31"} state={phase} />
+          </div>
+        </div>
+      </div>
+    </div>
   )
 }

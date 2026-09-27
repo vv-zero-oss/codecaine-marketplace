@@ -3,8 +3,8 @@
   "type": "template",
   "id": "canvas-launch",
   "name": "Canvas Launch",
-  "version": "1.1.0",
-  "description": "A scroll-told launch page for a design tool, every scene pinned and handed over in place: an opening mark that dives through its own window, the product's editor drawn in code with a camera that flies into its inspector, no-translation-layer and change-journal diagrams, Magic Cast, parallel assistant runs, full API control, web import, a modes line-up, bring-your-own-model, a film and a waitlist. Light and dark themes, every colour a CSS variable.",
+  "version": "1.2.0",
+  "description": "A launch page for a design tool, told in four acts on pinned scenes that hand over in place: the promise on a live editor, any project on the board, real elements and component variants, Magic Cast shot like a film, the assistant rebuilding from references and recreating a live page, a gravity wall of models, and a 3D gallery behind the ask. Built from the editor's own components. Light and dark, every colour a CSS variable.",
   "designedFor": [
     "Launching a developer or design tool with a story rather than a feature grid",
     "Showing a product's real interface, drawn in code so it stays sharp at any zoom",
@@ -21,25 +21,28 @@
   ],
   "license": "MIT",
   "keywords": [
-    "launch",
-    "waitlist",
-    "saas",
-    "product",
-    "storytelling",
-    "scroll",
-    "motion",
+    "3d",
     "framer-motion",
+    "launch",
     "lenis",
+    "motion",
+    "physics",
+    "product",
     "react",
+    "saas",
+    "scroll",
+    "storytelling",
+    "tailwind",
+    "three.js",
     "vite",
-    "tailwind"
+    "waitlist"
   ],
   "categories": [
     "Marketing",
     "SaaS"
   ],
   "created": "2026-09-26",
-  "updated": "2026-09-26",
+  "updated": "2026-09-27",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",

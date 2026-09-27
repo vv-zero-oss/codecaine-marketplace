@@ -1,16 +1,6 @@
 import type * as React from "react"
-import {
-  ChevronDown,
-  Frame,
-  ImagePlus,
-  MousePointer2,
-  MousePointerClick,
-  PenTool,
-  Square,
-  Type,
-  LayoutPanelTop,
-} from "lucide-react"
 
+import { Toolbar } from "@/components/canvas/toolbar"
 import { cn } from "@/lib/utils"
 
 /**
@@ -30,7 +20,9 @@ export function Board({ hover = false }: { hover?: boolean }) {
         }}
       >
         <FramedProject hover={hover} />
-        <Toolbar />
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+          <Toolbar activeTool="pointer" />
+        </div>
       </div>
     </div>
   )
@@ -132,37 +124,3 @@ function Selected({ label, size, hover, children }: { label: string; size: strin
     </span>
   )
 }
-
-function Toolbar() {
-  const slots = [
-    { Icon: MousePointer2, active: true, menu: true },
-    { Icon: LayoutPanelTop, menu: true },
-    { Icon: Frame, menu: true },
-    { Icon: Square, menu: true },
-    { Icon: Type },
-    { Icon: ImagePlus, menu: true },
-    { Icon: PenTool },
-  ]
-  return (
-    <div className="absolute bottom-4 left-1/2 flex h-11 -translate-x-1/2 items-center gap-1.5 rounded-full bg-ed-bar px-2 shadow-ed-bar">
-      {slots.map(({ Icon, active, menu }, i) => (
-        <span key={i} className="flex items-center">
-          <span className={cn("grid size-7 place-items-center rounded-full text-ed-bar-ink", active && "bg-ed-bar-accent")}>
-            <Icon className="size-[17px]" strokeWidth={1.5} />
-          </span>
-          {menu && <ChevronDown className="w-3.5 text-ed-bar-ink/70" size={10} strokeWidth={2} />}
-        </span>
-      ))}
-      <span className="mx-1 h-7 w-px bg-ed-bar-line" />
-      <span className="flex h-8 items-center rounded-full bg-ed-bar-line p-0.5">
-        <span className="grid size-7 place-items-center rounded-full bg-ed-bar text-ed-bar-accent-text shadow-ed-switch">
-          <MousePointer2 className="size-4" strokeWidth={1.5} />
-        </span>
-        <span className="grid size-7 place-items-center text-ed-bar-ink/70">
-          <MousePointerClick className="size-4" strokeWidth={1.5} />
-        </span>
-      </span>
-    </div>
-  )
-}
-
