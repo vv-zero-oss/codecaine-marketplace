@@ -168,6 +168,17 @@ every time. The screenshot shows the feel; the code shows the numbers.
   or a close equivalent). If nothing close exists, fall back to **Inter** for
   sans or **EB Garamond** for serif, or another Google Font of the same
   character.
+- **Every font is a Google Font, linked online — never installed from npm.**
+  Load the families from `fonts.googleapis.com` with `<link>` tags in
+  `index.html` (a `preconnect` to `fonts.googleapis.com` and
+  `fonts.gstatic.com`, then one `css2?family=…&display=swap` stylesheet
+  asking only for the families, axes and weights the page uses). No
+  `@fontsource/*` or `@fontsource-variable/*` packages in `package.json`, and
+  no font imports from `node_modules` in `src/main.tsx` or `src/index.css`: a
+  font package that is missing or has no such entry point stops Vite with
+  "Failed to resolve import" and the whole page fails to render. The family
+  names still go in as `@theme` tokens (`--font-sans`, `--font-mono`, …) with
+  a system fallback after them.
 - **You cannot move away from the aesthetics of the given example.** That is
   the rule the others serve. A template that is "inspired by" the reference
   but looks like something else has failed.
