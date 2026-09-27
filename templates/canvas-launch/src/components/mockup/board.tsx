@@ -7,8 +7,19 @@ import { cn } from "@/lib/utils"
  * The board: rulers, the dot grid, one framed live project with its button
  * selected, and the floating toolbar. The page inside the frame is a small,
  * plain landing page — the kind of project somebody points the editor at.
+ *
+ * `content` replaces the framed project with whatever a scene puts on the
+ * board, and `toolbar` sets the toolbar's state (an open menu, a tool armed).
  */
-export function Board({ hover = false }: { hover?: boolean }) {
+export function Board({
+  hover = false,
+  content,
+  toolbar,
+}: {
+  hover?: boolean
+  content?: React.ReactNode
+  toolbar?: React.ComponentProps<typeof Toolbar>
+}) {
   return (
     <div className="relative flex min-w-0 flex-1 flex-col bg-ed-canvas">
       <Rulers />
@@ -19,9 +30,9 @@ export function Board({ hover = false }: { hover?: boolean }) {
           backgroundSize: "24px 24px",
         }}
       >
-        <FramedProject hover={hover} />
+        {content === undefined ? <FramedProject hover={hover} /> : content}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-          <Toolbar activeTool="pointer" />
+          <Toolbar activeTool="pointer" {...toolbar} />
         </div>
       </div>
     </div>

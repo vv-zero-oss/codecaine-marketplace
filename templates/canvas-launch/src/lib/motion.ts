@@ -3,22 +3,25 @@
  * Motion can take. They mirror the `--ease-*` tokens in `index.css`; change
  * one, change the other.
  *
- * Measured off the reference recording at 60fps:
- * - a headline swap overlaps old and new over ~0.45s — both lift ~20px, the
- *   old line blurring out while the new one sharpens in from below;
- * - a camera move across the editor takes ~0.45s and starts fast, and the
- *   copy beside it arrives ~0.3s after it settles;
- * - the opening mark holds, then accelerates through its own hole over ~1.2s.
+ * Read off the reference film at 30fps:
+ * - a caption is cut, not faded out (gone in one frame), and the next one
+ *   comes up out of faint ink (≈30%) to full over ~5 frames, 0.17s, without
+ *   moving;
+ * - a second line is added under a caption the same way ~5 frames later — it
+ *   is added, not swapped in with the first;
+ * - a window appears within a frame or two and settles ~12px over ~0.35s;
+ *   the camera and windows that travel move ease-in-out over ~0.6s;
+ * - the app icon darkens as it is pressed (~0.17s) before the window opens.
  */
+export const EASE_FILM = [0.65, 0, 0.35, 1] as const
 export const EASE_SWAP = [0.22, 1, 0.36, 1] as const
-export const EASE_CAMERA = [0.25, 1, 0.5, 1] as const
-export const EASE_DIVE = [0.7, 0, 0.84, 0] as const
 
-export const SWAP_DURATION = 0.45
-export const CAMERA_DURATION = 0.45
-export const AFTER_CAMERA = 0.35
-export const SWAP_BLUR = 8
-export const SWAP_LIFT = 20
+export const CAPTION_IN = 0.17
+export const CAPTION_OUT = 0.04
+export const CAPTION_FROM = 0.3
+export const APPEAR = 0.12
+export const SETTLE = 0.35
+export const MOVE = 0.6
 
-/** Lenis tuned to the recording: a light, quick settle rather than a float. */
-export const LENIS_OPTIONS = { lerp: 0.12, wheelMultiplier: 0.9, smoothWheel: true } as const
+/** Lenis tuned to the film: a light, quick settle rather than a float. */
+export const LENIS_OPTIONS = { lerp: 0.1, wheelMultiplier: 0.9, smoothWheel: true } as const

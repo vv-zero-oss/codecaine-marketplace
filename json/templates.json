@@ -7,13 +7,13 @@
       "type": "template",
       "id": "canvas-launch",
       "name": "Canvas Launch",
-      "version": "1.2.0",
-      "description": "A launch page for a design tool, told in four acts on pinned scenes that hand over in place: the promise on a live editor, any project on the board, real elements and component variants, Magic Cast shot like a film, the assistant rebuilding from references and recreating a live page, a gravity wall of models, and a 3D gallery behind the ask. Built from the editor's own components. Light and dark, every colour a CSS variable.",
+      "version": "2.0.0",
+      "description": "A launch page for a design tool, told as a scroll-through product film: lowercase captions ruled across warm paper, and under them the tool's own editor — drawn in code — opening, importing a live page, building a sample app's screens from outlines, working beside an agent and a code editor, then bring it, shape it, ship it. Light and dark, every colour a CSS variable.",
       "designedFor": [
-        "Launching a developer or design tool with a story rather than a feature grid",
+        "Launching a developer or design tool with a product film instead of a feature grid",
         "Showing a product's real interface, drawn in code so it stays sharp at any zoom",
-        "Waitlist and early-access pages that need one clear ask at the end",
-        "Studying pinned, scroll-triggered scenes built with Framer Motion and Lenis"
+        "Waitlist and early-access pages with one clear ask at the end",
+        "Studying a pinned, beat-by-beat scroll story built with Framer Motion and Lenis"
       ],
       "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
@@ -25,19 +25,17 @@
       ],
       "license": "MIT",
       "keywords": [
-        "3d",
+        "film",
         "framer-motion",
         "launch",
         "lenis",
         "motion",
-        "physics",
         "product",
         "react",
         "saas",
         "scroll",
         "storytelling",
         "tailwind",
-        "three.js",
         "vite",
         "waitlist"
       ],
@@ -87,11 +85,11 @@
         ]
       },
       "archive": {
-        "url": "archives/templates/canvas-launch-1.2.0.tgz",
+        "url": "archives/templates/canvas-launch-2.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "a6778071d0f3fa36714279e92e817a09c93ba3aa91fa406225b442a209b750a1",
-        "size": 3059200,
-        "files": 139
+        "sha256": "a9ebd48efd2ef02cb69717177e142f87f12b1a17d9121c920befc5ab163393ae",
+        "size": 2775552,
+        "files": 82
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

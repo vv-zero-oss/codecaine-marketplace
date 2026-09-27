@@ -7,69 +7,75 @@
 /*
  * Every colour, shadow, radius, font and motion value the page uses lives here,
  * so the whole page is restyled from this one block. Components reach them only
- * through Tailwind utilities (`bg-paper`, `shadow-card`, `ease-swap`, …).
+ * through Tailwind utilities (`bg-paper`, `shadow-window`, `ease-film`, …).
+ * The editor's own chrome is in editor-tokens.css.
  */
 @theme {
   /* Type */
   --font-sans: "Inter Variable", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Onest Variable", "Inter Variable", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Roboto Mono", ui-monospace, "SFMono-Regular", monospace;
 
-  /* Page */
-  --color-paper: #f4f4f4;
-  --color-paper-deep: #efefef;
-  --color-ink: #000000;
-  --color-ink-soft: #3d3d3d;
-  --color-ink-muted: #707070;
-  --color-ink-faint: #a3a3a3;
+  /* Page: warm paper ruled into a quiet grid */
+  --color-paper: #f5f3ef;
+  --color-paper-deep: #eceae6;
+  --color-paper-rule: #e8e5df;
+  --color-studio: #eeeeee;
+  --color-ink: #1f1e1c;
+  --color-ink-soft: #3d3b38;
+  --color-ink-muted: #75726c;
+  --color-ink-faint: #b3afa8;
   --color-surface: #ffffff;
   --color-on-ink: #ffffff;
   --color-on-accent: #ffffff;
   --color-on-bright: #000000;
   --color-on-night: #ffffff;
+  --color-night: #000103;
   --color-danger: #dc2626;
-  --color-rec: #ff3b30;
-  --color-amber: #f59e0b;
+  --color-signal: #3576ff;
+  --color-mark: #80aae9;
+  --color-mark-deep: #4f82d6;
   --color-ai: #0e9384;
 
-  /* Artwork — the motion graphic, the 3D object and the gallery pieces. The
-     same in both themes: they are pictures, not chrome. */
-  --color-art-bg: #0b0b12;
-  --color-art-coral: #ff5b37;
-  --color-art-amber: #ffb938;
-  --color-art-violet: #7a5cff;
-  --color-art-cyan: #1ec8ff;
-  --color-art-cream: #fff4e6;
-  --color-art-game: #8b3dff;
-  --color-art-game-edge: #5a1fc2;
-  --color-art-game-glow: #c9a6ff;
-  --color-swatch-brand: #3576ff;
-  --color-swatch-brand-dark: #4c8dff;
-  --color-swatch-paper: #f4f4f4;
-  --color-swatch-paper-dark: #0e0e10;
+  /* Other apps on the desk: the browser, the code editor, the terminal */
+  --color-browser-bar: #dee1e6;
+  --color-browser-chrome: #f7f7f7;
+  --color-browser-field: #eceef1;
+  --color-code-bg: #16161a;
+  --color-code-bar: #1e1e23;
+  --color-code-line: #2a2a31;
+  --color-code-text: #d8d8de;
+  --color-code-muted: #6c6c78;
+  --color-code-key: #c792ea;
+  --color-code-string: #c3e88d;
+  --color-code-fn: #82aaff;
+  --color-code-num: #f78c6c;
+  --color-term-bg: #fbfaf7;
+  --color-term-ink: #3a3935;
+  --color-term-muted: #9b978f;
+  --color-term-accent: #5b8def;
 
-  /* The glow and the closing gradient */
-  --color-glow: #3a74fb;
-  --color-glow-soft: #97b4f6;
-  --color-glow-deep: #1f3d85;
-  --color-night: #000103;
-
-  /* Accents used by the mockups */
-  --color-signal: #3576ff;
-  --color-violet: #7c1ffc;
-  --color-violet-soft: #ede3ff;
-  --color-mint: #22d196;
-  --color-mint-deep: #00c294;
-  --color-slate: #6c7377;
-
-  /* Name tags — one per component label */
-  --color-tag-green: #0f9d58;
-  --color-tag-lime: #b7d433;
-  --color-tag-pink: #e0218a;
-  --color-tag-teal: #1fd6a0;
-  --color-tag-plum: #b8468f;
-  --color-tag-sea: #2b6c8a;
-  --color-tag-yellow: #fcc419;
-  --color-tag-orange: #e2670a;
+  /* The sample app (Longwave) the film builds — its own dark UI and cover art,
+     the same in both themes: it is somebody else's product, not chrome */
+  --color-app-bg: #0c0c0e;
+  --color-app-panel: #16161a;
+  --color-app-raised: #202026;
+  --color-app-line: #26262d;
+  --color-app-ink: #f2f2f4;
+  --color-app-muted: #8b8b96;
+  --color-app-accent: #ff6a3d;
+  --color-app-light: #f7f5f0;
+  --color-app-light-ink: #1b1a18;
+  --color-art-1: #e9d9b6;
+  --color-art-2: #c9a27a;
+  --color-art-3: #7a8f6a;
+  --color-art-4: #3f5a4d;
+  --color-art-5: #d98a5f;
+  --color-art-6: #6f4e7c;
+  --color-art-7: #2f4b73;
+  --color-art-8: #b8c7d9;
+  --color-cursor-a: #e5487a;
+  --color-cursor-b: #ff8a3d;
 
   /* Period chrome — the retro tool windows and window controls in the mockups */
   --color-period-aqua-bar-bottom: #cfcfcf;
@@ -129,80 +135,66 @@
 
   /* Radii */
   --radius-pill: 9999px;
-  --radius-card: 22px;
+  --radius-card: 18px;
   --radius-window: 12px;
   --radius-field: 6px;
   --radius-chip: 8px;
 
   /* Shadows */
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -8px rgb(0 0 0 / 0.08);
-  --shadow-window: 0 0 0 1px rgb(0 0 0 / 0.06), 0 24px 60px -12px rgb(0 0 0 / 0.16);
-  --shadow-field: inset 0 0 0 1px rgb(0 0 0 / 0.06), 0 1px 1px rgb(0 0 0 / 0.04);
-  --shadow-chip: 0 1px 2px rgb(0 0 0 / 0.06), 0 4px 12px -4px rgb(0 0 0 / 0.08);
-  --shadow-button-dark: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.3);
-  --shadow-lift: 0 10px 24px -8px rgb(0 0 0 / 0.3);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04), 0 12px 32px -8px rgb(0 0 0 / 0.1);
+  --shadow-window: 0 0 0 1px rgb(0 0 0 / 0.07), 0 1px 2px rgb(0 0 0 / 0.04), 0 24px 60px -16px rgb(0 0 0 / 0.18);
+  --shadow-chip: 0 1px 2px rgb(0 0 0 / 0.06), 0 6px 16px -6px rgb(0 0 0 / 0.14);
+  --shadow-menu: 0 0 0 1px rgb(0 0 0 / 0.1), 0 10px 30px -8px rgb(0 0 0 / 0.25);
   --shadow-ring: 0 0 0 4px rgb(255 255 255 / 0.9);
-  --shadow-retro: 0 8px 24px -10px rgb(0 0 0 / 0.35);
-  --shadow-live: 0 0 0 4px color-mix(in srgb, var(--color-mint) 20%, transparent);
   --shadow-ed-switch: 0 0 0.5px rgb(0 0 0 / 0.5), 0 1px 3px rgb(0 0 0 / 0.4), inset 0 0.5px 0 rgb(255 255 255 / 0.1);
 
-  /* Spacing steps read off the page */
-  --spacing-gutter: 38px;
-  --spacing-header: 114px;
+  /* Grid the paper is ruled with, and the caption frame's handles */
+  --spacing-rule: 88px;
 
-  /* Motion, measured frame by frame and shared by every animation */
+  /* Motion, measured off the reference film at 30fps and shared by every animation */
+  --ease-film: cubic-bezier(0.65, 0, 0.35, 1);
   --ease-swap: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-camera: cubic-bezier(0.25, 1, 0.5, 1);
-  --ease-dive: cubic-bezier(0.7, 0, 0.84, 0);
   --ease-press: cubic-bezier(0.23, 1, 0.32, 1);
   --default-transition-duration: 160ms;
   --default-transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 
-  --animate-marquee: marquee 40s linear infinite;
   --animate-spin-fast: spin 0.8s linear infinite;
   --animate-travel: travel 1.6s linear infinite;
   --animate-breathe: breathe 1.8s ease-in-out infinite;
+  --animate-blink: blink 1s steps(1) infinite;
 }
 
 /*
  * Dark theme: the same variables, re-pointed. `data-theme` is set on <html>
  * before first paint (index.html) from the reader's saved choice or their
- * system setting, and the footer's toggle flips it. Only colours and shadows
- * change; the glow, the tags, the period chrome and the framed site keep their
- * values in both themes.
+ * system setting, and the footer's toggle flips it. The sample app and the
+ * other apps on the desk keep their own look in both themes.
  */
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --color-paper: #0e0e10;
-  --color-paper-deep: #0a0a0b;
-  --color-ink: #f4f4f4;
-  --color-ink-soft: #cfcfcf;
-  --color-ink-muted: #8c8c8c;
-  --color-ink-faint: #5c5c5c;
-  --color-surface: #1a1a1d;
-  --color-on-ink: #0a0a0a;
-  --color-violet-soft: #2a1650;
-  --color-slate: #4d5357;
+  --color-paper: #121211;
+  --color-paper-deep: #0c0c0b;
+  --color-paper-rule: #1f1e1c;
+  --color-studio: #171716;
+  --color-ink: #f1efea;
+  --color-ink-soft: #cfccc5;
+  --color-ink-muted: #8f8b84;
+  --color-ink-faint: #56534e;
+  --color-surface: #1c1c1b;
+  --color-on-ink: #121211;
+  --color-browser-bar: #2b2c30;
+  --color-browser-chrome: #202124;
+  --color-browser-field: #2f3033;
+  --color-term-bg: #1a1a19;
+  --color-term-ink: #e4e1da;
+  --color-term-muted: #7d7a73;
   --color-ai: #2dd4bf;
 
   --shadow-card: 0 0 0 1px rgb(255 255 255 / 0.06), 0 12px 32px -8px rgb(0 0 0 / 0.6);
   --shadow-window: 0 0 0 1px rgb(255 255 255 / 0.08), 0 24px 60px -12px rgb(0 0 0 / 0.7);
-  --shadow-chip: 0 0 0 1px rgb(255 255 255 / 0.06), 0 4px 12px -4px rgb(0 0 0 / 0.5);
+  --shadow-chip: 0 0 0 1px rgb(255 255 255 / 0.06), 0 6px 16px -6px rgb(0 0 0 / 0.6);
+  --shadow-menu: 0 0 0 1px rgb(255 255 255 / 0.1), 0 10px 30px -8px rgb(0 0 0 / 0.7);
   --shadow-ring: 0 0 0 4px rgb(255 255 255 / 0.08);
-
-}
-
-@keyframes shine {
-  0%, 60% { transform: translateX(0) skewX(-12deg); }
-  100% { transform: translateX(400%) skewX(-12deg); }
-}
-
-@keyframes turn-flat {
-  to { rotate: 360deg; }
-}
-
-@keyframes turn {
-  to { transform: rotateY(360deg); }
 }
 
 @keyframes travel {
@@ -213,9 +205,12 @@
   50% { opacity: 0.45; }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+@keyframes stream {
+  to { transform: translateX(33.333%); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
 }
 
 /* shadcn's semantic colours, pointed at the page's tokens */
@@ -223,10 +218,10 @@
   --color-background: var(--color-paper);
   --color-foreground: var(--color-ink);
   --color-primary: var(--color-ink);
-  --color-primary-foreground: var(--color-white);
+  --color-primary-foreground: var(--color-on-ink);
   --color-muted-foreground: var(--color-ink-muted);
-  --color-border: var(--color-ed-line);
-  --color-input: var(--color-ed-line);
+  --color-border: var(--color-paper-rule);
+  --color-input: var(--color-paper-rule);
   --color-ring: var(--color-signal);
 }
 
@@ -245,12 +240,22 @@ body {
   overflow-x: clip;
 }
 
-/* The headline cut: tight, medium, display optical size */
-@utility display {
-  font-weight: 560;
-  letter-spacing: -0.04em;
-  line-height: 1.06;
-  text-wrap: balance;
+/* The film's caption cut: a geometric grotesk, regular weight, lowercase, tight */
+@utility caption {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+}
+
+/* Paper ruled into a grid, the page's backdrop */
+@utility bg-ruled {
+  background-color: var(--color-paper);
+  background-image:
+    linear-gradient(var(--color-paper-rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-paper-rule) 1px, transparent 1px);
+  background-size: var(--spacing-rule) var(--spacing-rule);
+  background-position: center center;
 }
 
 html.lenis, html.lenis body { height: auto; }
@@ -262,23 +267,4 @@ html.lenis, html.lenis body { height: auto; }
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
   }
-}
-
-/* The closing gradient: night in the top-right corner, through the glow, to
-   paper — held still against the screen while the ask and the footer pass. */
-@utility bg-closing {
-  background-color: var(--color-paper);
-  background-image:
-    radial-gradient(ellipse 34% 55% at 0% 0%, color-mix(in srgb, var(--color-paper) 85%, transparent) 0%, transparent 100%),
-    linear-gradient(
-      199deg,
-      var(--color-night) 0%,
-      var(--color-night) 13%,
-      color-mix(in srgb, var(--color-glow-deep) 70%, var(--color-night)) 21%,
-      var(--color-glow) 30%,
-      var(--color-glow) 40%,
-      var(--color-glow-soft) 50%,
-      color-mix(in srgb, var(--color-glow-soft) 25%, var(--color-paper)) 58%,
-      var(--color-paper) 66%
-    );
 }

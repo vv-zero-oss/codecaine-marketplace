@@ -1,28 +1,17 @@
 import { useCallback, useState } from "react"
+import { motion } from "motion/react"
 
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
-import { Access } from "@/components/sections/access"
-import { AnyProject } from "@/components/sections/any-project"
-import { Assistant } from "@/components/sections/assistant"
-import { ComponentNames } from "@/components/sections/component-names"
-import { ComponentsScene } from "@/components/sections/components-scene"
-import { Film } from "@/components/sections/film"
-import { Journal } from "@/components/sections/journal"
-import { MagicCast } from "@/components/sections/magic-cast"
-import { OwnModel } from "@/components/sections/own-model"
-import { RealElements } from "@/components/sections/real-elements"
-import { Recreate } from "@/components/sections/recreate"
-import { References } from "@/components/sections/references"
-import { Story } from "@/components/sections/story"
+import { Access } from "@/components/access"
+import { Film } from "@/components/film/film"
+import { Button } from "@/components/ui/button"
+import { Wordmark } from "@/components/ui/mark"
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll"
+import { EASE_SWAP } from "@/lib/motion"
 
 /**
- * Codecaine's launch page, told as one scroll in four acts: the promise (the
- * editor on your running app); anything that renders, built from real parts
- * (any stack, component names, real elements, components and variants, the
- * change journal); the assistant, supercharged (Magic Cast, references, a live
- * page recreated, the board as context, bring your own model); and the ask.
+ * Codecaine's launch page: the film, scrolled through beat by beat, then the
+ * ask. The editor in the film is Codecaine's own UI drawn in code
+ * (`components/mockup`, `components/canvas`).
  *
  * `data-canvas-ignore` on the page wrapper and `<main>`: structural, nothing of
  * their own to design, so the canvas editor looks through them (they stay in
@@ -30,31 +19,27 @@ import { useSmoothScroll } from "@/hooks/use-smooth-scroll"
  */
 export default function App() {
   useSmoothScroll()
-  const [introDone, setIntroDone] = useState(false)
-  const onIntroDone = useCallback(() => setIntroDone(true), [])
+  const [opened, setOpened] = useState(false)
+  const onOpen = useCallback(() => setOpened(true), [])
 
   return (
-    <div className="bg-gradient-to-b from-paper to-paper-deep text-ink" data-canvas-ignore>
-      <SiteHeader visible={introDone} />
+    <div className="bg-paper text-ink" data-canvas-ignore>
+      <motion.header
+        className="pointer-events-none fixed inset-x-0 top-0 z-40 flex items-center justify-between px-4 pt-4 sm:px-8 sm:pt-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: opened ? 1 : 0 }}
+        transition={{ duration: 0.5, ease: EASE_SWAP }}
+      >
+        <a href="#film" className="pointer-events-auto text-[20px]" aria-label="Codecaine">
+          <Wordmark />
+        </a>
+        <Button asChild size="sm" className="pointer-events-auto h-11 sm:h-9">
+          <a href="#access">Request access</a>
+        </Button>
+      </motion.header>
       <main data-canvas-ignore>
-        {/* I — the promise */}
-        <Story onIntroDone={onIntroDone} />
-        {/* II — anything that renders, built from real parts */}
-        <AnyProject />
-        <ComponentNames />
-        <RealElements />
-        <ComponentsScene />
-        <Journal />
-        {/* III — the assistant, supercharged */}
-        <MagicCast />
-        <References />
-        <Recreate />
-        <Assistant />
-        <OwnModel />
-        {/* IV — the ask */}
-        <Film />
+        <Film onOpen={onOpen} />
         <Access />
-        <SiteFooter />
       </main>
     </div>
   )

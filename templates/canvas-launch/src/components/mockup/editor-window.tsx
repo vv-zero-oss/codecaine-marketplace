@@ -1,3 +1,4 @@
+import type * as React from "react"
 import { House, PanelRight, Plus, X } from "lucide-react"
 
 import { Board } from "./board"
@@ -12,25 +13,37 @@ export const EDITOR_SIZE = { width: 1440, height: 860 } as const
  * it stays sharp at any zoom the camera takes it to: the tab strip, the nav
  * rail, Layers, the board with a framed project, and the Design panel.
  */
-export function EditorWindow({ editing = false }: { editing?: boolean }) {
+export function EditorWindow({
+  editing = false,
+  board,
+  toolbar,
+  tab = "Tidewater",
+}: {
+  editing?: boolean
+  /** What is on the board instead of the framed project. */
+  board?: React.ReactNode
+  toolbar?: React.ComponentProps<typeof Board>["toolbar"]
+  /** The open tab's project name. */
+  tab?: string
+}) {
   return (
     <div
       className="flex flex-col overflow-hidden rounded-window bg-ed-panel font-sans text-ed-text shadow-window select-none"
       style={{ width: EDITOR_SIZE.width, height: EDITOR_SIZE.height }}
       aria-hidden
     >
-      <TabStrip />
+      <TabStrip tab={tab} />
       <div className="flex min-h-0 flex-1">
         <NavRail />
         <LayersPanel />
-        <Board hover={editing} />
+        <Board hover={editing} content={board} toolbar={toolbar} />
         <DesignPanel editing={editing} />
       </div>
     </div>
   )
 }
 
-function TabStrip() {
+function TabStrip({ tab }: { tab: string }) {
   return (
     <div className="flex h-10 shrink-0 items-center border-b border-ed-line bg-ed-panel pr-2 pl-4">
       <span className="mr-12 flex gap-2">
@@ -42,8 +55,8 @@ function TabStrip() {
         <House className="size-4" strokeWidth={1.5} />
       </span>
       <span className="ml-1 flex h-[39px] max-w-[224px] items-center gap-2 border-x border-ed-line bg-ed-field pr-2 pl-2.5 text-[13px] font-medium">
-        <span className="grid size-4 place-items-center rounded-full bg-ed-text-3 text-[9px] font-semibold text-ed-on-accent">T</span>
-        Tidewater
+        <span className="grid size-4 place-items-center rounded-full bg-ed-text-3 text-[9px] font-semibold text-ed-on-accent">{tab[0]}</span>
+        {tab}
         <X className="size-3.5 text-ed-text-3" strokeWidth={1.5} />
       </span>
       <span className="grid size-7 place-items-center text-ed-text-2">

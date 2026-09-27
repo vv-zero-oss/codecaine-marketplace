@@ -1,69 +1,55 @@
 # Canvas Launch
 
-A launch page for a design tool, told as one scroll. Every beat is a pinned
-scene: scrolling decides *when* something changes, and a timed transition
-decides *how*.
+A launch page for a design tool, told as a product film you scroll through.
+One pinned stage, beat by beat: a lowercase caption ruled across warm paper,
+and under it the desk — the editor, a browser, a code editor, the agent —
+moving in and out.
 
 ```bash
 npm install
 npm run dev     # → http://localhost:3130
 ```
 
-## The story
+## The film
 
-Four acts, each scene pinned while it plays and handed to the next in place.
+| Beats | What happens |
+|---|---|
+| open, dock | The app icon is pressed and the editor opens; the dock of the apps a project lives between. |
+| web, tool, dialog, pill, landed | A live web app; the camera pushes in on the toolbar's Import URL; the page streams onto the board as layers. |
+| fan | Variations fan out beside the original, asked for in the assistant bar. |
+| agents | "let the … agents", the mark cycling through the CLIs the assistant can run on. |
+| code, into, board | The project in a code editor, streamed across onto the board, phone frames going from outlines to built. |
+| further | The agent's log beside the board, frames building under the assistant's ring. |
+| copy, paste | Copy from a browser tab, a close-up Paste, the frames landing. |
+| pan, overview | A slow glide over the frames, then the whole product on one board. |
+| bring, shape, ship, logo | Guides and selection boxes on the paper, then the mark and the name. |
 
-| Act | Scene | File |
-|---|---|---|
-| I — the promise | Opening mark, hero, the camera onto the live frame, thirty years of separate tools, "That ends here" | `sections/intro.tsx`, `sections/story.tsx` |
-| II — anything that renders | Any project (WordPress, Laravel, Java…) flying onto the board | `sections/any-project.tsx` |
-| | Components by their own names | `sections/component-names.tsx` |
-| | Real elements: a working form, a live three.js scene changed by asking | `sections/real-elements.tsx` |
-| | Components from anywhere; switching a variant from the props dropdown | `sections/components-scene.tsx` |
-| | The change journal | `sections/journal.tsx` |
-| III — the assistant | Magic Cast, shot like a film: a video you love, your words, then it's on your site | `sections/magic-cast.tsx` |
-| | The assistant bubble: @ a layer, paste references, it rebuilds the layer | `sections/references.tsx` |
-| | Recreate a live page's header in your own project, scroll effect and all | `sections/recreate.tsx` |
-| | An assistant that reads your board | `sections/assistant.tsx` |
-| | Bring your own model: a gravity wall of every model bb drives | `sections/own-model.tsx` |
-| IV — the ask | A 3D gallery behind "Amazing things are possible", the form, a ticket | `sections/access.tsx` |
+Then `components/access.tsx`: the ask and the footer.
 
-## The editor's own components
+Scrolling decides which beat is on; each beat's own moves then play on a clock
+(`hooks/use-timeline.ts`), so a slow scroll never leaves a move half done.
+Beats, their captions and what is on the desk are one list, `BEATS`, in
+`components/film/film.tsx`.
 
-`components/canvas/` holds components ported from the Codecaine editor — the
-toolbar, the Magic Cast pill, the assistant pill, bar and mention menu, AI run
-chips and rings, the frame title and selection, the Attributes props panel —
-with their markup, classes and Hugeicons intact and the editor's colours as
-`--color-ed-*` tokens in `src/editor-tokens.css`. They take props instead of
-reading the editor's store, so scenes can act them out.
+## Where things are
 
-`components/art/` is the artwork the scenes play: a canvas motion graphic, a
-three.js object, a matter-js gravity wall, a CSS 3D gallery, a scroll-effect
-header and a button with three variants.
+- `components/mockup/` — the editor, drawn in code (tab strip, rail, Layers,
+  board, Design panel). `EditorWindow` takes `board` (what is on the board)
+  and `toolbar` (its state).
+- `components/canvas/` — components ported from the editor itself: toolbar,
+  assistant bar, AI run chip and ring, frame title and selection, and more.
+  Their colours are `--color-ed-*` in `src/editor-tokens.css`.
+- `components/film/` — the film: `longwave.tsx` is the sample app the film
+  builds (empty, blocked-out and built states), `desk.tsx` the other apps on
+  the desk, `caption.tsx`, `board-scenes.tsx`, `variants.tsx`, `finale.tsx`.
+- `src/index.css` — every page colour, shadow, radius, font and easing as a
+  token, with dark values under `:root[data-theme="dark"]`. The easings and
+  durations are mirrored in `src/lib/motion.ts`.
+- `public/logos/` — app and agent logos from SVGL.
 
-## Changing it
-
-- **Colours, shadows, radii, fonts and motion** are tokens in `src/index.css`
-  (`@theme`). The easings and durations there are mirrored in `src/lib/motion.ts`.
-- **Photography** lives in `src/content/photos.ts` (files in `public/photos/`),
-  credited in the footer. The reference images the assistant scene pastes are
-  in `public/references/`.
-- **Stack logos** are SVGL's, in `public/logos/`.
-- `hooks/use-scene-step.ts` is the one pattern every scene uses: a tall section,
-  a sticky stage, and a beat index from its scroll progress. `ui/scene.tsx`
-  overlaps each scene with the one before by a screen and blurs content out and
-  in, scrubbed, so scenes hand over in place instead of scrolling away.
-- **Themes**: every colour is a CSS variable with a light value in `@theme` and
-  a dark one under `:root[data-theme="dark"]`; `index.html` sets the attribute
-  before first paint and the footer has the switch. The stock Tailwind palette
-  is switched off (`--color-*: initial`), so a loose colour class can't compile.
-
-Motion respects `prefers-reduced-motion`: the opening is skipped, swaps become
-plain crossfades and Lenis is not started.
+Reduced motion shows each beat's end state and does not start Lenis.
 
 ## Canvas editor
 
 Opted into `@canvas/react` (vendored in `src/lib/canvas-react/`), with
-`data-canvas-ignore` on `#root`, the page wrapper, `<main>`, the closing
-backdrop and `Container`, so the editor's pointer reaches the sections and
-what is in them.
+`data-canvas-ignore` on `#root`, the page wrapper, `<main>` and `Container`.
