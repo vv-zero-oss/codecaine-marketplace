@@ -72,13 +72,14 @@
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
         "path": "templates/kids-camera"
-      }
+      },
+      "demoUrl": "demos/kids-camera/"
     },
     {
       "type": "template",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
       "designedFor": [
         "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -111,7 +112,7 @@
         "Creative"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-25",
+      "updated": "2026-09-28",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -212,17 +213,18 @@
         ]
       },
       "archive": {
-        "url": "archives/templates/photographer-portfolio-1.1.0.tgz",
+        "url": "archives/templates/photographer-portfolio-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "c44b042ad34d1ca6cf332ecf7f11f88c61c4822da6529de2f4b64b7a7f2b6fe3",
-        "size": 260608,
+        "sha256": "db8542487de4512a2ac415640706ee8a03e894f2e6d3f71c48b2ea584c4887a1",
+        "size": 261632,
         "files": 43
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
         "path": "templates/photographer-portfolio"
-      }
+      },
+      "demoUrl": "demos/photographer-portfolio/"
     },
     {
       "type": "template",
@@ -312,7 +314,8 @@
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
         "path": "templates/sdk-scaffold"
-      }
+      },
+      "demoUrl": "demos/sdk-scaffold/"
     }
   ]
 }

@@ -86,7 +86,8 @@ everywhere, while gzip output depends on the zlib that produced it.
 ## Adding an item
 
 1. Make the folder under the right kind, with a `marketplace.json`.
-2. Templates: `npm install && npm run build` must pass inside it. Don't commit
+2. Templates: `npm install && npm run build` must pass inside it, and
+   `npm run demos <id>` at the root builds its live demo. Don't commit
    `node_modules` or `dist` (they are never packed anyway).
 3. At the root: `npm run build`, then commit the item **and** what the build
    wrote (`json/`, `archives/`, `index.html`). `npm run check` (run in CI)
@@ -102,7 +103,26 @@ node scripts/capture-previews.mjs <id> http://localhost:<port>
 ```
 
 It writes `preview.png`, `previews/` and the `previews` field of
-`marketplace.json` (Playwright required; see the script's header). Every item
+`marketplace.json` (Playwright required; see the script's header).
+
+Every template also has a **live demo**: the project built to static files in
+`demos/<id>/`, which the editor's item page frames as its preview and opens
+with **Open in browser** — on Pages at
+`https://vv-zero-oss.github.io/codecaine-marketplace/demos/<id>/`.
+
+```bash
+npm run demos              # every template: npm ci if needed, vite build --base ./
+npm run demos <id>         # one
+```
+
+The build is relative (`--base ./`), so the same files run from Pages, from
+`_site/` and from any folder. A template with its own router must add
+`import.meta.env.BASE_URL` to the paths it pushes (see
+`templates/photographer-portfolio/src/router.tsx`). `demos/<id>/demo.json`
+records the hash of the archive the demo was built from; `npm run build` lists
+the demo in the catalog as `demoUrl` only while that is the archive it
+publishes, and fails (as does `npm run check`) when a template changed and its
+demo was not rebuilt. Every item
 can also list `designedFor` — the "Designed for" bullets on its page — and an
 `icon`.
 

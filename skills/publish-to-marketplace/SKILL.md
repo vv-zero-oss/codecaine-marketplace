@@ -39,7 +39,10 @@ manifest's `id` goes in `meta.appId`.
    Mark the template's structural wrappers — `#root`, the page wrapper,
    `<main>`, a centring `Container` — with `data-canvas-ignore`, so the
    editor's pointer looks through them to the content (see `CLAUDE.md`).
-4. From the repository root: `npm run build`, then `npm run check`. The build
+4. Templates: from the repository root, `npm run demos <id>` builds its live
+   demo into `demos/<id>/` (relative base, so a router must add
+   `import.meta.env.BASE_URL` to the paths it pushes). Commit it.
+5. From the repository root: `npm run build`, then `npm run check`. The build
    validates every item and rewrites `json/`; the check fails if `json/` is
    stale. Commit both the item and the regenerated `json/`.
-5. Push to `main`. The Pages workflow publishes the catalog and the archives.
+6. Push to `main`. The Pages workflow publishes the catalog and the archives.
