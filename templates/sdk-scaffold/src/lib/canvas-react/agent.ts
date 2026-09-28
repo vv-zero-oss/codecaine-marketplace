@@ -58,11 +58,14 @@ import {
   MAX_PROP_IDS,
   MAX_SET_PROPS,
   REACT_MSG,
+  WEBVIEW_FRAME_BRIDGE,
   isReactRequest,
   type ComponentMap,
   type MotionResult,
   type PropsMap,
+  type ReactRequestEnvelope,
   type SetPropsResult,
+  type WebviewFrameBridge,
 } from "./protocol";
 
 export interface CanvasDesignOptions {
@@ -131,6 +134,22 @@ function allowed(origins: string[], origin: string): boolean {
  */
 function replyTarget(origin: string): string {
   return origin && origin !== "null" ? origin : "*";
+}
+
+/**
+ * The editor's channel on a page its desktop app shows in code mode's
+ * `<webview>`, or null. Asked only of a page with no parent: a framed page
+ * talks to its parent whatever it finds on itself, so nothing a page puts on
+ * its own window can redirect it.
+ */
+function webviewHost(): WebviewFrameBridge | null {
+  if (window.parent !== window) return null;
+  const bridge = (window as unknown as Record<string, unknown>)[WEBVIEW_FRAME_BRIDGE] as
+    | Partial<WebviewFrameBridge>
+    | undefined;
+  return bridge && typeof bridge.post === "function" && typeof bridge.listen === "function"
+    ? (bridge as WebviewFrameBridge)
+    : null;
 }
 
 /**
@@ -304,9 +323,10 @@ export function designModeFor(
  */
 export function startCanvasReact(options: CanvasDesignOptions = {}): () => void {
   if (typeof window === "undefined" || typeof document === "undefined") return () => {};
-  // Not framed: there is no host, and a page being read by a person is not a
-  // page being designed on.
-  if (window.parent === window) return () => {};
+  // Not framed, and not in the editor's webview either: there is no host, and
+  // a page being read by a person is not a page being designed on.
+  const bridge = webviewHost();
+  if (window.parent === window && !bridge) return () => {};
 
   const origins = options.origin
     ? (Array.isArray(options.origin) ? options.origin : [options.origin]).filter(Boolean)
@@ -315,13 +335,34 @@ export function startCanvasReact(options: CanvasDesignOptions = {}): () => void 
   const answersProps = options.props !== false;
   const drivesMotion = options.motion !== false;
 
+  /** Out to the editor: over the webview's channel when there is one, to the
+   *  parent otherwise. */
+  function send(message: unknown): void {
+    if (bridge) bridge.post(message);
+    else window.parent.postMessage(message, origins[0] ?? "*");
+  }
+
   function onMessage(event: MessageEvent): void {
+    // In the editor's webview the channel is the only host. A message posted
+    // to this window there is the page itself, or something it frames.
+    if (bridge) return;
     if (!isReactRequest(event.data)) return;
     if (!allowed(origins, event.origin)) return;
     const source = event.source as Window | null;
     if (!source) return;
+    answer(event.data, (reply) => source.postMessage(reply, replyTarget(event.origin)));
+  }
 
-    const { id, req } = event.data;
+  /** A request over the webview's channel. Nothing but the element holding
+   *  this page can put one there, so the origin list is not asked — it names
+   *  the editor's origin, which the channel has no way to carry. */
+  function onBridgeMessage(data: unknown): void {
+    if (!isReactRequest(data)) return;
+    answer(data, (reply) => bridge?.post(reply));
+  }
+
+  function answer(request: ReactRequestEnvelope, reply: (message: unknown) => void): void {
+    const { id, req } = request;
     let result: unknown;
     try {
       switch (req.kind) {
@@ -359,26 +400,21 @@ export function startCanvasReact(options: CanvasDesignOptions = {}): () => void 
           result = componentMap(document, attribute);
       }
     } catch (error) {
-      source.postMessage(
-        {
-          [REACT_MSG]: CANVAS_REACT_PROTOCOL,
-          dir: "response",
-          id,
-          ok: false,
-          error: error instanceof Error ? error.message : String(error),
-        },
-        replyTarget(event.origin)
-      );
+      reply({
+        [REACT_MSG]: CANVAS_REACT_PROTOCOL,
+        dir: "response",
+        id,
+        ok: false,
+        error: error instanceof Error ? error.message : String(error),
+      });
       return;
     }
 
-    source.postMessage(
-      { [REACT_MSG]: CANVAS_REACT_PROTOCOL, dir: "response", id, ok: true, result },
-      replyTarget(event.origin)
-    );
+    reply({ [REACT_MSG]: CANVAS_REACT_PROTOCOL, dir: "response", id, ok: true, result });
   }
 
   window.addEventListener("message", onMessage);
+  const unlistenBridge = bridge?.listen(onBridgeMessage);
 
   /**
    * Tell the host when the project's own list of actions moves.
@@ -399,14 +435,11 @@ export function startCanvasReact(options: CanvasDesignOptions = {}): () => void 
     queueMicrotask(() => {
       announcing = false;
       try {
-        window.parent.postMessage(
-          {
-            [REACT_MSG]: CANVAS_REACT_PROTOCOL,
-            dir: "event",
-            event: { kind: "actions", revision: canvasActionsRevision() },
-          },
-          origins[0] ?? "*"
-        );
+        send({
+          [REACT_MSG]: CANVAS_REACT_PROTOCOL,
+          dir: "event",
+          event: { kind: "actions", revision: canvasActionsRevision() },
+        });
       } catch {
         // A parent that cannot be posted to is one that was not listening.
       }
@@ -418,22 +451,19 @@ export function startCanvasReact(options: CanvasDesignOptions = {}): () => void 
   // To the configured origin when there is one, so a page on a real domain
   // does not tell every frame above it what it is built from.
   try {
-    window.parent.postMessage(
-      {
-        [REACT_MSG]: CANVAS_REACT_PROTOCOL,
-        dir: "event",
-        event: {
-          kind: "hello",
-          version: CANVAS_REACT_PROTOCOL,
-          url: location.href,
-          // The same answer the handshake gives. An editor that hears this
-          // announcement has no reason to ask again, and one that never hears
-          // it learns the same thing from the handshake it sends itself.
-          canSet: answersProps && canOverrideProps(),
-        },
+    send({
+      [REACT_MSG]: CANVAS_REACT_PROTOCOL,
+      dir: "event",
+      event: {
+        kind: "hello",
+        version: CANVAS_REACT_PROTOCOL,
+        url: location.href,
+        // The same answer the handshake gives. An editor that hears this
+        // announcement has no reason to ask again, and one that never hears
+        // it learns the same thing from the handshake it sends itself.
+        canSet: answersProps && canOverrideProps(),
       },
-      origins[0] ?? "*"
-    );
+    });
   } catch {
     // A parent that cannot be posted to is a parent that was not going to
     // drive this page.
@@ -441,6 +471,7 @@ export function startCanvasReact(options: CanvasDesignOptions = {}): () => void 
 
   return () => {
     window.removeEventListener("message", onMessage);
+    unlistenBridge?.();
     unsubscribe();
     // A page whose editor went away is a page that runs. Anything this paused
     // is put back, and the reduced-motion answer with it — leaving a project

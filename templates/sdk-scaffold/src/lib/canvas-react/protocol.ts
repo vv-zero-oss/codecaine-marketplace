@@ -18,6 +18,22 @@ export const REACT_MSG = "__canvasReact";
 /** Bumped when an existing message changes meaning. */
 export const CANVAS_REACT_PROTOCOL = 1;
 
+/**
+ * Where the editor's desktop app puts its channel on a page it shows in code
+ * mode's `<webview>`. There the page is top-level — no parent to post to — so
+ * the SDK talks to the editor through this instead. The same name the editor
+ * uses (its `src/editor/live/frames/webview-channel.ts`; a test there holds
+ * the two equal): this package is copied into projects, so it cannot import
+ * it.
+ */
+export const WEBVIEW_FRAME_BRIDGE = "__canvasFrameHost";
+
+/** The channel, as the webview's preload exposes it. */
+export interface WebviewFrameBridge {
+  post(message: unknown): void;
+  listen(listener: (message: unknown) => void): () => void;
+}
+
 export type ReactRequest =
   | { kind: "handshake" }
   | { kind: "components" }
