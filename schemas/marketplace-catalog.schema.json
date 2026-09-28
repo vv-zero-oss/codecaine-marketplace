@@ -20,6 +20,7 @@
               "path": { "type": "string" },
               "thumbnailUrl": { "type": "string" },
               "entryUrl": { "type": "string" },
+              "demoUrl": { "type": "string", "description": "Templates: the site built to static files (demos/<id>/), for a live preview and Open in browser. Only present while it was built from this version's archive." },
               "archive": {
                 "type": "object",
                 "required": ["url", "format", "sha256", "size"],

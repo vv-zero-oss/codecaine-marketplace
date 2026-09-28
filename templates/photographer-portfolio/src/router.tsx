@@ -11,17 +11,33 @@ import { useEffect, useState, type ComponentProps, type MouseEvent } from "react
  */
 const NAVIGATE = "photographer:navigate"
 
+/**
+ * Where the site is served from, without the trailing slash: "" under the dev
+ * server, `/…/demos/photographer-portfolio` when the built site is served from
+ * a folder. A build made with `--base ./` knows its base only relative to the
+ * page it loaded on, so it is read once, from that first address. Every path
+ * the site names is a site path ("/portfolio"); this is added on the way out
+ * to the address bar and taken off on the way in.
+ */
+const BASE = new URL(import.meta.env.BASE_URL, window.location.href).pathname.replace(/\/$/, "")
+
+function sitePath(): string {
+  const { pathname } = window.location
+  const path = BASE && pathname.startsWith(BASE) ? pathname.slice(BASE.length) : pathname
+  return path.replace(/\/index\.html$/, "/") || "/"
+}
+
 export function navigate(to: string) {
-  if (to === window.location.pathname) return
-  window.history.pushState(null, "", to)
+  if (to === sitePath()) return
+  window.history.pushState(null, "", BASE + to)
   window.dispatchEvent(new Event(NAVIGATE))
   window.scrollTo(0, 0)
 }
 
 export function usePathname(): string {
-  const [pathname, setPathname] = useState(() => window.location.pathname)
+  const [pathname, setPathname] = useState(sitePath)
   useEffect(() => {
-    const update = () => setPathname(window.location.pathname)
+    const update = () => setPathname(sitePath())
     window.addEventListener("popstate", update)
     window.addEventListener(NAVIGATE, update)
     return () => {
@@ -55,5 +71,5 @@ export function Link({ href = "/", onClick, ...props }: ComponentProps<"a">) {
     event.preventDefault()
     navigate(href)
   }
-  return <a href={href} onClick={handle} {...props} />
+  return <a href={href.startsWith("/") ? BASE + href : href} onClick={handle} {...props} />
 }

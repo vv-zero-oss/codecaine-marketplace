@@ -160,6 +160,48 @@ async function listFiles(dir, base = dir) {
   return out.sort()
 }
 
+/** The files an item's archive holds, and the tar of them. A template's
+ *  previews are pictures of it for the marketplace's own pages, not part of the
+ *  project a person gets — leaving them out keeps a download to the project. */
+export async function packItem(dir) {
+  const names = (await listFiles(dir)).filter((n) => !n.startsWith("previews/") && n !== "preview.png")
+  const files = await Promise.all(names.map(async (n) => ({ name: n, bytes: await readFile(path.join(dir, n)) })))
+  return { files, bytes: tar(files) }
+}
+
+// ---------------------------------------------------------------------------
+// Demos
+// ---------------------------------------------------------------------------
+
+/**
+ * A template's demo: the project built to static files and committed under
+ * `demos/<id>/`, so the editor's item page can show the running site instead
+ * of a picture of it, and "Open in browser" has somewhere to go.
+ *
+ * Building it needs the template's dependencies, which this script does not
+ * install (it runs with `node` and nothing else), so `scripts/build-demos.mjs`
+ * builds it and records the hash of the archive it was built from in
+ * `demo.json`. Here that record is only compared: a demo built from other
+ * sources than the archive the catalog offers is stale, and `--check` says so
+ * rather than showing a site that is not the one a person would get.
+ */
+export const DEMOS = "demos"
+
+async function demoFor(id, sha256, problems) {
+  const dir = path.join(ROOT, DEMOS, id)
+  const record = await readFile(path.join(dir, "demo.json"), "utf8").then(JSON.parse, () => null)
+  if (!record) return false
+  if (!(await exists(path.join(dir, "index.html")))) {
+    problems.push(`${DEMOS}/${id}: no index.html — run \`npm run demos ${id}\``)
+    return false
+  }
+  if (record.sha256 !== sha256) {
+    problems.push(`${DEMOS}/${id}: built from an older templates/${id} — run \`npm run demos ${id}\` and commit it`)
+    return false
+  }
+  return true
+}
+
 // ---------------------------------------------------------------------------
 // Validation
 // ---------------------------------------------------------------------------
@@ -318,12 +360,8 @@ async function build() {
         problems.push(...errors.map((e) => `${where}: ${e}`))
         continue
       }
-      // A template's previews are pictures of it for the marketplace's own
-      // pages, not part of the project a person gets — leaving them out keeps
-      // a download to the project.
-      const names = (await listFiles(dir)).filter((n) => !n.startsWith("previews/") && n !== "preview.png")
-      const files = await Promise.all(names.map(async (n) => ({ name: n, bytes: await readFile(path.join(dir, n)) })))
-      const bytes = tar(files)
+      const { bytes, files } = await packItem(dir)
+      const sha256 = createHash("sha256").update(bytes).digest("hex")
       const archivePath = `archives/${kind.folder}/${meta.id}-${meta.version}.tgz`
       archives.push({ path: archivePath, bytes })
       const { $schema: _schema, ...fields } = meta
@@ -345,15 +383,21 @@ async function build() {
         archive: {
           url: archivePath,
           format: "tar+gzip",
-          sha256: createHash("sha256").update(bytes).digest("hex"),
+          sha256,
           size: bytes.length,
           files: files.length,
         },
         source: { repository: REPOSITORY, ref: REF, path: where },
+        ...(kind.type === "template" && (await demoFor(meta.id, sha256, problems)) ? { demoUrl: `${DEMOS}/${meta.id}/` } : {}),
         ...extra,
       })
     }
     catalogs[kind.type] = { kind, items }
+  }
+
+  const templateIds = new Set(catalogs.template.items.map((item) => item.id))
+  for (const entry of await readdir(path.join(ROOT, DEMOS), { withFileTypes: true }).catch(() => [])) {
+    if (entry.isDirectory() && !templateIds.has(entry.name)) problems.push(`${DEMOS}/${entry.name} belongs to no template — delete it`)
   }
 
   const all = Object.values(catalogs).flatMap((c) => c.items)
@@ -467,6 +511,7 @@ async function writeSite(out, json, archives) {
     })
   }
   await cp(path.join(ROOT, "schemas"), path.join(out, "schemas"), { recursive: true })
+  if (await exists(path.join(ROOT, DEMOS))) await cp(path.join(ROOT, DEMOS), path.join(out, DEMOS), { recursive: true })
   await writeFile(path.join(out, "index.html"), landing(json))
   // Pages runs Jekyll over the site unless told not to, and Jekyll drops
   // anything starting with an underscore.
@@ -488,7 +533,7 @@ function landing(json) {
           ? `<div class="swatches">${item.designSystem.palette.slice(0, 8).map((c) => `<span style="background:${c.value}" title="${escape(c.name)} ${c.value}"></span>`).join("")}</div>`
           : ""
         const thumb = item.thumbnailUrl ? `<img src="${escape(item.thumbnailUrl)}" alt="" loading="lazy">` : ""
-        return `<article>${thumb}${swatches}<h3>${escape(item.name)} <small>v${escape(item.version)}</small></h3><p>${escape(item.description)}</p><p class="links"><a href="${escape(item.archive.url)}">Download</a> · <a href="${REPOSITORY}/tree/${REF}/${escape(item.path)}">Source</a></p></article>`
+        return `<article>${thumb}${swatches}<h3>${escape(item.name)} <small>v${escape(item.version)}</small></h3><p>${escape(item.description)}</p><p class="links">${item.demoUrl ? `<a href="${escape(item.demoUrl)}">Live demo</a> · ` : ""}<a href="${escape(item.archive.url)}">Download</a> · <a href="${REPOSITORY}/tree/${REF}/${escape(item.path)}">Source</a></p></article>`
       })
       .join("")
     return `<section><h2>${escape(kind.folder.replace("-", " "))} <small>${items.length}</small></h2><div class="grid">${cards}</div></section>`

@@ -4,7 +4,9 @@ Templates, apps, design systems and skills for the canvas editor — see `README
 
 Bump an item's `version` and `updated` whenever its contents change, then run
 `npm run build` and commit what it writes (`json/`, `archives/`, `index.html`)
-with the item — `npm run check` fails in CI otherwise.
+with the item — `npm run check` fails in CI otherwise. A template's contents
+changing also means `npm run demos <id>` first, and committing `demos/<id>/`:
+the live demo the editor's item page shows and "Open in browser" opens.
 
 ## Every new project starts from `templates/sdk-scaffold`
 
@@ -57,8 +59,8 @@ Then make it the new project:
    Never edit the vendored SDK in place. When the SDK changes, re-copy
    `sdk/src` from the canvas repository (without `__tests__/`) into
    `src/lib/canvas-react/` and bump `sdkVersion` to match.
-5. `npm install && npm run build` inside the folder, then `npm run build` at
-   the root, and commit the item with what that writes.
+5. `npm install && npm run build` inside the folder, then `npm run demos <id>`
+   and `npm run build` at the root, and commit the item with what they write.
 
 If the scaffold itself changes in the canvas repository (`scaffold-sdk/` or
 `sdk/src`), bring `templates/sdk-scaffold` up to date with it and bump its
