@@ -137,7 +137,7 @@ export function GalleryPage({ pathname }: { pathname: string }) {
                 key={p.slug}
                 type="button"
                 data-index={i}
-                aria-label={`${p.number}. ${p.name} — open the story`}
+                aria-label={`${p.number}. ${p.name} — open the profile`}
                 onClick={() => go(`/story/${p.slug}`)}
                 className="absolute inset-0 block cursor-pointer overflow-hidden will-change-transform"
                 style={{ transform: `translate3d(0, ${(i - position.current.current) * 100}vh, 0)` }}
@@ -161,16 +161,16 @@ export function GalleryPage({ pathname }: { pathname: string }) {
       <div
         ref={label}
         aria-hidden
-        className="pointer-events-none fixed top-0 left-0 z-20 hidden text-caption uppercase tracking-label text-paper mix-blend-difference md:block"
+        className="pointer-events-none fixed top-0 left-0 z-20 hidden text-caption font-mono uppercase tracking-label text-blend mix-blend-difference md:block"
       >
         <p>{person.number}</p>
         <p>{person.name}</p>
       </div>
 
-      <p className="fixed bottom-6 left-gutter z-20 text-caption uppercase tracking-label text-paper mix-blend-difference md:hidden">
+      <p className="fixed bottom-6 left-gutter z-20 text-caption font-mono uppercase tracking-label text-blend mix-blend-difference md:hidden">
         {person.number} — {person.name}
       </p>
-      <p className="fixed right-gutter bottom-6 z-20 text-caption tracking-label text-paper tabular-nums mix-blend-difference">
+      <p className="fixed right-gutter bottom-6 z-20 font-mono text-caption tracking-label text-blend tabular-nums mix-blend-difference">
         {String(index + 1).padStart(2, "0")} / {people.length}
       </p>
     </div>

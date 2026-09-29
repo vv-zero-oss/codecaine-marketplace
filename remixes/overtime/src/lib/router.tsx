@@ -8,11 +8,11 @@ import { useEffect, useState, type ComponentProps, type MouseEvent } from "react
  * Real paths rather than `#/` ones, so the editor's Pages list and a link
  * pasted from the address bar name the same page.
  */
-const NAVIGATE = "harbour:navigate"
+const NAVIGATE = "overtime:navigate"
 
 /**
  * Where the site is served from, without the trailing slash: "" under the dev
- * server, `/…/demos/harbour-voices` when the built site is served from a
+ * server, `/…/demos/overtime` when the built site is served from a
  * folder. Every path the site names is a site path ("/list"); this is added on
  * the way out to the address bar and taken off on the way in.
  */

@@ -24,6 +24,10 @@ const PITCH_Y = 295
 const OFFSET = 70
 const TILE = 138
 const CAPTION = 11
+/** Corner radius of a tile at rest, design px. */
+const RADIUS = 10
+/** Screen speed (px/s) at which the clip and blur are at their fullest. */
+const FULL_SPEED = 2600
 
 /** The intro's diamond: 13 tiles on a 111px lattice, 83px each. */
 const CLUSTER_PITCH = 111
@@ -109,13 +113,37 @@ uniform sampler2D u_texture;
 uniform float u_ready;
 uniform float u_alpha;
 uniform float u_mute;
+uniform float u_radius;
+uniform float u_inset;
+uniform vec2 u_size;
+uniform vec2 u_blur;
 uniform vec3 u_placeholder;
 varying vec2 v_uv;
+
+// Signed distance to a rounded rectangle of half-size b and corner radius r.
+float roundedBox(vec2 p, vec2 b, float r) {
+  vec2 q = abs(p) - b + r;
+  return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r;
+}
+
 void main() {
-  vec3 color = mix(u_placeholder, texture2D(u_texture, v_uv).rgb, u_ready);
+  // The clip: a rounded window that closes in from every edge by u_inset px.
+  vec2 px = (v_uv - 0.5) * u_size;
+  float d = roundedBox(px, u_size * 0.5 - u_inset, u_radius);
+  float mask = clamp(0.5 - d, 0.0, 1.0);
+  if (mask <= 0.0) discard;
+
+  // The motion blur: nine taps along the direction the canvas is moving.
+  vec3 sum = vec3(0.0);
+  for (int i = 0; i < 9; i++) {
+    float t = float(i) / 8.0 - 0.5;
+    sum += texture2D(u_texture, clamp(v_uv + u_blur * t, 0.0, 1.0)).rgb;
+  }
+  vec3 color = mix(u_placeholder, sum / 9.0, u_ready);
   float grey = dot(color, vec3(0.299, 0.587, 0.114));
   color = mix(color, vec3(grey), u_mute);
-  gl_FragColor = vec4(color * u_alpha, u_alpha);
+  float alpha = u_alpha * mask;
+  gl_FragColor = vec4(color * alpha, alpha);
 }`
 
 export class GridRenderer {
@@ -146,7 +174,12 @@ export class GridRenderer {
   private labels = 1
   private dirty = true
   private font = "monospace"
-  private ink = "#161616"
+  private ink = "#f1efe8"
+  private placeholder: [number, number, number] = [0.11, 0.11, 0.106]
+  private accents: Record<string, string> = {}
+  /** Camera speed on screen, px/s, smoothed; drives the clip and the blur. */
+  private velocity = { x: 0, y: 0 }
+  private previous = { x: 0, y: 0, zoom: 1 }
 
   constructor(
     private canvas: HTMLCanvasElement,
@@ -249,7 +282,12 @@ export class GridRenderer {
   restyle() {
     const root = getComputedStyle(document.documentElement)
     this.font = root.getPropertyValue("--font-mono").trim() || "monospace"
-    this.ink = root.getPropertyValue("--color-ink").trim() || "#161616"
+    this.ink = root.getPropertyValue("--color-ink").trim() || "#f1efe8"
+    this.placeholder = hexToRgb(root.getPropertyValue("--color-paper-soft").trim()) ?? this.placeholder
+    for (const person of this.options.people) {
+      const sport = person.category.toLowerCase()
+      this.accents[person.category] ??= root.getPropertyValue(`--color-sport-${sport}`).trim() || this.ink
+    }
     this.dirty = true
   }
 
@@ -284,7 +322,7 @@ export class GridRenderer {
     gl.enableVertexAttribArray(location)
     gl.vertexAttribPointer(location, 2, gl.FLOAT, false, 0, 0)
 
-    for (const name of ["u_rect", "u_viewport", "u_texture", "u_ready", "u_alpha", "u_mute", "u_placeholder"]) {
+    for (const name of ["u_rect", "u_viewport", "u_texture", "u_ready", "u_alpha", "u_mute", "u_placeholder", "u_radius", "u_inset", "u_size", "u_blur"]) {
       this.uniforms[name] = gl.getUniformLocation(program, name)
     }
     gl.enable(gl.BLEND)
@@ -539,6 +577,20 @@ export class GridRenderer {
       this.dirty = true
     }
 
+    // How fast the sheet is moving across the screen. The clip and the blur
+    // follow it, and ease back to nothing when it stops.
+    {
+      const scale = this.unit * this.camera.zoom
+      const rawX = ((this.camera.x - this.previous.x) * scale) / dt
+      const rawY = ((this.camera.y - this.previous.y) * scale) / dt
+      this.previous = { ...this.camera }
+      const k = approach(0.25, dt)
+      this.velocity.x += (rawX - this.velocity.x) * k
+      this.velocity.y += (rawY - this.velocity.y) * k
+      if (Math.hypot(this.velocity.x, this.velocity.y) > 4) this.dirty = true
+      else this.velocity.x = this.velocity.y = 0
+    }
+
     // Filters dim what does not match; hover lifts the tile under the pointer.
     const people = this.options.people
     const km = approach(0.14, dt)
@@ -679,6 +731,23 @@ export class GridRenderer {
     this.render(tiles, labels, now)
   }
 
+  /**
+   * The clip and the blur for the current speed. The clip closes each tile by
+   * up to 7% of its side and the blur smears it by up to 38px along the
+   * direction of travel; both ease in with speed (an ease-out on the ratio,
+   * so a slow drag already reads) and are off under reduced motion.
+   */
+  private motion() {
+    if (this.options.reducedMotion) return { inset: 0, blurX: 0, blurY: 0 }
+    const speed = Math.hypot(this.velocity.x, this.velocity.y)
+    const t = clamp(speed / FULL_SPEED, 0, 1)
+    const amount = 1 - Math.pow(1 - t, 3)
+    const length = 38 * amount
+    const dirX = speed ? this.velocity.x / speed : 0
+    const dirY = speed ? this.velocity.y / speed : 0
+    return { inset: 0.07 * amount, blurX: -dirX * length, blurY: -dirY * length }
+  }
+
   private render(tiles: VisibleTile[], labels: number, now: number) {
     const gl = this.gl
     const dpr = this.dpr
@@ -686,7 +755,8 @@ export class GridRenderer {
     gl.clearColor(0, 0, 0, 0)
     gl.clear(gl.COLOR_BUFFER_BIT)
     gl.uniform2f(this.uniforms.u_viewport, this.canvas.width, this.canvas.height)
-    gl.uniform3f(this.uniforms.u_placeholder, 0.953, 0.953, 0.953)
+    gl.uniform3f(this.uniforms.u_placeholder, ...this.placeholder)
+    const motion = this.motion()
     gl.uniform1i(this.uniforms.u_texture, 0)
     gl.activeTexture(gl.TEXTURE0)
 
@@ -701,6 +771,13 @@ export class GridRenderer {
       gl.uniform1f(this.uniforms.u_mute, mute)
       gl.uniform1f(this.uniforms.u_alpha, tile.alpha * (1 - mute * 0.88))
       gl.uniform4f(this.uniforms.u_rect, tile.x * dpr, tile.y * dpr, tile.size * dpr, tile.size * dpr)
+      const size = tile.size * dpr
+      const inset = size * motion.inset
+      gl.uniform2f(this.uniforms.u_size, size, size)
+      gl.uniform1f(this.uniforms.u_inset, inset)
+      gl.uniform1f(this.uniforms.u_radius, Math.min(size / 2 - inset, (RADIUS * this.unit * this.camera.zoom) * dpr + inset * 0.6))
+      // The blur trails behind the motion, so it points against the camera's travel.
+      gl.uniform2f(this.uniforms.u_blur, (motion.blurX * dpr) / size, (motion.blurY * dpr) / size)
       gl.drawArrays(gl.TRIANGLES, 0, 6)
     }
 
@@ -723,14 +800,25 @@ export class GridRenderer {
       const y = tile.y - 6 * scale
       const number = `${person.number} .`
       ctx.globalAlpha = alpha
+      const dot = Math.max(3, fontSize * 0.42)
+      ctx.fillStyle = this.accents[person.category] ?? this.ink
+      ctx.fillRect(tile.x, y - fontSize * 0.36 - dot / 2, dot, dot)
+      ctx.fillStyle = this.ink
       ctx.textAlign = "left"
-      ctx.fillText(number, tile.x, y)
-      const room = tile.size - ctx.measureText(number).width - fontSize
+      ctx.fillText(number, tile.x + dot + fontSize * 0.45, y)
+      const room = tile.size - ctx.measureText(number).width - dot - fontSize * 1.45
       ctx.textAlign = "right"
       ctx.fillText(fit(ctx, person.name, room), tile.x + tile.size, y)
     }
     ctx.globalAlpha = 1
   }
+}
+
+function hexToRgb(hex: string): [number, number, number] | null {
+  const m = /^#?([0-9a-f]{6})$/i.exec(hex)
+  if (!m) return null
+  const n = parseInt(m[1], 16)
+  return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255]
 }
 
 /** Truncate with an ellipsis to fit `room` px, measuring with the current font. */

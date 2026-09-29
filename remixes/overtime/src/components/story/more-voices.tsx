@@ -20,8 +20,8 @@ export function MoreVoices({ person }: { person: Person }) {
 
   return (
     <section aria-labelledby="more-voices" className="border-t border-rule pt-6">
-      <h2 id="more-voices" className="px-gutter text-label uppercase tracking-label">
-        More voices
+      <h2 id="more-voices" className="px-gutter text-label font-mono uppercase tracking-label">
+        More athletes
       </h2>
       <div
         ref={strip}
@@ -56,7 +56,7 @@ export function MoreVoices({ person }: { person: Person }) {
               <span>{other.number} .</span>
               <span className="truncate">{other.name}</span>
             </span>
-            <span className="block aspect-square overflow-hidden bg-paper-soft">
+            <span className="block aspect-square overflow-hidden rounded-tile bg-paper-soft">
               <img
                 src={pexels(other.photo, 400, 400)}
                 alt={`Portrait of ${other.name}`}

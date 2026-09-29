@@ -5,9 +5,9 @@ import { ease } from "@/lib/motion"
 import { cn } from "@/lib/utils"
 
 /**
- * Pictures from the family album, under the portrait: one wide, one narrow and
- * set to the left, each dated. They rise in as they are reached, since they
- * are the part of a story people scroll down to find.
+ * Frames from the magazine's archive, under the portrait: one wide, one narrow
+ * and set to the left, each dated. They rise in as they are reached, since they
+ * are the part of a profile people scroll down to find.
  */
 export function ArchivePhotos({ person }: { person: Person }) {
   return (
@@ -23,15 +23,15 @@ export function ArchivePhotos({ person }: { person: Person }) {
         >
           <img
             src={pexels(item.photo, 900)}
-            alt={`From ${person.first}'s family album, ${item.caption}`}
+            alt={`From the Overtime archive, ${item.caption}`}
             loading="lazy"
             className={cn(
-              "w-full bg-paper-soft object-cover grayscale",
+              "w-full rounded-card bg-paper-soft object-cover grayscale",
               index % 2 === 0 ? "aspect-[4/3]" : "aspect-[3/4]",
             )}
           />
-          <figcaption className="mt-2 flex justify-between text-caption uppercase tracking-label text-ink-muted">
-            <span>Family album</span>
+          <figcaption className="mt-2 flex justify-between text-caption font-mono uppercase tracking-label text-ink-muted">
+            <span>From the archive</span>
             <span>{item.caption}</span>
           </figcaption>
         </motion.figure>

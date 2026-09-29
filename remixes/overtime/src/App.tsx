@@ -1,6 +1,6 @@
 /**
- * Harbour Voices — an oral-history archive of a port town, as four views of
- * the same eighty-four people:
+ * Overtime — issue twelve of a long-read sports quarterly, as four views of
+ * the same eighty-four athletes:
  *
  *   /             the grid: every portrait on an endless, draggable sheet (WebGL)
  *   /list         the same people as a list, at night
@@ -34,7 +34,7 @@ export default function App() {
   useEffect(() => {
     const story = matchPath("/story/:slug", pathname)
     const person = story ? findPerson(story.slug) : null
-    document.title = person ? `${person.name} — Harbour Voices` : "Harbour Voices — 84 portraits from the port of Vela"
+    document.title = person ? `${person.name}, ${person.category} — Overtime` : "Overtime — 84 athletes, issue 12"
   }, [pathname])
 
   return (

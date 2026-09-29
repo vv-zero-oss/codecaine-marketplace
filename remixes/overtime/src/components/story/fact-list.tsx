@@ -3,21 +3,25 @@ import type { Person } from "@/content"
 import { cn } from "@/lib/utils"
 
 /**
- * The facts beside a portrait — name, where and when, the work, the age —
+ * The facts beside a portrait — name, sport, where and when, club, age —
  * each typed in behind a block cursor, one after another, as the page opens.
  */
 export function FactList({ person, className }: { person: Person; className?: string }) {
   const rows: [string, string][][] = [
     [["Name", person.name]],
     [
-      ["Place of birth", person.born],
+      ["Sport", person.category],
+      ["Discipline", person.role],
+    ],
+    [
+      ["Born in", person.born],
       ["Date of birth", person.bornOn],
     ],
     [
-      ["Worked as", person.trade],
-      ["On the quay", person.years],
+      ["Club", person.club],
+      ["Career", person.years],
     ],
-    [["Age", `${person.age} years old`]],
+    [["Age", `${person.age}`]],
   ]
 
   let delay = 450

@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react"
 import { motion } from "motion/react"
 
 import { SiteFooter } from "@/components/site-footer"
@@ -8,24 +9,30 @@ import { PortraitReveal } from "@/components/story/portrait-reveal"
 import { StoryText } from "@/components/story/story-text"
 import { BracketLink } from "@/components/ui/bracket"
 import { ScrambleText } from "@/components/ui/scramble-text"
-import { pexels, type Person } from "@/content"
+import { pexels, sportAccent, type Person } from "@/content"
 import { ease, useSmoothScroll } from "@/lib/motion"
 import { go } from "@/lib/transition"
 
 /**
  * One person: the story on the left, the portrait in the middle, the facts on
  * the right. The two side columns hold still while the middle one scrolls on
- * into the family album, then the next people along, then the foot of the
+ * into the archive frames, then the next athletes along, then the foot of the
  * page. On a phone the three stack: picture, facts, story, album.
  */
 export function StoryPage({ person, back }: { person: Person; back: string }) {
   useSmoothScroll()
 
   return (
-    <div className="min-h-dvh bg-paper text-ink" data-canvas-ignore>
+    <div
+      className="min-h-dvh overflow-x-clip bg-paper text-ink"
+      style={{ "--accent": sportAccent[person.category] } as CSSProperties}
+      data-canvas-ignore
+    >
       <header className="pointer-events-none fixed inset-x-0 top-0 z-30 flex items-center justify-between px-gutter pt-4 lg:pt-5">
-        <span className="pointer-events-auto text-label tabular-nums tracking-label">
+        <span className="pointer-events-auto flex items-center gap-3 font-mono text-label uppercase tabular-nums tracking-label">
           <ScrambleText text={String(person.number).padStart(3, "0")} />
+          <span aria-hidden className="size-2 bg-(--accent)" />
+          <span>{person.category}</span>
         </span>
         <BracketLink
           href={back}
@@ -45,19 +52,23 @@ export function StoryPage({ person, back }: { person: Person; back: string }) {
           className="mx-auto grid max-w-2xl grid-cols-1 gap-y-10 px-gutter pt-20 lg:mx-0 lg:max-w-none lg:grid-cols-3 lg:gap-x-(--spacing-column) lg:pt-[8.75rem]"
         >
           <h1 id="person-name" className="sr-only">
-            {person.name}, {person.trade}
+            {person.name}, {person.role}
           </h1>
 
           <div className="order-3 lg:order-1 lg:sticky lg:top-[8.75rem] lg:self-start">
             <StoryText person={person} />
           </div>
 
-          <div className="order-1 lg:order-2">
+          <div className="relative order-1 lg:order-2">
+            <div
+              aria-hidden
+              className="pointer-events-none absolute -inset-x-8 -bottom-10 h-2/3 rounded-full bg-(--accent) opacity-25 blur-[80px]"
+            />
             <PortraitReveal
               key={person.slug}
               src={pexels(person.photo, 1000, 1250)}
               alt={`Portrait of ${person.name}`}
-              className="aspect-[4/5] w-full"
+              className="relative aspect-[4/5] w-full rounded-card"
             />
             <div className="hidden lg:mt-32 lg:block">
               <ArchivePhotos person={person} />
@@ -79,8 +90,8 @@ export function StoryPage({ person, back }: { person: Person; back: string }) {
           transition={{ delay: 1.1, duration: 0.6, ease: ease.outQuart }}
           className="mx-auto max-w-2xl px-gutter pt-12 lg:mx-0 lg:max-w-none lg:pointer-events-none lg:fixed lg:bottom-6 lg:left-0 lg:z-20 lg:pt-0"
         >
-          <dt className="text-ink-muted">Recorded by</dt>
-          <dd className="mb-3">{person.recordedBy}</dd>
+          <dt className="text-ink-muted">Words</dt>
+          <dd className="mb-3">{person.writer}</dd>
           <dt className="text-ink-muted">Photograph</dt>
           <dd>{person.photographer} / Pexels</dd>
         </motion.dl>

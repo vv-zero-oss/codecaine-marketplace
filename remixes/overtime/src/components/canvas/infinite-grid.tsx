@@ -12,7 +12,7 @@ import { GridRenderer } from "./grid-renderer"
  * The home page: every portrait on an endless, draggable sheet.
  *
  * Drag (or swipe) to move, scroll to move, pinch or ⌘/ctrl + scroll to zoom,
- * click a portrait to open its story. Arrow keys and +/− do the same from the
+ * click a portrait to open the profile. Arrow keys and +/− do the same from the
  * keyboard once the grid has focus. The drawing is `GridRenderer`'s; this
  * component owns the canvases, the page it lives on, and a plain list of
  * links behind it for screen readers and anyone without WebGL.
@@ -100,27 +100,27 @@ export function InfiniteGrid({
   }
 
   return (
-    <section aria-label="All portraits" className="fixed inset-0 overflow-hidden bg-paper">
+    <section aria-label="All athletes" className="fixed inset-0 overflow-hidden bg-paper">
       <canvas ref={glRef} aria-hidden className="absolute inset-0 size-full" />
       <canvas
         ref={overlayRef}
         tabIndex={0}
         role="application"
-        aria-label="Portrait grid. Drag or use the arrow keys to move, plus and minus to zoom. The list of stories follows."
+        aria-label="Athlete grid. Drag or use the arrow keys to move, plus and minus to zoom. The list of profiles follows."
         onKeyDown={onKeyDown}
         className="absolute inset-0 size-full cursor-grab touch-none outline-none select-none"
       />
       {failed && (
         <p className="absolute inset-x-gutter top-1/2 -translate-y-1/2 text-center text-ink-soft">
-          This browser cannot draw the grid. Every story is in the <Link href="/list" className="underline">list</Link>.
+          This browser cannot draw the grid. Every profile is in the <Link href="/list" className="underline">list</Link>.
         </p>
       )}
-      <nav aria-label="Stories" className="sr-only">
+      <nav aria-label="Profiles" className="sr-only">
         <ul>
           {people.map((person) => (
             <li key={person.slug}>
               <Link href={`/story/${person.slug}`}>
-                {person.number}. {person.name}, {person.trade}
+                {person.number}. {person.name}, {person.role}
               </Link>
             </li>
           ))}

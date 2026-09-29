@@ -1,39 +1,39 @@
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
   "type": "remix",
-  "id": "harbour-voices",
-  "name": "Harbour Voices",
+  "id": "overtime",
+  "name": "Overtime",
   "version": "1.0.0",
-  "description": "An oral-history archive as an infinite WebGL canvas: eighty-four portraits on an endless, draggable sheet, with a list view, a full-screen gallery, a story page per person and an about page with the people who recorded them.",
+  "description": "A long-read sports magazine on an infinite WebGL canvas: eighty-four athletes on an endless, draggable sheet that clips and motion-blurs as it moves, with a list view, a full-screen gallery, a profile per athlete and an about page with the issue’s writers.",
   "designedFor": [
-    "Archives, memorials and oral-history projects with a face and a story per person",
+    "Sports magazines, clubs and federations with a face and a profile per athlete",
     "Portfolios and collections that want to be explored by dragging rather than scrolling",
-    "Illustration or photography series with dozens to hundreds of square pieces",
-    "Seeing a WebGL canvas, a text-first detail page and a typewriter aesthetic in one project the editor can read"
+    "Photography or editorial series with dozens to hundreds of square pieces",
+    "Seeing a WebGL canvas, a text-first profile page and a dark editorial palette in one project the editor can read"
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
   "authors": [
     {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
+      "name": "Elio Marchand"
     }
   ],
   "license": "MIT",
   "keywords": [
-    "archive",
-    "gallery",
+    "sports",
+    "magazine",
+    "editorial",
     "infinite-canvas",
     "webgl",
-    "portraits",
-    "oral-history",
-    "monospace",
+    "athletes",
+    "gallery",
+    "dark",
     "react",
     "vite",
     "tailwind"
   ],
   "categories": [
-    "Portfolio",
+    "Editorial",
     "Creative"
   ],
   "created": "2026-09-29",
@@ -61,8 +61,8 @@
       "title": "Gallery"
     },
     {
-      "path": "/story/anselmo-duarte-rivas",
-      "title": "Story"
+      "path": "/story/mateo-arrieta",
+      "title": "Profile"
     },
     {
       "path": "/about",
@@ -86,7 +86,7 @@
         "image": "previews/pages/gallery.jpg"
       },
       {
-        "title": "Story",
+        "title": "Profile",
         "image": "previews/pages/story.jpg"
       },
       {

@@ -52,7 +52,7 @@ export function matches(person: Person, current: State = state) {
   if (current.categories.length && !current.categories.includes(person.category)) return false
   if (current.query.trim()) {
     const q = fold(current.query.trim())
-    return fold(`${person.name} ${person.trade} ${person.born}`).includes(q)
+    return fold(`${person.name} ${person.role} ${person.category} ${person.club} ${person.born}`).includes(q)
   }
   return true
 }

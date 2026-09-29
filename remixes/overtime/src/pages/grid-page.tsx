@@ -5,7 +5,7 @@ import { IntroLoader } from "@/components/intro-loader"
 import { SiteHeader } from "@/components/site-header"
 import { cn } from "@/lib/utils"
 
-const SEEN = "harbour-voices:intro-seen"
+const SEEN = "overtime:intro-seen"
 
 function seenIntro() {
   try {

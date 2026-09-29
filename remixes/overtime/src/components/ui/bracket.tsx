@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils"
  * in a terminal. On touch there is no hover, so the press gets the same block.
  */
 const bracketVariants = cva(
-  "group/bracket inline-flex min-h-11 items-center gap-[0.6em] whitespace-nowrap uppercase tracking-label select-none outline-none md:min-h-0",
+  "group/bracket inline-flex min-h-11 items-center gap-[0.6em] whitespace-nowrap font-mono uppercase tracking-label select-none outline-none md:min-h-0",
   {
     variants: {
       size: {

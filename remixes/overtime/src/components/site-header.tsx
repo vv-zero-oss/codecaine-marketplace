@@ -1,3 +1,4 @@
+import { X } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 
@@ -46,7 +47,10 @@ export function SiteHeader({
     <header
       className={cn(
         "pointer-events-none fixed inset-x-0 top-0 z-30 px-gutter pt-4 md:pt-5",
-        blend && "text-paper mix-blend-difference [--page-bg:var(--color-ink)] [--page-ink:var(--color-paper)]",
+        // A dark band under the words, fading out, so tiles pass beneath it
+        // the way they pass under a nav bar.
+        !blend && "bg-linear-to-b from-(--page-bg) from-40% to-transparent pb-8",
+        blend && "text-blend mix-blend-difference [--page-bg:var(--color-blend-inverse)] [--page-ink:var(--color-blend)]",
       )}
     >
       <div className="grid grid-cols-[1fr_auto] items-center gap-4 md:grid-cols-[1fr_auto_1fr]">
@@ -56,7 +60,7 @@ export function SiteHeader({
             event.preventDefault()
             go("/")
           }}
-          className="pointer-events-auto justify-self-start text-label uppercase tracking-label"
+          className="pointer-events-auto justify-self-start text-label font-mono uppercase tracking-label"
         >
           <ScrambleText text={`${count} ${project.name}`} />
         </Link>
@@ -87,7 +91,7 @@ export function SiteHeader({
               go("/about")
             }}
           >
-            About the project
+            About the issue
           </BracketLink>
         </div>
 
@@ -134,13 +138,13 @@ function Tools() {
                 className="flex items-center gap-2"
               >
                 <label htmlFor="search" className="sr-only">
-                  Search by name, trade or place
+                  Search by name, sport, club or city
                 </label>
                 <Input
                   id="search"
                   ref={input}
                   value={query}
-                  placeholder="Name, trade, place"
+                  placeholder="Name, sport, club"
                   onChange={(event) => filters.setQuery(event.target.value)}
                   onKeyDown={(event) => {
                     if (event.key === "Escape") {
@@ -156,7 +160,7 @@ function Tools() {
                     setSearching(false)
                   }}
                 >
-                  ×
+                  <X className="size-3.5" strokeWidth={1.75} />
                 </Bracket>
               </motion.div>
             ) : (
@@ -181,7 +185,7 @@ function Tools() {
             transition={{ duration: 0.32, ease: ease.outQuart }}
             className="pointer-events-auto -mx-gutter overflow-hidden border-0 p-0"
           >
-            <legend className="sr-only">Show only these kinds of story</legend>
+            <legend className="sr-only">Show only these sports</legend>
             <div className="no-scrollbar flex gap-x-6 gap-y-1 overflow-x-auto px-gutter pt-3 md:flex-wrap md:gap-x-7 md:pt-5">
               {categories.map((category, index) => (
                 <motion.label
@@ -211,7 +215,7 @@ function Tools() {
 /** Below `md`, the three views and the about page move into a sheet. */
 function MobileMenu({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false)
-  const links = [...VIEWS, { href: "/about", label: "About the project" }]
+  const links = [...VIEWS, { href: "/about", label: "About the issue" }]
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
@@ -219,7 +223,7 @@ function MobileMenu({ pathname }: { pathname: string }) {
       </SheetTrigger>
       <SheetContent className="px-gutter pt-4 pb-10">
         <div className="flex items-center justify-between">
-          <SheetTitle className="text-label uppercase tracking-label">{project.name}</SheetTitle>
+          <SheetTitle className="text-label font-mono uppercase tracking-label">{project.name}</SheetTitle>
           <SheetClose asChild>
             <Bracket>Close</Bracket>
           </SheetClose>

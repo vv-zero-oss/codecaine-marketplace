@@ -1,3 +1,4 @@
+import { Pause, Play } from "lucide-react"
 import { AnimatePresence, motion } from "motion/react"
 import { useEffect, useMemo, useRef, useState } from "react"
 
@@ -30,12 +31,14 @@ export function StoryText({ person }: { person: Person }) {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h2 className="text-label uppercase tracking-label">Story</h2>
+        <h2 className="font-mono text-label uppercase tracking-label">Profile</h2>
         <Bracket aria-expanded={open} aria-controls="story-text" onClick={() => setOpen((v) => !v)} className="tracking-normal">
           {open ? "–" : "+"}
-          <span className="sr-only">{open ? "Hide the story" : "Show the story"}</span>
+          <span className="sr-only">{open ? "Hide the profile" : "Show the profile"}</span>
         </Bracket>
       </div>
+
+      <p className="mt-5 text-headline font-light tracking-headline text-ink">{person.headline}</p>
 
       <AnimatePresence initial={false}>
         {open && (
@@ -116,7 +119,7 @@ function ReadAloud({ text, total, name }: { text: string; total: number; name: s
       <span className="tabular-nums">{clock(progress * total)}</span>
       <div
         role="progressbar"
-        aria-label={`Listening to ${name}'s story`}
+        aria-label={`Listening to ${name}'s profile`}
         aria-valuemin={0}
         aria-valuemax={100}
         aria-valuenow={Math.round(progress * 100)}
@@ -128,8 +131,8 @@ function ReadAloud({ text, total, name }: { text: string; total: number; name: s
           style={{ left: `${progress * 100}%` }}
         />
       </div>
-      <Bracket onClick={toggle} aria-label={playing ? "Pause" : "Read the story aloud"} className="tracking-normal">
-        {playing ? "❚❚" : "▸"}
+      <Bracket onClick={toggle} aria-label={playing ? "Pause" : "Read the profile aloud"} className="tracking-normal">
+        {playing ? <Pause className="size-3.5" strokeWidth={1.75} /> : <Play className="size-3.5" strokeWidth={1.75} />}
       </Bracket>
     </div>
   )

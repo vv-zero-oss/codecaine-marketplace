@@ -4,7 +4,7 @@ import { useRef, useState, type ReactNode } from "react"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { Input } from "@/components/ui/input"
-import { about, people, pexels, recorders, sessions } from "@/content"
+import { about, people, pexels, sessions, writers } from "@/content"
 import { ease, prefersReducedMotion, useSmoothScroll } from "@/lib/motion"
 import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
@@ -40,13 +40,13 @@ export function AboutPage({ pathname }: { pathname: string }) {
                 src={pexels(item.photo.photo, 700)}
                 alt=""
                 loading={index < 2 ? "eager" : "lazy"}
-                className="size-full object-cover"
+                className="size-full rounded-card object-cover"
               />
             </Float>
           ))}
 
           <div className="relative mx-auto max-w-[23rem] px-gutter md:px-0">
-            <h1 id="about-title" className="mb-8 text-ink">
+            <h1 id="about-title" className="mb-8 text-headline font-light tracking-headline text-ink">
               {about.title}
             </h1>
             <div className="flex flex-col gap-6 text-ink-soft">
@@ -73,13 +73,13 @@ export function AboutPage({ pathname }: { pathname: string }) {
                 src={pexels(s.photo, 500)}
                 alt=""
                 loading="lazy"
-                className="aspect-[4/3] w-[70vw] shrink-0 object-cover"
+                className="aspect-[4/3] w-[70vw] shrink-0 rounded-card object-cover"
               />
             ))}
           </div>
         </section>
 
-        <RecordersIndex />
+        <WritersIndex />
       </main>
       <SiteFooter />
     </div>
@@ -101,50 +101,50 @@ function Float({
   const drift = reduced ? 0 : speed * 60
   const y = useTransform(progress, [0, 1], [`${drift}vh`, `${-drift}vh`])
   return (
-    <motion.div aria-hidden style={{ y }} className={cn("absolute hidden overflow-hidden bg-paper-soft md:block", className)}>
+    <motion.div aria-hidden style={{ y }} className={cn("absolute hidden overflow-hidden rounded-card bg-paper-soft md:block", className)}>
       {children}
     </motion.div>
   )
 }
 
 /**
- * The volunteers who recorded the stories, with everyone each of them sat
- * down with. A row goes solid black under the pointer, as a line does when
- * it is selected in a terminal; SEARCH narrows the list to a name.
+ * The writers of the issue, with everyone each of them profiled. A row goes
+ * solid under the pointer, as a line does when it is selected in a terminal;
+ * SEARCH narrows the list to a name.
  */
-function RecordersIndex() {
+function WritersIndex() {
   const [query, setQuery] = useState("")
   const q = query.trim().toLowerCase()
-  const rows = recorders.filter(
-    (r) => !q || r.name.toLowerCase().includes(q) || r.people.some((p) => p.name.toLowerCase().includes(q)),
+  const rows = writers.filter(
+    (w) => !q || w.name.toLowerCase().includes(q) || w.people.some((p) => p.name.toLowerCase().includes(q)),
   )
 
   return (
-    <section aria-labelledby="recorders" className="px-gutter pt-10">
+    <section aria-labelledby="writers" className="px-gutter pt-10">
       <div className="flex items-end justify-between gap-6 border-b border-rule pb-3">
-        <h2 id="recorders" className="text-label uppercase tracking-label">
-          Recorded by
+        <h2 id="writers" className="text-label font-mono uppercase tracking-label">
+          Written by
         </h2>
         <label className="flex items-center gap-3">
-          <span className="text-label uppercase tracking-label">Search</span>
+          <span className="text-label font-mono uppercase tracking-label">Search</span>
           <Input
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            aria-label="Search volunteers and the people they recorded"
+            aria-label="Search writers and the athletes they profiled"
             className="w-[min(12rem,40vw)]"
           />
         </label>
       </div>
 
       <ul className="mt-4">
-        {rows.map((recorder) => (
+        {rows.map((writer) => (
           <li
-            key={recorder.name}
+            key={writer.name}
             className="group -mx-gutter grid grid-cols-1 gap-x-6 px-gutter py-2 transition-colors duration-(--duration-fast) hover:bg-ink hover:text-paper md:grid-cols-[minmax(0,1fr)_minmax(0,2.4fr)_auto] md:py-[0.3rem]"
           >
-            <span>{recorder.name}</span>
+            <span>{writer.name}</span>
             <span className="text-ink-muted group-hover:text-paper/70">
-              {recorder.people.map((p, index) => (
+              {writer.people.map((p, index) => (
                 <span key={p.slug}>
                   {index > 0 && ", "}
                   <Link href={`/story/${p.slug}`} className="underline-offset-4 hover:underline">
@@ -154,11 +154,11 @@ function RecordersIndex() {
               ))}
             </span>
             <Link
-              href={`/story/${recorder.people[0]?.slug ?? ""}`}
-              className="hidden uppercase tracking-label md:block"
-              aria-label={`Open the first story ${recorder.name} recorded`}
+              href={`/story/${writer.people[0]?.slug ?? ""}`}
+              className="hidden font-mono uppercase tracking-label md:block"
+              aria-label={`Open the first profile ${writer.name} wrote`}
             >
-              [Discover]
+              [Read]
             </Link>
           </li>
         ))}
