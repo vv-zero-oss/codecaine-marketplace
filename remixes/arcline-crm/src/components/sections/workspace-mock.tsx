@@ -229,7 +229,7 @@ export function WorkspaceMock({ tab, className }: { tab: WorkspaceTab; className
           ))}
         </div>
 
-        <div className="min-h-[340px] flex-1 p-3 md:min-h-[440px] md:p-4">
+        <div className="min-h-[340px] flex-1 p-3 md:min-h-[440px] md:p-4 lg:min-h-[560px] lg:p-5">
           <div className="mb-3 flex items-center gap-2">
             <span className="rounded-md bg-[color-mix(in_oklab,var(--color-violet)_70%,var(--color-void))] px-2 py-1 text-[11px] text-white">
               Overview

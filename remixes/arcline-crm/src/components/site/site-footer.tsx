@@ -1,4 +1,5 @@
 import { Container } from "@/components/ui/container"
+import { BrandLogo } from "@/components/ui/brand-logo"
 import { ButtonLink } from "@/components/ui/button"
 import { ArclineMark } from "@/components/ui/wordmark"
 import { FOOTER } from "@/content"
@@ -31,7 +32,7 @@ export function SiteFooter() {
           ))}
 
           <div className="col-span-2 flex flex-col gap-8 sm:col-span-3 lg:col-span-1 lg:border-l lg:border-line lg:pl-4">
-            <div className="flex flex-wrap gap-3 lg:mt-[360px] lg:flex-col lg:items-start">
+            <div className="flex flex-wrap gap-3 lg:mt-[300px] lg:flex-col lg:items-start">
               <ButtonLink href="#pricing" size="sm" className="h-11 px-6 text-[15px]">
                 Start for free
               </ButtonLink>
@@ -39,6 +40,19 @@ export function SiteFooter() {
                 Book a demo
               </ButtonLink>
             </div>
+            <ul className="flex gap-2">
+              {(["linkedin", "x"] as const).map((brand) => (
+                <li key={brand}>
+                  <a
+                    href={`#${brand}`}
+                    aria-label={brand === "x" ? "Arcline on X" : "Arcline on LinkedIn"}
+                    className="flex size-11 items-center justify-center rounded-full text-fg-soft transition-colors hover:bg-white/[0.06] hover:text-fg"
+                  >
+                    <BrandLogo brand={brand} aria-hidden />
+                  </a>
+                </li>
+              ))}
+            </ul>
             <ul className="flex flex-wrap gap-x-6 gap-y-3 lg:flex-col">
               {FOOTER.legal.map((item) => (
                 <li key={item}>

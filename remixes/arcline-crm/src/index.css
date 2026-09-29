@@ -207,15 +207,15 @@
 @layer utilities {
   /* Display type: light weight, tight tracking, tight leading. */
   .type-display {
-    font-weight: 350;
-    letter-spacing: -0.035em;
-    line-height: 0.98;
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1;
   }
 
   .type-heading {
-    font-weight: 350;
-    letter-spacing: -0.03em;
-    line-height: 1.05;
+    font-weight: 300;
+    letter-spacing: -0.022em;
+    line-height: 1.08;
   }
 
   .type-eyebrow {
