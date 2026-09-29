@@ -42,7 +42,7 @@
  * nothing about a real application — see the repository's CLAUDE.md. What it
  * proves is that the channel drives a real GSAP tween and a real Lenis rather
  * than a shape a test made up; whether a given real page holds either is a
- * separate question, and `e2e/live-sdk-motion.mjs` asks it of the template.
+ * separate question, and `e2e/live-sdk-motion.mjs` asks it of the remix.
  */
 
 import { useEffect, useRef } from "react"

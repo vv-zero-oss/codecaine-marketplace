@@ -3,7 +3,7 @@ import Lenis from "lenis"
 
 /**
  * Lenis carries the scroll, held in a ref — the pattern the scaffold this
- * template started from uses, and the place the canvas editor's SDK looks for
+ * remix started from uses, and the place the canvas editor's SDK looks for
  * it, so the editor can pause and resume it from its Motion controls.
  *
  * `lerp: 0.1` is the weight of the scroll: smooth, never floaty.

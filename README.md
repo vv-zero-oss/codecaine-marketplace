@@ -1,6 +1,6 @@
 # Codecaine Marketplace
 
-Templates, apps, design systems and skills for the canvas editor. The editor
+Remixes, apps, design systems and skills for the canvas editor. The editor
 reads this repository's catalog from GitHub Pages and installs from it.
 
 ```
@@ -11,7 +11,7 @@ https://vv-zero-oss.github.io/codecaine-marketplace/json/index.json
 
 | Folder | What an item is | Installs as |
 | --- | --- | --- |
-| `templates/` | A runnable project (`package.json`, `npm run dev`) with `@canvas/react` vendored in | A new project folder the editor opens as a live project |
+| `remixes/` | A runnable project (`package.json`, `npm run dev`) with `@canvas/react` vendored in | A new project folder the editor opens as a live project |
 | `apps/` | A canvas app: `canvas-app.json` and its panel | An app folder the editor's Apps directory lists, behind the usual consent screen |
 | `design-systems/` | A `DESIGN.md`: tokens in its front matter, rules in its body | `design-systems/<id>/DESIGN.md` inside a project, where the assistant reads it |
 | `skills/` | A `SKILL.md` for the assistant | A skill in the assistant's skills folder |
@@ -22,12 +22,12 @@ four kinds, described by `schemas/marketplace-item.schema.json`:
 ```jsonc
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
-  "type": "template",               // template | app | design-system | skill
+  "type": "remix",                  // remix | app | design-system | skill
   "id": "photographer-portfolio",   // kebab-case, equals the folder name
   "name": "Photographer Portfolio",
   "version": "1.0.0",               // semver; bump it and the editor offers an update
   "description": "…",
-  "sdkVersion": "0.1.0",            // the @canvas/react it vendors (templates)
+  "sdkVersion": "0.1.0",            // the @canvas/react it vendors (remixes)
   "canvasVersion": ">=0.0.1",       // editor versions it works with
   "authors": [{ "name": "Codecaine", "url": "https://github.com/vv-zero-oss" }],
   "license": "MIT",
@@ -48,7 +48,7 @@ and writes `json/`:
 
 ```
 json/index.json            the one URL the editor knows: a catalog per kind
-json/templates.json        every template: its marketplace.json + archive + source
+json/remixes.json          every remix: its marketplace.json + archive + source
 json/apps.json
 json/design-systems.json   + the palette and fonts read out of each DESIGN.md
 json/skills.json
@@ -58,13 +58,13 @@ Each catalog entry adds what only the build can know:
 
 ```jsonc
 "archive": {
-  "url": "archives/templates/photographer-portfolio-1.0.0.tgz",
+  "url": "archives/remixes/photographer-portfolio-1.0.0.tgz",
   "format": "tar+gzip",
   "sha256": "…",   // of the uncompressed tar — see below
   "size": 1234567,
   "files": 42
 },
-"source": { "repository": "https://github.com/vv-zero-oss/codecaine-marketplace", "ref": "main", "path": "templates/photographer-portfolio" }
+"source": { "repository": "https://github.com/vv-zero-oss/codecaine-marketplace", "ref": "main", "path": "remixes/photographer-portfolio" }
 ```
 
 URLs are relative to `index.json`'s `root` (`"../"`), itself relative to the
@@ -86,7 +86,7 @@ everywhere, while gzip output depends on the zlib that produced it.
 ## Adding an item
 
 1. Make the folder under the right kind, with a `marketplace.json`.
-2. Templates: `npm install && npm run build` must pass inside it, and
+2. Remixes: `npm install && npm run build` must pass inside it, and
    `npm run demos <id>` at the root builds its live demo. Don't commit
    `node_modules` or `dist` (they are never packed anyway).
 3. At the root: `npm run build`, then commit the item **and** what the build
@@ -94,8 +94,8 @@ everywhere, while gzip output depends on the zlib that produced it.
    fails when they are stale.
 4. Merge to `main`; Pages serves it as committed.
 
-Templates also carry previews for their page in the editor — the site at
-desktop and phone width and a picture of each page. With the template's dev
+Remixes also carry previews for their page in the editor — the site at
+desktop and phone width and a picture of each page. With the remix's dev
 server running:
 
 ```bash
@@ -105,23 +105,23 @@ node scripts/capture-previews.mjs <id> http://localhost:<port>
 It writes `preview.png`, `previews/` and the `previews` field of
 `marketplace.json` (Playwright required; see the script's header).
 
-Every template also has a **live demo**: the project built to static files in
+Every remix also has a **live demo**: the project built to static files in
 `demos/<id>/`, which the editor's item page frames as its preview and opens
 with **Open in browser** — on Pages at
 `https://vv-zero-oss.github.io/codecaine-marketplace/demos/<id>/`.
 
 ```bash
-npm run demos              # every template: npm ci if needed, vite build --base ./
+npm run demos              # every remix: npm ci if needed, vite build --base ./
 npm run demos <id>         # one
 ```
 
 The build is relative (`--base ./`), so the same files run from Pages, from
-`_site/` and from any folder. A template with its own router must add
+`_site/` and from any folder. A remix with its own router must add
 `import.meta.env.BASE_URL` to the paths it pushes (see
-`templates/photographer-portfolio/src/router.tsx`). `demos/<id>/demo.json`
+`remixes/photographer-portfolio/src/router.tsx`). `demos/<id>/demo.json`
 records the hash of the archive the demo was built from; `npm run build` lists
 the demo in the catalog as `demoUrl` only while that is the archive it
-publishes, and fails (as does `npm run check`) when a template changed and its
+publishes, and fails (as does `npm run check`) when a remix changed and its
 demo was not rebuilt. Every item
 can also list `designedFor` — the "Designed for" bullets on its page — and an
 `icon`.
@@ -146,7 +146,7 @@ Jekyll turning every DESIGN.md and SKILL.md into HTML. Commit them with the
 item.
 
 `npm run check`, run by the **Catalog** workflow on every push and pull
-request, fails when any of them no longer matches the items. Every template's
+request, fails when any of them no longer matches the items. Every remix's
 build is checked there as well.
 
 An archive is only rewritten when its contents change, because gzip output
@@ -161,8 +161,8 @@ unaffiliated**; the names and marks belong to their owners, and several of the
 typefaces they name are proprietary — each file's *Note on Font Substitutes*
 says what to use instead.
 
-The photographer template's photographs are Picsum placeholders keyed by seed
+The photographer remix's photographs are Picsum placeholders keyed by seed
 (`src/content.ts`). Its previews were captured with `--stub-images` on a
 machine that could not reach Picsum, so they show tonal placeholders where the
-running template shows photographs; re-capture without the flag to replace
+running remix shows photographs; re-capture without the flag to replace
 them.

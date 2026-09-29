@@ -1,6 +1,6 @@
 # The scaffolding project, with the SDK
 
-> **Marketplace template.** Copied from `scaffold-sdk/` in the canvas
+> **Marketplace remix.** Copied from `scaffold-sdk/` in the canvas
 > repository. The one difference: `@canvas/react` is vendored into
 > `src/lib/canvas-react/` (see `vite.config.ts`) because the package is not
 > published yet, so references below to `../sdk/src` and to running it from

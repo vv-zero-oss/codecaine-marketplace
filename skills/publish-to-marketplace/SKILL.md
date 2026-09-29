@@ -1,6 +1,6 @@
 ---
 name: publish-to-marketplace
-description: Add or update a template, app, design system or skill in the Codecaine marketplace repository (vv-zero-oss/codecaine-marketplace) — folder layout, the marketplace.json every item carries, and the index build that GitHub Pages serves to the canvas editor. Use when asked to publish, list, add or release something to the marketplace.
+description: Add or update a remix, app, design system or skill in the Codecaine marketplace repository (vv-zero-oss/codecaine-marketplace) — folder layout, the marketplace.json every item carries, and the index build that GitHub Pages serves to the canvas editor. Use when asked to publish, list, add or release something to the marketplace.
 ---
 
 # Publish to the Codecaine marketplace
@@ -13,7 +13,7 @@ folders by `npm run build`; never edit `json/*.json` by hand.
 
 | Kind | Folder | Required files |
 | --- | --- | --- |
-| Template | `templates/<id>/` | `marketplace.json`, `package.json`, the project |
+| Remix | `remixes/<id>/` | `marketplace.json`, `package.json`, the project |
 | App | `apps/<id>/` | `marketplace.json`, `canvas-app.json`, its panel |
 | Design system | `design-systems/<id>/` | `marketplace.json`, `DESIGN.md` |
 | Skill | `skills/<id>/` | `marketplace.json`, `SKILL.md` |
@@ -24,7 +24,7 @@ folders by `npm run build`; never edit `json/*.json` by hand.
 
 See `schemas/marketplace-item.schema.json` for the full shape. Every item has
 `type`, `id`, `name`, `version` (semver), `description`, `authors`,
-`keywords`, `categories`, `created`, `updated`, `license`. Templates add
+`keywords`, `categories`, `created`, `updated`, `license`. Remixes add
 `sdkVersion` (the `@canvas/react` version they vendor), `meta.devCommand`,
 `meta.port` and `pages`. Apps name their manifest in `entry` and the
 manifest's `id` goes in `meta.appId`.
@@ -34,12 +34,12 @@ manifest's `id` goes in `meta.appId`.
 1. Create or edit the folder.
 2. Bump `version` and set `updated` to today whenever the contents change —
    the editor offers an update when the version moves.
-3. Templates: `npm install && npm run build` inside the template must pass, and
+3. Remixes: `npm install && npm run build` inside the remix must pass, and
    `node_modules`/`dist` must not be committed.
-   Mark the template's structural wrappers — `#root`, the page wrapper,
+   Mark the remix's structural wrappers — `#root`, the page wrapper,
    `<main>`, a centring `Container` — with `data-canvas-ignore`, so the
    editor's pointer looks through them to the content (see `CLAUDE.md`).
-4. Templates: from the repository root, `npm run demos <id>` builds its live
+4. Remixes: from the repository root, `npm run demos <id>` builds its live
    demo into `demos/<id>/` (relative base, so a router must add
    `import.meta.env.BASE_URL` to the paths it pushes). Commit it.
 5. From the repository root: `npm run build`, then `npm run check`. The build
