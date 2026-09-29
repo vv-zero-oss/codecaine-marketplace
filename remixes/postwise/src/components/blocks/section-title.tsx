@@ -49,7 +49,7 @@ export function SectionTitle({
         {lineOne}
         {accentPosition === "end" && em && <> {em}</>}
         {(lineTwo || accentPosition === "line-two") && <br className="hidden sm:block" />}
-        {accentPosition === "line-two" && em && <>{em} </>}
+        {accentPosition === "line-two" && em && <> {em}</>}
         {lineTwo && <> {lineTwo}</>}
         {children}
       </Tag>

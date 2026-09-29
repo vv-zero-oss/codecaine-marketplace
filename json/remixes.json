@@ -616,7 +616,7 @@
       "archive": {
         "url": "archives/remixes/postwise-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "f07d3243fef47f7d865786065962b68b8d531a17ca22d981a3f9861a54014b6a",
+        "sha256": "356347cf1ddfda31eb6bca04de7ce76522a89878f696d98d0d3070c95ac23252",
         "size": 487424,
         "files": 82
       },
