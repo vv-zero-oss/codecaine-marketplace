@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "template",
+  "id": "harbour-voices",
+  "name": "Harbour Voices",
+  "version": "1.0.0",
+  "description": "An oral-history archive as an infinite WebGL canvas: eighty-four portraits on an endless, draggable sheet, with a list view, a full-screen gallery, a story page per person and an about page with the people who recorded them.",
+  "designedFor": [
+    "Archives, memorials and oral-history projects with a face and a story per person",
+    "Portfolios and collections that want to be explored by dragging rather than scrolling",
+    "Illustration or photography series with dozens to hundreds of square pieces",
+    "Seeing a WebGL canvas, a text-first detail page and a typewriter aesthetic in one project the editor can read"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "archive",
+    "gallery",
+    "infinite-canvas",
+    "webgl",
+    "portraits",
+    "oral-history",
+    "monospace",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Portfolio",
+    "Creative"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-29",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3130
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Grid"
+    },
+    {
+      "path": "/list",
+      "title": "List"
+    },
+    {
+      "path": "/gallery",
+      "title": "Gallery"
+    },
+    {
+      "path": "/story/anselmo-duarte-rivas",
+      "title": "Story"
+    },
+    {
+      "path": "/about",
+      "title": "About"
+    }
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Grid",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "List",
+        "image": "previews/pages/list.jpg"
+      },
+      {
+        "title": "Gallery",
+        "image": "previews/pages/gallery.jpg"
+      },
+      {
+        "title": "Story",
+        "image": "previews/pages/story.jpg"
+      },
+      {
+        "title": "About",
+        "image": "previews/pages/about.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
+}
