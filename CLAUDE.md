@@ -122,6 +122,9 @@ writing any UI: `npx skills add emilkowalski/skill -s '*' -a claude-code -y --co
   exists and what it adds. If it only adds movement, cut it. Subtle value is
   the bar; micro-interactions (a hover, a press, a toggle, a copied state) are
   always welcome. Respect `prefers-reduced-motion`.
+- **Complex motion is a component the editor can drive** — named, with its
+  knobs as scalar props, its library instance held in a ref, and its hidden
+  states registered as actions (section 11).
 
 ### 4. Images: Pexels
 
@@ -327,3 +330,87 @@ In the editor, the same attribute is set or cleared from a layer's right-click
 menu (canvas or layers panel): **Ignore on canvas** / **Stop ignoring on
 canvas**. Marked layers show a crossed-out cursor in the layers panel. See
 `docs/canvas-ignore.md` in the canvas repository.
+
+### 11. Complex motion is built as editor-ready components, and everything stays editable
+
+Animations and interactive pieces are written so the canvas editor's SDK
+(`@canvas/react`, vendored in `src/lib/canvas-react/`) can see them, name them,
+edit them and control them. The person designing in the editor must be able to
+change **everything** on the page — content, styling, variants and motion —
+without opening the code. A piece they cannot reach from the editor is not
+finished.
+
+**Build every complex animation as its own component.** A marquee, a parallax
+layer, a scroll-scrubbed reveal, a text split, a counter, a carousel, a
+staggered grid, a cursor follower, a Lottie or a 3D scene is a named component
+in `components/motion/` (or beside the section that owns it), never an
+anonymous block of effects inside a section:
+
+- **One named function component per piece** (`Marquee`, `ScrollReveal`,
+  `CountUp`), so the layers panel reads its name instead of
+  `div.flex.overflow-hidden`. The name must belong to the component nearest
+  the element it renders — do not hide it behind `asChild`/`Slot` or a bare
+  delegation to another component, or the editor reports that one instead.
+- **Every knob is a prop, and the prop is a scalar.** The editor's panel reads
+  and overrides `string`, `number`, `boolean` and `null` only, so expose
+  `speed`, `duration`, `delay`, `stagger`, `distance`, `direction`,
+  `easing`, `loop`, `autoplay`, `paused` and the like as plain props with
+  defaults — not as an options object, a function or a config imported from a
+  file. Content (text, image `src`, `alt`, `href`, counts) is props too.
+- **Closed sets are string-literal unions** (`direction: "left" | "right"`,
+  `easing: "out" | "in-out" | "spring"`, or a `cva` variant), so
+  `canvasPropOptions()` turns them into dropdowns. Map the name to the real
+  curve inside the component, from the motion tokens in `index.css`.
+- **Read props live.** An override re-renders the component with the new
+  value, so a change of `speed` or `direction` must restart or retarget the
+  animation — put those props in the effect's dependency list (or derive the
+  Framer Motion values from them) rather than reading them once on mount.
+- **Styling stays on the element**, in Tailwind classes and tokens, and a
+  `className` prop is passed through with `cn()`, so what the editor restyles
+  is the real element and not an inner wrapper it cannot reach. Only a purely
+  structural inner wrapper (a marquee's track) gets `data-canvas-ignore`
+  (section 10); the component's own root and every item in it stay pickable.
+
+**Keep motion controllable from the editor's Motion switch** (Playing /
+Stop / Reduced):
+
+- Prefer Framer Motion and CSS: they run through the Web Animations API or
+  stylesheets, which the editor already stops, finishes and reduces.
+- **A `requestAnimationFrame`-driven library — GSAP, Lenis, anime.js, Embla,
+  Lottie, Three.js/R3F — is held in a `useRef` (or state) for the component's
+  lifetime** and torn down on unmount, as `src/components/motion.ts` in
+  `sdk-scaffold` does. The SDK finds these instances by walking React's tree;
+  a `gsap.to(…, { repeat: -1 })` or `new Lenis()` created inside an effect and
+  dropped is invisible to it and can never be paused from the editor. Use
+  `useGSAP` / a `gsap.context`, `react-lenis`, or a plain ref — never a
+  fire-and-forget instance.
+- **Respect reduced motion through the query, not a one-off check**:
+  `useReducedMotion()` from Framer Motion or `matchMedia` read when needed.
+  The editor's Reduced mode answers that query yes from inside the page, so a
+  component that honours it is reduced in the editor for free.
+- **Read `useCanvasDesignMode()`** where a piece should behave differently
+  while it is being designed: stop an autoplaying carousel advancing under the
+  cursor, skip a once-per-session intro, hold an entrance at its end state. It
+  answers `designing: false` in production, so the live site is unchanged.
+
+**Every hidden state gets a switch.** Anything one interaction deep — an open
+menu, a mobile `Sheet`, a dialog, a toast, a tab or accordion item, a hover
+state worth styling, a form's error or success, a carousel slide, a
+wizard step, an animation's end state — is registered with
+`useCanvasAction` beside the state it is about, with `{ on }` so the editor
+shows a toggle (see `src/components/support-drawer.tsx` in `sdk-scaffold`):
+
+```tsx
+const [open, setOpen] = useState(false)
+useCanvasAction("Mobile menu", (next) => setOpen(next ?? !open), { on: open })
+```
+
+Group related ones with `group` (`"Pricing"`, `"Hero"`), and label them the
+way a designer would say them.
+
+**Before calling it done**, open the remix in the editor (or check the SDK's
+answers) and confirm: each animated component shows up by name in the layers
+panel; its props are listed and editing them changes the animation live;
+the Motion switch stops, reduces and resumes every moving thing on the page
+(the ⓘ lists nothing it could only *see*); and every hidden state is reachable
+from the Actions row without Interact mode.
