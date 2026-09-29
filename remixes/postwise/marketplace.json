@@ -1,0 +1,70 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "postwise",
+  "name": "Postwise — AI Email",
+  "version": "1.0.0",
+  "description": "A warm, light landing page for Postwise, an AI email assistant: a hero lit by a drifting ember-and-lilac glow with a hand-drawn paper plane, a dark copilot section with floating notes and drifting signal rows, a clickable deck of feature cards, persona tabs, a colourful results bento, a wall of love and poster-type calls to action.",
+  "designedFor": [
+    "AI email, inbox and productivity tools",
+    "SaaS products that want a light, editorial page with one dark act in the middle",
+    "Sales, support and communication platforms with several audiences to speak to",
+    "Seeing a stacked card deck, parallax columns and scroll-linked hero motion built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Rhea Castellanos"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "email",
+    "inbox",
+    "productivity",
+    "saas",
+    "landing",
+    "gradient",
+    "card-deck",
+    "bento",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "SaaS"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-29",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3170
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  }
+}

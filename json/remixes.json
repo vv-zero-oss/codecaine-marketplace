@@ -5,6 +5,74 @@
   "items": [
     {
       "type": "remix",
+      "id": "arcline-crm",
+      "name": "Arcline — AI CRM",
+      "version": "1.0.0",
+      "description": "A dark landing page for Arcline, an AI CRM: a self-typing ask box inside a border beam, a signal-to-deal flow diagram, animated agent readouts, a tabbed product window, drifting customer logos, pricing, FAQ and a giant-wordmark footer.",
+      "designedFor": [
+        "AI and SaaS products that want a dark, editorial landing page",
+        "CRM, sales and revenue tools",
+        "Seeing Framer Motion, Lenis and CSS loops built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Maren Voss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "crm",
+        "saas",
+        "landing",
+        "dark",
+        "border-beam",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-29",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3160
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "path": "remixes/arcline-crm",
+      "iconUrl": "remixes/arcline-crm/icon.svg",
+      "archive": {
+        "url": "archives/remixes/arcline-crm-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "6c99e1a68ea54a43d6a1785cb61053196b15799cd9f94d34be694aecb502dbf3",
+        "size": 477696,
+        "files": 73
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/arcline-crm"
+      }
+    },
+    {
+      "type": "remix",
       "id": "coastal-residence",
       "name": "Coastal Residence",
       "version": "1.0.0",
@@ -463,6 +531,101 @@
         "path": "remixes/photographer-portfolio"
       },
       "demoUrl": "demos/photographer-portfolio/"
+    },
+    {
+      "type": "remix",
+      "id": "postwise",
+      "name": "Postwise — AI Email",
+      "version": "1.0.0",
+      "description": "A warm, light landing page for Postwise, an AI email assistant: a hero lit by a drifting ember-and-lilac glow with a hand-drawn paper plane, a dark copilot section with floating notes and drifting signal rows, a clickable deck of feature cards, persona tabs, a colourful results bento, a wall of love and poster-type calls to action.",
+      "designedFor": [
+        "AI email, inbox and productivity tools",
+        "SaaS products that want a light, editorial page with one dark act in the middle",
+        "Sales, support and communication platforms with several audiences to speak to",
+        "Seeing a stacked card deck, parallax columns and scroll-linked hero motion built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Rhea Castellanos"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "email",
+        "inbox",
+        "productivity",
+        "saas",
+        "landing",
+        "gradient",
+        "card-deck",
+        "bento",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-29",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3170
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "path": "remixes/postwise",
+      "thumbnailUrl": "remixes/postwise/preview.png",
+      "iconUrl": "remixes/postwise/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/postwise/previews/desktop.jpg",
+        "mobile": "remixes/postwise/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/postwise/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/postwise-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "f07d3243fef47f7d865786065962b68b8d531a17ca22d981a3f9861a54014b6a",
+        "size": 487424,
+        "files": 82
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/postwise"
+      },
+      "demoUrl": "demos/postwise/"
     },
     {
       "type": "remix",
