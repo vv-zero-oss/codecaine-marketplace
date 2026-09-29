@@ -306,7 +306,7 @@
       "archive": {
         "url": "archives/remixes/sdk-scaffold-1.1.2.tgz",
         "format": "tar+gzip",
-        "sha256": "82dbf30743806f317e74c8cfae1f0a46b525afc3b015de2acf89d1c85dfe094f",
+        "sha256": "71e0789c6c9b451a2e2cd1caf0d4a2258c25c40cd016a87a095d2a3e40db65e7",
         "size": 275968,
         "files": 46
       },
