@@ -32,9 +32,9 @@ export function Intro() {
     <section id="intro" className="pt-20 pb-[var(--spacing-section)] md:pt-[100px]">
       <Container>
         <div className="grid gap-8 lg:grid-cols-[1fr_35.3%] lg:gap-0">
-          <Reveal className="relative z-10 rounded-br-[var(--radius-media)] bg-ink pt-0 lg:pt-[100px] lg:pr-16 lg:pb-[170px]">
+          <Reveal className="relative z-0 rounded-br-[var(--radius-media)] bg-ink pt-0 lg:pt-[100px] lg:pr-16 lg:pb-[120px]">
             <Badge>{INTRO.badge}</Badge>
-            <h2 className="type-display mt-6 text-[clamp(40px,5.6vw,106px)] leading-[0.98] text-fg md:mt-10">
+            <h2 className="type-display mt-6 text-[clamp(40px,5vw,96px)] leading-[0.98] text-fg md:mt-10">
               <span className="block">{INTRO.title[0]}</span>
               <span className="block">
                 {INTRO.title[1]}
@@ -46,7 +46,7 @@ export function Intro() {
             </p>
           </Reveal>
 
-          <Reveal delay={0.1} className="relative z-20 lg:pt-[100px]">
+          <Reveal delay={0.1} className="relative z-20 lg:-mb-[50px] lg:self-end">
             <ParallaxImage
               src={photo("cubes", 1400)}
               alt={PHOTOS.cubes.alt}
@@ -56,7 +56,7 @@ export function Intro() {
           </Reveal>
         </div>
 
-        <Reveal className="relative z-0 mt-4 lg:-mt-[50px] lg:w-[67.6%]">
+        <Reveal className="relative z-10 mt-4 lg:mt-0 lg:w-[67.6%]">
           <ParallaxImage
             src={photo("sculpture", 2000)}
             alt={PHOTOS.sculpture.alt}

@@ -23,6 +23,9 @@ const LOGOS = {
   discord: { ratio: 256 / 199, height: 22, name: "Discord" },
   loom: { ratio: 1, height: 24, name: "Loom" },
   gmail: { ratio: 512 / 399.4, height: 22, name: "Gmail" },
+  "slack-mark": { ratio: 1, height: 24, name: "Slack" },
+  linkedin: { ratio: 1, height: 20 },
+  x: { ratio: 1200 / 1227, height: 18 },
 } as const
 
 export type Brand = keyof typeof LOGOS

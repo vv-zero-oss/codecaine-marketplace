@@ -69,7 +69,7 @@ export function LogoSwap({
               exit={{ y: "-110%", opacity: 0 }}
               transition={{ ...curve(easing, duration), delay: i * stagger }}
             >
-              <BrandLogo brand={brand as Brand} scale={0.95} />
+              <BrandLogo brand={brand as Brand} scale={0.95} className="max-md:scale-[0.72]" />
             </motion.span>
           </AnimatePresence>
         </div>

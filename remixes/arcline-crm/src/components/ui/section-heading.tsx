@@ -4,7 +4,8 @@ import { cn } from "@/lib/utils"
 
 /**
  * A section's title: light, tight and large, one line per string in `lines`
- * so the breaks are the ones the copy was written with.
+ * so the breaks are the ones the copy was written with — from `md` up; on a
+ * phone the lines run on and wrap wherever they fit.
  */
 export function SectionHeading({
   lines,
@@ -30,8 +31,9 @@ export function SectionHeading({
       )}
     >
       {lines?.map((line, i) => (
-        <span key={i} className="block">
+        <span key={i} className="md:block">
           {line}
+          {i < lines.length - 1 && " "}
         </span>
       ))}
       {children}

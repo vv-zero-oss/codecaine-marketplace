@@ -56,20 +56,43 @@
         }
       ],
       "icon": "icon.svg",
+      "thumbnail": "preview.png",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
       "path": "remixes/arcline-crm",
+      "thumbnailUrl": "remixes/arcline-crm/preview.png",
       "iconUrl": "remixes/arcline-crm/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/arcline-crm/previews/desktop.jpg",
+        "mobile": "remixes/arcline-crm/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/arcline-crm/previews/pages/home.jpg"
+          }
+        ]
+      },
       "archive": {
         "url": "archives/remixes/arcline-crm-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "6c99e1a68ea54a43d6a1785cb61053196b15799cd9f94d34be694aecb502dbf3",
-        "size": 477696,
-        "files": 73
+        "sha256": "0d9375bd8a68538ef33f78ae2c12679b6e287d9e15f0aa0390db530e986dd37c",
+        "size": 491008,
+        "files": 81
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
         "path": "remixes/arcline-crm"
-      }
+      },
+      "demoUrl": "demos/arcline-crm/"
     },
     {
       "type": "remix",

@@ -1,84 +1,54 @@
 /**
- * Quartz — the scaffolding project, authored as components.
+ * Arcline — a landing page for an AI CRM.
  *
- * The same marketing page as `scaffold/`, block for block and class for class:
- * hero, logo cloud, features, integrations, stats, testimonials, pricing,
- * FAQs, CTA, footer. Same words, same Tailwind theme, same Radix accordion,
- * same awkward shapes on purpose — `mx-auto` containers, `absolute` inside
- * `relative`, a grid inside a grid, inline SVG, a sticky header and a
- * `min-h-[100vh]` hero.
- *
- * One difference: this one is written as components with names, and it adds
- * `@canvas/react` (see `src/main.tsx`). So the editor's layers panel reads
- * `Hero`, `FeatureCard`, `PlanCard`, `ButtonLink` here and
- * `section`, `div.rounded-2xl`, `a.inline-flex` there — off the same document.
- *
- * That is the whole of the comparison, and it is why the page is a copy rather
- * than a shared module: `scaffold/` has to stay a project that knows nothing
- * about this editor, and a component library the two of them share would make
- * it one that does.
+ * The page reads as a list of sections, in the order a visitor's questions
+ * come: what is it (Hero), can I trust it (Intro), how does it work
+ * (Intelligence), what's new (Showcase), what does it do (Features), what is
+ * it like (Workspace), does it work (Proof), what does it cost (Pricing),
+ * what about… (Faq), what else (Journal) and — now what (CallToAction).
  */
 
-import { useSmoothScroll } from "@/components/motion"
-import { SupportDrawer } from "@/components/support-drawer"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
+import { SmoothScroll } from "@/components/motion/smooth-scroll"
 import { CallToAction } from "@/components/sections/call-to-action"
 import { Faq } from "@/components/sections/faq"
 import { Features } from "@/components/sections/features"
 import { Hero } from "@/components/sections/hero"
-import { Integrations } from "@/components/sections/integrations"
-import { LogoCloud } from "@/components/sections/logo-cloud"
+import { Intelligence } from "@/components/sections/intelligence"
+import { Intro } from "@/components/sections/intro"
+import { Journal } from "@/components/sections/journal"
 import { Pricing } from "@/components/sections/pricing"
-import { Stats } from "@/components/sections/stats"
-import { Testimonials } from "@/components/sections/testimonials"
+import { Proof } from "@/components/sections/proof"
+import { Showcase } from "@/components/sections/showcase"
+import { Workspace } from "@/components/sections/workspace"
+import { SiteFooter } from "@/components/site/site-footer"
+import { SiteHeader } from "@/components/site/site-header"
 
-/** In the order they appear. The id is the section's own `id` attribute, so
- *  `?only=` and an anchor link agree about what a block is called. */
 const SECTIONS = [
   { id: "top", Section: Hero },
-  { id: "logos", Section: LogoCloud },
+  { id: "intro", Section: Intro },
+  { id: "qualify", Section: Intelligence },
+  { id: "agents", Section: Showcase },
   { id: "features", Section: Features },
-  { id: "integrations", Section: Integrations },
-  { id: "stats", Section: Stats },
-  { id: "testimonials", Section: Testimonials },
+  { id: "workspace", Section: Workspace },
+  { id: "customers", Section: Proof },
   { id: "pricing", Section: Pricing },
   { id: "faq", Section: Faq },
+  { id: "blog", Section: Journal },
   { id: "cta", Section: CallToAction },
 ]
 
-/**
- * `?only=<id>` renders one block on its own.
- *
- * A convenience for the fidelity suite, and an honest one: it changes which
- * blocks are on the page, never how any of them is built. A block measured
- * alone is the same markup, the same classes and the same stylesheet as the
- * block measured in place — which is what lets a test carry it out of the
- * project and back without the rest of the page reflowing underneath it
- * between the two measurements.
- *
- * It filters the list rather than wrapping each block in a `<Show>`, because a
- * wrapper is a component too: every section would report `Show` as the
- * innermost component it is the root of, and the panel would name ten layers
- * after the thing that decided whether to render them.
- */
+/** `?only=<id>` renders one section on its own, for screenshots and checks. */
 function sections() {
   const only = new URLSearchParams(window.location.search).get("only")
   return only ? SECTIONS.filter((entry) => entry.id === only) : SECTIONS
 }
 
-/** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
- *  nothing of their own to design, so the canvas editor looks through them
- *  to what they hold (they stay in its layers panel). See CLAUDE.md. */
+/** `data-canvas-ignore` on the page wrapper and `<main>`: structural, so the
+ *  canvas editor looks through them (they stay in its layers panel). */
 export default function App() {
-  // A `requestAnimationFrame` loop owned by a bundled module, which is the one
-  // kind of motion an editor cannot reach from outside the page. See
-  // `components/motion.ts` — it is here so the SDK's motion channel has
-  // something real to drive, and it is a fixture, on purpose.
-  useSmoothScroll()
-
   return (
-    <div className="bg-white text-quartz-900" data-canvas-ignore>
+    <div className="min-h-screen bg-ink text-fg" data-canvas-ignore>
+      <SmoothScroll />
       <SiteHeader />
       <main data-canvas-ignore>
         {sections().map(({ id, Section }) => (
@@ -86,9 +56,6 @@ export default function App() {
         ))}
       </main>
       <SiteFooter />
-      {/* A state the page is one click away from, which is what a project
-          registers an action for. */}
-      <SupportDrawer />
     </div>
   )
 }
