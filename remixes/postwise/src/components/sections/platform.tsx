@@ -11,10 +11,10 @@ import { PLATFORM } from "@/content"
 export function Platform() {
   return (
     <section id="platform" className="relative overflow-hidden py-section">
-      {/* The lilac light either side of the deck */}
+      {/* The mint light either side of the deck */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-[10%] h-[45%]">
-        <div className="absolute -left-[8%] h-full w-[30%] rotate-12 bg-[radial-gradient(closest-side,var(--color-lavender),transparent)] blur-2xl" />
-        <div className="absolute -right-[8%] h-full w-[30%] -rotate-12 bg-[radial-gradient(closest-side,var(--color-lilac),transparent)] opacity-70 blur-2xl" />
+        <div className="absolute -left-[8%] h-full w-[30%] rotate-12 bg-[radial-gradient(closest-side,var(--color-mist),transparent)] blur-2xl" />
+        <div className="absolute -right-[8%] h-full w-[30%] -rotate-12 bg-[radial-gradient(closest-side,var(--color-mint),transparent)] opacity-70 blur-2xl" />
       </div>
       <Container className="relative">
         <Reveal className="flex flex-col items-center gap-4 text-center">

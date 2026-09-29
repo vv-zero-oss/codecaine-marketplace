@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 
 import { AppWindow, Initials, Tag } from "@/components/mock/parts"
+import { LogoMark } from "@/components/ui/wordmark"
 import { cn } from "@/lib/utils"
 
 const THREADS = [
@@ -44,7 +45,7 @@ export function InboxMock({ showPlay = true, className }: { showPlay?: boolean; 
         {/* Rail */}
         <div className="flex w-12 flex-col items-center gap-4 border-r border-line py-4 text-ink-subtle">
           <span className="grid size-7 place-items-center rounded-[7px] bg-ink text-white">
-            <svg viewBox="0 0 24 24" className="size-3.5" fill="currentColor"><path d="M2 11.6 22 2.5l-4.3 18.3-5.6-5.7-4 3.8v-5.6L19.4 5 10 13.1Z" /></svg>
+            <LogoMark className="size-3.5" />
           </span>
           <Inbox className="size-4 text-ink" />
           <Star className="size-4" />
@@ -99,7 +100,7 @@ export function InboxMock({ showPlay = true, className }: { showPlay?: boolean; 
             <Initials name="Jacob Moreno" tone="bg-[#4f9e6a]" className="size-8" />
             <span className="flex flex-col">
               <span className="flex items-center gap-2 text-[13px] font-medium">
-                Jacob Moreno <span className="rounded bg-[#e6f4e8] px-1.5 text-[10px] font-normal text-[#2f7a45]">Contract</span>
+                Jacob Moreno <span className="rounded bg-sprout px-1.5 text-[10px] font-normal text-ink-soft">Contract</span>
               </span>
               <span className="text-[10.5px] text-ink-subtle">Counsel at Acme Legal · 9:12</span>
             </span>
@@ -147,7 +148,7 @@ export function InboxMock({ showPlay = true, className }: { showPlay?: boolean; 
             <span className="text-[11px] text-ink-subtle">Edit</span>
             <span className="text-[11px] text-ink-subtle">· Shorter</span>
             <span className="text-[11px] text-ink-subtle">· More formal</span>
-            <span className="ml-auto inline-flex items-center gap-1.5 rounded-[6px] bg-app-blue px-4 py-1.5 text-[11.5px] font-medium text-white">
+            <span className="ml-auto inline-flex items-center gap-1.5 rounded-[6px] bg-app-accent px-4 py-1.5 text-[11.5px] font-medium text-white">
               <Send className="size-3" /> Send reply
             </span>
           </div>

@@ -12,10 +12,10 @@ import { avatar } from "@/lib/photos"
 import { cn } from "@/lib/utils"
 
 const TONES: Record<ResultTone, string> = {
-  butter: "bg-butter",
-  mint: "bg-mint",
-  iris: "bg-iris",
-  blossom: "bg-blossom",
+  sand: "bg-sand",
+  sprout: "bg-sprout",
+  sky: "bg-sky",
+  peach: "bg-peach",
 }
 
 /** The hover face of a result card: the card goes quiet and offers the story. */

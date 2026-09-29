@@ -128,7 +128,7 @@ function DeliverabilityMock() {
             </span>
             <span className="w-12 font-medium">{name}</span>
             <span className="flex-1 truncate text-[10.5px] text-ink-subtle">{note}</span>
-            {!ok && <span className="rounded-[5px] bg-app-blue px-1.5 py-0.5 text-[10px] text-white">Fix</span>}
+            {!ok && <span className="rounded-[5px] bg-app-accent px-1.5 py-0.5 text-[10px] text-white">Fix</span>}
           </div>
         ))}
       </div>

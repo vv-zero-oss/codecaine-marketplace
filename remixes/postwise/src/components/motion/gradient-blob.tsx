@@ -3,7 +3,7 @@ import type * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * The hero's light: two soft shapes — a warm ember and a lilac — blurred
+ * The hero's light: sea-glass teal, mint and a warm apricot, blurred
  * into each other behind the headline, drifting and reshaping slowly.
  *
  * CSS keyframes (`blob` in `index.css`), so the editor's Motion switch stops
@@ -30,17 +30,17 @@ export function GradientBlob({
       style={{ opacity: intensity, filter: `blur(${blur}px)` } as React.CSSProperties}
     >
       <div
-        className={cn(shape, "top-[18%] -left-[8%] h-[92%] w-[42%] bg-[radial-gradient(closest-side,var(--color-ember)_45%,var(--color-flare)_72%,transparent)]")}
+        className={cn(shape, "top-[18%] -left-[8%] h-[92%] w-[42%] bg-[radial-gradient(closest-side,var(--color-teal)_45%,var(--color-apricot)_72%,transparent)]")}
         style={{ "--blob-duration": `${speed}s` } as React.CSSProperties}
       />
       <div
-        className={cn(shape, "top-[52%] left-[4%] h-[60%] w-[80%] bg-[radial-gradient(closest-side,var(--color-lilac)_40%,var(--color-lavender)_70%,transparent)]")}
+        className={cn(shape, "top-[52%] left-[4%] h-[60%] w-[80%] bg-[radial-gradient(closest-side,var(--color-mint)_40%,var(--color-mist)_70%,transparent)]")}
         style={{ "--blob-duration": `${speed * 1.3}s`, animationDelay: `-${speed / 2}s` } as React.CSSProperties}
       />
-      {/* The lilac ribbon that runs up to the plane's trail */}
-      <div className="absolute top-[58%] left-[8%] h-[26%] w-[96%] -rotate-[14deg] bg-[radial-gradient(closest-side,var(--color-lilac)_35%,transparent)] opacity-80" />
+      {/* A mint ribbon across the bottom of the first screen */}
+      <div className="absolute top-[58%] left-[8%] h-[26%] w-[96%] -rotate-[14deg] bg-[radial-gradient(closest-side,var(--color-mint)_35%,transparent)] opacity-80" />
       <div
-        className={cn(shape, "top-[18%] right-[-8%] h-[46%] w-[36%] bg-[radial-gradient(closest-side,var(--color-lavender),transparent)] opacity-70")}
+        className={cn(shape, "top-[18%] right-[-8%] h-[46%] w-[36%] bg-[radial-gradient(closest-side,var(--color-mist),transparent)] opacity-70")}
         style={{ "--blob-duration": `${speed * 0.9}s`, animationDelay: `-${speed / 3}s` } as React.CSSProperties}
       />
     </div>

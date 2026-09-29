@@ -4,7 +4,6 @@ import { EmailCapture } from "@/components/blocks/email-capture"
 import { ScaledFrame } from "@/components/blocks/scaled-frame"
 import { InboxMock } from "@/components/mock/inbox-mock"
 import { GradientBlob } from "@/components/motion/gradient-blob"
-import { PaperPlane } from "@/components/motion/paper-plane"
 import { RiseIn } from "@/components/motion/rise-in"
 import { Container } from "@/components/ui/container"
 import { HERO } from "@/content"
@@ -25,15 +24,13 @@ function NewsBadge({ label = HERO.badge, text = HERO.badgeText, href = "#copilot
 
 /**
  * The hero: the news badge, the headline, the trial form, and the product
- * rising out of a warm light — with a paper plane streaking off to the right.
- * The words are there from the first frame; only the light, the plane and
- * the product move in.
+ * rising out of a sea-glass light. The words are there from the first frame;
+ * only the light and the product move in.
  */
 export function Hero() {
   return (
     <section id="top" className="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
       <GradientBlob />
-      <PaperPlane className="absolute top-[300px] right-[-60px] hidden w-[300px] md:block lg:right-[-10px] lg:w-[360px] xl:right-[4%]" />
       <Container className="relative flex flex-col items-center text-center">
         <div>
           <NewsBadge />

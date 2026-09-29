@@ -26,7 +26,7 @@ export function EmailCapture({
   className,
 }: {
   name?: string
-  tone?: "paper" | "night" | "midnight"
+  tone?: "paper" | "night" | "lagoon"
   placeholder?: string
   cta?: string
   rating?: string
@@ -51,7 +51,7 @@ export function EmailCapture({
           "relative flex h-12 w-full items-center rounded-[var(--radius-field)] p-1 pl-4 sm:h-11",
           tone === "paper" && "bg-card shadow-(--shadow-field)",
           tone === "night" && "bg-night-raised shadow-(--shadow-night)",
-          tone === "midnight" && "bg-white/[0.08] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08)]",
+          tone === "lagoon" && "bg-white/[0.08] shadow-[inset_0_0_0_1px_rgb(255_255_255/0.08)]",
         )}
       >
         <AnimatePresence mode="popLayout" initial={false}>

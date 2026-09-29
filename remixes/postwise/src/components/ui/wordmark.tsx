@@ -1,10 +1,12 @@
 import { cn } from "@/lib/utils"
 
-/** The Postwise mark: a folded paper plane. */
+/** The Postwise mark: an envelope's flap folded into a tile, with the reply dot. */
 export function LogoMark({ className }: { className?: string }) {
   return (
-    <svg viewBox="0 0 24 24" aria-hidden className={cn("size-5", className)} fill="currentColor">
-      <path d="M2 11.6 22 2.5l-4.3 18.3-5.6-5.7-4 3.8v-5.6L19.4 5 10 13.1Z" />
+    <svg viewBox="0 0 24 24" aria-hidden className={cn("size-5", className)} fill="none" stroke="currentColor" strokeWidth={2.2} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="2.5" y="4.5" width="19" height="15" rx="4.5" />
+      <path d="m6.5 9 5.5 4 5.5-4" />
+      <circle cx="19.5" cy="4.5" r="2.6" fill="currentColor" stroke="none" />
     </svg>
   )
 }

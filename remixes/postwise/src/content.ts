@@ -290,7 +290,7 @@ export const PERSONAS = {
 
 /* ---------------------------------------------------------------- Results */
 
-export type ResultTone = "butter" | "mint" | "iris" | "blossom"
+export type ResultTone = "sand" | "sprout" | "sky" | "peach"
 
 export type Result =
   | { kind: "stat"; value: string; label: string; tone: ResultTone; logo: LogoKey }
@@ -303,8 +303,8 @@ export const RESULTS = {
   titleEnd: "real customers",
   hint: "see the numbers!",
   items: [
-    { kind: "stat", value: "82%", label: "less time in email", tone: "butter", logo: "stripe" },
-    { kind: "stat", value: "3.4x", label: "faster first reply", tone: "mint", logo: "supabase" },
+    { kind: "stat", value: "82%", label: "less time in email", tone: "sand", logo: "stripe" },
+    { kind: "stat", value: "3.4x", label: "faster first reply", tone: "sprout", logo: "supabase" },
     {
       kind: "quote",
       quote: "Postwise brought our response time from a day to under an hour, and our customers noticed within a week.",
@@ -321,10 +321,10 @@ export const RESULTS = {
       photo: 6497114,
       logo: "figma",
     },
-    { kind: "stat", value: "9h", label: "saved per week", tone: "butter", logo: "loom" },
-    { kind: "stat", value: "41%", label: "higher reply rate", tone: "blossom", logo: "webflow" },
-    { kind: "stat", value: "12k", label: "threads triaged a day", tone: "iris", logo: "dropbox" },
-    { kind: "stat", value: "0", label: "missed follow-ups", tone: "blossom", logo: "framer" },
+    { kind: "stat", value: "9h", label: "saved per week", tone: "sand", logo: "loom" },
+    { kind: "stat", value: "41%", label: "higher reply rate", tone: "peach", logo: "webflow" },
+    { kind: "stat", value: "12k", label: "threads triaged a day", tone: "sky", logo: "dropbox" },
+    { kind: "stat", value: "0", label: "missed follow-ups", tone: "peach", logo: "framer" },
     {
       kind: "quote",
       quote: "We rolled it out to forty people in an afternoon. The drafts sound like each of them, which is the part I didn’t expect.",
@@ -389,4 +389,110 @@ export const FOOTER = {
   ask: "Ask an AI about Postwise",
   legal: ["Privacy", "Terms", "GDPR", "CCPA", "Trust and security", "Do not sell my info"],
   credit: "Photography from Pexels.",
+}
+
+/* ---------------------------------------------------------------- By the numbers */
+
+export const NUMBERS = {
+  statement: ["The modern inbox assistant,", "built for the age of too much email"],
+  stats: [
+    { label: "Emails drafted", value: "48M" },
+    { label: "Hours saved weekly", value: "9.2" },
+    { label: "Median reply", value: "14m" },
+  ],
+  note: "How we measure",
+}
+
+/* ---------------------------------------------------------------- How it works */
+
+export const STEPS = {
+  items: [
+    {
+      title: "Connect your inbox",
+      body: "Sign in with Google or Microsoft. Postwise reads the last year of your threads to learn who matters and how you write.",
+    },
+    {
+      title: "Teach it your voice",
+      body: "Pick a tone, point at a few emails you’re proud of, and Scribe drafts like you — warm, brief or formal, per person.",
+    },
+    {
+      title: "Let Scribe draft",
+      body: "Open your inbox to replies already written. Read, tweak if you like, and send — from the app, the menu bar or Slack.",
+    },
+  ],
+  primary: "Connect your inbox",
+  secondary: "Watch a demo",
+}
+
+/* ---------------------------------------------------------------- Showcase */
+
+export const SHOWCASE = {
+  lineOne: "Everything your team needs",
+  lineTwo: "to answer every email, well",
+  primary: "Get started",
+  secondary: "Book a demo",
+  photo: 5155218,
+}
+
+/* ---------------------------------------------------------------- Stories */
+
+export type StoryTone = "teal" | "apricot" | "sky"
+
+export const STORIES = {
+  title: "Teams like yours are writing back faster than ever",
+  cta: "Watch video",
+  items: [
+    { logo: "stripe" as LogoKey, title: "How one partner team answers every intro the same day", name: "Amara Lewis", role: "Head of Partnerships", photo: 5717729, tone: "teal" as StoryTone },
+    { logo: "raycast" as LogoKey, title: "Cutting support replies from hours to minutes", name: "Jonas Weber", role: "Support Lead", photo: 35659737, tone: "apricot" as StoryTone },
+    { logo: "notion" as LogoKey, title: "Why a 40-person sales team moved to one inbox", name: "Clara Moreau", role: "VP of Sales", photo: 29995728, tone: "sky" as StoryTone },
+    { logo: "supabase" as LogoKey, title: "Keeping founders out of their inbox and in the product", name: "Marcus Hale", role: "Chief of Staff", photo: 7876911, tone: "teal" as StoryTone },
+    { logo: "vercel" as LogoKey, title: "Recruiting at speed without sounding like a robot", name: "Nia Brooks", role: "Talent Partner", photo: 5240193, tone: "apricot" as StoryTone },
+  ],
+}
+
+/* ---------------------------------------------------------------- Pricing */
+
+export type Plan = {
+  name: string
+  monthly: number | null
+  yearly: number | null
+  unit?: string
+  label?: string
+  lead: string
+  features: string[]
+  cta: string
+  secondary?: string
+  featured?: boolean
+}
+
+export const PRICING = {
+  title: "Pricing",
+  body: "Choose the plan that works for you",
+  monthly: "Monthly",
+  yearly: "Yearly (save 20%)",
+  individual: "Individual plans",
+  team: "Team plans",
+  individualPlans: [
+    { name: "Starter", monthly: 0, yearly: 0, label: "Free", lead: "Includes", features: ["14-day Pro trial", "50 AI drafts a month", "Smart Triage for one inbox"], cta: "Download", secondary: "Windows" },
+    { name: "Pro", monthly: 15, yearly: 12, unit: "/mo", lead: "Everything in Starter, plus", features: ["Unlimited AI drafts", "Follow-up tracking and nudges", "Daily deliverability checks", "Scribe in Slack", "Your voice, per recipient"], cta: "Get Pro", featured: true },
+    { name: "Max", monthly: 40, yearly: 32, unit: "/mo", lead: "Everything in Pro, plus", features: ["Unlimited connected inboxes", "Priority access to new models", "Early access to new features"], cta: "Get Max" },
+  ] as Plan[],
+  teamPlans: [
+    { name: "Teams", monthly: 25, yearly: 20, unit: "/user/mo", lead: "Everything in Pro, plus", features: ["Shared inboxes and assignment", "Admin dashboard with usage", "Centralised team billing", "SAML / OIDC single sign-on", "Collision detection on replies"], cta: "Get Teams" },
+    { name: "Enterprise", monthly: null, yearly: null, label: "Custom", lead: "Everything in Teams, plus", features: ["More usage included", "SCIM seat management", "Data residency and audit logs", "A dedicated success manager"], cta: "Contact sales" },
+  ] as Plan[],
+}
+
+/* ---------------------------------------------------------------- FAQ */
+
+export const FAQ = {
+  title: "Questions, answered",
+  body: "Can’t find what you’re looking for? Write to us — a person replies, usually within the hour.",
+  items: [
+    { q: "Does Postwise send anything without me?", a: "Never by default. Scribe drafts, you send. You can let it send routine replies — receipts, scheduling, acknowledgements — once you’ve approved a rule for them." },
+    { q: "Which email providers does it work with?", a: "Gmail and Google Workspace, Outlook and Microsoft 365, and any IMAP inbox. Your mail stays where it is; Postwise works on top of it." },
+    { q: "How does it learn my voice?", a: "It reads the emails you’ve sent — not the ones you’ve received — and builds a style profile per recipient. You can review and edit it any time." },
+    { q: "Is my email used to train models?", a: "No. Your data is never used to train shared models, it’s encrypted at rest and in transit, and you can delete everything in one click." },
+    { q: "Can my whole team use it?", a: "Yes. The Teams plan adds shared inboxes, assignment rules, admin controls and single sign-on, with billing in one place." },
+  ],
 }

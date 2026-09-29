@@ -5,7 +5,7 @@ import { LOGO_ROW } from "@/content"
 /** A slow, endless row of customer logos, fading out at both edges. */
 export function LogoCloud({ title = "Trusted by teams who live in their inbox", speed = 45 }: { title?: string; speed?: number }) {
   return (
-    <section id="customers" className="py-12 md:py-16">
+    <section id="logos" className="py-12 md:py-16">
       <p className="text-center text-[14px] text-ink-muted md:text-[15px]">{title}</p>
       <Marquee
         speed={speed}

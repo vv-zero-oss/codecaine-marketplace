@@ -70,7 +70,7 @@ export function Copilot({ signalSpeed = 60 }: { signalSpeed?: number }) {
       <Container className="flex flex-col items-center">
         <Reveal className="flex flex-col items-center gap-6">
           <span className="inline-flex items-center gap-2 rounded-[var(--radius-chip)] bg-night-raised py-1 pr-2.5 pl-1 text-[12.5px] text-night-muted shadow-(--shadow-night)">
-            <span className="rounded-[4px] bg-gradient-to-r from-glow-rose to-glow-lilac px-1.5 py-0.5 text-[10px] font-semibold text-ink">
+            <span className="rounded-[4px] bg-gradient-to-r from-glow-coral to-glow-sky px-1.5 py-0.5 text-[10px] font-semibold text-ink">
               {COPILOT.badge}
             </span>
             {COPILOT.badgeText}
@@ -90,8 +90,8 @@ export function Copilot({ signalSpeed = 60 }: { signalSpeed?: number }) {
           <FloatingNote {...COPILOT.floats[0]} className="top-[34%] -left-[6%]" delay={0.2} />
           <FloatingNote {...COPILOT.floats[1]} className="top-[58%] -right-[5%]" delay={0.35} />
           <FloatingNote {...COPILOT.floats[2]} className="-bottom-[8%] left-[26%]" delay={0.5} />
-          {/* The lilac light the screen sits on */}
-          <div aria-hidden className="absolute inset-x-[10%] -bottom-6 -z-0 h-10 rounded-full bg-lilac/40 blur-2xl" />
+          {/* The mint light the screen sits on */}
+          <div aria-hidden className="absolute inset-x-[10%] -bottom-6 -z-0 h-10 rounded-full bg-mint/40 blur-2xl" />
         </div>
       </Container>
 

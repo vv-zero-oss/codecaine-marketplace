@@ -68,7 +68,7 @@ export function Personas({ start = "founders" }: { start?: PersonaKey }) {
                         initial={false}
                         animate={{ opacity: on ? 1 : 0, scale: on ? 1 : 0.6 }}
                         transition={{ duration: reduced ? 0 : 0.4, ease: [0.22, 1, 0.36, 1] }}
-                        className="absolute bottom-[-18px] h-10 w-3/4 rounded-full bg-gradient-to-r from-flare via-lilac to-lavender blur-md"
+                        className="absolute bottom-[-18px] h-10 w-3/4 rounded-full bg-gradient-to-r from-apricot via-mint to-mist blur-md"
                       />
                       <Icon className={cn("relative size-14 transition-transform duration-(--duration-swap) ease-(--ease-out-quint)", on && "-translate-y-1 scale-105")} strokeWidth={0.9} />
                     </span>

@@ -11,7 +11,7 @@ export function UnlockCta() {
           <span className="block">{UNLOCK.lineOne}</span>
           <span className="block">
             {UNLOCK.lineTwoStart}{" "}
-            <span className="bg-gradient-to-r from-glow-lilac via-glow-peach to-glow-rose bg-clip-text text-transparent [filter:drop-shadow(0_0_16px_rgb(255_180_154/0.35))]">
+            <span className="bg-gradient-to-r from-glow-mint via-glow-peach to-glow-coral bg-clip-text text-transparent [filter:drop-shadow(0_0_16px_rgb(255_196_157/0.35))]">
               {UNLOCK.lineTwoAccent}
             </span>
           </span>

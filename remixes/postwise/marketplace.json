@@ -3,13 +3,13 @@
   "type": "remix",
   "id": "postwise",
   "name": "Postwise — AI Email",
-  "version": "1.0.0",
-  "description": "A warm, light landing page for Postwise, an AI email assistant: a hero lit by a drifting ember-and-lilac glow with a hand-drawn paper plane, a dark copilot section with floating notes and drifting signal rows, a clickable deck of feature cards, persona tabs, a colourful results bento, a wall of love and poster-type calls to action.",
+  "version": "1.1.0",
+  "description": "A sea-glass landing page for Postwise, an AI email assistant: a hero lit by a drifting teal, mint and apricot glow, a hairline numbers band, a deep-lagoon copilot section with floating notes and drifting signals, three how-it-works cards, a clickable feature deck, persona tabs, a team dashboard over a sunlit desk, a results bento, a duotone customer-story carousel, monthly/yearly pricing with a border-beam plan, an FAQ, a wall of love and poster-type calls to action.",
   "designedFor": [
     "AI email, inbox and productivity tools",
-    "SaaS products that want a light, editorial page with one dark act in the middle",
+    "SaaS products that need the full set: numbers, how it works, stories, pricing and FAQ",
     "Sales, support and communication platforms with several audiences to speak to",
-    "Seeing a stacked card deck, parallax columns and scroll-linked hero motion built as editor-controllable components"
+    "Seeing a stacked card deck, an Embla carousel, parallax and a border beam built as editor-controllable components"
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
@@ -29,6 +29,10 @@
     "gradient",
     "card-deck",
     "bento",
+    "pricing",
+    "carousel",
+    "duotone",
+    "faq",
     "framer-motion",
     "lenis",
     "react",
