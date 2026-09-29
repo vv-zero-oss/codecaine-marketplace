@@ -23,7 +23,7 @@
     },
     "type": {
       "enum": [
-        "template",
+        "remix",
         "app",
         "design-system",
         "skill"
@@ -48,7 +48,7 @@
     },
     "sdkVersion": {
       "type": "string",
-      "description": "The @canvas/react version a template vendors or an app targets."
+      "description": "The @canvas/react version a remix vendors or an app targets."
     },
     "canvasVersion": {
       "type": "string",
@@ -124,7 +124,7 @@
     },
     "pages": {
       "type": "array",
-      "description": "Templates: the routes the project serves, for the editor's page list.",
+      "description": "Remixes: the routes the project serves, for the editor's page list.",
       "items": {
         "type": "object",
         "required": [
@@ -144,7 +144,7 @@
     },
     "meta": {
       "type": "object",
-      "description": "Anything else. Templates: framework, installCommand, devCommand, port. Apps: appId, permissions.",
+      "description": "Anything else. Remixes: framework, installCommand, devCommand, port. Apps: appId, permissions.",
       "properties": {
         "framework": {
           "type": "string"
@@ -176,7 +176,7 @@
     },
     "previews": {
       "type": "object",
-      "description": "Templates: what the item's page shows. Written by scripts/capture-previews.mjs.",
+      "description": "Remixes: what the item's page shows. Written by scripts/capture-previews.mjs.",
       "properties": {
         "desktop": {
           "type": "string"

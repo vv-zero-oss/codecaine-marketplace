@@ -4,7 +4,7 @@
  * Harbour Voices is an oral-history archive: eighty-four people who worked the
  * port of Vela between the fifties and the nineties, each photographed and
  * each telling one story in their own words. Vela and everyone in it are
- * invented for this template — replace them with your own archive, and the
+ * invented for this remix — replace them with your own archive, and the
  * grid, the list, the gallery and every story page follow.
  */
 

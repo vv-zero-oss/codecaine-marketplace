@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/marketplace-catalog.schema.json",
   "registryVersion": 1,
-  "type": "template",
+  "type": "remix",
   "items": [
     {
-      "type": "template",
+      "type": "remix",
       "id": "harbour-voices",
       "name": "Harbour Voices",
       "version": "1.0.0",
@@ -100,54 +100,54 @@
         ]
       },
       "icon": "icon.svg",
-      "path": "templates/harbour-voices",
-      "thumbnailUrl": "templates/harbour-voices/preview.png",
-      "iconUrl": "templates/harbour-voices/icon.svg",
+      "path": "remixes/harbour-voices",
+      "thumbnailUrl": "remixes/harbour-voices/preview.png",
+      "iconUrl": "remixes/harbour-voices/icon.svg",
       "previewUrls": {
-        "desktop": "templates/harbour-voices/previews/desktop.jpg",
-        "mobile": "templates/harbour-voices/previews/mobile.jpg",
+        "desktop": "remixes/harbour-voices/previews/desktop.jpg",
+        "mobile": "remixes/harbour-voices/previews/mobile.jpg",
         "pages": [
           {
             "title": "Grid",
-            "image": "templates/harbour-voices/previews/pages/home.jpg"
+            "image": "remixes/harbour-voices/previews/pages/home.jpg"
           },
           {
             "title": "List",
-            "image": "templates/harbour-voices/previews/pages/list.jpg"
+            "image": "remixes/harbour-voices/previews/pages/list.jpg"
           },
           {
             "title": "Gallery",
-            "image": "templates/harbour-voices/previews/pages/gallery.jpg"
+            "image": "remixes/harbour-voices/previews/pages/gallery.jpg"
           },
           {
             "title": "Story",
-            "image": "templates/harbour-voices/previews/pages/story.jpg"
+            "image": "remixes/harbour-voices/previews/pages/story.jpg"
           },
           {
             "title": "About",
-            "image": "templates/harbour-voices/previews/pages/about.jpg"
+            "image": "remixes/harbour-voices/previews/pages/about.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/templates/harbour-voices-1.0.0.tgz",
+        "url": "archives/remixes/harbour-voices-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "1d3e1e74cda9cbee0cbb6c793cf19a7f8356810d4ada23d704aa8c613923b33a",
+        "sha256": "c09f29688639fe738e3c9dadc93bcdfba848a2bed8a30ec9d92c5ae5b2c80d1c",
         "size": 421888,
         "files": 54
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/harbour-voices"
+        "path": "remixes/harbour-voices"
       },
       "demoUrl": "demos/harbour-voices/"
     },
     {
-      "type": "template",
+      "type": "remix",
       "id": "kids-camera",
       "name": "Kids Camera",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "description": "A one-page story site for a physical product made for children: a wide two-line hero with a sticker, a pinned scene that inks its sentence in word by word, a before-and-after photo pair, a dark run with the product reveal, a sign-up, the makers and a drawing wall.",
       "designedFor": [
         "Hardware and toy makers launching one product with a story rather than a spec sheet",
@@ -183,7 +183,7 @@
         "Product"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-25",
+      "updated": "2026-09-29",
       "meta": {
         "framework": "vite",
         "language": "typescript",
@@ -199,27 +199,27 @@
         }
       ],
       "icon": "icon.svg",
-      "path": "templates/kids-camera",
-      "iconUrl": "templates/kids-camera/icon.svg",
+      "path": "remixes/kids-camera",
+      "iconUrl": "remixes/kids-camera/icon.svg",
       "archive": {
-        "url": "archives/templates/kids-camera-0.1.0.tgz",
+        "url": "archives/remixes/kids-camera-0.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "82bd279d67681c6800545a473a92d35111aa171611e00a9a3110416bf173fc64",
+        "sha256": "f9f3a6a68030eb950df12b893b5cf8acf8e4028941f235b1dc479ca7bdb9b69e",
         "size": 308736,
         "files": 52
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/kids-camera"
+        "path": "remixes/kids-camera"
       },
       "demoUrl": "demos/kids-camera/"
     },
     {
-      "type": "template",
+      "type": "remix",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
       "designedFor": [
         "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -252,7 +252,7 @@
         "Creative"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-28",
+      "updated": "2026-09-29",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -319,58 +319,58 @@
         ]
       },
       "icon": "icon.svg",
-      "path": "templates/photographer-portfolio",
-      "thumbnailUrl": "templates/photographer-portfolio/preview.png",
-      "iconUrl": "templates/photographer-portfolio/icon.svg",
+      "path": "remixes/photographer-portfolio",
+      "thumbnailUrl": "remixes/photographer-portfolio/preview.png",
+      "iconUrl": "remixes/photographer-portfolio/icon.svg",
       "previewUrls": {
-        "desktop": "templates/photographer-portfolio/previews/desktop.jpg",
-        "mobile": "templates/photographer-portfolio/previews/mobile.jpg",
+        "desktop": "remixes/photographer-portfolio/previews/desktop.jpg",
+        "mobile": "remixes/photographer-portfolio/previews/mobile.jpg",
         "pages": [
           {
             "title": "Home",
-            "image": "templates/photographer-portfolio/previews/pages/home.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/home.jpg"
           },
           {
             "title": "Portfolio",
-            "image": "templates/photographer-portfolio/previews/pages/portfolio.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/portfolio.jpg"
           },
           {
             "title": "Gallery",
-            "image": "templates/photographer-portfolio/previews/pages/portfolio-sintra-in-september.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/portfolio-sintra-in-september.jpg"
           },
           {
             "title": "About",
-            "image": "templates/photographer-portfolio/previews/pages/about.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/about.jpg"
           },
           {
             "title": "Services",
-            "image": "templates/photographer-portfolio/previews/pages/services.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/services.jpg"
           },
           {
             "title": "Contact",
-            "image": "templates/photographer-portfolio/previews/pages/contact.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/contact.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/templates/photographer-portfolio-1.1.1.tgz",
+        "url": "archives/remixes/photographer-portfolio-1.1.2.tgz",
         "format": "tar+gzip",
-        "sha256": "db8542487de4512a2ac415640706ee8a03e894f2e6d3f71c48b2ea584c4887a1",
+        "sha256": "4d1366ec7fad72f1c21b3c451eceb0591a05ff2ef647b63970c0d9fc57730e94",
         "size": 261632,
         "files": 43
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/photographer-portfolio"
+        "path": "remixes/photographer-portfolio"
       },
       "demoUrl": "demos/photographer-portfolio/"
     },
     {
-      "type": "template",
+      "type": "remix",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
       "designedFor": [
         "Starting a SaaS or product landing page from a real, responsive layout",
@@ -402,7 +402,7 @@
         "Marketing"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-26",
+      "updated": "2026-09-29",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -430,30 +430,30 @@
         ]
       },
       "icon": "icon.svg",
-      "path": "templates/sdk-scaffold",
-      "thumbnailUrl": "templates/sdk-scaffold/preview.png",
-      "iconUrl": "templates/sdk-scaffold/icon.svg",
+      "path": "remixes/sdk-scaffold",
+      "thumbnailUrl": "remixes/sdk-scaffold/preview.png",
+      "iconUrl": "remixes/sdk-scaffold/icon.svg",
       "previewUrls": {
-        "desktop": "templates/sdk-scaffold/previews/desktop.jpg",
-        "mobile": "templates/sdk-scaffold/previews/mobile.jpg",
+        "desktop": "remixes/sdk-scaffold/previews/desktop.jpg",
+        "mobile": "remixes/sdk-scaffold/previews/mobile.jpg",
         "pages": [
           {
             "title": "Home",
-            "image": "templates/sdk-scaffold/previews/pages/home.jpg"
+            "image": "remixes/sdk-scaffold/previews/pages/home.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/templates/sdk-scaffold-1.1.1.tgz",
+        "url": "archives/remixes/sdk-scaffold-1.1.2.tgz",
         "format": "tar+gzip",
-        "sha256": "1b6342df31864d060213278a0c97580acef93d54ab3512a644ca8d0d92393ec4",
+        "sha256": "71e0789c6c9b451a2e2cd1caf0d4a2258c25c40cd016a87a095d2a3e40db65e7",
         "size": 275968,
         "files": 46
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/sdk-scaffold"
+        "path": "remixes/sdk-scaffold"
       },
       "demoUrl": "demos/sdk-scaffold/"
     }

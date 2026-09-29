@@ -1,9 +1,9 @@
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
-  "type": "template",
+  "type": "remix",
   "id": "photographer-portfolio",
   "name": "Photographer Portfolio",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
   "designedFor": [
     "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -36,7 +36,7 @@
     "Creative"
   ],
   "created": "2026-09-25",
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",

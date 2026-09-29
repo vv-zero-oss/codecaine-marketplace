@@ -2,7 +2,7 @@
   "name": "codecaine-marketplace",
   "private": true,
   "type": "module",
-  "description": "Templates, apps, design systems and skills for the canvas editor, served from GitHub Pages.",
+  "description": "Remixes, apps, design systems and skills for the canvas editor, served from GitHub Pages.",
   "engines": {
     "node": ">=20.11"
   },

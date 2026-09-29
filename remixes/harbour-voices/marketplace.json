@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
-  "type": "template",
+  "type": "remix",
   "id": "harbour-voices",
   "name": "Harbour Voices",
   "version": "1.0.0",
