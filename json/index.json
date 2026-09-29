@@ -2,14 +2,14 @@
   "$schema": "../schemas/marketplace-index.schema.json",
   "registryVersion": 1,
   "name": "Codecaine Marketplace",
-  "description": "Templates, apps, design systems and skills for the canvas editor.",
+  "description": "Remixes, apps, design systems and skills for the canvas editor.",
   "root": "../",
   "site": "https://vv-zero-oss.github.io/codecaine-marketplace",
   "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
   "updated": "2026-09-29",
   "catalogs": {
-    "template": {
-      "url": "json/templates.json",
+    "remix": {
+      "url": "json/remixes.json",
       "count": 3
     },
     "app": {

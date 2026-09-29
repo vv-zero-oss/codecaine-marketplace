@@ -1,9 +1,9 @@
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
-  "type": "template",
+  "type": "remix",
   "id": "sdk-scaffold",
   "name": "SDK Scaffold",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
   "designedFor": [
     "Starting a SaaS or product landing page from a real, responsive layout",
@@ -35,7 +35,7 @@
     "Marketing"
   ],
   "created": "2026-09-25",
-  "updated": "2026-09-26",
+  "updated": "2026-09-29",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",

@@ -3,10 +3,10 @@
   "type": "skill",
   "id": "publish-to-marketplace",
   "name": "Publish to Marketplace",
-  "version": "1.0.2",
-  "description": "How to add or update a template, app, design system or skill in this marketplace and regenerate the index.",
+  "version": "1.0.3",
+  "description": "How to add or update a remix, app, design system or skill in this marketplace and regenerate the index.",
   "designedFor": [
-    "Adding a new template, app, design system or skill to this marketplace",
+    "Adding a new remix, app, design system or skill to this marketplace",
     "Bumping a version so the editor offers an update",
     "Regenerating the catalog before a pull request"
   ],
@@ -21,14 +21,14 @@
   "keywords": [
     "marketplace",
     "publishing",
-    "templates",
+    "remixes",
     "workflow"
   ],
   "categories": [
     "Developer"
   ],
   "created": "2026-09-25",
-  "updated": "2026-09-28",
+  "updated": "2026-09-29",
   "entry": "SKILL.md",
   "meta": {}
 }

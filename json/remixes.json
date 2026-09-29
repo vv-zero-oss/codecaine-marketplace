@@ -1,10 +1,10 @@
 {
   "$schema": "../schemas/marketplace-catalog.schema.json",
   "registryVersion": 1,
-  "type": "template",
+  "type": "remix",
   "items": [
     {
-      "type": "template",
+      "type": "remix",
       "id": "food-joint",
       "name": "Food Joint",
       "version": "1.0.0",
@@ -15,7 +15,7 @@
         "Places that sell the kitchen as much as the plate — fire, wood, fryers and films of them",
         "Taking table bookings without a back end on day one"
       ],
-      "sdkVersion": "0.1.0",
+      "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
@@ -62,28 +62,28 @@
         }
       ],
       "icon": "icon.svg",
-      "path": "templates/food-joint",
-      "thumbnailUrl": "templates/food-joint/preview.png",
-      "iconUrl": "templates/food-joint/icon.svg",
+      "path": "remixes/food-joint",
+      "thumbnailUrl": "remixes/food-joint/preview.png",
+      "iconUrl": "remixes/food-joint/icon.svg",
       "archive": {
-        "url": "archives/templates/food-joint-1.0.0.tgz",
+        "url": "archives/remixes/food-joint-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "ff60f6002babce40defad2feb906bc51c1e5fa6a34da42b72c62eb6d1618f6c1",
+        "sha256": "04b4dc28a5d2676b3fcd7bf75e7316a2d85b385b122c13083883e8beac56c22d",
         "size": 369152,
         "files": 61
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/food-joint"
+        "path": "remixes/food-joint"
       },
       "demoUrl": "demos/food-joint/"
     },
     {
-      "type": "template",
+      "type": "remix",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
       "designedFor": [
         "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -116,7 +116,7 @@
         "Creative"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-28",
+      "updated": "2026-09-29",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -183,58 +183,58 @@
         ]
       },
       "icon": "icon.svg",
-      "path": "templates/photographer-portfolio",
-      "thumbnailUrl": "templates/photographer-portfolio/preview.png",
-      "iconUrl": "templates/photographer-portfolio/icon.svg",
+      "path": "remixes/photographer-portfolio",
+      "thumbnailUrl": "remixes/photographer-portfolio/preview.png",
+      "iconUrl": "remixes/photographer-portfolio/icon.svg",
       "previewUrls": {
-        "desktop": "templates/photographer-portfolio/previews/desktop.jpg",
-        "mobile": "templates/photographer-portfolio/previews/mobile.jpg",
+        "desktop": "remixes/photographer-portfolio/previews/desktop.jpg",
+        "mobile": "remixes/photographer-portfolio/previews/mobile.jpg",
         "pages": [
           {
             "title": "Home",
-            "image": "templates/photographer-portfolio/previews/pages/home.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/home.jpg"
           },
           {
             "title": "Portfolio",
-            "image": "templates/photographer-portfolio/previews/pages/portfolio.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/portfolio.jpg"
           },
           {
             "title": "Gallery",
-            "image": "templates/photographer-portfolio/previews/pages/portfolio-sintra-in-september.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/portfolio-sintra-in-september.jpg"
           },
           {
             "title": "About",
-            "image": "templates/photographer-portfolio/previews/pages/about.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/about.jpg"
           },
           {
             "title": "Services",
-            "image": "templates/photographer-portfolio/previews/pages/services.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/services.jpg"
           },
           {
             "title": "Contact",
-            "image": "templates/photographer-portfolio/previews/pages/contact.jpg"
+            "image": "remixes/photographer-portfolio/previews/pages/contact.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/templates/photographer-portfolio-1.1.1.tgz",
+        "url": "archives/remixes/photographer-portfolio-1.1.2.tgz",
         "format": "tar+gzip",
-        "sha256": "db8542487de4512a2ac415640706ee8a03e894f2e6d3f71c48b2ea584c4887a1",
+        "sha256": "4d1366ec7fad72f1c21b3c451eceb0591a05ff2ef647b63970c0d9fc57730e94",
         "size": 261632,
         "files": 43
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/photographer-portfolio"
+        "path": "remixes/photographer-portfolio"
       },
       "demoUrl": "demos/photographer-portfolio/"
     },
     {
-      "type": "template",
+      "type": "remix",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
       "designedFor": [
         "Starting a SaaS or product landing page from a real, responsive layout",
@@ -266,7 +266,7 @@
         "Marketing"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-26",
+      "updated": "2026-09-29",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -294,30 +294,30 @@
         ]
       },
       "icon": "icon.svg",
-      "path": "templates/sdk-scaffold",
-      "thumbnailUrl": "templates/sdk-scaffold/preview.png",
-      "iconUrl": "templates/sdk-scaffold/icon.svg",
+      "path": "remixes/sdk-scaffold",
+      "thumbnailUrl": "remixes/sdk-scaffold/preview.png",
+      "iconUrl": "remixes/sdk-scaffold/icon.svg",
       "previewUrls": {
-        "desktop": "templates/sdk-scaffold/previews/desktop.jpg",
-        "mobile": "templates/sdk-scaffold/previews/mobile.jpg",
+        "desktop": "remixes/sdk-scaffold/previews/desktop.jpg",
+        "mobile": "remixes/sdk-scaffold/previews/mobile.jpg",
         "pages": [
           {
             "title": "Home",
-            "image": "templates/sdk-scaffold/previews/pages/home.jpg"
+            "image": "remixes/sdk-scaffold/previews/pages/home.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/templates/sdk-scaffold-1.1.1.tgz",
+        "url": "archives/remixes/sdk-scaffold-1.1.2.tgz",
         "format": "tar+gzip",
-        "sha256": "1b6342df31864d060213278a0c97580acef93d54ab3512a644ca8d0d92393ec4",
+        "sha256": "71e0789c6c9b451a2e2cd1caf0d4a2258c25c40cd016a87a095d2a3e40db65e7",
         "size": 275968,
         "files": 46
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "templates/sdk-scaffold"
+        "path": "remixes/sdk-scaffold"
       },
       "demoUrl": "demos/sdk-scaffold/"
     }

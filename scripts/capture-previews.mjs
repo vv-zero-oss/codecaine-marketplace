@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * Captures a template's previews: the pictures its page in the editor's
+ * Captures a remix's previews: the pictures its page in the editor's
  * marketplace shows on the left.
  *
- *   cd templates/<id> && npm install && npm run dev      # in one terminal
+ *   cd remixes/<id> && npm install && npm run dev      # in one terminal
  *   node scripts/capture-previews.mjs <id> http://localhost:<port>
  *
- * Writes into `templates/<id>/previews/`:
+ * Writes into `remixes/<id>/previews/`:
  *
  *   desktop.jpg        the home page, whole, at 1440px wide
  *   mobile.jpg         the home page, whole, at 390px wide
@@ -27,7 +27,7 @@
  *
  * `--stub-images` stands tonal placeholders in for picsum.photos, for a
  * machine that cannot reach it. Previews captured that way show placeholders
- * where the running template shows photographs — capture without it wherever
+ * where the running remix shows photographs — capture without it wherever
  * the network allows.
  */
 
@@ -39,7 +39,7 @@ const ROOT = path.resolve(import.meta.dirname, "..")
 const [id, base] = process.argv.slice(2).filter((a) => !a.startsWith("--"))
 const stub = process.argv.includes("--stub-images")
 if (!id || !base) {
-  console.error("usage: node scripts/capture-previews.mjs <template-id> <dev-server-url> [--stub-images]")
+  console.error("usage: node scripts/capture-previews.mjs <remix-id> <dev-server-url> [--stub-images]")
   process.exit(1)
 }
 
@@ -64,7 +64,7 @@ function placeholder(url) {
 
 const slug = (p) => (p === "/" ? "home" : p.replace(/^\/|\/$/g, "").replace(/[^a-z0-9]+/gi, "-").toLowerCase())
 
-const dir = path.join(ROOT, "templates", id)
+const dir = path.join(ROOT, "remixes", id)
 const metaFile = path.join(dir, "marketplace.json")
 const meta = JSON.parse(await readFile(metaFile, "utf8"))
 const { chromium } = await loadPlaywright()

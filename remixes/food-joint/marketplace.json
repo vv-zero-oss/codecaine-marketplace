@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
-  "type": "template",
+  "type": "remix",
   "id": "food-joint",
   "name": "Food Joint",
   "version": "1.0.0",
@@ -11,7 +11,7 @@
     "Places that sell the kitchen as much as the plate — fire, wood, fryers and films of them",
     "Taking table bookings without a back end on day one"
   ],
-  "sdkVersion": "0.1.0",
+  "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
   "authors": [
     {
