@@ -1,0 +1,99 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "overtime",
+  "name": "Overtime",
+  "version": "1.0.0",
+  "description": "A long-read sports magazine on an infinite WebGL canvas: eighty-four athletes on an endless, draggable sheet that clips and motion-blurs as it moves, with a list view, a full-screen gallery, a profile per athlete and an about page with the issue’s writers.",
+  "designedFor": [
+    "Sports magazines, clubs and federations with a face and a profile per athlete",
+    "Portfolios and collections that want to be explored by dragging rather than scrolling",
+    "Photography or editorial series with dozens to hundreds of square pieces",
+    "Seeing a WebGL canvas, a text-first profile page and a dark editorial palette in one project the editor can read"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Elio Marchand"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "sports",
+    "magazine",
+    "editorial",
+    "infinite-canvas",
+    "webgl",
+    "athletes",
+    "gallery",
+    "dark",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Editorial",
+    "Creative"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-29",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3140
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Grid"
+    },
+    {
+      "path": "/list",
+      "title": "List"
+    },
+    {
+      "path": "/gallery",
+      "title": "Gallery"
+    },
+    {
+      "path": "/story/mateo-arrieta",
+      "title": "Profile"
+    },
+    {
+      "path": "/about",
+      "title": "About"
+    }
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Grid",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "List",
+        "image": "previews/pages/list.jpg"
+      },
+      {
+        "title": "Gallery",
+        "image": "previews/pages/gallery.jpg"
+      },
+      {
+        "title": "Profile",
+        "image": "previews/pages/story.jpg"
+      },
+      {
+        "title": "About",
+        "image": "previews/pages/about.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
+}

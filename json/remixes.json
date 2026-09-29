@@ -175,39 +175,39 @@
     },
     {
       "type": "remix",
-      "id": "harbour-voices",
-      "name": "Harbour Voices",
+      "id": "overtime",
+      "name": "Overtime",
       "version": "1.0.0",
-      "description": "An oral-history archive as an infinite WebGL canvas: eighty-four portraits on an endless, draggable sheet, with a list view, a full-screen gallery, a story page per person and an about page with the people who recorded them.",
+      "description": "A long-read sports magazine on an infinite WebGL canvas: eighty-four athletes on an endless, draggable sheet that clips and motion-blurs as it moves, with a list view, a full-screen gallery, a profile per athlete and an about page with the issue’s writers.",
       "designedFor": [
-        "Archives, memorials and oral-history projects with a face and a story per person",
+        "Sports magazines, clubs and federations with a face and a profile per athlete",
         "Portfolios and collections that want to be explored by dragging rather than scrolling",
-        "Illustration or photography series with dozens to hundreds of square pieces",
-        "Seeing a WebGL canvas, a text-first detail page and a typewriter aesthetic in one project the editor can read"
+        "Photography or editorial series with dozens to hundreds of square pieces",
+        "Seeing a WebGL canvas, a text-first profile page and a dark editorial palette in one project the editor can read"
       ],
       "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Elio Marchand"
         }
       ],
       "license": "MIT",
       "keywords": [
-        "archive",
-        "gallery",
+        "sports",
+        "magazine",
+        "editorial",
         "infinite-canvas",
         "webgl",
-        "portraits",
-        "oral-history",
-        "monospace",
+        "athletes",
+        "gallery",
+        "dark",
         "react",
         "vite",
         "tailwind"
       ],
       "categories": [
-        "Portfolio",
+        "Editorial",
         "Creative"
       ],
       "created": "2026-09-29",
@@ -235,8 +235,8 @@
           "title": "Gallery"
         },
         {
-          "path": "/story/anselmo-duarte-rivas",
-          "title": "Story"
+          "path": "/story/mateo-arrieta",
+          "title": "Profile"
         },
         {
           "path": "/about",
@@ -260,7 +260,7 @@
             "image": "previews/pages/gallery.jpg"
           },
           {
-            "title": "Story",
+            "title": "Profile",
             "image": "previews/pages/story.jpg"
           },
           {
@@ -270,48 +270,48 @@
         ]
       },
       "icon": "icon.svg",
-      "path": "remixes/harbour-voices",
-      "thumbnailUrl": "remixes/harbour-voices/preview.png",
-      "iconUrl": "remixes/harbour-voices/icon.svg",
+      "path": "remixes/overtime",
+      "thumbnailUrl": "remixes/overtime/preview.png",
+      "iconUrl": "remixes/overtime/icon.svg",
       "previewUrls": {
-        "desktop": "remixes/harbour-voices/previews/desktop.jpg",
-        "mobile": "remixes/harbour-voices/previews/mobile.jpg",
+        "desktop": "remixes/overtime/previews/desktop.jpg",
+        "mobile": "remixes/overtime/previews/mobile.jpg",
         "pages": [
           {
             "title": "Grid",
-            "image": "remixes/harbour-voices/previews/pages/home.jpg"
+            "image": "remixes/overtime/previews/pages/home.jpg"
           },
           {
             "title": "List",
-            "image": "remixes/harbour-voices/previews/pages/list.jpg"
+            "image": "remixes/overtime/previews/pages/list.jpg"
           },
           {
             "title": "Gallery",
-            "image": "remixes/harbour-voices/previews/pages/gallery.jpg"
+            "image": "remixes/overtime/previews/pages/gallery.jpg"
           },
           {
-            "title": "Story",
-            "image": "remixes/harbour-voices/previews/pages/story.jpg"
+            "title": "Profile",
+            "image": "remixes/overtime/previews/pages/story.jpg"
           },
           {
             "title": "About",
-            "image": "remixes/harbour-voices/previews/pages/about.jpg"
+            "image": "remixes/overtime/previews/pages/about.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/remixes/harbour-voices-1.0.0.tgz",
+        "url": "archives/remixes/overtime-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "547fa254dbc62d8bfb02c7849c8e073500ac7cc6a1e3b16fd467dd516d7eaf96",
-        "size": 421888,
+        "sha256": "b6891ed95dc4fda4b0d8f98669fc60333f2735374e602dc7089cbdb0be1631c7",
+        "size": 432128,
         "files": 54
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "remixes/harbour-voices"
+        "path": "remixes/overtime"
       },
-      "demoUrl": "demos/harbour-voices/"
+      "demoUrl": "demos/overtime/"
     },
     {
       "type": "remix",
