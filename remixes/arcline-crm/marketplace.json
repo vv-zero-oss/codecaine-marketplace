@@ -1,0 +1,55 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "arcline-crm",
+  "name": "Arcline — AI CRM",
+  "version": "1.0.0",
+  "description": "A dark landing page for Arcline, an AI CRM: a self-typing ask box inside a border beam, a signal-to-deal flow diagram, animated agent readouts, a tabbed product window, drifting customer logos, pricing, FAQ and a giant-wordmark footer.",
+  "designedFor": [
+    "AI and SaaS products that want a dark, editorial landing page",
+    "CRM, sales and revenue tools",
+    "Seeing Framer Motion, Lenis and CSS loops built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Maren Voss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "crm",
+    "saas",
+    "landing",
+    "dark",
+    "border-beam",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "SaaS"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-29",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3160
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "icon": "icon.svg"
+}
