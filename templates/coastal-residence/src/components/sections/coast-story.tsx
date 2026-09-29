@@ -160,10 +160,10 @@ export function CoastStory() {
             <Bloom src={story.bloom} flip corner="top-right" className="-right-16 -top-20 h-[55vh] w-[20vw] min-w-48" drift={40} />
             <h2 className="relative z-10 self-center text-center font-condensed text-[clamp(3rem,5.4vw,6.4rem)] leading-[0.9] lg:ml-[8vw]">
               <StretchText text={story.coast.lines[0]} className="block" />
-              <span className="relative block -mt-[0.2em] font-script text-[0.95em] normal-case leading-[0.9] -rotate-[10deg] ml-[1.6em]">
+              <span className="relative my-[0.04em] ml-[1.6em] block -rotate-[4deg] font-script text-[0.95em] normal-case italic leading-[1]">
                 <ScriptReveal delay={0.4}>{story.coast.lines[1]}</ScriptReveal>
               </span>
-              <StretchText text={story.coast.lines[2]} delay={0.3} className="block -mt-[0.25em]" />
+              <StretchText text={story.coast.lines[2]} delay={0.3} className="block" />
             </h2>
             <div className="relative mt-24 overflow-x-auto lg:mt-0 lg:ml-[20vw] lg:overflow-visible">
               <div className="min-w-[720px] pt-24 lg:min-w-0">

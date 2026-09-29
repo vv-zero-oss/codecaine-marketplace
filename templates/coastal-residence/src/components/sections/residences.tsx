@@ -13,7 +13,7 @@ import { residences, story } from "@/content"
 function Figure({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <p className="font-sans text-[0.8rem] uppercase tracking-[0.02em] [font-stretch:108%]">{label}</p>
+      <p className="font-sans text-[0.8rem] uppercase tracking-[0.02em]">{label}</p>
       <p className="mt-3 font-condensed text-[2.6rem] leading-none">{children}</p>
     </div>
   )
@@ -35,12 +35,12 @@ export function Residences() {
   const go = (d: number) => setIndex((i) => (i + d + total) % total)
 
   return (
-    <section id="residences" className="relative bg-mist">
+    <section id="residences" className="relative bg-pale">
       <div data-tone="light" className="sticky top-0 h-[100svh] overflow-hidden">
         <img src={residences.aerial} alt="The bay and the hills behind it, from the air" loading="lazy" className="size-full object-cover" />
       </div>
 
-      <motion.div ref={ref} style={{ clipPath }} data-tone="dark" className="relative -mt-[35svh] bg-mist text-ink">
+      <motion.div ref={ref} style={{ clipPath }} data-tone="dark" className="relative -mt-[35svh] bg-pale text-ink">
         <div className="mx-auto grid max-w-[1400px] items-center gap-10 px-5 pb-10 pt-28 sm:px-8 md:grid-cols-[1fr_auto_1fr] lg:px-[13.5rem] lg:pt-40">
           <div className="order-2 flex gap-12 md:order-none md:flex-col md:gap-12 md:justify-self-start">
             <Figure label="Bedrooms">{type.bedrooms}</Figure>

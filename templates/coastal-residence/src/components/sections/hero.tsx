@@ -47,7 +47,7 @@ function DayNight({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void 
 }
 
 /**
- * The opening: a plum screen, an arch rising out of the bottom of it with the
+ * The opening: a deep screen, an arch rising out of the bottom of it with the
  * house inside, and — as the name writes itself in — the arch opening out to
  * the whole window.
  */
@@ -104,7 +104,7 @@ export function Hero({ onReady }: { onReady?: () => void }) {
   }, [])
 
   return (
-    <section ref={section} id="top" data-tone="light" className="relative h-[100svh] min-h-[560px] overflow-hidden bg-plum">
+    <section ref={section} id="top" data-tone="light" className="relative h-[100svh] min-h-[560px] overflow-hidden bg-deep">
       {/* The faint rings round the arch while it waits. */}
       <AnimatePresence>
         {!open && (
@@ -118,7 +118,7 @@ export function Hero({ onReady }: { onReady?: () => void }) {
             {[4, 8].map((grow) => (
               <div
                 key={grow}
-                className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-t-full border border-b-0 border-plum-soft w-[calc(62vw+var(--g))] h-[calc(78%+var(--g))] md:w-[calc(30vw+var(--g))]"
+                className="absolute bottom-0 left-1/2 -translate-x-1/2 rounded-t-full border border-b-0 border-deep-soft w-[calc(62vw+var(--g))] h-[calc(78%+var(--g))] md:w-[calc(30vw+var(--g))]"
                 style={{ ["--g" as string]: `${grow}vw` }}
               />
             ))}
@@ -157,7 +157,7 @@ export function Hero({ onReady }: { onReady?: () => void }) {
           <h1 className="relative text-center font-condensed text-[clamp(4.5rem,10.4vw,12.5rem)] leading-[0.86]">
             <StretchText text={brand.word[0]} play={letters} className="block" />
             <StretchText text={brand.word[1]} play={letters} delay={0.12} className="block" />
-            <span className="absolute left-[34%] top-[70%] -rotate-[8deg] font-script text-[0.82em] normal-case leading-none tracking-normal sm:left-[26%]">
+            <span className="absolute left-[38%] top-[74%] -rotate-[4deg] font-script italic text-[0.78em] normal-case leading-none tracking-normal sm:left-[26%]">
               {letters && (
                 <ScriptReveal play="mount" delay={0.5}>
                   {brand.town}

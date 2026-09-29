@@ -4,12 +4,12 @@ Luna Residence: a one-page site for a small gated development on the coast,
 twenty-two homes between Altea and Calpe. It reads as a walk through the
 place:
 
-1. **Arrival**: a plum screen, and an arch that rises and opens onto the hero.
+1. **Arrival**: a deep olive screen, and an arch that rises and opens onto the hero.
    The name writes itself in, and a *by day / by night* switch regrades the
    scene.
 2. **The gardens at dusk**: pulsing points pinned to the photograph, each
    opening a note card.
-3. **Three reasons**: a disc of mist-blue rises over the picture with the
+3. **Three reasons**: a sand-coloured disc rises over the picture with the
    chapter title set round its rim. Then three pinned reasons, each
    re-lettering the headline as you scroll.
 4. **The studio's quote** over a full-bleed photograph.
@@ -21,7 +21,7 @@ place:
 7. **Amenities**: a pinned full-screen list that steps through the grounds.
 8. **The space to live in**: a cream disc, then a collage of the rooms, specs
    and upgrades.
-9. **Architecture**, **the team** (an accordion), **sea views** and a plum
+9. **Architecture**, **the team** (an accordion), **sea views** and an olive
    **contact** footer.
 
 ```bash
@@ -33,8 +33,8 @@ npm run dev     # → http://localhost:3130
 
 - `src/content.ts`: every word and every photograph (Pexels, credited in the
   footer).
-- `src/index.css`: the tokens. Palette (`plum`, `mist`, `shell`, `ink`, `sky`,
-  `dusk`), fonts, the card shadow, radii and the motion easings. Headlines use
+- `src/index.css`: the tokens. Palette by role (`deep` olive, `pale` sand,
+  `shell` limestone, `ink`, and `sky` / `dusk` for grading the hero), fonts, the card shadow, radii and the motion easings. Headlines use
   the `font-condensed` utility.
 - `src/components/sections/`: one file per chapter.
 - `src/components/ui/`: shadcn primitives (button, sheet, popover, carousel,
@@ -44,6 +44,6 @@ npm run dev     # → http://localhost:3130
 - `src/components/motion.tsx`: Lenis (the scroll) and the shared easings and
   durations.
 
-Fonts are Google Fonts linked from `index.html`: Noto Serif Display at its
-condensed width, Pinyon Script and Archivo. All motion respects
+Fonts are Google Fonts linked from `index.html`: Instrument Serif (headlines,
+and its italic for the accent words) and Manrope. All motion respects
 `prefers-reduced-motion`.

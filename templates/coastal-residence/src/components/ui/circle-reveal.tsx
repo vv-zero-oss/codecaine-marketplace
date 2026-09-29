@@ -12,7 +12,7 @@ export function CircleReveal({
   image,
   imageAlt,
   arc,
-  color = "mist",
+  color = "pale",
   children,
   className,
   id,
@@ -20,7 +20,7 @@ export function CircleReveal({
   image: string
   imageAlt: string
   arc?: string[]
-  color?: "mist" | "shell"
+  color?: "pale" | "shell"
   children?: (progress: MotionValue<number>) => ReactNode
   className?: string
   id?: string
@@ -61,7 +61,7 @@ export function CircleReveal({
         />
         <motion.div
           data-tone="dark"
-          className={cn("absolute left-1/2 rounded-full", color === "mist" ? "bg-mist" : "bg-shell")}
+          className={cn("absolute left-1/2 rounded-full", color === "pale" ? "bg-pale" : "bg-shell")}
           style={{ width: diameter, height: diameter, marginLeft: -r, top }}
         >
           {arc && (
@@ -71,7 +71,7 @@ export function CircleReveal({
               </defs>
               <text
                 className="fill-current font-display uppercase"
-                style={{ fontStretch: "62.5%", fontWeight: 620, fontSize: size.w < 768 ? 44 : 34, wordSpacing: "1.4em" }}
+                style={{ fontWeight: 400, fontSize: size.w < 768 ? 44 : 34, wordSpacing: "1.4em" }}
                 textAnchor="middle"
               >
                 <textPath href={`#arc-${id}`} startOffset="25%">

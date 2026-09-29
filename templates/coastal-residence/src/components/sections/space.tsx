@@ -19,7 +19,7 @@ function SpaceTitle({ progress }: { progress: MotionValue<number> }) {
       {space.lines.map((line, i) => (
         <StretchText key={line} text={line} delay={i * 0.1} className="block" />
       ))}
-      <span className="-mt-[0.45em] ml-[0.6em] block -rotate-[8deg] font-script text-[0.95em] normal-case leading-none tracking-normal">
+      <span className="ml-[0.5em] mt-[0.06em] block -rotate-[3deg] font-script italic text-[0.95em] normal-case leading-none tracking-normal">
         <ScriptReveal delay={0.4}>{space.script}</ScriptReveal>
       </span>
     </motion.h2>
@@ -48,7 +48,7 @@ export function Space() {
 
       <section data-tone="dark" className="relative overflow-hidden bg-shell pb-24 text-ink">
         <div className="grid items-start gap-12 md:grid-cols-12 md:gap-0">
-          <div className="relative flex h-[62vw] justify-end overflow-hidden bg-plum md:col-span-5 md:mt-[22vh] md:h-[38vw]">
+          <div className="relative flex h-[62vw] justify-end overflow-hidden bg-deep md:col-span-5 md:mt-[22vh] md:h-[38vw]">
             <Drift src={space.images[0]} alt="Bougainvillea in full flower" className="h-[115%] w-[62%] object-cover" amount={40} />
           </div>
           <div className="px-5 md:col-span-5 md:col-start-8 md:-mt-[18vh] md:px-0">
@@ -67,7 +67,7 @@ export function Space() {
         </motion.p>
 
         <div className="mt-24 grid items-center gap-12 md:grid-cols-12 md:gap-0">
-          <div className="relative flex items-start justify-start bg-plum pb-[12%] md:col-span-4 md:h-[34vw] md:pb-0">
+          <div className="relative flex items-start justify-start bg-deep pb-[12%] md:col-span-4 md:h-[34vw] md:pb-0">
             <Drift src={space.images[2]} alt="A quiet walled courtyard" className="ml-[14%] mt-[10%] aspect-[4/5] w-[62%] object-cover" amount={30} />
           </div>
           <div className="flex flex-col gap-10 px-5 md:col-span-3 md:col-start-6 md:px-0">

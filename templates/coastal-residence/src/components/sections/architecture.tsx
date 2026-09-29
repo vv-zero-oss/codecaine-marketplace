@@ -17,7 +17,7 @@ export function Architecture() {
   const captionOpacity = useTransform(scrollYProgress, (v) => (reduce ? 1 : Math.min(1, Math.max(0, (v - 0.7) / 0.2))))
 
   return (
-    <section ref={ref} id="architecture" className="relative h-[180svh] bg-mist">
+    <section ref={ref} id="architecture" className="relative h-[180svh] bg-pale">
       <div data-tone="light" className="sticky top-0 h-[100svh] overflow-hidden">
         <motion.img
           src={architecture.image}

@@ -39,7 +39,7 @@ function Badge({ tone }: { tone: "light" | "dark" }) {
         <defs>
           <path id="badge-ring" d="M 64,64 m -52,0 a 52,52 0 1,1 104,0 a 52,52 0 1,1 -104,0" />
         </defs>
-        <text className="fill-current font-sans text-[9.5px] font-semibold" style={{ letterSpacing: "0.32em", fontStretch: "115%" }}>
+        <text className="fill-current font-sans text-[9.5px] font-semibold" style={{ letterSpacing: "0.32em" }}>
           <textPath href="#badge-ring">{ring}</textPath>
         </text>
       </motion.svg>
@@ -107,7 +107,7 @@ export function SiteHeader() {
         >
           <Menu className="size-5" strokeWidth={1.5} />
         </SheetTrigger>
-        <SheetContent side="right" className="w-full border-none bg-plum text-shell sm:max-w-sm [&>button]:text-shell">
+        <SheetContent side="right" className="w-full border-none bg-deep text-shell sm:max-w-sm [&>button]:text-shell">
           <SheetTitle className="sr-only">Menu</SheetTitle>
           <div className="flex h-full flex-col justify-center gap-10 px-8">
             <Emblem className="size-12" />

@@ -7,7 +7,7 @@ import { Emblem } from "@/components/ui/emblem"
 import { StretchText } from "@/components/ui/stretch-text"
 import { contact } from "@/content"
 
-/** Contact, in plum: the number to call, where to find the office, the small print. */
+/** Contact, in deep: the number to call, where to find the office, the small print. */
 export function SiteFooter() {
   const ref = useRef<HTMLElement>(null)
   const lenis = useLenis()
@@ -16,7 +16,7 @@ export function SiteFooter() {
   const stripY = useTransform(scrollYProgress, [0, 1], reduce ? ["0%", "0%"] : ["-30%", "0%"])
 
   return (
-    <footer ref={ref} id="contact" data-tone="light" className="relative flex min-h-[100svh] flex-col bg-plum px-5 text-shell sm:px-8">
+    <footer ref={ref} id="contact" data-tone="light" className="relative flex min-h-[100svh] flex-col bg-deep px-5 text-shell sm:px-8">
       <div className="mx-auto h-24 w-full max-w-[60rem] overflow-hidden sm:h-32">
         <motion.img src={contact.strip} alt="A table laid under a vine-covered pergola" loading="lazy" style={{ y: stripY }} className="h-[160%] w-full object-cover" />
       </div>
@@ -27,7 +27,7 @@ export function SiteFooter() {
           <StretchText text={contact.phone} />
           <span className="mx-auto mt-2 block h-px w-0 bg-shell transition-[width] duration-700 ease-[var(--ease-out-soft)] group-hover:w-full" />
         </a>
-        <p className="mt-8 font-sans text-[0.8rem] uppercase tracking-[0.04em] [font-stretch:110%]">{contact.office}</p>
+        <p className="mt-8 font-sans text-[0.8rem] uppercase tracking-[0.04em]">{contact.office}</p>
         <address className="label mt-3 not-italic tracking-[0.06em]">
           {contact.address[0]}
           <br />

@@ -97,7 +97,7 @@ export function Reasons() {
         {(progress) => <IntroCentre progress={progress} />}
       </CircleReveal>
 
-      <section ref={ref} id="reasons" data-tone="dark" className="relative h-[300vh] bg-mist text-ink">
+      <section ref={ref} id="reasons" data-tone="dark" className="relative h-[300vh] bg-pale text-ink">
         <div className="sticky top-0 flex h-[100svh] flex-col items-center overflow-hidden px-5 pt-28 sm:pt-6">
           <h2 className="sr-only">Three reasons to choose {brand.word[0]}</h2>
           <StretchText

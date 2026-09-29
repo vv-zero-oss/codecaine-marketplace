@@ -1,6 +1,6 @@
 import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { Plus, X } from "lucide-react"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
 import { EASE_OUT } from "@/components/motion"
 import { CircleLink } from "@/components/ui/circle-link"
@@ -16,6 +16,15 @@ export function Notes() {
   const ref = useRef<HTMLElement>(null)
   const reduce = useReducedMotion()
   const [open, setOpen] = useState<string | null>(null)
+  // Beside the point on a wide screen; below it on a phone, where there is no room at the side.
+  const [side, setSide] = useState<"right" | "bottom">("right")
+  useEffect(() => {
+    const query = window.matchMedia("(min-width: 768px)")
+    const update = () => setSide(query.matches ? "right" : "bottom")
+    update()
+    query.addEventListener("change", update)
+    return () => query.removeEventListener("change", update)
+  }, [])
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
   const scale = useTransform(scrollYProgress, [0, 0.5], reduce ? [1, 1] : [1.12, 1])
 
@@ -48,7 +57,7 @@ export function Notes() {
             </span>
           </PopoverTrigger>
           <PopoverContent
-            side="right"
+            side={side}
             align="center"
             sideOffset={20}
             collisionPadding={16}
