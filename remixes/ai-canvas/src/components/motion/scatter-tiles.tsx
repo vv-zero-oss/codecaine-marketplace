@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 
 /**
  * Small photographs appearing one by one around a line of text — the
- * reference's "image by image" scene. Each tile blurs in on its own clock,
+ * "frame by frame" scene. Each tile blurs in on its own clock,
  * scattered over `spread` seconds, so the page fills the way a moodboard does:
  * a few, then many. Positions avoid the middle, where the words are.
  */

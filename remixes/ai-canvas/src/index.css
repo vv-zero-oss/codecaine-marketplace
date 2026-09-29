@@ -56,7 +56,7 @@
   --shadow-float: 0 1px 1px rgb(13 13 13 / 0.05), 0 12px 32px -10px rgb(13 13 13 / 0.22);
 
   /* Motion: the curves and durations every animation on the page shares.
-     Blur-ins measured off the reference at ~0.5–0.6s; tiles at ~0.6s. */
+     Blur-ins take ~0.5–0.6s; tiles ~0.6s. */
   --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
@@ -119,13 +119,23 @@
   --radius-card: 20px;
   --radius-pill: 9999px;
 
-  /* The spacing steps the page is laid out on */
+  /* The spacing steps the page is laid out on: a φ scale (each step 1.618×
+     the one before), so gaps and air relate to each other the way the
+     golden bands below relate to the screen. */
+  --spacing-phi-1: 8px;
+  --spacing-phi-2: 13px;
+  --spacing-phi-3: 21px;
+  --spacing-phi-4: 34px;
+  --spacing-phi-5: 55px;
+  --spacing-phi-6: 89px;
+  --spacing-phi-7: 144px;
+  --spacing-phi-8: 233px;
   --spacing-gutter: clamp(16px, 1.1vw, 20px);
   --spacing-inset: clamp(8px, 1.1vw, 16px);
   --spacing-nav: clamp(56px, 4.4vw, 64px);
   --spacing-scene: 100svh;
 
-  /* Type scale, read off the reference at 1440 and scaled fluidly */
+  /* Type scale, set at 1440 and scaled fluidly */
   --text-micro: 11px;
   --text-micro--line-height: 1.3;
   --text-nav: 13px;
@@ -159,6 +169,33 @@
     var(--mauve-300) 76%,
     var(--mauve-100) 92%,
     var(--mauve-50) 100%
+  );
+}
+
+/* The golden bands a pinned stage is cut into: the larger band (61.8%) for
+   the picture, the smaller (38.2%) for the words — words below, or above. */
+@utility rows-golden-below {
+  grid-template-rows: 1.618fr 1fr;
+}
+@utility rows-golden-above {
+  grid-template-rows: 1fr 1.618fr;
+}
+/* The measure a diagram or a shot takes: 61.8% of the stage. */
+@utility w-golden {
+  width: min(100%, 61.8vw);
+}
+
+/* The closing glow: night in the top corner, through mauve, to paper — the
+   hero's night coming back to close the page. */
+@utility bg-closing-glow {
+  background-image: linear-gradient(
+    200deg,
+    var(--night) 0%,
+    var(--mauve-900) 18%,
+    var(--mauve-500) 34%,
+    var(--mauve-300) 46%,
+    var(--mauve-50) 60%,
+    var(--paper) 72%
   );
 }
 

@@ -31,8 +31,10 @@ export function Together() {
           <motion.div className="col-start-1 row-start-1" style={{ opacity: beforeOpacity, filter: beforeFilter }}>
             <SceneText first={together.before} />
           </motion.div>
+          {/* The answer lands at hero size, the one time the story raises
+              its voice after the hero. */}
           <motion.div className="col-start-1 row-start-1" style={{ opacity: afterOpacity, filter: afterFilter }}>
-            <SceneText first={together.after} />
+            <SceneText first={together.after} className="max-w-[11ch] text-hero font-normal tracking-display" />
           </motion.div>
         </div>
       </div>

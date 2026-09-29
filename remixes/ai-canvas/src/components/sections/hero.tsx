@@ -26,7 +26,7 @@ export function Hero() {
   const { designing } = useCanvasDesignMode()
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
 
-  // The hand-over, read off the reference: headline gone by a third, canvas
+  // The hand-over: headline gone by a third, canvas
   // washed by 85%, the next line in over the washed tiles.
   const wash = useScrub(scrollYProgress, [0.12, 0.8], [0, 1])
   const shared = useHeroWash()
@@ -42,7 +42,7 @@ export function Hero() {
   const nextOpacity = useScrub(scrollYProgress, [0.55, 0.85], [0, 1])
   const nextFilter = useScrubBlur(scrollYProgress, [0.55, 0.85], [blurMax, 0])
 
-  // Entrance: after the tiles, as in the reference. The editor holds it at
+  // Entrance: after the tiles have arrived. The editor holds it at
   // its end state.
   const enter = (delay: number) =>
     designing

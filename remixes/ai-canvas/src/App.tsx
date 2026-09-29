@@ -13,11 +13,15 @@
 
 import { useMotionValue } from "motion/react"
 
+import { Branches } from "@/components/sections/branches"
 import { CallToAction } from "@/components/sections/call-to-action"
+import { EndsToday } from "@/components/sections/ends-today"
+import { Film } from "@/components/sections/film"
 import { Hero } from "@/components/sections/hero"
 import { KnowsYourSystem } from "@/components/sections/knows-your-system"
 import { LivePages } from "@/components/sections/live-pages"
-import { Manifesto, Place, Problem, RunFree, Scatter } from "@/components/sections/scenes"
+import { Manifesto, Place, RunFree, Scatter } from "@/components/sections/scenes"
+import { SeparateWorlds } from "@/components/sections/separate-worlds"
 import { SiteFooter } from "@/components/sections/site-footer"
 import { SiteHeader } from "@/components/sections/site-header"
 import { Together } from "@/components/sections/together"
@@ -29,11 +33,14 @@ import { useSmoothScroll } from "@/hooks/use-smooth-scroll"
 const SECTIONS = [
   { id: "top", Section: Hero },
   { id: "scatter", Section: Scatter },
-  { id: "problem", Section: Problem },
+  { id: "worlds", Section: SeparateWorlds },
+  { id: "ends-today", Section: EndsToday },
   { id: "manifesto", Section: Manifesto },
   { id: "live", Section: LivePages },
   { id: "together", Section: Together },
+  { id: "branches", Section: Branches },
   { id: "system", Section: KnowsYourSystem },
+  { id: "film", Section: Film },
   { id: "free", Section: RunFree },
   { id: "place", Section: Place },
   { id: "start", Section: CallToAction },

@@ -6,7 +6,7 @@ import { useScrub, useScrubBlur } from "@/lib/scrub"
 import { cn } from "@/lib/utils"
 
 /** Where each word sits in the panel, as % of its width and height — a
- *  staircase down and to the right, as in the reference. */
+ *  staircase down and to the right. */
 const STEPS = [
   { x: 9, y: 20 },
   { x: 24, y: 47 },

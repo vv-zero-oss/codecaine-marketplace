@@ -16,15 +16,28 @@ npm run dev     # → http://localhost:3170
 | --- | --- |
 | `Hero` | `InfiniteCanvas` — WebGL, endless, drifting. Photos blur in, then frames, live pages, a selection with an agent cursor, a prompt and a component sheet build in behind them over a dot grid. Scrolling pushes it (with motion blur) and washes it out to paper; the first line of the story sharpens in its place. Drag it. |
 | `Scatter` | `ScatterTiles` — photos blurring in one by one round the words |
-| `Problem` | `BlurText` — the second line word by word |
+| `SeparateWorlds` | `DriftBand` — forty years of machines drifting past, captioned; the headline word by word |
+| `EndsToday` | the product shot rising to the golden measure, lines swapping over its faded edge |
 | `Manifesto` | `SteppedWords` — a sentence set down a mauve panel as you scroll |
 | `LivePages` | pinned: prompt → shape → publish, shot and status toast swapping with blur crossfades |
 | `Together` | `FlyingCursors` — people and agents gathering on the headline, blurred by scroll speed |
-| `KnowsYourSystem` | `Typewriter` prompt → button → wires drawn to its tokens |
+| `Branches` | version control as a diagram drawn on the scroll: branch, agent review, merge to main |
+| `KnowsYourSystem` | `Typewriter` prompt → the mark becomes a button → wires to its tokens |
+| `Film` | a film opening from a golden window to full bleed; play/pause at the centre |
 | `RunFree`, `Place` | `CyclingImage` in the sentence; lines sharpening from muted ink |
-| `CallToAction` | the big pill |
+| `CallToAction` | the closing glow, `PortalMark`, the big pill and `LogoMarquee` |
+| `SiteFooter` | links, small print and the name set giant |
 
-Every scene leaves with a scroll-tied blur (`ScrollScene`).
+Every white scene is pinned while you read it (`ScrollScene`) and leaves with
+a scroll-tied blur.
+
+### Composition
+
+Pinned stages are cut on the golden section — `rows-golden-below` /
+`rows-golden-above` put the picture in the 61.8% band and the words in the
+38.2% one; diagrams and shots take `w-golden` (61.8% of the screen); the
+film's headline sits on the 76.4% line and the close on the 38.2% line.
+Spacing steps are a φ scale (`phi-1`…`phi-8`: 8, 13, 21, 34, 55, 89, 144, 233).
 
 ## Changing it
 
@@ -42,7 +55,9 @@ Every scene leaves with a scroll-tied blur (`ScrollScene`).
   the Motion switch stops both; everything else is Framer Motion or CSS.
   Reduced motion stops the drift and drops every blur.
 - Actions: **Hero · Canvas drift**, **Header · Mobile menu**, **Live pages ·
-  Prompt / Shape / Publish**, **Agent · Generated**.
+  Prompt / Shape / Publish**, **Version control · Branch / Review / Merge**,
+  **Agent · Generated**, **Film · Film playing**.
 - Designing, the hero's entrance and the agent sequence hold at their end state.
 
-Photography from [Pexels](https://www.pexels.com). Font: Inter, from Google Fonts.
+Photography and film from [Pexels](https://www.pexels.com); logos from
+[SVGL](https://svgl.app). Font: Inter, from Google Fonts.

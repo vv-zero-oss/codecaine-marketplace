@@ -1,32 +1,36 @@
 import { LogoMark } from "@/components/blocks/logo"
 import { brand, footer } from "@/content"
 
-/** The reference's footer: small, quiet, one line — the name and year on the
- *  left, two groups of links on the right. */
+/**
+ * The foot of the page: the links in one row, the small print under them,
+ * and the name set as large as the screen allows — the last thing on the
+ * page is who it was from. Spaced on the φ scale.
+ */
 export function SiteFooter() {
+  const links = footer.groups.flatMap((group) => group.links)
   return (
-    <footer className="mx-auto flex max-w-[1440px] flex-col gap-6 px-gutter pt-10 pb-6 text-micro sm:flex-row sm:items-end sm:justify-between">
-      <div className="flex items-center gap-2">
-        <LogoMark className="size-5 rounded-[6px]" />
-        <span className="text-[13px] font-semibold tracking-[-0.02em] text-ink">{brand.name}</span>
-        <span className="text-ink-muted">© {brand.year}</span>
-      </div>
-      <div className="flex flex-wrap gap-x-10 gap-y-3">
-        {footer.groups.map((group) => (
-          <nav key={group.title} aria-label={group.title} className="flex flex-wrap items-center gap-x-3 gap-y-1">
-            <span className="font-medium text-ink">{group.title}</span>
-            {group.links.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className="inline-flex min-h-8 items-center text-ink-muted transition-colors duration-(--duration-hover) hover:text-ink"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+    <footer className="mx-auto flex max-w-[1440px] flex-col gap-phi-4 overflow-hidden px-gutter pt-phi-6 pb-phi-4">
+      <nav aria-label="Footer" className="flex flex-wrap gap-x-phi-4 gap-y-phi-1 sm:gap-x-phi-5">
+        {links.map((link) => (
+          <a
+            key={link.label}
+            href={link.href}
+            className="inline-flex min-h-11 items-center text-[15px] font-medium text-ink transition-opacity duration-(--duration-hover) hover:opacity-60"
+          >
+            {link.label}
+          </a>
         ))}
-      </div>
+      </nav>
+      <p className="text-micro text-mist">
+        © {brand.year} {brand.name}. All rights reserved.
+      </p>
+      <p
+        aria-label={brand.name}
+        className="mt-phi-5 flex items-center gap-[0.12em] text-[clamp(64px,15.4vw,224px)] leading-[0.8] font-semibold tracking-[-0.055em] text-ink"
+      >
+        <LogoMark className="size-[0.86em] rounded-[0.2em]" />
+        <span aria-hidden>{brand.name}</span>
+      </p>
     </footer>
   )
 }

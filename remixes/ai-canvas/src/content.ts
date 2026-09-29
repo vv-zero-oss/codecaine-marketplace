@@ -112,7 +112,6 @@ export const nav = {
     { label: "Product", href: "#live" },
     { label: "Agents", href: "#system" },
   ],
-  prompt: "Ask Boundless to build…",
   login: { label: "Log in", href: "#start" },
   signup: { label: "Sign up", href: "#start" },
 }
@@ -129,7 +128,6 @@ export const hero = {
 export const scenes = {
   opening: { first: "Great work isn't prompted.", second: "It's shaped." },
   scatter: { first: "Frame by frame.", second: "Prompt by prompt." },
-  problem: { first: "But most tools stop at the mockup.", second: "They were built to hand off, not to ship." },
   manifesto: ["Boundless", "is", "where", "ideas", "go live."],
   free: { first: "Where your ideas can run free.", before: "And every frame", after: "evolves." },
   place: {
@@ -139,6 +137,31 @@ export const scenes = {
     fourth: "ideas come alive.",
   },
   cta: { title: "Come build with us.", label: "Get started", href: "#start" },
+}
+
+/** Forty years of handing design over to code, as a drifting band of the
+ *  machines it happened on. Each caption is a year and what the handoff was
+ *  then. */
+export const worlds = {
+  first: "For forty years, design and code",
+  second: "have lived in separate worlds.",
+  eras: [
+    { year: "1984", label: "The first desktop", photo: { id: 16172593, src: "https://images.pexels.com/photos/16172593/pexels-photo-16172593.jpeg", alt: "A Macintosh Classic computer, lit from the side.", by: "Sidde" } },
+    { year: "1989", label: "Paste-up", photo: { id: 9140597, src: "https://images.pexels.com/photos/9140597/pexels-photo-9140597.jpeg", alt: "A classic computer with a green CRT screen.", by: "Viktorya Sergeeva" } },
+    { year: "1994", label: "The comp", photo: { id: 37148215, src: "https://images.pexels.com/photos/37148215/pexels-photo-37148215.jpeg", alt: "A classic Macintosh showing a retro game.", by: "Ruben Boekeloo" } },
+    { year: "1998", label: "Slices and tables", photo: { id: 37148218, src: "https://images.pexels.com/photos/37148218/pexels-photo-37148218.jpeg", alt: "A row of colourful all-in-one computers.", by: "Ruben Boekeloo" } },
+    { year: "2003", label: "The redline", photo: { id: 9140600, src: "https://images.pexels.com/photos/9140600/pexels-photo-9140600.jpeg", alt: "A row of vintage CRT monitors.", by: "Viktorya Sergeeva" } },
+    { year: "2010", label: "The spec", photo: { id: 256502, src: "https://images.pexels.com/photos/256502/pexels-photo-256502.jpeg", alt: "Lines of stylesheet code on a screen.", by: "Pixabay" } },
+    { year: "2016", label: "The handoff file", photo: { id: 37148208, src: "https://images.pexels.com/photos/37148208/pexels-photo-37148208.jpeg", alt: "Early personal computers side by side.", by: "Ruben Boekeloo" } },
+    { year: "2023", label: "The prompt", photo: { id: 6424583, src: "https://images.pexels.com/photos/6424583/pexels-photo-6424583.jpeg", alt: "Colourful code on a dark monitor.", by: "Nemuel Sereti" } },
+  ] satisfies { year: string; label: string; photo: Photo }[],
+}
+
+/** The turn: the product shot, and the lines over it. */
+export const endsToday = {
+  first: "That ends today.",
+  second: "No more handoff. No more translation.",
+  third: "The canvas is the product.",
 }
 
 /** The live-pages walk: one step per screen of scroll. */
@@ -170,7 +193,7 @@ export const live = {
 /** People and agents on one canvas. */
 export const together = {
   before: "Not just cursors on a canvas",
-  after: "People and agents, side by side",
+  after: "Time to build together",
   cursors: [
     { name: "Maya", agent: false },
     { name: "Layout agent", agent: true },
@@ -183,16 +206,54 @@ export const together = {
   ],
 }
 
+/** Branching, for a canvas: three headlines over one diagram. */
+export const branches = {
+  trunk: "Main",
+  headlines: ["Version control for design, finally.", "Branch, review and merge.", "Right on the canvas."],
+  component: "Button / Primary",
+  label: "Get started",
+  people: { branch: "Maya", review: "Layout agent" },
+  comment: "Tighten the padding?",
+  reply: "Go for it",
+  creating: "Creating a branch",
+  merging: "Merging to main",
+}
+
 /** The agent that works from your design system. */
 export const system = {
   title: "AI that knows your design system",
   prompt: "Create a primary button",
   result: "Get started",
-  tokens: [
-    { name: "primary", kind: "colour" },
-    { name: "on-primary", kind: "colour" },
-    { name: "radius-pill", kind: "radius" },
-    { name: "Inter / Medium", kind: "type" },
+  /** Left column: colours, the first one wired. Right: shape and type,
+   *  the first two wired — as a system would resolve them. */
+  colours: ["primary", "mauve", "paper"],
+  styles: ["radius-pill", "Inter / Medium", "Inter / Regular"],
+}
+
+/** The film: a builder at work, full bleed. */
+export const film = {
+  title: "From a sketch to a live site, in one place.",
+  body: "No editor to open, no build to wait for. What you shape is what ships.",
+  video: {
+    src: "https://videos.pexels.com/video-files/34492301/14614664_1920_1080_30fps.mp4",
+    small: "https://videos.pexels.com/video-files/34492301/14614657_960_540_30fps.mp4",
+    poster: "https://images.pexels.com/videos/34492301/stylish-man-working-on-laptop-at-home-office-34492301.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1080&w=1920",
+    by: "Artem Shutkin",
+  },
+}
+
+/** Where a published page goes. Logos from SVGL, in `public/logos/`. */
+export const publishes = {
+  label: "Publishes to the places you already ship",
+  logos: [
+    { name: "Vercel", src: "logos/vercel.svg" },
+    { name: "Netlify", src: "logos/netlify.svg" },
+    { name: "Cloudflare", src: "logos/cloudflare.svg" },
+    { name: "Shopify", src: "logos/shopify.svg" },
+    { name: "Webflow", src: "logos/webflow.svg" },
+    { name: "Framer", src: "logos/framer.svg" },
+    { name: "Supabase", src: "logos/supabase.svg" },
+    { name: "Stripe", src: "logos/stripe.svg" },
   ],
 }
 

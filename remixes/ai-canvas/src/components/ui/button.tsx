@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 
 /**
  * The page's pills. Two fills — paper on the night hero, ink on paper — and
- * the reference's sizes: a small nav pill, the hero's wide one and the
+ * the page's three sizes: a small nav pill, the hero's wide one and the
  * closing call's enormous one.
  *
  * Press is a 0.97 scale on the compositor, 140ms; hover is a colour change,

@@ -3,7 +3,7 @@
  * `index.css` (`--ease-out-strong`, `--blur-reveal`, …) so a CSS transition
  * and a Motion animation on the same page share one feel.
  *
- * The blur-ins were read off the reference frame by frame: a word or a tile
+ * The blur-ins: a word or a tile
  * goes from blurred and transparent to sharp in ~0.6s, strongly eased out,
  * with nothing moving — the blur is the motion.
  */

@@ -56,7 +56,7 @@ float coverage(vec2 p, vec2 size, float r) {
 void main() {
   vec2 fc = vec2(gl_FragCoord.x, u_res.y - gl_FragCoord.y);
   // The clearing behind the headline: just the words' own footprint, as in
-  // the reference, where tiles sit bright right up to the type.
+  // the page's design, where tiles sit bright right up to the type.
   vec2 d = (fc - u_res * 0.5) / (u_res * vec2(0.23, 0.25));
   float clear = smoothstep(0.62, 1.0, length(d));
   float bias = u_bias + (1.0 - clear) * 2.5 * u_focus;

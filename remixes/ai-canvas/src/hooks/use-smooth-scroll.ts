@@ -5,7 +5,7 @@ import Lenis from "lenis"
  * Lenis carries the scroll, held in a ref — the place the canvas editor's SDK
  * looks for it, so its Motion switch can stop and resume it.
  *
- * `lerp: 0.085` matches the reference's glide: smooth and a little heavy,
+ * `lerp: 0.085` is the page's glide: smooth and a little heavy,
  * never floaty. Off under reduced motion; the native scroll is the gentler one.
  */
 export function useSmoothScroll(): React.RefObject<Lenis | null> {

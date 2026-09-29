@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 /**
  * Words that arrive out of focus and sharpen, one after another — the
- * reference's reveal, read off its frames: no travel, only blur and opacity,
+ * page's reveal: no travel, only blur and opacity,
  * ~0.6s each, strongly eased out.
  *
  * `by="line"` brings the whole line in at once; `by="word"` staggers it.

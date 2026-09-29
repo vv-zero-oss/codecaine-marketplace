@@ -18,7 +18,7 @@ const DIRECTIONS: Record<CanvasDirection, [number, number]> = {
   down: [0, 1],
 }
 
-/** How long one piece takes to blur in — measured off the reference's tiles. */
+/** How long one piece takes to blur in — the page's tile arrival. */
 const ARRIVE = 0.6
 /** The warp's opening speed, in design px/s, before it settles to `speed`. */
 const WARP = 1600
