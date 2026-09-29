@@ -42,7 +42,7 @@ const REGISTRY_VERSION = 1
 
 /** Folder on disk → the `type` its items declare → the catalog file. */
 export const KINDS = [
-  { folder: "templates", type: "template", catalog: "templates.json" },
+  { folder: "remixes", type: "remix", catalog: "remixes.json" },
   { folder: "apps", type: "app", catalog: "apps.json" },
   { folder: "design-systems", type: "design-system", catalog: "design-systems.json" },
   { folder: "skills", type: "skill", catalog: "skills.json" },
@@ -150,7 +150,7 @@ async function listFiles(dir, base = dir) {
   const entries = await readdir(dir, { withFileTypes: true })
   for (const entry of entries) {
     if (SKIP.has(entry.name)) continue
-    // Dotfiles stay out (an `.env` in a template folder is the obvious one),
+    // Dotfiles stay out (an `.env` in a remix folder is the obvious one),
     // except the two a project needs to behave like the original.
     if (entry.name.startsWith(".") && entry.name !== ".gitignore" && entry.name !== ".npmrc") continue
     const full = path.join(dir, entry.name)
@@ -160,7 +160,7 @@ async function listFiles(dir, base = dir) {
   return out.sort()
 }
 
-/** The files an item's archive holds, and the tar of them. A template's
+/** The files an item's archive holds, and the tar of them. A remix's
  *  previews are pictures of it for the marketplace's own pages, not part of the
  *  project a person gets — leaving them out keeps a download to the project. */
 export async function packItem(dir) {
@@ -174,11 +174,11 @@ export async function packItem(dir) {
 // ---------------------------------------------------------------------------
 
 /**
- * A template's demo: the project built to static files and committed under
+ * A remix's demo: the project built to static files and committed under
  * `demos/<id>/`, so the editor's item page can show the running site instead
  * of a picture of it, and "Open in browser" has somewhere to go.
  *
- * Building it needs the template's dependencies, which this script does not
+ * Building it needs the remix's dependencies, which this script does not
  * install (it runs with `node` and nothing else), so `scripts/build-demos.mjs`
  * builds it and records the hash of the archive it was built from in
  * `demo.json`. Here that record is only compared: a demo built from other
@@ -196,7 +196,7 @@ async function demoFor(id, sha256, problems) {
     return false
   }
   if (record.sha256 !== sha256) {
-    problems.push(`${DEMOS}/${id}: built from an older templates/${id} — run \`npm run demos ${id}\` and commit it`)
+    problems.push(`${DEMOS}/${id}: built from an older remixes/${id} — run \`npm run demos ${id}\` and commit it`)
     return false
   }
   return true
@@ -264,10 +264,10 @@ async function validate(kind, folderName, dir, meta) {
   }
 
   const extra = {}
-  if (kind.type === "template") {
-    need("sdkVersion", (v) => typeof v === "string" && SEMVER.test(v), "must be the @canvas/react version the template vendors")
+  if (kind.type === "remix") {
+    need("sdkVersion", (v) => typeof v === "string" && SEMVER.test(v), "must be the @canvas/react version the remix vendors")
     need("pages", (v) => Array.isArray(v) && v.length > 0 && v.every((p) => p && typeof p.path === "string" && p.path.startsWith("/") && text(p.title)), "must list { path, title } with paths starting at /")
-    if (!(await exists(path.join(dir, "package.json")))) errors.push("a template needs a package.json")
+    if (!(await exists(path.join(dir, "package.json")))) errors.push("a remix needs a package.json")
     if (!meta.meta?.devCommand) errors.push(`"meta.devCommand" must say how to run it`)
   }
   if (kind.type === "app") {
@@ -388,16 +388,16 @@ async function build() {
           files: files.length,
         },
         source: { repository: REPOSITORY, ref: REF, path: where },
-        ...(kind.type === "template" && (await demoFor(meta.id, sha256, problems)) ? { demoUrl: `${DEMOS}/${meta.id}/` } : {}),
+        ...(kind.type === "remix" && (await demoFor(meta.id, sha256, problems)) ? { demoUrl: `${DEMOS}/${meta.id}/` } : {}),
         ...extra,
       })
     }
     catalogs[kind.type] = { kind, items }
   }
 
-  const templateIds = new Set(catalogs.template.items.map((item) => item.id))
+  const remixIds = new Set(catalogs.remix.items.map((item) => item.id))
   for (const entry of await readdir(path.join(ROOT, DEMOS), { withFileTypes: true }).catch(() => [])) {
-    if (entry.isDirectory() && !templateIds.has(entry.name)) problems.push(`${DEMOS}/${entry.name} belongs to no template — delete it`)
+    if (entry.isDirectory() && !remixIds.has(entry.name)) problems.push(`${DEMOS}/${entry.name} belongs to no remix — delete it`)
   }
 
   const all = Object.values(catalogs).flatMap((c) => c.items)
@@ -407,7 +407,7 @@ async function build() {
       $schema: "../schemas/marketplace-index.schema.json",
       registryVersion: REGISTRY_VERSION,
       name: "Codecaine Marketplace",
-      description: "Templates, apps, design systems and skills for the canvas editor.",
+      description: "Remixes, apps, design systems and skills for the canvas editor.",
       // Every URL in the catalogs is relative to this, and this is relative to
       // the index — so the same files work from Pages, from a raw GitHub URL
       // and from a folder on disk, which is how the editor's tests read them.
@@ -533,7 +533,12 @@ function landing(json) {
           ? `<div class="swatches">${item.designSystem.palette.slice(0, 8).map((c) => `<span style="background:${c.value}" title="${escape(c.name)} ${c.value}"></span>`).join("")}</div>`
           : ""
         const thumb = item.thumbnailUrl ? `<img src="${escape(item.thumbnailUrl)}" alt="" loading="lazy">` : ""
-        return `<article>${thumb}${swatches}<h3>${escape(item.name)} <small>v${escape(item.version)}</small></h3><p>${escape(item.description)}</p><p class="links">${item.demoUrl ? `<a href="${escape(item.demoUrl)}">Live demo</a> · ` : ""}<a href="${escape(item.archive.url)}">Download</a> · <a href="${REPOSITORY}/tree/${REF}/${escape(item.path)}">Source</a></p></article>`
+        // Every item names who made it, as the editor's item page does; a
+        // name with a url links to it, and only an http(s) one.
+        const byline = item.authors
+          .map((a) => (a.url && /^https?:\/\//.test(a.url) ? `<a href="${escape(a.url)}">${escape(a.name)}</a>` : escape(a.name)))
+          .join(", ")
+        return `<article>${thumb}${swatches}<h3>${escape(item.name)} <small>v${escape(item.version)}</small></h3><p class="by">by ${byline}</p><p>${escape(item.description)}</p><p class="links">${item.demoUrl ? `<a href="${escape(item.demoUrl)}">Live demo</a> · ` : ""}<a href="${escape(item.archive.url)}">Download</a> · <a href="${REPOSITORY}/tree/${REF}/${escape(item.path)}">Source</a></p></article>`
       })
       .join("")
     return `<section><h2>${escape(kind.folder.replace("-", " "))} <small>${items.length}</small></h2><div class="grid">${cards}</div></section>`
@@ -547,9 +552,9 @@ h1{margin:0 0 4px;font-size:28px}h2{text-transform:capitalize;margin:48px 0 16px
 code{font-size:13px}.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;overflow:hidden}
 article img{width:calc(100% + 32px);margin:-16px -16px 12px;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid var(--line);display:block}
-article h3{margin:0;font-size:15px}article p{margin:6px 0 0;color:var(--muted);font-size:13px}.links a{color:inherit}
+article h3{margin:0;font-size:15px}article p{margin:6px 0 0;color:var(--muted);font-size:13px}.links a,.by a{color:inherit}
 .swatches{display:flex;height:40px;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--line)}.swatches span{flex:1}
-</style></head><body><main><h1>Codecaine Marketplace</h1><p><small>Templates, apps, design systems and skills for the canvas editor. The editor reads <a href="json/index.json"><code>json/index.json</code></a>.</small></p>${sections}</main></body></html>\n`
+</style></head><body><main><h1>Codecaine Marketplace</h1><p><small>Remixes, apps, design systems and skills for the canvas editor. The editor reads <a href="json/index.json"><code>json/index.json</code></a>.</small></p>${sections}</main></body></html>\n`
 }
 
 async function main() {

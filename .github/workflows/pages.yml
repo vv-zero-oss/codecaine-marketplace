@@ -22,9 +22,9 @@ jobs:
       # index.html — was not regenerated with it. The repository IS the site:
       # Pages deploys it from the branch as committed (see README).
       - run: npm run check
-      - name: Build every template
+      - name: Build every remix
         run: |
-          for dir in templates/*/; do
+          for dir in remixes/*/; do
             echo "::group::$dir"
             (cd "$dir" && npm ci --no-audit --no-fund && npm run build)
             echo "::endgroup::"

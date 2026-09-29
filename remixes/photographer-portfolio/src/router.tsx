@@ -3,7 +3,7 @@ import { useEffect, useState, type ComponentProps, type MouseEvent } from "react
 /**
  * A router the size of this site: five paths and one with a parameter.
  *
- * Not react-router, on purpose. A template is something a person reads before
+ * Not react-router, on purpose. A remix is something a person reads before
  * they change it, and forty lines they can see are easier to replace with the
  * router they prefer than a dependency they have to learn first. Real paths
  * rather than `#/` ones, so the editor's Pages list and a link pasted from the

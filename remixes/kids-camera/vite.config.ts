@@ -5,9 +5,9 @@ import { defineConfig } from "vite"
 import { canvasPropOptions } from "./src/lib/canvas-react/vite"
 
 /**
- * A photographer's portfolio, as a marketplace template.
+ * A photographer's portfolio, as a marketplace remix.
  *
- * `@canvas/react` is not published yet, so a project made from this template
+ * `@canvas/react` is not published yet, so a project made from this remix
  * cannot install it, and a path into the canvas repository would not exist on
  * the machine the project lands on. It is vendored instead, into `src/lib/canvas-react/`, from `sdk/src` at the SDK
  * version `marketplace.json` names — the same thing the editor's own
