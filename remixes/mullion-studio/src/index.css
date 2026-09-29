@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+/*
+ * Mullion — tokens.
+ *
+ * One family (a monospace, in four weights), a warm concrete paper, graphite
+ * ink and a single blueprint accent. Everything a component colours, shades,
+ * rounds or eases with comes from here.
+ */
+
+:root {
+  /* Palette */
+  --paper: #efece5;
+  --paper-2: #e6e2d9;
+  --paper-3: #dcd7cc;
+  --ink: #171715;
+  --ink-2: #3a3935;
+  --muted: #8b877e;
+  --faint: #b9b4a9;
+  --hairline: #d3cec3;
+  --blueprint: #2f44e0;
+  --blueprint-ink: #f4f3ff;
+  --scrim: rgb(23 23 21 / 0.55);
+
+  /* Shadows — the page is flat; only floating tools lift off it. */
+  --shadow-float: 0 1px 0 rgb(23 23 21 / 0.06), 0 8px 24px -8px rgb(23 23 21 / 0.28);
+  --shadow-handle: 0 0 0 1px rgb(23 23 21 / 0.9), 0 6px 18px -6px rgb(23 23 21 / 0.45);
+
+  /* shadcn semantic tokens, mapped onto the palette */
+  --background: var(--paper);
+  --foreground: var(--ink);
+  --muted-foreground: var(--muted);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--blueprint);
+  --accent: var(--ink);
+  --accent-foreground: var(--paper);
+  --primary: var(--ink);
+  --primary-foreground: var(--paper);
+  --radius: 0px;
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-hairline: var(--hairline);
+  --color-blueprint: var(--blueprint);
+  --color-blueprint-ink: var(--blueprint-ink);
+  --color-scrim: var(--scrim);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --shadow-float: var(--shadow-float);
+  --shadow-handle: var(--shadow-handle);
+}
+
+@theme {
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-sans: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale: tiny tile labels, UI caps, body, and the oversize steps. */
+  --text-label: 0.5625rem;
+  --text-label--line-height: 1;
+  --text-ui: 0.8125rem;
+  --text-ui--line-height: 1.2;
+  --text-body: 0.8125rem;
+  --text-body--line-height: 1.75;
+  --text-giant: clamp(4.5rem, 19vw, 22rem);
+  --text-giant--line-height: 0.82;
+
+  --tracking-ui: 0.06em;
+  --tracking-giant: -0.06em;
+
+  /* Spacing read off the layout: the page gutter and section rhythm. */
+  --spacing-gutter: clamp(1rem, 1.6vw, 1.75rem);
+  --spacing-section: clamp(6rem, 14vw, 12rem);
+
+  --radius-none: 0px;
+  --radius-dot: 9999px;
+
+  /* Motion — measured easings and durations, shared by every animation. */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --duration-press: 120ms;
+  --duration-swap: 350ms;
+  --duration-wipe: 800ms;
+
+  --animate-accordion-down: accordion-down 260ms var(--ease-out-quint);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out-quint);
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--text-body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--blueprint);
+  color: var(--blueprint-ink);
+}
+
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -315,6 +315,103 @@
     },
     {
       "type": "remix",
+      "id": "mullion-studio",
+      "name": "Mullion Studio",
+      "version": "1.0.0",
+      "description": "Mullion — a monospace, archive-style landing page for an AI image editor made for architects: a scroll-panned field of edited frames that opens from a scrambled line and a popping cluster, grid / list / gallery views, a raw-versus-edit studio with a draggable split and play-through timeline, a pinned how-it-works stepper and oversize scroll-driven type.",
+      "designedFor": [
+        "AI and SaaS tools for architects, photographers and visualisation studios",
+        "Before/after products — retouching, relighting, restoration — that need a live compare",
+        "Archives, catalogues and portfolios that want a pannable field of images with list and gallery views",
+        "Anyone after a Lenis + Framer Motion page in a strict monospace voice"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "architecture",
+        "image editing",
+        "ai",
+        "before after",
+        "compare",
+        "archive",
+        "grid",
+        "monospace",
+        "scroll",
+        "sticky",
+        "lenis",
+        "framer motion",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "SaaS",
+        "Marketing"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-29",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3160
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/mullion-studio",
+      "thumbnailUrl": "remixes/mullion-studio/preview.png",
+      "iconUrl": "remixes/mullion-studio/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/mullion-studio/previews/desktop.jpg",
+        "mobile": "remixes/mullion-studio/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/mullion-studio/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/mullion-studio-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "5ece9b966671649bac87ced98f39222330b144153e000e937798faec21a4fe92",
+        "size": 439296,
+        "files": 65
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/mullion-studio"
+      },
+      "demoUrl": "demos/mullion-studio/"
+    },
+    {
+      "type": "remix",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
       "version": "1.1.2",
