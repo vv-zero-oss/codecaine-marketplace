@@ -1,112 +1,246 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "./styles/primitives.css";
 
 @custom-variant dark (&:is(.dark *));
 
 /* ------------------------------------------------------------------------
-   Tokens. Every colour, shadow, radius, font and motion curve on the page
-   lives here — change one and it changes everywhere.
+   Tokens. Every colour, shadow, radius, font, type step and motion curve on
+   the page lives here — change one and it changes everywhere.
+
+   The colour names (page, surface, ink, line, accent…) are also the ones the
+   agent-UI primitives in components/primitives use, so those render in the
+   page's own palette with nothing to translate.
    ------------------------------------------------------------------------ */
-@theme {
-  /* Type */
-  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
-
+:root {
   /* Surfaces, darkest to lightest */
-  --color-void: #000000;
-  --color-ink: #131313;
-  --color-panel: #1a1a1a;
-  --color-raised: #1f1f1f;
-  --color-lift: #2a2a2a;
-
-  /* Hairlines */
-  --color-line: #262626;
-  --color-line-strong: #323232;
-  --color-line-button: #5a5a5a;
+  --void: #0b0b0c;
+  --page: #101010;
+  --canvas: #141415;
+  --inset: #18191b;
+  --surface: #1c1d1f;
+  --field: #202124;
+  --hover: #232529;
+  --hover-2: #2e3238;
 
   /* Text */
-  --color-fg: #efeee6;
-  --color-fg-soft: #cfcec6;
-  --color-muted: #a09e9c;
-  --color-subtle: #6d6c69;
-  --color-faint: #45443f;
+  --ink: #f3f4f6;
+  --ink-soft: #b5bdc9;
+  --ink-2: #8f99a8;
+  --ink-3: #6f7988;
+  --ink-faint: #505967;
 
-  /* The one light fill: primary buttons and the footer wordmark */
-  --color-cream: #e6e7d9;
-  --color-cream-hover: #f3f4e8;
+  /* Hairlines */
+  --line: #232529;
+  --line-strong: #2e3238;
+  --line-bold: #383e47;
+  --line-soft: #1c1d1f;
+  --grid-line: color-mix(in srgb, var(--line-strong) 70%, transparent);
 
-  /* Accents */
-  --color-blush: #f2b6aa;
-  --color-coral: #f0694e;
-  --color-teal: #3f9c84;
-  --color-sky: #4f86e8;
-  --color-amber: #eda13a;
-  --color-violet: #8d6bf0;
-  --color-forest: #1d5a47;
+  /* Accent and signal colours */
+  --accent: #709ff5;
+  --accent-ink: #94b9ff;
+  --accent-strong: #266df0;
+  --accent-tint: rgb(112 159 245 / 0.14);
+  --green: #0fc27b;
+  --green-tint: rgb(15 194 123 / 0.13);
+  --orange: #f59f3a;
+  --orange-tint: rgb(245 159 58 / 0.13);
+  --red: #ff5b59;
+  --red-tint: rgb(255 91 89 / 0.13);
+  --yellow: #f5b900;
+  --yellow-tint: rgb(245 185 0 / 0.13);
+  --purple: #ab92f1;
+  --purple-tint: rgb(171 146 241 / 0.14);
+  --cyan: #00b5e6;
 
-  /* Customer cards on hover */
-  --color-wine: #3b1616;
-  --color-olive: #2a2a10;
-  --color-navy: #17193d;
-  --color-pine: #0f2b22;
+  /* Traffic lights on app windows */
+  --light-red: #ff5b59;
+  --light-yellow: #f5b900;
+  --light-green: #0fc27b;
+
+  /* Tooltips (primitives) */
+  --tooltip-bg: #0b0b0c;
+  --tooltip-fg: #f3f4f6;
+  --tooltip-muted: #8f99a8;
+  --tooltip-border: #2e3238;
+
+  /* Shadows — layered, single-digit opacity, tuned for a dark page */
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.28), 0 2px 6px -1px rgb(0 0 0 / 0.24);
+  --shadow-md: 0 1px 3px rgb(0 0 0 / 0.3), 0 4px 12px -2px rgb(0 0 0 / 0.32);
+  --shadow-lg: 0 2px 4px rgb(0 0 0 / 0.3), 0 12px 28px -6px rgb(0 0 0 / 0.45), 0 24px 48px -12px rgb(0 0 0 / 0.4);
+  --shadow-hairline: 0 0 0 1px var(--line-strong);
+  --shadow-btn: 0 0 0 1px rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-card: 0 0 0 1px var(--line-strong), var(--shadow-sm);
+  --shadow-raised: 0 0 0 1px var(--line-strong), var(--shadow-md);
+  --shadow-overlay: 0 0 0 1px var(--line-strong), var(--shadow-lg);
+  --shadow-inset-field: inset 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-window:
+    0 0 0 1px rgb(255 255 255 / 0.06), 0 1px 2px rgb(0 0 0 / 0.3), 0 8px 14px rgb(0 0 0 / 0.25),
+    0 16px 28px rgb(0 0 0 / 0.3), 0 40px 80px -20px rgb(0 0 0 / 0.55);
+  --shadow-tile: inset 0.2px 0.2px 2px rgb(255 255 255 / 0.1), 0 1.5px 1.5px rgb(0 0 0 / 0.25);
+  --shadow-ring-accent: 0 0 0 4px rgb(112 159 245 / 0.12);
+  --shadow-outline-accent: 0 0 0 1px var(--accent-strong);
+  --shadow-btn-primary: inset 0 1px 0 rgb(255 255 255 / 0.6);
+  --glow-btn-primary: radial-gradient(90% 140% at 50% -30%, rgb(255 255 255 / 0.9), transparent 70%);
+
+  /* Chips: a 1px inner ring in the chip's own colour */
+  --shadow-chip-neutral: inset 0 0 0 1px var(--line-strong);
+  --shadow-chip-green: inset 0 0 0 1px color-mix(in oklch, var(--green) 30%, transparent);
+  --shadow-chip-accent: inset 0 0 0 1px color-mix(in oklch, var(--accent) 30%, transparent);
+  --shadow-chip-orange: inset 0 0 0 1px color-mix(in oklch, var(--orange) 30%, transparent);
+  --shadow-chip-red: inset 0 0 0 1px color-mix(in oklch, var(--red) 30%, transparent);
+  --shadow-chip-purple: inset 0 0 0 1px color-mix(in oklch, var(--purple) 30%, transparent);
+  --shadow-chip-yellow: inset 0 0 0 1px color-mix(in oklch, var(--yellow) 30%, transparent);
+}
+
+@theme inline {
+  --color-void: var(--void);
+  --color-page: var(--page);
+  --color-canvas: var(--canvas);
+  --color-inset: var(--inset);
+  --color-surface: var(--surface);
+  --color-field: var(--field);
+  --color-hover: var(--hover);
+  --color-hover-2: var(--hover-2);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-faint: var(--ink-faint);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-bold: var(--line-bold);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--accent-ink);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-tint: var(--accent-tint);
+  --color-green: var(--green);
+  --color-green-tint: var(--green-tint);
+  --color-orange: var(--orange);
+  --color-orange-tint: var(--orange-tint);
+  --color-red: var(--red);
+  --color-red-tint: var(--red-tint);
+  --color-yellow: var(--yellow);
+  --color-yellow-tint: var(--yellow-tint);
+  --color-purple: var(--purple);
+  --color-purple-tint: var(--purple-tint);
+  --color-cyan: var(--cyan);
+  --color-light-red: var(--light-red);
+  --color-light-yellow: var(--light-yellow);
+  --color-light-green: var(--light-green);
+
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-hairline: var(--shadow-hairline);
+  --shadow-btn: var(--shadow-btn);
+  --shadow-card: var(--shadow-card);
+  --shadow-raised: var(--shadow-raised);
+  --shadow-overlay: var(--shadow-overlay);
+  --shadow-inset-field: var(--shadow-inset-field);
+  --shadow-window: var(--shadow-window);
+  --shadow-tile: var(--shadow-tile);
+  --shadow-ring-accent: var(--shadow-ring-accent);
+
+  /* shadcn's semantic names, pointed at the tokens above */
+  --color-background: var(--page);
+  --color-foreground: var(--ink);
+  --color-popover: var(--surface);
+  --color-popover-foreground: var(--ink);
+  --color-card: var(--surface);
+  --color-card-foreground: var(--ink);
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--page);
+  --color-secondary: var(--surface);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: var(--hover);
+  --color-muted-foreground: var(--ink-2);
+  --color-destructive: var(--red);
+  --color-border: var(--line-strong);
+  --color-input: var(--line-strong);
+  --color-ring: var(--accent);
+}
+
+@theme {
+  /* Type: Inter for everything, set at its display optical size for headings;
+     a text serif for quotes; a mono for code and terminal lines. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type scale — every step with its leading and tracking */
+  --text-micro: 11px;
+  --text-micro--line-height: 16px;
+  --text-caption: 12px;
+  --text-caption--line-height: 18px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-sm--letter-spacing: -0.005em;
+  --text-base: 16px;
+  --text-base--line-height: 22px;
+  --text-base--letter-spacing: -0.01em;
+  --text-lead: 18px;
+  --text-lead--line-height: 24px;
+  --text-lead--letter-spacing: -0.01em;
+  --text-h4: 18px;
+  --text-h4--line-height: 22px;
+  --text-h4--letter-spacing: -0.01em;
+  --text-h3: 24px;
+  --text-h3--line-height: 30px;
+  --text-h3--letter-spacing: -0.01em;
+  --text-h2: 40px;
+  --text-h2--line-height: 44px;
+  --text-h2--letter-spacing: -0.01em;
+  --text-h1: 56px;
+  --text-h1--line-height: 60px;
+  --text-h1--letter-spacing: -0.015em;
+  --text-display: 80px;
+  --text-display--line-height: 76px;
+  --text-display--letter-spacing: -0.02em;
+  --text-mega: 96px;
+  --text-mega--line-height: 96px;
+  --text-mega--letter-spacing: -0.024em;
 
   /* Radii */
   --radius-chip: 6px;
-  --radius-field: 10px;
-  --radius-card: 20px;
-  --radius-media: 24px;
+  --radius-control: 8px;
+  --radius-button: 10px;
+  --radius-card: 12px;
+  --radius-window: 16px;
+  --radius-panel: 20px;
 
-  /* Spacing read off the layout: the page gutter and the section rhythm */
-  --spacing-gutter: clamp(16px, 5vw, 96px);
-  --spacing-section: clamp(88px, 11vw, 200px);
-
-  /* Shadows */
-  --shadow-field: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 0 0 1px rgb(0 0 0 / 0.4);
-  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 30px 60px -30px rgb(0 0 0 / 0.7);
-  --shadow-menu: 0 0 0 1px rgb(255 255 255 / 0.06), 0 24px 48px -12px rgb(0 0 0 / 0.75), 0 8px 16px -8px rgb(0 0 0 / 0.5);
-  --shadow-glow: 0 0 40px 4px rgb(240 105 78 / 0.25);
-  /* Cards inside the light product window */
-  --shadow-app: 0 1px 2px rgb(0 0 0 / 0.04);
-  --shadow-app-ring: 0 0 0 1px rgb(0 0 0 / 0.08);
+  /* Layout: the page frame's gutter and the section rhythm */
+  --spacing-frame: clamp(12px, 1.67vw, 24px);
+  --spacing-section: clamp(88px, 10.5vw, 152px);
 
   /* Motion */
-  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0, 0, 0, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out-cubic: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-press: cubic-bezier(0.3, 0, 0.5, 1);
-  --duration-press: 120ms;
-  --duration-hover: 200ms;
-  --duration-swap: 450ms;
-  --duration-reveal: 700ms;
+  --ease-reveal: cubic-bezier(0, 0, 0.58, 1);
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-link: cubic-bezier(0.16, 1, 0.3, 1);
 
-  --animate-accordion-down: accordion-down 260ms var(--ease-out-quint);
-  --animate-accordion-up: accordion-up 200ms var(--ease-out-quint);
+  --animate-accordion-down: accordion-down 300ms var(--ease-in-out-cubic);
+  --animate-accordion-up: accordion-up 300ms var(--ease-in-out-cubic);
   --animate-beam: beam-spin var(--beam-duration, 6s) linear infinite;
   --animate-beam-pulse: beam-pulse var(--beam-duration, 3s) var(--ease-in-out-cubic) infinite;
-  --animate-caret: caret 1s steps(1) infinite;
+  --animate-caret: caret-blink 1s steps(1) infinite;
   --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-bob: bob var(--bob-duration, 4s) ease-in-out infinite;
+  --animate-ring: ring-pulse 3.6s ease-in-out infinite;
+  --animate-scroll-y: scroll-y var(--scroll-duration, 24s) linear infinite;
 }
 
-/* shadcn's semantic names, pointed at the tokens above. */
-@theme inline {
-  --color-background: var(--color-ink);
-  --color-foreground: var(--color-fg);
-  --color-popover: var(--color-raised);
-  --color-popover-foreground: var(--color-fg);
-  --color-card: var(--color-raised);
-  --color-card-foreground: var(--color-fg);
-  --color-primary: var(--color-cream);
-  --color-primary-foreground: var(--color-ink);
-  --color-secondary: var(--color-raised);
-  --color-secondary-foreground: var(--color-fg);
-  --color-muted-foreground: var(--color-muted);
-  --color-accent: var(--color-lift);
-  --color-accent-foreground: var(--color-fg);
-  --color-destructive: var(--color-coral);
-  --color-border: var(--color-line);
-  --color-input: var(--color-line-strong);
-  --color-ring: var(--color-muted);
-}
-
+/* ------------------------------------------------------------------------
+   Keyframes
+   ------------------------------------------------------------------------ */
 @property --beam-angle {
   syntax: "<angle>";
   inherits: false;
@@ -122,33 +256,24 @@
   50% { opacity: var(--beam-strength, 0.7); }
 }
 
-@keyframes caret {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-/* A dash of light travelling along an SVG path (FlowDiagram). */
-@keyframes dash-travel {
-  from { stroke-dashoffset: var(--dash-from, 0); }
-  to { stroke-dashoffset: var(--dash-to, -1000); }
+@keyframes scroll-y {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
 }
 
-/* One icon in a grid catching the light, then letting it go. */
-@keyframes glint {
-  0%, 12%, 100% { opacity: 0.32; }
-  4%, 8% { opacity: 1; }
+@keyframes bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
 }
 
-/* A pixel lighting up, holding, and going dark again (PixelMatrix). */
-@keyframes pixel {
-  0%, 12% { opacity: 0.12; }
-  22%, 64% { opacity: 1; }
-  78%, 100% { opacity: 0.12; }
+@keyframes ring-pulse {
+  0%, 100% { opacity: var(--ring-from, 0.11); }
+  50% { opacity: var(--ring-to, 0.22); }
 }
 
 @keyframes accordion-down {
@@ -161,15 +286,34 @@
   to { height: 0; }
 }
 
+/* An isometric icon tracing itself in (Isocon `draw`). */
+@keyframes iso-draw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
+}
+
+/* A connector in a flow drawing itself. */
+@keyframes draw-line {
+  from { stroke-dashoffset: var(--line-length, 400); }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------ */
 @layer base {
   * {
-    @apply border-border;
+    @apply border-line-strong;
   }
 
   html {
+    overflow-x: clip;
     color-scheme: dark;
-    background: var(--color-ink);
+    background: var(--page);
     -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   html.lenis,
@@ -183,59 +327,112 @@
 
   body {
     margin: 0;
-    background: var(--color-ink);
-    color: var(--color-fg);
+    background: var(--page);
+    color: var(--ink);
     font-family: var(--font-sans);
-    font-feature-settings: "ss01", "cv11";
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    font-feature-settings: "cv11", "ss01", "ss03";
     -webkit-tap-highlight-color: transparent;
     overflow-x: clip;
   }
 
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  a {
+    text-underline-position: from-font;
+    text-decoration-skip-ink: auto;
+  }
+
   ::selection {
-    background: var(--color-blush);
-    color: var(--color-ink);
+    background: var(--accent-tint);
+    color: var(--ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-muted);
+    outline: 2px solid color-mix(in srgb, var(--accent) 60%, transparent);
     outline-offset: 2px;
   }
 }
 
+/* ------------------------------------------------------------------------
+   Utilities
+   ------------------------------------------------------------------------ */
 @layer utilities {
-  /* Display type: light weight, tight tracking, tight leading. */
-  .type-display {
-    font-weight: 300;
-    letter-spacing: -0.03em;
-    line-height: 1;
+  /* Headings: Inter at its display optical size, semibold, tight. */
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 32;
   }
 
-  .type-heading {
-    font-weight: 300;
-    letter-spacing: -0.022em;
-    line-height: 1.08;
+  /* The page's fine textures: vertical lines every 8px, and a dot grid. */
+  .texture-lines {
+    background-image: repeating-linear-gradient(90deg, var(--grid-line) 0 1px, transparent 1px 8px);
   }
 
-  .type-eyebrow {
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+  .texture-dots {
+    background-image: radial-gradient(circle at 1px 1px, var(--line-strong) 1px, transparent 0);
+    background-size: 16px 16px;
   }
 
-  /* Wordmark-style logos drawn from an SVG file in one flat colour. */
+  .fade-y {
+    mask-image: linear-gradient(to bottom, transparent, #000 18%, #000 82%, transparent);
+  }
+
+  .fade-x {
+    mask-image: linear-gradient(to right, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  /* Underline that draws in from the left under a hovered link. */
+  .link-draw {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 150ms var(--ease-out-cubic);
+  }
+
+  .link-draw:hover,
+  .group\/link:hover .link-draw,
+  .link-draw:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Isometric icons: hairline paths that trace in on hover. */
+  .iso-draw path {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 0;
+  }
+
+  .group\/iso:hover .iso-draw path,
+  .group\/iso:focus-visible .iso-draw path {
+    animation: iso-draw 1.1s var(--ease-out-cubic) both;
+  }
+
+  /* Logos drawn from an SVG file in one flat colour. */
   .logo-mask {
     background-color: currentColor;
     mask-repeat: no-repeat;
     mask-position: center;
     mask-size: contain;
   }
+
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+  .group\/iso:hover .iso-draw path {
+    animation: none;
   }
 }

@@ -2,30 +2,31 @@ import type * as React from "react"
 import { motion, useReducedMotion } from "motion/react"
 import { useCanvasDesignMode } from "@canvas/react"
 
-import { curve, type Easing } from "@/lib/motion"
+import { EASE } from "@/lib/motion"
 
 /**
- * Content that rises into place the first time it scrolls into view.
+ * Content that comes into focus: a small rise, a fade and a 1.5px blur
+ * clearing, over 0.6s on the page's ease-out. `onMount` plays it on load
+ * (the hero); otherwise it plays the first time it scrolls into view.
  *
- * Short travel (24px) and an ease-out, so a section feels like it arrives
- * rather than performs. Shown at its end state while the page is being
- * designed and for reduced motion — nobody styles an element that is
- * invisible.
+ * Shown at its end state while the page is designed and for reduced motion.
  */
 export function Reveal({
-  y = 24,
+  y = 8,
+  blur = 1.5,
   delay = 0,
-  duration = 0.7,
-  easing = "out",
+  duration = 0.6,
+  onMount = false,
   as = "div",
   className,
   children,
 }: {
   y?: number
+  blur?: number
   delay?: number
   duration?: number
-  easing?: Easing
-  as?: "div" | "section" | "li" | "article"
+  onMount?: boolean
+  as?: "div" | "section" | "li" | "article" | "p"
   className?: string
   children?: React.ReactNode
 }) {
@@ -38,13 +39,13 @@ export function Reveal({
     return <Plain className={className}>{children}</Plain>
   }
 
+  const shown = { opacity: 1, y: 0, filter: "blur(0px)" }
   return (
     <Tag
       className={className}
-      initial={{ opacity: 0, y }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -12% 0px" }}
-      transition={{ ...curve(easing, duration), delay }}
+      initial={{ opacity: 0, y, filter: `blur(${blur}px)` }}
+      {...(onMount ? { animate: shown } : { whileInView: shown, viewport: { once: true, margin: "0px 0px -10% 0px" } })}
+      transition={{ duration, ease: EASE.out, delay }}
     >
       {children}
     </Tag>

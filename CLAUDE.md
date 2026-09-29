@@ -275,6 +275,25 @@ animation:
   https://github.com/iconify/icon-sets
 - **Company and brand logos** from SVGL: https://github.com/pheralb/svgl
   (https://svgl.app). Never draw a brand logo by hand.
+- **Isometric line illustrations** from Isocons (https://isocons.app) — 1,000+
+  isometric line icons for feature cells, menus, changelog entries and
+  empty states, where a flat Lucide icon is too small a gesture. Download
+  SVGs from the site (no npm package), recolour their stroke to
+  `currentColor`, and draw them with `vector-effect: non-scaling-stroke` so
+  they stay hairline at any size. They are **CC BY 4.0**: credit Isocons with
+  a link to the licence in the footer or README, and say they were
+  recoloured. `remixes/arcline-crm/src/components/icons/isocon.tsx` is a
+  ready-made `<Isocon name draw />` with a trace-in on hover.
+- **Agent and AI product UI** — suggestion cards, task runs, streaming
+  answers with sources, thinking states, workflow canvases — from Beautiful
+  UI (https://www.beautifului.dev), a shadcn registry:
+  `npx shadcn@latest add https://www.beautifului.dev/r/<name>.json`. MIT;
+  keep the notice. Its `foundation.css` defines its own tokens (`--accent`,
+  `--surface`, `--ink`…) and a page background: keep its keyframes and
+  helper classes, and map its token names onto the remix's own palette
+  rather than importing it whole (see `arcline-crm/src/styles/primitives.css`).
+  Note that its `--color-accent` is a brand colour, where shadcn uses
+  `accent` as a hover surface — point shadcn's hover classes elsewhere.
 
 ### 7. Copy is written, not pasted
 

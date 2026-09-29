@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react"
-import { Menu, Search } from "lucide-react"
+import { ArrowRight, Menu, X } from "lucide-react"
+import { AnimatePresence, motion } from "motion/react"
 import { useCanvasAction } from "@canvas/react"
 
+import { Isocon, type IsoconName } from "@/components/icons/isocon"
+import GlideMenu from "@/components/primitives/GlideMenu"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { ButtonLink } from "@/components/ui/button"
 import {
@@ -12,101 +15,143 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
-import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { Wordmark } from "@/components/ui/wordmark"
-import { NAV } from "@/content"
+import { ANNOUNCEMENT, NAV } from "@/content/site"
+import { Link, usePathname } from "@/lib/router"
 import { cn } from "@/lib/utils"
-
-const slug = (s: string) => `#${s.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
 
 type Menu = (typeof NAV.menus)[number]
 
-/** One dropdown's panel: an optional intro on the left, then columns of links. */
+/** The black strip above the header. Dismissed for the visit with its ×. */
+function AnnouncementBar() {
+  const [open, setOpen] = useState(true)
+  useCanvasAction("Announcement", (next) => setOpen(next ?? !open), { on: open, group: "Header" })
+  return (
+    <AnimatePresence initial={false}>
+      {open && (
+        <motion.div
+          initial={{ height: 0 }}
+          animate={{ height: "auto" }}
+          exit={{ height: 0 }}
+          transition={{ duration: 0.3, ease: [0.65, 0, 0.35, 1] }}
+          className="overflow-hidden bg-void"
+        >
+          <div className="relative flex h-10 items-center justify-center px-12 text-[13px] text-ink md:h-12">
+            <Link href={ANNOUNCEMENT.link} className="group/link inline-flex items-center gap-1.5 truncate">
+              <span className="link-draw truncate">{ANNOUNCEMENT.text}</span>
+              <ArrowRight className="size-3.5 shrink-0 transition-transform duration-200 group-hover/link:translate-x-0.5" />
+            </Link>
+            <button
+              type="button"
+              onClick={() => setOpen(false)}
+              aria-label="Dismiss announcement"
+              className="absolute right-3 flex size-8 items-center justify-center rounded-control text-ink-2 transition-colors hover:bg-hover-2 hover:text-ink"
+            >
+              <X className="size-3.5" />
+            </button>
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  )
+}
+
+/** A dropdown's panel: columns of icon rows under one gliding highlight, and an aside. */
 function MegaPanel({ menu }: { menu: Menu }) {
   return (
-    <div className="flex gap-10 p-6">
-      {"intro" in menu && menu.intro && (
-        <div className="w-56 shrink-0 rounded-[var(--radius-field)] bg-lift/60 p-4">
-          <p className="text-[17px] text-fg">{menu.intro.title}</p>
-          <p className="mt-2 text-[13px] leading-snug text-muted">{menu.intro.body}</p>
+    <div className="flex w-max gap-2 p-2">
+      {menu.columns.map((col) => (
+        <GlideMenu key={col.title} className="w-[260px]" highlightClassName="inset-x-0 rounded-card bg-hover">
+          <p className="px-3 pt-2 pb-1 text-caption text-ink-3">{col.title}</p>
+          {col.items.map((item) => (
+            <NavigationMenuLink key={item.title} asChild>
+              <Link
+                href={item.href}
+                data-menu-row
+                className="group/iso relative z-10 flex items-start gap-3 rounded-card p-3 outline-none hover:bg-transparent focus:bg-transparent"
+              >
+                <span className="mt-0.5 w-7 shrink-0 text-ink-2 transition-colors duration-200 group-hover/iso:text-accent-ink">
+                  <Isocon name={item.icon as IsoconName} draw />
+                </span>
+                <span>
+                  <span className="block text-base font-medium text-ink">{item.title}</span>
+                  <span className="block text-sm text-ink-2">{item.body}</span>
+                </span>
+              </Link>
+            </NavigationMenuLink>
+          ))}
+        </GlideMenu>
+      ))}
+      {"aside" in menu && menu.aside && (
+        <div className="w-[240px] rounded-card bg-inset p-3">
+          <p className="pb-2 text-caption text-ink-3">{menu.aside.title}</p>
+          {menu.aside.items.map((a) => (
+            <NavigationMenuLink key={a.title} asChild>
+              <Link href={a.href} className="group/link block rounded-control py-2 outline-none">
+                <span className="link-draw text-sm text-ink">{a.title}</span>
+                <span className="block text-caption text-ink-3">{a.body}</span>
+              </Link>
+            </NavigationMenuLink>
+          ))}
         </div>
       )}
-      {menu.groups.map((group) => (
-        <div key={group.title} className="min-w-36">
-          <p className="type-eyebrow mb-3 text-[11px] text-subtle">{group.title}</p>
-          <ul className="flex flex-col">
-            {group.links.map((link) => (
-              <li key={link}>
-                <NavigationMenuLink
-                  href={slug(link)}
-                  className="rounded-md px-0 py-1 text-[15px] text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent"
-                >
-                  {link}
-                </NavigationMenuLink>
-              </li>
-            ))}
-          </ul>
-        </div>
-      ))}
     </div>
   )
 }
 
-/** Below `lg`: the same menus in a sheet, each group behind an accordion row. */
+/** Below `lg`: the same links in a full-screen sheet, menus behind accordion rows. */
 function MobileMenu() {
   const [open, setOpen] = useState(false)
   useCanvasAction("Mobile menu", (next) => setOpen(next ?? !open), { on: open, group: "Header" })
+  const close = () => setOpen(false)
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger
         aria-label="Open menu"
-        className="inline-flex size-11 items-center justify-center rounded-full border border-line-button text-fg transition-colors hover:bg-white/[0.06] lg:hidden"
+        className="inline-flex size-11 items-center justify-center rounded-button text-ink transition-colors hover:bg-hover-2 lg:hidden"
       >
         <Menu className="size-5" />
       </SheetTrigger>
-      <SheetContent side="right" className="w-full border-line bg-ink px-6 pt-20 pb-8 sm:max-w-md">
+      <SheetContent side="top" showCloseButton={false} className="h-dvh gap-0 border-0 bg-page p-0">
         <SheetTitle className="sr-only">Menu</SheetTitle>
-        <Accordion type="single" collapsible className="w-full">
-          {NAV.menus.map((menu) => (
-            <AccordionItem key={menu.label} value={menu.label} className="border-line">
-              <AccordionTrigger className="py-4 text-xl font-normal text-fg hover:no-underline">{menu.label}</AccordionTrigger>
-              <AccordionContent>
-                <div className="grid grid-cols-2 gap-6 pb-2">
-                  {menu.groups.map((group) => (
-                    <div key={group.title}>
-                      <p className="type-eyebrow mb-2 text-[11px] text-subtle">{group.title}</p>
-                      <ul className="flex flex-col gap-2">
-                        {group.links.map((link) => (
-                          <li key={link}>
-                            <a href={slug(link)} onClick={() => setOpen(false)} className="text-[15px] text-fg-soft">
-                              {link}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+        <div className="flex h-[60px] items-center justify-between border-b border-line-strong px-5">
+          <Wordmark onClick={close} />
+          <SheetClose aria-label="Close menu" className="flex size-11 items-center justify-center rounded-button text-ink hover:bg-hover-2">
+            <X className="size-5" />
+          </SheetClose>
+        </div>
+        <div className="flex-1 overflow-y-auto px-5">
+          <Accordion type="single" collapsible>
+            {NAV.menus.map((menu) => (
+              <AccordionItem key={menu.label} value={menu.label} className="border-line-strong">
+                <AccordionTrigger className="h-16 items-center text-lead font-medium text-ink hover:no-underline">{menu.label}</AccordionTrigger>
+                <AccordionContent className="pb-4">
+                  {menu.columns.flatMap((c) => c.items).map((item) => (
+                    <Link key={item.title} href={item.href} onClick={close} className="flex items-center gap-3 py-2.5">
+                      <span className="w-6 text-ink-2">
+                        <Isocon name={item.icon as IsoconName} />
+                      </span>
+                      <span className="text-base text-ink-soft">{item.title}</span>
+                    </Link>
                   ))}
-                </div>
-              </AccordionContent>
-            </AccordionItem>
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+          {NAV.links.map((l) => (
+            <Link key={l.label} href={l.href} onClick={close} className="flex h-16 items-center border-b border-line-strong text-lead font-medium text-ink">
+              {l.label}
+            </Link>
           ))}
-        </Accordion>
-        <ul className="flex flex-col">
-          {NAV.links.map((link) => (
-            <li key={link} className="border-b border-line">
-              <a href={slug(link)} onClick={() => setOpen(false)} className="block py-4 text-xl text-fg">
-                {link}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div className="mt-auto grid gap-3">
-          <ButtonLink href="#pricing" onClick={() => setOpen(false)}>
+        </div>
+        <div className="grid gap-2 border-t border-line-strong p-5">
+          <ButtonLink href="/pricing" variant="primary" size="lg" onClick={close}>
             Start for free
           </ButtonLink>
-          <ButtonLink href="#cta" variant="outline" onClick={() => setOpen(false)}>
-            Book a demo
+          <ButtonLink href="/pricing" size="lg" onClick={close}>
+            Sign in
           </ButtonLink>
         </div>
       </SheetContent>
@@ -115,77 +160,71 @@ function MobileMenu() {
 }
 
 /**
- * Sticky, and darkens to black once the page is scrolled — the only change it
- * makes, so the header reads as a layer above the content without a border.
+ * Sticky, frosted, and hairline-ruled. Menus open on hover; the panel's
+ * rows share one highlight that glides to whatever is under the pointer.
  */
 export function SiteHeader() {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24)
+    const onScroll = () => setScrolled(window.scrollY > 8)
     onScroll()
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-40 transition-colors duration-300 ease-out-quint",
-        scrolled ? "bg-void/95 backdrop-blur-md" : "bg-ink",
-      )}
-    >
-      <div className="mx-auto flex h-[72px] w-full max-w-[1920px] items-center gap-10 px-gutter md:h-[100px]">
-        <Wordmark />
-
-        <NavigationMenu viewport={false} className="hidden lg:flex">
-          <NavigationMenuList className="gap-0">
-            {NAV.menus.map((menu) => (
-              <NavigationMenuItem key={menu.label}>
-                <NavigationMenuTrigger className="h-10 bg-transparent px-4 text-[18px] font-normal text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-fg data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent [&>svg]:ml-0.5 [&>svg]:size-3 [&>svg]:text-subtle">
-                  {menu.label}
-                </NavigationMenuTrigger>
-                <NavigationMenuContent className="!mt-4 !rounded-[var(--radius-card)] !border-line-strong !bg-raised !p-0 !shadow-(--shadow-menu)">
-                  <MegaPanel menu={menu} />
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            ))}
-            {NAV.links.map((link) => (
-              <NavigationMenuItem key={link}>
-                <NavigationMenuLink
-                  href={slug(link)}
-                  className="h-10 justify-center px-4 text-[18px] text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent"
-                >
-                  {link}
-                </NavigationMenuLink>
-              </NavigationMenuItem>
-            ))}
-            <NavigationMenuItem>
-              <button
-                type="button"
-                aria-label="Search"
-                className="ml-2 inline-flex size-10 items-center justify-center rounded-full text-fg-soft transition-colors hover:bg-white/[0.06] hover:text-fg"
-              >
-                <Search className="size-[18px]" strokeWidth={1.5} />
-              </button>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-
-        <div className="ml-auto flex items-center gap-2.5">
-          <a href="#signin" className="mr-4 hidden text-[18px] text-fg-soft transition-colors hover:text-fg xl:inline">
-            Sign in
-          </a>
-          <ButtonLink href="#cta" variant="outline" className="hidden md:inline-flex">
-            Book a demo
-          </ButtonLink>
-          <ButtonLink href="#pricing" className="hidden sm:inline-flex">
-            Start for free
-          </ButtonLink>
-          <MobileMenu />
+    <>
+      <AnnouncementBar />
+      <header
+        className={cn(
+          "sticky top-0 z-40 border-b border-line-strong backdrop-blur-[12px] transition-colors duration-[250ms]",
+          scrolled ? "bg-page/95" : "bg-page",
+        )}
+      >
+        <div className="mx-auto flex h-[60px] max-w-[1440px] items-center gap-9 px-5 md:h-[68px] md:px-8">
+          <Wordmark />
+          <NavigationMenu viewport={false} className="hidden lg:flex">
+            <NavigationMenuList className="gap-0.5">
+              {NAV.menus.map((menu) => (
+                <NavigationMenuItem key={menu.label}>
+                  <NavigationMenuTrigger className="h-8 rounded-button bg-transparent px-2.5 text-[15px] font-medium text-ink-soft transition-colors duration-300 hover:bg-hover-2 hover:text-ink hover:duration-[50ms] focus:bg-hover-2 data-[state=open]:bg-hover-2 data-[state=open]:text-ink data-[state=open]:hover:bg-hover-2 data-[state=open]:focus:bg-hover-2 [&>svg]:size-3 [&>svg]:text-ink-3">
+                    {menu.label}
+                  </NavigationMenuTrigger>
+                  <NavigationMenuContent className="!mt-3 !rounded-window !border-0 !bg-surface !p-0 !shadow-overlay data-[motion^=from-]:!blur-0 data-[motion^=to-]:blur-[8px]">
+                    <MegaPanel menu={menu} />
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ))}
+              {NAV.links.map((l) => (
+                <NavigationMenuItem key={l.label}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href={l.href}
+                      className={cn(
+                        "flex h-8 items-center rounded-button px-2.5 text-[15px] font-medium transition-colors duration-300 hover:bg-hover-2 hover:text-ink hover:duration-[50ms]",
+                        pathname === l.href ? "text-ink" : "text-ink-soft",
+                      )}
+                    >
+                      {l.label}
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
+          <div className="ml-auto flex items-center gap-2">
+            <ButtonLink href="/pricing" className="hidden sm:inline-flex">
+              Sign in
+            </ButtonLink>
+            <ButtonLink href="/pricing" variant="primary" className="hidden sm:inline-flex">
+              Start for free
+            </ButtonLink>
+            <MobileMenu />
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+    </>
   )
 }
-
