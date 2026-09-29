@@ -37,7 +37,7 @@ function PromptBox() {
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
             <div className="flex -space-x-2">
-              {(["gmail", "slack"] as const).map((brand) => (
+              {(["gmail", "slack-mark"] as const).map((brand) => (
                 <span
                   key={brand}
                   className="flex size-10 items-center justify-center rounded-full border border-line-strong bg-lift text-fg-soft"
@@ -76,7 +76,7 @@ export function Hero() {
     <section id="top" className="relative">
       <Container>
         <div className="border-x border-line px-2 pt-12 pb-14 text-center md:pt-[50px] md:pb-16">
-          <SectionHeading as="h1" size="xl" lines={HERO.title} className="mx-auto max-w-[16ch] leading-[0.94]" />
+          <SectionHeading as="h1" size="xl" lines={HERO.title} className="mx-auto max-w-[17ch] leading-[0.93]" />
         </div>
       </Container>
 

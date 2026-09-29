@@ -142,7 +142,7 @@ export function SiteHeader() {
           <NavigationMenuList className="gap-0">
             {NAV.menus.map((menu) => (
               <NavigationMenuItem key={menu.label}>
-                <NavigationMenuTrigger className="h-10 bg-transparent px-4 text-[17px] font-normal text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-fg data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent [&>svg]:ml-0.5 [&>svg]:size-3 [&>svg]:text-subtle">
+                <NavigationMenuTrigger className="h-10 bg-transparent px-4 text-[18px] font-normal text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent data-[state=open]:bg-transparent data-[state=open]:text-fg data-[state=open]:hover:bg-transparent data-[state=open]:focus:bg-transparent [&>svg]:ml-0.5 [&>svg]:size-3 [&>svg]:text-subtle">
                   {menu.label}
                 </NavigationMenuTrigger>
                 <NavigationMenuContent className="!mt-4 !rounded-[var(--radius-card)] !border-line-strong !bg-raised !p-0 !shadow-(--shadow-menu)">
@@ -154,7 +154,7 @@ export function SiteHeader() {
               <NavigationMenuItem key={link}>
                 <NavigationMenuLink
                   href={slug(link)}
-                  className="h-10 justify-center px-4 text-[17px] text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent"
+                  className="h-10 justify-center px-4 text-[18px] text-fg-soft hover:bg-transparent hover:text-fg focus:bg-transparent"
                 >
                   {link}
                 </NavigationMenuLink>
@@ -173,7 +173,7 @@ export function SiteHeader() {
         </NavigationMenu>
 
         <div className="ml-auto flex items-center gap-2.5">
-          <a href="#signin" className="mr-4 hidden text-[17px] text-fg-soft transition-colors hover:text-fg xl:inline">
+          <a href="#signin" className="mr-4 hidden text-[18px] text-fg-soft transition-colors hover:text-fg xl:inline">
             Sign in
           </a>
           <ButtonLink href="#cta" variant="outline" className="hidden md:inline-flex">

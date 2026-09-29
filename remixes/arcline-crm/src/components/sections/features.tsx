@@ -21,7 +21,7 @@ export function FeatureItem({ icon, title, body }: { icon: LucideIcon; title: st
     <div>
       <Icon className="size-8 text-subtle" strokeWidth={1} />
       <h3 className="type-heading mt-5 text-[24px] text-fg md:mt-6 md:text-[32px]">{title}</h3>
-      <p className="mt-3 max-w-[46ch] text-[16px] leading-[1.55] text-muted md:mt-4 md:text-[20px]">{body}</p>
+      <p className="mt-3 max-w-[46ch] text-[16px] leading-[1.55] text-muted md:mt-4 md:text-[19px] xl:text-[21px]">{body}</p>
     </div>
   )
 }

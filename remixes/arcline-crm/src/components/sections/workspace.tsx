@@ -31,19 +31,19 @@ export function Workspace() {
           <p className="mt-5 max-w-[42ch] text-[16px] leading-[1.55] text-muted md:text-[18px]">{WORKSPACE.body}</p>
         </Reveal>
 
-        <Tabs value={tab} onValueChange={(v) => setTab(v as WorkspaceTab)} className="mt-12 gap-0 md:mt-16">
+        <Tabs orientation="vertical" value={tab} onValueChange={(v) => setTab(v as WorkspaceTab)} className="mt-12 block md:mt-16">
           <div className="grid items-end lg:grid-cols-[1fr_32.4%]">
             <Reveal className="order-2 pt-6 lg:order-1 lg:pt-[110px]">
               <WorkspaceMock tab={tab} />
             </Reveal>
 
-            <TabsList className="order-1 grid h-auto w-full grid-cols-1 gap-0 rounded-none border border-line-strong bg-transparent p-0 lg:order-2">
+            <TabsList className="order-1 grid !h-auto w-full grid-cols-1 gap-0 rounded-none border border-line-strong bg-transparent p-0 lg:order-2">
               {WORKSPACE.tabs.map((t) => (
                 <TabsTrigger
                   key={t.id}
                   value={t.id}
                   className={cn(
-                    "relative flex h-auto flex-col items-start justify-start gap-0 rounded-none border-0 border-b border-line-strong px-6 py-7 text-left whitespace-normal transition-colors duration-300 last:border-b-0 md:px-[50px] md:py-[50px]",
+                    "relative flex !h-auto w-full flex-col items-start justify-start gap-0 rounded-none border-0 border-b border-line-strong px-6 py-7 text-left whitespace-normal transition-colors duration-300 last:border-b-0 md:px-[50px] md:py-[50px]",
                     "data-[state=active]:bg-raised data-[state=active]:shadow-none dark:data-[state=active]:border-line-strong dark:data-[state=active]:bg-raised",
                     "data-[state=inactive]:bg-panel/40 hover:bg-raised/60",
                   )}

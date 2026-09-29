@@ -11,7 +11,7 @@ export const PHOTOS = {
   signal: { id: 28553432, by: "Steve A Johnson", alt: "A black sphere suspended in swirling orange and pink" },
   stripes: { id: 29376745, by: "Steve A Johnson", alt: "Striped shapes and a coral cube drifting over a peach ground" },
   garden: { id: 26975404, by: "Steve A Johnson", alt: "Pink geometric shell with clusters of orange spheres on green" },
-  orb: { id: 29008324, by: "Steve A Johnson", alt: "A segmented pink and lilac sphere on a mint background" },
+  orb: { id: 29267933, by: "Steve A Johnson", alt: "A soft glowing orb rising through coral and crimson light" },
 } as const
 
 export type PhotoKey = keyof typeof PHOTOS

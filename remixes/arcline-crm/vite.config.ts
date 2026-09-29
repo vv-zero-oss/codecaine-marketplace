@@ -5,18 +5,11 @@ import { defineConfig } from "vite"
 import { canvasPropOptions } from "./src/lib/canvas-react/vite"
 
 /**
- * The SDK scaffold, as a marketplace remix.
- *
- * The same page as `scaffold-sdk/` in the canvas repository. The one change is
- * where `@canvas/react` comes from: the package is not published yet, so a
- * project made from this remix cannot install it, and a path into the
- * canvas repository would not exist on the machine the project lands on. It is
- * vendored instead, into `src/lib/canvas-react/`, from `sdk/src` at the SDK
- * version `marketplace.json` names — the same thing the editor's own
- * `electron/scaffold.ts` does for a new project.
- *
- * Once the package is published: `npm install @canvas/react`, delete the two
- * aliases and the vendored folder, and import `canvasPropOptions` from
+ * `@canvas/react` is not published yet, so it is vendored into
+ * `src/lib/canvas-react/` (from the canvas repository's `sdk/src`, at the
+ * version `marketplace.json` names) and reached through the two aliases
+ * below. Once the package is published: `npm install @canvas/react`, delete
+ * the aliases and the vendored folder, and import `canvasPropOptions` from
  * `@canvas/react/vite`.
  */
 const here = import.meta.dirname
