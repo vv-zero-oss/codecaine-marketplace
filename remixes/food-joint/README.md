@@ -6,7 +6,7 @@ that finishes every bird over oak — built from the canvas scaffold
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3130
+npm run dev     # → http://localhost:3140
 ```
 
 `?nopreload` skips the preloader; `?only=<section id>` renders one section on

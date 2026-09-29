@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+/* Every colour, shadow, radius, font and easing the page uses lives here. */
+@theme {
+  /* Palette — olive, sand and limestone */
+  --color-deep: #2b3327;
+  --color-deep-soft: #465040;
+  --color-pale: #e3d6c1;
+  --color-shell: #f5f1e8;
+  --color-ink: #262a22;
+  --color-ink-soft: #545a4c;
+  --color-paper: #fffdf8;
+  --color-sky: #3f6f98;
+  --color-sky-deep: #28476a;
+  --color-dusk: #6a5a7e;
+  --color-dusk-deep: #2c2338;
+
+  /* Type */
+  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-script: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Manrope", "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
+
+  --text-micro: 0.6875rem;
+  --text-micro--line-height: 1.45;
+  --text-body: 0.9375rem;
+  --text-body--line-height: 1.35;
+
+  --tracking-label: 0.18em;
+  --tracking-wide: 0.55em;
+
+  /* Shape */
+  --radius-pill: 999px;
+  --radius-card: 2px;
+
+  /* Depth — the page is almost flat; the one floating surface is the note card. */
+  --shadow-card: 0 1px 0 rgb(38 42 34 / 0.05), 0 24px 60px -24px rgb(38 42 34 / 0.45);
+  --shadow-none: 0 0 #0000;
+
+  /* Motion (measured off the reference recording at 14.8 fps) */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-reveal: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Radix measures the panel and hands its height over as a custom property;
+   these are what turn that into the open and close the component animates. */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.6); opacity: 0.9; }
+  100% { transform: scale(1.9); opacity: 0; }
+}
+
+@theme {
+  --animate-accordion-down: accordion-down 260ms var(--ease-out-soft);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out-soft);
+  --animate-pulse-ring: pulse-ring 2.4s var(--ease-out-soft) infinite;
+}
+
+/* The condensed cut of the display face: every headline on the page is set in it. */
+@utility font-condensed {
+  font-family: var(--font-display);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: -0.02em;
+}
+
+@utility label {
+  font-family: var(--font-sans);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+html {
+  background: var(--color-deep);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-shell);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: var(--color-deep);
+  color: var(--color-shell);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}

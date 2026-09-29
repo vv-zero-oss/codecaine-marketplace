@@ -10,7 +10,7 @@
   "catalogs": {
     "remix": {
       "url": "json/remixes.json",
-      "count": 3
+      "count": 4
     },
     "app": {
       "url": "json/apps.json",
