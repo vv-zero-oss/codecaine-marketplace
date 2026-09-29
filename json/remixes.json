@@ -5,6 +5,100 @@
   "items": [
     {
       "type": "remix",
+      "id": "coastal-residence",
+      "name": "Coastal Residence",
+      "version": "1.0.0",
+      "description": "Luna Residence — a cinematic one-page site for a small gated development on the coast: an arch that opens onto the hero, a day/night switch, pinned chapters, a sideways coastline story, residence types, amenities and an olive contact footer.",
+      "designedFor": [
+        "Boutique residential developments and off-plan launches selling a handful of homes",
+        "Hotels, villas and retreats that want a slow, editorial scroll instead of a booking grid",
+        "Studios pitching a premium real-estate concept with pinned, scroll-driven chapters",
+        "Anyone after a Lenis + Framer Motion page with a strong condensed-serif voice"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "real estate",
+        "residential",
+        "luxury",
+        "property",
+        "villa",
+        "editorial",
+        "scroll",
+        "lenis",
+        "framer motion",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Real Estate",
+        "Marketing"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-29",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3130
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "path": "remixes/coastal-residence",
+      "thumbnailUrl": "remixes/coastal-residence/preview.png",
+      "iconUrl": "remixes/coastal-residence/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/coastal-residence/previews/desktop.jpg",
+        "mobile": "remixes/coastal-residence/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/coastal-residence/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/coastal-residence-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "52b490abc4861f2d6a8be4837404ecdfae88e2889528decfdd85ffeabfec6e53",
+        "size": 399360,
+        "files": 55
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/coastal-residence"
+      },
+      "demoUrl": "demos/coastal-residence/"
+    },
+    {
+      "type": "remix",
       "id": "kids-camera",
       "name": "Kids Camera",
       "version": "0.1.1",
