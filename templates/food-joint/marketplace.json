@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "template",
+  "id": "food-joint",
+  "name": "Food Joint",
+  "version": "1.0.0",
+  "description": "A loud one-page site for a restaurant: a preloader that flicks through the menu, a hero photo in a morphing SVG cushion under huge type, a scroll-inked statement with food set into the words, a tabbed menu with a pointer-chasing blob preview, a zoom through a word cut out over a wood-fire film, a pinned sideways walk through the kitchen, stickers you can move, and a booking form.",
+  "designedFor": [
+    "Restaurants, burger and fried-chicken joints, bakeries and street-food kitchens with a big personality",
+    "Menus that people want to browse, with prices, heat levels and a picture for every dish",
+    "Places that sell the kitchen as much as the plate — fire, wood, fryers and films of them",
+    "Taking table bookings without a back end on day one"
+  ],
+  "sdkVersion": "0.1.0",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "restaurant",
+    "food",
+    "menu",
+    "booking",
+    "video",
+    "svg-clip-path",
+    "preloader",
+    "scroll",
+    "framer-motion",
+    "lenis",
+    "shadcn",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Landing Page",
+    "Restaurant"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-29",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3130
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "icon": "icon.svg"
+}
