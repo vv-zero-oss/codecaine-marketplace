@@ -126,6 +126,38 @@ writing any UI: `npx skills add emilkowalski/skill -s '*' -a claude-code -y --co
   knobs as scalar props, its library instance held in a ref, and its hidden
   states registered as actions (section 11).
 
+#### Border beam
+
+For a glow that rides around a card's border — the live part of a hero, a
+featured plan, a launch card — use the **Beam** effect from Libraries.dev
+(https://libraries.dev/beam.html). It wraps one child and animates a glow
+around its edge; zero runtime dependencies, React 18 or newer.
+
+```bash
+npm install border-beam
+```
+
+```tsx
+import { BorderBeam } from "border-beam"
+
+<BorderBeam size="md" colorVariant="colorful" strength={0.7}>
+  <YourCard>Content</YourCard>
+</BorderBeam>
+```
+
+- `size`: `"md" | "sm" | "line" | "pulse-inner" | "pulse-outside"`
+- `colorVariant`: `"colorful" | "mono" | "ocean" | "sunset"`
+- `strength`: 0–1, the glow's intensity
+- `active`: `false` pauses the animation
+- `theme`: `"light" | "dark"`
+
+Use it on one or two things per page, never on every card: it marks what is
+new or what to touch first, and it stops meaning that the third time it
+appears. Give the wrapper the child's radius. Where the package cannot be
+installed, `remixes/arcline-crm/src/components/ui/border-beam.tsx` is a CSS
+component with the same props — swap its import for the package's when you
+can.
+
 ### 4. Images: Pexels
 
 Use real photography from Pexels (https://www.pexels.com/api/). The API key:

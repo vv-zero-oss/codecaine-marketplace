@@ -7,7 +7,7 @@ by name in the canvas editor.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3160
+npm run dev     # → http://localhost:3170
 ```
 
 ## The page
