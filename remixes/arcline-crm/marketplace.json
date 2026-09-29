@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "arcline-crm",
   "name": "Arcline — AI CRM",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dark landing page for Arcline, an AI CRM: a self-typing ask box inside a border beam, a signal-to-deal flow diagram, animated agent readouts, a tabbed product window, drifting customer logos, pricing, FAQ and a giant-wordmark footer.",
   "designedFor": [
     "AI and SaaS products that want a dark, editorial landing page",

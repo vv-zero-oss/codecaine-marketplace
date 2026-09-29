@@ -93,7 +93,7 @@
       "type": "remix",
       "id": "arcline-crm",
       "name": "Arcline — AI CRM",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "A dark landing page for Arcline, an AI CRM: a self-typing ask box inside a border beam, a signal-to-deal flow diagram, animated agent readouts, a tabbed product window, drifting customer logos, pricing, FAQ and a giant-wordmark footer.",
       "designedFor": [
         "AI and SaaS products that want a dark, editorial landing page",
@@ -167,11 +167,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/arcline-crm-1.0.0.tgz",
+        "url": "archives/remixes/arcline-crm-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "0d9375bd8a68538ef33f78ae2c12679b6e287d9e15f0aa0390db530e986dd37c",
-        "size": 491008,
-        "files": 81
+        "sha256": "e4ece52e9a95b757c16301c31d0ee8382f68fb43028c805329a65b52800dd246",
+        "size": 600064,
+        "files": 82
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
