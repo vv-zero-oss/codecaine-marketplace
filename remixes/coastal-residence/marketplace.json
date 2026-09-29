@@ -1,6 +1,6 @@
 {
   "$schema": "../../schemas/marketplace-item.schema.json",
-  "type": "template",
+  "type": "remix",
   "id": "coastal-residence",
   "name": "Coastal Residence",
   "version": "1.0.0",

@@ -17,7 +17,7 @@ export function Field({ label, name, type = "text", textarea = false }: { label:
 }
 
 /**
- * The enquiry form. It does not send anything — a template cannot know where
+ * The enquiry form. It does not send anything — a remix cannot know where
  * your mail goes. Point `onSubmit` at Formspree, a serverless function or a
  * `mailto:` and the rest of the page stays as it is.
  */
