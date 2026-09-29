@@ -1,0 +1,241 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, font and motion curve on the page
+   lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type */
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Surfaces, darkest to lightest */
+  --color-void: #000000;
+  --color-ink: #131313;
+  --color-panel: #1a1a1a;
+  --color-raised: #1f1f1f;
+  --color-lift: #2a2a2a;
+
+  /* Hairlines */
+  --color-line: #262626;
+  --color-line-strong: #323232;
+  --color-line-button: #5a5a5a;
+
+  /* Text */
+  --color-fg: #efeee6;
+  --color-fg-soft: #cfcec6;
+  --color-muted: #a09e9c;
+  --color-subtle: #6d6c69;
+  --color-faint: #45443f;
+
+  /* The one light fill: primary buttons and the footer wordmark */
+  --color-cream: #e6e7d9;
+  --color-cream-hover: #f3f4e8;
+
+  /* Accents */
+  --color-blush: #f2b6aa;
+  --color-coral: #f0694e;
+  --color-teal: #3f9c84;
+  --color-sky: #4f86e8;
+  --color-amber: #eda13a;
+  --color-violet: #8d6bf0;
+  --color-forest: #1d5a47;
+
+  /* Customer cards on hover */
+  --color-wine: #3b1616;
+  --color-olive: #2a2a10;
+  --color-navy: #17193d;
+  --color-pine: #0f2b22;
+
+  /* Radii */
+  --radius-chip: 6px;
+  --radius-field: 10px;
+  --radius-card: 20px;
+  --radius-media: 24px;
+
+  /* Spacing read off the layout: the page gutter and the section rhythm */
+  --spacing-gutter: clamp(16px, 5vw, 96px);
+  --spacing-section: clamp(88px, 11vw, 200px);
+
+  /* Shadows */
+  --shadow-field: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 0 0 1px rgb(0 0 0 / 0.4);
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 30px 60px -30px rgb(0 0 0 / 0.7);
+  --shadow-menu: 0 0 0 1px rgb(255 255 255 / 0.06), 0 24px 48px -12px rgb(0 0 0 / 0.75), 0 8px 16px -8px rgb(0 0 0 / 0.5);
+  --shadow-glow: 0 0 40px 4px rgb(240 105 78 / 0.25);
+  /* Cards inside the light product window */
+  --shadow-app: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-app-ring: 0 0 0 1px rgb(0 0 0 / 0.08);
+
+  /* Motion */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-press: cubic-bezier(0.3, 0, 0.5, 1);
+  --duration-press: 120ms;
+  --duration-hover: 200ms;
+  --duration-swap: 450ms;
+  --duration-reveal: 700ms;
+
+  --animate-accordion-down: accordion-down 260ms var(--ease-out-quint);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out-quint);
+  --animate-beam: beam-spin var(--beam-duration, 6s) linear infinite;
+  --animate-beam-pulse: beam-pulse var(--beam-duration, 3s) var(--ease-in-out-cubic) infinite;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+}
+
+/* shadcn's semantic names, pointed at the tokens above. */
+@theme inline {
+  --color-background: var(--color-ink);
+  --color-foreground: var(--color-fg);
+  --color-popover: var(--color-raised);
+  --color-popover-foreground: var(--color-fg);
+  --color-card: var(--color-raised);
+  --color-card-foreground: var(--color-fg);
+  --color-primary: var(--color-cream);
+  --color-primary-foreground: var(--color-ink);
+  --color-secondary: var(--color-raised);
+  --color-secondary-foreground: var(--color-fg);
+  --color-muted-foreground: var(--color-muted);
+  --color-accent: var(--color-lift);
+  --color-accent-foreground: var(--color-fg);
+  --color-destructive: var(--color-coral);
+  --color-border: var(--color-line);
+  --color-input: var(--color-line-strong);
+  --color-ring: var(--color-muted);
+}
+
+@property --beam-angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+
+@keyframes beam-spin {
+  to { --beam-angle: 360deg; }
+}
+
+@keyframes beam-pulse {
+  0%, 100% { opacity: calc(var(--beam-strength, 0.7) * 0.35); }
+  50% { opacity: var(--beam-strength, 0.7); }
+}
+
+@keyframes caret {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* A dash of light travelling along an SVG path (FlowDiagram). */
+@keyframes dash-travel {
+  from { stroke-dashoffset: var(--dash-from, 0); }
+  to { stroke-dashoffset: var(--dash-to, -1000); }
+}
+
+/* One icon in a grid catching the light, then letting it go. */
+@keyframes glint {
+  0%, 12%, 100% { opacity: 0.32; }
+  4%, 8% { opacity: 1; }
+}
+
+/* A pixel lighting up, holding, and going dark again (PixelMatrix). */
+@keyframes pixel {
+  0%, 12% { opacity: 0.12; }
+  22%, 64% { opacity: 1; }
+  78%, 100% { opacity: 0.12; }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    background: var(--color-ink);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-ink);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-blush);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-muted);
+    outline-offset: 2px;
+  }
+}
+
+@layer utilities {
+  /* Display type: light weight, tight tracking, tight leading. */
+  .type-display {
+    font-weight: 350;
+    letter-spacing: -0.035em;
+    line-height: 0.98;
+  }
+
+  .type-heading {
+    font-weight: 350;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  /* Wordmark-style logos drawn from an SVG file in one flat colour. */
+  .logo-mask {
+    background-color: currentColor;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
