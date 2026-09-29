@@ -5,6 +5,92 @@
   "items": [
     {
       "type": "remix",
+      "id": "ai-canvas",
+      "name": "AI Canvas",
+      "version": "1.0.0",
+      "description": "A launch page for an AI canvas tool: a night-black WebGL infinite canvas that never stops drifting — photos, labelled frames, live pages and an agent at work, with velocity motion blur — washing out to a white page of blur-in scenes, a stepped-word mauve panel, a pinned three-step product walk, gathering multiplayer cursors, an agent wiring a button to its tokens, and one enormous black call to action.",
+      "designedFor": [
+        "AI design, canvas and prototyping tools launching or raising",
+        "Products whose pitch is an endless workspace: whiteboards, moodboards, site builders, agent studios",
+        "Pages that tell the story one short scene at a time rather than in feature grids",
+        "Seeing a WebGL canvas the editor's Motion switch can stop, with every knob as a prop"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "canvas",
+        "infinite-canvas",
+        "webgl",
+        "motion-blur",
+        "saas",
+        "launch",
+        "scroll",
+        "framer-motion",
+        "gsap",
+        "lenis",
+        "shadcn",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Landing Page",
+        "SaaS"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-29",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3160
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg"
+      },
+      "icon": "icon.svg",
+      "path": "remixes/ai-canvas",
+      "thumbnailUrl": "remixes/ai-canvas/preview.png",
+      "iconUrl": "remixes/ai-canvas/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/ai-canvas/previews/desktop.jpg",
+        "mobile": "remixes/ai-canvas/previews/mobile.jpg",
+        "pages": []
+      },
+      "archive": {
+        "url": "archives/remixes/ai-canvas-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "932ce6f6394e2a598e497e333a9edd0448cb40cc52afabaf0278e79b99ec862a",
+        "size": 647168,
+        "files": 61
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/ai-canvas"
+      },
+      "demoUrl": "demos/ai-canvas/"
+    },
+    {
+      "type": "remix",
       "id": "coastal-residence",
       "name": "Coastal Residence",
       "version": "1.0.0",
