@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3130 --strictPort",
+    "dev": "vite --port 3140 --strictPort",
     "build": "tsc --noEmit -p . && vite build",
-    "preview": "vite preview --port 3130 --strictPort",
+    "preview": "vite preview --port 3140 --strictPort",
     "typecheck": "tsc --noEmit -p ."
   },
   "dependencies": {

@@ -6,7 +6,7 @@ words.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3130
+npm run dev     # → http://localhost:3140
 ```
 
 ## The views
