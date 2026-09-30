@@ -1,0 +1,197 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Drape — every colour, shadow, radius, font and motion value on the page.
+ *
+ * Two grounds: a warm linen for the light hero and an espresso for the
+ * product sections, with one clay accent that marks what to touch. Change a
+ * value here and it changes everywhere, the style guide at /brand included.
+ */
+
+:root {
+  /* Surfaces */
+  --linen: #eee8df;
+  --linen-2: #e6dfd4;
+  --paper: #fbf8f3;
+  --espresso: #141110;
+  --espresso-2: #1c1816;
+  --espresso-3: #26211e;
+  --espresso-4: #312b27;
+
+  /* Text */
+  --ink: #1b1612;
+  --ink-2: #5e554c;
+  --ink-3: #8f857a;
+  --cream: #f4eee6;
+  --cream-2: #b8ada1;
+  --cream-3: #82786e;
+
+  /* Borders */
+  --line: rgb(27 22 18 / 0.12);
+  --line-strong: #1b1612;
+  --line-dark: rgb(244 238 230 / 0.1);
+  --grid: rgb(27 22 18 / 0.055);
+
+  /* Accent */
+  --clay: #d9542b;
+  --clay-hover: #c2461f;
+  --clay-deep: #b7411b;
+  --clay-soft: #f4d9cb;
+
+  /* Supporting — collaborator cursors, colourway chips */
+  --sage: #7f9160;
+  --mustard: #d6a032;
+  --plum: #8a4d73;
+  --sky: #4d7fa8;
+
+  /* Shadows */
+  --shadow-pill: 0 1px 1px rgb(20 17 16 / 0.2), 0 10px 28px -8px rgb(20 17 16 / 0.45);
+  --shadow-float: 0 1px 2px rgb(0 0 0 / 0.25), 0 16px 40px -12px rgb(0 0 0 / 0.55);
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 24px 48px -24px rgb(0 0 0 / 0.6);
+  --shadow-lift: 0 2px 4px rgb(27 22 18 / 0.08), 0 18px 40px -16px rgb(27 22 18 / 0.3);
+
+  /* Motion — read off the reference recording, frame by frame */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-snap: cubic-bezier(0.32, 0.72, 0, 1);
+  --dur-press: 120ms;
+  --dur-hover: 180ms;
+  --dur-dismiss: 270ms;
+  --dur-reveal: 330ms;
+  --dur-letter: 520ms;
+  --dur-slide: 640ms;
+  --stagger-letter: 55ms;
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Kaushan Script", "Brush Script MT", cursive;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-linen: var(--linen);
+  --color-linen-2: var(--linen-2);
+  --color-paper: var(--paper);
+  --color-espresso: var(--espresso);
+  --color-espresso-2: var(--espresso-2);
+  --color-espresso-3: var(--espresso-3);
+  --color-espresso-4: var(--espresso-4);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-cream: var(--cream);
+  --color-cream-2: var(--cream-2);
+  --color-cream-3: var(--cream-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-line-dark: var(--line-dark);
+  --color-grid: var(--grid);
+  --color-clay: var(--clay);
+  --color-clay-hover: var(--clay-hover);
+  --color-clay-deep: var(--clay-deep);
+  --color-clay-soft: var(--clay-soft);
+  --color-sage: var(--sage);
+  --color-mustard: var(--mustard);
+  --color-plum: var(--plum);
+  --color-sky: var(--sky);
+
+  /* shadcn's names, pointed at the palette above */
+  --color-background: var(--linen);
+  --color-foreground: var(--ink);
+  --color-primary: var(--clay);
+  --color-primary-foreground: var(--paper);
+  --color-secondary: var(--espresso-3);
+  --color-secondary-foreground: var(--cream);
+  --color-muted: var(--linen-2);
+  --color-muted-foreground: var(--ink-2);
+  --color-accent: var(--espresso-3);
+  --color-accent-foreground: var(--cream);
+  --color-popover: var(--espresso-2);
+  --color-popover-foreground: var(--cream);
+  --color-card: var(--espresso-2);
+  --color-card-foreground: var(--cream);
+  --color-border: var(--line);
+  --color-input: var(--line);
+  --color-ring: var(--clay);
+  --color-destructive: #c0392b;
+
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+
+  --shadow-pill: var(--shadow-pill);
+  --shadow-float: var(--shadow-float);
+  --shadow-card: var(--shadow-card);
+  --shadow-lift: var(--shadow-lift);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+  --ease-snap: var(--ease-snap);
+
+  --animate-accordion-down: accordion-down 240ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-caret: caret 1s steps(1) infinite;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+html {
+  background: var(--espresso);
+}
+html.lenis, html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-feature-settings: "cv01", "ss03";
+  -webkit-font-smoothing: antialiased;
+  color: var(--ink);
+  background: var(--linen);
+  overflow-x: clip;
+}
+
+/* The drafting grid under the hero and the product canvas. */
+.grid-paper {
+  background-image:
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.grid-paper-dark {
+  background-image:
+    linear-gradient(rgb(244 238 230 / 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(244 238 230 / 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+::selection {
+  background: var(--clay);
+  color: var(--paper);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
