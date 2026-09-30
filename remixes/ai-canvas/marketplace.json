@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "ai-canvas",
   "name": "AI Canvas",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A launch page for an AI canvas tool: a night-black WebGL infinite canvas that never stops drifting — photos, labelled frames, live pages and an agent at work, with velocity motion blur — washing out to a white page of blur-in scenes, a stepped-word mauve panel, a pinned three-step product walk, gathering multiplayer cursors, an agent wiring a button to its tokens, and one enormous black call to action.",
   "designedFor": [
     "AI design, canvas and prototyping tools launching or raising",
@@ -13,12 +13,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Soren Adeyemi" }],
   "license": "MIT",
   "keywords": [
     "ai",

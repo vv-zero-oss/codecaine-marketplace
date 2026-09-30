@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "riot-folio",
   "name": "Riot Folio",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A loud portfolio for an independent builder — electric ultramarine, six saturated project tones, duotone photography, hero cards that fly into the work grid on scroll, odometer stats and a filterable project archive.",
   "designedFor": [
     "Designers, engineers and consultants who want a portfolio people remember",
@@ -13,12 +13,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Teodor Ramanathan" }],
   "license": "MIT",
   "keywords": [
     "portfolio",

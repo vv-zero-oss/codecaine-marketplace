@@ -7,7 +7,7 @@
       "type": "remix",
       "id": "ai-canvas",
       "name": "AI Canvas",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "A launch page for an AI canvas tool: a night-black WebGL infinite canvas that never stops drifting — photos, labelled frames, live pages and an agent at work, with velocity motion blur — washing out to a white page of blur-in scenes, a stepped-word mauve panel, a pinned three-step product walk, gathering multiplayer cursors, an agent wiring a button to its tokens, and one enormous black call to action.",
       "designedFor": [
         "AI design, canvas and prototyping tools launching or raising",
@@ -19,8 +19,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Soren Adeyemi"
         }
       ],
       "license": "MIT",
@@ -80,9 +79,9 @@
         "pages": []
       },
       "archive": {
-        "url": "archives/remixes/ai-canvas-1.1.0.tgz",
+        "url": "archives/remixes/ai-canvas-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "64db53793074b03f4a1be420662c2b1d5319fe596c21c36e7a8d1b17838344a4",
+        "sha256": "d05441ecfe2de46cb687d22ad58c672505edd50c4f1aadc5666d8cf3abf2258b",
         "size": 731648,
         "files": 67
       },
@@ -510,7 +509,7 @@
       "type": "remix",
       "id": "castwell-social",
       "name": "Castwell — AI Social Media Manager",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "A five-page template for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
       "designedFor": [
         "Social media management, scheduling and creator tools",
@@ -522,8 +521,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Linnea Haddad"
         }
       ],
       "license": "MIT",
@@ -642,9 +640,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/castwell-social-1.1.0.tgz",
+        "url": "archives/remixes/castwell-social-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "de0c51d6a59dbc6b4ae5802714863e7690d391aea18c898d9012fb44638c6407",
+        "sha256": "1271ce21bee72440eda2282a249e49282a7ee2984e54a47257f1cd8e6fd2a4f7",
         "size": 654336,
         "files": 104
       },
@@ -827,7 +825,7 @@
       "type": "remix",
       "id": "coastal-residence",
       "name": "Coastal Residence",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "Luna Residence — a cinematic one-page site for a small gated development on the coast: an arch that opens onto the hero, a day/night switch, pinned chapters, a sideways coastline story, residence types, amenities and an olive contact footer.",
       "designedFor": [
         "Boutique residential developments and off-plan launches selling a handful of homes",
@@ -839,8 +837,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Caius Okafor"
         }
       ],
       "license": "MIT",
@@ -908,9 +905,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/coastal-residence-1.1.0.tgz",
+        "url": "archives/remixes/coastal-residence-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "c3df8e46220e480c90c53fd91d05c1ab3e6813259b2d22cc3e8b1868790c495f",
+        "sha256": "836c451ad002ce9c48986763ac547f45597388ce11aec558e787d2e5989feafd",
         "size": 495104,
         "files": 61
       },
@@ -925,7 +922,7 @@
       "type": "remix",
       "id": "drape",
       "name": "Drape — AI Try-On",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "A landing page for an AI fitting room: a three.js hero where every outfit is a pencil sketch drawn by a shader until a selection box opens over it and shows the real garment, a scroll-scrubbed pull-back into a sunlit room, a pinned four-step toolkit that recolours a garment into sixteen colourways in the page, live colour, fit and size controls, stories, parallax features, FAQ and a clay footer.",
       "designedFor": [
         "Fashion, retail and AI try-on products that want to show the product working rather than describe it",
@@ -936,8 +933,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Wren Takahashi"
         }
       ],
       "license": "MIT",
@@ -1016,9 +1012,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/drape-1.0.0.tgz",
+        "url": "archives/remixes/drape-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "21bf80cb7b48af8e0405e2f9cf55f148593663ebb57732f0aad15a5ff74a4f3a",
+        "sha256": "5dc8398fad5b3e27f839d325d0f1e4efa070b4277e748bb0429f465a72e1f09d",
         "size": 509440,
         "files": 70
       },
@@ -1033,7 +1029,7 @@
       "type": "remix",
       "id": "ember-cards",
       "name": "Ember Cards",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "A dark, metallic landing page for a virtual card company: machined-metal cards (chrome, titanium, champagne, graphite, copper) with brushing, film grain and a pointer-tracked highlight; two live 3D iPhones (React Three Fiber); a manifesto that lights up word by word; a pinned four-step “how it works”; a sideways-scrolling row of use cases; a customer video that zooms to fill the screen; a dotted world map, reviews, an FAQ and a champagne sign-up band.",
       "designedFor": [
         "Fintech, card and wallet apps launching with a single clear offer",
@@ -1045,8 +1041,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Dario Lindqvist"
         }
       ],
       "license": "MIT",
@@ -1123,9 +1118,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/ember-cards-1.1.0.tgz",
+        "url": "archives/remixes/ember-cards-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "7f5f93e54e56d94b8e63f71abf2ba51a366ac123d29a1b83113d1a064ab77513",
+        "sha256": "dd7339bcb53c279ace707ce303e2ab0a0582fba0ff5da679c17013f61f77b312",
         "size": 3784192,
         "files": 90
       },
@@ -1140,7 +1135,7 @@
       "type": "remix",
       "id": "food-joint",
       "name": "Food Joint",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "A loud one-page site for a restaurant: a preloader that flicks through the menu, a hero photo in a morphing SVG cushion under huge type, a scroll-inked statement with food set into the words, a tabbed menu with a pointer-chasing blob preview, a zoom through a word cut out over a wood-fire film, a pinned sideways walk through the kitchen, stickers you can move, and a booking form.",
       "designedFor": [
         "Restaurants, burger and fried-chicken joints, bakeries and street-food kitchens with a big personality",
@@ -1152,8 +1147,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Yusra Pellegrini"
         }
       ],
       "license": "MIT",
@@ -1203,9 +1197,9 @@
       "thumbnailUrl": "remixes/food-joint/preview.png",
       "iconUrl": "remixes/food-joint/icon.svg",
       "archive": {
-        "url": "archives/remixes/food-joint-1.1.0.tgz",
+        "url": "archives/remixes/food-joint-1.1.1.tgz",
         "format": "tar+gzip",
-        "sha256": "d9bfd2523142eea7f50429156c580036c30fb4206bf94da218f5c64e9a1d8287",
+        "sha256": "817bb7427ffa7520ee196e0eeea9bfb5d033ad5053d120fa266718a763dad226",
         "size": 458752,
         "files": 67
       },
@@ -1635,7 +1629,7 @@
       "type": "remix",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
       "designedFor": [
         "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -1647,8 +1641,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Anouk Bergstrom"
         }
       ],
       "license": "MIT",
@@ -1773,9 +1766,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/photographer-portfolio-1.2.0.tgz",
+        "url": "archives/remixes/photographer-portfolio-1.2.1.tgz",
         "format": "tar+gzip",
-        "sha256": "6924798b0b32f1a5d8ba3e7dd28ac5713ffc6f8ac03290ae06d61d5263e4c5a6",
+        "sha256": "f600f982e2f794e6dd825b998dfc243537f56ac7e1842f19af6826313b66fab2",
         "size": 326144,
         "files": 48
       },
@@ -1893,7 +1886,7 @@
       "type": "remix",
       "id": "riot-folio",
       "name": "Riot Folio",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "A loud portfolio for an independent builder — electric ultramarine, six saturated project tones, duotone photography, hero cards that fly into the work grid on scroll, odometer stats and a filterable project archive.",
       "designedFor": [
         "Designers, engineers and consultants who want a portfolio people remember",
@@ -1905,8 +1898,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Teodor Ramanathan"
         }
       ],
       "license": "MIT",
@@ -2027,9 +2019,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/riot-folio-1.0.0.tgz",
+        "url": "archives/remixes/riot-folio-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "03d24719c10038fe6d5e15afdacd423501cb5a2f5abdfad1fae759d2910efa2c",
+        "sha256": "d0a05065b9562139d803454b4b6b773741fbe4f3219115530156ab485589917b",
         "size": 455168,
         "files": 71
       },
@@ -2044,7 +2036,7 @@
       "type": "remix",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
-      "version": "1.2.0",
+      "version": "1.2.1",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
       "designedFor": [
         "Starting a SaaS or product landing page from a real, responsive layout",
@@ -2056,8 +2048,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Ottilie Moreau"
         }
       ],
       "license": "MIT",
@@ -2122,9 +2113,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/sdk-scaffold-1.2.0.tgz",
+        "url": "archives/remixes/sdk-scaffold-1.2.1.tgz",
         "format": "tar+gzip",
-        "sha256": "23297ad7e1c0e8e5e5c829c8df6ef16b13850cf31a8827703921c79617ccd65e",
+        "sha256": "0c4ab16ed7717fa6934697a9e3e741ae2f5f60f67158f6eee7847decd6c197fe",
         "size": 333312,
         "files": 52
       },

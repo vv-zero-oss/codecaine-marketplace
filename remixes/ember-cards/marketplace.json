@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "ember-cards",
   "name": "Ember Cards",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A dark, metallic landing page for a virtual card company: machined-metal cards (chrome, titanium, champagne, graphite, copper) with brushing, film grain and a pointer-tracked highlight; two live 3D iPhones (React Three Fiber); a manifesto that lights up word by word; a pinned four-step “how it works”; a sideways-scrolling row of use cases; a customer video that zooms to fill the screen; a dotted world map, reviews, an FAQ and a champagne sign-up band.",
   "designedFor": [
     "Fintech, card and wallet apps launching with a single clear offer",
@@ -13,12 +13,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Dario Lindqvist" }],
   "license": "MIT",
   "keywords": [
     "fintech",

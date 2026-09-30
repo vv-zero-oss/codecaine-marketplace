@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "drape",
   "name": "Drape — AI Try-On",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A landing page for an AI fitting room: a three.js hero where every outfit is a pencil sketch drawn by a shader until a selection box opens over it and shows the real garment, a scroll-scrubbed pull-back into a sunlit room, a pinned four-step toolkit that recolours a garment into sixteen colourways in the page, live colour, fit and size controls, stories, parallax features, FAQ and a clay footer.",
   "designedFor": [
     "Fashion, retail and AI try-on products that want to show the product working rather than describe it",
@@ -12,12 +12,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Wren Takahashi" }],
   "license": "MIT",
   "keywords": [
     "fashion",

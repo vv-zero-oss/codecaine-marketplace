@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "food-joint",
   "name": "Food Joint",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A loud one-page site for a restaurant: a preloader that flicks through the menu, a hero photo in a morphing SVG cushion under huge type, a scroll-inked statement with food set into the words, a tabbed menu with a pointer-chasing blob preview, a zoom through a word cut out over a wood-fire film, a pinned sideways walk through the kitchen, stickers you can move, and a booking form.",
   "designedFor": [
     "Restaurants, burger and fried-chicken joints, bakeries and street-food kitchens with a big personality",
@@ -13,12 +13,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Yusra Pellegrini" }],
   "license": "MIT",
   "keywords": [
     "restaurant",

@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "coastal-residence",
   "name": "Coastal Residence",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Luna Residence — a cinematic one-page site for a small gated development on the coast: an arch that opens onto the hero, a day/night switch, pinned chapters, a sideways coastline story, residence types, amenities and an olive contact footer.",
   "designedFor": [
     "Boutique residential developments and off-plan launches selling a handful of homes",
@@ -13,12 +13,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Caius Okafor" }],
   "license": "MIT",
   "keywords": [
     "real estate",

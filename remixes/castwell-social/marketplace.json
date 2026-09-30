@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "castwell-social",
   "name": "Castwell — AI Social Media Manager",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A five-page template for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
   "designedFor": [
     "Social media management, scheduling and creator tools",
@@ -13,12 +13,7 @@
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
-  "authors": [
-    {
-      "name": "Codecaine",
-      "url": "https://github.com/vv-zero-oss"
-    }
-  ],
+  "authors": [{ "name": "Linnea Haddad" }],
   "license": "MIT",
   "keywords": [
     "ai",
