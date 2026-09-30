@@ -7,7 +7,7 @@ every screen.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3300
+npm run dev     # → http://localhost:3320
 ```
 
 ## Pages

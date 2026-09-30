@@ -91,7 +91,7 @@ export function BrandPage() {
   return (
     <>
       <BrandMasthead />
-      <main data-canvas-ignore>
+      <div>
         <Container className="pb-[calc(var(--spacing-section)/2)]">
           {CHAPTERS.map(({ id, title, blurb, Body }, i) => (
             <GuideSection key={id} id={id} index={i + 1} title={title} blurb={blurb}>
@@ -99,7 +99,7 @@ export function BrandPage() {
             </GuideSection>
           ))}
         </Container>
-      </main>
+      </div>
     </>
   )
 }

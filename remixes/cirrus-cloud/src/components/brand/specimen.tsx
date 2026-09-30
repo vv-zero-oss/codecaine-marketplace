@@ -69,7 +69,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
       onClick={copy}
       aria-label={copied ? "Copied" : "Copy code"}
       className={cn(
-        "notch relative inline-flex size-11 shrink-0 items-center justify-center bg-ink text-paper outline-none transition-[transform,background-color] duration-(--duration-press) ease-(--ease-out) active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt [@media(hover:hover)_and_(pointer:fine)]:hover:bg-navy",
+        "notch focus-notch relative inline-flex size-11 shrink-0 items-center justify-center bg-ink text-paper outline-none transition-[transform,background-color] duration-(--duration-press) ease-(--ease-out) active:scale-[0.97] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-navy",
         className,
       )}
     >

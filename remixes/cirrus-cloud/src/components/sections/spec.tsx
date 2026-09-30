@@ -1,7 +1,7 @@
 import { Prose, SplitHeading } from "@/components/blocks/split-section"
 import { StepRow } from "@/components/blocks/step-row"
 import { PixelStream } from "@/components/motion/pixel-stream"
-import { ButtonLink } from "@/components/ui/button"
+import { RouteButton } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { spec } from "@/content"
 
@@ -18,9 +18,9 @@ export function Spec() {
                 <strong>{spec.lead}</strong> {spec.body}
               </p>
             </Prose>
-            <ButtonLink href="#pricing" className="mt-7">
+            <RouteButton href="/product#file" className="mt-7">
               {spec.cta}
-            </ButtonLink>
+            </RouteButton>
           </div>
         </div>
         <PixelStream variant="spec" className="mt-12 mb-10" />

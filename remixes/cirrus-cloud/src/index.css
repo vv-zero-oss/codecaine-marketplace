@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
 /*
  * Cirrus — every colour, font, radius, spacing step and motion curve the page
@@ -9,7 +10,7 @@
  * appears as 8px squares on that 9px pitch — in the canvases, the chips and
  * the marks.
  */
-@theme {
+@theme static {
   /* Paper and ink */
   --color-paper: #ffffff;
   --color-grid: rgb(12 12 12 / 0.028);
@@ -31,6 +32,27 @@
   --color-gold-pale: #f8e3a6;
   --color-signal: #ea3c25;
   --color-lime: #d9ff00;
+
+  /* The server room: the hero's night band */
+  --color-night: #0b0e1a;
+  --color-night-cell: #10152a;
+  --color-night-line: #1b2238;
+  --color-rack: #262e48;
+  --color-rack-unit: #161c30;
+  --color-rack-label: #5d6890;
+  --color-cyan: #3ee6ff;
+
+  /* shadcn's semantic names, pointed at the palette above */
+  --color-background: var(--color-paper);
+  --color-foreground: var(--color-ink);
+  --color-popover: var(--color-paper);
+  --color-popover-foreground: var(--color-ink);
+  --color-accent: var(--color-wash);
+  --color-accent-foreground: var(--color-ink);
+  --color-secondary: var(--color-wash);
+  --color-muted-foreground: var(--color-mute);
+  --color-border: var(--color-hairline);
+  --color-ring: var(--color-cobalt);
 
   /* Chips: slightly deeper fills so white mono text reads on them */
   --color-chip-red: #d93923;
@@ -70,15 +92,23 @@
 
   /* Shape: nothing on this page is rounded — corners are notched a pixel at a time */
   --radius-none: 0;
+  --radius-xs: 0;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
   --notch: 4px;
 
   /* Shadows: the page is flat; the only lift is the rail arrow over photography */
   --shadow-float: 0 1px 2px rgb(12 12 12 / 0.18), 0 6px 18px -6px rgb(12 12 12 / 0.28);
+  --shadow: 0 1px 0 rgb(12 12 12 / 0.04), 0 10px 30px -12px rgb(12 12 12 / 0.22);
+  --shadow-focus: inset 0 0 0 2px var(--color-cobalt), inset 0 0 0 4px var(--color-paper);
+  --shadow-lg: 0 1px 0 rgb(12 12 12 / 0.04), 0 18px 40px -16px rgb(12 12 12 / 0.3);
 
   /* Motion */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-ghost: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
   --duration-press: 140ms;
   --duration-hover: 200ms;
   --duration-ghost: 1400ms;
@@ -155,6 +185,12 @@ html.lenis body {
   .notch-sm {
     --notch: 2px;
   }
+  /* A notch's clip-path cuts an outline away, so notched controls show
+     keyboard focus as an inset ring: a cobalt edge and a paper line inside. */
+  .focus-notch:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
 
   .label {
     font-family: var(--font-mono);
@@ -203,6 +239,21 @@ html.lenis body {
     opacity: 1;
   }
   .typer-on .typer-char {
+    animation: none;
+  }
+}
+
+/* ── Status lights on the isometric servers ────────────────────────────── */
+@keyframes iso-blink {
+  0%, 62% { opacity: 1; }
+  63%, 78% { opacity: 0.25; }
+  79%, 100% { opacity: 1; }
+}
+.iso-blink {
+  animation: iso-blink 2.6s steps(1, end) infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .iso-blink {
     animation: none;
   }
 }

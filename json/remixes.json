@@ -659,8 +659,8 @@
       "type": "remix",
       "id": "cirrus-cloud",
       "name": "Cirrus — Cloud Dev Environments",
-      "version": "1.1.0",
-      "description": "A pixel-matrix landing page for Cirrus, cloud development environments: white paper under a faint 9px grid, big grotesk type and a navy, cobalt, gold, red and lime palette that only ever appears as squares — a hero of drifting diagonal pixel weather that erodes as you scroll, headlines that type themselves in, photographs that bleed in through fog, two particle-stream diagrams of how it works, hairline pricing and FAQ, a pixel-text marquee and a playable Tetris skyline for a footer.",
+      "version": "1.2.0",
+      "description": "A pixel-matrix site for Cirrus, cloud development environments: white paper under a 9px grid and a palette drawn only as squares — a night server-room hero with CDN packets travelling from origin to edge racks, isometric voxel server cards, a DNA-to-organism-to-tree life cycle for clone/boot/build/ship, a menubar with a pixel-icon product menu, product, network, pricing, changelog and brand-guideline pages, and footers with a different city skyline in line art over a playable Tetris skyline.",
       "designedFor": [
         "Developer tools, cloud platforms and infrastructure products",
         "Editorial, argument-led product pages with long reading sections",
@@ -676,25 +676,33 @@
       ],
       "license": "MIT",
       "keywords": [
-        "developer-tools",
-        "cloud",
-        "devops",
-        "infrastructure",
-        "saas",
-        "pixel",
-        "generative",
+        "brand-guidelines",
         "canvas",
-        "typer",
-        "marquee",
-        "tetris",
-        "pricing",
-        "faq",
+        "cdn",
+        "cloud",
+        "developer-tools",
+        "devops",
+        "edge",
         "editorial",
+        "faq",
         "framer-motion",
+        "generative",
+        "infrastructure",
+        "isometric",
         "lenis",
+        "line-art",
+        "marquee",
+        "multi-page",
+        "pixel",
+        "pixel-icons",
+        "pricing",
         "react",
-        "vite",
-        "tailwind"
+        "saas",
+        "server",
+        "tailwind",
+        "tetris",
+        "typer",
+        "vite"
       ],
       "categories": [
         "Marketing",
@@ -717,6 +725,22 @@
           "title": "Home"
         },
         {
+          "path": "/product",
+          "title": "Product"
+        },
+        {
+          "path": "/network",
+          "title": "Network"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/changelog",
+          "title": "Changelog"
+        },
+        {
           "path": "/brand",
           "title": "Brand guidelines"
         }
@@ -728,6 +752,26 @@
           {
             "title": "Home",
             "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Product",
+            "image": "previews/pages/product.jpg"
+          },
+          {
+            "title": "Network",
+            "image": "previews/pages/network.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Changelog",
+            "image": "previews/pages/changelog.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
           }
         ]
       },
@@ -742,15 +786,35 @@
           {
             "title": "Home",
             "image": "remixes/cirrus-cloud/previews/pages/home.jpg"
+          },
+          {
+            "title": "Product",
+            "image": "remixes/cirrus-cloud/previews/pages/product.jpg"
+          },
+          {
+            "title": "Network",
+            "image": "remixes/cirrus-cloud/previews/pages/network.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/cirrus-cloud/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Changelog",
+            "image": "remixes/cirrus-cloud/previews/pages/changelog.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/cirrus-cloud/previews/pages/brand.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/remixes/cirrus-cloud-1.1.0.tgz",
+        "url": "archives/remixes/cirrus-cloud-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "57c562ad64fe0e802f8650dadeeff8daadd741e79fa0060f9c8a099cfaae6c39",
-        "size": 414720,
-        "files": 65
+        "sha256": "e90bc9ebc841d6af3633323fc7777a75b7b57ce42a937b38631af3d3f7550070",
+        "size": 933376,
+        "files": 89
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -856,6 +920,114 @@
         "path": "remixes/coastal-residence"
       },
       "demoUrl": "demos/coastal-residence/"
+    },
+    {
+      "type": "remix",
+      "id": "drape",
+      "name": "Drape — AI Try-On",
+      "version": "1.0.0",
+      "description": "A landing page for an AI fitting room: a three.js hero where every outfit is a pencil sketch drawn by a shader until a selection box opens over it and shows the real garment, a scroll-scrubbed pull-back into a sunlit room, a pinned four-step toolkit that recolours a garment into sixteen colourways in the page, live colour, fit and size controls, stories, parallax features, FAQ and a clay footer.",
+      "designedFor": [
+        "Fashion, retail and AI try-on products that want to show the product working rather than describe it",
+        "Seeing a three.js shader carousel, scroll-scrubbed zooms and pinned steps as editor-ready components",
+        "Pages that mix a light drafting-paper hero with dark product sections and one warm accent"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fashion",
+        "try-on",
+        "ai",
+        "clothing",
+        "retail",
+        "landing",
+        "threejs",
+        "webgl",
+        "shader",
+        "scroll",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "E-commerce"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3310
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/drape",
+      "thumbnailUrl": "remixes/drape/preview.png",
+      "iconUrl": "remixes/drape/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/drape/previews/desktop.jpg",
+        "mobile": "remixes/drape/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/drape/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/drape/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/drape-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "21bf80cb7b48af8e0405e2f9cf55f148593663ebb57732f0aad15a5ff74a4f3a",
+        "size": 509440,
+        "files": 70
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/drape"
+      },
+      "demoUrl": "demos/drape/"
     },
     {
       "type": "remix",
@@ -1198,7 +1370,7 @@
         "styling": "tailwindcss@4",
         "installCommand": "npm install",
         "devCommand": "npm run dev",
-        "port": 3300
+        "port": 3320
       },
       "pages": [
         {
@@ -1305,7 +1477,7 @@
       "archive": {
         "url": "archives/remixes/kerfuffle-studio-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "154c2753bbc830be2e1ba86fee4e8ced46c9453b9aef55353f136fe08067bdcb",
+        "sha256": "f1fcda3def2b495a3c2bde7480bc618e9e89359a3709c0528ed31d990213aafe",
         "size": 485376,
         "files": 78
       },
@@ -1717,6 +1889,157 @@
         "path": "remixes/postwise"
       },
       "demoUrl": "demos/postwise/"
+    },
+    {
+      "type": "remix",
+      "id": "riot-folio",
+      "name": "Riot Folio",
+      "version": "1.0.0",
+      "description": "A loud portfolio for an independent builder — electric ultramarine, six saturated project tones, duotone photography, hero cards that fly into the work grid on scroll, odometer stats and a filterable project archive.",
+      "designedFor": [
+        "Designers, engineers and consultants who want a portfolio people remember",
+        "Showing a handful of case studies properly and the rest as a searchable archive",
+        "A bold, colourful starting point that is still quiet enough to read",
+        "Trying scroll-linked motion that the editor can name, tune and pause"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "portfolio",
+        "personal",
+        "case-study",
+        "colourful",
+        "bold",
+        "duotone",
+        "motion",
+        "framer-motion",
+        "lenis"
+      ],
+      "categories": [
+        "Portfolio",
+        "Personal"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3300
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/work",
+          "title": "Work"
+        },
+        {
+          "path": "/work/open-floor",
+          "title": "Case study"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/contact",
+          "title": "Contact"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Work",
+            "image": "previews/pages/work.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "previews/pages/work-open-floor.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "previews/pages/contact.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/riot-folio",
+      "thumbnailUrl": "remixes/riot-folio/preview.png",
+      "iconUrl": "remixes/riot-folio/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/riot-folio/previews/desktop.jpg",
+        "mobile": "remixes/riot-folio/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/riot-folio/previews/pages/home.jpg"
+          },
+          {
+            "title": "Work",
+            "image": "remixes/riot-folio/previews/pages/work.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "remixes/riot-folio/previews/pages/work-open-floor.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/riot-folio/previews/pages/about.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "remixes/riot-folio/previews/pages/contact.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/riot-folio/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/riot-folio-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "03d24719c10038fe6d5e15afdacd423501cb5a2f5abdfad1fae759d2910efa2c",
+        "size": 455168,
+        "files": 71
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/riot-folio"
+      },
+      "demoUrl": "demos/riot-folio/"
     },
     {
       "type": "remix",

@@ -6,13 +6,21 @@ import { Container } from "@/components/ui/container"
 import { brand, closing } from "@/content"
 
 /** The answer in lights, then the one ask, then where to find us. */
-export function Closing() {
+export function Closing({
+  marquee = closing.marquee,
+  cta = closing.cta,
+  href = `mailto:${brand.email}`,
+}: {
+  marquee?: string
+  cta?: string
+  href?: string
+}) {
   const small = useMedia("(max-width: 640px)")
   return (
     <section id="start" className="pt-[calc(var(--spacing-section)/2)] pb-24">
-      <PixelMarquee text={closing.marquee} cell={small ? 6 : 9} rows={small ? 12 : 13} />
+      <PixelMarquee text={marquee} cell={small ? 6 : 9} rows={small ? 12 : 13} />
       <Container className="mt-14 flex flex-col items-center text-center">
-        <ButtonLink href={`mailto:${brand.email}`}>{closing.cta}</ButtonLink>
+        <ButtonLink href={href}>{cta}</ButtonLink>
         <div className="mt-12 max-w-[32rem] space-y-6 text-[clamp(1.0625rem,1rem+0.3vw,1.3125rem)] leading-[1.6] text-mute">
           {closing.body.map((p) => (
             <p key={p.slice(0, 20)}>{p}</p>
