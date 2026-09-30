@@ -48,7 +48,7 @@
     "styling": "tailwindcss@4",
     "installCommand": "npm install",
     "devCommand": "npm run dev",
-    "port": 3210
+    "port": 3220
   },
   "pages": [
     {
