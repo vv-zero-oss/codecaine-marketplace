@@ -6,7 +6,7 @@ a condensed display serif with italic lowercase set into its capitals.
 
 ```bash
 npm install
-npm run dev     # http://localhost:3210
+npm run dev     # http://localhost:3230
 ```
 
 ## Pages

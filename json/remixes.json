@@ -279,7 +279,7 @@
         "styling": "tailwindcss@4",
         "installCommand": "npm install",
         "devCommand": "npm run dev",
-        "port": 3210
+        "port": 3230
       },
       "pages": [
         {
@@ -386,7 +386,7 @@
       "archive": {
         "url": "archives/remixes/aurel-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "c3d30fcd7101c0d555445fe8d57f375b59474f226395988d4e64dd086fe61125",
+        "sha256": "d26592ca0a15c7c3195498460f88c58f996ac8bac149cc8bcf6b029f21a752d6",
         "size": 478720,
         "files": 84
       },
@@ -396,6 +396,251 @@
         "path": "remixes/aurel"
       },
       "demoUrl": "demos/aurel/"
+    },
+    {
+      "type": "remix",
+      "id": "castwell-social",
+      "name": "Castwell — AI Social Media Manager",
+      "version": "1.0.1",
+      "description": "A five-page template for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
+      "designedFor": [
+        "Social media management, scheduling and creator tools",
+        "AI marketing and AI video generation products",
+        "SaaS teams that want a calm, editorial, cream-and-ink landing page with night diagram sections",
+        "Seeing scroll-pinned tours, pixel wipes and streaming text the editor can drive"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "social-media",
+        "marketing",
+        "scheduler",
+        "video-generator",
+        "saas",
+        "multi-page",
+        "pricing",
+        "serif",
+        "pixel",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3220
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/marketing-manager",
+          "title": "AI Marketing Manager"
+        },
+        {
+          "path": "/video-studio",
+          "title": "AI Video Studio"
+        },
+        {
+          "path": "/scheduler",
+          "title": "Scheduler"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "AI Marketing Manager",
+            "image": "previews/pages/marketing-manager.jpg"
+          },
+          {
+            "title": "AI Video Studio",
+            "image": "previews/pages/video-studio.jpg"
+          },
+          {
+            "title": "Scheduler",
+            "image": "previews/pages/scheduler.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          }
+        ]
+      },
+      "path": "remixes/castwell-social",
+      "thumbnailUrl": "remixes/castwell-social/preview.png",
+      "iconUrl": "remixes/castwell-social/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/castwell-social/previews/desktop.jpg",
+        "mobile": "remixes/castwell-social/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/castwell-social/previews/pages/home.jpg"
+          },
+          {
+            "title": "AI Marketing Manager",
+            "image": "remixes/castwell-social/previews/pages/marketing-manager.jpg"
+          },
+          {
+            "title": "AI Video Studio",
+            "image": "remixes/castwell-social/previews/pages/video-studio.jpg"
+          },
+          {
+            "title": "Scheduler",
+            "image": "remixes/castwell-social/previews/pages/scheduler.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/castwell-social/previews/pages/pricing.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/castwell-social-1.0.1.tgz",
+        "format": "tar+gzip",
+        "sha256": "d3c65369f766a18cfe33cf110cbf503a740916aef4097241606dd1abfbb12185",
+        "size": 548352,
+        "files": 99
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/castwell-social"
+      },
+      "demoUrl": "demos/castwell-social/"
+    },
+    {
+      "type": "remix",
+      "id": "cirrus-cloud",
+      "name": "Cirrus — Cloud Dev Environments",
+      "version": "1.0.0",
+      "description": "A pixel-matrix landing page for Cirrus, cloud development environments: white paper under a faint 9px grid, big grotesk type and a navy, cobalt, gold, red and lime palette that only ever appears as squares — a hero of drifting diagonal pixel weather that erodes as you scroll, headlines that type themselves in, photographs that bleed in through fog, two particle-stream diagrams of how it works, hairline pricing and FAQ, a pixel-text marquee and a playable Tetris skyline for a footer.",
+      "designedFor": [
+        "Developer tools, cloud platforms and infrastructure products",
+        "Editorial, argument-led product pages with long reading sections",
+        "Pages that want generative pixel art instead of stock illustration",
+        "Seeing canvas animations built as editor-controllable components the Motion switch can stop"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Noor Kaskela"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "developer-tools",
+        "cloud",
+        "devops",
+        "infrastructure",
+        "saas",
+        "pixel",
+        "generative",
+        "canvas",
+        "typer",
+        "marquee",
+        "tetris",
+        "pricing",
+        "faq",
+        "editorial",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3210
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/cirrus-cloud",
+      "thumbnailUrl": "remixes/cirrus-cloud/preview.png",
+      "iconUrl": "remixes/cirrus-cloud/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/cirrus-cloud/previews/desktop.jpg",
+        "mobile": "remixes/cirrus-cloud/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/cirrus-cloud/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/cirrus-cloud-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "1f882a655475e84b344128807a477df319e3739abf48c00ed36e7a6364bdd92d",
+        "size": 332800,
+        "files": 59
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/cirrus-cloud"
+      },
+      "demoUrl": "demos/cirrus-cloud/"
     },
     {
       "type": "remix",
@@ -669,6 +914,101 @@
         "path": "remixes/food-joint"
       },
       "demoUrl": "demos/food-joint/"
+    },
+    {
+      "type": "remix",
+      "id": "glovebox",
+      "name": "Glovebox — Car Insurance Manager",
+      "version": "1.0.0",
+      "description": "A warm, editorial landing page for Glovebox, an AI that manages car insurance: a pinned hero whose footage a clip-path closes in on while the camera zooms to the centre, three blurred-video feature cards dealt one under the next with live task panels, a pinned statistic with work drifting past it, a dot map of members with stories sliding over it, how it works, FAQ and a closing frame that clips open.",
+      "designedFor": [
+        "Insurance, fintech and admin-automation products that want a calm, human, serif-led page",
+        "Showing scroll-driven clip-path and video-zoom effects as editor-ready components",
+        "Product pages that show an AI working through live task panels rather than describing it"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ilse Marchetti"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "insurance",
+        "car",
+        "fintech",
+        "ai",
+        "landing",
+        "editorial",
+        "serif",
+        "video",
+        "clip-path",
+        "scroll",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3290
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/glovebox",
+      "thumbnailUrl": "remixes/glovebox/preview.png",
+      "iconUrl": "remixes/glovebox/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/glovebox/previews/desktop.jpg",
+        "mobile": "remixes/glovebox/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/glovebox/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/glovebox-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "6a9a4ee4095222bcf0a1636f93e1423c25742e7278c6b692c3239b2cd0fd61fa",
+        "size": 338432,
+        "files": 57
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/glovebox"
+      },
+      "demoUrl": "demos/glovebox/"
     },
     {
       "type": "remix",
