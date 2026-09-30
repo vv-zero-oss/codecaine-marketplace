@@ -1,6 +1,7 @@
 import { Wordmark } from "@/components/ui/wordmark"
 import { Container } from "@/components/ui/container"
 import { FOOTER } from "@/content"
+import { Link } from "@/lib/router"
 
 const slug = (s: string) => `#${s.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
 
@@ -21,9 +22,16 @@ export function SiteFooter() {
                 <ul className="mt-4 flex flex-col">
                   {col.links.map((link) => (
                     <li key={link}>
-                      <a href={slug(link)} className="inline-flex min-h-9 items-center text-[14.5px] text-night-fg/85 transition-colors duration-(--duration-hover) hover:text-pink">
-                        {link}
-                      </a>
+                      {link === "Brand guidelines" ? (
+                        // The one real page behind the footer: the style guide.
+                        <Link href="/brand" className="inline-flex min-h-9 items-center text-[14.5px] text-night-fg/85 transition-colors duration-(--duration-hover) hover:text-pink">
+                          {link}
+                        </Link>
+                      ) : (
+                        <a href={slug(link)} className="inline-flex min-h-9 items-center text-[14.5px] text-night-fg/85 transition-colors duration-(--duration-hover) hover:text-pink">
+                          {link}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

@@ -17,6 +17,8 @@ import { Hero } from "@/components/sections/hero"
 import { HowItWorks } from "@/components/sections/how-it-works"
 import { Proof } from "@/components/sections/proof"
 import { Stat } from "@/components/sections/stat"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 const SECTIONS = [
   { id: "top", Section: Hero },
@@ -38,6 +40,17 @@ function sections() {
  *  editor looks through them to what they hold. See CLAUDE.md. */
 export default function App() {
   useSmoothScroll()
+  const pathname = usePathname()
+
+  if (pathname === "/brand") {
+    return (
+      <div className="min-h-svh overflow-x-clip bg-paper text-ink" data-canvas-ignore>
+        <BrandPage />
+        <SiteFooter />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-svh overflow-x-clip bg-paper text-ink" data-canvas-ignore>
       <SiteNav />

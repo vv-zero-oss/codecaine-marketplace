@@ -5,7 +5,7 @@ photo, in any colour, before it's yours.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3300
+npm run dev     # → http://localhost:3310
 ```
 
 `/brand` is the style guide — every token and component, live.

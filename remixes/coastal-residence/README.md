@@ -44,6 +44,21 @@ npm run dev     # → http://localhost:3130
 - `src/components/motion.tsx`: Lenis (the scroll) and the shared easings and
   durations.
 
+## The style guide at `/brand`
+
+`/brand` is Luna's brand guidelines page, linked as "Brand guidelines" in the
+footer: the badge and emblem with clear space, minimum size and voice; every
+colour token with its value and WCAG contrast for the real text/ground pairs;
+the families and the fluid type scale; spacing, radii, the one shadow and the
+hairlines; the easings and durations, playable; icons and photography; and
+every component, live in its variants and states with a copyable snippet.
+Values are read off the rendered elements, so a token changed in
+`src/index.css` changes the page. The full-bleed, scroll-pinned sections are
+shown in part (their pieces, a slider-driven disc, and a link to each in
+place). It lives in `src/pages/brand.tsx` and `src/components/brand/`;
+`src/lib/router.tsx` is the small router for the two pages. A component added
+to the site is added there in the same change.
+
 Fonts are Google Fonts linked from `index.html`: Instrument Serif (headlines,
 and its italic for the accent words) and Manrope. All motion respects
 `prefers-reduced-motion`.

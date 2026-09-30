@@ -86,7 +86,7 @@ export function AboutPage({ pathname }: { pathname: string }) {
   )
 }
 
-function Float({
+export function Float({
   progress,
   speed,
   className,
@@ -112,7 +112,7 @@ function Float({
  * solid under the pointer, as a line does when it is selected in a terminal;
  * SEARCH narrows the list to a name.
  */
-function WritersIndex() {
+export function WritersIndex() {
   const [query, setQuery] = useState("")
   const q = query.trim().toLowerCase()
   const rows = writers.filter(

@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "ai-canvas",
   "name": "AI Canvas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A launch page for an AI canvas tool: a night-black WebGL infinite canvas that never stops drifting — photos, labelled frames, live pages and an agent at work, with velocity motion blur — washing out to a white page of blur-in scenes, a stepped-word mauve panel, a pinned three-step product walk, gathering multiplayer cursors, an agent wiring a button to its tokens, and one enormous black call to action.",
   "designedFor": [
     "AI design, canvas and prototyping tools launching or raising",
@@ -42,7 +42,7 @@
     "SaaS"
   ],
   "created": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",
@@ -56,6 +56,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "previews": {

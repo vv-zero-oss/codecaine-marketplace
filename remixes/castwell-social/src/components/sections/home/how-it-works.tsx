@@ -27,9 +27,9 @@ const TONE_BG: Record<Tone, string> = {
   butter: "bg-butter",
 }
 
-type Step = { key: string; node: string; tone: Tone; title: string; body: string; items: string[]; Visual: () => React.JSX.Element }
+export type Step = { key: string; node: string; tone: Tone; title: string; body: string; items: string[]; Visual: () => React.JSX.Element }
 
-const STEPS: Step[] = [
+export const STEPS: Step[] = [
   {
     key: "inbox",
     node: "Unified inbox",
@@ -73,7 +73,7 @@ const STEPS: Step[] = [
  * --------------------------------------------------------------------------*/
 
 /** A hairline box with a second outline offset behind it, for depth. */
-function DepthBox({ title, className, children }: { title?: string; className?: string; children?: React.ReactNode }) {
+export function DepthBox({ title, className, children }: { title?: string; className?: string; children?: React.ReactNode }) {
   return (
     <div className={cn("relative", className)}>
       <span aria-hidden className="absolute inset-0 translate-x-1.5 translate-y-1.5 border border-night-line" />
@@ -85,7 +85,7 @@ function DepthBox({ title, className, children }: { title?: string; className?: 
   )
 }
 
-function Pill({ tone = "outline", children, icon }: { tone?: "outline" | "coral" | "butter" | "mint" | "dim"; children: React.ReactNode; icon?: React.ReactNode }) {
+export function Pill({ tone = "outline", children, icon }: { tone?: "outline" | "coral" | "butter" | "mint" | "dim"; children: React.ReactNode; icon?: React.ReactNode }) {
   return (
     <span
       className={cn(
@@ -103,7 +103,7 @@ function Pill({ tone = "outline", children, icon }: { tone?: "outline" | "coral"
   )
 }
 
-function InboxVisual() {
+export function InboxVisual() {
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-6">
       <DepthBox title="Audience by channel">
@@ -140,7 +140,7 @@ function InboxVisual() {
   )
 }
 
-function MemoryVisual() {
+export function MemoryVisual() {
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-6">
       <DepthBox title="Voice match">
@@ -180,7 +180,7 @@ function MemoryVisual() {
   )
 }
 
-function AgentsVisual() {
+export function AgentsVisual() {
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-6">
       <DepthBox title="Caption agent">
@@ -220,7 +220,7 @@ function AgentsVisual() {
   )
 }
 
-function SchedulerVisual() {
+export function SchedulerVisual() {
   return (
     <div className="grid grid-cols-2 gap-4 md:gap-6">
       <DepthBox title="Approval workflow" className="col-span-2 sm:col-span-1">
@@ -262,7 +262,7 @@ function SchedulerVisual() {
  * Panels
  * --------------------------------------------------------------------------*/
 
-function InfoPanel({ step, index }: { step: Step; index: number }) {
+export function InfoPanel({ step, index }: { step: Step; index: number }) {
   return (
     <div className="border border-night-line-strong bg-night p-5 md:p-6">
       <div className="flex items-start justify-between gap-4">
@@ -277,7 +277,7 @@ function InfoPanel({ step, index }: { step: Step; index: number }) {
   )
 }
 
-function Node({ label, tone, align = "left", active = true }: { label: string; tone: Tone; align?: "left" | "right"; active?: boolean }) {
+export function Node({ label, tone, align = "left", active = true }: { label: string; tone: Tone; align?: "left" | "right"; active?: boolean }) {
   return (
     <span className={cn("flex items-center gap-2 text-[11px] whitespace-nowrap transition-opacity duration-300 md:text-xs", active ? "opacity-100" : "opacity-45", align === "right" && "flex-row-reverse")}>
       <span className="text-night-ink">{label}</span>

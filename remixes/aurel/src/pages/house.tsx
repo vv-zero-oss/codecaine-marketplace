@@ -50,7 +50,7 @@ export function HousePage() {
  * old year up and out, new one up and in — as each row reaches the middle
  * of the screen.
  */
-function Timeline() {
+export function Timeline() {
   const [current, setCurrent] = useState(0)
   const rows = useRef<(HTMLLIElement | null)[]>([])
   useEffect(() => {

@@ -9,13 +9,13 @@ import { cn } from "@/lib/utils"
 type Mode = (typeof hero.modes)[number]["id"]
 
 /** The arch the page opens through, as a clip-path the hero is cut to. */
-function archPath(width: number, top: number, radius: number) {
+export function archPath(width: number, top: number, radius: number) {
   const side = (100 - width) / 2
   return `inset(${top}% ${side}% 0% ${side}% round ${radius}vw ${radius}vw 0vw 0vw)`
 }
 
 /** "By day — by night": switches the photograph under the headline. */
-function DayNight({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void }) {
+export function DayNight({ mode, onChange }: { mode: Mode; onChange: (m: Mode) => void }) {
   return (
     <div role="group" aria-label="Time of day" className="flex items-center gap-3 sm:gap-5">
       {hero.modes.map((m, i) => (

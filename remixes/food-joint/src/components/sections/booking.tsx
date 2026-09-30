@@ -31,7 +31,7 @@ function nextDays() {
 }
 
 /** A choice chip: an outlined pill that fills forest when picked. */
-function Chip({ active, ...props }: { active: boolean } & React.ComponentProps<"button">) {
+export function Chip({ active, ...props }: { active: boolean } & React.ComponentProps<"button">) {
   return (
     <Button
       type="button"
@@ -49,7 +49,7 @@ function Chip({ active, ...props }: { active: boolean } & React.ComponentProps<"
  * of the top when it grows, down when it shrinks — so the change is legible
  * at a glance. A transition keyed on the number: quick taps retarget.
  */
-function PartySize({ value, onChange }: { value: number; onChange: (n: number) => void }) {
+export function PartySize({ value, onChange }: { value: number; onChange: (n: number) => void }) {
   const [direction, setDirection] = useState(1)
   const reduced = useReducedMotion()
   const step = (d: number) => {

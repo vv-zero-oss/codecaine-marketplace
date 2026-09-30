@@ -3,6 +3,7 @@ import { Bot, Brain, MessageCircle, Search, Sparkles } from "lucide-react"
 import { LogoMark } from "@/components/ui/wordmark"
 import { Container } from "@/components/ui/container"
 import { FOOTER } from "@/content"
+import { Link } from "@/lib/router"
 
 const slug = (s: string) => `#${s.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
 
@@ -37,12 +38,19 @@ export function SiteFooter() {
                 <ul className="mt-5 flex flex-col gap-1">
                   {col.links.map((link) => (
                     <li key={link}>
-                      <a href={slug(link)} className="inline-flex min-h-9 items-center gap-2 text-[13.5px] text-night-muted transition-colors duration-(--duration-hover) hover:text-night-fg">
-                        {link}
-                        {link === "Careers" && (
-                          <span className="rounded-[4px] bg-night-raised px-1.5 py-0.5 text-[9.5px] tracking-wide text-night-muted uppercase">We’re hiring</span>
-                        )}
-                      </a>
+                      {link === "Brand guidelines" ? (
+                        // The one real page behind the footer: the style guide.
+                        <Link href="/brand" className="inline-flex min-h-9 items-center gap-2 text-[13.5px] text-night-muted transition-colors duration-(--duration-hover) hover:text-night-fg">
+                          {link}
+                        </Link>
+                      ) : (
+                        <a href={slug(link)} className="inline-flex min-h-9 items-center gap-2 text-[13.5px] text-night-muted transition-colors duration-(--duration-hover) hover:text-night-fg">
+                          {link}
+                          {link === "Careers" && (
+                            <span className="rounded-[4px] bg-night-raised px-1.5 py-0.5 text-[9.5px] tracking-wide text-night-muted uppercase">We’re hiring</span>
+                          )}
+                        </a>
+                      )}
                     </li>
                   ))}
                 </ul>

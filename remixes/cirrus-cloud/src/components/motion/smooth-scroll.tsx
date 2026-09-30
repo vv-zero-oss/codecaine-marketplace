@@ -13,7 +13,10 @@ export function SmoothScroll({
   lerp = 0.085,
   wheelMultiplier = 1,
   enabled = true,
+  resetKey,
 }: {
+  /** When this changes (a new page), jump back to the top. */
+  resetKey?: string
   /** 0–1: how much of the distance each frame covers. Lower is heavier. */
   lerp?: number
   wheelMultiplier?: number
@@ -30,6 +33,11 @@ export function SmoothScroll({
       lenis.current = null
     }
   }, [enabled, lerp, wheelMultiplier])
+
+  useEffect(() => {
+    if (window.location.hash) return
+    lenis.current?.scrollTo(0, { immediate: true })
+  }, [resetKey])
 
   return null
 }

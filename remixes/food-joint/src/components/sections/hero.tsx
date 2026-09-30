@@ -11,6 +11,7 @@ import { useFitText } from "@/hooks/use-fit-text"
 import { useLoaded } from "@/hooks/use-loaded"
 import { DURATION, EASE_OUT, SPRING_POP } from "@/lib/motion"
 import { pillow } from "@/lib/shapes"
+import { cn } from "@/lib/utils"
 
 /**
  * The first screen: the food in a soft, lopsided cushion (an SVG clip path),
@@ -23,7 +24,7 @@ import { pillow } from "@/lib/shapes"
  * frame and the picture move at different speeds. Reduced motion: fades only,
  * nothing tied to the scroll.
  */
-export function Hero() {
+export function Hero({ className }: { className?: string } = {}) {
   const loaded = useLoaded()
   const reduced = useReducedMotion()
   const section = useRef<HTMLElement>(null)
@@ -36,7 +37,7 @@ export function Hero() {
   const [first, second] = hero.title
 
   return (
-    <section ref={section} id="top" className="relative flex h-svh min-h-[600px] flex-col overflow-hidden bg-lime pt-16 sm:min-h-[680px]">
+    <section ref={section} id="top" className={cn("relative flex h-svh min-h-[600px] flex-col overflow-hidden bg-lime pt-16 sm:min-h-[680px]", className)}>
       <motion.div
         className="relative mx-gutter h-[62%] sm:h-[76%]"
         initial={reduced ? { opacity: 0 } : { opacity: 0, transform: "scale(0.94)" }}

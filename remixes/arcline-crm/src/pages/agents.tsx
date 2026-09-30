@@ -24,7 +24,7 @@ import { cn } from "@/lib/utils"
  * A wave of pins: thin vertical lines with a dot on top, their heights
  * tracing a slow U. Background for the Agents hero.
  */
-function PinWave({ count = 120 }: { count?: number }) {
+export function PinWave({ count = 120 }: { count?: number }) {
   return (
     <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex h-[420px] items-end justify-between px-2 [mask-image:linear-gradient(to_top,#000_40%,transparent)]">
       {Array.from({ length: count }, (_, i) => {
@@ -41,7 +41,7 @@ function PinWave({ count = 120 }: { count?: number }) {
 }
 
 /** Persona tabs over a tick ruler; the chosen persona's pitch beside its suggestion card. */
-function Personas() {
+export function Personas() {
   const items = AGENTS.personas.items
   const [active, setActive] = useState(0)
   useCanvasAction("Next persona", () => setActive((a) => (a + 1) % items.length), { group: "Agents" })
@@ -107,7 +107,7 @@ const TILE_TONE = {
 } as const
 
 /** One saved prompt: an icon tile, a title and the prompt; copies on click. */
-function PromptCard({ item }: { item: (typeof AGENTS.library.items)[number] }) {
+export function PromptCard({ item }: { item: (typeof AGENTS.library.items)[number] }) {
   const [copied, setCopied] = useState(false)
   return (
     <button

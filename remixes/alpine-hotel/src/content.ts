@@ -185,5 +185,6 @@ export const footer = {
     { label: "Privacy", href: "#" },
     { label: "Press", href: "#" },
     { label: "Work with us", href: "#" },
+    { label: "Brand guidelines", href: "/brand" },
   ],
 }

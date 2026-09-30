@@ -91,6 +91,13 @@ export function readPalette() {
     signal: v("--color-signal") || "#ea3c25",
     lime: v("--color-lime") || "#d9ff00",
     ink: v("--color-ink") || "#0c0c0c",
+    night: v("--color-night") || "#0b0e1a",
+    nightCell: v("--color-night-cell") || "#10152a",
+    nightLine: v("--color-night-line") || "#1b2238",
+    rack: v("--color-rack") || "#262e48",
+    rackUnit: v("--color-rack-unit") || "#161c30",
+    rackLabel: v("--color-rack-label") || "#5d6890",
+    cyan: v("--color-cyan") || "#3ee6ff",
   }
 }
 export type Palette = ReturnType<typeof readPalette>

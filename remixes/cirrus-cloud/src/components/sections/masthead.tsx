@@ -1,48 +1,42 @@
-import { PixelMark } from "@/components/marks/pixel-marks"
-import { PixelField } from "@/components/motion/pixel-field"
-import { Container } from "@/components/ui/container"
+import { PageHero } from "@/components/blocks/page-hero"
+import { ServerFarm } from "@/components/motion/server-farm"
 import { masthead } from "@/content"
 
-/**
- * The top of the page: the name of the thing in heavy caps, a justified
- * strapline and a one-line promise in a narrow column to the right, and under
- * both the pixel weather running edge to edge.
- */
+/** The home page's top: the page hero over the server room at night. */
 export function Masthead() {
   return (
-    <header id="top">
-      <Container className="grid lg:grid-cols-[minmax(0,1fr)_27.25rem]">
-        <h1 className="pt-8 pb-7 text-display font-normal text-ink uppercase sm:pt-10 lg:pb-10">
-          {masthead.title.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
-        </h1>
-        <div className="flex flex-col justify-between gap-8 border-t border-hairline pt-6 pb-7 lg:border-t-0 lg:border-l lg:pt-10 lg:pb-8 lg:pl-10">
-          <Strapline />
-          <div className="flex items-end justify-between gap-6">
-            <PixelMark />
-            <p className="max-w-[14rem] text-right text-[0.8125rem] leading-[1.55] text-ink-soft">{masthead.blurb}</p>
-          </div>
-        </div>
-      </Container>
-      <PixelField />
-    </header>
+    <PageHero title={masthead.title} strap={masthead.strap} blurb={masthead.blurb}>
+      <ServerRoom />
+    </PageHero>
   )
 }
 
-/** Two lines of caps, each word pushed to fill the column. */
-function Strapline() {
+/** The server room band, with its legend. */
+export function ServerRoom({ traffic = 1 }: { traffic?: number }) {
   return (
-    <p className="text-[clamp(0.9375rem,0.8rem+0.4vw,1.25rem)] leading-[1.28] text-ink uppercase">
-      {masthead.strap.map((line) => (
-        <span key={line.join(" ")} className="flex justify-between gap-3">
-          {line.map((word) => (
-            <span key={word}>{word}</span>
-          ))}
-        </span>
+    <div className="relative">
+      <ServerFarm traffic={traffic} />
+      <FarmLegend />
+    </div>
+  )
+}
+
+const LEGEND = [
+  { label: "Cache hit", color: "bg-cyan" },
+  { label: "Miss → origin", color: "bg-signal" },
+  { label: "Replication", color: "bg-violet" },
+] as const
+
+/** What the colours in the server room mean. */
+export function FarmLegend() {
+  return (
+    <ul className="label pointer-events-none absolute top-[calc(var(--spacing-pixel)*1.1)] right-gutter hidden gap-5 text-rack-label md:flex">
+      {LEGEND.map((item) => (
+        <li key={item.label} className="flex items-center gap-2">
+          <span aria-hidden className={`size-2 ${item.color}`} />
+          {item.label}
+        </li>
       ))}
-    </p>
+    </ul>
   )
 }

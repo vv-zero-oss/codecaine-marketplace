@@ -73,7 +73,7 @@ export const FOOTER = {
     { title: "Platform", links: [["Capture", "/#platform"], ["Qualify", "/#platform"], ["Engage", "/#platform"], ["Forecast", "/#platform"], ["Retain", "/#platform"], ["Agents", "/agents"]] },
     { title: "Company", links: [["Customers", "/customers"], ["Changelog", "/changelog"], ["Careers", "/#careers"], ["Press", "/#press"]] },
     { title: "Switch from", links: [["Spreadsheets", "/#switch"], ["Legacy CRMs", "/#switch"], ["Inbox folders", "/#switch"]] },
-    { title: "Resources", links: [["Pricing", "/pricing"], ["Developers", "/#developers"], ["Security", "/#security"], ["Status", "/#status"]] },
+    { title: "Resources", links: [["Pricing", "/pricing"], ["Developers", "/#developers"], ["Security", "/#security"], ["Status", "/#status"], ["Brand guidelines", "/brand"]] },
   ],
   fresh: ["Agents", "Changelog"],
   legal: ["Terms", "Privacy", "Security", "Cookies"],

@@ -67,6 +67,24 @@ Editor actions: **Mobile menu**, **How it works → Step 1–4**, **Customer
 story → Play video / Quote shown**, **FAQ → First answer / Cost answer**,
 **Highlights → New card number**.
 
+## The style guide at `/brand`
+
+`/brand` is Ember's brand guidelines page, linked as "Brand guidelines" in the
+footer: the mark and wordmark with clear space, minimum size and voice; every
+colour token, metal finish and atmosphere with its live value and WCAG
+contrast for the real text/surface pairs; Newsreader, Inter and the full type
+scale; spacing, radii, shadows and hairlines; the easing, duration and
+`--animate-*` tokens, playable; icons and imagery; and every component, live in
+its variants and states with a copyable snippet — down to a live 3D phone.
+Values are read off the rendered elements, so a token changed in
+`src/index.css` changes the page. Hero, StickySteps, UseCases and VideoStory
+pin to the scroll or carry full-screen 3D and video, so they appear through
+their parts (StepCard with step buttons, a swipeable UseCaseCard row, CtaPhone)
+and a link to each in place. It lives in `src/pages/brand.tsx` and
+`src/components/brand/`; `src/lib/router.tsx` is the small router for the two
+pages. A component added to the site is added there in the same change.
+Editor action: **Brand guidelines → Menu sheet**.
+
 ## Credits
 
 Photography and the customer-story video from [Pexels](https://www.pexels.com). Flags from the

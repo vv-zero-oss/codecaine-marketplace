@@ -25,6 +25,8 @@ import { Statement } from "@/components/sections/statement"
 import { Ticker } from "@/components/sections/ticker"
 import { LoadedContext } from "@/hooks/use-loaded"
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll"
+import { sitePath, usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 /** In the order the story is told. `?only=<id>` renders one on its own, as in
  *  the scaffold — handy for checking a section in the editor. */
@@ -41,8 +43,9 @@ const SECTIONS = [
 ]
 
 const only = new URLSearchParams(window.location.search).get("only")
-/** `?only=` and `?nopreload` skip the curtain. */
-const withPreloader = !only && !new URLSearchParams(window.location.search).has("nopreload")
+/** `?only=`, `?nopreload` and the style guide skip the curtain. */
+const withPreloader =
+  !only && !new URLSearchParams(window.location.search).has("nopreload") && sitePath() === "/"
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
  *  nothing of their own to design, so the canvas editor looks through them to
@@ -53,6 +56,7 @@ export default function App() {
   // plays while it goes; the curtain itself unmounts once it has gone.
   const [loaded, setLoaded] = useState(!withPreloader)
   const [curtain, setCurtain] = useState(withPreloader)
+  const pathname = usePathname()
 
   useEffect(() => {
     if (loaded) {
@@ -65,6 +69,18 @@ export default function App() {
   }, [loaded, lenis])
 
   const sections = only ? SECTIONS.filter((entry) => entry.id === only) : SECTIONS
+
+  if (pathname === "/brand") {
+    return (
+      <LoadedContext.Provider value={loaded}>
+        <div className="min-h-screen bg-lime text-forest" data-canvas-ignore>
+          <BrandPage />
+          <SiteFooter />
+        </div>
+      </LoadedContext.Provider>
+    )
+  }
+
   return (
     <LoadedContext.Provider value={loaded}>
       {curtain && <Preloader onLift={() => setLoaded(true)} onDone={() => setCurtain(false)} />}
