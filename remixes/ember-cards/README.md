@@ -6,7 +6,7 @@ in the hero, and a third leans across the sign-up band.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3170
+npm run dev     # → http://localhost:3190
 ```
 
 ## The page

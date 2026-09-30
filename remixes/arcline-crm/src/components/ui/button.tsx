@@ -1,74 +1,92 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
+import { ArrowRight } from "lucide-react"
 import { Slot } from "radix-ui"
 
+import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 /**
- * Pills throughout: a cream fill for the primary action, a hairline outline
- * for the secondary one. Both press down a touch — the only motion a button
- * needs.
+ * Buttons: 36px, 10px corners, a 1px border, no shadow.
+ *
+ * State changes arrive in 50ms and leave over 300ms on the emphasized curve,
+ * so a hover answers the pointer at once and lets go softly. The primary
+ * fill carries a light that rises from its top edge on hover.
  */
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full font-normal whitespace-nowrap tracking-[0.01em] transition-[background-color,border-color,color,transform] duration-(--duration-hover) ease-(--ease-out-quint) outline-none select-none active:scale-[0.97] active:duration-(--duration-press) focus-visible:ring-2 focus-visible:ring-muted/60 focus-visible:ring-offset-2 focus-visible:ring-offset-ink disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  [
+    "group/button relative inline-flex shrink-0 items-center justify-center gap-1.5 overflow-hidden whitespace-nowrap border text-sm font-medium select-none outline-none",
+    "rounded-button transition-[background-color,border-color,color,box-shadow] duration-300 ease-emphasized hover:duration-[50ms] active:duration-[50ms]",
+    "focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-2 focus-visible:ring-offset-page",
+    "disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-3.5",
+  ],
   {
     variants: {
       variant: {
-        default: "bg-cream text-ink hover:bg-cream-hover",
-        outline: "border border-line-button bg-transparent text-fg hover:border-muted hover:bg-white/[0.04]",
-        ghost: "text-fg hover:bg-white/[0.06]",
-        soft: "bg-raised text-fg shadow-(--shadow-field) hover:bg-lift",
-        link: "h-auto rounded-none px-0 text-fg underline decoration-line-button underline-offset-[6px] hover:decoration-fg active:scale-100",
+        primary:
+          "border-ink bg-ink text-page shadow-(--shadow-btn-primary) before:pointer-events-none before:absolute before:inset-0 before:bg-(image:--glow-btn-primary) before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 hover:before:duration-[50ms] active:bg-ink-soft active:border-ink-soft",
+        outline:
+          "border-line-strong bg-page text-ink hover:border-line-bold hover:bg-surface active:border-ink-3 active:bg-hover",
+        ghost: "border-transparent bg-transparent text-ink-soft hover:bg-hover-2 hover:text-ink active:bg-line-bold",
       },
       size: {
-        default: "h-11 px-5 text-[15px] md:h-[50px] md:px-6 md:text-[17px]",
-        sm: "h-9 px-4 text-sm",
-        lg: "h-14 px-10 text-[17px] md:h-[80px] md:min-w-[300px] md:text-xl",
-        icon: "size-11",
-        "icon-sm": "size-9",
+        sm: "h-8 px-2.5 text-caption",
+        md: "h-9 px-3",
+        lg: "h-12 px-5 text-base",
       },
     },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
+    defaultVariants: { variant: "outline", size: "md" },
   },
 )
 
 type ButtonStyle = VariantProps<typeof buttonVariants>
 
+function Label({ children, arrow }: { children: React.ReactNode; arrow?: boolean }) {
+  return (
+    <>
+      <span className="relative flex items-center gap-1.5">{children}</span>
+      {arrow && (
+        <ArrowRight className="relative -mr-0.5 transition-transform duration-300 ease-emphasized group-hover/button:translate-x-0.5 group-hover/button:duration-150" />
+      )}
+    </>
+  )
+}
+
 function Button({
   className,
-  variant = "default",
-  size = "default",
+  variant,
+  size,
+  arrow,
   asChild = false,
+  children,
   ...props
-}: React.ComponentProps<"button"> & ButtonStyle & { asChild?: boolean }) {
+}: React.ComponentProps<"button"> & ButtonStyle & { arrow?: boolean; asChild?: boolean }) {
   const Comp = asChild ? Slot.Root : "button"
-
   return (
-    <Comp
-      data-slot="button"
-      data-variant={variant}
-      data-size={size}
-      className={cn(buttonVariants({ variant, size, className }))}
-      {...props}
-    />
+    <Comp data-slot="button" className={cn(buttonVariants({ variant, size, className }))} {...props}>
+      {asChild ? children : <Label arrow={arrow}>{children}</Label>}
+    </Comp>
   )
 }
 
 /**
  * The same button as a link. Its own component rather than
- * `<Button asChild><a/></Button>`, so the editor's layers panel names the
- * anchor `ButtonLink` instead of the `Slot` in between.
+ * `<Button asChild>`, so the editor's layers panel names it `ButtonLink`.
+ * Site paths ("/pricing") change page without a reload.
  */
 function ButtonLink({
   className,
-  variant = "default",
-  size = "default",
+  variant,
+  size,
+  arrow,
+  children,
   ...props
-}: React.ComponentProps<"a"> & ButtonStyle) {
-  return <a {...props} className={cn(buttonVariants({ variant, size, className }))} />
+}: React.ComponentProps<"a"> & ButtonStyle & { arrow?: boolean }) {
+  return (
+    <Link {...props} className={cn(buttonVariants({ variant, size, className }))}>
+      <Label arrow={arrow}>{children}</Label>
+    </Link>
+  )
 }
 
 export { Button, ButtonLink, buttonVariants }

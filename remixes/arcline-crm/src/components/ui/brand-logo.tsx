@@ -23,6 +23,9 @@ const LOGOS = {
   discord: { ratio: 256 / 199, height: 22, name: "Discord" },
   loom: { ratio: 1, height: 24, name: "Loom" },
   gmail: { ratio: 512 / 399.4, height: 22, name: "Gmail" },
+  "slack-mark": { ratio: 1, height: 24, name: "Slack" },
+  linkedin: { ratio: 1, height: 20 },
+  x: { ratio: 1200 / 1227, height: 18 },
 } as const
 
 export type Brand = keyof typeof LOGOS
@@ -32,11 +35,20 @@ export const BRANDS = Object.keys(LOGOS) as Brand[]
 export function BrandLogo({
   brand,
   scale = 1,
+  label = true,
+  fit,
   className,
   ...props
-}: { brand: Brand; scale?: number } & React.ComponentProps<"span">) {
+}: {
+  brand: Brand
+  scale?: number
+  /** Set a symbol-only logo beside its name. Off for tiles and chips. */
+  label?: boolean
+  /** Largest width the mark may take, in px; it scales down to fit. */
+  fit?: number
+} & React.ComponentProps<"span">) {
   const logo = LOGOS[brand] ?? LOGOS.stripe
-  const height = logo.height * scale
+  const height = Math.min(logo.height * scale, fit ? fit / logo.ratio : Infinity)
   const name = "name" in logo ? logo.name : undefined
   return (
     <span
@@ -54,7 +66,7 @@ export function BrandLogo({
           maskImage: `url(${import.meta.env.BASE_URL}logos/${brand}.svg)`,
         }}
       />
-      {name && (
+      {name && label && (
         <span aria-hidden className="font-medium tracking-[-0.02em]" style={{ fontSize: height * 0.95 }}>
           {name}
         </span>

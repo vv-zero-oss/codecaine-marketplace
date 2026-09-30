@@ -3,12 +3,12 @@
   "type": "remix",
   "id": "arcline-crm",
   "name": "Arcline — AI CRM",
-  "version": "1.0.0",
-  "description": "A dark landing page for Arcline, an AI CRM: a self-typing ask box inside a border beam, a signal-to-deal flow diagram, animated agent readouts, a tabbed product window, drifting customer logos, pricing, FAQ and a giant-wordmark footer.",
+  "version": "2.0.0",
+  "description": "A minimal, dark five-page site for Arcline, an AI CRM: a hero app window that answers a question live, a sticky five-chapter platform tour with HTML product mockups (table and email composer, workflow builder, pipeline board, analyst, charts), a Deal Memory band with isometric line icons, pricing with a comparison table, customers, an agents page and a changelog.",
   "designedFor": [
-    "AI and SaaS products that want a dark, editorial landing page",
-    "CRM, sales and revenue tools",
-    "Seeing Framer Motion, Lenis and CSS loops built as editor-controllable components"
+    "AI and SaaS products that want a calm, precise, hairline-grid landing page",
+    "CRM, sales and revenue tools that need to show their product, not describe it",
+    "Seeing HTML product mockups, micro-interactions and agent-UI primitives the editor can drive"
   ],
   "sdkVersion": "0.1.1",
   "canvasVersion": ">=0.0.1",
@@ -24,7 +24,12 @@
     "saas",
     "landing",
     "dark",
-    "border-beam",
+    "minimal",
+    "multi-page",
+    "pricing",
+    "changelog",
+    "product-mockups",
+    "isometric-icons",
     "framer-motion",
     "lenis",
     "react",
@@ -49,7 +54,50 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/agents",
+      "title": "Agents"
+    },
+    {
+      "path": "/customers",
+      "title": "Customers"
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing"
+    },
+    {
+      "path": "/changelog",
+      "title": "Changelog"
     }
   ],
-  "icon": "icon.svg"
+  "icon": "icon.svg",
+  "thumbnail": "preview.png",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Agents",
+        "image": "previews/pages/agents.jpg"
+      },
+      {
+        "title": "Customers",
+        "image": "previews/pages/customers.jpg"
+      },
+      {
+        "title": "Pricing",
+        "image": "previews/pages/pricing.jpg"
+      },
+      {
+        "title": "Changelog",
+        "image": "previews/pages/changelog.jpg"
+      }
+    ]
+  }
 }

@@ -1,0 +1,221 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, font and motion curve on the page
+   lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type */
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-hand: "Reenie Beanie", "Comic Sans MS", cursive;
+
+  /* Paper: the light page and the surfaces laid on it */
+  --color-paper: #f3f4ef;
+  --color-paper-deep: #e7eae3;
+  --color-card: #ffffff;
+  --color-card-soft: #f8f9f5;
+
+  /* Ink: text on paper, darkest to faintest */
+  --color-ink: #0c1a1b;
+  --color-ink-soft: #22322f;
+  --color-ink-muted: #53625d;
+  --color-ink-subtle: #85918b;
+
+  /* Hairlines on paper */
+  --color-line: #dfe4dc;
+  --color-line-strong: #cbd3c9;
+
+  /* Night: the dark sections — deep lagoon teal, not black */
+  --color-night: #072326;
+  --color-night-card: #0e3032;
+  --color-night-raised: #143b3c;
+  --color-night-line: #1c4746;
+  --color-night-fg: #eef6f1;
+  --color-night-muted: #9db7b0;
+  --color-night-subtle: #6a8781;
+
+  /* The call-to-action band */
+  --color-lagoon: #032a2d;
+  --color-lagoon-soft: #0e4f4b;
+
+  /* Hero light: sea-glass teal, mint and a warm apricot */
+  --color-teal: #2fb5a1;
+  --color-apricot: #ffae7a;
+  --color-mint: #a6ecc6;
+  --color-mist: #d2f2e7;
+
+  /* Result cards */
+  --color-sand: #f2e9bf;
+  --color-sprout: #c3efcf;
+  --color-sky: #d2e5ff;
+  --color-peach: #ffd8c2;
+
+  /* Duotone photographs: the ink each one is printed in, and its paper */
+  --color-duo-teal: #138a7e;
+  --color-duo-teal-paper: #d6f6ee;
+  --color-duo-apricot: #df7431;
+  --color-duo-apricot-paper: #ffeadb;
+  --color-duo-sky: #3b7fd4;
+  --color-duo-sky-paper: #dde9ff;
+
+  /* The mint button on lagoon */
+  --color-go: #8ff0a8;
+  --color-go-hover: #a9f5bd;
+
+  /* Signal dots and product accents */
+  --color-dot-red: #e5484d;
+  --color-dot-green: #46a758;
+  --color-dot-amber: #f5a524;
+  --color-dot-blue: #3e63dd;
+  --color-dot-violet: #8e4ec6;
+  --color-dot-pink: #d6409f;
+  --color-app-accent: #0f7a70;
+
+  /* Gradient text */
+  --color-glow-mint: #9ff7d4;
+  --color-glow-sky: #9fd5ff;
+  --color-glow-peach: #ffc49d;
+  --color-glow-coral: #ff8f73;
+
+  /* Radii */
+  --radius-chip: 6px;
+  --radius-field: 8px;
+  --radius-card: 10px;
+  --radius-panel: 14px;
+  --radius-nav: 12px;
+
+  /* Spacing read off the layout */
+  --spacing-gutter: clamp(16px, 4vw, 48px);
+  --spacing-section: clamp(72px, 9vw, 128px);
+
+  /* Shadows */
+  --shadow-nav: 0 0 0 1px rgb(12 26 27 / 0.04), 0 6px 20px -6px rgb(12 26 27 / 0.14), 0 2px 4px -2px rgb(12 26 27 / 0.06);
+  --shadow-field: 0 0 0 1px rgb(12 26 27 / 0.06), 0 1px 2px rgb(12 26 27 / 0.06);
+  --shadow-app: 0 0 0 1px rgb(12 26 27 / 0.06), 0 30px 60px -20px rgb(12 26 27 / 0.22), 0 12px 24px -12px rgb(12 26 27 / 0.12);
+  --shadow-float: 0 0 0 1px rgb(12 26 27 / 0.05), 0 16px 32px -12px rgb(12 26 27 / 0.28);
+  --shadow-sheet: 0 -1px 0 rgb(12 26 27 / 0.04), 0 -10px 30px -18px rgb(12 26 27 / 0.25);
+  --shadow-card: 0 1px 2px rgb(12 26 27 / 0.04);
+  --shadow-button: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 1px 2px rgb(12 26 27 / 0.2);
+  --shadow-night: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 0 0 1px rgb(255 255 255 / 0.04);
+
+  /* Motion, measured off the reference recording */
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-press: cubic-bezier(0.3, 0, 0.5, 1);
+  --duration-press: 120ms;
+  --duration-hover: 200ms;
+  --duration-nav: 300ms;
+  --duration-swap: 350ms;
+  --duration-entrance: 900ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-blob: blob var(--blob-duration, 18s) var(--ease-in-out-cubic) infinite alternate;
+  --animate-accordion-down: accordion-down 200ms var(--ease-out-quint);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out-quint);
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: var(--color-card);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-card);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: #ffffff;
+  --secondary: var(--color-paper-deep);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-paper-deep);
+  --muted-foreground: var(--color-ink-muted);
+  --accent: var(--color-paper);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-dot-red);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-ink-subtle);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* The hero light drifts and reshapes slowly, never quite repeating */
+@keyframes blob {
+  0% { transform: translate3d(0, 0, 0) rotate(0deg) scale(1); border-radius: 46% 54% 60% 40% / 52% 44% 56% 48%; }
+  50% { transform: translate3d(4%, -3%, 0) rotate(8deg) scale(1.06); border-radius: 58% 42% 44% 56% / 40% 58% 42% 60%; }
+  100% { transform: translate3d(-3%, 4%, 0) rotate(-6deg) scale(0.96); border-radius: 40% 60% 54% 46% / 60% 40% 60% 40%; }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@utility text-balance { text-wrap: balance; }
+
+/* The display type: tight, light and large, as the reference sets it */
+@utility type-display {
+  font-weight: 400;
+  letter-spacing: -0.035em;
+  line-height: 1.04;
+}
+
+/* The poster type in the call-to-action bands */
+@utility type-poster {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: -0.045em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-mist); color: var(--color-ink); }
+}

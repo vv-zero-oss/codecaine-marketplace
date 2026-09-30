@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "postwise",
+  "name": "Postwise — AI Email",
+  "version": "1.1.1",
+  "description": "A sea-glass landing page for Postwise, an AI email assistant: a hero lit by a drifting teal, mint and apricot glow, a hairline numbers band, a deep-lagoon copilot section with floating notes and drifting signals, three how-it-works cards, a clickable feature deck, persona tabs, a team dashboard over a sunlit desk, a results bento, a duotone customer-story carousel, monthly/yearly pricing with a border-beam plan, an FAQ, a wall of love and poster-type calls to action.",
+  "designedFor": [
+    "AI email, inbox and productivity tools",
+    "SaaS products that need the full set: numbers, how it works, stories, pricing and FAQ",
+    "Sales, support and communication platforms with several audiences to speak to",
+    "Seeing a stacked card deck, an Embla carousel, parallax and a border beam built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Rhea Castellanos"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "email",
+    "inbox",
+    "productivity",
+    "saas",
+    "landing",
+    "gradient",
+    "card-deck",
+    "bento",
+    "pricing",
+    "carousel",
+    "duotone",
+    "faq",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "SaaS"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-30",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3180
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  }
+}

@@ -5,14 +5,100 @@
   "items": [
     {
       "type": "remix",
+      "id": "ai-canvas",
+      "name": "AI Canvas",
+      "version": "1.0.0",
+      "description": "A launch page for an AI canvas tool: a night-black WebGL infinite canvas that never stops drifting — photos, labelled frames, live pages and an agent at work, with velocity motion blur — washing out to a white page of blur-in scenes, a stepped-word mauve panel, a pinned three-step product walk, gathering multiplayer cursors, an agent wiring a button to its tokens, and one enormous black call to action.",
+      "designedFor": [
+        "AI design, canvas and prototyping tools launching or raising",
+        "Products whose pitch is an endless workspace: whiteboards, moodboards, site builders, agent studios",
+        "Pages that tell the story one short scene at a time rather than in feature grids",
+        "Seeing a WebGL canvas the editor's Motion switch can stop, with every knob as a prop"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "canvas",
+        "infinite-canvas",
+        "webgl",
+        "motion-blur",
+        "saas",
+        "launch",
+        "scroll",
+        "framer-motion",
+        "gsap",
+        "lenis",
+        "shadcn",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Landing Page",
+        "SaaS"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-29",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3170
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg"
+      },
+      "icon": "icon.svg",
+      "path": "remixes/ai-canvas",
+      "thumbnailUrl": "remixes/ai-canvas/preview.png",
+      "iconUrl": "remixes/ai-canvas/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/ai-canvas/previews/desktop.jpg",
+        "mobile": "remixes/ai-canvas/previews/mobile.jpg",
+        "pages": []
+      },
+      "archive": {
+        "url": "archives/remixes/ai-canvas-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "d211ea410f22dd8595823ae11e38440d8c487fd3afce97bd76a4fb8a0248fb9a",
+        "size": 647168,
+        "files": 61
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/ai-canvas"
+      },
+      "demoUrl": "demos/ai-canvas/"
+    },
+    {
+      "type": "remix",
       "id": "arcline-crm",
       "name": "Arcline — AI CRM",
-      "version": "1.0.0",
-      "description": "A dark landing page for Arcline, an AI CRM: a self-typing ask box inside a border beam, a signal-to-deal flow diagram, animated agent readouts, a tabbed product window, drifting customer logos, pricing, FAQ and a giant-wordmark footer.",
+      "version": "2.0.0",
+      "description": "A minimal, dark five-page site for Arcline, an AI CRM: a hero app window that answers a question live, a sticky five-chapter platform tour with HTML product mockups (table and email composer, workflow builder, pipeline board, analyst, charts), a Deal Memory band with isometric line icons, pricing with a comparison table, customers, an agents page and a changelog.",
       "designedFor": [
-        "AI and SaaS products that want a dark, editorial landing page",
-        "CRM, sales and revenue tools",
-        "Seeing Framer Motion, Lenis and CSS loops built as editor-controllable components"
+        "AI and SaaS products that want a calm, precise, hairline-grid landing page",
+        "CRM, sales and revenue tools that need to show their product, not describe it",
+        "Seeing HTML product mockups, micro-interactions and agent-UI primitives the editor can drive"
       ],
       "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
@@ -28,7 +114,12 @@
         "saas",
         "landing",
         "dark",
-        "border-beam",
+        "minimal",
+        "multi-page",
+        "pricing",
+        "changelog",
+        "product-mockups",
+        "isometric-icons",
         "framer-motion",
         "lenis",
         "react",
@@ -53,23 +144,94 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/agents",
+          "title": "Agents"
+        },
+        {
+          "path": "/customers",
+          "title": "Customers"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/changelog",
+          "title": "Changelog"
         }
       ],
       "icon": "icon.svg",
+      "thumbnail": "preview.png",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Agents",
+            "image": "previews/pages/agents.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "previews/pages/customers.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Changelog",
+            "image": "previews/pages/changelog.jpg"
+          }
+        ]
+      },
       "path": "remixes/arcline-crm",
+      "thumbnailUrl": "remixes/arcline-crm/preview.png",
       "iconUrl": "remixes/arcline-crm/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/arcline-crm/previews/desktop.jpg",
+        "mobile": "remixes/arcline-crm/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/arcline-crm/previews/pages/home.jpg"
+          },
+          {
+            "title": "Agents",
+            "image": "remixes/arcline-crm/previews/pages/agents.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "remixes/arcline-crm/previews/pages/customers.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/arcline-crm/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Changelog",
+            "image": "remixes/arcline-crm/previews/pages/changelog.jpg"
+          }
+        ]
+      },
       "archive": {
-        "url": "archives/remixes/arcline-crm-1.0.0.tgz",
+        "url": "archives/remixes/arcline-crm-2.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "6c99e1a68ea54a43d6a1785cb61053196b15799cd9f94d34be694aecb502dbf3",
-        "size": 477696,
-        "files": 73
+        "sha256": "bc84f00c836454911c54c3de5deb1c6e3bbf857f99f379f7d76f401c4d1e40dc",
+        "size": 757760,
+        "files": 99
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
         "path": "remixes/arcline-crm"
-      }
+      },
+      "demoUrl": "demos/arcline-crm/"
     },
     {
       "type": "remix",
@@ -214,7 +376,7 @@
         "Fintech"
       ],
       "created": "2026-09-29",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -222,7 +384,7 @@
         "styling": "tailwindcss@4",
         "installCommand": "npm install",
         "devCommand": "npm run dev",
-        "port": 3170
+        "port": 3190
       },
       "pages": [
         {
@@ -257,7 +419,7 @@
       "archive": {
         "url": "archives/remixes/ember-cards-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "992c5098c1514744a804fd8b57b890a64da9a5f5826a050df7f7595ea07dd6f6",
+        "sha256": "4d53860db7ca77ace38dc908260de653fb47b0834ffc5dfa4485587d2897a867",
         "size": 3687936,
         "files": 84
       },
@@ -634,6 +796,105 @@
         "path": "remixes/photographer-portfolio"
       },
       "demoUrl": "demos/photographer-portfolio/"
+    },
+    {
+      "type": "remix",
+      "id": "postwise",
+      "name": "Postwise — AI Email",
+      "version": "1.1.1",
+      "description": "A sea-glass landing page for Postwise, an AI email assistant: a hero lit by a drifting teal, mint and apricot glow, a hairline numbers band, a deep-lagoon copilot section with floating notes and drifting signals, three how-it-works cards, a clickable feature deck, persona tabs, a team dashboard over a sunlit desk, a results bento, a duotone customer-story carousel, monthly/yearly pricing with a border-beam plan, an FAQ, a wall of love and poster-type calls to action.",
+      "designedFor": [
+        "AI email, inbox and productivity tools",
+        "SaaS products that need the full set: numbers, how it works, stories, pricing and FAQ",
+        "Sales, support and communication platforms with several audiences to speak to",
+        "Seeing a stacked card deck, an Embla carousel, parallax and a border beam built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Rhea Castellanos"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "email",
+        "inbox",
+        "productivity",
+        "saas",
+        "landing",
+        "gradient",
+        "card-deck",
+        "bento",
+        "pricing",
+        "carousel",
+        "duotone",
+        "faq",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-29",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3180
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "path": "remixes/postwise",
+      "thumbnailUrl": "remixes/postwise/preview.png",
+      "iconUrl": "remixes/postwise/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/postwise/previews/desktop.jpg",
+        "mobile": "remixes/postwise/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/postwise/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/postwise-1.1.1.tgz",
+        "format": "tar+gzip",
+        "sha256": "c588d2c72b5729ed4017703a6f3478434dccaa37acb718e247ca62a917ee2c1b",
+        "size": 551936,
+        "files": 93
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/postwise"
+      },
+      "demoUrl": "demos/postwise/"
     },
     {
       "type": "remix",
