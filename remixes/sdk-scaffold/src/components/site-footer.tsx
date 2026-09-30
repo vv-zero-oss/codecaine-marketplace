@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container"
 import { Wordmark } from "@/components/ui/wordmark"
 import { FOOTER_COLUMNS } from "@/content"
+import { Link } from "@/lib/router"
 
 export function FooterColumn({ heading, links }: { heading: string; links: string[] }) {
   return (
@@ -28,6 +29,9 @@ export function SiteFooter() {
           <p className="mt-3 text-sm text-quartz-400">
             The deploy platform that gets out of the way.
           </p>
+          <Link href="/brand" className="mt-4 inline-block text-sm text-quartz-400 hover:text-quartz-900">
+            Brand guidelines
+          </Link>
         </div>
         <div className="grid grid-cols-2 gap-10 text-sm sm:grid-cols-3">
           {FOOTER_COLUMNS.map((column) => (

@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "sdk-scaffold",
   "name": "SDK Scaffold",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
   "designedFor": [
     "Starting a SaaS or product landing page from a real, responsive layout",
@@ -35,7 +35,7 @@
     "Marketing"
   ],
   "created": "2026-09-25",
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",
@@ -50,6 +50,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "previews": {

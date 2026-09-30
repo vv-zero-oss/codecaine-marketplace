@@ -1497,7 +1497,7 @@
       "type": "remix",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
-      "version": "1.1.2",
+      "version": "1.2.0",
       "description": "Quartz, the canvas scaffolding page authored as named React components and opted into @canvas/react — the starting point for a project the editor can read by component.",
       "designedFor": [
         "Starting a SaaS or product landing page from a real, responsive layout",
@@ -1529,7 +1529,7 @@
         "Marketing"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -1544,6 +1544,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -1571,11 +1575,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/sdk-scaffold-1.1.2.tgz",
+        "url": "archives/remixes/sdk-scaffold-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "71e0789c6c9b451a2e2cd1caf0d4a2258c25c40cd016a87a095d2a3e40db65e7",
-        "size": 275968,
-        "files": 46
+        "sha256": "23297ad7e1c0e8e5e5c829c8df6ef16b13850cf31a8827703921c79617ccd65e",
+        "size": 333312,
+        "files": 52
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
