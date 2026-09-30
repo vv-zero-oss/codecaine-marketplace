@@ -4,6 +4,7 @@ import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
 
 import { Container } from "@/components/ui/container"
 import { brand, footer, pexels, visit } from "@/content"
+import { homeHref, Link, usePathname } from "@/lib/router"
 
 /**
  * The name, the full width of the page, with the fried chicken showing
@@ -48,7 +49,11 @@ function PhotoWordmark() {
   )
 }
 
+const FOOTER_LINK =
+  "inline-flex min-h-11 items-center font-condensed text-label uppercase underline-offset-[6px] decoration-2 [@media(hover:hover)]:hover:underline"
+
 export function SiteFooter() {
+  const pathname = usePathname()
   return (
     <footer data-tone="dark" className="bg-forest pt-section text-cream">
       <Container className="grid gap-row pb-row sm:grid-cols-2 lg:grid-cols-4">
@@ -57,10 +62,13 @@ export function SiteFooter() {
         </div>
         <nav aria-label="Footer" className="grid content-start gap-1">
           {footer.links.map((l) => (
-            <a key={l.label} href={l.href} className="inline-flex min-h-11 items-center font-condensed text-label uppercase underline-offset-[6px] decoration-2 [@media(hover:hover)]:hover:underline">
+            <a key={l.label} href={homeHref(l.href, pathname)} className={FOOTER_LINK}>
               {l.label}
             </a>
           ))}
+          <Link href="/brand" className={FOOTER_LINK}>
+            Brand guidelines
+          </Link>
         </nav>
         <div className="grid content-start gap-2 text-body text-on-forest">
           <p>{brand.address.join(", ")}</p>

@@ -13,7 +13,7 @@ import { useMedia } from "@/hooks/use-media"
 import { DURATION, EASE_OUT, SPRING_FOLLOW, STAGGER } from "@/lib/motion"
 import { BLOBS } from "@/lib/shapes"
 
-function Heat({ level }: { level: number }) {
+export function Heat({ level }: { level: number }) {
   if (!level) return null
   return (
     <span className="inline-flex items-center text-orange" aria-label={`Heat ${level} of 3`}>

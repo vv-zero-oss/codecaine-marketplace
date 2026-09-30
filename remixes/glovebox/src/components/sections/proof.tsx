@@ -11,7 +11,7 @@ import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/
 import { SectionHeading } from "@/components/ui/section-heading"
 import { media, photo } from "@/content"
 
-const stories = [
+export const stories = [
   {
     quote: "I used to dread renewal season. Now I get one message saying it’s handled, and how much I saved.",
     name: "Priya Raman",
@@ -76,7 +76,7 @@ export function Proof() {
 }
 
 /** A member's film, in a dialog: a thumbnail and a dark pill that opens it. */
-function StoryButton({ name = "Hana" }: { name?: string }) {
+export function StoryButton({ name = "Hana" }: { name?: string }) {
   const [open, setOpen] = useState(false)
   useCanvasAction("Story video", (next) => setOpen(next ?? !open), { on: open, group: "Stories" })
 

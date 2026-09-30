@@ -67,7 +67,7 @@ function ZoomThrough() {
 
 /** Small screens and reduced motion: the same idea without the pin — the
  *  film seen through the word, and the copy under it. */
-function StillCutout() {
+export function StillCutout() {
   const id = `oak-still-${useId().replace(/[^a-zA-Z0-9]/g, "")}`
   return (
     <div className="px-gutter pt-section">

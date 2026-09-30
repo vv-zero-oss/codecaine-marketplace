@@ -50,7 +50,14 @@ function useTone() {
  * face. It steps out of the way while you read down the page and comes back
  * the moment you scroll up — a slide by its own height, ease-out, 300ms.
  */
-export function SiteHeader() {
+export function SiteHeader({
+  hideOnScroll = true,
+  className,
+}: {
+  /** Slide away while reading down. Off where the header is shown in a frame. */
+  hideOnScroll?: boolean
+  className?: string
+} = {}) {
   const tone = useTone()
   const reduced = useReducedMotion()
   const { scrollY } = useScroll()
@@ -67,8 +74,9 @@ export function SiteHeader() {
       className={cn(
         "fixed inset-x-0 top-0 z-40 flex items-center justify-between px-gutter pt-1 transition-colors duration-(--duration-hover)",
         tone === "dark" ? "text-cream" : "text-forest",
+        className,
       )}
-      animate={{ transform: hidden && !reduced ? "translateY(-110%)" : "translateY(0%)" }}
+      animate={{ transform: hidden && hideOnScroll && !reduced ? "translateY(-110%)" : "translateY(0%)" }}
       transition={{ duration: 0.3, ease: EASE_OUT }}
     >
       <Wordmark />

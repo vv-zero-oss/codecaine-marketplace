@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "food-joint",
   "name": "Food Joint",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A loud one-page site for a restaurant: a preloader that flicks through the menu, a hero photo in a morphing SVG cushion under huge type, a scroll-inked statement with food set into the words, a tabbed menu with a pointer-chasing blob preview, a zoom through a word cut out over a wood-fire film, a pinned sideways walk through the kitchen, stickers you can move, and a booking form.",
   "designedFor": [
     "Restaurants, burger and fried-chicken joints, bakeries and street-food kitchens with a big personality",
@@ -41,7 +41,7 @@
     "Restaurant"
   ],
   "created": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",
@@ -55,6 +55,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "icon": "icon.svg"
