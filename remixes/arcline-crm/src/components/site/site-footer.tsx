@@ -1,85 +1,84 @@
-import { Container } from "@/components/ui/container"
 import { BrandLogo } from "@/components/ui/brand-logo"
-import { ButtonLink } from "@/components/ui/button"
-import { ArclineMark } from "@/components/ui/wordmark"
-import { FOOTER } from "@/content"
+import { Container } from "@/components/ui/container"
+import { Wordmark } from "@/components/ui/wordmark"
+import { FOOTER } from "@/content/site"
+import { Link } from "@/lib/router"
 import { PHOTOGRAPHERS } from "@/photos"
 
-const slug = (s: string) => `#${s.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`
-
-/** Link columns, each hung off a hairline, then the name set as large as the page allows. */
+/**
+ * The footer: the wordmark and status on the left, four columns of links,
+ * then the legal row and the credits. Links draw an underline on hover.
+ */
 export function SiteFooter() {
   return (
-    <footer className="pt-24 pb-10 md:pt-[100px]">
-      <Container>
-        <div className="grid grid-cols-2 gap-x-6 gap-y-12 sm:grid-cols-3 lg:grid-cols-[repeat(5,1fr)_minmax(180px,0.8fr)]">
-          {FOOTER.columns.map((column) => (
-            <nav key={column.title} aria-label={column.title}>
-              <p className="type-eyebrow mb-4 text-[13px] text-subtle">{column.title}</p>
-              <ul className="flex flex-col gap-1 border-l border-line pl-4">
-                {column.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href={slug(link)}
-                      className="inline-block py-0.5 text-lg leading-snug text-fg-soft transition-colors hover:text-fg md:text-[26px] md:leading-[1.55] md:tracking-[-0.02em]"
-                    >
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+    <footer className="border-t border-line-strong bg-void">
+      <Container className="grid min-h-[40svh] gap-12 py-16 lg:grid-cols-[1fr_repeat(4,200px)] lg:gap-8">
+        <div className="flex flex-col gap-4">
+          <Wordmark />
+          <p className="flex items-center gap-2 text-sm text-ink-2">
+            <span className="relative flex size-2">
+              <span className="absolute inset-0 animate-ping rounded-full bg-green opacity-60 motion-reduce:animate-none" />
+              <span className="relative size-2 rounded-full bg-green" />
+            </span>
+            All systems normal
+          </p>
+        </div>
+        {FOOTER.columns.map((col) => (
+          <nav key={col.title} aria-label={col.title}>
+            <p className="text-sm font-medium text-ink-soft">{col.title}</p>
+            <ul className="mt-3 flex flex-col">
+              {col.links.map(([label, href]) => (
+                <li key={label}>
+                  <Link href={href} className="group/link inline-flex h-7 items-center gap-2 text-sm text-ink-2 transition-colors hover:text-ink">
+                    <span className="link-draw">{label}</span>
+                    {FOOTER.fresh.includes(label) && (
+                      <span className="rounded-[10px] bg-accent-tint px-1.5 text-[10px] leading-4 font-medium text-accent-ink">New</span>
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+      </Container>
+      <Container className="flex flex-col gap-4 border-t border-line-strong py-6 text-[13px] text-ink-3 md:flex-row md:items-center">
+        <span>{FOOTER.copyright}</span>
+        <ul className="flex flex-wrap gap-x-5 gap-y-2">
+          {FOOTER.legal.map((l) => (
+            <li key={l}>
+              <a href={`#${l.toLowerCase()}`} className="link-draw transition-colors hover:text-ink">
+                {l}
+              </a>
+            </li>
           ))}
-
-          <div className="col-span-2 flex flex-col gap-8 sm:col-span-3 lg:col-span-1 lg:border-l lg:border-line lg:pl-4">
-            <div className="flex flex-wrap gap-3 lg:mt-[300px] lg:flex-col lg:items-start">
-              <ButtonLink href="#pricing" size="sm" className="h-11 px-6 text-[15px]">
-                Start for free
-              </ButtonLink>
-              <ButtonLink href="#cta" size="sm" variant="soft" className="h-11 px-6 text-[15px]">
-                Book a demo
-              </ButtonLink>
-            </div>
-            <ul className="flex gap-2">
-              {(["linkedin", "x"] as const).map((brand) => (
-                <li key={brand}>
-                  <a
-                    href={`#${brand}`}
-                    aria-label={brand === "x" ? "Arcline on X" : "Arcline on LinkedIn"}
-                    className="flex size-11 items-center justify-center rounded-full text-fg-soft transition-colors hover:bg-white/[0.06] hover:text-fg"
-                  >
-                    <BrandLogo brand={brand} aria-hidden />
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <ul className="flex flex-wrap gap-x-6 gap-y-3 lg:flex-col">
-              {FOOTER.legal.map((item) => (
-                <li key={item}>
-                  <a href={slug(item)} className="type-eyebrow text-[12px] text-muted transition-colors hover:text-fg">
-                    {item}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <p className="type-eyebrow text-[12px] text-muted">{FOOTER.copyright}</p>
-          </div>
+        </ul>
+        <div className="flex gap-1 md:ml-auto">
+          {(["linkedin", "x"] as const).map((brand) => (
+            <a
+              key={brand}
+              href={`#${brand}`}
+              aria-label={brand === "x" ? "Arcline on X" : "Arcline on LinkedIn"}
+              className="flex size-9 items-center justify-center rounded-control text-ink-2 transition-colors duration-300 hover:bg-hover-2 hover:text-ink hover:duration-[50ms]"
+            >
+              <BrandLogo brand={brand} scale={0.8} aria-hidden />
+            </a>
+          ))}
         </div>
-
-        <div className="mt-20 flex items-end gap-[3vw] text-cream md:mt-10" aria-label="Arcline">
-          <ArclineMark className="h-[14vw] w-auto lg:h-[12vw]" />
-          <span className="translate-y-[4%] text-[24vw] leading-[0.75] font-normal tracking-[-0.06em] lg:text-[17vw]">
-            Arcline
-          </span>
-        </div>
-
-        <p className="mt-10 max-w-3xl text-[13px] leading-relaxed text-subtle">
-          Photography from{" "}
-          <a href="https://www.pexels.com" className="underline underline-offset-4 hover:text-muted">
-            Pexels
-          </a>{" "}
-          by {PHOTOGRAPHERS.join(", ")}. Logos from SVGL.
-        </p>
+      </Container>
+      <Container className="pb-8 text-caption text-ink-faint">
+        Photography from{" "}
+        <a href="https://www.pexels.com" className="underline underline-offset-2 hover:text-ink-3">
+          Pexels
+        </a>{" "}
+        by {PHOTOGRAPHERS.join(", ")}. Isometric icons from{" "}
+        <a href="https://isocons.app" className="underline underline-offset-2 hover:text-ink-3">
+          Isocons
+        </a>{" "}
+        (
+        <a href="https://creativecommons.org/licenses/by/4.0/" className="underline underline-offset-2 hover:text-ink-3">
+          CC BY 4.0
+        </a>
+        , recoloured). Agent UI primitives from Beautiful UI (MIT). Logos from SVGL.
       </Container>
     </footer>
   )

@@ -1,61 +1,62 @@
 /**
- * Arcline — a landing page for an AI CRM.
+ * Arcline — a CRM whose agents do the busywork of selling.
  *
- * The page reads as a list of sections, in the order a visitor's questions
- * come: what is it (Hero), can I trust it (Intro), how does it work
- * (Intelligence), what's new (Showcase), what does it do (Features), what is
- * it like (Workspace), does it work (Proof), what does it cost (Pricing),
- * what about… (Faq), what else (Journal) and — now what (CallToAction).
+ * Five pages behind a forty-line router (`lib/router.tsx`): Home, Agents,
+ * Customers, Pricing and Changelog. Every page is a list of sections.
+ *
+ * The whole site sits in one frame: two vertical hairlines a gutter in from
+ * the window's edges, with the sections meeting between them at horizontal
+ * hairlines.
  */
 
+import { useEffect } from "react"
+
 import { SmoothScroll } from "@/components/motion/smooth-scroll"
-import { CallToAction } from "@/components/sections/call-to-action"
-import { Faq } from "@/components/sections/faq"
-import { Features } from "@/components/sections/features"
-import { Hero } from "@/components/sections/hero"
-import { Intelligence } from "@/components/sections/intelligence"
-import { Intro } from "@/components/sections/intro"
-import { Journal } from "@/components/sections/journal"
-import { Pricing } from "@/components/sections/pricing"
-import { Proof } from "@/components/sections/proof"
-import { Showcase } from "@/components/sections/showcase"
-import { Workspace } from "@/components/sections/workspace"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
+import { usePathname } from "@/lib/router"
+import { AgentsPage } from "@/pages/agents"
+import { ChangelogPage } from "@/pages/changelog"
+import { CustomersPage } from "@/pages/customers"
+import { HomePage } from "@/pages/home"
+import { PricingPage } from "@/pages/pricing"
 
-const SECTIONS = [
-  { id: "top", Section: Hero },
-  { id: "intro", Section: Intro },
-  { id: "qualify", Section: Intelligence },
-  { id: "agents", Section: Showcase },
-  { id: "features", Section: Features },
-  { id: "workspace", Section: Workspace },
-  { id: "customers", Section: Proof },
-  { id: "pricing", Section: Pricing },
-  { id: "faq", Section: Faq },
-  { id: "blog", Section: Journal },
-  { id: "cta", Section: CallToAction },
-]
-
-/** `?only=<id>` renders one section on its own, for screenshots and checks. */
-function sections() {
-  const only = new URLSearchParams(window.location.search).get("only")
-  return only ? SECTIONS.filter((entry) => entry.id === only) : SECTIONS
+const PAGES: Record<string, { title: string; Page: () => React.JSX.Element }> = {
+  "/": { title: "Arcline — the CRM that works the pipeline for you", Page: HomePage },
+  "/agents": { title: "Agents — Arcline", Page: AgentsPage },
+  "/customers": { title: "Customers — Arcline", Page: CustomersPage },
+  "/pricing": { title: "Pricing — Arcline", Page: PricingPage },
+  "/changelog": { title: "Changelog — Arcline", Page: ChangelogPage },
 }
 
-/** `data-canvas-ignore` on the page wrapper and `<main>`: structural, so the
- *  canvas editor looks through them (they stay in its layers panel). */
+/** `data-canvas-ignore` on the page wrapper, the frame and `<main>`:
+ *  structural, so the canvas editor looks through them. */
 export default function App() {
+  const pathname = usePathname().replace(/\/$/, "") || "/"
+  const { title, Page } = PAGES[pathname] ?? PAGES["/"]
+
+  useEffect(() => {
+    document.title = title
+  }, [title])
+
+  // A link to "/#platform" lands on the page, then on the section.
+  useEffect(() => {
+    const hash = window.location.hash
+    if (!hash) return
+    const t = window.setTimeout(() => document.querySelector(hash)?.scrollIntoView({ behavior: "smooth" }), 60)
+    return () => window.clearTimeout(t)
+  }, [pathname])
+
   return (
-    <div className="min-h-screen bg-ink text-fg" data-canvas-ignore>
+    <div className="min-h-screen bg-page text-ink" data-canvas-ignore>
       <SmoothScroll />
       <SiteHeader />
-      <main data-canvas-ignore>
-        {sections().map(({ id, Section }) => (
-          <Section key={id} />
-        ))}
-      </main>
-      <SiteFooter />
+      <div data-canvas-ignore className="mx-auto max-w-[1440px] border-line-strong min-[1488px]:border-x">
+        <main data-canvas-ignore>
+          <Page key={pathname} />
+        </main>
+        <SiteFooter />
+      </div>
     </div>
   )
 }
