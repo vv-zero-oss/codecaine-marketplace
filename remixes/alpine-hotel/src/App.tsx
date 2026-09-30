@@ -1,40 +1,40 @@
 /**
- * Hotel Arven — a one-page site for a small hotel at the top of Zermatt.
+ * Hotel Arven — a one-page guide to a small, old hotel at the top of Zermatt,
+ * set like a printed hotel guide on warm paper.
  *
- * The page answers a guest's questions in order: where is it (hero), what is
- * around it (the valley), what does a morning look like (first tracks), where
- * would I sleep (rooms), what can I reach (nearby), who looks after me
- * (services), did others like it (notes), why stay longer (the quiet band),
- * the small print (FAQ), and finally the booking itself.
+ * Each chapter answers the next question a guest has: where is it and what
+ * is it (cover, the house), when is it open (seasons), what is a day like
+ * (a day), what does it cost (rooms & rates), what is near (around the
+ * house), how do I get there and what is included (arriving), and finally
+ * the questions and the registration card itself.
  */
 
-import { Toaster } from "@/components/ui/sonner"
 import { SmoothScroll } from "@/components/motion/smooth-scroll"
 import { BookingProvider } from "@/components/booking/booking-context"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
-import { Hero } from "@/components/sections/hero"
-import { Valley } from "@/components/sections/valley"
-import { FirstTracks } from "@/components/sections/first-tracks"
+import { Cover } from "@/components/sections/cover"
+import { House } from "@/components/sections/house"
+import { Seasons } from "@/components/sections/seasons"
+import { Day } from "@/components/sections/day"
 import { Rooms } from "@/components/sections/rooms"
-import { Nearby } from "@/components/sections/nearby"
-import { Services } from "@/components/sections/services"
-import { Notes } from "@/components/sections/notes"
-import { QuietBand } from "@/components/sections/quiet-band"
+import { Around } from "@/components/sections/around"
+import { Arriving } from "@/components/sections/arriving"
+import { GuestBook } from "@/components/sections/guest-book"
 import { Faq } from "@/components/sections/faq"
-import { Book } from "@/components/sections/book"
+import { Reserve } from "@/components/sections/reserve"
 
 const SECTIONS = [
-  { id: "top", Section: Hero },
-  { id: "valley", Section: Valley },
-  { id: "first-tracks", Section: FirstTracks },
+  { id: "top", Section: Cover },
+  { id: "house", Section: House },
+  { id: "seasons", Section: Seasons },
+  { id: "day", Section: Day },
   { id: "rooms", Section: Rooms },
-  { id: "nearby", Section: Nearby },
-  { id: "services", Section: Services },
-  { id: "notes", Section: Notes },
-  { id: "quiet", Section: QuietBand },
+  { id: "around", Section: Around },
+  { id: "arriving", Section: Arriving },
+  { id: "guest-book", Section: GuestBook },
   { id: "faq", Section: Faq },
-  { id: "book", Section: Book },
+  { id: "reserve", Section: Reserve },
 ]
 
 /** `?only=<id>` renders one section on its own. */
@@ -48,7 +48,7 @@ export default function App() {
   return (
     <SmoothScroll>
       <BookingProvider>
-        <div className="bg-snow text-ink" data-canvas-ignore>
+        <div className="bg-paper text-ink" data-canvas-ignore>
           <SiteHeader />
           <main data-canvas-ignore>
             {sections().map(({ id, Section }) => (
@@ -56,7 +56,8 @@ export default function App() {
             ))}
           </main>
           <SiteFooter />
-          <Toaster position="bottom-center" />
+          {/* The paper's tooth, over everything — photographs and film included. */}
+          <div aria-hidden className="paper-grain pointer-events-none fixed inset-0 z-[60] opacity-60 mix-blend-multiply" />
         </div>
       </BookingProvider>
     </SmoothScroll>

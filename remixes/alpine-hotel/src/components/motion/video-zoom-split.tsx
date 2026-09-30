@@ -41,6 +41,7 @@ export function VideoZoomSplit({
   zoom = 1.25,
   length = 3.4,
   overlay = "",
+  top = 72,
   className,
   children,
 }: {
@@ -61,6 +62,8 @@ export function VideoZoomSplit({
   length?: number
   /** A line shown over the footage while it fills the screen. */
   overlay?: string
+  /** Room left above the split panels for a fixed header, in px. */
+  top?: number
   className?: string
   children?: ReactNode
 }) {
@@ -102,17 +105,17 @@ export function VideoZoomSplit({
     const m = lerp(0, margin, s)
     const gap = lerp(0, gutter, s)
     const r = lerp(0, radius, s)
-    const top = rows ? m + 64 * s : m + 72 * s
+    const topGap = m + top * s
     const innerW = w - m * 2
-    const innerH = h - top - m
+    const innerH = h - topGap - m
     let d = ""
     for (let i = 0; i < panes; i++) {
       if (rows) {
         const ph = (innerH - gap * (panes - 1)) / panes
-        d += roundedRect(m, top + i * (ph + gap), innerW, ph, r)
+        d += roundedRect(m, topGap + i * (ph + gap), innerW, ph, r)
       } else {
         const pw = (innerW - gap * (panes - 1)) / panes
-        d += roundedRect(m + i * (pw + gap), top, pw, innerH, r)
+        d += roundedRect(m + i * (pw + gap), topGap, pw, innerH, r)
       }
     }
     return `path("${d}")`
@@ -138,13 +141,13 @@ export function VideoZoomSplit({
             style={{ scale: done ? 1 : scale }}
             className="size-full object-cover"
           />
-          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-night/55 via-night/0 to-night/0" />
+          <div aria-hidden className="absolute inset-0 bg-gradient-to-t from-ink/40 via-ink/0 to-ink/0" />
         </motion.div>
         {overlay && !done && (
           <Overlay text={overlay} opacity={overlayOpacity} />
         )}
         <motion.div
-          style={{ opacity: done ? 1 : cardsOpacity, y: done ? 0 : cardsY, padding: margin, paddingTop: margin + (rows ? 64 : 72), gap: gutter }}
+          style={{ opacity: done ? 1 : cardsOpacity, y: done ? 0 : cardsY, padding: margin, paddingTop: margin + top, gap: gutter }}
           className={cn("pointer-events-none absolute inset-0 grid", rows ? "grid-rows-3" : "grid-cols-3")}
           data-canvas-ignore
         >
@@ -159,7 +162,7 @@ function Overlay({ text, opacity }: { text: string; opacity: MotionValue<number>
   return (
     <motion.p
       style={{ opacity }}
-      className="font-headline pointer-events-none absolute inset-x-4 top-1/2 -translate-y-1/2 text-center text-title text-balance text-snow"
+      className="pointer-events-none absolute inset-x-4 top-1/2 -translate-y-1/2 text-center font-serif text-display text-balance text-sheet italic"
     >
       {text}
     </motion.p>

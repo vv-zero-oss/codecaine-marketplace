@@ -93,13 +93,13 @@
       "type": "remix",
       "id": "alpine-hotel",
       "name": "Alpine Hotel",
-      "version": "1.0.0",
-      "description": "Hotel Arven — a one-page site for a small Swiss hotel at the top of Zermatt: a hero whose photo band runs full-bleed as a booking card climbs into it, a pinned film that zooms and splits into cards, snowboard footage running inside the type, a rooms shelf, nearby spots by season, services, and a full booking form.",
+      "version": "1.1.0",
+      "description": "Hotel Arven — a one-page guide to a small, family-run hotel at the top of Zermatt, set like a printed hotel guide on warm paper: a cover with a fill-in availability line, the house's story, a pinned film that splits into the season calendar, a day's timetable with snowboard footage printed inside the type, a rate card, a drawn trail map of nearby spots, arrival routes and what's included, and a registration-card booking form.",
       "designedFor": [
-        "Boutique hotels, chalets and mountain lodges that take bookings direct",
-        "Resorts that want rooms, nearby spots, services and a reservation form on one scrolling page",
-        "Studios pitching a hospitality brand with scroll-driven, cinematic motion",
-        "Anyone after a Lenis + Framer Motion page with pinned video and text-clipped footage"
+        "Small, independent hotels, inns and mountain lodges that take bookings direct",
+        "Hospitality brands that want an editorial, printed-matter feel instead of a template",
+        "Pages that need real information — seasons, rates, directions, what's included — laid out clearly",
+        "Anyone after a paper-textured Lenis + Framer Motion page with pinned video and text-clipped footage"
       ],
       "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
@@ -116,11 +116,12 @@
         "hospitality",
         "switzerland",
         "alps",
-        "ski",
-        "resort",
-        "reservation",
-        "scroll",
-        "video"
+        "editorial",
+        "paper",
+        "print",
+        "map",
+        "rates",
+        "reservation"
       ],
       "categories": [
         "Hospitality",
@@ -168,11 +169,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/alpine-hotel-1.0.0.tgz",
+        "url": "archives/remixes/alpine-hotel-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "59ab6d26d8ed369ae666ab44e17308750f8406934a033d8a9564a410d063eb52",
-        "size": 438272,
-        "files": 66
+        "sha256": "93cab9e090ca506afd26cec7c4cdc2bd5ac9d114f89da0493d4b329023f2c4b7",
+        "size": 439808,
+        "files": 63
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

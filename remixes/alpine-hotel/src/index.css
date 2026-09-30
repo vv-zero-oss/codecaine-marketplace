@@ -3,66 +3,56 @@
 
 /* Every colour, shadow, radius, font and easing the page uses lives here. */
 @theme {
-  /* Palette — snow, glacier ice, larch rust, stone-pine green, night */
-  --color-snow: #ffffff;
-  --color-ice: #eef9fa;
-  --color-ice-deep: #dcecef;
-  --color-rust: #bb4d08;
-  --color-rust-deep: #9e3f04;
-  --color-rust-soft: #f4e2d6;
-  --color-pine: #012f1e;
-  --color-pine-soft: #0e4430;
-  --color-night: #000000;
-  --color-ink: #0b0b0b;
-  --color-ink-soft: #3b3f41;
-  --color-ink-mute: #6b7275;
-  --color-mist: #efefef;
-  --color-hairline: #d9e3e5;
-  --color-hairline-strong: #2b2b2b;
-  --color-alert-soft: #ffb08f;
+  /* Palette — printed paper, ink, stone-pine green and one Swiss signal red */
+  --color-paper: #f1ebdf;
+  --color-paper-deep: #e6dccb;
+  --color-paper-edge: #d6c9b2;
+  --color-sheet: #faf6ee;
+  --color-ink: #1e1b17;
+  --color-ink-soft: #544d44;
+  --color-ink-faint: #8a8276;
+  --color-rule: #cbbfa9;
+  --color-pine: #1f3a2e;
+  --color-pine-deep: #13271e;
+  --color-pine-ink: #e9e3d4;
+  --color-signal: #b3322a;
+  --color-signal-deep: #922620;
 
   /* Type */
-  --font-display: "Inter Tight", "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
-  --font-sans: "Geist", "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Instrument Sans", "Helvetica Neue", Arial, ui-sans-serif, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  --text-mega: clamp(3.5rem, 12.5vw, 13rem);
-  --text-mega--line-height: 0.86;
-  --text-hero: clamp(3rem, 9.4vw, 8.75rem);
-  --text-hero--line-height: 0.92;
-  --text-title: clamp(2.25rem, 5.2vw, 4.5rem);
-  --text-title--line-height: 0.98;
-  --text-room: clamp(1.625rem, 2.4vw, 2.125rem);
-  --text-room--line-height: 1.1;
+  --text-cover: clamp(3rem, 8.2vw, 7.75rem);
+  --text-cover--line-height: 0.95;
+  --text-display: clamp(2.25rem, 5vw, 4.25rem);
+  --text-display--line-height: 1;
+  --text-lede: clamp(1.125rem, 1.6vw, 1.375rem);
+  --text-lede--line-height: 1.45;
+  --text-label: 0.6875rem;
+  --text-label--line-height: 1.4;
 
-  --tracking-tightest: -0.045em;
-  --tracking-tighter: -0.035em;
+  --tracking-label: 0.14em;
 
-  /* Spacing steps */
-  --spacing-gutter: 1rem;
-  --spacing-section: clamp(5rem, 11vw, 9rem);
+  /* Spacing */
+  --spacing-section: clamp(5rem, 10vw, 8.5rem);
 
-  /* Shape */
-  --radius-pill: 999px;
-  --radius-field: 0.5rem;
-  --radius-card: 1rem;
-  --radius-band: 1.25rem;
+  /* Shape — printed matter has square-ish corners */
+  --radius-print: 2px;
+  --radius-control: 3px;
 
-  /* Depth — pills float on a hairline and a soft drop; everything else is flat. */
-  --shadow-pill: 0 0 0 1px rgb(0 0 0 / 0.06), 0 4px 14px -4px rgb(0 0 0 / 0.14);
-  --shadow-card: 0 1px 0 rgb(1 47 30 / 0.04), 0 30px 60px -30px rgb(1 47 30 / 0.45);
-  --shadow-float: 0 40px 80px -30px rgb(0 0 0 / 0.55), 0 0 0 1px rgb(255 255 255 / 0.06);
-  --shadow-button: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(0 0 0 / 0.12);
+  /* Depth — a sheet lying on a sheet */
+  --shadow-print: 0 1px 1px rgb(30 27 23 / 0.08), 0 8px 18px -10px rgb(30 27 23 / 0.35);
+  --shadow-sheet: 0 1px 0 rgb(30 27 23 / 0.06), 0 22px 40px -24px rgb(30 27 23 / 0.4);
+  --shadow-none: 0 0 #0000;
 
-  /* Motion — measured off the reference recording (29.8 fps) */
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
-  --ease-press: cubic-bezier(0.2, 0, 0, 1);
-  --duration-nav: 220ms;
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
   --duration-press: 140ms;
-  --duration-enter: 700ms;
 
-  --animate-accordion-down: accordion-down 260ms var(--ease-out);
-  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-accordion-down: accordion-down 240ms var(--ease-out);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out);
 }
 
 @keyframes accordion-down {
@@ -74,35 +64,32 @@
   to { height: 0; }
 }
 
-/* shadcn's semantic tokens, pointed at the palette above. `accent` stays a
-   hover surface (ice), never the rust brand colour. */
+/* shadcn's semantic tokens, pointed at the palette. */
 :root {
-  --radius: 0.5rem;
-  --background: var(--color-snow);
+  --radius: 3px;
+  --background: var(--color-paper);
   --foreground: var(--color-ink);
-  --card: var(--color-snow);
+  --card: var(--color-sheet);
   --card-foreground: var(--color-ink);
-  --popover: var(--color-snow);
+  --popover: var(--color-sheet);
   --popover-foreground: var(--color-ink);
-  --primary: var(--color-rust);
-  --primary-foreground: var(--color-snow);
-  --secondary: var(--color-ice);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-paper);
+  --secondary: var(--color-paper-deep);
   --secondary-foreground: var(--color-ink);
-  --muted: var(--color-ice);
-  --muted-foreground: var(--color-ink-mute);
-  --accent: var(--color-ice);
+  --muted: var(--color-paper-deep);
+  --muted-foreground: var(--color-ink-faint);
+  --accent: var(--color-paper-deep);
   --accent-foreground: var(--color-ink);
-  --destructive: #c42b1c;
-  --border: var(--color-hairline);
-  --input: var(--color-hairline-strong);
-  --ring: var(--color-rust);
+  --destructive: var(--color-signal);
+  --border: var(--color-rule);
+  --input: var(--color-ink);
+  --ring: var(--color-signal);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
@@ -117,24 +104,25 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
 }
 
 @layer base {
   html { -webkit-text-size-adjust: 100%; }
   body {
-    background: var(--color-snow);
+    background: var(--color-paper);
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -webkit-tap-highlight-color: transparent;
     overflow-x: clip;
+    font-feature-settings: "ss01", "tnum" 0;
   }
   * { border-color: var(--border); }
-  ::selection { background: var(--color-rust); color: var(--color-snow); }
+  ::selection { background: var(--color-signal); color: var(--color-sheet); }
 }
 
 /* Lenis */
@@ -142,17 +130,28 @@ html.lenis, html.lenis body { height: auto; }
 .lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
 .lenis [data-lenis-prevent] { overscroll-behavior: contain; }
 
-/* The display cut every headline is set in. */
-@utility font-headline {
-  font-family: var(--font-display);
-  font-weight: 600;
-  letter-spacing: var(--tracking-tightest);
+/* The paper itself: fine tooth and a few slow blotches, laid over the whole
+   page and multiplied in, so photographs and ink sit *in* the sheet. */
+@utility paper-grain {
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.24 0 0 0 0.55 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='900'%3E%3Cfilter id='m'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006' numOctaves='2' seed='4'/%3E%3CfeColorMatrix values='0 0 0 0 0.45 0 0 0 0 0.38 0 0 0 0 0.28 0 0 0 0.22 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23m)'/%3E%3C/svg%3E");
+  background-size: 220px 220px, 900px 900px;
 }
 
-/* The band of blur that softens whatever scrolls up under the navigation. */
-@utility top-blur {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 35%, transparent 100%);
+/* Small printed labels: mono, tracked, upper case. */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: var(--text-label);
+  line-height: var(--text-label--line-height);
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+}
+
+/* A dotted leader, as on a timetable or a price list. */
+@utility leader {
+  flex: 1;
+  min-width: 1.5rem;
+  border-bottom: 1px dotted var(--color-rule);
+  transform: translateY(-0.3em);
 }
