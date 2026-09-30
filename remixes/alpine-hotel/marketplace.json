@@ -1,0 +1,67 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "alpine-hotel",
+  "name": "Alpine Hotel",
+  "version": "1.0.0",
+  "description": "Hotel Arven — a one-page site for a small Swiss hotel at the top of Zermatt: a hero whose photo band runs full-bleed as a booking card climbs into it, a pinned film that zooms and splits into cards, snowboard footage running inside the type, a rooms shelf, nearby spots by season, services, and a full booking form.",
+  "designedFor": [
+    "Boutique hotels, chalets and mountain lodges that take bookings direct",
+    "Resorts that want rooms, nearby spots, services and a reservation form on one scrolling page",
+    "Studios pitching a hospitality brand with scroll-driven, cinematic motion",
+    "Anyone after a Lenis + Framer Motion page with pinned video and text-clipped footage"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Maren Albrecht"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "hotel",
+    "booking",
+    "travel",
+    "hospitality",
+    "switzerland",
+    "alps",
+    "ski",
+    "resort",
+    "reservation",
+    "scroll",
+    "video"
+  ],
+  "categories": [
+    "Hospitality",
+    "Marketing"
+  ],
+  "created": "2026-09-30",
+  "updated": "2026-09-30",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3230
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
+}

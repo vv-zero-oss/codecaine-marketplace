@@ -13,7 +13,7 @@ npm run dev     # → http://localhost:3290
 | Section | What it does |
 | --- | --- |
 | `Hero` | Full-bleed driving footage. Scrolling pins it while a `clip-path: inset(… round …)` closes the frame toward the centre and the video zooms in against it. |
-| `Features` | Three blurred-video cards, each tucked under the last and widened by a clip inset as it reaches the middle, with a live "Glovebox working…" panel and an ask bar that types its question. |
+| `Features` | Three blurred-video cards stacked in place: each pins in the middle of the screen (sticky) while the next slides up over it, widening from a clip inset; the covered card settles back and its caption fades. Each has a live "Glovebox working…" panel or an ask bar that types its question. |
 | `Stat` | "92%" pinned in place while photos and small cards drift past at different depths, then handing over to its second line. |
 | `Proof` | A dot map of members (a projected outline, no map data) that holds still while testimonials slide up over it; "Watch … story" opens a dialog. |
 | `HowItWorks` | Three sand cards, each showing the thing Glovebox produces. |
