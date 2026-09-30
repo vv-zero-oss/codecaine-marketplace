@@ -52,7 +52,8 @@ Then make it the new project:
    `icon.svg`, `preview.png` and `previews/` — with the new project's,
    following the rules below. Delete a section rather than leave it
    unused. The README's Quartz walkthrough goes too; keep a short README of
-   the new project's own.
+   the new project's own. Rewrite the brand guidelines / style guide page
+   for the new project's tokens and components (dashboard rule 12).
 4. **Keep the plumbing exactly as it is**: `src/lib/canvas-react/`, the
    aliases and `canvasPropOptions()` in `vite.config.ts`, the two
    `@canvas/react` lines in `src/main.tsx`, and every `data-canvas-ignore`.
@@ -702,11 +703,12 @@ count-ups on KPIs, sidebar collapse, sort indicators, filter chips appearing.
 Small, fast and purposeful — and every hidden state (open dialog, filter
 popover, empty state, error) registered with `useCanvasAction` (remix section 11).
 
-### 12. A brand guidelines page, always
+### 12. A brand guidelines / style guide page, always
 
-Every dashboard — and every remix — ships a **Brand guidelines** page
-(`/brand`, linked from the sidebar or footer) that documents the system it
-is built on, rendered from the real tokens and components, never from
+Every dashboard, every remix and every template — anything in `remixes/`,
+`remixes/sdk-scaffold` itself included — ships a **Brand guidelines** (style
+guide) page (`/brand`, linked from the sidebar or footer) that documents the
+system it is built on, rendered from the real tokens and components, never from
 screenshots or copies:
 
 - **Brand**: logo and icon with clear space and minimum size, light and dark
