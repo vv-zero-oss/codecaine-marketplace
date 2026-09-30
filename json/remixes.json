@@ -508,6 +508,101 @@
     },
     {
       "type": "remix",
+      "id": "glovebox",
+      "name": "Glovebox — Car Insurance Manager",
+      "version": "1.0.0",
+      "description": "A warm, editorial landing page for Glovebox, an AI that manages car insurance: a pinned hero whose footage a clip-path closes in on while the camera zooms to the centre, three blurred-video feature cards dealt one under the next with live task panels, a pinned statistic with work drifting past it, a dot map of members with stories sliding over it, how it works, FAQ and a closing frame that clips open.",
+      "designedFor": [
+        "Insurance, fintech and admin-automation products that want a calm, human, serif-led page",
+        "Showing scroll-driven clip-path and video-zoom effects as editor-ready components",
+        "Product pages that show an AI working through live task panels rather than describing it"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ilse Marchetti"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "insurance",
+        "car",
+        "fintech",
+        "ai",
+        "landing",
+        "editorial",
+        "serif",
+        "video",
+        "clip-path",
+        "scroll",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3210
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/glovebox",
+      "thumbnailUrl": "remixes/glovebox/preview.png",
+      "iconUrl": "remixes/glovebox/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/glovebox/previews/desktop.jpg",
+        "mobile": "remixes/glovebox/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/glovebox/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/glovebox-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "627ac0f0dbfb9cdf2836a96a1d1c28dff213fdb3dcf50d3f7c3d36173d9807eb",
+        "size": 338432,
+        "files": 57
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/glovebox"
+      },
+      "demoUrl": "demos/glovebox/"
+    },
+    {
+      "type": "remix",
       "id": "overtime",
       "name": "Overtime",
       "version": "1.0.0",
