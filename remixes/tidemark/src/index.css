@@ -1,0 +1,172 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, font and motion curve on the page
+   lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type */
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "EB Garamond", ui-serif, Georgia, serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Ivory paper and the surfaces on it */
+  --color-paper: #f4f1e8;
+  --color-paper-deep: #e9e4d6;
+  --color-card: #fbfaf5;
+  --color-white: #ffffff;
+
+  /* Ink */
+  --color-ink: #0f1d17;
+  --color-ink-soft: #26352d;
+  --color-ink-muted: #5a685f;
+  --color-ink-subtle: #8a948d;
+
+  /* Hairlines */
+  --color-line: #ddd7c7;
+  --color-line-strong: #c9c1ac;
+
+  /* Forest: the dark sections and the primary button */
+  --color-forest: #133528;
+  --color-forest-deep: #0c261c;
+  --color-forest-card: #1a4131;
+  --color-forest-line: #29573f;
+  --color-forest-fg: #eef0e6;
+  --color-forest-muted: #a8baae;
+
+  /* Accents: brass for detail, lime for the one thing that should glow */
+  --color-brass: #b5893a;
+  --color-brass-soft: #ecd9b2;
+  --color-lime: #d4f06a;
+  --color-lime-hover: #e1f68e;
+
+  /* Money in and out, and the chart lines (validated per surface) */
+  --color-gain: #1f7a4a;
+  --color-loss: #b4452f;
+  --color-chart: #12804e;
+  --color-chart-night: #72a232;
+
+  /* Radii */
+  --radius-chip: 6px;
+  --radius-field: 10px;
+  --radius-card: 16px;
+  --radius-panel: 22px;
+
+  /* Spacing read off the layout */
+  --spacing-gutter: clamp(16px, 4vw, 48px);
+  --spacing-section: clamp(80px, 10vw, 144px);
+
+  /* Shadows */
+  --shadow-hairline: 0 0 0 1px rgb(15 29 23 / 0.08);
+  --shadow-field: 0 0 0 1px rgb(15 29 23 / 0.08), 0 1px 2px rgb(15 29 23 / 0.05);
+  --shadow-card: 0 0 0 1px rgb(15 29 23 / 0.06), 0 1px 2px rgb(15 29 23 / 0.04), 0 12px 32px -18px rgb(15 29 23 / 0.2);
+  --shadow-float: 0 0 0 1px rgb(15 29 23 / 0.06), 0 24px 48px -20px rgb(15 29 23 / 0.35), 0 8px 16px -10px rgb(15 29 23 / 0.15);
+  --shadow-metal: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 40px 70px -30px rgb(12 38 28 / 0.65), 0 14px 24px -12px rgb(12 38 28 / 0.35);
+  --shadow-button: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 1px 2px rgb(15 29 23 / 0.25);
+  --shadow-night: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 0 0 1px rgb(255 255 255 / 0.06);
+
+  /* Motion */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 300ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-accordion-down: accordion-down 220ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out-strong);
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: var(--color-card);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-card);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-forest);
+  --primary-foreground: var(--color-forest-fg);
+  --secondary: var(--color-paper-deep);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-paper-deep);
+  --muted-foreground: var(--color-ink-muted);
+  --accent: var(--color-paper);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-loss);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-ink-subtle);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+/* Display type: the serif, large and slightly tight */
+@utility type-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+}
+
+/* Small caps-style labels above sections */
+@utility type-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+    font-feature-settings: "ss01", "tnum";
+  }
+  ::selection { background: var(--color-lime); color: var(--color-ink); }
+}

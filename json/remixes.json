@@ -883,6 +883,102 @@
         "path": "remixes/sdk-scaffold"
       },
       "demoUrl": "demos/sdk-scaffold/"
+    },
+    {
+      "type": "remix",
+      "id": "tidemark",
+      "name": "Tidemark — Fintech",
+      "version": "1.0.0",
+      "description": "An editorial fintech landing page for Tidemark, business banking for startups: ivory paper, deep forest and a single lime accent, a serif hero beside a spring-tilted metal card and a live balance, a product bento with working mini-UIs, a treasury yield calculator with an interactive chart, security guarantees, customer stories, monthly/yearly pricing with a border-beam plan, an FAQ and a disclosures footer.",
+      "designedFor": [
+        "Fintech, banking, payments and treasury products",
+        "B2B SaaS that sells to finance teams and founders",
+        "Pages that need a calculator, a chart and honest disclosures beside the marketing",
+        "Seeing a count-up, a pointer-driven card and an interactive chart built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Idris Montague"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fintech",
+        "banking",
+        "finance",
+        "treasury",
+        "cards",
+        "calculator",
+        "chart",
+        "pricing",
+        "editorial",
+        "serif",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3190
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "path": "remixes/tidemark",
+      "thumbnailUrl": "remixes/tidemark/preview.png",
+      "iconUrl": "remixes/tidemark/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/tidemark/previews/desktop.jpg",
+        "mobile": "remixes/tidemark/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/tidemark/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/tidemark-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "7f7a8d51e99c0d50cadbdf59d019482ad85352afeead8211e225b04519fae0d7",
+        "size": 448512,
+        "files": 75
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/tidemark"
+      },
+      "demoUrl": "demos/tidemark/"
     }
   ]
 }
