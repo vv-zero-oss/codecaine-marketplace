@@ -19,7 +19,7 @@ export function PixelMarquee({
   direction = "left",
   cell = 9,
   rows = 16,
-  threshold = 0.45,
+  threshold = 0.28,
   flicker = 0.06,
   playing = true,
   className,
@@ -76,6 +76,11 @@ export function PixelMarquee({
     ctx.fillStyle = "#000"
     ctx.textBaseline = "alphabetic"
     ctx.fillText(phrase, 0, Math.round(rows * 1.1))
+    // Emboldened a touch, so every stroke is two squares wide.
+    ctx.strokeStyle = "#000"
+    ctx.lineWidth = Math.max(0.6, rows * 0.06)
+    ctx.lineJoin = "round"
+    ctx.strokeText(phrase, 0, Math.round(rows * 1.1))
     const data = ctx.getImageData(0, 0, width, height).data
     const on = new Uint8Array(width * height)
     for (let n = 0; n < width * height; n++) on[n] = data[n * 4 + 3] / 255 > threshold ? 1 : 0
@@ -101,7 +106,7 @@ export function PixelMarquee({
       const top = Math.max(0, Math.floor((h / cell - bits.rows) / 2))
       const cols = Math.ceil(w / cell) + 1
       const size = cell - 1
-      const colors = [p.gold, p.gold, p.gold, p.gold, p.gold, p.gold, p.lime, p.lime, p.signal, p.cobalt, p.navy]
+      const colors = [p.gold, p.gold, p.gold, p.gold, p.gold, p.gold, p.gold, p.lime, p.lime, p.signal, p.cobalt, p.navy]
 
       for (let i = 0; i < cols; i++) {
         const src = (((i + shift) % bits.cols) + bits.cols) % bits.cols

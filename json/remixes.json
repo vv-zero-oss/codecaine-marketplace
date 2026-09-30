@@ -323,7 +323,7 @@
       "archive": {
         "url": "archives/remixes/cirrus-cloud-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "4c172dc83dcfad69e003c2c1552edbc59d9a7165c77bbde90ddfcef876229ba4",
+        "sha256": "59256640707dec11df25e7aa8ba760e7441d9b837c551954161072f37fc5c320",
         "size": 332800,
         "files": 59
       },

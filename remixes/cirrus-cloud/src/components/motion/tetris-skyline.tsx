@@ -38,7 +38,7 @@ export function TetrisSkyline({
   cell = 9,
   rows = 18,
   fall = 7,
-  skyline = 0.45,
+  skyline = 0.6,
   playing: animate = true,
   className,
 }: {
