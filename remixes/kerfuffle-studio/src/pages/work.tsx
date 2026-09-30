@@ -1,0 +1,84 @@
+import { AnimatePresence, LayoutGroup, motion } from "motion/react"
+import { useState } from "react"
+
+import { useCanvasAction } from "@canvas/react"
+
+import { CtaBand } from "@/components/layout/site-footer"
+import { Reveal } from "@/components/motion/reveal"
+import { Container } from "@/components/ui/container"
+import { DisplayHeading } from "@/components/ui/heading"
+import { WorkCard } from "@/components/work/work-card"
+import { CASES, type ServiceKey } from "@/content"
+import { cn } from "@/lib/utils"
+
+const FILTERS: { key: "all" | ServiceKey; label: string }[] = [
+  { key: "all", label: "All work" },
+  { key: "animation", label: "Animation" },
+  { key: "video", label: "Video" },
+  { key: "social", label: "Social" },
+]
+
+export function WorkPage() {
+  const [filter, setFilter] = useState<"all" | ServiceKey>("all")
+  useCanvasAction("Show animation only", (on) => setFilter((on ?? filter !== "animation") ? "animation" : "all"), {
+    group: "Work",
+    on: filter === "animation",
+  })
+  const shown = CASES.filter((c) => filter === "all" || c.services.includes(filter))
+  return (
+    <>
+      <section data-tone="light" className="pt-36 pb-section md:pt-44">
+        <Container>
+          <Reveal>
+            <DisplayHeading as="h1" eyebrow="Not to be missed. Worth sharing." bold="All our" serif="work" size="xl" />
+          </Reveal>
+          <LayoutGroup>
+            <div role="tablist" aria-label="Filter work" className="mt-10 flex flex-wrap justify-center gap-2">
+              {FILTERS.map((f) => {
+                const active = filter === f.key
+                const count = f.key === "all" ? CASES.length : CASES.filter((c) => c.services.includes(f.key as ServiceKey)).length
+                return (
+                  <button
+                    key={f.key}
+                    role="tab"
+                    aria-selected={active}
+                    onClick={() => setFilter(f.key)}
+                    className={cn(
+                      "relative h-11 px-4 label text-sm transition-colors duration-(--duration-fast)",
+                      active ? "text-snow" : "bg-card text-ink hover:text-blue",
+                    )}
+                  >
+                    {active ? (
+                      <motion.span layoutId="work-filter" className="absolute inset-0 bg-blue" transition={{ type: "spring", stiffness: 500, damping: 38 }} />
+                    ) : null}
+                    <span className="relative">
+                      {f.label} <span className="font-mono text-[11px] font-normal opacity-70">{count}</span>
+                    </span>
+                  </button>
+                )
+              })}
+            </div>
+            <motion.ul layout className="mt-14 grid gap-5 sm:grid-cols-2 md:mt-20 lg:grid-cols-3 lg:gap-8 lg:pb-24">
+              <AnimatePresence mode="popLayout">
+                {shown.map((item, i) => (
+                  <motion.li
+                    key={item.slug}
+                    layout
+                    initial={{ opacity: 0, scale: 0.94 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.94 }}
+                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    className={cn(i % 3 === 1 && "lg:translate-y-24")}
+                  >
+                    <WorkCard item={item} />
+                  </motion.li>
+                ))}
+              </AnimatePresence>
+            </motion.ul>
+          </LayoutGroup>
+        </Container>
+      </section>
+      <CtaBand />
+    </>
+  )
+}

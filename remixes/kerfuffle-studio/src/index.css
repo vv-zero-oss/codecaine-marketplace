@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/*
+ * Kerfuffle — every colour, shadow, radius, font and motion curve lives here.
+ * Components use the Tailwind names these produce (`bg-paper`, `text-blue`,
+ * `shadow-sticker`, `ease-brush`…), never a raw value.
+ */
+@theme {
+  /* Type */
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Arial Narrow", ui-sans-serif, sans-serif;
+  --font-serif: "Instrument Serif", "Times New Roman", ui-serif, serif;
+  --font-script: "Mr Dafoe", "Brush Script MT", cursive;
+  --font-bubble: "Chewy", "Comic Sans MS", cursive;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Surface */
+  --color-paper: #f3f3f3;
+  --color-card: #ffffff;
+  --color-night: #0e0e0e;
+  --color-night-raised: #1a1a1a;
+
+  /* Text */
+  --color-ink: #0d0d0d;
+  --color-ink-soft: #4a4a4a;
+  --color-ink-mute: #8a8a8a;
+  --color-snow: #ffffff;
+  --color-snow-mute: #a3a3a3;
+
+  /* Border */
+  --color-line: #e3e3e3;
+  --color-line-dark: #2b2b2b;
+
+  /* Brand */
+  --color-blue: #0a35ff;
+  --color-blue-deep: #0026c4;
+  --color-pink: #f55bc4;
+  --color-pink-deep: #d9379f;
+  --color-orange: #ff5a1f;
+  --color-red: #e8322a;
+  --color-green: #45b649;
+  --color-yellow: #ffd23f;
+  --color-lilac: #8f98f8;
+  --color-mint: #d4e6c9;
+  --color-sky: #e4efff;
+
+  /* Radii — the site is square; only badges and pills round off */
+  --radius-none: 0px;
+  --radius-chip: 3px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-sticker: 0 1px 0 rgb(0 0 0 / 0.06), 0 6px 14px -4px rgb(0 0 0 / 0.22);
+  --shadow-polaroid: 0 2px 4px rgb(0 0 0 / 0.04), 0 18px 40px -12px rgb(0 0 0 / 0.22);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.06), 0 24px 48px -16px rgb(0 0 0 / 0.28);
+
+  /* Spacing steps read off the layout (on Tailwind's 4px grid) */
+  --spacing-gutter: clamp(1rem, 2vw, 1.5rem);
+  --spacing-section: clamp(5rem, 11vw, 10rem);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-brush: cubic-bezier(0.7, 0, 0.3, 1);
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-fast: 160ms;
+  --duration-base: 320ms;
+  --duration-slow: 700ms;
+  --duration-brush: 900ms;
+
+  --animate-accordion-down: accordion-down 260ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-spin-slow: spin 14s linear infinite;
+}
+
+/* Radix measures the panel and hands its height over as a custom property. */
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+/* The condensed, heavy grotesk every headline starts with. */
+@utility display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 64%;
+  letter-spacing: -0.025em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+/* The light serif line that answers it. */
+@utility display-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+/* Small caps labels: nav, buttons, eyebrows on dark. */
+@utility label {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 75%;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  html {
+    background: var(--color-paper);
+    color: var(--color-ink);
+  }
+
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: var(--color-blue);
+    color: var(--color-snow);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 3px;
+  }
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+/* The logo row: a CSS loop, so the editor's Motion switch stops it for free. */
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(var(--r, 0deg)); }
+  50% { transform: translate3d(0, -10px, 0) rotate(calc(var(--r, 0deg) + 3deg)); }
+}
+
+/* The mobile menu wipes down from the top in the brand blue. */
+@keyframes sheet-in {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes sheet-out {
+  from { clip-path: inset(0 0 0 0); }
+  to { clip-path: inset(0 0 100% 0); }
+}

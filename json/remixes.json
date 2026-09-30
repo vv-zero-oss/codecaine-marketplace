@@ -1145,6 +1145,179 @@
     },
     {
       "type": "remix",
+      "id": "kerfuffle-studio",
+      "name": "Kerfuffle Studio",
+      "version": "1.0.0",
+      "description": "A loud, playful site for a motion studio: heavy condensed caps answered by a light serif, photos that drop under the cursor in the hero, a blue brush stroke that sweeps across the screen on every page change, a pinned reel of case cards that pile up as you scroll, service cards that fan out, die-cut stickers you can slap onto the page, a scattered crew with bubble-lettered names, a filterable work grid with case studies, a brief form and a full style guide.",
+      "designedFor": [
+        "Animation, video and social-content studios, and creative agencies with a lot of personality",
+        "Portfolios that want motion to be the first thing a visitor notices — page transitions, cursor trails, scroll-pinned reels",
+        "Multi-page sites: home, about, work with case studies, services and contact",
+        "Seeing Motion, Lenis and CSS animation on one page the canvas editor can pause, reduce and edit"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Tamsin Achterberg"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "agency",
+        "studio",
+        "motion",
+        "animation",
+        "video",
+        "portfolio",
+        "page-transition",
+        "cursor-trail",
+        "stickers",
+        "scroll",
+        "sticky",
+        "condensed",
+        "serif",
+        "playful",
+        "multi-page",
+        "react",
+        "vite",
+        "tailwind",
+        "shadcn"
+      ],
+      "categories": [
+        "Agency",
+        "Portfolio",
+        "Marketing"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3300
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/work",
+          "title": "Work"
+        },
+        {
+          "path": "/work/fizzkit",
+          "title": "Case study"
+        },
+        {
+          "path": "/what-we-do",
+          "title": "What we do"
+        },
+        {
+          "path": "/contact",
+          "title": "Contact"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Work",
+            "image": "previews/pages/work.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "previews/pages/work-fizzkit.jpg"
+          },
+          {
+            "title": "What we do",
+            "image": "previews/pages/what-we-do.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "previews/pages/contact.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/kerfuffle-studio",
+      "thumbnailUrl": "remixes/kerfuffle-studio/preview.png",
+      "iconUrl": "remixes/kerfuffle-studio/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/kerfuffle-studio/previews/desktop.jpg",
+        "mobile": "remixes/kerfuffle-studio/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/kerfuffle-studio/previews/pages/home.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/kerfuffle-studio/previews/pages/about.jpg"
+          },
+          {
+            "title": "Work",
+            "image": "remixes/kerfuffle-studio/previews/pages/work.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "remixes/kerfuffle-studio/previews/pages/work-fizzkit.jpg"
+          },
+          {
+            "title": "What we do",
+            "image": "remixes/kerfuffle-studio/previews/pages/what-we-do.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "remixes/kerfuffle-studio/previews/pages/contact.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/kerfuffle-studio/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/kerfuffle-studio-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "154c2753bbc830be2e1ba86fee4e8ced46c9453b9aef55353f136fe08067bdcb",
+        "size": 485376,
+        "files": 78
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/kerfuffle-studio"
+      },
+      "demoUrl": "demos/kerfuffle-studio/"
+    },
+    {
+      "type": "remix",
       "id": "overtime",
       "name": "Overtime",
       "version": "1.1.0",
