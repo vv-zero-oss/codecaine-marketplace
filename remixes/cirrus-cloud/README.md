@@ -8,10 +8,29 @@ npm install
 npm run dev     # → http://localhost:3210
 ```
 
-## The page
+## The pages
 
-Top to bottom, as a conversation: the masthead and a field of drifting pixel
-weather → a big opening line → what teams run on it (a card rail) → where it
+- `/` — home, below.
+- `/product` — the spec as a file (with a copy button), what it describes,
+  six features with pixel icons, the workloads.
+- `/network` — the server room again, four numbers, every region with its
+  latency, and five edges drawn as their cities.
+- `/pricing` — plans, a side-by-side comparison, the FAQ.
+- `/changelog` — releases, newest first.
+- `/brand` — the brand guidelines: logo, voice, every colour token with
+  contrast ratios, the type scale, spacing, notches, shadows, the motion
+  curves (playable), pixel icons, the isometric servers, imagery and every
+  component, live — all read from the stylesheet at runtime.
+
+A menubar runs across the top (the Product menu is shadcn's navigation menu,
+with pixel icons; below `lg` it folds into a sheet), and every page's footer
+draws a different edge region's skyline in line art over the Tetris
+skyline. Routing is `src/router.tsx`: forty lines, real paths.
+
+## Home
+
+Top to bottom, as a conversation: the masthead and the server room at night
+→ a big opening line → what teams run on it (a card rail) → where it
 started → what laptops are good and hopeless at → how it works (clone, boot,
 build, ship) over a particle-stream diagram → the product, the Environment
 Spec, over a second diagram → the levels of remote development → the stacks
@@ -30,10 +49,16 @@ and chips have pixel-notched corners (`.notch`).
 Named components in `src/components/motion/`, each with its knobs as scalar
 props:
 
-- `PixelField` — the hero: noise-warped diagonal bands on the 9px grid that
-  drift, with a ragged dripping foot that erodes upward as you scroll.
+- `ServerFarm` — the hero: a night server room on the 9px grid. Requests run
+  from the origin along a fibre backbone into edge racks and down to people
+  (cyan hits), misses climb back to the origin (red), replication pulses run
+  rack to rack (violet); status lights blink; the ragged foot erodes as you
+  scroll.
+- `LifeCycle` — clone, boot, build, ship as life: a DNA helix unzips and
+  replicates, gathers into an organism, grows into a tree and scatters its
+  seeds. The step row follows it; pick a step to jump there.
 - `PixelStream` — `explore` / `spec`: particles flowing left to right into a
-  shape that explains a process.
+  shape that explains a process (the spec page uses `spec`).
 - `PixelMarquee` — a phrase drawn tiny, thresholded, and each surviving pixel
   blown up into a flickering square, scrolling past.
 - `TetrisSkyline` — pieces falling onto a skyline; press play to steer them.
@@ -51,11 +76,18 @@ their end state while the page is being designed.
 
 - `@canvas/react` is vendored in `src/lib/canvas-react/`; `src/main.tsx`
   renders `<CanvasDesign />` in dev.
-- Hidden states are editor actions: each FAQ answer, both card rails scrolled
-  to the end, the corner link, and Tetris play mode.
+- Hidden states are editor actions: the mobile menu, the Product menu, each
+  FAQ answer, both card rails scrolled to the end, the next life-cycle step,
+  the code panel's copied state, the brand page's motion demo and Tetris
+  play mode.
 - Structural wrappers (`#root`, the page wrapper, `<main>`, `Container`, the
   rail tracks) carry `data-canvas-ignore`.
 
-Photography from [Pexels](https://www.pexels.com); icons from
-[Lucide](https://lucide.dev). Cirrus, its customers and its figures are
+Photography from [Pexels](https://www.pexels.com); pixel icons from the
+[Pixel Icon Library](https://pixeliconlibrary.com) by HackerNoon (MIT, inlined
+in `src/components/icons/pixel-icon-data.ts`); a few UI icons from
+[Lucide](https://lucide.dev); city line art from the *Minimal Wallpapers —
+City Backgrounds in Line Art Style* community file, reduced to small alpha
+masks in `src/assets/cities/`. The isometric servers are drawn in code
+(`src/components/marks/iso-server.tsx`). Cirrus, its customers and its figures are
 fictional.

@@ -2,6 +2,7 @@
  * Every word on the page. Cirrus, its customers and its numbers are fictional.
  */
 
+import type { IsoModel } from "@/components/marks/iso-server"
 import type { ChipTone } from "@/components/ui/chip"
 
 const pexels = (path: string, w = 1200) => `https://images.pexels.com/photos/${path}?auto=compress&cs=tinysrgb&w=${w}`
@@ -11,6 +12,22 @@ export const brand = {
   email: "hello@cirrus.dev",
   console: "#start",
 }
+
+export const nav = {
+  product: [
+    { title: "Environments", href: "/product", icon: "laptop-code", body: "Full dev machines from any branch, in nine seconds." },
+    { title: "The Environment Spec", href: "/product#spec", icon: "code-block", body: "One file that describes every machine." },
+    { title: "Edge network", href: "/network", icon: "globe", body: "Fourteen regions, one hop from every desk." },
+    { title: "GPU compute", href: "/product#features", icon: "bolt", body: "Accelerators by the minute, attached on demand." },
+  ],
+  links: [
+    { title: "Network", href: "/network" },
+    { title: "Pricing", href: "/pricing" },
+    { title: "Changelog", href: "/changelog" },
+  ],
+  signIn: { title: "Sign in", href: "mailto:hello@cirrus.dev?subject=Sign%20in" },
+  start: { title: "Start free", href: "/pricing" },
+} as const
 
 export const masthead = {
   title: ["Workspaces,", "anywhere."],
@@ -25,38 +42,43 @@ export const masthead = {
 export const intro =
   "A short account of what changed when we moved every environment off the laptop, and of what we kept exactly where it was. First, here is what teams run on it:"
 
-export type Card = { title: string; body: string; image: string; alt: string; tags?: { label: string; tone: ChipTone }[] }
+export type PanelTone = "cobalt" | "gold" | "night" | "lime" | "signal"
+export type Card = {
+  title: string
+  body: string
+  /** A photograph… */
+  image?: string
+  alt?: string
+  /** …or an isometric server on a coloured panel. */
+  art?: { model: IsoModel; tone: PanelTone }
+  tags?: { label: string; tone: ChipTone }[]
+}
 
 export const workloads: Card[] = [
   {
     title: "Monorepo, day one",
     body: "A forty-service repository, built and seeded before the new hire finds the coffee.",
-    image: pexels("7062/man-people-space-desk.jpg"),
-    alt: "An engineer working on a laptop at a long table against an orange wall",
+    art: { model: "rack", tone: "cobalt" },
   },
   {
     title: "A preview per pull request",
-    body: "Every branch gets a live URL, its own database and a link waiting in the review.",
-    image: pexels("17489152/pexels-photo-17489152.jpeg"),
-    alt: "Three tower servers lit blue in a rack",
+    body: "Every branch gets its own machine, a live URL and a link waiting in the review.",
+    art: { model: "branches", tone: "night" },
   },
   {
     title: "GPU notebooks",
     body: "Attach an accelerator for an experiment, detach it before the invoice notices.",
-    image: pexels("18338417/pexels-photo-18338417.jpeg"),
-    alt: "Two graphics cards lying on a bright yellow surface",
+    art: { model: "gpu", tone: "gold" },
   },
   {
     title: "Agent sandboxes",
     body: "Throwaway machines for coding agents, with the network and the secrets fenced off.",
-    image: pexels("10482131/pexels-photo-10482131.jpeg"),
-    alt: "A small orange toy robot standing on the edge of a table",
+    art: { model: "sandbox", tone: "lime" },
   },
   {
     title: "Firmware builds",
     body: "Cross-compile toolchains that used to live on one engineer's desk, now on everyone's.",
-    image: pexels("159220/printed-circuit-board-print-plate-via-macro-159220.jpeg"),
-    alt: "A close view of a green circuit board and its chips",
+    art: { model: "board", tone: "signal" },
   },
 ]
 
@@ -84,12 +106,12 @@ export const changed = {
 
 export const flow = {
   heading: ["Clone. Boot.", "Build. Ship."],
-  body: "The cloud holds the machine; you hold the editor. On a normal day that means most of the waiting disappears and the rest happens somewhere you are not looking.",
+  body: "Every environment starts the way anything alive does: from a code, copied exactly. The cloud grows it into a running machine, the machine into a whole system, and the system sends what it makes out into the world.",
   steps: [
-    { title: "Clone", body: "Point Cirrus at a repository and a branch. It reads the spec file and nothing else." },
-    { title: "Boot", body: "A snapshot of the last good build wakes in about nine seconds, dependencies and all." },
-    { title: "Build", body: "Compiles, tests and services run on hardware sized for the job, not for your bag." },
-    { title: "Ship", body: "Share a preview URL, hand the branch to CI, and let the machine go back to sleep." },
+    { title: "Clone", stage: "DNA", body: "The repository is the genome. Cirrus reads its spec and copies it, strand for strand, into a fresh machine." },
+    { title: "Boot", stage: "Cell", body: "A snapshot of the last good build comes alive in about nine seconds, dependencies and all." },
+    { title: "Build", stage: "Tree", body: "Compiles, tests and services grow on hardware sized for the job, branching as the work needs." },
+    { title: "Ship", stage: "Seeds", body: "Previews and releases go out on the wind, and the machine goes back to sleep." },
   ],
 }
 
@@ -238,5 +260,264 @@ export const closing = {
     "The nearest humans to you are probably in Lisbon, Toronto or Singapore, and all of them answer email.",
   ],
   address: "Regions in 14 cities, status at status.cirrus.dev.",
-  credits: "Photography from Pexels. Icons from Lucide. Cirrus and its customers are fictional.",
+  credits: "Photography from Pexels. Pixel icons from the Pixel Icon Library by HackerNoon. City line art from the Minimal Wallpapers city backgrounds community file. Cirrus and its customers are fictional.",
+}
+
+export const footer = {
+  blurb: "Cloud development environments for teams that ship. Any branch, any laptop, nine seconds.",
+  columns: [
+    {
+      title: "Product",
+      links: [
+        { title: "Environments", href: "/product" },
+        { title: "Environment Spec", href: "/product#spec" },
+        { title: "Edge network", href: "/network" },
+        { title: "Pricing", href: "/pricing" },
+      ],
+    },
+    {
+      title: "Company",
+      links: [
+        { title: "Changelog", href: "/changelog" },
+        { title: "Brand guidelines", href: "/brand" },
+        { title: "Contact", href: "mailto:hello@cirrus.dev" },
+      ],
+    },
+    {
+      title: "Start",
+      links: [
+        { title: "Start free", href: "/pricing" },
+        { title: "Talk to an engineer", href: "mailto:hello@cirrus.dev?subject=Talk%20to%20an%20engineer" },
+        { title: "Questions", href: "/pricing#faq" },
+      ],
+    },
+  ],
+}
+
+/* ── Product ─────────────────────────────────────────────────────────── */
+
+export const productPage = {
+  hero: {
+    title: ["The machine,", "as a file."],
+    strap: [
+      ["Environments", "from", "a", "spec"],
+      ["booted", "from", "any", "branch"],
+    ],
+    blurb: "Describe the machine once, in the repository. Every engineer, reviewer and agent gets exactly that machine.",
+  },
+  file: {
+    heading: "Write it once. Boot it forever.",
+    label: "cirrus.toml",
+    body: [
+      "The spec lives beside the code and changes with it, so the machine a branch needs is always the machine it gets. Review it like code, roll it back like code.",
+      "Cirrus reads it on every boot, builds what changed, and keeps a warm snapshot of the result for the next person who asks.",
+    ],
+    code: `[machine]
+image  = "cirrus/base:2026.09"
+cpu    = 8
+memory = "16GB"
+
+[services.postgres]
+version = "17"
+seed    = "db/seed.sql"
+
+[services.redis]
+version = "8"
+
+[secrets]
+scope = ["branch", "person"]
+from  = "vault://team/app"
+
+[snapshots]
+warm   = true
+keep   = "14d"
+
+[ports]
+web = 3000   # → a preview URL per branch`,
+  },
+  features: {
+    heading: "Everything a laptop was pretending to be.",
+    label: "Features",
+    items: [
+      { icon: "refresh", title: "Warm snapshots", body: "Every good build is kept warm, so the next boot starts where the last one ended." },
+      { icon: "lock", title: "Scoped secrets", body: "Per branch and per person, injected at boot, never written to disk." },
+      { icon: "sitemap", title: "Services that seed", body: "Databases, queues and caches start with the machine and fill themselves." },
+      { icon: "bolt", title: "GPUs on a timer", body: "Attach an accelerator for an hour, detach it before the invoice notices." },
+      { icon: "link", title: "Preview URLs", body: "Every port you name gets a live address per branch, shared with a link." },
+      { icon: "robot", title: "Agent-ready", body: "Coding agents get the same machines as people, with their own fences." },
+    ],
+  },
+  cta: { marquee: "same machine, every time", button: "Start a workspace" },
+}
+
+/* ── Network ─────────────────────────────────────────────────────────── */
+
+export const networkPage = {
+  hero: {
+    title: ["Every region,", "one hop."],
+    strap: [
+      ["Fourteen", "edge", "regions"],
+      ["one", "origin", "per", "team"],
+    ],
+    blurb: "Environments run in the region nearest the person using them, and previews are cached at every edge.",
+  },
+  stats: [
+    { value: "14", label: "Edge regions" },
+    { value: "9.1s", label: "Median boot" },
+    { value: "38ms", label: "p50 to nearest edge" },
+    { value: "99.97%", label: "Uptime, last 90 days" },
+  ],
+  regions: {
+    heading: "Fourteen regions, and counting.",
+    label: "Where it runs",
+    body: "Every region runs the full stack: compute, snapshots and a preview cache. Latency is measured from the region's own city to the edge, every minute.",
+    rows: [
+      { code: "LHR", city: "London", status: "live", p50: "4ms" },
+      { code: "FRA", city: "Frankfurt", status: "live", p50: "5ms" },
+      { code: "AMS", city: "Amsterdam", status: "live", p50: "4ms" },
+      { code: "IAD", city: "Ashburn", status: "live", p50: "3ms" },
+      { code: "JFK", city: "New York", status: "live", p50: "4ms" },
+      { code: "YUL", city: "Montréal", status: "live", p50: "6ms" },
+      { code: "MIA", city: "Miami", status: "live", p50: "5ms" },
+      { code: "LAX", city: "Los Angeles", status: "live", p50: "4ms" },
+      { code: "GRU", city: "São Paulo", status: "live", p50: "7ms" },
+      { code: "SIN", city: "Singapore", status: "live", p50: "3ms" },
+      { code: "NRT", city: "Tokyo", status: "live", p50: "4ms" },
+      { code: "SYD", city: "Sydney", status: "live", p50: "6ms" },
+      { code: "BOM", city: "Mumbai", status: "new", p50: "8ms" },
+      { code: "JNB", city: "Johannesburg", status: "new", p50: "9ms" },
+    ],
+  },
+  cities: {
+    heading: "Five of our edges, drawn by hand.",
+    label: "Regions",
+    items: [
+      { city: "london", note: "Our first region, under the river." },
+      { city: "manhattan", note: "Two halls, one on each side of the island." },
+      { city: "montreal", note: "Hydro-powered, and cold on purpose." },
+      { city: "miami", note: "The gateway to everything south." },
+      { city: "los-angeles", note: "Closest to the studios and their render farms." },
+    ],
+  },
+  cta: { marquee: "one hop from every desk", button: "Start a workspace" },
+} as const
+
+/* ── Pricing ─────────────────────────────────────────────────────────── */
+
+export const pricingPage = {
+  hero: {
+    title: ["Pay for", "what runs."],
+    strap: [
+      ["Pay", "for", "the", "machine"],
+      ["while", "it", "is", "running"],
+    ],
+    blurb: "Compute is billed by the minute and stops when you do. Idle machines sleep after thirty minutes and cost nothing.",
+  },
+  compare: {
+    heading: "Every plan, side by side.",
+    label: "Compare",
+    columns: ["Hobby", "Team", "Enterprise"],
+    rows: [
+      { feature: "Machine hours", values: ["60 / month", "Unlimited", "Unlimited"] },
+      { feature: "Largest machine", values: ["4 vCPU · 8 GB", "32 vCPU · 128 GB", "Custom"] },
+      { feature: "GPUs", values: ["—", "On demand", "Reserved"] },
+      { feature: "Preview URLs", values: ["yes", "yes", "yes"] },
+      { feature: "Warm snapshots", values: ["3 days", "14 days", "90 days"] },
+      { feature: "Scoped secrets", values: ["—", "yes", "yes"] },
+      { feature: "Agent sandboxes", values: ["—", "yes", "yes"] },
+      { feature: "SSO and SCIM", values: ["—", "—", "yes"] },
+      { feature: "Private regions", values: ["—", "—", "yes"] },
+      { feature: "Support", values: ["Community", "Email, 1 day", "Named engineer"] },
+    ],
+  },
+  cta: { marquee: "the first sixty hours are on us", button: "Start free" },
+}
+
+/* ── Changelog ───────────────────────────────────────────────────────── */
+
+export const changelogPage = {
+  hero: {
+    title: ["What's new,", "week by week."],
+    strap: [
+      ["Every", "change", "we", "ship"],
+      ["in", "the", "order", "it", "shipped"],
+    ],
+    blurb: "Small releases, every week. The big ones get a paragraph; the fixes get a line.",
+  },
+  entries: [
+    {
+      date: "Sep 24, 2026",
+      version: "2026.39",
+      icon: "globe",
+      tag: { label: "Network", tone: "blue" },
+      title: "Mumbai and Johannesburg are live",
+      body: "Two new edge regions bring the count to fourteen. Environments in India and southern Africa now boot in the same nine seconds as everywhere else.",
+    },
+    {
+      date: "Sep 17, 2026",
+      version: "2026.38",
+      icon: "robot",
+      tag: { label: "Agents", tone: "lime" },
+      title: "Agent sandboxes get their own network rules",
+      body: "Give an agent a machine with egress limited to the hosts you name, and watch every request it makes in the session log.",
+    },
+    {
+      date: "Sep 10, 2026",
+      version: "2026.37",
+      icon: "refresh",
+      tag: { label: "Snapshots", tone: "violet" },
+      title: "Snapshots warm themselves after a merge",
+      body: "When a pull request merges, Cirrus builds the new main in the background, so the next branch starts from it rather than from yesterday.",
+    },
+    {
+      date: "Sep 3, 2026",
+      version: "2026.36",
+      icon: "bolt",
+      tag: { label: "GPU", tone: "red" },
+      title: "GPUs attach to running machines",
+      body: "No more rebooting to add an accelerator: attach one to a live environment from the command line, detach it when the cell finishes.",
+    },
+    {
+      date: "Aug 27, 2026",
+      version: "2026.35",
+      icon: "code-block",
+      tag: { label: "Spec", tone: "ink" },
+      title: "The spec learns about ports",
+      body: "Name a port in cirrus.toml and every branch gets a preview URL for it, shared with the people on the pull request.",
+    },
+    {
+      date: "Aug 20, 2026",
+      version: "2026.34",
+      icon: "bug",
+      tag: { label: "Fixes", tone: "ink" },
+      title: "Twelve fixes",
+      body: "Faster log streaming, a clearer error when a seed script fails, and secrets that no longer linger in shell history.",
+    },
+  ],
+  cta: { marquee: "shipped on a tuesday", button: "Start a workspace" },
+} as const
+
+/* ── Brand ───────────────────────────────────────────────────────────── */
+
+export const brandPage = {
+  hero: {
+    title: ["Brand", "guidelines."],
+    strap: [
+      ["How", "Cirrus", "looks"],
+      ["sounds", "and", "moves"],
+    ],
+    blurb: "The system this site is built on, drawn from its own tokens and components. Change a token and this page changes with it.",
+  },
+  voice: {
+    do: [
+      "Say what the machine does, then why it matters.",
+      "Use numbers people can check: nine seconds, fourteen regions.",
+      "Write like an engineer explaining it to a friend.",
+    ],
+    dont: [
+      "Promise magic, revolutions or superpowers.",
+      "Lead with the technology when the reader wants the outcome.",
+      "Hide the price or the catch.",
+    ],
+  },
 }

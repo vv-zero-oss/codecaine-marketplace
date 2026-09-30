@@ -2,6 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import type * as React from "react"
 
 import { cn } from "@/lib/utils"
+import { Link } from "@/router"
 
 /**
  * The page's one button: a flat ink slab with pixel-notched corners.
@@ -36,6 +37,11 @@ export function Button({ className, variant, size, ...props }: React.ComponentPr
 /** The same button as a link — its own component, so the editor names it. */
 export function ButtonLink({ className, variant, size, ...props }: React.ComponentProps<"a"> & ButtonStyle) {
   return <a {...props} className={cn(buttonVariants({ variant, size, className }))} />
+}
+
+/** The same button, as a link to a page on this site (through the router). */
+export function RouteButton({ className, variant, size, ...props }: React.ComponentProps<typeof Link> & ButtonStyle) {
+  return <Link {...props} className={cn(buttonVariants({ variant, size, className }))} />
 }
 
 export { buttonVariants }
