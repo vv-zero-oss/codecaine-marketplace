@@ -92,7 +92,7 @@ export function LivePages() {
 
 /** The three steps, the current one in ink with its sentence under it. On a
  *  phone only the current one shows. */
-function StepList({ step }: { step: number }) {
+export function StepList({ step }: { step: number }) {
   return (
     <ol className="flex flex-col gap-1 lg:gap-5">
       {live.steps.map((item, i) => (
@@ -126,7 +126,7 @@ function StepList({ step }: { step: number }) {
 }
 
 /** What the canvas is doing, as a toast in the corner of the shot. */
-function StatusToast({ status, version, step }: { status: string; version: string; step: number }) {
+export function StatusToast({ status, version, step }: { status: string; version: string; step: number }) {
   const Icon = step === 0 ? Loader2 : PenLine
   return (
     <div className="absolute top-[4%] right-[3%] w-[min(260px,58%)]">
@@ -153,7 +153,7 @@ function StatusToast({ status, version, step }: { status: string; version: strin
 }
 
 /** The published site, lifting out of the shot on the last step. */
-function PublishedCard({ shown }: { shown: boolean }) {
+export function PublishedCard({ shown }: { shown: boolean }) {
   const reduced = useReducedMotion()
   return (
     <AnimatePresence>

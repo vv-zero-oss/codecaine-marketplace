@@ -23,6 +23,8 @@ import { Arriving } from "@/components/sections/arriving"
 import { GuestBook } from "@/components/sections/guest-book"
 import { Faq } from "@/components/sections/faq"
 import { Reserve } from "@/components/sections/reserve"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 const SECTIONS = [
   { id: "top", Section: Cover },
@@ -45,16 +47,24 @@ function sections() {
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, nothing to design. */
 export default function App() {
+  const pathname = usePathname()
   return (
     <SmoothScroll>
       <BookingProvider>
         <div className="bg-paper text-ink" data-canvas-ignore>
-          <SiteHeader />
-          <main data-canvas-ignore>
-            {sections().map(({ id, Section }) => (
-              <Section key={id} />
-            ))}
-          </main>
+          {pathname === "/brand" ? (
+            // The style guide: its own masthead and main, the same footer and paper.
+            <BrandPage />
+          ) : (
+            <>
+              <SiteHeader />
+              <main data-canvas-ignore>
+                {sections().map(({ id, Section }) => (
+                  <Section key={id} />
+                ))}
+              </main>
+            </>
+          )}
           <SiteFooter />
           {/* The paper's tooth, over everything — photographs and film included. */}
           <div aria-hidden className="paper-grain pointer-events-none fixed inset-0 z-[60] opacity-60 mix-blend-multiply" />

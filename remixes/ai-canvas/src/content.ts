@@ -213,6 +213,7 @@ export const footer = {
         { label: "Terms", href: "#" },
         { label: "Privacy", href: "#" },
         { label: "Photos: Pexels", href: "https://www.pexels.com" },
+        { label: "Brand guidelines", href: "/brand" },
       ],
     },
   ],

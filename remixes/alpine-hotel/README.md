@@ -39,6 +39,23 @@ rate card and the registration card share them.
 - The text clip multiplies the paper colour over the footage, so the film
   prints into the letters like ink.
 
+## The style guide at `/brand`
+
+`/brand` is the house style, reached from "Brand guidelines" in the footer and
+set like the rest of the guide: the wordmark and seal with their clear space
+and minimum size, the voice, every colour token in `src/index.css` (the
+palette and shadcn's `:root` names) with its live value, hex and WCAG contrast
+for the pairs type is really set in, the three families and the type scale,
+spacing, radii, shadows, rules and the torn edge, the motion curves
+(playable), icons and photography — and every component, live, in its
+variants and states with a copyable snippet: every `components/ui/` piece, the
+booking fields, Reveal, TextClipParallax, RateRow, TrailMap, SeasonTag,
+AvailabilityLine, the header, and each section one at a time (Seasons carries
+the pinned VideoZoomSplit). Every value is read off the rendered element, so
+changing a token changes the page. It lives in `src/pages/brand.tsx` and
+`src/components/brand/`; `src/lib/router.tsx` is a small router for the two
+pages.
+
 ## In the editor
 
 Named components with scalar props: `VideoZoomSplit`, `TextClipParallax`,
