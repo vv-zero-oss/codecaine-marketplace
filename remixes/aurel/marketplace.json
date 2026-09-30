@@ -1,0 +1,115 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "aurel",
+  "name": "Aurel",
+  "version": "1.0.0",
+  "description": "A high-end fashion house's site in bone, ink and burnt orange: a film that folds into the header, a garment rising through its headline, sticky split columns, a drifting archive wall and a turning silver seal — across home, collection, product, atelier, journal, house and appointments.",
+  "designedFor": [
+    "Fashion houses, boutiques and ateliers selling a small, considered collection",
+    "Editorial landing pages built on sticky, scroll-linked sections",
+    "A multi-page shop — collection, product, bag — with every hidden state reachable from the editor",
+    "Studying scroll choreography: pinned stages, clip-path reveals, stacking cards and a sideways track"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Marisol Okonkwo-Reyes"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "fashion",
+    "luxury",
+    "retail",
+    "ecommerce",
+    "editorial",
+    "atelier",
+    "sticky",
+    "scroll",
+    "framer-motion",
+    "lenis"
+  ],
+  "categories": [
+    "E-commerce",
+    "Fashion",
+    "Marketing"
+  ],
+  "created": "2026-09-30",
+  "updated": "2026-09-30",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3210
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/collection",
+      "title": "Collection"
+    },
+    {
+      "path": "/collection/vale-overcoat",
+      "title": "Product"
+    },
+    {
+      "path": "/atelier",
+      "title": "Atelier"
+    },
+    {
+      "path": "/journal",
+      "title": "Journal"
+    },
+    {
+      "path": "/house",
+      "title": "House"
+    },
+    {
+      "path": "/appointments",
+      "title": "Appointments"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Collection",
+        "image": "previews/pages/collection.jpg"
+      },
+      {
+        "title": "Product",
+        "image": "previews/pages/collection-vale-overcoat.jpg"
+      },
+      {
+        "title": "Atelier",
+        "image": "previews/pages/atelier.jpg"
+      },
+      {
+        "title": "Journal",
+        "image": "previews/pages/journal.jpg"
+      },
+      {
+        "title": "House",
+        "image": "previews/pages/house.jpg"
+      },
+      {
+        "title": "Appointments",
+        "image": "previews/pages/appointments.jpg"
+      }
+    ]
+  }
+}
