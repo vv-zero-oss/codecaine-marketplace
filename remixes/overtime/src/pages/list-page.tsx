@@ -59,7 +59,7 @@ export function ListPage({ pathname }: { pathname: string }) {
   )
 }
 
-function ListRow({
+export function ListRow({
   person,
   index,
   dimmed,

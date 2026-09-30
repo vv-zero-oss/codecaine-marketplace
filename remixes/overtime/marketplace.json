@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "overtime",
   "name": "Overtime",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A long-read sports magazine on an infinite WebGL canvas: eighty-four athletes on an endless, draggable sheet that clips and motion-blurs as it moves, with a list view, a full-screen gallery, a profile per athlete and an about page with the issue’s writers.",
   "designedFor": [
     "Sports magazines, clubs and federations with a face and a profile per athlete",
@@ -37,7 +37,7 @@
     "Creative"
   ],
   "created": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",
@@ -67,6 +67,10 @@
     {
       "path": "/about",
       "title": "About"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "previews": {

@@ -18,8 +18,25 @@ npm run dev     # → http://localhost:3140
 | `/gallery` | Each portrait full screen, one after another; scroll, swipe or use the arrow keys. |
 | `/story/:slug` | One athlete: headline, profile (which the browser can read aloud), portrait with the sport's glow behind it, the facts, frames from the archive, and more athletes. |
 | `/about` | The issue, and the writers who profiled each athlete. |
+| `/brand` | The brand guidelines — see below. |
 
 FILTERS (by sport) and SEARCH narrow the grid and the list together.
+
+## The style guide at `/brand`
+
+`/brand` is the issue's brand guidelines page: the mark and the voice, every
+colour token (paper and ink, the night tones of the list, the blend pair and
+the eight sport accents) with its value and WCAG contrast, the type scale,
+spacing, radii, borders, the absence of shadows, the motion curves (press
+Play), glyphs and photography, and every component — the `ui/` primitives and
+the composed pieces of the header, footer, intro, grid, list, about page and
+profile — live, in its variants and states, with a copyable snippet. Each
+value is read off the rendered element, so changing a token in
+`src/index.css` changes the page. The WebGL grid, the intro and the header
+are shown in frames; the full-screen gallery only as one still frame, since it
+takes the whole window's wheel and keys. It lives in `src/pages/brand-page.tsx`
+and `src/components/brand/`, and is reached from "Brand guidelines" in the
+footer. A component added to the site is added there in the same change.
 
 ## Where things live
 

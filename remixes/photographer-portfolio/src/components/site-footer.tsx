@@ -16,6 +16,9 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
+          <Link href="/brand" className="hover:text-ink">
+            Brand guidelines
+          </Link>
         </nav>
         <div className="flex flex-col gap-3 text-sm text-ink-600 md:items-end">
           <a href={`mailto:${studio.email}`} className="hover:text-ink">{studio.email}</a>
