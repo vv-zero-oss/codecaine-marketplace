@@ -30,11 +30,26 @@ import { Stories } from "@/components/sections/stories"
 import { UnlockCta } from "@/components/sections/unlock-cta"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
  *  nothing of their own to design, so the canvas editor looks through them
  *  to what they hold (they stay in its layers panel). See CLAUDE.md. */
 export default function App() {
+  const pathname = usePathname()
+
+  // `/brand`: the style guide, in the site's own header-less frame and footer.
+  if (pathname === "/brand") {
+    return (
+      <div className="min-h-screen bg-paper text-ink" data-canvas-ignore>
+        <SmoothScroll />
+        <BrandPage />
+        <SiteFooter />
+      </div>
+    )
+  }
+
   return (
     <div className="min-h-screen bg-paper text-ink" data-canvas-ignore>
       <SmoothScroll />

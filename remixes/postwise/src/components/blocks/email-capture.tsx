@@ -23,6 +23,7 @@ export function EmailCapture({
   ratingNote = "Loved by 18,000 teams",
   success = "You’re in. Check your inbox to finish setting up.",
   showRating = true,
+  startSent = false,
   className,
 }: {
   name?: string
@@ -33,9 +34,11 @@ export function EmailCapture({
   ratingNote?: string
   success?: string
   showRating?: boolean
+  /** Starts in the sent state — for the style guide. */
+  startSent?: boolean
   className?: string
 }) {
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState(startSent)
   useCanvasAction(`${name} form sent`, (next) => setSent(next ?? !sent), { on: sent, group: "Forms" })
 
   const dark = tone !== "paper"

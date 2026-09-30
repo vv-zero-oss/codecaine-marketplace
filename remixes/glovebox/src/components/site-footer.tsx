@@ -2,6 +2,7 @@ import { ButtonLink } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { LogoMark } from "@/components/ui/logo-mark"
 import { footerColumns } from "@/content"
+import { Link } from "@/lib/router"
 
 /** The sign-off: the promise once more, the links, and the small print. */
 export function SiteFooter() {
@@ -52,6 +53,12 @@ export function SiteFooter() {
               </a>
               . Insurers named on this page are fictional.
             </p>
+            <Link
+              href="/brand"
+              className="mt-3 inline-flex min-h-8 items-center font-mono text-[13px] text-ink underline-offset-2 transition-colors duration-(--duration-ui) hover:text-muted hover:underline"
+            >
+              Brand guidelines
+            </Link>
           </div>
         </div>
       </Container>

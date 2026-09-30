@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "coastal-residence",
   "name": "Coastal Residence",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Luna Residence — a cinematic one-page site for a small gated development on the coast: an arch that opens onto the hero, a day/night switch, pinned chapters, a sideways coastline story, residence types, amenities and an olive contact footer.",
   "designedFor": [
     "Boutique residential developments and off-plan launches selling a handful of homes",
@@ -39,7 +39,7 @@
     "Marketing"
   ],
   "created": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "thumbnail": "preview.png",
   "meta": {
     "framework": "vite",
@@ -53,6 +53,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "icon": "icon.svg",

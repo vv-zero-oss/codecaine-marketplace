@@ -15,7 +15,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { appointments, brand } from "@/content"
 
-const field = "h-12 rounded-none border-0 border-b border-ink/30 bg-transparent px-0 font-sans text-[16px] shadow-none focus-visible:border-ink focus-visible:ring-0"
+export const field = "h-12 rounded-none border-0 border-b border-ink/30 bg-transparent px-0 font-sans text-[16px] shadow-none focus-visible:border-ink focus-visible:ring-0"
 
 /**
  * Appointments: the workroom photograph pinned on the left, the booking

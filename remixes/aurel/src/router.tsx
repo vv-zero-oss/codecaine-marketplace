@@ -19,7 +19,7 @@ const NAVIGATE = "aurel:navigate"
  * the site names is a site path ("/portfolio"); this is added on the way out
  * to the address bar and taken off on the way in.
  */
-const BASE = new URL(import.meta.env.BASE_URL, window.location.href).pathname.replace(/\/$/, "")
+export const BASE = new URL(import.meta.env.BASE_URL, window.location.href).pathname.replace(/\/$/, "")
 
 function sitePath(): string {
   const { pathname } = window.location

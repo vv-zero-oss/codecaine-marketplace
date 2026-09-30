@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils"
  * The circular badge: the name set round a ring, turning with the scroll —
  * a little faster the harder the page is thrown.
  */
-function Badge({ tone }: { tone: "light" | "dark" }) {
+export function Badge({ tone }: { tone: "light" | "dark" }) {
   const reduce = useReducedMotion()
   const { scrollY } = useScroll()
   const velocity = useSpring(useVelocity(scrollY), { stiffness: 60, damping: 30 })

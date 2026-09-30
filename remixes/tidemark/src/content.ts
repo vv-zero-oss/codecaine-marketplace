@@ -245,7 +245,7 @@ export const FOOTER = {
   columns: [
     { title: "Product", links: ["Business accounts", "Corporate cards", "Treasury", "Bill pay", "Spend controls"] },
     { title: "Company", links: ["About", "Customers", "Careers", "Press"] },
-    { title: "Resources", links: ["Help centre", "Guides", "API docs", "Status"] },
+    { title: "Resources", links: ["Help centre", "Guides", "API docs", "Status", "Brand guidelines"] },
     { title: "Legal", links: ["Privacy", "Terms", "Disclosures", "Licenses"] },
   ],
   disclosure:

@@ -178,7 +178,7 @@ function useSteps(ref: React.RefObject<Element | null>, count: number, interval 
   return designing ? count - 1 : step
 }
 
-function PoliciesPanel() {
+export function PoliciesPanel() {
   const ref = useRef<HTMLDivElement>(null)
   const step = useSteps(ref, 3)
   return (
@@ -201,7 +201,7 @@ function PoliciesPanel() {
   )
 }
 
-function LoopPanel() {
+export function LoopPanel() {
   const ref = useRef<HTMLDivElement>(null)
   const step = useSteps(ref, 3, 2.6)
   return (
@@ -225,7 +225,7 @@ function LoopPanel() {
   )
 }
 
-function AskPanel() {
+export function AskPanel() {
   const [answered, setAnswered] = useState(false)
   useCanvasAction("Answer shown", (next) => setAnswered(next ?? !answered), { on: answered, group: "Features" })
 

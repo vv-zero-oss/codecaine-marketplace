@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "alpine-hotel",
   "name": "Alpine Hotel",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Hotel Arven — a one-page guide to a small, family-run hotel at the top of Zermatt, set like a printed hotel guide on warm paper: a cover with a fill-in availability line, the house's story, a pinned film that splits into the season calendar, a day's timetable with snowboard footage printed inside the type, a rate card, a drawn trail map of nearby spots, arrival routes and what's included, and a registration-card booking form.",
   "designedFor": [
     "Small, independent hotels, inns and mountain lodges that take bookings direct",
@@ -52,6 +52,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "previews": {

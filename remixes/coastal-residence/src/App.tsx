@@ -23,12 +23,27 @@ import { Reasons } from "@/components/sections/reasons"
 import { Residences } from "@/components/sections/residences"
 import { SeaViews } from "@/components/sections/sea-views"
 import { Space } from "@/components/sections/space"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
  *  nothing of their own to design, so the canvas editor looks through them
  *  to what they hold (they stay in its layers panel). See CLAUDE.md. */
 export default function App() {
   const [ready, setReady] = useState(false)
+  const pathname = usePathname()
+
+  // `/brand`: the style guide, in the same shell and with the same footer.
+  if (pathname === "/brand") {
+    return (
+      <SmoothScroll>
+        <div className="overflow-x-clip bg-shell text-ink" data-canvas-ignore>
+          <BrandPage />
+          <SiteFooter />
+        </div>
+      </SmoothScroll>
+    )
+  }
 
   return (
     <SmoothScroll>

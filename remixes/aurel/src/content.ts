@@ -46,6 +46,7 @@ export const legal = [
   { label: "Terms & Conditions", href: "/house" },
   { label: "Privacy Policy", href: "/house" },
   { label: "Shipping & Returns", href: "/appointments" },
+  { label: "Brand guidelines", href: "/brand" },
 ]
 
 /* ---------------------------------------------------------------- Home */

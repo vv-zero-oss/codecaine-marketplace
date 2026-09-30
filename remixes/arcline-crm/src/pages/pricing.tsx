@@ -129,7 +129,7 @@ function Value({ v }: { v: string | boolean }) {
 }
 
 /** Every plan, every feature: plan names stay pinned while the rows scroll under them. */
-function CompareTable({ billing }: { billing: Billing }) {
+export function CompareTable({ billing }: { billing: Billing }) {
   const grid = "grid grid-cols-[minmax(160px,220px)_repeat(4,minmax(110px,1fr))] gap-x-6"
   return (
     <div className="overflow-x-auto">

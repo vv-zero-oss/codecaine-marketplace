@@ -41,7 +41,7 @@ export function AtelierPage() {
 }
 
 /** One step of the process, as a card in the stack. */
-function StepCard({ number, name, title, body, image, alt }: { number: string; name: string; title: string; body: string; image: string; alt: string }) {
+export function StepCard({ number, name, title, body, image, alt }: { number: string; name: string; title: string; body: string; image: string; alt: string }) {
   return (
     <article className="grid min-h-[70svh] grid-rows-[auto_1fr] overflow-hidden bg-chip shadow-sheet md:grid-cols-[1fr_1.1fr] md:grid-rows-1">
       <div className="flex flex-col justify-between gap-10 p-6 sm:p-10 lg:p-14">

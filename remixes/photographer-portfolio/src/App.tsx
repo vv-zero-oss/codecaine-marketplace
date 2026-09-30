@@ -1,6 +1,6 @@
 /**
  * A photographer's portfolio: home, portfolio, a gallery per story, about,
- * services and contact.
+ * services and contact — and `/brand`, the style guide.
  *
  * Every section is a named component and every page is its own, so the
  * editor's layers panel reads `HomeHero`, `GalleryCard`, `PackageCard` rather
@@ -11,6 +11,7 @@
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { AboutPage } from "@/pages/about"
+import { BrandPage } from "@/pages/brand"
 import { ContactPage } from "@/pages/contact"
 import { GalleryPage } from "@/pages/gallery"
 import { HomePage } from "@/pages/home"
@@ -28,6 +29,7 @@ function Page({ pathname }: { pathname: string }) {
   if (path === "/about") return <AboutPage />
   if (path === "/services") return <ServicesPage />
   if (path === "/contact") return <ContactPage />
+  if (path === "/brand") return <BrandPage />
   return <NotFoundPage />
 }
 

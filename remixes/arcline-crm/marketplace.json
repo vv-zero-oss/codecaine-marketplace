@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "arcline-crm",
   "name": "Arcline — AI CRM",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A minimal, dark five-page site for Arcline, an AI CRM: a hero app window that answers a question live, a sticky five-chapter platform tour with HTML product mockups (table and email composer, workflow builder, pipeline board, analyst, charts), a Deal Memory band with isometric line icons, pricing with a comparison table, customers, an agents page and a changelog.",
   "designedFor": [
     "AI and SaaS products that want a calm, precise, hairline-grid landing page",
@@ -41,7 +41,7 @@
     "SaaS"
   ],
   "created": "2026-09-29",
-  "updated": "2026-09-29",
+  "updated": "2026-09-30",
   "meta": {
     "framework": "vite",
     "language": "typescript",
@@ -70,6 +70,10 @@
     {
       "path": "/changelog",
       "title": "Changelog"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "icon": "icon.svg",

@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "aurel",
   "name": "Aurel",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A high-end fashion house's site in bone, ink and burnt orange: a film that folds into the header, a garment rising through its headline, sticky split columns, a drifting archive wall and a turning silver seal — across home, collection, product, atelier, journal, house and appointments.",
   "designedFor": [
     "Fashion houses, boutiques and ateliers selling a small, considered collection",
@@ -75,6 +75,10 @@
     {
       "path": "/appointments",
       "title": "Appointments"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "icon": "icon.svg",

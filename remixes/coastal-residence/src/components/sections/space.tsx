@@ -8,7 +8,7 @@ import { ScriptReveal, StretchText } from "@/components/ui/stretch-text"
 import { amenities, notes, space } from "@/content"
 
 /** The chapter title, rising into the disc once it has covered. */
-function SpaceTitle({ progress }: { progress: MotionValue<number> }) {
+export function SpaceTitle({ progress }: { progress: MotionValue<number> }) {
   const opacity = useTransform(progress, (v) => Math.min(1, Math.max(0, (v - 0.5) / 0.2)))
   const y = useTransform(progress, [0.5, 1], ["12vh", "-6vh"])
   return (
@@ -27,7 +27,7 @@ function SpaceTitle({ progress }: { progress: MotionValue<number> }) {
 }
 
 /** A picture that drifts against the scroll by `amount` pixels. */
-function Drift({ src, alt, className, amount = 60 }: { src: string; alt: string; className?: string; amount?: number }) {
+export function Drift({ src, alt, className, amount = 60 }: { src: string; alt: string; className?: string; amount?: number }) {
   const ref = useRef<HTMLImageElement>(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })

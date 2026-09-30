@@ -2,7 +2,8 @@
  * Arcline — a CRM whose agents do the busywork of selling.
  *
  * Five pages behind a forty-line router (`lib/router.tsx`): Home, Agents,
- * Customers, Pricing and Changelog. Every page is a list of sections.
+ * Customers, Pricing and Changelog — and `/brand`, the brand guidelines.
+ * Every page is a list of sections.
  *
  * The whole site sits in one frame: two vertical hairlines a gutter in from
  * the window's edges, with the sections meeting between them at horizontal
@@ -16,6 +17,7 @@ import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
 import { usePathname } from "@/lib/router"
 import { AgentsPage } from "@/pages/agents"
+import { BrandPage } from "@/pages/brand"
 import { ChangelogPage } from "@/pages/changelog"
 import { CustomersPage } from "@/pages/customers"
 import { HomePage } from "@/pages/home"
@@ -27,6 +29,7 @@ const PAGES: Record<string, { title: string; Page: () => React.JSX.Element }> = 
   "/customers": { title: "Customers — Arcline", Page: CustomersPage },
   "/pricing": { title: "Pricing — Arcline", Page: PricingPage },
   "/changelog": { title: "Changelog — Arcline", Page: ChangelogPage },
+  "/brand": { title: "Brand guidelines — Arcline", Page: BrandPage },
 }
 
 /** `data-canvas-ignore` on the page wrapper, the frame and `<main>`:

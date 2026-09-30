@@ -252,7 +252,7 @@ export function TetrisSkyline({
           }
         }}
         onDoubleClick={() => setGame(false)}
-        className="notch absolute bottom-[calc(var(--spacing-pixel)*2)] left-1/2 inline-flex h-14 min-w-34 -translate-x-1/2 items-center justify-center gap-4 bg-ink px-8 text-[1.125rem] text-paper transition-transform duration-(--duration-press) ease-(--ease-out) outline-none select-none active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt"
+        className="notch focus-notch absolute bottom-[calc(var(--spacing-pixel)*2)] left-1/2 inline-flex h-14 min-w-34 -translate-x-1/2 items-center justify-center gap-4 bg-ink px-8 text-[1.125rem] text-paper transition-transform duration-(--duration-press) ease-(--ease-out) outline-none select-none active:scale-[0.97]"
       >
         {game ? "turn" : "play"}
         <NextPiece shape={next} />

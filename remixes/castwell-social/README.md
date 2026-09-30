@@ -20,6 +20,7 @@ npm run dev     # → http://localhost:3220
 | `/video-studio` | Brief to finished video, the workflow, templates by category, studio features |
 | `/scheduler` | One calendar for every channel, the best-time engine, approvals, publishing details |
 | `/pricing` | Three plans with a monthly/yearly switch, every feature side by side, FAQ |
+| `/brand` | The brand guidelines: mark, voice, tokens, type, motion and every component |
 
 A small router (`src/lib/router.tsx`) switches pages without a reload, on
 real paths, so the address bar and the editor's Pages list agree.
@@ -55,6 +56,24 @@ Registered with `useCanvasAction`: the mobile menu, each outcome slide,
 each How-it-works step, the brief's finished state, each video format,
 each template category, each approval rule, yearly billing and each FAQ.
 
+## The style guide at `/brand`
+
+`/brand` is Castwell's brand guidelines page, linked as "Brand guidelines"
+in the footer. It documents the mark (light and night, clear space, minimum
+size) and the voice; every colour token in `src/index.css` with its hex and
+live value, and WCAG contrast for the real text/ground pairs; the type scale;
+spacing, radii, shadows and borders; the motion tokens, playable; the icon
+sets and imagery; and every component — `ui/`, `motion/`, `mockups/`,
+`sections/` and `site/` — live, in its variants and states, with a copyable
+snippet. Each value is read off the rendered element at runtime, so a token
+changed in `index.css` changes the page. It lives in `src/pages/brand.tsx`
+and `src/components/brand/`.
+
+The pinned How-it-works tour is shown by its parts (nodes, pills, depth
+boxes, the four step visuals and cards) rather than pinned; the header and
+footer are the live ones around the page. A component added to the site is
+added to `/brand` in the same change.
+
 ## Where things live
 
 - `src/pages/` — one file per page, each a list of sections.
@@ -66,6 +85,7 @@ each template category, each approval rule, yearly billing and each FAQ.
 - `src/components/ui/` — shadcn primitives, plus `PixelIcon`, `PixelArt`,
   `PixelList`, `BrandLogo`, `LogoMark`.
 - `src/photos.ts` — the Pexels photos, credited in the footer.
+- `src/pages/brand.tsx`, `src/components/brand/` — the style guide.
 
 ## Credits
 

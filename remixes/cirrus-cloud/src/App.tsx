@@ -1,51 +1,50 @@
 /**
- * Cirrus — cloud development environments.
+ * Cirrus — cloud development environments: home, product, network,
+ * pricing, changelog and the brand guidelines.
  *
- * The page reads as a conversation: what it is (masthead), what teams run on
- * it (workloads), why it exists (origin, what changed), how it works (flow),
- * the product (the spec), how teams adopt it (levels), what it runs (stack),
- * what it costs, what people ask, and the ask itself.
+ * Every section is a named component and every piece of motion is its own
+ * (see `components/motion/`), so the canvas editor's layers panel reads
+ * `ServerFarm`, `LifeCycle`, `PixelMarquee` rather than `canvas`. Words live
+ * in `content.ts`; every colour, size and curve is a token in `index.css`.
  */
 
-import { CornerLink } from "@/components/blocks/corner-link"
 import { SmoothScroll } from "@/components/motion/smooth-scroll"
-import { Changed } from "@/components/sections/changed"
-import { Closing } from "@/components/sections/closing"
-import { Faq } from "@/components/sections/faq"
-import { Flow } from "@/components/sections/flow"
-import { Intro } from "@/components/sections/intro"
-import { Levels } from "@/components/sections/levels"
-import { Masthead } from "@/components/sections/masthead"
-import { Origin } from "@/components/sections/origin"
-import { Pricing } from "@/components/sections/pricing"
-import { Spec } from "@/components/sections/spec"
-import { Stack } from "@/components/sections/stack"
-import { Workloads } from "@/components/sections/workloads"
+import type { City } from "@/components/site/city-line"
 import { SiteFooter } from "@/components/site/site-footer"
-import { brand, masthead } from "@/content"
+import { SiteHeader } from "@/components/site/site-header"
+import { BrandPage } from "@/pages/brand"
+import { ChangelogPage } from "@/pages/changelog"
+import { HomePage } from "@/pages/home"
+import { NetworkPage } from "@/pages/network"
+import { NotFoundPage } from "@/pages/not-found"
+import { PricingPage } from "@/pages/pricing"
+import { ProductPage } from "@/pages/product"
+import { usePathname } from "@/lib/router"
+
+/** Each page, and the edge region whose skyline sits in its footer. */
+const PAGES: Record<string, { Page: () => React.JSX.Element; city: City }> = {
+  "/": { Page: HomePage, city: "london" },
+  "/product": { Page: ProductPage, city: "miami" },
+  "/network": { Page: NetworkPage, city: "manhattan" },
+  "/pricing": { Page: PricingPage, city: "los-angeles" },
+  "/changelog": { Page: ChangelogPage, city: "london" },
+  "/brand": { Page: BrandPage, city: "manhattan" },
+}
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, so the
  *  canvas editor looks through them (they stay in its layers panel). */
 export default function App() {
+  const pathname = usePathname().replace(/\/+$/, "") || "/"
+  const { Page, city } = PAGES[pathname] ?? { Page: NotFoundPage, city: "montreal" as City }
+
   return (
     <div className="min-h-dvh text-ink-soft" data-canvas-ignore>
-      <SmoothScroll />
-      <CornerLink label={masthead.corner} href={brand.console} />
-      <Masthead />
+      <SmoothScroll resetKey={pathname} />
+      <SiteHeader pathname={pathname} />
       <main data-canvas-ignore>
-        <Intro />
-        <Workloads />
-        <Origin />
-        <Changed />
-        <Flow />
-        <Spec />
-        <Levels />
-        <Stack />
-        <Pricing />
-        <Faq />
-        <Closing />
+        <Page key={pathname} />
       </main>
-      <SiteFooter />
+      <SiteFooter city={city} />
     </div>
   )
 }

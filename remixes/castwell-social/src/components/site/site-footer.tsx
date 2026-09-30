@@ -32,6 +32,7 @@ export function SiteFooter() {
           <span>© 2026 Castwell, Inc. All rights reserved.</span>
           <Link href="/pricing#faq" className="text-ink hover:text-muted">Privacy</Link>
           <Link href="/pricing#faq" className="text-ink hover:text-muted">Terms</Link>
+          <Link href="/brand" className="text-ink hover:text-muted">Brand guidelines</Link>
         </div>
         <p className="max-w-2xl md:text-right">
           Photography from{" "}

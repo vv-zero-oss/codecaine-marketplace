@@ -36,6 +36,23 @@ Every scene leaves with a scroll-tied blur (`ScrollScene`).
   `direction`, `motionBlur`, `intro` (`warp` / `fade` / `none`), `dotGrid`,
   `focus`, `paused`.
 
+## The style guide at `/brand`
+
+`/brand` is the brand guidelines page, reached from "Brand guidelines" in the
+footer: the mark on paper and night with its clear space and minimum size,
+the voice, every colour token in `src/index.css` with its live value, hex and
+WCAG contrast for the real text pairs, the fluid type scale, the layout
+tokens, radii, shadows and borders, the motion curves (playable), icons and
+imagery, and every component — the pills, the Sheet, the header's two faces,
+the footer, the cursor chips, and each motion piece (BlurText, Typewriter,
+CyclingImage, ScatterTiles, InfiniteCanvas, FlyingCursors, SteppedWords, the
+scenes, the live-pages parts, KnowsYourSystem, CallToAction) — live, with a
+copyable snippet. Every value is read off the rendered element, so changing a
+token changes the page. The pinned sections (Hero, Together, LivePages) are
+shown by the pieces they are made of. It lives in `src/pages/brand.tsx` and
+`src/components/brand/`; `src/lib/router.tsx` is a small router for the two
+pages.
+
 ## In the editor
 
 - The canvas drift is a GSAP tween held in a ref and Lenis is held in a ref, so
