@@ -1,0 +1,247 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Castwell's tokens. Every colour, shadow, radius, font and easing on the
+ * page is one of these — change it here and it changes everywhere.
+ */
+:root {
+  /* Surfaces */
+  --page: #fffff8;
+  --panel: #fafcf5;
+  --sage: #f2f5e9;
+  --sage-deep: #dce7d9;
+  --night: #131313;
+  --night-raised: #1a1a19;
+
+  /* Ink */
+  --ink: #141414;
+  --ink-soft: #3a3a36;
+  --muted: #6b6c66;
+  --night-ink: #f4f4ec;
+  --night-muted: #8d8e88;
+
+  /* Lines */
+  --line: #e1e3dc;
+  --line-strong: #caccc5;
+  --night-line: #2e2e2b;
+  --night-line-strong: #454541;
+
+  /* Accents */
+  --mint: #4bd9b0;
+  --mint-soft: #abead7;
+  --mint-tile: #8ee3c8;
+  --mint-ink: #0f5b45;
+  --coral: #e48889;
+  --coral-soft: #f1a1a4;
+  --butter: #ead684;
+  --periwinkle: #abbcf3;
+  --indigo: #5d66de;
+
+  /* Shadows — the page is flat; these are the only lifts it allows */
+  --shadow-hairline: 0 1px 0 0 rgb(20 20 20 / 0.04);
+  --shadow-float: 0 1px 2px rgb(20 20 20 / 0.04), 0 12px 32px -14px rgb(20 20 20 / 0.18);
+  --shadow-menu: 0 1px 0 rgb(20 20 20 / 0.03), 0 18px 40px -18px rgb(20 20 20 / 0.22);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-ui: 200ms;
+  --duration-reveal: 700ms;
+
+  /* shadcn's names, pointed at the palette */
+  --radius: 0px;
+  --background: var(--page);
+  --foreground: var(--ink);
+  --card: var(--page);
+  --card-foreground: var(--ink);
+  --popover: var(--page);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--page);
+  --secondary: var(--sage);
+  --secondary-foreground: var(--ink);
+  --muted-foreground: var(--muted);
+  --accent: var(--sage);
+  --accent-foreground: var(--ink);
+  --destructive: #c2410c;
+  --border: var(--line);
+  --input: var(--line-strong);
+  --ring: var(--mint);
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", "EB Garamond", ui-serif, Georgia, serif;
+
+  --color-page: var(--page);
+  --color-panel: var(--panel);
+  --color-sage: var(--sage);
+  --color-sage-deep: var(--sage-deep);
+  --color-night: var(--night);
+  --color-night-raised: var(--night-raised);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-muted: var(--muted);
+  --color-night-ink: var(--night-ink);
+  --color-night-muted: var(--night-muted);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-night-line: var(--night-line);
+  --color-night-line-strong: var(--night-line-strong);
+  --color-mint: var(--mint);
+  --color-mint-soft: var(--mint-soft);
+  --color-mint-tile: var(--mint-tile);
+  --color-mint-ink: var(--mint-ink);
+  --color-coral: var(--coral);
+  --color-coral-soft: var(--coral-soft);
+  --color-butter: var(--butter);
+  --color-periwinkle: var(--periwinkle);
+  --color-indigo: var(--indigo);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --shadow-hairline: var(--shadow-hairline);
+  --shadow-float: var(--shadow-float);
+  --shadow-menu: var(--shadow-menu);
+
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+
+  --ease-out-strong: var(--ease-out);
+  --ease-in-out-strong: var(--ease-in-out);
+  --ease-drawer: var(--ease-drawer);
+
+  /* The page's spacing rhythm, read at 1440 and scaled down */
+  --spacing-gutter: clamp(1rem, 3.4vw, 3rem);
+  --spacing-section: clamp(4.5rem, 9vw, 8.5rem);
+
+  --text-display: clamp(2.5rem, 4.6vw + 0.5rem, 4.25rem);
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.025em;
+  --text-title: clamp(2rem, 3vw + 0.5rem, 3.5rem);
+  --text-title--line-height: 1.08;
+  --text-title--letter-spacing: -0.02em;
+  --text-heading: clamp(1.5rem, 1.2vw + 1rem, 2.125rem);
+  --text-heading--line-height: 1.15;
+  --text-heading--letter-spacing: -0.015em;
+
+  --animate-accordion-down: accordion-down 220ms var(--ease-out);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out);
+  --animate-caret: caret 1s steps(1) infinite;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    background: var(--page);
+  }
+  body {
+    margin: 0;
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--mint-soft);
+    color: var(--ink);
+  }
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+/* A square bullet with a notch: the page's one list marker. */
+.pixel-bullet {
+  --c: currentColor;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  flex: none;
+  background:
+    linear-gradient(var(--page), var(--page)) 3px 3px / 3px 3px no-repeat,
+    var(--c);
+}
+.night .pixel-bullet {
+  background:
+    linear-gradient(var(--night), var(--night)) 3px 3px / 3px 3px no-repeat,
+    var(--c);
+}
+
+/* Faint grid the night sections sit on */
+.night-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.025) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.hatch {
+  background-image: repeating-linear-gradient(135deg, currentColor 0 1px, transparent 1px 5px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* The outcome carousel's timer bars */
+@keyframes fill-bar {
+  from { transform: translateY(-50%) scaleX(0); }
+  to { transform: translateY(-50%) scaleX(1); }
+}
+
+/* A render bar breathing while it works */
+@keyframes render {
+  from { transform: scaleX(0.92); }
+  to { transform: scaleX(1); }
+}
