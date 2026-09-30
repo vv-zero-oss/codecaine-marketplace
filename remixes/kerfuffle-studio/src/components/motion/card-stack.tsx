@@ -36,7 +36,7 @@ export function CardStack({
         className={cn("flex flex-col items-center justify-center gap-8 py-24 md:gap-10", !reduced && "sticky top-0 h-svh py-0")}
       >
         {header}
-        <div className="relative w-full max-w-[40rem]" style={{ height: "min(44svh, 24rem)" }}>
+        <div className="relative w-full max-w-[40rem]" style={{ height: "min(50svh, 28rem)" }}>
           {items.map((item, i) => (
             <StackCard key={i} index={i} count={items.length} progress={scrollYProgress} step={step} reduced={!!reduced}>
               {item}

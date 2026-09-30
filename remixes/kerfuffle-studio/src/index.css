@@ -2,7 +2,7 @@
 
 /*
  * Kerfuffle — every colour, shadow, radius, font and motion curve lives here.
- * Components use the Tailwind names these produce (`bg-paper`, `text-blue`,
+ * Components use the Tailwind names these produce (`bg-paper`, `text-flame`,
  * `shadow-sticker`, `ease-brush`…), never a raw value.
  */
 @theme {
@@ -10,53 +10,53 @@
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Archivo", "Arial Narrow", ui-sans-serif, sans-serif;
   --font-serif: "Instrument Serif", "Times New Roman", ui-serif, serif;
-  --font-script: "Mr Dafoe", "Brush Script MT", cursive;
-  --font-bubble: "Chewy", "Comic Sans MS", cursive;
+  --font-brand: "Shrikhand", "Cooper Black", ui-serif, serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Surface */
-  --color-paper: #f3f3f3;
-  --color-card: #ffffff;
-  --color-night: #0e0e0e;
-  --color-night-raised: #1a1a1a;
+  --color-paper: #f2ece0;
+  --color-card: #fffaf1;
+  --color-night: #12281f;
+  --color-night-raised: #1d3a2e;
 
   /* Text */
-  --color-ink: #0d0d0d;
-  --color-ink-soft: #4a4a4a;
-  --color-ink-mute: #8a8a8a;
-  --color-snow: #ffffff;
-  --color-snow-mute: #a3a3a3;
+  --color-ink: #1a1916;
+  --color-ink-soft: #4d4a43;
+  --color-ink-mute: #8a8477;
+  --color-snow: #fffaf1;
+  --color-snow-mute: #b4c1b7;
 
   /* Border */
-  --color-line: #e3e3e3;
-  --color-line-dark: #2b2b2b;
+  --color-line: #ddd4c2;
+  --color-line-dark: #2d4a3d;
 
   /* Brand */
-  --color-blue: #0a35ff;
-  --color-blue-deep: #0026c4;
-  --color-pink: #f55bc4;
-  --color-pink-deep: #d9379f;
-  --color-orange: #ff5a1f;
-  --color-red: #e8322a;
-  --color-green: #45b649;
-  --color-yellow: #ffd23f;
-  --color-lilac: #8f98f8;
-  --color-mint: #d4e6c9;
-  --color-sky: #e4efff;
+  --color-flame: #ff4a1c;
+  --color-flame-deep: #d83a0f;
+  --color-lime: #d2f55f;
+  --color-lime-deep: #b8de3d;
+  --color-violet: #5b2a86;
+  --color-red: #d8264a;
+  --color-green: #2f8f5b;
+  --color-yellow: #ffd45c;
+  --color-iris: #aebcff;
+  --color-mint: #cddbc2;
+  --color-blush: #f6d6c9;
 
-  /* Radii — the site is square; only badges and pills round off */
+  /* Radii — soft cards and round pills */
   --radius-none: 0px;
-  --radius-chip: 3px;
+  --radius-card: 20px;
+  --radius-chip: 10px;
   --radius-pill: 999px;
 
-  /* Shadows */
-  --shadow-sticker: 0 1px 0 rgb(0 0 0 / 0.06), 0 6px 14px -4px rgb(0 0 0 / 0.22);
-  --shadow-polaroid: 0 2px 4px rgb(0 0 0 / 0.04), 0 18px 40px -12px rgb(0 0 0 / 0.22);
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04);
-  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.06), 0 24px 48px -16px rgb(0 0 0 / 0.28);
+  /* Shadows — warm, low, and layered */
+  --shadow-sticker: 0 1px 0 rgb(26 25 22 / 0.08), 0 8px 18px -8px rgb(26 25 22 / 0.35);
+  --shadow-polaroid: 0 2px 6px rgb(26 25 22 / 0.06), 0 22px 44px -18px rgb(26 25 22 / 0.35);
+  --shadow-card: 0 1px 2px rgb(26 25 22 / 0.06);
+  --shadow-lift: 0 2px 6px rgb(26 25 22 / 0.08), 0 28px 56px -20px rgb(26 25 22 / 0.4);
 
-  /* Spacing steps read off the layout (on Tailwind's 4px grid) */
-  --spacing-gutter: clamp(1rem, 2vw, 1.5rem);
+  /* Spacing steps (on Tailwind's 4px grid) */
+  --spacing-gutter: clamp(1rem, 2.4vw, 2rem);
   --spacing-section: clamp(5rem, 11vw, 10rem);
 
   /* Motion */
@@ -88,28 +88,29 @@
 /* The condensed, heavy grotesk every headline starts with. */
 @utility display {
   font-family: var(--font-display);
-  font-weight: 800;
-  font-stretch: 64%;
-  letter-spacing: -0.025em;
-  line-height: 0.86;
+  font-weight: 900;
+  font-stretch: 78%;
+  letter-spacing: -0.035em;
+  line-height: 0.88;
   text-transform: uppercase;
 }
 
-/* The light serif line that answers it. */
+/* The italic serif words that answer it, in lower case. */
 @utility display-serif {
   font-family: var(--font-serif);
+  font-style: italic;
   font-weight: 400;
-  letter-spacing: -0.03em;
-  line-height: 0.86;
-  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.88;
+  text-transform: none;
 }
 
 /* Small caps labels: nav, buttons, eyebrows on dark. */
 @utility label {
   font-family: var(--font-display);
   font-weight: 800;
-  font-stretch: 75%;
-  letter-spacing: -0.01em;
+  font-stretch: 85%;
+  letter-spacing: 0.01em;
   text-transform: uppercase;
 }
 
@@ -128,12 +129,12 @@
   }
 
   ::selection {
-    background: var(--color-blue);
+    background: var(--color-flame);
     color: var(--color-snow);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-blue);
+    outline: 2px solid var(--color-flame);
     outline-offset: 3px;
   }
 }
@@ -163,7 +164,7 @@ html.lenis body {
   50% { transform: translate3d(0, -10px, 0) rotate(calc(var(--r, 0deg) + 3deg)); }
 }
 
-/* The mobile menu wipes down from the top in the brand blue. */
+/* The mobile menu wipes down from the top in the brand colour. */
 @keyframes sheet-in {
   from { clip-path: inset(0 0 100% 0); }
   to { clip-path: inset(0 0 0 0); }

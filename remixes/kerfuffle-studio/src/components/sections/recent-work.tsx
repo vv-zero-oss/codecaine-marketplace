@@ -7,7 +7,7 @@ import { CASES } from "@/content"
 
 /**
  * The dark reel: the section pins while four recent cases pile up on each
- * other, their coloured frames peeking out on top.
+ * other, their colour edges peeking out on top.
  */
 export function RecentWork({ count = 4 }: { count?: number }) {
   const picks = CASES.slice(0, count)
@@ -18,18 +18,18 @@ export function RecentWork({ count = 4 }: { count?: number }) {
         step={16}
         header={
           <DisplayHeading
-            eyebrow="Too good to scroll past. A handful of what we made lately."
-            bold="Recent"
-            serif="work"
+            eyebrow="Fresh off the timeline"
+            bold="Latest"
+            serif="projects"
             inline
             size="md"
-            className="px-gutter [&_p]:max-w-[26ch]"
+            className="px-gutter"
           />
         }
         items={picks.map((item) => (
           <CaseFrame key={item.slug} item={item} />
         ))}
-        footer={<ButtonLink href="/work" tone="pink" label="View our work" />}
+        footer={<ButtonLink href="/work" tone="lime" label="See all projects" />}
         overlay={<ScrollBadge className="absolute right-4 bottom-6 hidden sm:grid md:right-8 md:bottom-10" />}
       />
     </section>

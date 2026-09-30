@@ -3,8 +3,8 @@ import type * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * The house headline: a small serif eyebrow, then a heavy condensed line
- * answered by a light serif one. `inline` puts both on one line
+ * The house headline: a small tag, then a heavy condensed line answered by
+ * italic serif words in lower case. `inline` puts both on one line
  * (“RECENT work”), otherwise they stack.
  */
 export function DisplayHeading({
@@ -33,7 +33,7 @@ export function DisplayHeading({
   }
   return (
     <div className={cn(align === "center" ? "text-center" : "text-left", className)}>
-      {eyebrow ? <Eyebrow className={cn("mb-3 md:mb-4", align === "center" && "mx-auto")}>{eyebrow}</Eyebrow> : null}
+      {eyebrow ? <Eyebrow className="mb-5 md:mb-6">{eyebrow}</Eyebrow> : null}
       <Tag className={cn(sizes[size], "leading-[0.88] text-balance")}>
         <span className="display">{bold}</span>
         {serif ? (
@@ -47,11 +47,20 @@ export function DisplayHeading({
   )
 }
 
-export function Eyebrow({ className, ...props }: React.ComponentProps<"p">) {
+/** A small caps tag with a spark in front — what a section is about. */
+export function Eyebrow({ className, children, ...props }: React.ComponentProps<"p">) {
   return (
     <p
-      className={cn("max-w-[22ch] font-serif text-[clamp(1.35rem,2.2vw,2rem)] leading-[1.02] tracking-tight text-balance", className)}
+      className={cn(
+        "inline-flex max-w-full items-center gap-2 rounded-pill border border-current/20 px-3.5 py-1.5 label text-xs text-balance",
+        className,
+      )}
       {...props}
-    />
+    >
+      <svg aria-hidden viewBox="0 0 20 20" className="size-2.5 shrink-0 text-flame">
+        <path d="M10 0l2.2 7.8L20 10l-7.8 2.2L10 20l-2.2-7.8L0 10l7.8-2.2z" fill="currentColor" />
+      </svg>
+      {children}
+    </p>
   )
 }

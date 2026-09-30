@@ -5,22 +5,22 @@ import { Container } from "@/components/ui/container"
 import { DisplayHeading } from "@/components/ui/heading"
 
 const CHAPTERS = [
-  { id: "brand", title: "Brand", blurb: "The signature, the seal, and how the studio talks.", Body: BrandIdentity },
+  { id: "brand", title: "Brand", blurb: "The name, the badge, and how the studio talks.", Body: BrandIdentity },
   {
     id: "colour",
     title: "Colour",
     blurb: "Every colour on the site, read live from index.css — change a token there and it changes here.",
     Body: ColourTokens,
   },
-  { id: "type", title: "Typography", blurb: "Heavy condensed caps answered by a light serif. Values are measured off the rendered text.", Body: Typography },
+  { id: "type", title: "Typography", blurb: "Heavy condensed caps answered by italic serif words. Values are measured off the rendered text.", Body: Typography },
   {
     id: "space",
     title: "Space, radii, shadows, borders",
-    blurb: "A 4px grid, square corners, thin lines and a few honest shadows.",
+    blurb: "A 4px grid, soft 20px corners, a 2px ink outline and warm, low shadows.",
     Body: SpaceAndSurface,
   },
   { id: "motion", title: "Motion", blurb: "Everything moves — but each move has a reason. Press play.", Body: Motion },
-  { id: "icons", title: "Iconography and imagery", blurb: "Lucide in a blue square, real photography, and stickers.", Body: Iconography },
+  { id: "icons", title: "Iconography and imagery", blurb: "Lucide in a round well, real photography, and pill stickers.", Body: Iconography },
   {
     id: "components",
     title: "Components",
@@ -36,7 +36,7 @@ export function BrandNav() {
       <ul className="sticky top-28 space-y-1">
         {CHAPTERS.map((chapter) => (
           <li key={chapter.id}>
-            <a href={`#${chapter.id}`} className="block py-1 font-serif text-xl text-ink-soft transition-colors hover:text-blue">
+            <a href={`#${chapter.id}`} className="block rounded-pill px-3 py-1.5 label text-xs text-ink-soft transition-colors hover:bg-lime hover:text-ink">
               {chapter.title}
             </a>
           </li>
@@ -57,7 +57,7 @@ export function BrandPage() {
     <section data-tone="light" className="pt-36 pb-section md:pt-44">
       <Container>
         <DisplayHeading as="h1" eyebrow="Brand guidelines" bold="Kerfuffle," serif="as a system" size="lg" align="left" />
-        <p className="mt-6 max-w-xl font-serif text-2xl leading-tight">
+        <p className="mt-6 max-w-xl text-lg leading-snug">
           The tokens, type, motion and components the site is built from — one place to look before changing any of them.
         </p>
         <div className="mt-16 grid gap-12 lg:grid-cols-[13rem_minmax(0,1fr)]">

@@ -11,7 +11,7 @@ import { Sticker } from "@/components/ui/sticker"
 import { photo, SERVICES } from "@/content"
 import { cn } from "@/lib/utils"
 
-const PANEL = { blue: "bg-blue", pink: "bg-pink", orange: "bg-orange" } as const
+const PANEL = { flame: "bg-flame", lime: "bg-lime", violet: "bg-violet" } as const
 
 const STEPS = [
   { n: "01", title: "A call", body: "Half an hour, no deck. You tell us what is stuck; we ask the awkward questions." },
@@ -27,12 +27,15 @@ export function WhatWeDoPage() {
         <Container>
           <StickerBurst count={6} className="mx-auto max-w-6xl py-10">
             <div className="flex flex-col items-center text-center">
-              <Eyebrow>What we do</Eyebrow>
-              <h1 className="mt-3 text-[clamp(3.25rem,10.5vw,10rem)] leading-[0.88]">
-                <span className="display">Everything</span> <span className="display-serif">moves</span>
+              <Eyebrow>Services</Eyebrow>
+              <h1 className="mt-6 text-[clamp(3.25rem,10.5vw,10rem)] leading-[0.88]">
+                <span className="display">Three</span> <span className="display-serif text-flame">flavours</span>
+                <br />
+                <span className="display">of motion</span>
               </h1>
-              <p className="mt-6 max-w-[30ch] font-serif text-[clamp(1.4rem,2.4vw,2.1rem)] leading-[1.08] tracking-tight">
-                Brands, people, attention. But not everything moves by itself. That is what we are for.
+              <p className="mt-6 max-w-[40ch] text-[clamp(1.1rem,1.6vw,1.35rem)] leading-snug">
+                Pick one, mix two, or let us bundle all three into a campaign. Either way the same crew draws, shoots and
+                cuts it.
               </p>
             </div>
           </StickerBurst>
@@ -41,16 +44,16 @@ export function WhatWeDoPage() {
 
       {SERVICES.map((service, i) => (
         <section key={service.key} id={service.key} data-tone="light" className="scroll-mt-0">
-          <div className={cn("grid md:min-h-svh md:grid-cols-2", i % 2 === 1 && "md:[&>*:first-child]:order-2")}>
-            <div className="flex items-center px-gutter py-20 md:px-[8%]">
+          <div className={cn("grid gap-6 px-gutter pb-16 md:grid-cols-2 md:pb-24", i % 2 === 1 && "md:[&>*:first-child]:order-2")}>
+            <div className="flex items-center py-8 md:px-[6%] md:py-20">
               <Reveal className="md:sticky md:top-32">
                 <Eyebrow>{service.eyebrow}</Eyebrow>
-                <h2 className="mt-2 display text-[clamp(3.5rem,8vw,7.5rem)]">{service.title}</h2>
+                <h2 className="mt-5 display text-[clamp(3.5rem,8vw,7.5rem)]">{service.title}</h2>
                 <p className="mt-5 max-w-[46ch] text-base leading-relaxed md:text-lg">{service.body}</p>
                 <ul className="mt-6 grid gap-2 sm:grid-cols-2">
                   {service.points.map((point) => (
-                    <li key={point} className="flex items-center gap-2 font-serif text-xl">
-                      <span className="flex size-5 items-center justify-center bg-blue text-snow">
+                    <li key={point} className="flex items-center gap-2 text-base">
+                      <span className="flex size-5 items-center justify-center rounded-full bg-flame text-snow">
                         <Check className="size-3.5" strokeWidth={3} />
                       </span>
                       {point}
@@ -59,12 +62,12 @@ export function WhatWeDoPage() {
                 </ul>
               </Reveal>
             </div>
-            <div className={cn("relative flex min-h-[70svh] items-center justify-center overflow-hidden p-8 md:p-16", PANEL[service.color])}>
+            <div className={cn("relative flex min-h-[60svh] items-center justify-center overflow-hidden rounded-card border-2 border-ink p-8 md:min-h-[80svh] md:p-16", PANEL[service.color])}>
               <Parallax speed={0.1} className="w-full max-w-lg">
-                <img src={photo(service.image, 1000)} alt="" loading="lazy" className="aspect-[4/5] w-full object-cover shadow-lift" />
+                <img src={photo(service.image, 1000)} alt="" loading="lazy" className="aspect-[4/5] w-full rounded-[14px] border-2 border-ink object-cover shadow-lift" />
               </Parallax>
               <div className="absolute right-[8%] bottom-[12%]">
-                <Sticker text={["Frame by frame", "Roll camera", "Stop the scroll"][i]} tone={(["yellow", "blue", "pink"] as const)[i]} rotate={6} />
+                <Sticker text={["Keyframe club", "Quiet on set", "Hook in 1s"][i]} tone={(["yellow", "violet", "lime"] as const)[i]} rotate={6} />
               </div>
             </div>
           </div>
@@ -74,15 +77,15 @@ export function WhatWeDoPage() {
       <section data-tone="light" className="py-section">
         <Container>
           <Reveal>
-            <DisplayHeading eyebrow="From first call to first view" bold="How we" serif="work" size="md" />
+            <DisplayHeading eyebrow="From first call to first view" bold="Four" serif="steps, no fuss" inline size="md" align="left" />
           </Reveal>
-          <ol className="mt-14 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
+          <ol className="mt-14 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {STEPS.map((step, i) => (
               <Reveal key={step.n} delay={i * 0.07} className="h-full">
-                <li className="h-full bg-paper p-6 md:p-8">
-                  <span className="font-mono text-xs text-blue">{step.n}</span>
-                  <h3 className="mt-3 display text-4xl">{step.title}</h3>
-                  <p className="mt-2 font-serif text-xl leading-snug">{step.body}</p>
+                <li className="h-full rounded-card border-2 border-ink bg-card p-6 md:p-8">
+                  <span className="flex size-10 items-center justify-center rounded-full bg-lime font-mono text-xs">{step.n}</span>
+                  <h3 className="mt-5 display text-4xl">{step.title}</h3>
+                  <p className="mt-2 text-base leading-snug">{step.body}</p>
                 </li>
               </Reveal>
             ))}

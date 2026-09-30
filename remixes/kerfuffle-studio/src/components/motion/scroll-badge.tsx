@@ -8,7 +8,7 @@ import { cn } from "@/lib/utils"
  * for every `perTurn` pixels.
  */
 export function ScrollBadge({
-  text = "This is how we scroll • ",
+  text = "Keep scrolling • more below • ",
   perTurn = 1400,
   className,
 }: {
@@ -21,7 +21,7 @@ export function ScrollBadge({
   const rotate = useTransform(scrollY, (y) => (reduced ? 0 : (y / perTurn) * 360))
   const id = "badge-circle"
   return (
-    <div className={cn("relative grid size-24 place-items-center rounded-full bg-lilac text-ink shadow-sticker md:size-28", className)}>
+    <div className={cn("relative grid size-24 place-items-center rounded-full border-2 border-ink bg-iris text-ink shadow-sticker md:size-28", className)}>
       <motion.svg viewBox="0 0 100 100" className="absolute inset-0 size-full" style={{ rotate }}>
         <defs>
           <path id={id} d="M50 50 m-34 0 a34 34 0 1 1 68 0 a34 34 0 1 1 -68 0" />

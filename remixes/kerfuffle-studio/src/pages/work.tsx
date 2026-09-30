@@ -30,10 +30,10 @@ export function WorkPage() {
       <section data-tone="light" className="pt-36 pb-section md:pt-44">
         <Container>
           <Reveal>
-            <DisplayHeading as="h1" eyebrow="Not to be missed. Worth sharing." bold="All our" serif="work" size="xl" />
+            <DisplayHeading as="h1" eyebrow="Selected projects, 2023 – 2026" bold="The" serif="archive" inline size="xl" align="left" />
           </Reveal>
           <LayoutGroup>
-            <div role="tablist" aria-label="Filter work" className="mt-10 flex flex-wrap justify-center gap-2">
+            <div role="tablist" aria-label="Filter work" className="mt-10 flex flex-wrap gap-2">
               {FILTERS.map((f) => {
                 const active = filter === f.key
                 const count = f.key === "all" ? CASES.length : CASES.filter((c) => c.services.includes(f.key as ServiceKey)).length
@@ -44,12 +44,12 @@ export function WorkPage() {
                     aria-selected={active}
                     onClick={() => setFilter(f.key)}
                     className={cn(
-                      "relative h-11 px-4 label text-sm transition-colors duration-(--duration-fast)",
-                      active ? "text-snow" : "bg-card text-ink hover:text-blue",
+                      "relative h-11 rounded-pill border-2 border-ink px-5 label text-xs transition-colors duration-(--duration-fast)",
+                      active ? "text-ink" : "bg-card text-ink hover:bg-paper",
                     )}
                   >
                     {active ? (
-                      <motion.span layoutId="work-filter" className="absolute inset-0 bg-blue" transition={{ type: "spring", stiffness: 500, damping: 38 }} />
+                      <motion.span layoutId="work-filter" className="absolute -inset-[2px] rounded-pill border-2 border-ink bg-lime" transition={{ type: "spring", stiffness: 500, damping: 38 }} />
                     ) : null}
                     <span className="relative">
                       {f.label} <span className="font-mono text-[11px] font-normal opacity-70">{count}</span>
@@ -58,9 +58,9 @@ export function WorkPage() {
                 )
               })}
             </div>
-            <motion.ul layout className="mt-14 grid gap-5 sm:grid-cols-2 md:mt-20 lg:grid-cols-3 lg:gap-8 lg:pb-24">
+            <motion.ul layout className="mt-14 grid gap-x-6 gap-y-14 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
               <AnimatePresence mode="popLayout">
-                {shown.map((item, i) => (
+                {shown.map((item) => (
                   <motion.li
                     key={item.slug}
                     layout
@@ -68,7 +68,6 @@ export function WorkPage() {
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.94 }}
                     transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    className={cn(i % 3 === 1 && "lg:translate-y-24")}
                   >
                     <WorkCard item={item} />
                   </motion.li>

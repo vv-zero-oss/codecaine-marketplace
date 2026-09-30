@@ -10,12 +10,12 @@ import { NAV, STUDIO } from "@/content"
 import { isActive, Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
-/** The dark band every page ends on: one question, one pink button. */
+/** The dark band every page ends on: one invitation, one lime button. */
 export function CtaBand({
-  bold = "Got something",
-  serif = "to set in motion?",
-  body = "Tell us where your story is stuck. We'll make it move.",
-  cta = "Start your story",
+  bold = "Let's cause",
+  serif = "a kerfuffle",
+  body = "Bring the half-baked idea. We'll bring the coffee and the keyframes.",
+  cta = "Start a project",
 }: {
   bold?: string
   serif?: string
@@ -23,8 +23,8 @@ export function CtaBand({
   cta?: string
 }) {
   return (
-    <section data-tone="dark" className="bg-night pt-section pb-24 text-snow md:pb-36">
-      <Container className="flex flex-col items-center text-center">
+    <section data-tone="dark" className="bg-night px-gutter pt-section pb-24 text-snow md:pb-32">
+      <div className="mx-auto flex max-w-[90rem] flex-col items-center rounded-card bg-night-raised px-6 py-16 text-center md:py-24" data-canvas-ignore>
         <Reveal>
           <DisplayHeading bold={bold} serif={serif} size="lg" as="h2" />
         </Reveal>
@@ -32,9 +32,9 @@ export function CtaBand({
           <p className="mt-5 max-w-md text-base md:text-lg">{body}</p>
         </Reveal>
         <Reveal delay={0.18} className="mt-7">
-          <ButtonLink href="/contact" tone="pink" label={cta} />
+          <ButtonLink href="/contact" tone="lime" size="lg" label={cta} />
         </Reveal>
-      </Container>
+      </div>
     </section>
   )
 }
@@ -42,7 +42,7 @@ export function CtaBand({
 function Column({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="label text-lg">{title}</h3>
+      <h3 className="label text-xs text-lime">{title}</h3>
       <div className="mt-3 flex flex-col gap-1.5 font-serif text-xl leading-tight text-snow-mute">{children}</div>
     </div>
   )
@@ -55,7 +55,7 @@ export function SiteFooter({ pathname }: { pathname: string }) {
       <Container className="border-t border-line-dark pt-14 pb-6 md:pt-20">
         <div className="grid gap-12 md:grid-cols-[1.2fr_2fr] md:gap-8">
           <Link href="/" aria-label={`${STUDIO.name} home`} className="self-center justify-self-start md:justify-self-center">
-            <Wordmark tone="snow" className="text-[5rem] md:text-[7.5rem]" />
+            <Wordmark tone="snow" className="text-[4rem] md:text-[6.5rem]" />
           </Link>
           <div className="grid grid-cols-2 gap-10 sm:grid-cols-[1fr_1.3fr_1fr_auto]">
             <Column title="Navigation">
@@ -64,7 +64,7 @@ export function SiteFooter({ pathname }: { pathname: string }) {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "w-fit decoration-pink decoration-2 underline-offset-4 transition-colors hover:text-snow",
+                    "w-fit decoration-lime decoration-2 underline-offset-4 transition-colors hover:text-snow",
                     isActive(pathname, item.href) && "text-snow underline",
                   )}
                 >
@@ -98,7 +98,7 @@ export function SiteFooter({ pathname }: { pathname: string }) {
               type="button"
               onClick={() => scrollToTop(false)}
               aria-label="Back to top"
-              className="col-span-2 inline-flex size-11 items-center justify-center justify-self-end bg-night-raised text-snow transition-colors hover:bg-snow hover:text-ink sm:col-span-1 sm:size-9"
+              className="col-span-2 inline-flex size-12 items-center justify-center justify-self-end rounded-full bg-lime text-ink transition-transform duration-(--duration-base) ease-(--ease-pop) hover:-translate-y-1 sm:col-span-1"
             >
               <ArrowUp className="size-4" strokeWidth={2.5} />
             </button>

@@ -18,7 +18,7 @@ import { DisplayHeading, Eyebrow } from "@/components/ui/heading"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Polaroid } from "@/components/ui/polaroid"
-import { ScribbleLink } from "@/components/ui/scribble-link"
+import { ArrowLink } from "@/components/ui/arrow-link"
 import { Emblem, Sticker } from "@/components/ui/sticker"
 import { Textarea } from "@/components/ui/textarea"
 import { Wordmark } from "@/components/ui/wordmark"
@@ -36,19 +36,19 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="Button / ButtonLink"
         source="components/ui/button.tsx"
-        description="An icon cell and a label cell. Four tones, three sizes; the arrow slides through on hover, the button sinks on press. Internal hrefs go through the page transition."
-        code={`<ButtonLink href="/about" label="More about us" />\n<Button tone="pink" size="lg" icon={Send} label="Send your brief" loading={sending} />`}
+        description="A rounded pill: label first, icon in a round well at the end. Four tones, three sizes; the well grows and the arrow straightens on hover, the pill squeezes on press. Internal hrefs go through the page transition."
+        code={`<ButtonLink href="/about" label="Meet the studio" />\n<Button tone="lime" size="lg" icon={Send} label="Send your brief" loading={sending} />`}
       >
         <div className="space-y-8">
           <div className="flex flex-wrap items-end gap-6">
-            <StateLabel label="tone=blue">
-              <Button label="More about us" />
+            <StateLabel label="tone=flame">
+              <Button label="Meet the studio" />
             </StateLabel>
-            <StateLabel label="tone=pink">
-              <Button tone="pink" label="View our work" />
+            <StateLabel label="tone=lime">
+              <Button tone="lime" label="See all projects" />
             </StateLabel>
             <StateLabel label="tone=white">
-              <Button tone="white" label="Contact" />
+              <Button tone="white" label="Say hello" />
             </StateLabel>
             <StateLabel label="tone=ink">
               <Button tone="ink" label="Read more" />
@@ -66,14 +66,14 @@ export function ComponentLibrary() {
             </StateLabel>
             <StateLabel label="icon=Phone / Mail">
               <div className="flex gap-2">
-                <ButtonLink href="tel:+31102048817" tone="pink" icon={Phone} label="Call us" />
+                <ButtonLink href="tel:+31102048817" tone="lime" icon={Phone} label="Call us" />
                 <ButtonLink href="mailto:hello@kerfuffle.studio" icon={Mail} label="Email us" />
               </div>
             </StateLabel>
           </div>
           <div className="flex flex-wrap items-end gap-6">
             <StateLabel label="focus">
-              <Button label="Focused" className="outline-2 outline-offset-3 outline-blue" />
+              <Button label="Focused" className="outline-2 outline-offset-3 outline-ink" />
             </StateLabel>
             <StateLabel label="loading">
               <Button label="Sending…" loading />
@@ -86,21 +86,21 @@ export function ComponentLibrary() {
       </ComponentSpecimen>
 
       <ComponentSpecimen
-        name="ScribbleLink"
-        source="components/ui/scribble-link.tsx"
-        description="The “Discover more” link: serif, a hand-drawn blue loop under it, a square arrow. The loop redraws on hover when not drawn."
-        code={`<ScribbleLink href="/what-we-do" label="Discover more" />\n<ScribbleLink href="/#intro" direction="down" drawn={false} />`}
+        name="ArrowLink"
+        source="components/ui/arrow-link.tsx"
+        description="A caps text link with a round arrow: the underline wipes in on hover (or stays with `underlined`), the arrow well fills in flame."
+        code={`<ArrowLink href="/what-we-do" label="How we work" />\n<ArrowLink href="/#intro" direction="down" underlined />`}
       >
         <div className="flex flex-wrap items-center gap-10">
-          <StateLabel label="drawn (default)">
-            <ScribbleLink href="/brand" label="Discover more" />
+          <StateLabel label="default · hover to underline">
+            <ArrowLink href="/brand" label="How we work" />
           </StateLabel>
-          <StateLabel label="drawn=false · hover to draw">
-            <ScribbleLink href="/brand" label="Meet the crew" direction="down" drawn={false} />
+          <StateLabel label="underlined · down">
+            <ArrowLink href="/brand" label="Meet the crew" direction="down" underlined />
           </StateLabel>
-          <div className="bg-night p-5">
+          <div className="rounded-card bg-night p-5">
             <StateLabel label="tone=snow">
-              <ScribbleLink href="/brand" label="See the reel" tone="snow" />
+              <ArrowLink href="/brand" label="See the reel" tone="snow" />
             </StateLabel>
           </div>
         </div>
@@ -109,30 +109,30 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="DisplayHeading / Eyebrow"
         source="components/ui/heading.tsx"
-        description="Serif eyebrow, heavy condensed caps, answered by a serif line — stacked or inline, three sizes, centred or left."
-        code={`<DisplayHeading eyebrow="Who we are" bold="The makers at" serif="Kerfuffle" size="md" />`}
+        description="A small tag, heavy condensed caps, answered by italic serif words in lower case — stacked or inline, three sizes, centred or left."
+        code={`<DisplayHeading eyebrow="Hello" bold="Small crew," serif="big commotion" size="md" />`}
       >
         <div className="grid gap-10 md:grid-cols-2">
-          <DisplayHeading eyebrow="Who we are" bold="The makers at" serif="Kerfuffle" size="md" />
-          <DisplayHeading eyebrow="Recent" bold="Recent" serif="work" inline size="md" align="left" />
-          <Eyebrow>Eyebrow alone: too good to scroll past.</Eyebrow>
+          <DisplayHeading eyebrow="Hello" bold="Small crew," serif="big commotion" size="md" />
+          <DisplayHeading eyebrow="Fresh" bold="Latest" serif="projects" inline size="md" align="left" />
+          <Eyebrow>Eyebrow alone</Eyebrow>
         </div>
       </ComponentSpecimen>
 
       <ComponentSpecimen
         name="Wordmark / Emblem / Sticker"
         source="components/ui/wordmark.tsx · components/ui/sticker.tsx"
-        description="The signature in three tones; the KF seal; die-cut stickers in six colours."
-        code={`<Wordmark tone="blue" />\n<Emblem />\n<Sticker text="No fluff!" tone="blue" rotate={-6} />`}
+        description="The name in three tones; the scalloped KF badge; pill stickers in six colours."
+        code={`<Wordmark tone="ink" />\n<Emblem />\n<Sticker text="Keyframe club" tone="flame" rotate={-6} />`}
       >
         <div className="flex flex-wrap items-center gap-8">
           <Wordmark />
-          <span className="bg-night px-4 py-2">
+          <span className="rounded-pill bg-night px-4 py-2">
             <Wordmark tone="snow" />
           </span>
-          <Wordmark tone="ink" />
+          <Wordmark tone="flame" />
           <Emblem className="text-4xl" />
-          {(["blue", "green", "red", "pink", "orange", "yellow"] as const).map((tone, i) => (
+          {(["flame", "lime", "violet", "yellow", "green", "red"] as const).map((tone, i) => (
             <Sticker key={tone} text={tone} tone={tone} rotate={i % 2 ? 5 : -5} />
           ))}
         </div>
@@ -141,7 +141,7 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="WorkCard / CaseFrame"
         source="components/work/"
-        description="A case in the grid (hover it: a “View case” pill follows the pointer) and in the reel's coloured frame."
+        description="A case in the grid (hover it: the picture lifts off its colour block) and as a colour card in the reel."
         code={`<WorkCard item={CASES[0]} />\n<CaseFrame item={CASES[1]} />`}
       >
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -155,12 +155,12 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="ServiceCard / FanCards"
         source="components/sections/services-fan.tsx · components/motion/fan-cards.tsx"
-        description="Service cards in the three service colours, fanned out on scroll. Props: spread."
+        description="Numbered service cards in the three service colours, fanned out on scroll. Props: spread."
         code={`<FanCards spread={1}>{SERVICES.map((s) => <ServiceCard service={s} />)}</FanCards>`}
       >
         <FanCards spread={0.8}>
           {SERVICES.map((service) => (
-            <ServiceCard key={service.key} service={service} />
+            <ServiceCard key={service.key} service={service} index={SERVICES.indexOf(service)} />
           ))}
         </FanCards>
       </ComponentSpecimen>
@@ -168,7 +168,7 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="Portrait / Polaroid"
         source="components/sections/team.tsx · components/ui/polaroid.tsx"
-        description="A crew portrait with its name set in bubble type (and, on the about page, the role); a polaroid for snapshots."
+        description="A crew portrait with a name tag (and, on the about page, the role); a snapshot for photos of the crew."
         code={`<Portrait person={TEAM[0]} showRole />\n<Polaroid src={photo(6141089, 900)} alt="…" rotate={-4} />`}
       >
         <div className="grid gap-6 sm:grid-cols-3">
@@ -199,8 +199,8 @@ export function ComponentLibrary() {
         <div className="space-y-6">
           <ClientRow className="pt-0" />
           <Marquee duration={20} direction="right" gap={24}>
-            {["No fluff!", "Pixel pushers", "Always in motion", "Made in Rotterdam"].map((t, i) => (
-              <Sticker key={t} text={t} tone={(["blue", "pink", "yellow", "red"] as const)[i]} rotate={0} className="text-base md:text-lg" />
+            {["Keyframe club", "Render & chill", "Loop de loop", "Made in Rotterdam"].map((t, i) => (
+              <Sticker key={t} text={t} tone={(["flame", "lime", "yellow", "violet"] as const)[i]} rotate={0} className="text-base md:text-lg" />
             ))}
           </Marquee>
         </div>
@@ -221,7 +221,7 @@ export function ComponentLibrary() {
         name="ScrollBadge / CountUp / Reveal"
         source="components/motion/"
         description="A badge that turns with the scroll; a number that counts up once in view; a block that rises into place."
-        code={`<ScrollBadge text="This is how we scroll • " perTurn={1400} />\n<CountUp value={140} suffix="+" />\n<Reveal delay={0.1}>…</Reveal>`}
+        code={`<ScrollBadge text="Keep scrolling • more below • " perTurn={1400} />\n<CountUp value={140} suffix="+" />\n<Reveal delay={0.1}>…</Reveal>`}
       >
         <div className="flex flex-wrap items-center gap-10">
           <ScrollBadge />
@@ -235,7 +235,7 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="Input / Textarea / Label"
         source="components/ui/input.tsx · textarea.tsx · label.tsx (shadcn)"
-        description="Square fields on paper that turn white with a blue edge on focus, red when invalid."
+        description="Rounded fields on paper that turn cream with an ink edge on focus, red when invalid."
         code={`<Label htmlFor="email">Email</Label>\n<Input id="email" type="email" aria-invalid={!!error} />`}
       >
         <div className="grid gap-6 sm:grid-cols-2">
@@ -264,13 +264,13 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="Accordion (FAQ)"
         source="components/ui/accordion.tsx (shadcn)"
-        description="Serif questions on ink hairlines; the chevron turns blue."
+        description="Rounded cards that turn lime when open."
         code={`<Accordion type="single" collapsible>…</Accordion>`}
       >
-        <Accordion type="single" collapsible defaultValue="q0" className="border-t border-ink">
+        <Accordion type="single" collapsible defaultValue="q0" className="space-y-3">
           {FAQ.slice(0, 2).map((item, i) => (
-            <AccordionItem key={item.q} value={`q${i}`} className="border-ink">
-              <AccordionTrigger className="rounded-none py-4 font-serif text-2xl hover:no-underline [&>svg]:size-5 [&>svg]:text-blue">{item.q}</AccordionTrigger>
+            <AccordionItem key={item.q} value={`q${i}`} className="rounded-card border-2 border-ink bg-card px-5 last:border-b-2 data-[state=open]:bg-lime">
+              <AccordionTrigger className="rounded-none py-4 label text-base hover:no-underline [&>svg]:size-5">{item.q}</AccordionTrigger>
               <AccordionContent className="text-base text-ink-soft">{item.a}</AccordionContent>
             </AccordionItem>
           ))}
@@ -280,7 +280,7 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="ContactForm"
         source="components/sections/contact-form.tsx"
-        description="The brief form: inline validation, chips for kind and budget, a shake on a bad submit, a loading button and a thank-you that uses your name."
+        description="The brief form: inline validation, pill chips for kind and budget, a shake on a bad submit, a loading button and a thank-you that uses your name."
         code={`<ContactForm />`}
       >
         <ContactForm />

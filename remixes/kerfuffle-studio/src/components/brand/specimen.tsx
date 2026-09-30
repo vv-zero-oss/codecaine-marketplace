@@ -50,7 +50,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
       onClick={copy}
       aria-label={copied ? "Copied" : "Copy code"}
       className={cn(
-        "relative inline-flex size-9 items-center justify-center rounded-none text-ink-mute transition-colors hover:bg-card/10 hover:text-white focus-visible:ring-2 focus-visible:ring-blue focus-visible:outline-none active:scale-95",
+        "relative inline-flex size-9 items-center justify-center rounded-none text-ink-mute transition-colors hover:bg-card/10 hover:text-white focus-visible:ring-2 focus-visible:ring-flame focus-visible:outline-none active:scale-95",
         className,
       )}
     >
@@ -99,7 +99,7 @@ export function ComponentSpecimen({
   previewClassName?: string
 }) {
   return (
-    <article className="overflow-hidden rounded-none border border-line bg-card">
+    <article className="overflow-hidden rounded-card border-2 border-ink bg-card">
       <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line px-5 py-4 sm:px-6">
         <h3 className="label text-lg">{name}</h3>
         <code className="font-mono text-xs text-ink-mute">{source}</code>

@@ -70,7 +70,7 @@ export function ContactForm() {
   )}`
 
   return (
-    <div className="relative bg-card p-6 shadow-card md:p-10">
+    <div className="relative rounded-card border-2 border-ink bg-card p-6 md:p-10">
       <AnimatePresence mode="wait" initial={false}>
         {status === "sent" ? (
           <motion.div
@@ -85,17 +85,17 @@ export function ContactForm() {
               initial={{ scale: 0, rotate: -30 }}
               animate={{ scale: 1, rotate: -6 }}
               transition={{ type: "spring", stiffness: 420, damping: 14, delay: 0.1 }}
-              className="flex size-20 items-center justify-center border-[5px] border-card bg-green text-snow shadow-sticker"
+              className="flex size-20 items-center justify-center rounded-full border-2 border-ink bg-lime text-ink shadow-sticker"
             >
               <Check className="size-10" strokeWidth={3} />
             </motion.span>
             <h3 className="mt-6 display text-5xl">Thanks{fields.name ? `, ${fields.name.split(" ")[0]}` : ""}!</h3>
-            <p className="mt-3 max-w-[32ch] font-serif text-2xl leading-tight">
-              Your brief is on its way. Idris or Noor will get back to you within one working day.
+            <p className="mt-3 max-w-[34ch] text-lg leading-snug">
+              Your brief landed on our big screen. Idris or Noor will reply within one working day.
             </p>
             <p className="mt-4 text-sm text-ink-soft">
               Rather send it from your own inbox?{" "}
-              <a href={mail} className="text-blue underline underline-offset-2">
+              <a href={mail} className="text-flame underline underline-offset-2">
                 Open it as an email
               </a>
               .
@@ -107,7 +107,7 @@ export function ContactForm() {
                 setFields(EMPTY)
                 setTouched({})
               }}
-              className="mt-8 label text-sm text-blue underline-offset-4 hover:underline"
+              className="mt-8 label text-sm text-flame underline-offset-4 hover:underline"
             >
               Send another brief
             </button>
@@ -158,7 +158,7 @@ export function ContactForm() {
               <Textarea id="message" rows={5} value={fields.message} onChange={set("message")} onBlur={blur("message")} aria-invalid={!!shown("message")} placeholder="The product, the problem, the deadline — whatever you have." />
             </Field>
             <div className="flex flex-wrap items-center gap-4">
-              <Button type="submit" tone="blue" size="lg" icon={Send} label={status === "sending" ? "Sending…" : "Send your brief"} loading={status === "sending"} />
+              <Button type="submit" tone="flame" size="lg" icon={Send} label={status === "sending" ? "Sending…" : "Send your brief"} loading={status === "sending"} />
               <p className="text-sm text-ink-soft">We reply within one working day.</p>
             </div>
           </motion.form>
@@ -204,8 +204,8 @@ function Chip({ selected, children, onClick, role }: { selected: boolean; childr
       aria-checked={selected}
       onClick={onClick}
       className={cn(
-        "inline-flex h-11 items-center gap-1.5 border px-4 label text-sm transition-[background-color,color,border-color,transform] duration-(--duration-fast) active:scale-[0.97]",
-        selected ? "border-blue bg-blue text-snow" : "border-line bg-paper text-ink hover:border-ink",
+        "inline-flex h-11 items-center gap-1.5 rounded-pill border-2 px-4 label text-xs transition-[background-color,color,border-color,transform] duration-(--duration-fast) active:scale-[0.97]",
+        selected ? "border-ink bg-lime text-ink" : "border-line bg-paper text-ink hover:border-ink",
       )}
     >
       {selected ? <Check className="size-3.5" strokeWidth={3} /> : null}

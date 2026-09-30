@@ -19,16 +19,16 @@ export function Faq({ id = "faq" }: { id?: string }) {
     <section id={id} data-tone="light" className="scroll-mt-16 py-section">
       <Container className="grid gap-10 md:grid-cols-[1fr_1.4fr] md:gap-16">
         <Reveal>
-          <DisplayHeading eyebrow="Before you ask" bold="Good" serif="questions" size="md" align="left" />
+          <DisplayHeading eyebrow="Before you ask" bold="Fair" serif="questions" size="md" align="left" />
         </Reveal>
         <Reveal delay={0.08}>
-          <Accordion type="single" collapsible value={open} onValueChange={setOpen} className="border-t border-ink">
+          <Accordion type="single" collapsible value={open} onValueChange={setOpen} className="space-y-3">
             {FAQ.map((item, i) => (
-              <AccordionItem key={item.q} value={`q${i}`} className="border-ink">
-                <AccordionTrigger className="rounded-none py-5 font-serif text-2xl leading-tight tracking-tight hover:no-underline md:text-3xl [&>svg]:size-6 [&>svg]:text-blue">
+              <AccordionItem key={item.q} value={`q${i}`} className="rounded-card border-2 border-ink bg-card px-5 last:border-b-2 data-[state=open]:bg-lime">
+                <AccordionTrigger className="rounded-none py-5 label text-base leading-tight hover:no-underline md:text-lg [&>svg]:size-5 [&>svg]:text-ink">
                   {item.q}
                 </AccordionTrigger>
-                <AccordionContent className="max-w-[60ch] pb-6 text-base leading-relaxed text-ink-soft md:text-lg">
+                <AccordionContent className="max-w-[60ch] pb-6 text-base leading-relaxed text-ink">
                   {item.a}
                 </AccordionContent>
               </AccordionItem>

@@ -1,34 +1,32 @@
 import { cva, type VariantProps } from "class-variance-authority"
-import { ArrowRight, type LucideIcon } from "lucide-react"
+import { ArrowUpRight, type LucideIcon } from "lucide-react"
 import type * as React from "react"
 
 import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 /**
- * The studio's button: a square icon cell and a label cell, side by side,
- * with a hairline gap between them. Square corners, condensed caps.
- *
- * On hover the arrow leaves to the right and comes back in from the left; on
- * press the whole button sinks a pixel.
+ * The studio's button: a rounded pill with its label first and the icon in a
+ * round well at the end. On hover the well grows a little and the arrow turns
+ * to point straight ahead; on press the pill squeezes.
  */
 const buttonVariants = cva(
-  "group/button inline-flex items-stretch gap-[2px] label text-sm leading-none whitespace-nowrap transition-transform duration-(--duration-fast) ease-out select-none active:translate-y-px disabled:pointer-events-none disabled:opacity-40 [&>span]:transition-colors [&>span]:duration-(--duration-fast)",
+  "group/button inline-flex items-center gap-3 rounded-pill label leading-none whitespace-nowrap transition-[background-color,color,transform] duration-(--duration-fast) ease-out select-none active:scale-[0.97] disabled:pointer-events-none disabled:opacity-40",
   {
     variants: {
       tone: {
-        blue: "text-snow [&>span]:bg-blue hover:[&>span]:bg-blue-deep",
-        pink: "text-ink [&>span]:bg-pink hover:[&>span]:bg-pink-deep hover:text-snow",
-        white: "text-ink [&>span]:bg-card hover:[&>span]:bg-paper",
-        ink: "text-snow [&>span]:bg-ink hover:[&>span]:bg-night-raised",
+        flame: "bg-flame text-snow hover:bg-flame-deep [&_[data-well]]:bg-snow [&_[data-well]]:text-flame",
+        lime: "bg-lime text-ink hover:bg-lime-deep [&_[data-well]]:bg-ink [&_[data-well]]:text-lime",
+        white: "bg-card text-ink hover:bg-snow [&_[data-well]]:bg-ink [&_[data-well]]:text-snow",
+        ink: "bg-ink text-snow hover:bg-night-raised [&_[data-well]]:bg-lime [&_[data-well]]:text-ink",
       },
       size: {
-        sm: "h-9 [&>span:first-child]:w-9 [&>span:last-child]:px-3 text-xs",
-        md: "h-11 [&>span:first-child]:w-11 [&>span:last-child]:px-4",
-        lg: "h-14 [&>span:first-child]:w-14 [&>span:last-child]:px-5 text-base",
+        sm: "h-10 pr-1 pl-4 text-xs [&_[data-well]]:size-8",
+        md: "h-12 pr-1.5 pl-5 text-sm [&_[data-well]]:size-9",
+        lg: "h-14 pr-2 pl-6 text-base [&_[data-well]]:size-10",
       },
     },
-    defaultVariants: { tone: "blue", size: "md" },
+    defaultVariants: { tone: "flame", size: "md" },
   },
 )
 
@@ -40,24 +38,26 @@ type Shared = ButtonStyle & {
   loading?: boolean
 }
 
-function Inner({ label, icon: Icon = ArrowRight, loading }: Pick<Shared, "label" | "icon" | "loading">) {
+function Inner({ label, icon: Icon = ArrowUpRight, loading }: Pick<Shared, "label" | "icon" | "loading">) {
   return (
     <>
-      <span className="relative flex shrink-0 items-center justify-center overflow-hidden">
+      <span>{label}</span>
+      <span
+        data-well
+        className="flex shrink-0 items-center justify-center rounded-full transition-transform duration-(--duration-base) ease-(--ease-pop) group-hover/button:scale-110"
+      >
         {loading ? (
           <span className="size-4 animate-spin rounded-full border-2 border-current border-t-transparent" />
         ) : (
-          <>
-            <Icon className="size-4 transition-transform duration-(--duration-base) ease-out group-hover/button:translate-x-[180%]" strokeWidth={2.5} />
-            <Icon
-              aria-hidden
-              className="absolute size-4 -translate-x-[180%] transition-transform duration-(--duration-base) ease-out group-hover/button:translate-x-0"
-              strokeWidth={2.5}
-            />
-          </>
+          <Icon
+            className={cn(
+              "size-4 transition-transform duration-(--duration-base) ease-out",
+              Icon === ArrowUpRight && "group-hover/button:rotate-45",
+            )}
+            strokeWidth={2.5}
+          />
         )}
       </span>
-      <span className="flex items-center">{label}</span>
     </>
   )
 }

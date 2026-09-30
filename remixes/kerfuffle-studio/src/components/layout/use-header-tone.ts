@@ -3,7 +3,7 @@ import { useEffect, useState } from "react"
 /**
  * Whether the header is over a dark section right now: the nearest
  * `[data-tone]` under a point just below the header's top edge. The logo turns
- * white over dark sections and blue over light ones.
+ * white over dark sections and flame over light ones.
  */
 export function useHeaderTone(pathname: string): "light" | "dark" {
   const [tone, setTone] = useState<"light" | "dark">("light")

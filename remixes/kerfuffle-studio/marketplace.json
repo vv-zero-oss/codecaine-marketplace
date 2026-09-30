@@ -3,8 +3,8 @@
   "type": "remix",
   "id": "kerfuffle-studio",
   "name": "Kerfuffle Studio",
-  "version": "1.0.0",
-  "description": "A loud, playful site for a motion studio: heavy condensed caps answered by a light serif, photos that drop under the cursor in the hero, a blue brush stroke that sweeps across the screen on every page change, a pinned reel of case cards that pile up as you scroll, service cards that fan out, die-cut stickers you can slap onto the page, a scattered crew with bubble-lettered names, a filterable work grid with case studies, a brief form and a full style guide.",
+  "version": "1.1.0",
+  "description": "A warm, loud site for a motion studio: cream paper, flame orange, acid lime and deep forest green; heavy condensed caps answered by italic serif words; rounded ink-outlined cards and pill buttons; photos that drop under the cursor in the hero; a flame brush stroke that sweeps the screen on every page change; a pinned reel of case cards that pile up as you scroll; numbered service cards that fan out; pill stickers you can slap onto the page; a crew grid with name tags; a filterable project archive with case studies; a brief form and a full style guide.",
   "designedFor": [
     "Animation, video and social-content studios, and creative agencies with a lot of personality",
     "Portfolios that want motion to be the first thing a visitor notices — page transitions, cursor trails, scroll-pinned reels",
@@ -31,14 +31,16 @@
     "stickers",
     "scroll",
     "sticky",
-    "condensed",
     "serif",
     "playful",
     "multi-page",
     "react",
     "vite",
     "tailwind",
-    "shadcn"
+    "shadcn",
+    "rounded",
+    "cream",
+    "lime"
   ],
   "categories": [
     "Agency",

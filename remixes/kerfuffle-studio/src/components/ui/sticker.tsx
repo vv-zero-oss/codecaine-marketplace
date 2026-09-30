@@ -1,23 +1,23 @@
 import { cn } from "@/lib/utils"
 
-export type StickerTone = "blue" | "green" | "red" | "pink" | "orange" | "yellow" | "emblem"
+export type StickerTone = "flame" | "green" | "red" | "lime" | "violet" | "yellow" | "emblem"
 
 const TONES: Record<Exclude<StickerTone, "emblem">, string> = {
-  blue: "bg-blue text-snow",
+  flame: "bg-flame text-snow",
   green: "bg-green text-snow",
   red: "bg-red text-snow",
-  pink: "bg-pink text-ink",
-  orange: "bg-orange text-snow",
+  lime: "bg-lime text-ink",
+  violet: "bg-violet text-snow",
   yellow: "bg-yellow text-ink",
 }
 
 /**
- * A die-cut sticker: chunky caps on a colour, a white edge, a lift of shadow.
- * `emblem` is the studio's oval KF seal instead.
+ * A round-cornered sticker: caps on a colour, an ink outline, a soft lift.
+ * `emblem` is the studio's scalloped KF badge instead.
  */
 export function Sticker({
   text,
-  tone = "blue",
+  tone = "flame",
   rotate = -6,
   className,
 }: {
@@ -30,7 +30,7 @@ export function Sticker({
   return (
     <span
       className={cn(
-        "inline-block max-w-[11ch] border-[5px] border-card px-3 py-1.5 text-center label text-lg leading-[0.9] shadow-sticker select-none md:text-2xl",
+        "inline-block max-w-[14ch] rounded-pill border-2 border-ink px-4 py-2 text-center label text-base leading-[0.95] shadow-sticker select-none md:text-xl",
         TONES[tone],
         className,
       )}
@@ -41,17 +41,24 @@ export function Sticker({
   )
 }
 
-/** The oval seal: a red ring, the initials in a heavy serif. */
-export function Emblem({ className, rotate = -4, text = "KF" }: { className?: string; rotate?: number; text?: string }) {
+/** The badge: a scalloped lime disc with the initials in the brand face. */
+export function Emblem({ className, rotate = -8, text = "kf" }: { className?: string; rotate?: number; text?: string }) {
+  const points = 14
+  const d =
+    Array.from({ length: points * 2 }, (_, i) => {
+      const r = i % 2 ? 44 : 50
+      const a = (Math.PI * i) / points
+      return `${i ? "L" : "M"}${(50 + r * Math.sin(a)).toFixed(2)} ${(50 - r * Math.cos(a)).toFixed(2)}`
+    }).join(" ") + "Z"
   return (
     <span
-      className={cn(
-        "inline-grid h-[1.45em] w-[2.2em] place-items-center rounded-[50%] border-[0.13em] border-red bg-card font-serif text-5xl leading-none text-blue shadow-sticker select-none md:text-6xl",
-        className,
-      )}
+      className={cn("relative inline-grid size-[1.9em] place-items-center text-5xl leading-none select-none md:text-6xl", className)}
       style={{ rotate: `${rotate}deg` }}
     >
-      <span className="translate-y-[0.04em] font-black tracking-[-0.06em]">{text}</span>
+      <svg aria-hidden viewBox="0 0 100 100" className="absolute inset-0 size-full drop-shadow-[0_6px_10px_rgb(26_25_22/0.25)]">
+        <path d={d} className="fill-lime stroke-ink" strokeWidth="2.5" strokeLinejoin="round" />
+      </svg>
+      <span className="relative -translate-y-[0.03em] font-brand text-[0.62em] text-ink">{text}</span>
     </span>
   )
 }

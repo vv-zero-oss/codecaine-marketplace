@@ -1,44 +1,59 @@
+import { ArrowUpRight } from "lucide-react"
+
 import { FanCards } from "@/components/motion/fan-cards"
 import { Reveal } from "@/components/motion/reveal"
+import { ArrowLink } from "@/components/ui/arrow-link"
 import { Container } from "@/components/ui/container"
 import { DisplayHeading } from "@/components/ui/heading"
-import { ScribbleLink } from "@/components/ui/scribble-link"
 import { photo, SERVICES } from "@/content"
 import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
-const PANEL = { blue: "bg-blue", pink: "bg-pink", orange: "bg-orange" } as const
+const PANEL = {
+  flame: "bg-flame text-snow",
+  lime: "bg-lime text-ink",
+  violet: "bg-violet text-snow",
+} as const
 
-/** What we do, as three cards that fan out: animation, video, social. */
+/** What we do, as three numbered cards that fan out: animation, video, social. */
 export function ServicesFan() {
   return (
     <section id="services" data-tone="light" className="py-section">
       <Container className="flex flex-col items-center">
         <Reveal>
-          <DisplayHeading eyebrow="Our services" bold="What we do" size="lg" />
+          <DisplayHeading eyebrow="Three ways in" bold="Our" serif="craft" inline size="lg" />
         </Reveal>
         <FanCards className="mt-12 w-full max-w-5xl md:mt-16">
-          {SERVICES.map((service) => (
-            <ServiceCard key={service.key} service={service} />
+          {SERVICES.map((service, i) => (
+            <ServiceCard key={service.key} service={service} index={i} />
           ))}
         </FanCards>
         <Reveal className="mt-16 md:mt-24">
-          <ScribbleLink href="/what-we-do" label="Discover more" />
+          <ArrowLink href="/what-we-do" label="How we work" />
         </Reveal>
       </Container>
     </section>
   )
 }
 
-export function ServiceCard({ service }: { service: (typeof SERVICES)[number] }) {
+export function ServiceCard({ service, index = 0 }: { service: (typeof SERVICES)[number]; index?: number }) {
   return (
-    <Link href={`/what-we-do#${service.key}`} className={cn("block p-3 text-snow shadow-lift", PANEL[service.color])}>
-      <div className="aspect-[5/4] overflow-hidden">
+    <Link
+      href={`/what-we-do#${service.key}`}
+      className={cn("group/service flex flex-col gap-4 rounded-card border-2 border-ink p-3 shadow-lift", PANEL[service.color])}
+    >
+      <div className="flex items-center justify-between px-2 pt-1">
+        <span className="font-mono text-xs">0{index + 1}</span>
+        <span className="flex size-9 items-center justify-center rounded-full border-2 border-current transition-transform duration-(--duration-base) group-hover/service:rotate-45">
+          <ArrowUpRight className="size-4" strokeWidth={2.5} />
+        </span>
+      </div>
+      <div className="aspect-[5/4] overflow-hidden rounded-[14px]">
         <img src={photo(service.image, 700)} alt="" loading="lazy" className="size-full object-cover" />
       </div>
-      <div className="px-2 pt-4 pb-3 text-center">
-        <h3 className="display text-[clamp(2.5rem,4.2vw,3.75rem)]">{service.title}</h3>
-        <p className="mx-auto mt-1 max-w-[20ch] font-serif text-xl leading-[1.05] md:text-2xl">{service.short}</p>
+      <div className="px-2 pb-3">
+        <h3 className="display text-[clamp(2.5rem,4.2vw,3.5rem)]">{service.title}</h3>
+        <p className="mt-2 max-w-[28ch] text-base leading-snug">{service.short}</p>
       </div>
     </Link>
   )

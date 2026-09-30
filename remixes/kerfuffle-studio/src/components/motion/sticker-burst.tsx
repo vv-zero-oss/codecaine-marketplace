@@ -9,14 +9,14 @@ import { cn } from "@/lib/utils"
 
 /** Where the first stickers land, as percentages of the area, with a tilt. */
 const SPOTS = [
-  { x: 8, y: 22, r: -12 },
-  { x: 30, y: 6, r: 8 },
-  { x: 58, y: 12, r: -6 },
-  { x: 86, y: 28, r: 10 },
-  { x: 22, y: 64, r: 6 },
-  { x: 74, y: 70, r: -10 },
-  { x: 50, y: 88, r: 4 },
-  { x: 92, y: 80, r: -4 },
+  { x: 5, y: 12, r: -12 },
+  { x: 95, y: 18, r: 8 },
+  { x: 8, y: 86, r: 6 },
+  { x: 92, y: 84, r: -10 },
+  { x: 26, y: -4, r: 5 },
+  { x: 76, y: 102, r: -6 },
+  { x: 99, y: 52, r: 4 },
+  { x: 1, y: 52, r: -4 },
 ]
 
 type Placed = { id: number; x: number; y: number; r: number; text: string; tone: StickerTone }
@@ -95,7 +95,7 @@ export function StickerBurst({
                 delay: s.id < 100 ? 0.25 + s.id * stagger : 0,
               }}
             >
-              <Sticker text={s.text} tone={s.tone} rotate={s.r} className="border-[3px] px-2 py-1 text-xs md:border-[5px] md:px-3 md:py-1.5 md:text-2xl" />
+              <Sticker text={s.text} tone={s.tone} rotate={s.r} className="px-3 py-1.5 text-xs md:px-4 md:py-2 md:text-xl" />
             </motion.div>
           ))}
       </AnimatePresence>
