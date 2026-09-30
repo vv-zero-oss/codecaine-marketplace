@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "postwise",
   "name": "Postwise — AI Email",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A sea-glass landing page for Postwise, an AI email assistant: a hero lit by a drifting teal, mint and apricot glow, a hairline numbers band, a deep-lagoon copilot section with floating notes and drifting signals, three how-it-works cards, a clickable feature deck, persona tabs, a team dashboard over a sunlit desk, a results bento, a duotone customer-story carousel, monthly/yearly pricing with a border-beam plan, an FAQ, a wall of love and poster-type calls to action.",
   "designedFor": [
     "AI email, inbox and productivity tools",
@@ -58,6 +58,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "icon": "icon.svg",
