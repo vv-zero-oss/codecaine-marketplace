@@ -1611,6 +1611,157 @@
     },
     {
       "type": "remix",
+      "id": "riot-folio",
+      "name": "Riot Folio",
+      "version": "1.0.0",
+      "description": "A loud portfolio for an independent builder — electric ultramarine, six saturated project tones, duotone photography, hero cards that fly into the work grid on scroll, odometer stats and a filterable project archive.",
+      "designedFor": [
+        "Designers, engineers and consultants who want a portfolio people remember",
+        "Showing a handful of case studies properly and the rest as a searchable archive",
+        "A bold, colourful starting point that is still quiet enough to read",
+        "Trying scroll-linked motion that the editor can name, tune and pause"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "portfolio",
+        "personal",
+        "case-study",
+        "colourful",
+        "bold",
+        "duotone",
+        "motion",
+        "framer-motion",
+        "lenis"
+      ],
+      "categories": [
+        "Portfolio",
+        "Personal"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3300
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/work",
+          "title": "Work"
+        },
+        {
+          "path": "/work/open-floor",
+          "title": "Case study"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/contact",
+          "title": "Contact"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Work",
+            "image": "previews/pages/work.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "previews/pages/work-open-floor.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "previews/pages/contact.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/riot-folio",
+      "thumbnailUrl": "remixes/riot-folio/preview.png",
+      "iconUrl": "remixes/riot-folio/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/riot-folio/previews/desktop.jpg",
+        "mobile": "remixes/riot-folio/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/riot-folio/previews/pages/home.jpg"
+          },
+          {
+            "title": "Work",
+            "image": "remixes/riot-folio/previews/pages/work.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "remixes/riot-folio/previews/pages/work-open-floor.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/riot-folio/previews/pages/about.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "remixes/riot-folio/previews/pages/contact.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/riot-folio/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/riot-folio-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "03d24719c10038fe6d5e15afdacd423501cb5a2f5abdfad1fae759d2910efa2c",
+        "size": 455168,
+        "files": 71
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/riot-folio"
+      },
+      "demoUrl": "demos/riot-folio/"
+    },
+    {
+      "type": "remix",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
       "version": "1.2.0",
