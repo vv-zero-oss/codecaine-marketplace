@@ -249,8 +249,7 @@
       "canvasVersion": ">=0.0.1",
       "authors": [
         {
-          "name": "Codecaine",
-          "url": "https://github.com/vv-zero-oss"
+          "name": "Noor Kaskela"
         }
       ],
       "license": "MIT",
@@ -323,7 +322,7 @@
       "archive": {
         "url": "archives/remixes/cirrus-cloud-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "59256640707dec11df25e7aa8ba760e7441d9b837c551954161072f37fc5c320",
+        "sha256": "1f882a655475e84b344128807a477df319e3739abf48c00ed36e7a6364bdd92d",
         "size": 332800,
         "files": 59
       },
