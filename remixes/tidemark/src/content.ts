@@ -56,9 +56,11 @@ export const NAV = {
 
 export const HERO = {
   eyebrow: "Business banking for startups",
-  titleStart: "Banking that keeps",
-  titleAccent: "pace",
-  titleEnd: "with your company",
+  titleStart: "Money that",
+  titleAccent: "keeps",
+  titleEnd: "pace",
+  photo: 9363215,
+  photoAlt: "A founder lit in pink and violet, arms folded, looking into the camera",
   body: "Accounts, cards, bill pay and a treasury that earns on idle cash — opened in ten minutes, run from one place, and priced like you’re still early.",
   placeholder: "Work email",
   cta: "Open an account",
@@ -178,13 +180,13 @@ export const VOICES = {
     quote: "We moved our operating account, our cards and our treasury over a weekend. Month-end close went from four days to one afternoon.",
     name: "Lena Albrecht",
     role: "CFO, Brightfold",
-    photo: 5922214,
-    stat: { value: "4 days → 4 hours", label: "month-end close" },
+    photo: 13738020,
+    stat: { value: "4 days → 4 hrs", label: "month-end close" },
   },
   items: [
-    { quote: "The treasury yield alone covers our software bill. The rest of Tidemark is a bonus.", name: "Marcus Hale", role: "Co-founder, Oakline", photo: 39058025 },
-    { quote: "I issued twelve cards with twelve different limits before my coffee got cold.", name: "Priya Raman", role: "Head of Ops, Kettle & Co", photo: 9052841 },
-    { quote: "Bills used to live in my inbox. Now they live in Tidemark, and they get paid on time.", name: "Daniel Okoye", role: "Founder, Fathom", photo: 12903019 },
+    { quote: "The treasury yield alone covers our software bill. The rest of Tidemark is a bonus.", name: "Marcus Hale", role: "Co-founder, Oakline", photo: 33857898 },
+    { quote: "I issued twelve cards with twelve different limits before my coffee got cold.", name: "Priya Raman", role: "Head of Ops, Kettle & Co", photo: 11054058 },
+    { quote: "Bills used to live in my inbox. Now they live in Tidemark, and they get paid on time.", name: "Daniel Okoye", role: "Founder, Fathom", photo: 32349727 },
   ],
 }
 

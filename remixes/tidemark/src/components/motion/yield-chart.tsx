@@ -69,10 +69,10 @@ export function YieldChart({
           </linearGradient>
         </defs>
         {[0.25, 0.5, 0.75, 1].map((f) => (
-          <line key={f} x1={pad.l} x2={w - pad.r} y1={pad.t + f * (h - pad.t - pad.b)} y2={pad.t + f * (h - pad.t - pad.b)} stroke="var(--color-forest-line)" strokeWidth={1} strokeDasharray={f === 1 ? undefined : "2 4"} />
+          <line key={f} x1={pad.l} x2={w - pad.r} y1={pad.t + f * (h - pad.t - pad.b)} y2={pad.t + f * (h - pad.t - pad.b)} stroke="var(--color-night-line)" strokeWidth={1} strokeDasharray={f === 1 ? undefined : "2 4"} />
         ))}
         {ticks.map((t) => (
-          <text key={t} x={x(t)} y={h - 8} textAnchor={t === 0 ? "start" : t === months ? "end" : "middle"} className="fill-forest-muted font-mono text-[11px]">
+          <text key={t} x={x(t)} y={h - 8} textAnchor={t === 0 ? "start" : t === months ? "end" : "middle"} className="fill-night-muted font-mono text-[11px]">
             {t === 0 ? "Today" : `${t} mo`}
           </text>
         ))}
@@ -89,11 +89,11 @@ export function YieldChart({
           animate={{ pathLength: 1 }}
           transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
         />
-        <circle cx={x(months)} cy={y(max)} r={5} fill="var(--color-chart-night)" stroke="var(--color-forest)" strokeWidth={2} />
+        <circle cx={x(months)} cy={y(max)} r={5} fill="var(--color-chart-night)" stroke="var(--color-night)" strokeWidth={2} />
         {hover !== null && (
           <g>
-            <line x1={x(hover)} x2={x(hover)} y1={pad.t} y2={h - pad.b} stroke="var(--color-forest-muted)" strokeWidth={1} />
-            <circle cx={x(hover)} cy={y(series[hover])} r={5} fill="var(--color-lime)" stroke="var(--color-forest)" strokeWidth={2} />
+            <line x1={x(hover)} x2={x(hover)} y1={pad.t} y2={h - pad.b} stroke="var(--color-night-muted)" strokeWidth={1} />
+            <circle cx={x(hover)} cy={y(series[hover])} r={5} fill="var(--color-pink)" stroke="var(--color-night)" strokeWidth={2} />
           </g>
         )}
       </svg>

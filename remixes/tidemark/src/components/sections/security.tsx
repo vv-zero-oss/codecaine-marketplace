@@ -7,12 +7,12 @@ import { SECURITY } from "@/content"
 
 const ICONS: Record<string, LucideIcon> = { shield: ShieldCheck, lock: Lock, fingerprint: Fingerprint, eye: Eye, badge: BadgeCheck, snow: Snowflake }
 
-/** One guarantee: its icon on a forest disc, the promise, the detail. */
+/** One guarantee: its icon on an oxblood square, the promise, the detail. */
 export function Guarantee({ icon = "shield", title = "", body = "" }: { icon?: string; title?: string; body?: string }) {
   const Icon = ICONS[icon] ?? ShieldCheck
   return (
     <div className="flex flex-col gap-4 bg-paper p-6 md:p-8">
-      <span className="grid size-11 place-items-center rounded-full bg-forest text-lime">
+      <span className="grid size-11 place-items-center rounded-none bg-night text-pink">
         <Icon className="size-5" strokeWidth={1.7} />
       </span>
       <h3 className="text-[18px] font-medium tracking-[-0.01em] text-ink">{title}</h3>

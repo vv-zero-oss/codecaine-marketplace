@@ -4,21 +4,22 @@ import { cn } from "@/lib/utils"
 import { Slot } from "radix-ui"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-full text-[15px] font-medium whitespace-nowrap transition-[background-color,color,box-shadow,transform] duration-(--duration-hover) ease-(--ease-out-strong) outline-none select-none active:scale-[0.97] active:duration-(--duration-press) focus-visible:ring-[3px] focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "type-caps inline-flex shrink-0 items-center justify-center gap-2 rounded-none text-[13px] whitespace-nowrap transition-[background-color,color,box-shadow,transform] duration-(--duration-hover) ease-(--ease-out-strong) outline-none select-none active:scale-[0.97] active:duration-(--duration-press) focus-visible:ring-[3px] focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-forest text-forest-fg shadow-(--shadow-button) hover:bg-forest-deep",
-        outline: "border border-line-strong bg-transparent text-ink hover:bg-paper-deep",
-        lime: "bg-lime text-forest-deep hover:bg-lime-hover",
-        ghostNight: "border border-forest-line bg-transparent text-forest-fg hover:bg-forest-card",
+        default: "bg-ink text-paper hover:bg-maroon",
+        outline: "border border-ink bg-transparent text-ink hover:bg-ink hover:text-paper",
+        pink: "bg-pink text-ink hover:bg-pink-hover",
+        coral: "bg-coral text-ink hover:bg-coral-soft",
+        ghostNight: "border border-night-fg/40 bg-transparent text-night-fg hover:bg-night-fg hover:text-night",
         ghost: "text-ink-muted hover:bg-paper-deep hover:text-ink",
         link: "text-ink underline-offset-4 hover:underline",
       },
       size: {
         default: "h-11 px-5",
-        sm: "h-9 px-4 text-[14px]",
-        lg: "h-12 px-6 text-[16px]",
+        sm: "h-9 px-4 text-[12px]",
+        lg: "h-12 px-6 text-[14px]",
         icon: "size-11",
       },
     },

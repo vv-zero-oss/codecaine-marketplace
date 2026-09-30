@@ -25,7 +25,7 @@ export function Faq() {
           <Accordion type="single" collapsible value={open} onValueChange={setOpen} className="border-t border-line">
             {FAQ.items.map((item, i) => (
               <AccordionItem key={item.q} value={`q${i}`} className="border-line">
-                <AccordionTrigger className="py-6 font-serif text-[24px] font-normal text-ink hover:no-underline md:text-[26px]">{item.q}</AccordionTrigger>
+                <AccordionTrigger className="py-6 text-[19px] font-medium tracking-[-0.01em] text-ink hover:no-underline md:text-[21px]">{item.q}</AccordionTrigger>
                 <AccordionContent className="pb-6 text-[16px] leading-[1.6] text-ink-muted">{item.a}</AccordionContent>
               </AccordionItem>
             ))}

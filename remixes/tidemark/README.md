@@ -10,17 +10,20 @@ npm run dev     # → http://localhost:3190
 
 ## The page
 
-Top to bottom, as a conversation: the hero (a serif promise beside a
-metal card that turns toward the pointer, a live balance that counts up, and
-a payment that lands a moment later) → the companies that bank here → the
+Top to bottom, as a conversation: the hero (a warm-lit photograph with the
+promise and the account form over it, a metal card that turns toward the
+pointer, a payment that lands a moment later, a strip of balances that counts
+up, and the name set edge to edge in pink, running off the section's foot) → the companies that bank here → the
 numbers → the product as a bento, each cell a small working UI → treasury on
-the forest ground, with a yield calculator and its chart → getting started in
+the oxblood ground, with a yield calculator and its chart → getting started in
 three steps → security → customers → pricing, monthly or yearly → FAQ → the
 last ask → a footer with the disclosures a bank page owes its reader.
 
 All copy lives in `src/content.ts`; every colour, shadow, radius, font and
-motion curve is a token in `src/index.css`. Type is Instrument Serif, Geist
-and Geist Mono, linked from Google Fonts. The two chart colours
+motion curve is a token in `src/index.css`: oxblood, cream, pink and coral,
+square edges, almost no shadow. Type is Archivo in its extended width for
+display and labels, Inter for reading and Geist Mono for figures, linked from
+Google Fonts. The two chart colours
 (`--color-chart`, `--color-chart-night`) were checked against their surfaces
 for lightness, chroma and contrast.
 
@@ -29,7 +32,7 @@ for lightness, chroma and contrast.
 - `@canvas/react` is vendored in `src/lib/canvas-react/` (see
   `vite.config.ts`); `src/main.tsx` renders `<CanvasDesign />` in dev.
 - Motion pieces are named components in `src/components/motion/` —
-  `MetalCard`, `CountUp`, `Sparkline`, `YieldChart`, `LiftCard`, `Marquee`,
+  `MetalCard`, `CountUp`, `GiantWordmark`, `Sparkline`, `YieldChart`, `LiftCard`, `Marquee`,
   `Reveal`, `SmoothScroll` — with their knobs as scalar props. They respect
   reduced motion and hold their end state while the page is being designed.
 - Hidden states are editor actions: the mobile menu, the Product menu, the

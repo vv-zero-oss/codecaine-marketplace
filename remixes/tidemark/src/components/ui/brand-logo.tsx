@@ -22,7 +22,7 @@ export function BrandLogo({
     <span
       className={cn(
         "inline-flex shrink-0 items-center gap-2 font-semibold tracking-[-0.02em]",
-        tone === "light" ? "text-forest-fg" : "text-ink",
+        tone === "light" ? "text-night-fg" : "text-ink",
         className,
       )}
       style={{ fontSize: Math.round(height * 0.95) }}

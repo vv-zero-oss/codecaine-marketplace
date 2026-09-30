@@ -8,8 +8,8 @@ import { STEPS } from "@/content"
 export function Step({ n = "01", title = "", body = "" }: { n?: string; title?: string; body?: string }) {
   return (
     <div className="flex flex-col gap-4 border-t border-ink pt-6">
-      <p className="font-mono text-[13px] text-ink-muted">{n}</p>
-      <h3 className="font-serif text-[32px] leading-[1.05] text-ink">{title}</h3>
+      <p className="type-display text-[56px] text-coral">{n}</p>
+      <h3 className="type-caps text-[22px] leading-[1.05] text-ink">{title}</h3>
       <p className="max-w-[340px] text-[15.5px] leading-[1.55] text-ink-muted">{body}</p>
     </div>
   )

@@ -22,16 +22,16 @@ export function YieldCalculator({ start = TREASURY.calculator.start }: { start?:
   const checking = yearly(amount, c.checkingRate)
 
   return (
-    <div className="rounded-[var(--radius-panel)] bg-forest-card p-5 shadow-(--shadow-night) sm:p-7">
+    <div className="bg-night-card p-5 shadow-(--shadow-night) sm:p-7">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="type-eyebrow text-forest-muted">{c.label}</p>
-          <p className="mt-2 font-mono text-[clamp(30px,3.4vw,44px)] leading-none tracking-[-0.04em] text-forest-fg tabular-nums">{money(amount, false)}</p>
+          <p className="type-eyebrow text-night-muted">{c.label}</p>
+          <p className="mt-2 font-mono text-[clamp(30px,3.4vw,44px)] leading-none tracking-[-0.04em] text-night-fg tabular-nums">{money(amount, false)}</p>
         </div>
         <div className="text-right">
-          <p className="type-eyebrow text-forest-muted">{c.earnLabel}</p>
-          <p className="mt-2 font-mono text-[clamp(24px,2.6vw,32px)] leading-none tracking-[-0.03em] text-lime tabular-nums">+ {money(earned, false)}</p>
-          <p className="mt-1.5 text-[12.5px] text-forest-muted">a year · vs {money(checking, false)} at {c.compareLabel.toLowerCase()}</p>
+          <p className="type-eyebrow text-night-muted">{c.earnLabel}</p>
+          <p className="mt-2 font-mono text-[clamp(24px,2.6vw,32px)] leading-none tracking-[-0.03em] text-pink tabular-nums">+ {money(earned, false)}</p>
+          <p className="mt-1.5 text-[12.5px] text-night-muted">a year · vs {money(checking, false)} at {c.compareLabel.toLowerCase()}</p>
         </div>
       </div>
       <Slider
@@ -41,29 +41,29 @@ export function YieldCalculator({ start = TREASURY.calculator.start }: { start?:
         step={c.step}
         value={[amount]}
         onValueChange={([v]) => setAmount(v)}
-        className="mt-7 py-3 [&_[data-slot=slider-range]]:bg-lime [&_[data-slot=slider-thumb]]:size-6 [&_[data-slot=slider-thumb]]:border-2 [&_[data-slot=slider-thumb]]:border-lime [&_[data-slot=slider-thumb]]:bg-forest-deep [&_[data-slot=slider-track]]:bg-forest-line"
+        className="mt-7 py-3 [&_[data-slot=slider-range]]:bg-pink [&_[data-slot=slider-thumb]]:size-6 [&_[data-slot=slider-thumb]]:rounded-none [&_[data-slot=slider-thumb]]:border-2 [&_[data-slot=slider-thumb]]:border-pink [&_[data-slot=slider-thumb]]:bg-night-deep [&_[data-slot=slider-track]]:rounded-none [&_[data-slot=slider-track]]:bg-night-line [&_[data-slot=slider-range]]:rounded-none"
       />
-      <div className="mt-1 flex justify-between font-mono text-[11px] text-forest-muted">
+      <div className="mt-1 flex justify-between font-mono text-[11px] text-night-muted">
         <span>{money(c.min, false)}</span>
         <span>{money(c.max, false)}</span>
       </div>
       <YieldChart amount={amount} rate={c.rate} className="mt-8" />
-      <p className="mt-4 text-[12px] leading-snug text-forest-muted">{c.footnote}</p>
+      <p className="mt-4 text-[12px] leading-snug text-night-muted">{c.footnote}</p>
     </div>
   )
 }
 
-/** Treasury, on the forest ground: why idle cash should earn, and the calculator that shows how much. */
+/** Treasury, on the oxblood ground: why idle cash should earn, and the calculator that shows how much. */
 export function Treasury() {
   return (
-    <section id="treasury" className="bg-forest py-section text-forest-fg">
+    <section id="treasury" className="bg-night py-section text-night-fg">
       <Container className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         <Reveal className="flex flex-col gap-8 lg:sticky lg:top-28">
-          <SectionHeading tone="forest" eyebrow={TREASURY.eyebrow} title={TREASURY.title} accent={TREASURY.titleAccent} body={TREASURY.body} />
-          <ul className="flex flex-col gap-3 border-t border-forest-line pt-6">
+          <SectionHeading tone="night" eyebrow={TREASURY.eyebrow} title={TREASURY.title} accent={TREASURY.titleAccent} body={TREASURY.body} />
+          <ul className="flex flex-col gap-3 border-t border-night-line pt-6">
             {TREASURY.points.map((p) => (
-              <li key={p} className="flex items-center gap-3 text-[15.5px] text-forest-fg">
-                <span className="grid size-6 place-items-center rounded-full bg-lime text-forest-deep">
+              <li key={p} className="flex items-center gap-3 text-[15.5px] text-night-fg">
+                <span className="grid size-6 place-items-center rounded-none bg-pink text-night-deep">
                   <Check className="size-3.5" strokeWidth={3} />
                 </span>
                 {p}

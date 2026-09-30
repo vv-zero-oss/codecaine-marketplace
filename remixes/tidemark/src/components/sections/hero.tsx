@@ -1,61 +1,61 @@
 import { useEffect, useState } from "react"
 import { AnimatePresence, motion, useReducedMotion } from "motion/react"
-import { ArrowDownLeft, Check, Snowflake } from "lucide-react"
+import { ArrowDownLeft, Snowflake } from "lucide-react"
 import { useCanvasAction, useCanvasDesignMode } from "@canvas/react"
 
 import { EmailCapture } from "@/components/blocks/email-capture"
+import { GiantWordmark } from "@/components/blocks/giant-wordmark"
 import { CountUp } from "@/components/motion/count-up"
 import { MetalCard } from "@/components/motion/metal-card"
-import { Sparkline } from "@/components/motion/sparkline"
-import { ButtonLink } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
 import { ACCOUNT, HERO } from "@/content"
-import { money } from "@/lib/photos"
+import { money, pexels } from "@/lib/photos"
 import { cn } from "@/lib/utils"
 
-/** The live balance: total, the month's change, a sparkline, the three accounts, and the card's freeze switch. */
-function BalancePanel({ frozen, onFreeze }: { frozen: boolean; onFreeze: () => void }) {
+/**
+ * The live balance as a flat cream strip under the photograph: the total
+ * counting up, the three accounts, and the card's freeze switch.
+ */
+function BalanceStrip({ frozen, onFreeze }: { frozen: boolean; onFreeze: () => void }) {
   return (
-    <div className="rounded-[var(--radius-panel)] bg-card p-5 pt-24 shadow-(--shadow-card) sm:p-6 sm:pt-28">
-      <p className="type-eyebrow text-ink-muted">{ACCOUNT.label}</p>
-      <p className="mt-2 font-mono text-[clamp(28px,3vw,38px)] leading-none tracking-[-0.03em] text-ink">
-        <CountUp value={ACCOUNT.balance} />
-      </p>
-      <p className="mt-2 text-[13.5px] text-gain">{ACCOUNT.change}</p>
-      <Sparkline className="mt-4" points="41,42,40,44,47,46,49,52,51,55,58,57,61,64" />
-      <ul className="mt-4 divide-y divide-line border-t border-line">
-        {ACCOUNT.accounts.map((a) => (
-          <li key={a.name} className="flex items-center justify-between py-3 text-[14px]">
-            <span className="flex flex-col">
-              <span className="text-ink">{a.name}</span>
-              <span className="font-mono text-[11.5px] text-ink-subtle">{a.number}</span>
-            </span>
-            <span className="font-mono tabular-nums text-ink">{money(a.amount)}</span>
-          </li>
-        ))}
-      </ul>
+    <div className="grid bg-paper text-ink sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1.1fr]">
+      <div className="flex flex-col gap-2 border-b border-line p-5 sm:col-span-2 lg:col-span-1 lg:border-r lg:border-b-0">
+        <p className="type-eyebrow text-coral">{ACCOUNT.label}</p>
+        <p className="font-mono text-[clamp(26px,2.6vw,34px)] leading-none tracking-[-0.03em]">
+          <CountUp value={ACCOUNT.balance} />
+        </p>
+        <p className="text-[13px] text-gain">{ACCOUNT.change}</p>
+      </div>
+      {ACCOUNT.accounts.map((a) => (
+        <div key={a.name} className="flex flex-col justify-between gap-2 border-b border-line p-5 sm:border-r lg:border-b-0">
+          <p className="type-eyebrow text-ink-muted">
+            {a.name} <span className="font-mono tracking-normal normal-case">{a.number}</span>
+          </p>
+          <p className="font-mono text-[17px] tabular-nums">{money(a.amount)}</p>
+        </div>
+      ))}
       <button
         type="button"
         onClick={onFreeze}
         aria-pressed={frozen}
         className={cn(
-          "mt-2 flex h-11 w-full items-center justify-between rounded-[var(--radius-field)] px-3 text-[14px] transition-colors duration-(--duration-hover) active:scale-[0.98]",
-          frozen ? "bg-forest text-forest-fg" : "bg-paper text-ink hover:bg-paper-deep",
+          "flex min-h-16 items-center justify-between gap-3 p-5 text-left transition-colors duration-(--duration-hover) active:scale-[0.99]",
+          frozen ? "bg-ink text-pink" : "hover:bg-paper-deep",
         )}
       >
-        <span className="flex items-center gap-2">
+        <span className="type-caps flex items-center gap-2 text-[12px]">
           <Snowflake className="size-4" />
-          {frozen ? "Card frozen" : "Freeze card •• 4821"}
+          {frozen ? "Card frozen" : "Freeze card"}
         </span>
-        <span className={cn("relative h-5 w-9 rounded-full transition-colors duration-(--duration-hover)", frozen ? "bg-lime" : "bg-line-strong")}>
-          <span className={cn("absolute top-0.5 left-0 size-4 rounded-full bg-white shadow transition-transform duration-(--duration-hover) ease-(--ease-out-strong)", frozen ? "translate-x-[18px]" : "translate-x-[2px]")} />
+        <span className={cn("relative h-5 w-9 shrink-0 rounded-full transition-colors duration-(--duration-hover)", frozen ? "bg-pink" : "bg-line-strong")}>
+          <span className={cn("absolute top-0.5 left-0 size-4 rounded-full bg-white transition-transform duration-(--duration-hover) ease-(--ease-out-strong)", frozen ? "translate-x-[18px]" : "translate-x-[2px]")} />
         </span>
       </button>
     </div>
   )
 }
 
-/** A payment landing, the way the app announces one. */
+/** A payment landing, the way the app announces one: a coral slab. */
 function PaymentToast({ show }: { show: boolean }) {
   const reduced = useReducedMotion()
   return (
@@ -66,16 +66,16 @@ function PaymentToast({ show }: { show: boolean }) {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: -8, transition: { duration: 0.15 } }}
           transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
-          className="flex w-[290px] items-center gap-3 rounded-[var(--radius-card)] bg-forest p-3 pr-4 text-forest-fg shadow-(--shadow-float)"
+          className="flex w-[300px] items-center gap-3 bg-coral p-3 pr-4 text-ink"
         >
-          <span className="grid size-9 shrink-0 place-items-center rounded-full bg-lime text-forest-deep">
+          <span className="grid size-9 shrink-0 place-items-center bg-ink text-coral">
             <ArrowDownLeft className="size-4" strokeWidth={2.4} />
           </span>
           <span className="flex min-w-0 flex-1 flex-col">
-            <span className="text-[13.5px] font-medium">{ACCOUNT.toast.title}</span>
-            <span className="truncate text-[12px] text-forest-muted">{ACCOUNT.toast.body}</span>
+            <span className="type-caps text-[11.5px]">{ACCOUNT.toast.title}</span>
+            <span className="truncate text-[12px] text-ink-soft">{ACCOUNT.toast.body}</span>
           </span>
-          <span className="font-mono text-[13px] text-lime">{ACCOUNT.toast.amount}</span>
+          <span className="font-mono text-[13px] font-medium">{ACCOUNT.toast.amount}</span>
         </motion.div>
       )}
     </AnimatePresence>
@@ -83,10 +83,11 @@ function PaymentToast({ show }: { show: boolean }) {
 }
 
 /**
- * The hero: the promise and the account form on the left; on the right the
- * card, the live balance under it, and a payment notification that arrives
- * a moment after the page does. The notification and the frozen card are
- * editor actions.
+ * The hero, framed in oxblood: a photograph with the promise and the account
+ * form laid over it, the card and an arriving payment on its right, a flat
+ * strip of balances under it, and the name set edge to edge in pink below —
+ * running off the foot of the section. The notification and the frozen
+ * card are editor actions.
  */
 export function Hero({ toastDelay = 1.4 }: { toastDelay?: number }) {
   const { designing } = useCanvasDesignMode()
@@ -102,45 +103,43 @@ export function Hero({ toastDelay = 1.4 }: { toastDelay?: number }) {
   }, [toastDelay, designing])
 
   return (
-    <section id="top" className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28">
-      <Container className="grid items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
-        <div className="flex flex-col items-start">
-          <p className="type-eyebrow flex items-center gap-2 text-ink-muted">
-            <span className="size-1.5 rounded-full bg-brass" />
-            {HERO.eyebrow}
-          </p>
-          <h1 className="type-display mt-6 text-[clamp(52px,7.4vw,104px)] leading-[0.95] text-balance text-ink">
-            {HERO.titleStart} <em className="italic">{HERO.titleAccent}</em> {HERO.titleEnd}
-          </h1>
-          <p className="mt-6 max-w-[500px] text-[17px] leading-[1.55] text-ink-muted md:text-[18px]">{HERO.body}</p>
-          <EmailCapture className="mt-9" placeholder={HERO.placeholder} cta={HERO.cta} />
-          <div className="mt-4 flex flex-wrap items-center gap-x-5 gap-y-2">
-            {HERO.trust.map((t) => (
-              <span key={t} className="flex items-center gap-1.5 text-[13px] text-ink-muted">
-                <Check className="size-3.5 text-gain" strokeWidth={2.5} />
-                {t}
-              </span>
-            ))}
-            <ButtonLink href="#contact" variant="link" className="h-auto px-0 text-[13px] text-ink-soft sm:hidden">
-              {HERO.secondary} →
-            </ButtonLink>
-          </div>
-        </div>
-
-        <div className="relative mx-auto w-full max-w-[520px] sm:pt-12 lg:mx-0 lg:ml-auto">
-          <MetalCard
-            {...ACCOUNT.card}
-            frozen={frozen}
-            className="relative z-10 mx-auto w-[82%] -rotate-3 sm:w-[74%]"
+    <section id="top" className="bg-night text-night-fg">
+      <Container className="max-w-[1320px] pt-2">
+        <div className="relative flex flex-col overflow-hidden lg:block lg:aspect-[16/8.4]">
+          <img
+            src={pexels(HERO.photo, 1800)}
+            alt={HERO.photoAlt}
+            className="order-2 aspect-[4/5] w-full object-cover object-[60%_30%] sm:aspect-[16/10] lg:absolute lg:inset-0 lg:aspect-auto lg:size-full"
           />
-          <div className="relative -mt-16 sm:-mt-20 sm:ml-12">
-            <BalancePanel frozen={frozen} onFreeze={() => setFrozen((f) => !f)} />
+          {/* Shade under the words, so they hold on the photograph */}
+          <div aria-hidden className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgb(32_7_4/0.85)_0%,rgb(32_7_4/0.55)_38%,transparent_62%)] lg:block" />
+
+          <div className="relative order-1 flex flex-col items-start pt-10 pb-10 lg:absolute lg:bottom-0 lg:left-0 lg:max-w-[640px] lg:p-10">
+            <p className="type-eyebrow text-pink">{HERO.eyebrow}</p>
+            <h1 className="type-display mt-5 text-[clamp(46px,6.4vw,96px)] text-night-fg">
+              {HERO.titleStart} <span className="text-pink">{HERO.titleAccent}</span> {HERO.titleEnd}
+            </h1>
+            <p className="mt-5 max-w-[460px] text-[16px] leading-[1.55] text-night-fg/85 md:text-[17px]">{HERO.body}</p>
+            <EmailCapture tone="night" className="mt-7" placeholder={HERO.placeholder} cta={HERO.cta} />
+            <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-[12.5px] text-night-muted">
+              {HERO.trust.map((t) => (
+                <span key={t}>— {t}</span>
+              ))}
+            </p>
           </div>
-          <div className="absolute -top-10 right-0 z-20 hidden sm:block lg:-right-6">
+
+          <div className="pointer-events-none absolute right-6 bottom-8 hidden w-[36%] max-w-[440px] lg:block">
+            <div className="pointer-events-auto">
+              <MetalCard {...ACCOUNT.card} frozen={frozen} className="-rotate-6" />
+            </div>
+          </div>
+          <div className="absolute top-6 right-6 z-10 hidden sm:block">
             <PaymentToast show={toast} />
           </div>
         </div>
+        <BalanceStrip frozen={frozen} onFreeze={() => setFrozen((f) => !f)} />
       </Container>
+      <GiantWordmark className="mx-auto mt-8 max-w-[1320px] px-gutter text-pink md:mt-10" />
     </section>
   )
 }
