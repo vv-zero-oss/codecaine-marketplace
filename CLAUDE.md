@@ -594,13 +594,44 @@ Before calling it done, walk every screen: sign up, sign in, create a
 record, edit it, filter for it, see it in the charts and counts, delete it,
 reload, and sign out — and confirm each step actually changed the data.
 
-### 7. Light and dark mode
+### 7. AI is part of every dashboard
+
+Every dashboard works with AI, as screens of its own and inside the others —
+never left out, and never a canned demo.
+
+- **An assistant screen** (and a ⌘K / side-panel entry to it from anywhere):
+  a chat that knows the app's data, streams its answers, shows its sources
+  (the records it read) and its thinking or tool steps, and keeps a history of
+  conversations in SQLite. Build it from Beautiful UI's agent components
+  (section 1).
+- **AI inside the screens**: "Ask about this table" on data tables, "Explain
+  this chart" on charts, summarise / draft / suggest next step on a record's
+  detail, fill-this-form-for-me on long forms, and a natural-language filter
+  ("deals over $10k closing this month") that turns into real table filters.
+- **It acts on the app, not beside it.** The model gets tools that call the
+  same data layer the screens use (`lib/db.ts` / the API): search, read,
+  aggregate, and create / update / delete — with a confirm step before any
+  write, and the result showing up in the tables and charts at once.
+- **It is real.** Unless another provider is named, it calls Claude through
+  the Anthropic SDK (`@anthropic-ai/sdk`) with streaming and tool use, on a
+  current model (`claude-sonnet-5-5` by default). With a server, the key is
+  `ANTHROPIC_API_KEY` in the server's environment and the browser calls the
+  server. Front-end only, the person enters their key in Settings → AI, it is
+  stored locally, and the SDK runs in the browser
+  (`dangerouslyAllowBrowser: true`). With no key, the AI screens show a clear
+  "Connect your API key" state that links to that setting — never fake,
+  hard-coded answers dressed up as AI.
+- Loading, streaming, stop, retry, error and empty states are all designed,
+  and every AI surface is registered with `useCanvasAction` so its states can
+  be reached from the editor.
+
+### 8. Light and dark mode
 
 Both themes, always, with a toggle in the header (system / light / dark,
 remembered). Every colour is a token with a light and a dark value in
 `index.css`; charts, tables, badges and shadows are checked in both.
 
-### 8. Micro-interactions
+### 9. Micro-interactions
 
 Design them with the `animate` skill and check them with
 `review-animations`: button press, hover on rows and cards, toggles, a
