@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "cirrus-cloud",
   "name": "Cirrus — Cloud Dev Environments",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A pixel-matrix landing page for Cirrus, cloud development environments: white paper under a faint 9px grid, big grotesk type and a navy, cobalt, gold, red and lime palette that only ever appears as squares — a hero of drifting diagonal pixel weather that erodes as you scroll, headlines that type themselves in, photographs that bleed in through fog, two particle-stream diagrams of how it works, hairline pricing and FAQ, a pixel-text marquee and a playable Tetris skyline for a footer.",
   "designedFor": [
     "Developer tools, cloud platforms and infrastructure products",
@@ -59,6 +59,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "previews": {

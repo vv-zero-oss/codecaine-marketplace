@@ -47,6 +47,25 @@ The canvases render from an endless GSAP tween held in a ref
 them; all of them honour reduced motion, and the typer and image reveals hold
 their end state while the page is being designed.
 
+## The style guide at `/brand`
+
+`/brand` is Cirrus's brand guidelines page, linked as "Brand guidelines" in
+the footer's credits line (`src/lib/router.tsx` is a small router for the
+two pages, with the base handled so it also works from a demo folder). It
+documents the mark and the voice; every colour in the `@theme` block of
+`src/index.css` with its hex and live value, and WCAG contrast for the real
+text/ground pairs; the type scale; spacing, notched corners, the one shadow
+and the lines; the motion tokens, playable; the pixel marks, icons and
+imagery; and every component — `ui/`, `marks/`, `blocks/`, `motion/` and
+each section, whole — live, in its variants and states, with a copyable
+snippet. Each value is read off the rendered element at runtime, so a token
+changed in `index.css` changes the page. It lives in `src/pages/brand.tsx`
+and `src/components/brand/`.
+
+The Tetris skyline appears once, as the live footer, so the keyboard drives a
+single game. A component added to the page is added to `/brand` in the same
+change.
+
 ## Built for the canvas editor
 
 - `@canvas/react` is vendored in `src/lib/canvas-react/`; `src/main.tsx`
