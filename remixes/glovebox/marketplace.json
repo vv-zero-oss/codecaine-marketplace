@@ -3,8 +3,8 @@
   "type": "remix",
   "id": "glovebox",
   "name": "Glovebox — Car Insurance Manager",
-  "version": "1.0.0",
-  "description": "A warm, editorial landing page for Glovebox, an AI that manages car insurance: a pinned hero whose footage a clip-path closes in on while the camera zooms to the centre, three blurred-video feature cards dealt one under the next with live task panels, a pinned statistic with work drifting past it, a dot map of members with stories sliding over it, how it works, FAQ and a closing frame that clips open.",
+  "version": "1.0.1",
+  "description": "A warm, editorial landing page for Glovebox, an AI that manages car insurance: a pinned hero whose footage a clip-path closes in on while the camera zooms to the centre, three blurred-video feature cards that pin and stack over one another with live task panels, a pinned statistic with work drifting past it, a dot map of members with stories sliding over it, how it works, FAQ and a closing frame that clips open.",
   "designedFor": [
     "Insurance, fintech and admin-automation products that want a calm, human, serif-led page",
     "Showing scroll-driven clip-path and video-zoom effects as editor-ready components",

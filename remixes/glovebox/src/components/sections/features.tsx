@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react"
-import { AnimatePresence, motion, useInView, useScroll, useTransform } from "motion/react"
+import { AnimatePresence, motion, useInView, useReducedMotion, useScroll, useTransform } from "motion/react"
 import { ArrowUp, Mic, Plus } from "lucide-react"
 import { useCanvasAction, useCanvasDesignMode } from "@canvas/react"
 
@@ -15,11 +15,13 @@ import { media } from "@/content"
 import { cn } from "@/lib/utils"
 
 /**
- * What Glovebox does, as three cards dealt one under the next: it reads your
- * policies, keeps you in the loop, and answers your questions. Each card's
- * caption darkens while its card holds the middle of the screen.
+ * What Glovebox does, as three cards stacked in place: each pins in the
+ * middle of the screen and the next slides up over it. It reads your
+ * policies, keeps you in the loop, and answers your questions.
  */
 export function Features() {
+  const second = useRef<HTMLDivElement>(null)
+  const third = useRef<HTMLDivElement>(null)
   return (
     <section id="features" className="relative pt-[16svh] pb-[8svh] sm:pt-[18svh]">
       <Container className="flex flex-col items-center">
@@ -35,7 +37,9 @@ export function Features() {
         </Reveal>
       </Container>
 
-      <div className="mt-[10svh] flex flex-col gap-16 sm:mt-[14svh] xl:gap-0">
+      {/* One shared container, so each sticky stage pins while the next
+          slides up over it; the bottom padding holds the last card. */}
+      <div data-canvas-ignore className="relative mt-[8svh] pb-[35svh] sm:mt-[10svh]">
         <FeatureRow
           index={0}
           side="left"
@@ -43,20 +47,24 @@ export function Features() {
           body="Forward a renewal letter or connect your insurer. Glovebox pulls out the cover, the excess and every date that matters."
           src={media.policies.src}
           poster={media.policies.poster}
+          next={second}
         >
           <PoliciesPanel />
         </FeatureRow>
         <FeatureRow
+          ref={second}
           index={1}
           side="right"
           title="Keeps you in the loop"
           body="Watch renewals and claims move on their own, and step in only when a decision is really yours."
           src={media.loop.src}
           poster={media.loop.poster}
+          next={third}
         >
           <LoopPanel />
         </FeatureRow>
         <FeatureRow
+          ref={third}
           index={2}
           side="left"
           title="And answers your questions"
@@ -78,39 +86,63 @@ type FeatureRowProps = {
   body: string
   src: string
   poster: string
+  /** The stage that slides over this one, if any. */
+  next?: React.RefObject<HTMLDivElement | null>
+  ref?: React.Ref<HTMLDivElement>
   children?: React.ReactNode
 }
 
-function FeatureRow({ index, side, title, body, src, poster, children }: FeatureRowProps) {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] })
-  // 0 → 1 as the card takes the middle of the screen, back to 0 as it leaves.
-  const active = useRange(scrollYProgress, [0.2, 0.4, 0.62, 0.8], [0, 1, 1, 0])
-  const heading = useTransform(active, (p) => mixToken("--color-faint", "--color-ink", p))
-  const copy = useTransform(active, (p) => mixToken("--color-faint", "--color-ink-soft", p))
+/**
+ * One pinned stage: the card holds still in the middle of the screen while
+ * the next stage slides up over it. As it is covered it settles back a
+ * little and its caption fades, so the captions of stacked cards never
+ * overlap.
+ */
+function FeatureRow({ index, side, title, body, src, poster, next, ref, children }: FeatureRowProps) {
+  const own = useRef<HTMLDivElement>(null)
+  const reduce = useReducedMotion()
+  const { scrollYProgress: arriving } = useScroll({ target: own, offset: ["start end", "start start"] })
+  const { scrollYProgress: covering } = useScroll({ target: next ?? own, offset: ["start end", "start start"] })
+  const covered = useTransform(covering, (v) => (next ? v : 0))
+
+  // Ink while this card holds the screen, faint before it arrives.
+  const lit = useRange(arriving, [0.55, 0.95], [0, 1])
+  const heading = useTransform(lit, (p) => mixToken("--color-faint", "--color-ink", p))
+  const copy = useTransform(lit, (p) => mixToken("--color-faint", "--color-ink-soft", p))
+  const captionOpacity = useRange(covered, [0.35, 0.75], [1, 0])
+  const settle = useTransform(useRange(covered, [0, 1], [1, 0.92]), (s) => `scale(${s})`)
 
   return (
     <div
-      ref={ref}
+      ref={(node) => {
+        own.current = node
+        if (typeof ref === "function") ref(node)
+        else if (ref) ref.current = node
+      }}
       data-canvas-ignore
-      className={cn("relative px-3 sm:px-6", index > 0 && "xl:-mt-[7svh]")}
-      style={{ zIndex: 10 - index }}
+      className="sticky top-0 flex h-svh flex-col justify-center px-3 pt-16 pb-6 sm:px-6 xl:pt-0 xl:pb-0"
+      style={{ zIndex: index + 1 }}
     >
-      <div data-canvas-ignore className="mx-auto w-full max-w-[66rem] xl:w-[56vw]">
+      <motion.div
+        data-canvas-ignore
+        style={{ transform: reduce ? "none" : settle }}
+        className="mx-auto w-full max-w-[66rem] origin-top xl:w-[min(56vw,calc(76svh*1.5))]"
+      >
         <ClipCard
           src={src}
           poster={poster}
           radius={48}
-          className="grid aspect-[4/5] grid-cols-[minmax(0,1fr)] place-items-center px-4 sm:aspect-[16/11] sm:px-10 xl:aspect-[3/2]"
+          className="grid aspect-[4/5] max-h-[62svh] grid-cols-[minmax(0,1fr)] place-items-center px-4 sm:aspect-[16/11] sm:max-h-none sm:px-10 xl:aspect-[3/2]"
         >
           <Reveal distance={20} className="w-full max-w-[35rem]">
             {children}
           </Reveal>
         </ClipCard>
-      </div>
-      <div
+      </motion.div>
+      <motion.div
+        style={{ opacity: captionOpacity }}
         className={cn(
-          "mx-auto mt-6 max-w-[66rem] px-1 sm:mt-8 xl:absolute xl:top-1/2 xl:mt-0 xl:w-[min(16rem,calc(19vw-2rem))] xl:-translate-y-1/2 xl:px-0",
+          "mx-auto mt-5 w-full max-w-[66rem] px-1 sm:mt-8 xl:absolute xl:top-1/2 xl:mt-0 xl:w-[min(16rem,calc(19vw-2rem))] xl:-translate-y-1/2 xl:px-0",
           side === "left" ? "xl:left-[4.5vw]" : "xl:right-[4.5vw]",
         )}
       >
@@ -123,7 +155,7 @@ function FeatureRow({ index, side, title, body, src, poster, children }: Feature
         <motion.p style={{ color: copy }} className="mt-3 max-w-[34ch] text-[15px] leading-[1.45] sm:text-base">
           {body}
         </motion.p>
-      </div>
+      </motion.div>
     </div>
   )
 }
