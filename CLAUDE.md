@@ -494,7 +494,69 @@ is not finished.
   `dither-kit` for everything). It installs into the shadcn project and
   takes the same `data` + `config` shape as shadcn charts.
 
-### 2. Tables are TanStack Table
+### 2. Classy, not AI slop — Linear is the bar
+
+Dashboards look like a product a careful team shipped, not like generated
+UI. When no reference is given, **Linear (linear.app) is the reference** for
+type, density and restraint — studied, never named or copied into the code
+(section 5 above).
+
+- **Inter is the default font** (from Google Fonts, section 5), with
+  `font-feature-settings: "cv01", "ss03"` and tabular numbers
+  (`tabular-nums`) in tables, KPIs and charts. A mono (JetBrains Mono or
+  Geist Mono) only for IDs, keys and code. A tight type scale — 12/13/14px for
+  UI, a few larger steps for page titles — medium (500) for emphasis rather
+  than bold, slightly negative letter-spacing on headings, and a real
+  hierarchy in greys (primary, secondary, tertiary text tokens) rather than
+  in size.
+- **Quiet surfaces**: near-neutral backgrounds, 1px hairline borders, small
+  radii (6–8px), soft low shadows used sparingly, one accent colour used for
+  what matters. Dense but breathable spacing on a 4px grid.
+- **No AI slop**: no purple-to-blue gradients on everything, no glassmorphism
+  cards stacked on a blurred blob, no emoji as icons, no sparkles ✨ on every
+  AI button, no gradient text headlines, no "Welcome back, User! 👋" filler, no
+  identical three-card feature grids, no generic stock-style illustrations.
+  Every effect earns its place; if unsure, leave it out.
+
+**Component sources to reach for** (beyond shadcn), each used where it fits,
+never all on one screen:
+
+- **Beam** (https://libraries.dev/beam, `border-beam`) — a glow around the
+  one card that matters (section 3 above).
+- **Thinking Orbs** (https://libraries.dev/orbs, `thinking-orbs`,
+  `<ThinkingOrb state="searching" size={20} />`) — the AI's thinking and
+  working states, instead of a spinner. Pass `dark` from the theme and
+  `paused` from reduced motion.
+- **Voice Glow** (https://libraries.dev/voice, `voice-glow`, `<VoiceBeam />`
+  with `useMicrophone()`) — voice input on the AI composer; `processing`
+  while the answer is being worked on.
+- **Fluid Functionalism** (https://www.fluidfunctionalism.com) — form
+  controls with considered motion, e.g. its checkbox group whose adjacent
+  selections merge into one background; use it for filters, settings and
+  multi-select forms.
+- **Kobra** (https://kobra.systems) — shadcn-registry components
+  (`npx shadcn@latest add @kobra/<name>`), e.g. `@kobra/input-otp` for the
+  OTP step, with its paste and success/error animations.
+- **Beautiful UI** (https://www.beautifului.dev) for agent UI, **Dither Kit**
+  for dithered charts, **Isocons** for empty states (section 6 above).
+
+### 3. ⌘K works everywhere
+
+Every dashboard has a **command palette** (shadcn `command` in a `Dialog`),
+opened with ⌘K on macOS and Ctrl+K elsewhere, plus a visible trigger in the
+header or sidebar showing the shortcut. It is not decoration — every entry
+does something:
+
+- navigate to every screen, and jump to any record by searching the
+  database (debounced, grouped by type, recent items first);
+- run actions — create a record, toggle theme, invite someone, sign out,
+  reset demo data — with their own shortcuts shown beside them;
+- "Ask AI…" hands the typed query to the assistant (rule 9);
+- keyboard-complete: arrows, Enter, Esc, nested pages with Backspace to go
+  back, and an empty state for no results. Registered with
+  `useCanvasAction("Command menu", …)` so the editor can open it.
+
+### 4. Tables are TanStack Table
 
 Every data table is built on **TanStack Table**
 (https://tanstack.com/table/latest, `@tanstack/react-table`) rendered through
@@ -509,14 +571,14 @@ screen. A rich table has, at least:
   visibility, and a row actions menu (`DropdownMenu`);
 - loading skeletons, an empty state and a no-results state.
 
-### 3. Charts have filters too
+### 5. Charts have filters too
 
 Every chart can be filtered: a date range or period toggle (7d / 30d / 90d /
 custom), and a segment or series filter where the data has one. Filters
 drive the chart and its KPI tiles together, and the chart has a tooltip, a
 legend and a loading and an empty state.
 
-### 4. Data lives in SQLite unless told otherwise
+### 6. Data lives in SQLite unless told otherwise
 
 When no database or backend is named, the dashboard's data is **SQLite** —
 never a hard-coded array, a JSON fixture read once, or a mock store that
@@ -540,7 +602,7 @@ forgets everything on reload.
   row created on one screen shows up in the table, the chart and the count
   on every other.
 
-### 5. Auth pages come with it, and they work
+### 7. Auth pages come with it, and they work
 
 Every dashboard ships its auth screens: **sign in, sign up, forgot password,
 reset password**, and a verify/OTP step (shadcn `input-otp`) — built from
@@ -578,7 +640,7 @@ Creative never means less usable: labels stay visible, errors say how to
 fix them, the keyboard works (tab order, Enter submits), autofill works,
 and everything holds at 360px.
 
-### 6. Every screen is functional — not in name only
+### 8. Every screen is functional — not in name only
 
 No dead UI and no façades. Every screen in the sidebar exists and works end
 to end against the database: create / edit / delete persist and survive a
@@ -594,7 +656,7 @@ Before calling it done, walk every screen: sign up, sign in, create a
 record, edit it, filter for it, see it in the charts and counts, delete it,
 reload, and sign out — and confirm each step actually changed the data.
 
-### 7. AI is part of every dashboard
+### 9. AI is part of every dashboard
 
 Every dashboard works with AI, as screens of its own and inside the others —
 never left out, and never a canned demo.
@@ -625,17 +687,17 @@ never left out, and never a canned demo.
   and every AI surface is registered with `useCanvasAction` so its states can
   be reached from the editor.
 
-### 8. Light and dark mode
+### 10. Light and dark mode
 
 Both themes, always, with a toggle in the header (system / light / dark,
 remembered). Every colour is a token with a light and a dark value in
 `index.css`; charts, tables, badges and shadows are checked in both.
 
-### 9. Micro-interactions
+### 11. Micro-interactions
 
 Design them with the `animate` skill and check them with
 `review-animations`: button press, hover on rows and cards, toggles, a
 copied state, optimistic updates, toasts, skeleton-to-content, number
 count-ups on KPIs, sidebar collapse, sort indicators, filter chips appearing.
 Small, fast and purposeful — and every hidden state (open dialog, filter
-popover, empty state, error) registered with `useCanvasAction` (section 11).
+popover, empty state, error) registered with `useCanvasAction` (remix section 11).
