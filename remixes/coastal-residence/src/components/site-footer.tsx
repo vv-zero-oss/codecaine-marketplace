@@ -6,6 +6,7 @@ import { scrollToTarget, useLenis } from "@/components/motion"
 import { Emblem } from "@/components/ui/emblem"
 import { StretchText } from "@/components/ui/stretch-text"
 import { contact } from "@/content"
+import { Link } from "@/lib/router"
 
 /** Contact, in deep: the number to call, where to find the office, the small print. */
 export function SiteFooter() {
@@ -48,9 +49,12 @@ export function SiteFooter() {
                 <a href="#top" className="transition-opacity hover:opacity-60">
                   {l}
                 </a>
-                {i < contact.links.length - 1 && ", "}
+                {", "}
               </span>
             ))}
+            <Link href="/brand" className="transition-opacity hover:opacity-60">
+              Brand guidelines
+            </Link>
           </p>
         </div>
         <div className="flex items-end justify-between gap-8 sm:flex-col sm:items-end">

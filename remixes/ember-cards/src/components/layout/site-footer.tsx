@@ -1,6 +1,7 @@
 import { Container } from "@/components/ui/container"
 import { LogoMark } from "@/components/ui/logo"
 import { BRAND, FOOTER } from "@/content"
+import { Link } from "@/lib/router"
 
 /** One column of footer links under a small white heading. */
 export function FooterColumn({ title, links }: { title: string; links: readonly string[] }) {
@@ -34,7 +35,15 @@ export function SiteFooter({ wordmark = BRAND, note = FOOTER.legal }: { wordmark
             <FooterColumn key={column.title} title={column.title} links={column.links} />
           ))}
         </div>
-        <p className="mt-12 max-w-md text-[0.6875rem] leading-relaxed text-footer-muted/80">{note}</p>
+        <div className="relative z-10 mt-12 flex flex-wrap items-end justify-between gap-x-8 gap-y-3">
+          <p className="max-w-md text-[0.6875rem] leading-relaxed text-footer-muted/80">{note}</p>
+          <Link
+            href="/brand"
+            className="inline-flex min-h-8 items-center text-[0.8125rem] text-footer-muted transition-colors duration-(--duration-hover) ease-out hover:text-ink sm:min-h-0"
+          >
+            Brand guidelines
+          </Link>
+        </div>
       </Container>
       <p
         aria-hidden

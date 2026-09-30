@@ -10,7 +10,7 @@ import { StretchText } from "@/components/ui/stretch-text"
 import { residences, story } from "@/content"
 
 /** A small label over a figure set in the display face. */
-function Figure({ label, children }: { label: string; children: React.ReactNode }) {
+export function Figure({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
       <p className="font-sans text-[0.8rem] uppercase tracking-[0.02em]">{label}</p>
