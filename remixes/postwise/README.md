@@ -5,7 +5,7 @@ drafts your email in your own voice.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3170
+npm run dev     # → http://localhost:3180
 ```
 
 ## The page
