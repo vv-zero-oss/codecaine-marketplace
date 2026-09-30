@@ -8,7 +8,7 @@ video studio, and one scheduler for every channel. Built from
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3210
+npm run dev     # → http://localhost:3220
 ```
 
 ## Pages
