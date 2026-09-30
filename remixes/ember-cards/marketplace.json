@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "ember-cards",
   "name": "Ember Cards",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A dark, metallic landing page for a virtual card company: machined-metal cards (chrome, titanium, champagne, graphite, copper) with brushing, film grain and a pointer-tracked highlight; two live 3D iPhones (React Three Fiber); a manifesto that lights up word by word; a pinned four-step “how it works”; a sideways-scrolling row of use cases; a customer video that zooms to fill the screen; a dotted world map, reviews, an FAQ and a champagne sign-up band.",
   "designedFor": [
     "Fintech, card and wallet apps launching with a single clear offer",
@@ -62,6 +62,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "previews": {

@@ -1,8 +1,10 @@
 import { LogoMark } from "@/components/blocks/logo"
 import { brand, footer } from "@/content"
+import { Link } from "@/lib/router"
 
 /** The reference's footer: small, quiet, one line — the name and year on the
- *  left, two groups of links on the right. */
+ *  left, two groups of links on the right. `Link` is a plain anchor for `#`
+ *  and outside links, and changes page without a reload for `/brand`. */
 export function SiteFooter() {
   return (
     <footer className="mx-auto flex max-w-[1440px] flex-col gap-6 px-gutter pt-10 pb-6 text-micro sm:flex-row sm:items-end sm:justify-between">
@@ -16,13 +18,13 @@ export function SiteFooter() {
           <nav key={group.title} aria-label={group.title} className="flex flex-wrap items-center gap-x-3 gap-y-1">
             <span className="font-medium text-ink">{group.title}</span>
             {group.links.map((link) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 className="inline-flex min-h-8 items-center text-ink-muted transition-colors duration-(--duration-hover) hover:text-ink"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         ))}

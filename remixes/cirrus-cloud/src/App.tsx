@@ -19,7 +19,7 @@ import { NetworkPage } from "@/pages/network"
 import { NotFoundPage } from "@/pages/not-found"
 import { PricingPage } from "@/pages/pricing"
 import { ProductPage } from "@/pages/product"
-import { usePathname } from "@/router"
+import { usePathname } from "@/lib/router"
 
 /** Each page, and the edge region whose skyline sits in its footer. */
 const PAGES: Record<string, { Page: () => React.JSX.Element; city: City }> = {

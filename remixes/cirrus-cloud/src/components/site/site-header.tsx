@@ -15,7 +15,7 @@ import {
 import { Sheet, SheetContent, SheetDescription, SheetTitle, SheetTrigger } from "@/components/ui/sheet"
 import { nav } from "@/content"
 import { cn } from "@/lib/utils"
-import { Link } from "@/router"
+import { Link } from "@/lib/router"
 
 /**
  * The menubar: the mark on the left, the product menu and the pages in the
@@ -74,7 +74,7 @@ export function SiteHeader({ pathname }: { pathname: string }) {
               <button
                 type="button"
                 aria-label="Open menu"
-                className="notch notch-sm flex size-11 items-center justify-center text-ink outline-none focus-visible:outline-2 focus-visible:outline-cobalt lg:hidden"
+                className="notch focus-notch notch-sm flex size-11 items-center justify-center text-ink outline-none lg:hidden"
               >
                 <PixelIcon name="bars" className="size-5" />
               </button>

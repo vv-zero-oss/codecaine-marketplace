@@ -32,6 +32,8 @@ import { LogoCloud } from "@/components/sections/logo-cloud"
 import { Pricing } from "@/components/sections/pricing"
 import { Stats } from "@/components/sections/stats"
 import { Testimonials } from "@/components/sections/testimonials"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 /** In the order they appear. The id is the section's own `id` attribute, so
  *  `?only=` and an anchor link agree about what a block is called. */
@@ -76,6 +78,16 @@ export default function App() {
   // `components/motion.ts` — it is here so the SDK's motion channel has
   // something real to drive, and it is a fixture, on purpose.
   useSmoothScroll()
+  const pathname = usePathname()
+
+  if (pathname === "/brand") {
+    return (
+      <div className="bg-white text-quartz-900" data-canvas-ignore>
+        <BrandPage />
+        <SiteFooter />
+      </div>
+    )
+  }
 
   return (
     <div className="bg-white text-quartz-900" data-canvas-ignore>

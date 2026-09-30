@@ -101,6 +101,7 @@
   /* Shadows: the page is flat; the only lift is the rail arrow over photography */
   --shadow-float: 0 1px 2px rgb(12 12 12 / 0.18), 0 6px 18px -6px rgb(12 12 12 / 0.28);
   --shadow: 0 1px 0 rgb(12 12 12 / 0.04), 0 10px 30px -12px rgb(12 12 12 / 0.22);
+  --shadow-focus: inset 0 0 0 2px var(--color-cobalt), inset 0 0 0 4px var(--color-paper);
   --shadow-lg: 0 1px 0 rgb(12 12 12 / 0.04), 0 18px 40px -16px rgb(12 12 12 / 0.3);
 
   /* Motion */
@@ -183,6 +184,12 @@ html.lenis body {
   }
   .notch-sm {
     --notch: 2px;
+  }
+  /* A notch's clip-path cuts an outline away, so notched controls show
+     keyboard focus as an inset ring: a cobalt edge and a paper line inside. */
+  .focus-notch:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
   }
 
   .label {

@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "tidemark",
   "name": "Tidemark — Fintech",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A poster-loud fintech landing page for Tidemark, business banking for startups: oxblood, cream, pink and coral, heavy extended caps, square edges and warm moody photography — a photo hero with the account form, a metal card and a live balance strip over the name set edge to edge, a colour-block product grid with working mini-UIs, a treasury yield calculator and chart, security, customer stories, monthly/yearly pricing, an FAQ and a disclosures footer.",
   "designedFor": [
     "Fintech, banking, payments and treasury products",
@@ -56,6 +56,10 @@
     {
       "path": "/",
       "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
     }
   ],
   "icon": "icon.svg",

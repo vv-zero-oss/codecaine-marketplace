@@ -183,6 +183,21 @@ three exist because the package lives in this repository rather than in
 `@canvas/react` and keeps only the one plugin line — `canvasPropOptions()`,
 which is what makes `variant` a dropdown rather than a text field.
 
+## The style guide at `/brand`
+
+`/brand` is the project's brand guidelines page: the mark and voice, every
+colour token with its value and contrast, the type scale, spacing, radii,
+shadows, borders, motion, icons, and every component in its variants and
+states with a copyable snippet. Each value is read off the rendered element,
+so changing a token in `src/index.css` changes the page. It lives in
+`src/pages/brand.tsx` and `src/components/brand/`, and is reached from
+"Brand guidelines" in the footer (`src/lib/router.tsx` is a small router for
+the two pages).
+
+It is the one deliberate addition to the document `scaffold/` renders: a
+footer link. A project copied from this rewrites the page for its own tokens
+and components, and adds each new component to it in the same change.
+
 ## Checking it
 
 ```bash

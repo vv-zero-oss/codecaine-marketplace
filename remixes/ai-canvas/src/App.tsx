@@ -23,6 +23,8 @@ import { SiteHeader } from "@/components/sections/site-header"
 import { Together } from "@/components/sections/together"
 import { HeroWashContext } from "@/hooks/use-hero-wash"
 import { useSmoothScroll } from "@/hooks/use-smooth-scroll"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 /** In the order the story is told. `?only=<id>` renders one on its own, as in
  *  the scaffold — handy for checking a section in the editor. */
@@ -50,6 +52,18 @@ export default function App() {
   // hero filtered out by `?only=`, the page starts on its light face.
   const wash = useMotionValue(only && only !== "top" ? 1 : 0)
   const sections = only ? SECTIONS.filter((entry) => entry.id === only) : SECTIONS
+  const pathname = usePathname()
+
+  // `/brand` — the style guide. No hero on it, so the wash context keeps its
+  // default (washed, the light face).
+  if (pathname === "/brand") {
+    return (
+      <div className="min-h-screen bg-paper text-ink" data-canvas-ignore>
+        <BrandPage />
+        <SiteFooter />
+      </div>
+    )
+  }
 
   return (
     <HeroWashContext.Provider value={wash}>

@@ -59,7 +59,7 @@ export function CardRail({ name, cards, className }: { name: string; cards: Card
         type="button"
         aria-label={atEnd ? "Back to the first card" : "Next card"}
         onClick={() => (atEnd ? track.current?.scrollTo({ left: 0, behavior: "smooth" }) : step(1))}
-        className="notch absolute top-[calc((min(80vw,26.25rem)*0.89)/2)] right-gutter hidden size-11 -translate-y-1/2 items-center justify-center bg-ink text-paper shadow-float transition-transform duration-(--duration-press) ease-(--ease-out) outline-none active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt sm:flex"
+        className="notch focus-notch absolute top-[calc((min(80vw,26.25rem)*0.89)/2)] right-gutter hidden size-11 -translate-y-1/2 items-center justify-center bg-ink text-paper shadow-float transition-transform duration-(--duration-press) ease-(--ease-out) outline-none active:scale-[0.97] sm:flex"
       >
         <ArrowRight
           className={cn("size-4 transition-transform duration-(--duration-hover) ease-(--ease-out)", atEnd && "rotate-180")}

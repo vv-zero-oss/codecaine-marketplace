@@ -2,7 +2,7 @@ import { TetrisSkyline } from "@/components/motion/tetris-skyline"
 import { PixelMark } from "@/components/marks/pixel-marks"
 import { Container } from "@/components/ui/container"
 import { brand, closing, footer } from "@/content"
-import { Link } from "@/router"
+import { Link } from "@/lib/router"
 import { CITIES, CityLine, type City } from "./city-line"
 
 /**

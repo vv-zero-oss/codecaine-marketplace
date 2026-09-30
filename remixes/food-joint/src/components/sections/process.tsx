@@ -12,9 +12,9 @@ import type { ShapeName } from "@/lib/shapes"
 
 const SHAPES: ShapeName[] = ["scallop", "arch", "pill", "blob", "burst"]
 
-type Step = (typeof process.steps)[number]
+export type Step = (typeof process.steps)[number]
 
-function StepCard({ step, index }: { step: Step; index: number }) {
+export function StepCard({ step, index }: { step: Step; index: number }) {
   return (
     <article className="flex w-full shrink-0 flex-col gap-6 md:w-[min(30vw,440px)]">
       <ClipShape shape={SHAPES[index % SHAPES.length]} className="aspect-[5/4] w-full bg-forest/10">

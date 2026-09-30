@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "cirrus-cloud",
   "name": "Cirrus — Cloud Dev Environments",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A pixel-matrix site for Cirrus, cloud development environments: white paper under a 9px grid and a palette drawn only as squares — a night server-room hero with CDN packets travelling from origin to edge racks, isometric voxel server cards, a DNA-to-organism-to-tree life cycle for clone/boot/build/ship, a menubar with a pixel-icon product menu, product, network, pricing, changelog and brand-guideline pages, and footers with a different city skyline in line art over a playable Tetris skyline.",
   "designedFor": [
     "Developer tools, cloud platforms and infrastructure products",

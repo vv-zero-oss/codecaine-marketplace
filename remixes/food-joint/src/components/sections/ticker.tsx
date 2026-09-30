@@ -5,7 +5,7 @@ import { Marquee } from "@/components/blocks/marquee"
 import { Photo } from "@/components/blocks/photo"
 import { ticker } from "@/content"
 
-function Star({ className }: { className?: string }) {
+export function Star({ className }: { className?: string }) {
   return (
     <svg aria-hidden viewBox="0 0 40 40" className={className}>
       <path d="M20 0 L24 14 L38 10 L27 20 L38 30 L24 26 L20 40 L16 26 L2 30 L13 20 L2 10 L16 14 Z" fill="currentColor" />

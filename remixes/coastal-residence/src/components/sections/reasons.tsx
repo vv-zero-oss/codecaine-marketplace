@@ -11,7 +11,7 @@ import { brand, reasons, reasonsFooter, reasonsIntro } from "@/content"
 import { cn } from "@/lib/utils"
 
 /** Once the disc has covered: the region either side of the mark, a hairline, and the promise. */
-function IntroCentre({ progress }: { progress: MotionValue<number> }) {
+export function IntroCentre({ progress }: { progress: MotionValue<number> }) {
   const opacity = useTransform(progress, (v) => Math.min(1, Math.max(0, (v - 0.62) / 0.18)))
   const line = useTransform(progress, (v) => Math.min(1, Math.max(0, (v - 0.62) / 0.33)))
   return (
@@ -32,7 +32,7 @@ function IntroCentre({ progress }: { progress: MotionValue<number> }) {
 }
 
 /** A small photo carousel with "‹ 1 —— 2 ›" underneath. */
-function ReasonPhotos({ images, title }: { images: string[]; title: string }) {
+export function ReasonPhotos({ images, title }: { images: string[]; title: string }) {
   const [api, setApi] = useState<CarouselApi>()
   const [index, setIndex] = useState(0)
   useEffect(() => {

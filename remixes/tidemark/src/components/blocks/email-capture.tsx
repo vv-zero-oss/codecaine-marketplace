@@ -18,6 +18,7 @@ export function EmailCapture({
   placeholder = "Work email",
   cta = "Open an account",
   success = "Check your inbox — your application is waiting.",
+  startSent = false,
   className,
 }: {
   name?: string
@@ -25,9 +26,11 @@ export function EmailCapture({
   placeholder?: string
   cta?: string
   success?: string
+  /** Starts in the sent state — for the style guide. */
+  startSent?: boolean
   className?: string
 }) {
-  const [sent, setSent] = useState(false)
+  const [sent, setSent] = useState(startSent)
   useCanvasAction(`${name} form sent`, (next) => setSent(next ?? !sent), { on: sent, group: "Forms" })
   const night = tone === "night"
 

@@ -17,15 +17,12 @@ npm run dev     # → http://localhost:3210
   latency, and five edges drawn as their cities.
 - `/pricing` — plans, a side-by-side comparison, the FAQ.
 - `/changelog` — releases, newest first.
-- `/brand` — the brand guidelines: logo, voice, every colour token with
-  contrast ratios, the type scale, spacing, notches, shadows, the motion
-  curves (playable), pixel icons, the isometric servers, imagery and every
-  component, live — all read from the stylesheet at runtime.
+- `/brand` — the brand guidelines (below).
 
 A menubar runs across the top (the Product menu is shadcn's navigation menu,
 with pixel icons; below `lg` it folds into a sheet), and every page's footer
 draws a different edge region's skyline in line art over the Tetris
-skyline. Routing is `src/router.tsx`: forty lines, real paths.
+skyline. Routing is `src/lib/router.tsx`: fifty lines, real paths, hash links scrolled to.
 
 ## Home
 
@@ -71,6 +68,25 @@ The canvases render from an endless GSAP tween held in a ref
 (`frame-loop.ts`), so the canvas editor's Motion switch can stop and resume
 them; all of them honour reduced motion, and the typer and image reveals hold
 their end state while the page is being designed.
+
+## The style guide at `/brand`
+
+`/brand` is Cirrus's brand guidelines page, linked from the footer. It
+documents the mark and the voice; every colour in the `@theme` block of
+`src/index.css` (paper and ink, the pixel palette, the server room, the
+chips) with its hex and live value, and WCAG contrast for the real
+text/ground pairs; the type scale; spacing, notched corners, the focus ring,
+the shadows and the lines; the motion tokens, playable; the pixel icons, the
+isometric servers, the city line art and the photography; and every
+component — `ui/`, `marks/`, `icons/`, `blocks/`, `motion/`, `site/` and
+each section of every page, whole — live, in its variants and states, with a
+copyable snippet. Each value is read off the rendered element at runtime, so
+a token changed in `index.css` changes the page. It lives in
+`src/pages/brand.tsx` and `src/components/brand/`.
+
+The menubar, the footer and the Tetris skyline appear once, live, around
+the guide. A component added to the site is added to `/brand` in the same
+change.
 
 ## Built for the canvas editor
 

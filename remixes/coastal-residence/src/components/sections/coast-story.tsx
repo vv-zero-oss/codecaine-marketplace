@@ -14,7 +14,7 @@ const COAST =
 const STOP_X = [60, 250, 440, 620, 830, 1030]
 
 /** The coastline as one drawn line, with the towns along it and the drive to each. */
-function CoastMap() {
+export function CoastMap() {
   const path = useRef<SVGPathElement>(null)
   const [ys, setYs] = useState<number[]>(STOP_X.map(() => 120))
   useLayoutEffect(() => {

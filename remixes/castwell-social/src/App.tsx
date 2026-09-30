@@ -2,7 +2,8 @@
  * Castwell — a social media command center run by an AI marketing team.
  *
  * Five pages behind a small router (`lib/router.tsx`): Home, AI Marketing
- * Manager, AI Video Studio, Scheduler and Pricing. Every page is a list of
+ * Manager, AI Video Studio, Scheduler and Pricing — plus `/brand`, the
+ * brand guidelines, linked from the footer. Every page is a list of
  * sections; the header and footer are shared.
  */
 
@@ -12,6 +13,7 @@ import { SmoothScroll } from "@/components/motion/smooth-scroll"
 import { SiteFooter } from "@/components/site/site-footer"
 import { SiteHeader } from "@/components/site/site-header"
 import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 import { HomePage } from "@/pages/home"
 import { MarketingManagerPage } from "@/pages/marketing-manager"
 import { PricingPage } from "@/pages/pricing"
@@ -24,6 +26,7 @@ const PAGES: Record<string, { title: string; Page: () => React.JSX.Element }> = 
   "/video-studio": { title: "AI Video Studio — Castwell", Page: VideoStudioPage },
   "/scheduler": { title: "Scheduler — Castwell", Page: SchedulerPage },
   "/pricing": { title: "Pricing — Castwell", Page: PricingPage },
+  "/brand": { title: "Brand guidelines — Castwell", Page: BrandPage },
 }
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, so the

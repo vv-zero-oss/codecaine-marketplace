@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { TornEdge } from "@/components/ui/torn-edge"
 import { useScrollTo } from "@/components/motion/smooth-scroll"
 import { footer, hotel } from "@/content"
+import { Link } from "@/lib/router"
 
 /**
  * The back cover: torn off in pine, the address set as it would be on the
@@ -51,9 +52,9 @@ export function SiteFooter({ closing = "The ski room opens at 7:15.", cta = "Res
             <div className="flex flex-wrap gap-x-6 gap-y-2">
               <span>© 2026 {hotel.full}</span>
               {footer.links.map((l) => (
-                <a key={l.label} href={l.href} className="hover:text-pine-ink">
+                <Link key={l.label} href={l.href} className="hover:text-pine-ink">
                   {l.label}
-                </a>
+                </Link>
               ))}
             </div>
             <p>
@@ -67,7 +68,7 @@ export function SiteFooter({ closing = "The ski room opens at 7:15.", cta = "Res
         <motion.p
           aria-hidden
           style={{ y }}
-          className="-mb-[0.22em] text-center font-serif text-[36vw] leading-[0.8] tracking-[-0.05em] text-pine-ink/[0.07] italic select-none"
+          className="pointer-events-none -mb-[0.22em] text-center font-serif text-[36vw] leading-[0.8] tracking-[-0.05em] text-pine-ink/[0.07] italic select-none"
         >
           {hotel.name}
         </motion.p>

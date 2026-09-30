@@ -24,6 +24,8 @@ its own (`hero`, `ticker`, `statement`, `menu`, `oak`, `process`, `reviews`,
 | `src/components/ui/` | shadcn primitives: `button`, `input`, `label`, `sheet`, `tabs`, and `container`. |
 | `src/components/blocks/` | Pieces used more than once: `ClipShape`, `Photo`, `Film`, `RiseText`, `Marquee`, `CtaEllipse`, `SpinBadge`, `Eyebrow`, `Wordmark`. |
 | `src/components/sections/` | The page, one file per section, in the order `App.tsx` lists them. |
+| `src/pages/brand.tsx`, `src/components/brand/` | The style guide at `/brand`. |
+| `src/lib/router.tsx` | A small router for the two pages. |
 
 ## The page
 
@@ -38,6 +40,20 @@ its own (`hero`, `ticker`, `statement`, `menu`, `oak`, `process`, `reviews`,
 9. **Room** — four photos in four shapes at four depths.
 10. **Booking** — name, party size, evening and time; confirms as a ticket stub.
 11. **Footer** — the name the full width, with the food showing through the letters.
+
+## The style guide at `/brand`
+
+`/brand` is Oakbird's brand guidelines page, linked as "Brand guidelines" from
+the footer: the wordmark with its clear space and minimum size, the voice, every
+colour token with its value and measured WCAG contrast, the three faces of
+Archivo and the whole type scale, the spacing steps, radii, clip shapes,
+shadows and borders, the motion curves (press play), icons and imagery, and
+every component — primitives, blocks and sections — live in its variants and
+states with a copyable snippet. Every value is read off the rendered element,
+so changing a token in `src/index.css` changes the page. The pinned oak zoom
+and the sideways kitchen walk are shown by their parts (`StillCutout`,
+`StepCard`); the preloader plays on demand. Add a component here in the same
+change that adds it to the site.
 
 Every animation respects `prefers-reduced-motion`, and the pinned scenes fall
 back to plain stacked layouts on small screens.

@@ -22,6 +22,23 @@ articles → the wall of love → the closing ask and the footer.
 All copy lives in `src/content.ts`; every colour, shadow, radius, font and
 motion curve is a token in `src/index.css`.
 
+## The style guide at `/brand`
+
+`/brand` is Postwise's brand guidelines page, set in the site's own paper,
+lagoon and sea-glass: the mark and voice, every colour token with its value
+and WCAG contrast for the real text pairs, the type scale, spacing, radii,
+shadows, borders, the motion curves (press play), icons and imagery, and every
+component — primitives, blocks, product mock-ups, motion pieces, section cards
+and the site chrome — live in its variants and states with a copyable snippet.
+All seventeen home-page sections can be viewed whole, one at a time, at the
+end. Every value is read off the rendered element, so changing a token in
+`src/index.css` changes the page.
+
+It lives in `src/pages/brand.tsx` and `src/components/brand/`, and is reached
+from "Brand guidelines" in the footer (`src/lib/router.tsx` is a small router
+for the two pages). A component added to the site is added there in the same
+change.
+
 ## Built for the canvas editor
 
 - `@canvas/react` is vendored in `src/lib/canvas-react/` (see

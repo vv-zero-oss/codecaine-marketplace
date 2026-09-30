@@ -38,6 +38,25 @@ can stop it, and every component honours `prefers-reduced-motion` and
 **Editor actions:** Sign-up sent (Hero, Closing), Answer shown (Features),
 Story video (Stories), First answer open (FAQ).
 
+## The style guide at `/brand`
+
+`/brand` is Glovebox's brand guidelines page, linked as "Brand guidelines"
+from the footer: the mark with its clear space and minimum size, the voice,
+every colour token from `src/index.css` with its value and measured WCAG
+contrast, Newsreader / DM Sans / DM Mono and the whole type scale, spacing,
+radii, shadows and borders, the motion curves (press play), icons and imagery,
+and every component — primitives, blocks, motion components and sections —
+live in its variants and states with a copyable snippet. Every value is read
+off the rendered element, so changing a token changes the page. The pinned
+sections (Hero, Features, Stat, Proof) are shown by their parts, and
+`ClipZoomVideo` / `ClipCard` / `FloatTile` run unpinned in frames. It lives in
+`src/pages/brand.tsx` and `src/components/brand/`, routed by
+`src/lib/router.tsx`. Add a component here in the same change that adds it to
+the page.
+
+**Editor actions on `/brand`:** Dialog open, Sign-up sent, Answer shown, Story
+video, First answer open.
+
 ## Credits
 
 Photography and video: [Pexels](https://www.pexels.com). Fonts: Newsreader,

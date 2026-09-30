@@ -24,6 +24,8 @@ import { UseCases } from "@/components/sections/use-cases"
 import { VideoStory } from "@/components/sections/video-story"
 import { Perks } from "@/components/sections/perks"
 import { Testimonials } from "@/components/sections/testimonials"
+import { usePathname } from "@/lib/router"
+import { BrandPage } from "@/pages/brand"
 
 const SECTIONS = [
   { id: "top", Section: Hero },
@@ -47,16 +49,23 @@ function sections() {
 
 /** `data-canvas-ignore` on the page wrapper, the sheet and `<main>`: structural, nothing to design. */
 export default function App() {
+  const brand = usePathname() === "/brand"
   return (
     <div className="page-grain bg-footer" data-canvas-ignore>
       <SmoothScroll />
       <div className="relative z-10 rounded-b-panel bg-canvas bg-(image:--atmos-hero) bg-size-[100%_1200px] bg-no-repeat shadow-[0_1px_0_var(--color-hairline)]" data-canvas-ignore>
-        <SiteHeader />
-        <main data-canvas-ignore>
-          {sections().map(({ id, Section }) => (
-            <Section key={id} />
-          ))}
-        </main>
+        {brand ? (
+          <BrandPage />
+        ) : (
+          <>
+            <SiteHeader />
+            <main data-canvas-ignore>
+              {sections().map(({ id, Section }) => (
+                <Section key={id} />
+              ))}
+            </main>
+          </>
+        )}
       </div>
       <SiteFooter />
     </div>

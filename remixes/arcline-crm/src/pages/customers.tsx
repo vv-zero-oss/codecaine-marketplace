@@ -14,7 +14,7 @@ import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 /** A customer's name, set as a wordmark. */
-function CompanyName({ name }: { name: string }) {
+export function CompanyName({ name }: { name: string }) {
   return <p className="font-display text-[22px] leading-none font-semibold tracking-[-0.04em] text-ink">{name}</p>
 }
 
