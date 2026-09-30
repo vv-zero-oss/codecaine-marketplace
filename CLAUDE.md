@@ -554,6 +554,30 @@ send a signed-out visitor to sign in, sign-up that creates a user who can
 then sign in, wrong passwords rejected, and sign-out that ends the session.
 A seeded demo account is listed on the sign-in screen.
 
+**Auth and forms are designed, not defaulted.** A login page is the first
+screen anyone sees, so it never ships as a lone centred card on a grey
+background. Give it a point of view that belongs to the product: a split
+layout with real Pexels photography, a Dither Kit gradient wash or a live
+product preview on one side; a headline written for this product; social
+proof or a changelog line. The same goes for every other form — sign-up,
+onboarding, settings, create/edit dialogs:
+
+- break long forms into steps (a progress indicator, back and next) or
+  grouped sections, and pick the right control for each field — segmented
+  toggles, radio cards, sliders, comboboxes, date pickers, file drop zones —
+  rather than a column of plain inputs;
+- make feedback live: inline validation as you go, a password-strength
+  meter, a show/hide toggle, an OTP input that auto-advances and pastes,
+  a submit button with loading → success states, a shake on a wrong
+  password;
+- delight in the details — a welcome step that uses the name just typed,
+  an avatar picker, a celebratory moment after sign-up — designed with the
+  `animate` skill and checked with `review-animations`.
+
+Creative never means less usable: labels stay visible, errors say how to
+fix them, the keyboard works (tab order, Enter submits), autofill works,
+and everything holds at 360px.
+
 ### 6. Every screen is functional — not in name only
 
 No dead UI and no façades. Every screen in the sidebar exists and works end
