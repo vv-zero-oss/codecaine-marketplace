@@ -1,45 +1,55 @@
 # Alpine Hotel — Hotel Arven, Zermatt
 
-A one-page site for a small hotel at the top of Zermatt: rooms, nearby
-spots, services and a booking form, on a snow / glacier-ice / larch-rust /
-stone-pine palette.
+A one-page guide to a small, family-run hotel at the top of Zermatt, set like
+a printed hotel guide: warm paper with a grain over everything, serif
+headlines, mono labels, photographs mounted as prints, torn edges between
+sheets and one Swiss signal red kept for what matters (the Reserve button,
+the house stamp, the times on the timetable).
 
 ```bash
 npm install
 npm run dev     # → http://localhost:3230
 ```
 
-## The page
+## Every section answers a question
 
-| Section | What it does |
-| --- | --- |
-| `SiteHeader` | Two white pills overlapped in the middle that part to either edge on scroll (220ms ease-out); a `Sheet` menu on small screens. |
-| `Hero` | Headline and pill buttons. The photo band below loses its margins and radius until it runs edge to edge and pins, while the booking card (`StayCard`) climbs into it. |
-| `Valley` | `VideoZoomSplit`: a pinned film grows from a small card to the full screen, then parts into three cards along gutters that open between them. |
-| `FirstTracks` | `TextClipParallax`: snowboard footage runs inside two lines of display type, drifting against the scroll. |
-| `Rooms` | The shop shelf: photo, name, nightly price, hairline select and a rust pill. Totals follow the dates picked in the hero. |
-| `Nearby` | Nearby spots timed from the door, filtered by season with shadcn `Tabs`, and how to get to the hotel. |
-| `Services`, `Notes` | What the house does, and guest postcards on `ParallaxCard`s. |
-| `QuietBand`, `Faq` | A rust band with a rising film; questions on the right, one open at a time. |
-| `Book` | The reservation form (react-hook-form + zod), sharing dates, room and guests with the hero card and the room shelf. |
+| No. | Section | The guest's question |
+| --- | --- | --- |
+| — | `Cover` | Where is it, what is it? A dateline, one plain sentence, a mounted photo with the house stamp, and a fill-in line: *Staying [dates] for [guests]*. |
+| 01 | `House` | Who runs it? Its history, a drop cap, three facts. |
+| 02 | `Seasons` | When is it open? `VideoZoomSplit` grows a film to full screen, then splits it into winter, summer and the two closed months. |
+| 03 | `Day` | What is a day like? A timetable, with snowboard footage printed inside “First tracks” (`TextClipParallax`). |
+| 04 | `Rooms` | What does it cost? A rate card for winter and summer; the photo beside it follows the row you are on. |
+| 05 | `Around` | What is nearby? A drawn trail map with numbered pins, keyed to a list timed from the front door. |
+| 06 | `Arriving` | How do I get to a car-free village, and what is included? Train times, parking, and in-the-rate vs on-request prices. |
+| — | `GuestBook` | Did people like it? Three lines from the guest book. |
+| 07 | `Faq` | The questions the desk answers most. |
+| 08 | `Reserve` | The registration card: fill-in lines, a running total “for the desk”, and a red stamp when it goes through. |
 
-Dates, room and guests live in `BookingProvider`
-(`src/components/booking/booking-context.tsx`), so choosing them anywhere
-fills them in everywhere.
+Dates, room and guests live in `BookingProvider`, so the cover line, the
+rate card and the registration card share them.
+
+## Paper
+
+- `paper-grain` (in `index.css`) is two SVG turbulence layers — fine tooth
+  and slow blotches — laid over the page in one fixed, multiplied overlay.
+- `TornEdge` draws a deterministic ragged edge in the next sheet's colour.
+- `Print` mounts a photo with a white border and a numbered caption.
+- `Stamp` is a rubber stamp whose ink is broken up with a turbulence mask.
+- The text clip multiplies the paper colour over the footage, so the film
+  prints into the letters like ink.
 
 ## In the editor
 
-Every moving piece is a named component with scalar props — `VideoZoomSplit`
-(`panes`, `gutter`, `radius`, `startWidth`, `zoom`, `length`…),
-`TextClipParallax` (`lineOne`, `lineTwo`, `parallax`, `drift`),
-`ParallaxCard` (`speed`, `tilt`), `Reveal`. Lenis is held in a ref, so the
-Motion switch pauses it, and everything honours reduced motion.
+Named components with scalar props: `VideoZoomSplit`, `TextClipParallax`,
+`Reveal`, `TornEdge` (`seed`, `tone`), `Stamp` (`ring`, `middle`,
+`rotate`), `Print`, `Chapter`. Lenis is held in a ref; everything honours
+reduced motion.
 
-Actions: *Header split*, *Mobile menu*, *Date picker*, *Show split cards*,
-*Show everything / winter / summer / village*, *First answer open*,
-*Booking confirmed*, *Show form errors*.
+Actions: *Mobile menu*, *Date picker*, *Show split cards*, *Preview <room>*,
+*Next spot*, *First answer open*, *Request received*, *Show form errors*.
 
 ## Credits
 
-Photography and film from [Pexels](https://www.pexels.com). Fonts are
-Inter Tight and Geist from Google Fonts; icons from Lucide.
+Photographs and film from [Pexels](https://www.pexels.com). Newsreader,
+Instrument Sans and IBM Plex Mono from Google Fonts; icons from Lucide.

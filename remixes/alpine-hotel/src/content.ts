@@ -1,8 +1,7 @@
 /**
  * Every word and image on the page, in one place.
  *
- * Photographs and films are from Pexels (https://www.pexels.com), by id. A
- * photo is served at the width it is drawn at; a film at 960 or 1280 wide.
+ * Photographs and films are from Pexels (https://www.pexels.com), by id.
  */
 
 export function photo(id: number, width = 1200) {
@@ -17,169 +16,174 @@ export function film(id: number, file: string, poster: string) {
 }
 
 export const hotel = {
-  name: "arven.",
+  name: "Arven",
   full: "Hotel Arven",
-  place: "Zermatt, Switzerland",
+  since: "1911",
+  place: "Zermatt, Valais",
   altitude: "1,620 m",
-  address: "Winkelmattenweg 41, 3920 Zermatt",
+  address: "Winkelmattenweg 41, 3920 Zermatt, Switzerland",
   phone: "+41 27 966 41 00",
   email: "stay@arven.ch",
 }
 
 export const nav = [
-  { label: "Rooms", href: "#rooms" },
-  { label: "The valley", href: "#valley" },
-  { label: "Nearby", href: "#nearby" },
-  { label: "Services", href: "#services" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Seasons", href: "#seasons" },
+  { label: "A day", href: "#day" },
+  { label: "Rooms & rates", href: "#rooms" },
+  { label: "Around", href: "#around" },
+  { label: "Arriving", href: "#arriving" },
+  { label: "Questions", href: "#faq" },
 ]
 
-export const hero = {
-  title: "Sleep above the clouds",
-  lede: "Thirty-two rooms of larch and stone at the top of Zermatt.",
-  ledeTwo: "Ski out at nine, sauna at four, the Matterhorn in every window.",
-  image: photo(19244970, 2000),
-  imageAlt: "Autumn larches and chalets along the river, with the Matterhorn above the valley",
+export const cover = {
+  issue: "Winter 2026/27 · opens 29 November",
+  title: "The last house before the lifts.",
+  lede: "Thirty-two rooms of larch and stone at the top of Zermatt, kept by the same family since 1911. Two hundred metres from the Sunnegga funicular; twenty-five minutes from the glacier.",
+  image: photo(19244970, 1600),
+  imageAlt: "Autumn larches and chalets along the river, with the Matterhorn at the head of the valley",
+  caption: "The valley road below the house, late October.",
 }
 
-export const valley = {
-  eyebrow: "The valley",
-  title: "Out the door, onto the mountain.",
-  body: "Arven sits where the village ends and the pistes begin. Three ways to spend a day here — and a warm room at the end of each.",
+export const house = {
+  title: "Four generations, one staircase.",
+  paragraphs: [
+    "Arven was built in 1911 as a six-room guesthouse for climbers waiting on the weather. The stone ground floor and the larch staircase are the originals; the rest has been rebuilt twice, by hand, by the family who still runs it.",
+    "It is not a resort. There is one lounge with a fire, one small restaurant, a sauna, and a pool that looks straight up the valley. Most guests come back; a few have kept the same room for thirty winters.",
+  ],
+  image: photo(715623, 1100),
+  imageAlt: "A timber chalet with green shutters in falling snow",
+  caption: "The east wing in January.",
+  facts: [
+    { value: "32", label: "rooms" },
+    { value: "1911", label: "first guests" },
+    { value: "200 m", label: "to the funicular" },
+  ],
+}
+
+export const seasons = {
+  title: "Open twice a year. Closed twice a year.",
+  lede: "The lifts keep their own calendar, and so do we.",
   film: film(9113102, "9113102-hd_1280_720_30fps.mp4", "drone-4k-switzerland-matterhorn-mountain-background-snowy-mountain-9113102.jpeg"),
+  overlay: "The Matterhorn, twenty-five minutes up.",
   cards: [
-    { kicker: "Winter", title: "360 km of pistes", note: "Ski-in, ski-out from the Winkelmatten run" },
-    { kicker: "Summer", title: "400 km of trails", note: "Guides leave from the lobby at 7:30" },
-    { kicker: "Evening", title: "One very warm spa", note: "Sauna, steam and a pool facing the peak" },
+    { dates: "29 Nov – 19 Apr", title: "Winter", note: "360 km of runs from the door, Italy included." },
+    { dates: "13 Jun – 11 Oct", title: "Summer", note: "400 km of marked trails; the Five Lakes walk starts at Sunnegga." },
+    { dates: "May & November", title: "Closed", note: "The lifts stop for maintenance. The house rests too." },
   ],
 }
 
 export const firstTracks = {
   lineOne: "First",
   lineTwo: "tracks",
-  caption: "The Sunnegga funicular opens at 8:00. Our ski room opens at 7:15, boots warm and waxed.",
   film: film(6943040, "6943040-sd_960_540_30fps.mp4", "4k-resolution-board-mountain-ski-6943040.jpeg"),
+}
+
+export const day = {
+  title: "A winter day, as it usually goes.",
+  lede: "Nothing here is compulsory. It is simply the order the house runs in.",
+  rows: [
+    { time: "07:15", what: "The ski room opens", note: "Boots warmed overnight, skis waxed and standing by the door." },
+    { time: "07:30", what: "Breakfast", note: "Rye from the village bakery, alpine butter, eggs as you like them." },
+    { time: "08:00", what: "First funicular to Sunnegga", note: "Two hundred metres from the door — four minutes on foot." },
+    { time: "12:30", what: "Lunch at Findeln", note: "A hamlet of old barns on the run home. We book the table." },
+    { time: "16:00", what: "Sauna, steam room and pool", note: "Cake and tea in the lounge while the light goes." },
+    { time: "19:30", what: "Dinner in the Stübli", note: "Twelve tables. Raclette on Thursdays, fondue any night you ask." },
+    { time: "22:30", what: "The bar closes", note: "The night porter doesn't. Ask him about tomorrow's weather." },
+  ],
 }
 
 export type Room = {
   id: string
   name: string
-  price: number
-  note: string
-  sleeps: number
   size: string
+  beds: string
+  view: string
+  sleeps: number
+  winter: number
+  summer: number
   image: string
   alt: string
-  featured?: boolean
 }
 
 export const rooms: Room[] = [
-  {
-    id: "pine",
-    name: "Pine room",
-    price: 390,
-    note: "Minimum 2 nights",
-    sleeps: 2,
-    size: "24 m²",
-    image: photo(30070551, 900),
-    alt: "Larch-panelled bedroom with a checked blanket and a window onto snowy trees",
-  },
-  {
-    id: "attic",
-    name: "Attic loft",
-    price: 520,
-    note: "Minimum 2 nights",
-    sleeps: 3,
-    size: "38 m²",
-    image: photo(17399352, 900),
-    alt: "A-frame attic bedroom with a wall of glass looking over the valley",
-  },
-  {
-    id: "summit",
-    name: "Summit suite",
-    price: 880,
-    note: "Minimum 3 nights",
-    sleeps: 4,
-    size: "62 m²",
-    image: photo(5271922, 900),
-    alt: "Timber suite with a wall of windows, a telescope and a view over the hills",
-    featured: true,
-  },
+  { id: "pine", name: "Pine room", size: "20 m²", beds: "Double or twin", view: "Village", sleeps: 2, winter: 340, summer: 260, image: photo(30070551, 900), alt: "Larch-panelled bedroom with a checked blanket and a window onto trees" },
+  { id: "attic", name: "Attic loft", size: "34 m²", beds: "King + day bed", view: "Valley", sleeps: 3, winter: 480, summer: 360, image: photo(17399352, 900), alt: "A-frame attic bedroom with a wall of glass over the valley" },
+  { id: "corner", name: "Corner room", size: "28 m²", beds: "King", view: "Matterhorn", sleeps: 2, winter: 540, summer: 410, image: photo(30070550, 900), alt: "Warm timber bedroom with a window onto the mountains" },
+  { id: "summit", name: "Summit suite", size: "62 m²", beds: "King + twin room", view: "Matterhorn", sleeps: 4, winter: 880, summer: 640, image: photo(5271922, 900), alt: "Timber suite with a wall of windows and a telescope" },
 ]
 
+export const ratesNote =
+  "Per room, per night, for two guests. Breakfast, the spa and the station car are included. Local tax CHF 3.50 per adult per night. Minimum stay: two nights; four over Christmas and New Year."
+
 export type Spot = {
+  id: string
   name: string
-  kind: "winter" | "summer" | "village"
-  distance: string
-  how: string
+  how: "foot" | "lift"
+  time: string
+  detail: string
+  /** Position on the drawn map, in its 0–100 coordinate space. */
+  x: number
+  y: number
   image: string
   alt: string
-  tall?: boolean
 }
 
 export const spots: Spot[] = [
-  { name: "Riffelsee", kind: "summer", distance: "35 min", how: "Gornergrat Bahn, then a short walk", image: photo(29734975, 900), alt: "The Matterhorn mirrored in a still mountain lake", tall: true },
-  { name: "Gornergrat", kind: "winter", distance: "33 min", how: "Cog railway from the village station", image: photo(35093470, 900), alt: "Red cog train crossing a snowfield below high peaks" },
-  { name: "Glacier Palace", kind: "winter", distance: "45 min", how: "Three cable cars to 3,883 m", image: photo(12993579, 900), alt: "Visitors inside a blue-lit tunnel carved into glacier ice" },
-  { name: "Bahnhofstrasse", kind: "village", distance: "6 min", how: "On foot, or our e-shuttle", image: photo(20058082, 900), alt: "Horse-drawn carriage on a street of timber chalets", tall: true },
-  { name: "Gorner Gorge", kind: "summer", distance: "15 min", how: "Walk down past the church", image: photo(23476895, 900), alt: "Wooden walkways fixed to the walls of a narrow rock gorge", tall: true },
-  { name: "Sunnegga", kind: "winter", distance: "4 min", how: "Funicular, 200 m from the door", image: photo(36635792, 900), alt: "Skier carving down a bright piste under a blue sky" },
-  { name: "Hinterdorf", kind: "village", distance: "9 min", how: "Old larch barns on stone stilts", image: photo(33824427, 900), alt: "Old wooden barns along a narrow village lane" },
-  { name: "Stellisee", kind: "summer", distance: "40 min", how: "Sunnegga, then the Five Lakes Walk", image: photo(32496417, 900), alt: "Alpine lake with rocks and the Matterhorn on a clear day" },
-  { name: "Kirchbrücke", kind: "village", distance: "8 min", how: "The bridge for the classic view", image: photo(36800236, 900), alt: "Chalet roofs with the Matterhorn rising behind them" },
+  { id: "sunnegga", name: "Sunnegga funicular", how: "foot", time: "4 min", detail: "Underground railway to the Five Lakes and the Rothorn runs.", x: 60, y: 60, image: photo(36635792, 600), alt: "A skier on a bright piste" },
+  { id: "church", name: "Old church & cemetery", how: "foot", time: "7 min", detail: "Where the first climbers are buried. Quiet at any hour.", x: 40, y: 72, image: photo(36800236, 600), alt: "Chalet roofs with the Matterhorn behind" },
+  { id: "hinterdorf", name: "Hinterdorf barns", how: "foot", time: "9 min", detail: "Sixteenth-century larch barns on stone stilts.", x: 33, y: 55, image: photo(33824427, 600), alt: "Old wooden barns along a narrow lane" },
+  { id: "gorge", name: "Gorner Gorge", how: "foot", time: "18 min", detail: "Wooden walkways fixed to the walls of the gorge. June to October.", x: 24, y: 88, image: photo(23476895, 600), alt: "Walkways in a narrow rock gorge" },
+  { id: "gornergrat", name: "Gornergrat", how: "lift", time: "33 min", detail: "Cog railway to 3,089 m and the full ring of peaks.", x: 80, y: 20, image: photo(35093470, 600), alt: "Red cog train crossing snow below high peaks" },
+  { id: "riffelsee", name: "Riffelsee", how: "lift", time: "40 min", detail: "The lake the postcards are taken from. Get off at Rotenboden.", x: 66, y: 34, image: photo(29734975, 600), alt: "The Matterhorn reflected in a still lake" },
+  { id: "glacier", name: "Glacier Palace", how: "lift", time: "45 min", detail: "Three cable cars to 3,883 m, and tunnels cut into the ice.", x: 26, y: 12, image: photo(12993579, 600), alt: "Visitors in a blue-lit tunnel in glacier ice" },
 ]
 
-export const getting = [
-  { title: "By train", body: "Zermatt is car-free. Swiss rail runs from Visp every 30 minutes; we meet you at the station." },
-  { title: "By car", body: "Park at the Matterhorn Terminal in Täsch and take the 12-minute shuttle train up." },
-  { title: "From Geneva or Zürich", body: "Around 3½ hours door to door by rail. We book the seats for you on request." },
+/** Where the house sits on the drawn map. */
+export const home = { x: 52, y: 70 }
+
+export const included = [
+  "Breakfast, until 10:30",
+  "Spa: sauna, steam room, 16 m pool",
+  "Electric car to and from the station",
+  "Ski room with boot warmers",
+  "Tea and cake in the lounge, from 16:00",
+  "Wi-Fi, and a proper desk in every room",
 ]
 
-export const services = [
-  { icon: "ski", title: "Ski valet", body: "Boots warmed overnight, skis waxed and waiting at the door by 7:15." },
-  { icon: "car", title: "Station e-shuttle", body: "Our electric car meets every train and takes your bags up the hill." },
-  { icon: "mountain", title: "Mountain guides", body: "Certified guides for Hörnli, the Breithorn and gentler days on the Five Lakes." },
-  { icon: "spa", title: "Larch spa", body: "Finnish sauna, steam room and a 16-metre pool facing the peak." },
-  { icon: "fondue", title: "The Stübli", body: "Twelve tables, a fondue list, and raclette on the terrace in spring." },
-  { icon: "kids", title: "Snow club", body: "Ski school pick-up and afternoon sledging for children from four." },
+export const onRequest = [
+  { what: "Dinner in the Stübli", price: "CHF 78" },
+  { what: "Mountain guide, full day", price: "CHF 480" },
+  { what: "Ski school pick-up, per child", price: "CHF 25" },
+  { what: "Dog, per night", price: "CHF 30" },
+  { what: "Late check-out until 16:00", price: "CHF 90" },
 ]
 
-export const servicePhotos = [
-  { src: photo(7598363, 900), alt: "Timber spa room lit warmly, with benches and a folded towel", label: "Larch spa" },
-  { src: photo(37593666, 900), alt: "Cheese fondue in a red pot on a wooden table", label: "The Stübli" },
-  { src: photo(28732830, 900), alt: "A small electric vehicle on a car-free village street", label: "Station e-shuttle" },
+export const routes = [
+  { from: "Zürich HB", via: "change at Visp", time: "3 h 15", every: "hourly" },
+  { from: "Geneva Airport", via: "change at Visp", time: "3 h 40", every: "hourly" },
+  { from: "Milan Centrale", via: "change at Brig or Visp", time: "3 h 30", every: "every 2 h" },
+  { from: "Täsch car terminal", via: "shuttle train", time: "12 min", every: "every 20 min" },
 ]
 
-export const notes = [
-  { quote: "We woke to the peak turning pink and forgot to get out of bed until the funicular was already running.", name: "Hanna & Luca", from: "Munich · Attic loft", image: photo(20763346, 600) },
-  { quote: "The guide met us in the lobby at half seven with a thermos. Best day of the whole trip.", name: "Tomás", from: "Madrid · Pine room", image: photo(23417401, 600) },
-  { quote: "Boots warm every morning. That is all I will say, and it is enough.", name: "Clara", from: "Zürich · Summit suite", image: photo(14855076, 600) },
+export const quotes = [
+  { quote: "Same room, fourteenth winter. They had the extra pillow on the bed before we asked.", who: "M. & H. Brunner, Basel" },
+  { quote: "The porter told us the wind would drop by ten. It did. Best day of the trip.", who: "Tomás R., Madrid" },
+  { quote: "Boots warm every morning. That is all I will say, and it is enough.", who: "Clara S., Zürich" },
 ]
-
-export const quiet = {
-  title: "Stay for the silence",
-  lede: "No cars, no hurry. A fire in the lounge from four, and a book you meant to finish.",
-  film: film(6985325, "6985325-sd_960_540_24fps.mp4", "after-bath-athletic-girl-bathing-beautiful-girl-6985325.jpeg"),
-}
 
 export const faqs = [
-  { q: "When is the best time to come?", a: "Mid-December to April for skiing, late June to September for hiking. The glacier runs are open for summer skiing most of the year." },
-  { q: "How do I get to the hotel?", a: "Zermatt is car-free. Come by train, or park in Täsch and take the shuttle train. Our electric shuttle meets you at the station — send us your arrival time." },
-  { q: "What is included in the rate?", a: "Breakfast, the spa, the station shuttle, ski storage with boot warmers, and afternoon cake in the lounge. The local tourist tax is added at checkout." },
-  { q: "Can I cancel or change my dates?", a: "Free cancellation until 14 days before arrival in winter and 7 days in summer. After that we charge the first night." },
-  { q: "Are children and dogs welcome?", a: "Both. Cots and extra beds are free under six, and dogs stay for CHF 30 a night in the Pine rooms." },
+  { q: "Zermatt is car-free — how do I get my luggage up?", a: "Take the train to Zermatt, or park in Täsch and ride the shuttle train. Our electric car meets every train if you tell us which one; the driver takes the bags, and you can walk up the hill or ride along." },
+  { q: "Can I ski back to the door?", a: "Almost. The Sunnegga run ends at the funicular, two hundred metres from us. On good snow the Winkelmatten path brings you to the garden gate." },
+  { q: "What is your cancellation policy?", a: "Free until 14 days before arrival in winter and 7 days in summer. After that we charge the first night; if we can re-let the room, we refund it." },
+  { q: "Are children and dogs welcome?", a: "Both. Cots and extra beds are free under six. Dogs stay in the Pine rooms for CHF 30 a night and are welcome in the lounge, not the Stübli." },
+  { q: "Is there a restaurant, or do we eat in the village?", a: "The Stübli serves dinner six nights a week (closed Mondays). Zermatt has over a hundred restaurants; the front desk will book whichever you like." },
 ]
-
-export const cta = {
-  title: "Your window seat is waiting.",
-  subtitle: "Book direct — breakfast and the station shuttle are on us.",
-}
 
 export const footer = {
   links: [
     { label: "Terms", href: "#" },
     { label: "Privacy", href: "#" },
     { label: "Press", href: "#" },
-    { label: "Careers", href: "#" },
+    { label: "Work with us", href: "#" },
   ],
 }

@@ -4,25 +4,23 @@ import { cn } from "@/lib/utils"
 import { Slot } from "radix-ui"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 rounded-pill text-sm font-medium whitespace-nowrap transition-[background-color,color,box-shadow,transform] duration-(--duration-press) ease-(--ease-press) outline-none select-none active:scale-[0.97] focus-visible:ring-[3px] focus-visible:ring-ring/40 disabled:pointer-events-none disabled:opacity-50 aria-invalid:border-destructive [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
+  "inline-flex shrink-0 items-center justify-center gap-2 rounded-control font-sans text-sm font-medium whitespace-nowrap transition-[background-color,color,border-color,transform] duration-(--duration-press) ease-(--ease-out) outline-none select-none active:scale-[0.97] focus-visible:ring-[3px] focus-visible:ring-signal/35 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4",
   {
     variants: {
       variant: {
-        default: "bg-rust text-snow shadow-(--shadow-button) hover:bg-rust-deep",
-        ink: "bg-ink text-snow hover:bg-ink-soft",
-        pill: "bg-mist text-ink hover:bg-ice-deep",
-        snow: "bg-snow text-ink shadow-(--shadow-pill) hover:bg-ice",
-        outline: "border border-hairline-strong bg-transparent text-ink hover:bg-ice",
-        "outline-light": "border border-snow/40 bg-transparent text-snow hover:bg-snow/10",
-        ghost: "text-ink hover:bg-ice",
-        link: "text-rust underline-offset-4 hover:underline",
-        destructive: "bg-destructive text-white hover:bg-destructive/90",
-        secondary: "bg-ice text-ink hover:bg-ice-deep",
+        default: "bg-ink text-paper hover:bg-ink-soft",
+        signal: "bg-signal text-sheet hover:bg-signal-deep",
+        outline: "border border-ink bg-transparent text-ink hover:bg-ink hover:text-paper",
+        "outline-light": "border border-pine-ink/50 bg-transparent text-pine-ink hover:border-pine-ink hover:bg-pine-ink/10",
+        ghost: "text-ink hover:bg-paper-deep",
+        link: "h-auto px-0 text-ink underline decoration-rule underline-offset-4 hover:decoration-ink",
+        destructive: "bg-signal text-sheet hover:bg-signal-deep",
+        secondary: "bg-paper-deep text-ink hover:bg-paper-edge",
       },
       size: {
         default: "h-11 px-5",
         sm: "h-9 px-4 text-[13px]",
-        lg: "h-[3.125rem] px-7",
+        lg: "h-12 px-7 text-[15px]",
         icon: "size-11",
         "icon-sm": "size-9",
       },

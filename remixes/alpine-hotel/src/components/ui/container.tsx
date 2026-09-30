@@ -6,6 +6,6 @@ import { cn } from "@/lib/utils"
  *  layer anyone designs — the editor looks through it (see CLAUDE.md). */
 export function Container({ className, ...props }: React.ComponentProps<"div">) {
   return (
-    <div data-canvas-ignore className={cn("mx-auto w-full max-w-[90rem] px-4 sm:px-6 lg:px-7", className)} {...props} />
+    <div data-canvas-ignore className={cn("mx-auto w-full max-w-[84rem] px-5 sm:px-8 lg:px-10", className)} {...props} />
   )
 }

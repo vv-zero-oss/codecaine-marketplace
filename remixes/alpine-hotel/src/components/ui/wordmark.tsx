@@ -1,10 +1,11 @@
 import { cn } from "@/lib/utils"
 
-/** The hotel's name, set as its logotype: lowercase, light, with the full stop. */
-export function Wordmark({ text = "arven.", className }: { text?: string; className?: string }) {
+/** The house's name as it is painted over the door: serif, with the year set small beside it. */
+export function Wordmark({ name = "Arven", since = "1911", className }: { name?: string; since?: string; className?: string }) {
   return (
-    <span className={cn("font-sans text-[1.625rem] leading-none font-light tracking-[-0.03em]", className)}>
-      {text}
+    <span className={cn("inline-flex items-baseline gap-2", className)}>
+      <span className="font-serif text-2xl leading-none tracking-[-0.02em]">{name}</span>
+      <span className="label text-[10px] text-ink-faint">Since {since}</span>
     </span>
   )
 }

@@ -6,9 +6,9 @@ import { useMediaQuery } from "@/components/motion/smooth-scroll"
 /**
  * Two lines of display type with a film running inside the letters.
  *
- * The film sits underneath; above it, a sheet in the section's colour with the
- * words in black is blended with `screen` — the sheet stays its colour and the
- * black letters turn into windows onto the footage. The words stay real text:
+ * The film sits underneath; above it, a white sheet with the words in black
+ * is blended with `screen`, so the sheet stays white and the letters turn into
+ * windows onto the footage. The paper colour is then multiplied over the lot. The words stay real text:
  * selectable, readable, editable.
  *
  * On scroll the footage drifts vertically against the page (`parallax`, in
@@ -22,7 +22,7 @@ export function TextClipParallax({
   poster,
   parallax = 160,
   drift = 120,
-  tone = "snow",
+  tone = "paper",
   className,
 }: {
   lineOne: string
@@ -31,7 +31,8 @@ export function TextClipParallax({
   poster?: string
   parallax?: number
   drift?: number
-  tone?: "ice" | "snow"
+  /** The paper colour the letters are printed on. */
+  tone?: "paper" | "paper-deep" | "sheet"
   className?: string
 }) {
   const ref = useRef<HTMLDivElement>(null)
@@ -54,27 +55,33 @@ export function TextClipParallax({
         playsInline
         aria-hidden
         style={{ y: filmY }}
-        className="absolute inset-x-0 -top-[20%] -z-10 h-[140%] w-full object-cover brightness-[0.78] contrast-[1.15]"
+        className="absolute inset-x-0 -top-[20%] -z-10 h-[140%] w-full object-cover brightness-[0.72] contrast-[1.2] grayscale-[0.35]"
       />
-      <div
-        className={cn(
-          "flex flex-col items-center py-[4vw] mix-blend-screen",
-          tone === "ice" ? "bg-ice" : "bg-snow",
-        )}
-      >
+      <div className="flex flex-col items-center bg-white py-[4vw] mix-blend-screen">
         <motion.p
           style={{ x: oneX }}
-          className="font-headline text-[26vw] leading-[0.8] font-extrabold tracking-[-0.06em] whitespace-nowrap text-night md:text-[22vw]"
+          className="font-serif text-[27vw] leading-[0.78] font-semibold tracking-[-0.05em] whitespace-nowrap text-night md:text-[23vw]"
         >
           {lineOne}
         </motion.p>
         <motion.p
           style={{ x: twoX }}
-          className="font-headline text-[26vw] leading-[0.8] font-extrabold tracking-[-0.06em] whitespace-nowrap text-night md:text-[22vw]"
+          className="font-serif text-[27vw] leading-[0.78] font-semibold tracking-[-0.05em] whitespace-nowrap text-night md:text-[23vw]"
         >
           {lineTwo}
         </motion.p>
       </div>
+      {/* The paper, multiplied over everything: white becomes paper, and the
+          footage in the letters takes on the paper's warmth, like ink. */}
+      <div
+        aria-hidden
+        className={cn(
+          "pointer-events-none absolute inset-0 mix-blend-multiply",
+          tone === "paper" && "bg-paper",
+          tone === "paper-deep" && "bg-paper-deep",
+          tone === "sheet" && "bg-sheet",
+        )}
+      />
     </div>
   )
 }

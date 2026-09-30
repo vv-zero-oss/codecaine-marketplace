@@ -10,13 +10,13 @@ import { useMediaQuery } from "@/components/motion/smooth-scroll"
 import { cn } from "@/lib/utils"
 import { rooms } from "@/content"
 
-/** The field chrome from the room cards: a hairline box, 8px radius. */
+/** A fill-in line, as on a printed form: no box, just a rule to write on. */
 export const fieldClass = (tone: "light" | "dark" = "light") =>
   cn(
-    "flex h-11 w-full items-center justify-between gap-2 rounded-field border px-3 text-left text-[13px] transition-[border-color,box-shadow] outline-none focus-visible:ring-[3px] focus-visible:ring-rust/40",
+    "flex h-11 w-full items-center justify-between gap-2 rounded-none border-0 border-b bg-transparent px-0 text-left font-serif text-[1.0625rem] shadow-none transition-[border-color] outline-none focus-visible:ring-0",
     tone === "light"
-      ? "border-hairline-strong bg-transparent text-ink data-[placeholder]:text-ink-mute"
-      : "border-snow/25 bg-snow/5 text-snow hover:border-snow/45 data-[placeholder]:text-snow/60",
+      ? "border-ink text-ink hover:border-signal focus-visible:border-signal data-[placeholder]:text-ink-faint"
+      : "border-pine-ink/45 text-pine-ink hover:border-pine-ink focus-visible:border-pine-ink data-[placeholder]:text-pine-ink/55",
   )
 
 export function nightsOf(range: DateRange | undefined) {
@@ -29,7 +29,7 @@ export function DateRangeField({
   value,
   onChange,
   tone = "light",
-  label = "Check-in — Check-out",
+  label = "Arrival — departure",
   id,
   invalid,
 }: {
@@ -56,13 +56,13 @@ export function DateRangeField({
       <PopoverTrigger
         id={id}
         aria-invalid={invalid || undefined}
-        className={cn(fieldClass(tone), invalid && "border-destructive")}
+        className={cn(fieldClass(tone), invalid && "border-signal")}
         data-placeholder={value?.from ? undefined : ""}
       >
         <span className="truncate">{text}</span>
         <CalendarDays className="size-4 shrink-0 opacity-70" />
       </PopoverTrigger>
-      <PopoverContent className="w-auto rounded-card border-hairline p-0 shadow-(--shadow-card)" align="start">
+      <PopoverContent className="w-auto rounded-print border-rule bg-sheet p-0 shadow-(--shadow-sheet)" align="start">
         <Calendar
           mode="range"
           numberOfMonths={wide ? 2 : 1}
@@ -126,14 +126,14 @@ export function RoomField({
       <SelectTrigger
         id={id}
         aria-invalid={invalid || undefined}
-        className={cn(fieldClass(tone), "data-[size=default]:h-11 [&_svg:not([class*='text-'])]:text-current", invalid && "border-destructive")}
+        className={cn(fieldClass(tone), "data-[size=default]:h-11 [&_svg:not([class*='text-'])]:text-current", invalid && "border-signal")}
       >
-        <SelectValue placeholder="Select room" />
+        <SelectValue placeholder="Choose a room" />
       </SelectTrigger>
       <SelectContent position="popper">
         {rooms.map((room) => (
           <SelectItem key={room.id} value={room.id}>
-            {room.name} · CHF {room.price}
+            {room.name} · from CHF {room.summer}
           </SelectItem>
         ))}
       </SelectContent>
