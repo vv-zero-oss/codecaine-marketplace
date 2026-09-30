@@ -2,12 +2,25 @@ import { useState, type ReactNode } from "react"
 import { ArrowRight, RotateCcw } from "lucide-react"
 
 import { ComponentSpecimen, GroupLabel, Mono, StateLabel } from "@/components/brand/specimen"
-import { CardRail, RailCard } from "@/components/blocks/card-rail"
+import { CardRail, RailCard, ServerPanel } from "@/components/blocks/card-rail"
+import { PageHero } from "@/components/blocks/page-hero"
+import { PixelIcon } from "@/components/icons/pixel-icon"
+import { IsoServer } from "@/components/marks/iso-server"
+import { LifeCycle } from "@/components/motion/life-cycle"
+import { ServerFarm } from "@/components/motion/server-farm"
+import { ChangelogEntry, ChangelogList } from "@/components/sections/changelog"
+import { Compare } from "@/components/sections/compare"
+import { FeatureCell, Features } from "@/components/sections/features"
+import { LifeSteps } from "@/components/sections/flow"
+import { CityCard, CityEdges, NetworkStats, RegionTable } from "@/components/sections/network"
+import { CodePanel, SpecFile } from "@/components/sections/spec-file"
+import { CityLine } from "@/components/site/city-line"
+import { MenuCard } from "@/components/site/site-header"
+import { NavigationMenu, NavigationMenuItem, NavigationMenuList } from "@/components/ui/navigation-menu"
 import { Prose, SplitHeading, SplitSection } from "@/components/blocks/split-section"
 import { StepItem, StepRow } from "@/components/blocks/step-row"
 import { PixelFace, PixelMark, StepBadge } from "@/components/marks/pixel-marks"
 import { GhostyImage } from "@/components/motion/ghosty-image"
-import { PixelField } from "@/components/motion/pixel-field"
 import { PixelMarquee } from "@/components/motion/pixel-marquee"
 import { PixelStream } from "@/components/motion/pixel-stream"
 import { TyperText } from "@/components/motion/typer-text"
@@ -24,10 +37,10 @@ import { Spec } from "@/components/sections/spec"
 import { Stack } from "@/components/sections/stack"
 import { Workloads } from "@/components/sections/workloads"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
-import { Button, ButtonLink } from "@/components/ui/button"
+import { Button, ButtonLink, RouteButton } from "@/components/ui/button"
 import { Chip, type ChipTone } from "@/components/ui/chip"
 import { Container } from "@/components/ui/container"
-import { changed, flow, levels, pricing, stack, workloads } from "@/content"
+import { changed, changelogPage, flow, levels, nav, pricing, productPage, stack, workloads } from "@/content"
 import { cn } from "@/lib/utils"
 
 /* ─── Helpers ─────────────────────────────────────────────────────────── */
@@ -77,7 +90,7 @@ function SectionFrame({ name, source, note, children }: { name: string; source: 
 /* ─── Primitives ──────────────────────────────────────────────────────── */
 
 const HOVER = { ink: "bg-navy", paper: "bg-lime" } as const
-const FOCUS = "outline-2 outline-offset-4 outline-cobalt"
+const FOCUS = "shadow-(--shadow-focus)"
 
 function ButtonRow({ variant }: { variant: "ink" | "paper" }) {
   return (
@@ -116,8 +129,8 @@ function Primitives() {
       <ComponentSpecimen
         name="Button and ButtonLink"
         source="components/ui/button.tsx"
-        description="The page’s one button: a flat slab with pixel-notched corners, in ink or paper, at three sizes. Hover lifts ink to navy and paper to lime, only under a real pointer; every press scales to 0.97 in 140ms. ButtonLink is the same recipe on an anchor."
-        code={`import { Button, ButtonLink } from "@/components/ui/button"
+        description="The site’s one button: a flat slab with pixel-notched corners, in ink or paper, at three sizes. Hover lifts ink to navy and paper to lime, only under a real pointer; every press scales to 0.97 in 140ms. ButtonLink is the same recipe on an anchor; RouteButton on the router’s Link, for pages of this site."
+        code={`import { Button, ButtonLink, RouteButton } from "@/components/ui/button"
 
 <ButtonLink href="#pricing">See the pricing</ButtonLink>
 <Button variant="paper" size="sm">Talk to us</Button>`}
@@ -143,10 +156,15 @@ function Primitives() {
                 As a link
               </ButtonLink>
             </StateLabel>
+            <StateLabel label="RouteButton">
+              <RouteButton href="/pricing" size="sm">
+                To a page
+              </RouteButton>
+            </StateLabel>
           </div>
           <p className="text-[0.8125rem] leading-snug text-mute">
-            Note: the focus ring is a 2px cobalt outline 4px off the edge, and the notch’s clip-path cuts it away — so keyboard focus is
-            currently invisible on this button. The sample shows the button with the ring applied, as it renders today.
+            Focus is an inset ring (--shadow-focus: a 2px cobalt edge, then a 2px paper line), drawn inside the notch — an outline would be cut
+            away by the notch’s clip-path. Every notched control uses it through the focus-notch class.
           </p>
         </div>
       </ComponentSpecimen>
@@ -307,16 +325,124 @@ function MarksAndBlocks() {
         <CardRail name="Style guide rail" cards={workloads.slice(0, 4)} />
       </ComponentSpecimen>
       <ComponentSpecimen
-        name="CornerLink"
-        source="blocks/corner-link.tsx"
-        description="The one piece of navigation: a mono link pinned top right that arrives once the top has scrolled away. It is live on this page — scroll up and back, or switch it from the editor (“Corner link”)."
-        code={`<CornerLink label="Open console" href="#start" after={240} />`}
+        name="SiteHeader, MenuCard and NavigationMenu"
+        source="site/site-header.tsx · ui/navigation-menu.tsx · ui/sheet.tsx"
+        description="The menubar pinned to the top of every page: the mark, a Product menu (shadcn’s navigation menu, square and hairlined) of MenuCards with pixel icons, the pages, Sign in and Start free. Below lg it folds into a shadcn Sheet from the right. Both are editor switches: “Product menu” and “Mobile menu”."
+        code={`<SiteHeader pathname="/" />
+<MenuCard title="Edge network" href="/network" icon="globe" body="…" />`}
       >
-        <span className="label inline-flex min-h-11 items-center gap-1.5 bg-paper/90 px-3 text-ink">
-          Open console <ArrowRight className="size-3 -rotate-45" />
-        </span>
-        <Mono className="mt-3 block">A still of its resting look; the real one sits fixed at the top right of the window.</Mono>
+        <NavigationMenu viewport={false} className="max-w-none justify-start">
+          <NavigationMenuList className="grid w-full max-w-[34rem] grid-cols-1 gap-px bg-hairline p-px sm:grid-cols-2">
+            {nav.product.map((item) => (
+              <NavigationMenuItem key={item.title} className="bg-paper">
+                <MenuCard {...item} />
+              </NavigationMenuItem>
+            ))}
+          </NavigationMenuList>
+        </NavigationMenu>
+        <Mono className="mt-3 block">The live menubar is at the top of this page; open its Product menu, or narrow the window for the sheet.</Mono>
       </ComponentSpecimen>
+      <ComponentSpecimen
+        name="PageHero"
+        source="blocks/page-hero.tsx"
+        description="The top of every page: its name in heavy caps, a strapline whose words are pushed to fill the column, the mark and a one-line promise — and whatever the page hangs under it (the server room, on home and network)."
+        code={`<PageHero title={["Every region,", "one hop."]} strap={[["Fourteen", "edge", "regions"]]} blurb="…" />`}
+        previewClassName="p-0 md:p-0"
+      >
+        <PageHero id="hero-sample" title={productPage.hero.title} strap={productPage.hero.strap} blurb={productPage.hero.blurb} />
+      </ComponentSpecimen>
+      <div className="grid gap-8 xl:grid-cols-2">
+        <ComponentSpecimen
+          name="ServerPanel and IsoServer"
+          source="blocks/card-rail.tsx · marks/iso-server.tsx"
+          description="An isometric voxel server on a flat panel over the 9px grid — the art of the workload cards. Five models; five panel tones. It lifts 6px when its card is hovered."
+          code={`<ServerPanel model="sandbox" tone="lime" />
+<IsoServer model="rack" className="h-40 w-40" />`}
+        >
+          <div className="grid grid-cols-3 gap-3">
+            <div className="aspect-square">
+              <ServerPanel model="rack" tone="cobalt" />
+            </div>
+            <div className="aspect-square">
+              <ServerPanel model="sandbox" tone="lime" />
+            </div>
+            <div className="flex aspect-square items-center justify-center border border-hairline">
+              <IsoServer model="board" className="h-2/3 w-2/3" />
+            </div>
+          </div>
+        </ComponentSpecimen>
+        <ComponentSpecimen
+          name="PixelIcon"
+          source="icons/pixel-icon.tsx"
+          description="One icon from the Pixel Icon Library, crisp on its 24px grid in the current colour; decorative unless given a label."
+          code={`<PixelIcon name="globe" className="size-5 text-cobalt" />`}
+        >
+          <div className="flex flex-wrap items-end gap-6">
+            <StateLabel label="size-4">
+              <PixelIcon name="globe" />
+            </StateLabel>
+            <StateLabel label="size-6 cobalt">
+              <PixelIcon name="bolt" className="size-6 text-cobalt" />
+            </StateLabel>
+            <StateLabel label="on a night tile">
+              <span className="notch notch-sm flex size-10 items-center justify-center bg-night text-lime">
+                <PixelIcon name="robot" className="size-5" />
+              </span>
+            </StateLabel>
+          </div>
+        </ComponentSpecimen>
+        <ComponentSpecimen
+          name="CityLine and CityCard"
+          source="site/city-line.tsx · sections/network.tsx"
+          description="A city skyline in line art, drawn as an alpha mask over one token colour. In the footer, one per page; on the network page, a CityCard per edge."
+          code={`<CityLine city="miami" tone="navy" />
+<CityCard city="london" note="…" />`}
+        >
+          <ul className="grid gap-px border border-hairline bg-hairline">
+            <CityCard city="miami" note="The gateway to everything south." />
+          </ul>
+          <div className="mt-4 grid grid-cols-2 gap-4">
+            <CityLine city="manhattan" tone="ink" />
+            <CityLine city="los-angeles" tone="cobalt" />
+          </div>
+        </ComponentSpecimen>
+        <ComponentSpecimen
+          name="CodePanel"
+          source="sections/spec-file.tsx"
+          description="A file on the night panel: numbered lines, TOML tinted in the palette (tables lime, keys cyan, strings gold) and a copy button whose Copied state is an editor switch."
+          code={`<CodePanel filename="cirrus.toml" code={code} />`}
+        >
+          <CodePanel filename="cirrus.toml" code={productPage.file.code.split("\n").slice(0, 9).join("\n")} />
+        </ComponentSpecimen>
+      </div>
+      <div className="grid gap-8 xl:grid-cols-2">
+        <ComponentSpecimen
+          name="FeatureCell"
+          source="sections/features.tsx"
+          description="A feature in a hairline cell: a pixel icon on a night tile, a title and a line. Wash on hover under a real pointer."
+          code={`<FeatureCell icon="lock" title="Scoped secrets" body="…" />`}
+        >
+          <ul className="grid gap-px border border-hairline bg-hairline sm:grid-cols-2">
+            {productPage.features.items.slice(0, 2).map((item) => (
+              <FeatureCell key={item.title} icon={item.icon as never} title={item.title} body={item.body} />
+            ))}
+          </ul>
+        </ComponentSpecimen>
+        <ComponentSpecimen
+          name="ChangelogEntry"
+          source="sections/changelog.tsx"
+          description="A release: the date and version on the left, an icon tile, a tag chip, a typed title and a paragraph."
+          code={`<ChangelogEntry date="Sep 24, 2026" version="2026.39" icon="globe" tag={{ label: "Network", tone: "blue" }} title="…" body="…" />`}
+        >
+          <ol>
+            <ChangelogEntry
+              {...changelogPage.entries[1]}
+              icon={changelogPage.entries[1].icon}
+              tag={{ label: changelogPage.entries[1].tag.label, tone: changelogPage.entries[1].tag.tone }}
+            />
+          </ol>
+        </ComponentSpecimen>
+      </div>
     </Group>
   )
 }
@@ -359,17 +485,26 @@ function MotionComponents() {
         </ComponentSpecimen>
       </div>
       <ComponentSpecimen
-        name="PixelField"
-        source="motion/pixel-field.tsx"
-        description="The top of the page’s weather: noise-warped diagonal bands of 8px squares on the 9px pitch — navy, cobalt, a gold core flecked with red and lime — drifting up and to the right, with a ragged foot that erodes as the page scrolls past. Below: at the page’s pace, and held still with a steeper tilt."
-        code={`<PixelField speed={1} tilt={31} erodeOnScroll />
-<PixelField playing={false} tilt={45} erodeOnScroll={false} />`}
+        name="ServerFarm"
+        source="motion/server-farm.tsx"
+        description="The server room at night, on the 9px grid: edge racks hanging off a fibre backbone with the origin in the middle. Requests run origin → backbone → edge → people (cyan hits), misses climb back to the origin (red), replication runs rack to rack (violet), and every rack’s lights blink on their own clock. Its ragged foot erodes as the page scrolls past. Below: the page’s traffic, and a busier room that misses half the time."
+        code={`<ServerFarm speed={1} traffic={1} missRate={0.14} erodeOnScroll />
+<ServerFarm traffic={2.2} missRate={0.5} erodeOnScroll={false} />`}
         previewClassName="p-0 md:p-0"
       >
-        <PixelField className="h-[clamp(220px,24vw,360px)]" />
+        <ServerFarm erodeOnScroll={false} className="h-[clamp(240px,26vw,380px)]" />
         <div className="border-t border-hairline">
-          <PixelField playing={false} tilt={45} erodeOnScroll={false} className="h-[clamp(160px,16vw,240px)]" />
+          <ServerFarm traffic={2.2} missRate={0.5} erodeOnScroll={false} className="h-[clamp(200px,20vw,300px)]" />
         </div>
+      </ComponentSpecimen>
+      <ComponentSpecimen
+        name="LifeCycle and LifeSteps"
+        source="motion/life-cycle.tsx · sections/flow.tsx"
+        description="Clone, boot, build, ship as life: one swarm of squares is a DNA helix, unzips and replicates (new strands in lime), gathers into an organism with beating cilia, grows into a tree and lets its seeds go. LifeSteps follow it; pick one to jump there. Held still while designing; “Next life-cycle step” is its switch."
+        code={`<LifeCycle step={2} jump={n} autoplay speed={1} count={560} onStepChange={setStep} />
+<LifeSteps steps={flow.steps} active={step} onPick={pick} />`}
+      >
+        <LifeCycleSample />
       </ComponentSpecimen>
       <ComponentSpecimen
         name="PixelStream"
@@ -432,6 +567,27 @@ function MotionComponents() {
   )
 }
 
+/** A life cycle with its own steps, so the sample can be driven here. */
+function LifeCycleSample() {
+  const [step, setStep] = useState(0)
+  const [picked, setPicked] = useState<number | undefined>(undefined)
+  const [jump, setJump] = useState(0)
+  return (
+    <div className="flex flex-col gap-8">
+      <LifeCycle step={picked} jump={jump} onStepChange={setStep} className="h-[clamp(240px,26vw,360px)]" />
+      <LifeSteps
+        steps={flow.steps}
+        active={step}
+        onPick={(i) => {
+          setPicked(i)
+          setJump((n) => n + 1)
+          setStep(i)
+        }}
+      />
+    </div>
+  )
+}
+
 /* ─── Sections ────────────────────────────────────────────────────────── */
 
 function Sections() {
@@ -489,7 +645,7 @@ function Sections() {
       <SectionFrame
         name="Masthead"
         source="sections/masthead.tsx"
-        note="The name in heavy caps, a strapline pushed to fill its column, the mark and a one-line promise — and the pixel weather under it, edge to edge."
+        note="A PageHero — the name in heavy caps, the strapline, the mark and a promise — over the server room at night, edge to edge, with its legend."
       >
         <Masthead />
       </SectionFrame>
@@ -499,7 +655,7 @@ function Sections() {
       <SectionFrame
         name="Workloads"
         source="sections/workloads.tsx"
-        note="What teams run on it: a CardRail of photographs. Its rail indents to the page column, measured against the window, so here it starts a little in from the frame."
+        note="What teams run on it: a CardRail of isometric servers on coloured panels. Its rail indents to the page column, measured against the window, so here it starts a little in from the frame."
       >
         <Workloads />
       </SectionFrame>
@@ -509,7 +665,7 @@ function Sections() {
       <SectionFrame name="Changed" source="sections/changed.tsx" note="What changed: prose, the two Verdicts, and the conclusion.">
         <Changed />
       </SectionFrame>
-      <SectionFrame name="Flow" source="sections/flow.tsx" note="How it works: four verbs over the explore stream.">
+      <SectionFrame name="Flow" source="sections/flow.tsx" note="How it works: four verbs as a life cycle — DNA, cell, tree, seeds — with the steps following it.">
         <Flow />
       </SectionFrame>
       <SectionFrame name="Spec" source="sections/spec.tsx" note="The product: the Environment Spec, a button, the spec stream and its steps.">
@@ -530,9 +686,32 @@ function Sections() {
       <SectionFrame name="Closing" source="sections/closing.tsx" note="The answer in pixel lights, the one ask, the address.">
         <Closing />
       </SectionFrame>
+
+      <GroupLabel className="mt-6">The other pages’ sections</GroupLabel>
+      <SectionFrame name="SpecFile" source="sections/spec-file.tsx · /product" note="The spec as the file it is, beside why it matters: a SplitSection with a CodePanel.">
+        <SpecFile />
+      </SectionFrame>
+      <SectionFrame name="Features" source="sections/features.tsx · /product" note="Six FeatureCells in a hairline grid under a typed heading.">
+        <Features />
+      </SectionFrame>
+      <SectionFrame name="NetworkStats" source="sections/network.tsx · /network" note="Four numbers the network is held to, between hairlines.">
+        <NetworkStats />
+      </SectionFrame>
+      <SectionFrame name="RegionTable" source="sections/network.tsx · /network" note="Every region: code, city, a live or new chip, and its p50 in mono.">
+        <RegionTable />
+      </SectionFrame>
+      <SectionFrame name="CityEdges" source="sections/network.tsx · /network" note="Five edges as CityCards, London across the top.">
+        <CityEdges />
+      </SectionFrame>
+      <SectionFrame name="Compare" source="sections/compare.tsx · /pricing" note="Every plan’s limits row by row, with cobalt checks and faint dashes.">
+        <Compare />
+      </SectionFrame>
+      <SectionFrame name="ChangelogList" source="sections/changelog.tsx · /changelog" note="Releases, newest first, as ChangelogEntries between hairlines.">
+        <ChangelogList />
+      </SectionFrame>
       <p className="border border-dashed border-hairline p-5 text-small text-ink-soft">
-        <span className="text-ink">SiteFooter</span> — the credits line and the TetrisSkyline — is the live footer at the bottom of this page, with
-        the “Brand guidelines” link that brought you here.
+        <span className="text-ink">SiteHeader</span> is the live menubar at the top of this page, and <span className="text-ink">SiteFooter</span> —
+        the links, an edge region’s skyline and the TetrisSkyline — is the live footer at the bottom, with the “Brand guidelines” link.
       </p>
     </Group>
   )

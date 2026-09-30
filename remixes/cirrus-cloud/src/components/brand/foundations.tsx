@@ -1,12 +1,16 @@
 import { useRef, useState } from "react"
 import { ArrowRight, ArrowUpRight, Check, Minus, Plus, X } from "lucide-react"
 
+import { ServerPanel } from "@/components/blocks/card-rail"
 import { GroupLabel, Mono } from "@/components/brand/specimen"
+import { PixelIcon } from "@/components/icons/pixel-icon"
+import { PIXEL_ICONS, type PixelIconName } from "@/components/icons/pixel-icon-data"
 import { contrast, readableRadius, toHex, useComputed, visibleShadow } from "@/components/brand/read-style"
 import { PixelFace, PixelMark, StepBadge } from "@/components/marks/pixel-marks"
 import { GhostyImage } from "@/components/motion/ghosty-image"
+import { CityLine, CITIES, type City } from "@/components/site/city-line"
 import { Chip } from "@/components/ui/chip"
-import { stack, workloads } from "@/content"
+import { stack } from "@/content"
 import { cn } from "@/lib/utils"
 
 /* ─── Brand ───────────────────────────────────────────────────────────── */
@@ -153,6 +157,18 @@ const COLOUR_GROUPS: { label: string; swatches: SwatchSpec[] }[] = [
     ],
   },
   {
+    label: "The server room — the night band, the code panel, menu tiles",
+    swatches: [
+      { token: "--color-night", className: "bg-night", role: "The hero band, code panel, icon tiles" },
+      { token: "--color-night-cell", className: "bg-night-cell", role: "An empty floor cell" },
+      { token: "--color-night-line", className: "bg-night-line", role: "Fibre, drops, the floor" },
+      { token: "--color-rack", className: "bg-rack", role: "Rack frames" },
+      { token: "--color-rack-unit", className: "bg-rack-unit", role: "A server unit, a light that is off" },
+      { token: "--color-rack-label", className: "bg-rack-label", role: "Region codes, the legend" },
+      { token: "--color-cyan", className: "bg-cyan", role: "A cache hit, TOML keys" },
+    ],
+  },
+  {
     label: "Chips — deeper fills so white mono reads",
     swatches: [
       { token: "--color-chip-red", className: "bg-chip-red", role: "Chip · red" },
@@ -210,6 +226,9 @@ export function ColourTokens() {
           <ContrastPair label="Paper on chip violet" className="bg-chip-violet text-paper" />
           <ContrastPair label="Paper on navy (step badge)" className="bg-navy text-paper" />
           <ContrastPair label="Cobalt on paper (checks)" className="bg-paper text-cobalt" />
+          <ContrastPair label="Paper on night (code)" className="bg-night text-paper" />
+          <ContrastPair label="Lime on night (icon tiles)" className="bg-night text-lime" />
+          <ContrastPair label="Rack label on night (legend)" className="bg-night text-rack-label" />
         </div>
         <p className="mt-3 text-small text-mute">
           Measured honestly: mute reaches AA only for large text and faint does not pass at all. Both are kept to mono caps labels, the
@@ -380,13 +399,13 @@ function ShadowSample() {
   return (
     <figure className="border-r border-b border-hairline p-5">
       <div className="relative h-28 overflow-hidden bg-hairline/40">
-        <GhostyImage src={workloads[2].image} alt={workloads[2].alt} />
+        <ServerPanel model="gpu" tone="gold" />
         <span ref={ref} className="notch absolute top-1/2 right-4 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-ink text-paper shadow-float">
           <ArrowRight className="size-4" />
         </span>
       </div>
       <figcaption className="mt-3">
-        <span className="text-small text-ink">Float</span> <span className="text-[0.8125rem] text-mute">— the one lift: the rail arrow over photography</span>
+        <span className="text-small text-ink">Float</span> <span className="text-[0.8125rem] text-mute">— the one lift: the rail arrow over a card, the menu, the sheet</span>
         <Mono className="mt-1 block">{visibleShadow(values["box-shadow"] ?? "")}</Mono>
       </figcaption>
     </figure>
@@ -505,6 +524,13 @@ const MOTION: MotionSpec[] = [
     keyframes: [{ transform: "scaleY(0.1)" }, { transform: "scaleY(1)" }],
   },
   {
+    name: "Sheet",
+    where: "The mobile menu sliding in from the right",
+    duration: "360ms",
+    easing: "--ease-drawer",
+    keyframes: [{ transform: "translateX(100%)" }, { transform: "translateX(0)" }],
+  },
+  {
     name: "Swing",
     where: "Things that go and come back",
     duration: "900ms",
@@ -560,7 +586,7 @@ export function MotionSample({ name, where, duration, easing, keyframes }: Motio
         <button
           type="button"
           onClick={play}
-          className="notch inline-flex h-11 shrink-0 items-center bg-wash px-5 text-base text-ink outline-none transition-[transform,background-color] duration-(--duration-press) ease-(--ease-out) active:scale-[0.97] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cobalt [@media(hover:hover)_and_(pointer:fine)]:hover:bg-lime"
+          className="notch focus-notch inline-flex h-11 shrink-0 items-center bg-wash px-5 text-base text-ink outline-none transition-[transform,background-color] duration-(--duration-press) ease-(--ease-out) active:scale-[0.97] [@media(hover:hover)_and_(pointer:fine)]:hover:bg-lime"
         >
           Play
         </button>
@@ -641,17 +667,79 @@ export function Iconography() {
           ))}
         </div>
         <p className="mt-5 text-small text-ink-soft">
-          Only for UI: arrows that move, the FAQ plus that turns 45°, checks in cobalt. Never as a feature illustration — that is the canvases’
-          job.
+          Only for small UI: arrows that move, the FAQ plus that turns 45°, checks in cobalt. Everything with a meaning uses a pixel icon.
         </p>
       </div>
       <div className="border-r border-b border-hairline p-6 lg:col-span-2">
-        <GroupLabel>Imagery — Pexels photography, bled in through fog</GroupLabel>
+        <GroupLabel>Pixel icons — the Pixel Icon Library, 24px grid, currentColor</GroupLabel>
+        <div className="grid grid-cols-4 border-t border-l border-hairline sm:grid-cols-8 lg:grid-cols-12">
+          {(Object.keys(PIXEL_ICONS) as PixelIconName[]).map((name) => (
+            <span key={name} className="flex flex-col items-center gap-2 border-r border-b border-hairline px-1 py-4">
+              <PixelIcon name={name} className="size-5 text-ink" />
+              <span className="w-full truncate text-center font-mono text-[0.625rem] text-mute">{name}</span>
+            </span>
+          ))}
+        </div>
+        <p className="mt-5 max-w-[48rem] text-small text-ink-soft">
+          The product’s icons: menus, features, changelog entries. Lime on a notched night tile where an icon leads a card, ink or cobalt inline.
+          By HackerNoon, MIT; inlined in <code className="font-mono text-[0.8125rem]">icons/pixel-icon-data.ts</code>.
+        </p>
+      </div>
+      <div className="border-r border-b border-hairline p-6 lg:col-span-2">
+        <GroupLabel>Isometric servers — voxels drawn in code, on a flat panel</GroupLabel>
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+          {(
+            [
+              ["rack", "cobalt"],
+              ["branches", "night"],
+              ["gpu", "gold"],
+              ["sandbox", "lime"],
+              ["board", "signal"],
+            ] as const
+          ).map(([model, tone]) => (
+            <figure key={model}>
+              <div className="aspect-square">
+                <ServerPanel model={model} tone={tone} />
+              </div>
+              <figcaption className="mt-2">
+                <Mono>
+                  {model} · {tone}
+                </Mono>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mt-5 max-w-[48rem] text-small text-ink-soft">
+          Unit cubes in painter’s order, three faces each — a light top, a mid left, a dark right — so they stay crisp at any size and take the
+          palette tokens. Status lights blink on CSS, and hold lit under reduced motion.
+        </p>
+      </div>
+      <div className="border-r border-b border-hairline p-6 lg:col-span-2">
+        <GroupLabel>City line art — one edge region per footer, in one token colour</GroupLabel>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
+          {(Object.keys(CITIES) as City[]).map((city) => (
+            <figure key={city} className="flex flex-col justify-end">
+              <CityLine city={city} tone="navy" />
+              <figcaption className="mt-2">
+                <Mono>
+                  {CITIES[city].code} · {CITIES[city].name}
+                </Mono>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+        <p className="mt-5 max-w-[48rem] text-small text-ink-soft">
+          Each drawing is only an alpha mask (a small WebP) over a block of colour, so it takes any token. The Tetris skyline stacks along its
+          base. From the Minimal Wallpapers city backgrounds community file, credited in the footer.
+        </p>
+      </div>
+      <div className="border-r border-b border-hairline p-6 lg:col-span-2">
+        <GroupLabel>Photography — Pexels, bled in through fog</GroupLabel>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-          {[workloads[0], workloads[1], stack.cards[0], stack.cards[1]].map((card, i) => (
+          {stack.cards.map((card, i) => (
             <figure key={card.title}>
               <div className="aspect-[420/374] overflow-hidden bg-hairline/40">
-                <GhostyImage src={card.image} alt={card.alt} direction={(["up", "down", "left", "right"] as const)[i]} delay={i * 90} />
+                <GhostyImage src={card.image!} alt={card.alt!} direction={(["up", "down", "left", "right"] as const)[i]} delay={i * 90} />
               </div>
               <figcaption className="mt-2">
                 <Mono>direction {(["up", "down", "left", "right"] as const)[i]}</Mono>
@@ -660,8 +748,9 @@ export function Iconography() {
           ))}
         </div>
         <p className="mt-5 max-w-[48rem] text-small text-ink-soft">
-          Real hardware and real desks in daylight, cropped square-cornered at 420 × 374. Where there is no photograph there is generative pixel
-          art — the weather, the streams, the marquee — never stock illustration. Photography is credited in the footer.
+          Colourful, graphic photographs of hardware and form, cropped square-cornered at 420 × 374, on the stack cards. Workloads are isometric
+          servers instead, and the big pictures are generative pixels — the server room, the life cycle, the streams, the marquee — never stock
+          illustration. Photography is credited in the footer.
         </p>
       </div>
     </div>

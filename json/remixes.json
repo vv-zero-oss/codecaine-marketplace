@@ -659,8 +659,8 @@
       "type": "remix",
       "id": "cirrus-cloud",
       "name": "Cirrus — Cloud Dev Environments",
-      "version": "1.1.0",
-      "description": "A pixel-matrix landing page for Cirrus, cloud development environments: white paper under a faint 9px grid, big grotesk type and a navy, cobalt, gold, red and lime palette that only ever appears as squares — a hero of drifting diagonal pixel weather that erodes as you scroll, headlines that type themselves in, photographs that bleed in through fog, two particle-stream diagrams of how it works, hairline pricing and FAQ, a pixel-text marquee and a playable Tetris skyline for a footer.",
+      "version": "1.2.0",
+      "description": "A pixel-matrix site for Cirrus, cloud development environments: white paper under a 9px grid and a palette drawn only as squares — a night server-room hero with CDN packets travelling from origin to edge racks, isometric voxel server cards, a DNA-to-organism-to-tree life cycle for clone/boot/build/ship, a menubar with a pixel-icon product menu, product, network, pricing, changelog and brand-guideline pages, and footers with a different city skyline in line art over a playable Tetris skyline.",
       "designedFor": [
         "Developer tools, cloud platforms and infrastructure products",
         "Editorial, argument-led product pages with long reading sections",
@@ -676,25 +676,33 @@
       ],
       "license": "MIT",
       "keywords": [
-        "developer-tools",
-        "cloud",
-        "devops",
-        "infrastructure",
-        "saas",
-        "pixel",
-        "generative",
+        "brand-guidelines",
         "canvas",
-        "typer",
-        "marquee",
-        "tetris",
-        "pricing",
-        "faq",
+        "cdn",
+        "cloud",
+        "developer-tools",
+        "devops",
+        "edge",
         "editorial",
+        "faq",
         "framer-motion",
+        "generative",
+        "infrastructure",
+        "isometric",
         "lenis",
+        "line-art",
+        "marquee",
+        "multi-page",
+        "pixel",
+        "pixel-icons",
+        "pricing",
         "react",
-        "vite",
-        "tailwind"
+        "saas",
+        "server",
+        "tailwind",
+        "tetris",
+        "typer",
+        "vite"
       ],
       "categories": [
         "Marketing",
@@ -717,6 +725,22 @@
           "title": "Home"
         },
         {
+          "path": "/product",
+          "title": "Product"
+        },
+        {
+          "path": "/network",
+          "title": "Network"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/changelog",
+          "title": "Changelog"
+        },
+        {
           "path": "/brand",
           "title": "Brand guidelines"
         }
@@ -728,6 +752,26 @@
           {
             "title": "Home",
             "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Product",
+            "image": "previews/pages/product.jpg"
+          },
+          {
+            "title": "Network",
+            "image": "previews/pages/network.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Changelog",
+            "image": "previews/pages/changelog.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
           }
         ]
       },
@@ -742,15 +786,35 @@
           {
             "title": "Home",
             "image": "remixes/cirrus-cloud/previews/pages/home.jpg"
+          },
+          {
+            "title": "Product",
+            "image": "remixes/cirrus-cloud/previews/pages/product.jpg"
+          },
+          {
+            "title": "Network",
+            "image": "remixes/cirrus-cloud/previews/pages/network.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/cirrus-cloud/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Changelog",
+            "image": "remixes/cirrus-cloud/previews/pages/changelog.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/cirrus-cloud/previews/pages/brand.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/remixes/cirrus-cloud-1.1.0.tgz",
+        "url": "archives/remixes/cirrus-cloud-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "57c562ad64fe0e802f8650dadeeff8daadd741e79fa0060f9c8a099cfaae6c39",
-        "size": 414720,
-        "files": 65
+        "sha256": "e90bc9ebc841d6af3633323fc7777a75b7b57ce42a937b38631af3d3f7550070",
+        "size": 933376,
+        "files": 89
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
