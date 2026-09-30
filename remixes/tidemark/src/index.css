@@ -1,0 +1,190 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, font and motion curve on the page
+   lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: heavy, wide, uppercase for display; a plain grotesk for reading */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Archivo", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Cream paper and the surfaces on it */
+  --color-paper: #f5f2ea;
+  --color-paper-deep: #ebe5d8;
+  --color-card: #fbf9f3;
+  --color-white: #ffffff;
+
+  /* Ink on cream: the maroon family */
+  --color-ink: #200704;
+  --color-ink-soft: #360b05;
+  --color-ink-muted: #6e4a42;
+  --color-ink-subtle: #9c7f77;
+
+  /* Hairlines on cream */
+  --color-line: #e2d8c9;
+  --color-line-strong: #cdbfae;
+
+  /* Night: the oxblood grounds */
+  --color-night: #200704;
+  --color-night-deep: #160402;
+  --color-night-card: #2b0a06;
+  --color-night-line: #4a1a12;
+  --color-night-fg: #f5f2ea;
+  --color-night-muted: #c4a49b;
+
+  /* Accents: pink for the wordmark and the one thing to press, coral for heat */
+  --color-pink: #fbabda;
+  --color-pink-hover: #fdc3e4;
+  --color-coral: #fe6a42;
+  --color-coral-soft: #ffb59e;
+  --color-maroon: #360b05;
+
+  /* Money in and out, and the chart lines (validated per surface) */
+  --color-gain: #b33a18;
+  --color-loss: #9c1c10;
+  --color-chart: #d9471f;
+  --color-chart-night: #e85a35;
+
+  /* Radii: square, as the page is; the metal card keeps a card's corner */
+  --radius-chip: 0px;
+  --radius-field: 0px;
+  --radius-card: 0px;
+  --radius-panel: 0px;
+  --radius-metal: 14px;
+
+  /* Spacing read off the layout */
+  --spacing-gutter: clamp(16px, 3vw, 40px);
+  --spacing-section: clamp(80px, 10vw, 144px);
+
+  /* Shadows: almost none — flat colour does the work */
+  --shadow-hairline: 0 0 0 1px rgb(32 7 4 / 0.12);
+  --shadow-field: 0 0 0 1px rgb(32 7 4 / 0.18);
+  --shadow-card: 0 0 0 1px rgb(32 7 4 / 0.1);
+  --shadow-float: 0 24px 48px -20px rgb(22 4 2 / 0.55);
+  --shadow-metal: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 40px 70px -30px rgb(10 2 1 / 0.8), 0 14px 24px -12px rgb(10 2 1 / 0.5);
+  --shadow-button: none;
+  --shadow-night: 0 0 0 1px rgb(245 242 234 / 0.1);
+
+  /* Motion */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 300ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-accordion-down: accordion-down 220ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out-strong);
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
+  --card: var(--color-card);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-card);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-night);
+  --primary-foreground: var(--color-night-fg);
+  --secondary: var(--color-paper-deep);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-paper-deep);
+  --muted-foreground: var(--color-ink-muted);
+  --accent: var(--color-paper);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-loss);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-ink-subtle);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+/* Display type: heavy, extended, uppercase — the poster voice */
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+/* The wide caps the nav, labels and buttons use */
+@utility type-caps {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+/* Small labels above sections */
+@utility type-eyebrow {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-stretch: 125%;
+  font-variation-settings: "wdth" 125;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+    font-feature-settings: "ss01", "tnum";
+  }
+  ::selection { background: var(--color-pink); color: var(--color-ink); }
+}
