@@ -516,30 +516,67 @@ custom), and a segment or series filter where the data has one. Filters
 drive the chart and its KPI tiles together, and the chart has a tooltip, a
 legend and a loading and an empty state.
 
-### 4. Auth pages come with it
+### 4. Data lives in SQLite unless told otherwise
+
+When no database or backend is named, the dashboard's data is **SQLite** —
+never a hard-coded array, a JSON fixture read once, or a mock store that
+forgets everything on reload.
+
+- **With a server** (an API route, Express/Hono, a Node backend):
+  `better-sqlite3`, with **Drizzle ORM** (`drizzle-orm` + `drizzle-kit`) for
+  the schema and migrations, in a `db/` folder (`schema.ts`, `migrate.ts`,
+  `seed.ts`).
+- **Front-end only** (a remix served as a static Vite app, which is what the
+  marketplace demo is): SQLite in the browser — `sql.js` (WASM) or
+  `@sqlite.org/sqlite-wasm` — persisted to OPFS or IndexedDB so changes
+  survive a reload, with the same `schema` / `seed` split and a small typed
+  data layer (`lib/db.ts`) the screens call. Nothing in a component writes
+  SQL inline.
+- A seed script fills it with realistic data (enough rows to page, filter
+  and chart — hundreds, not five), and a "Reset demo data" action in
+  settings re-seeds it.
+- Tables, filters, charts and KPIs **query** the database: sorting,
+  filtering, pagination and aggregates reflect what is actually stored, so a
+  row created on one screen shows up in the table, the chart and the count
+  on every other.
+
+### 5. Auth pages come with it, and they work
 
 Every dashboard ships its auth screens: **sign in, sign up, forgot password,
 reset password**, and a verify/OTP step (shadcn `input-otp`) — built from
 shadcn's login blocks (`npx shadcn@latest add login-03` and the like), with
-validation (`react-hook-form` + `zod`), error and success states, and a
-sign-out that returns to them. Auth is mocked locally unless a backend is
-given, but every flow goes somewhere.
+validation (`react-hook-form` + `zod`), error and success states.
 
-### 5. Every screen is functional
+Unless a provider is given, auth is real against the SQLite database: a
+`users` table, passwords hashed (`bcryptjs` / Web Crypto PBKDF2, never
+plain text), a session that persists across reloads, protected routes that
+send a signed-out visitor to sign in, sign-up that creates a user who can
+then sign in, wrong passwords rejected, and sign-out that ends the session.
+A seeded demo account is listed on the sign-in screen.
 
-No dead UI. Every screen in the sidebar exists and works: buttons do what
-they say, forms validate and submit, create / edit / delete update the data
-(local state or a mock store) with a toast, dialogs and sheets open and
-close, search and filters filter, settings save. A link to nowhere or a
-button with no handler is a bug.
+### 6. Every screen is functional — not in name only
 
-### 6. Light and dark mode
+No dead UI and no façades. Every screen in the sidebar exists and works end
+to end against the database: create / edit / delete persist and survive a
+reload, with a toast and an undo where it makes sense; forms validate and
+save; search and filters really filter the stored data; settings and
+profile changes persist and take effect; dialogs and sheets open and close;
+exports export. A screen that only *looks* like it works — a button that
+toasts "Saved" without saving, a filter that does nothing, a chart that
+ignores new data, a hard-coded "3 new" badge — is a bug, the same as a link
+to nowhere or a button with no handler.
+
+Before calling it done, walk every screen: sign up, sign in, create a
+record, edit it, filter for it, see it in the charts and counts, delete it,
+reload, and sign out — and confirm each step actually changed the data.
+
+### 7. Light and dark mode
 
 Both themes, always, with a toggle in the header (system / light / dark,
 remembered). Every colour is a token with a light and a dark value in
 `index.css`; charts, tables, badges and shadows are checked in both.
 
-### 7. Micro-interactions
+### 8. Micro-interactions
 
 Design them with the `animate` skill and check them with
 `review-animations`: button press, hover on rows and cards, toggles, a
