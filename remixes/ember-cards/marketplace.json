@@ -1,0 +1,78 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "ember-cards",
+  "name": "Ember Cards",
+  "version": "1.0.0",
+  "description": "A dark, metallic landing page for a virtual card company: machined-metal cards (chrome, titanium, champagne, graphite, copper) with brushing, film grain and a pointer-tracked highlight; two live 3D iPhones (React Three Fiber); a manifesto that lights up word by word; a pinned four-step “how it works”; a sideways-scrolling row of use cases; a customer video that zooms to fill the screen; a dotted world map, reviews, an FAQ and a champagne sign-up band.",
+  "designedFor": [
+    "Fintech, card and wallet apps launching with a single clear offer",
+    "Mobile-first products that want their app shown on a real 3D phone rather than a flat screenshot",
+    "Scroll-told product pages: pinned steps, horizontal rows, a full-bleed video story",
+    "Seeing React Three Fiber, Motion and Lenis on one page the canvas editor can pause and edit"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "fintech",
+    "virtual-cards",
+    "landing",
+    "dark",
+    "app",
+    "3d",
+    "iphone",
+    "mockup",
+    "react-three-fiber",
+    "scroll",
+    "sticky",
+    "horizontal-scroll",
+    "video",
+    "text-animation",
+    "serif",
+    "react",
+    "vite",
+    "tailwind",
+    "metallic",
+    "grain",
+    "noise"
+  ],
+  "categories": [
+    "Marketing",
+    "Fintech"
+  ],
+  "created": "2026-09-29",
+  "updated": "2026-09-30",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3190
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    }
+  ],
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  },
+  "icon": "icon.svg"
+}

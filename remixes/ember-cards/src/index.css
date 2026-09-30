@@ -1,0 +1,197 @@
+@import "tailwindcss";
+
+/* Every colour, shadow, radius, font and motion value the page uses lives
+   here, so the whole look can be changed in one place. */
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Newsreader", "EB Garamond", Georgia, serif;
+
+  /* Surfaces and ink — graphite black and warm bone, no neon */
+  --color-canvas: #0a0a0b;
+  --color-surface: #131314;
+  --color-surface-raised: #1a1a1c;
+  --color-ink: #ece9e3;
+  --color-ink-soft: #bcb9b2;
+  --color-muted: #85837e;
+  --color-subtle: #56555a;
+  --color-hairline: #232325;
+
+  /* The single accent: champagne, used sparingly */
+  --color-accent: #cdb892;
+  --color-accent-soft: #e7dbc0;
+  --color-accent-deep: #7d6b4a;
+
+  /* Panels — graphite with the faintest cast of a metal */
+  --color-panel-steel: #111316;
+  --color-panel-smoke: #121212;
+  --color-panel-umber: #14120f;
+
+  /* The one light surface: champagne-bone */
+  --color-inverse: #e9e3d6;
+  --color-inverse-ink: #16140f;
+  --color-inverse-muted: #6f675a;
+
+  --color-footer: #050505;
+  --color-footer-muted: #6f6e72;
+
+  --color-positive: #a7c4a0;
+  --color-positive-soft: #18211a;
+  --color-button: #ece9e3;
+  --color-button-hover: #ffffff;
+  --color-button-ink: #111112;
+  --color-dot: #2a2a2d;
+
+  /* Radii */
+  --radius-chip: 9999px;
+  --radius-widget: 12px;
+  --radius-card: 14px;
+  --radius-item: 10px;
+  --radius-panel: 40px;
+
+  /* Shadows — a hairline of light on top, a deep soft drop below */
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 24px 48px -24px rgb(0 0 0 / 0.7);
+  --shadow-widget: inset 0 1px 0 rgb(255 255 255 / 0.07), 0 0 0 1px rgb(255 255 255 / 0.04), 0 18px 40px -16px rgb(0 0 0 / 0.8);
+  --shadow-chip: inset 0 1px 0 rgb(255 255 255 / 0.08), 0 0 0 1px rgb(255 255 255 / 0.05), 0 14px 28px -12px rgb(0 0 0 / 0.9);
+  --shadow-item: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 0 0 1px rgb(255 255 255 / 0.04);
+  --shadow-button: inset 0 1px 0 rgb(255 255 255 / 0.6), 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-metal: inset 0 1px 0 rgb(255 255 255 / 0.55), inset 0 -1px 0 rgb(0 0 0 / 0.35), 0 1px 1px rgb(0 0 0 / 0.4), 0 30px 60px -24px rgb(0 0 0 / 0.85);
+
+  /* Type scale */
+  --text-display: clamp(2.75rem, 1.6rem + 4.4vw, 4.875rem);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.02em;
+  --text-headline: clamp(2.25rem, 1.5rem + 2.6vw, 3.5rem);
+  --text-mega: clamp(2.5rem, 1rem + 5.6vw, 6.5rem);
+  --text-mega--line-height: 1.02;
+  --text-mega--letter-spacing: -0.03em;
+  --text-headline--line-height: 1.08;
+  --text-headline--letter-spacing: -0.015em;
+  --text-title: clamp(1.5rem, 1.3rem + 0.6vw, 1.875rem);
+  --text-title--line-height: 1.15;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --duration-reveal: 600ms;
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --animate-accordion-down: accordion-down 240ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-fade-in: fade-in 200ms var(--ease-out);
+  --animate-fade-out: fade-out 160ms var(--ease-out);
+  --animate-sheet-in: sheet-in 320ms cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-sheet-out: sheet-out 220ms cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+/* ————————————————————————————————————————————————————————————————
+   Metal and grain.
+
+   A finish is a many-stop, angled gradient: bright bands where the light
+   catches and dark bands between, the way a machined surface reads. On top
+   of it go brushing (hair-fine repeating lines), a specular highlight that
+   follows the pointer (--mx / --my, set by MetalCard), and film grain.
+   ———————————————————————————————————————————————————————————————— */
+:root {
+  --grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1.2 -.1'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+
+  --metal-chrome: linear-gradient(112deg, #2b2c2f 0%, #cfd0d2 16%, #707276 29%, #f3f3f1 43%, #8e9094 55%, #3c3d40 70%, #c3c4c6 86%, #4d4e52 100%);
+  --metal-titanium: linear-gradient(112deg, #36352f 0%, #9e9a91 17%, #5a5751 31%, #d3cfc5 45%, #75716a 58%, #413f3b 74%, #aca79e 90%, #4a4843 100%);
+  --metal-champagne: linear-gradient(112deg, #3f3526 0%, #bca77f 17%, #75643f 31%, #efe2c3 45%, #98835c 58%, #4d412c 74%, #d2c099 90%, #5a4c33 100%);
+  --metal-graphite: linear-gradient(112deg, #0f0f11 0%, #3a3b3f 18%, #19191c 33%, #56575c 46%, #212225 60%, #0d0d0f 76%, #313236 92%, #151517 100%);
+  --metal-copper: linear-gradient(112deg, #33221c 0%, #a57d69 17%, #573a2f 31%, #dcbba7 45%, #7a5445 58%, #3a261f 74%, #9b725f 90%, #432d25 100%);
+
+  --brushed: repeating-linear-gradient(90deg, rgb(255 255 255 / 0.035) 0 1px, rgb(0 0 0 / 0.03) 1px 2px, transparent 2px 4px);
+
+  /* Section atmospheres: layered, low-chroma light rather than a rainbow */
+  --atmos-hero: radial-gradient(60% 50% at 50% 0%, rgb(205 184 146 / 0.10), transparent 70%), radial-gradient(40% 40% at 85% 30%, rgb(120 130 145 / 0.10), transparent 70%), radial-gradient(50% 40% at 10% 60%, rgb(90 80 70 / 0.12), transparent 70%);
+  --atmos-panel: radial-gradient(80% 60% at 50% 0%, rgb(205 184 146 / 0.07), transparent 70%), radial-gradient(60% 50% at 100% 100%, rgb(110 120 135 / 0.08), transparent 70%);
+  --atmos-steel: radial-gradient(120% 90% at 0% 0%, #2a2d33 0%, transparent 60%), radial-gradient(90% 80% at 100% 100%, #1b1d22 0%, transparent 70%), linear-gradient(160deg, #15171b, #0e0f12);
+}
+
+/* In the components layer, so a utility (`absolute`, `[--mx:…]`) on the
+   same element still wins. */
+@layer components {
+.grain { position: relative; isolation: isolate; }
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background-image: var(--grain);
+  background-size: 220px;
+  opacity: var(--grain-opacity, 0.22);
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* A metal surface. Pick a finish with .metal-<name>. */
+.metal {
+  --mx: 30%;
+  --my: 20%;
+  background:
+    radial-gradient(circle at var(--mx) var(--my), rgb(255 255 255 / 0.55), rgb(255 255 255 / 0) 38%),
+    conic-gradient(from 200deg at var(--mx) var(--my), rgb(255 255 255 / 0) 0deg, rgb(255 255 255 / 0.14) 40deg, rgb(255 255 255 / 0) 90deg, rgb(0 0 0 / 0.12) 200deg, rgb(255 255 255 / 0) 300deg),
+    var(--brushed),
+    var(--metal-finish);
+  background-blend-mode: soft-light, overlay, normal, normal;
+  box-shadow: var(--shadow-metal);
+}
+.metal-chrome { --metal-finish: var(--metal-chrome); --engrave: rgb(20 20 22 / 0.72); --emboss: rgb(255 255 255 / 0.45); }
+.metal-titanium { --metal-finish: var(--metal-titanium); --engrave: rgb(24 22 18 / 0.72); --emboss: rgb(255 255 255 / 0.35); }
+.metal-champagne { --metal-finish: var(--metal-champagne); --engrave: rgb(28 20 6 / 0.9); --emboss: rgb(255 248 230 / 0.5); }
+.metal-copper { --metal-finish: var(--metal-copper); --engrave: rgb(40 20 12 / 0.72); --emboss: rgb(255 235 220 / 0.35); }
+.metal-graphite { --metal-finish: var(--metal-graphite); --engrave: rgb(236 233 227 / 0.86); --emboss: rgb(0 0 0 / 0.6); }
+
+/* Type pressed into the metal: dark with a light lip below (or the reverse on graphite). */
+.engraved { color: var(--engrave); text-shadow: 0 1px 0 var(--emboss); }
+
+/* The page's own film grain, over everything, very faint. */
+.page-grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  background-image: var(--grain);
+  background-size: 220px;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+}
+
+@keyframes accordion-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-accordion-content-height); opacity: 1; }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes sheet-in { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes sheet-out { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+
+html { background: var(--color-canvas); color-scheme: dark; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-canvas);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+}
+
+.font-serif { font-optical-sizing: auto; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; }
+}
