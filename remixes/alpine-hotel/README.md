@@ -6,7 +6,7 @@ stone-pine palette.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3210
+npm run dev     # → http://localhost:3230
 ```
 
 ## The page
