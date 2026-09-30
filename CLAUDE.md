@@ -465,3 +465,85 @@ panel; its props are listed and editing them changes the animation live;
 the Motion switch stops, reduces and resumes every moving thing on the page
 (the ⓘ lists nothing it could only *see*); and every hidden state is reachable
 from the Actions row without Interact mode.
+
+## Building a dashboard — non-negotiable
+
+A dashboard (an admin panel, a CRM, an analytics or back-office app) follows
+every remix rule above, and these on top. A dashboard that breaks one of them
+is not finished.
+
+### 1. Start from the template, built from shadcn
+
+- Start from `remixes/sdk-scaffold` as any project does, then lay the app
+  shell down from shadcn's **sidebar block**
+  (https://ui.shadcn.com/blocks/sidebar) — `npx shadcn@latest add
+  sidebar-07` (or whichever `sidebar-*` block fits) — never a hand-built
+  sidebar, header or layout. Collapsible sidebar, breadcrumbs, a user menu
+  and a mobile `Sheet` come with it.
+- **shadcn components for everything**: buttons, inputs, selects, date
+  pickers, dialogs, sheets, dropdowns, command palette (⌘K), tabs, cards,
+  badges, tooltips, skeletons, `sonner` toasts, `chart`. Add them with the
+  CLI; do not hand-write one shadcn already has.
+- **Agent and AI UI** (assistants, task runs, streaming answers, suggestion
+  cards) from Beautiful UI (https://www.beautifului.dev), as in section 6
+  above.
+- **Charts**: shadcn `chart` (Recharts) for the standard set, and
+  **Dither Kit** (https://www.tripwire.sh/dither-kit) where a chart, avatar or
+  gradient wash should carry the dithered look —
+  `npx @dither-kit/cli add <component>` (`area-chart`, `bar-chart`, …, or
+  `dither-kit` for everything). It installs into the shadcn project and
+  takes the same `data` + `config` shape as shadcn charts.
+
+### 2. Tables are TanStack Table
+
+Every data table is built on **TanStack Table**
+(https://tanstack.com/table/latest, `@tanstack/react-table`) rendered through
+shadcn's `table` — shadcn's data-table pattern — as one reusable
+`DataTable` component in `components/data-table/`, not a table written per
+screen. A rich table has, at least:
+
+- sorting on every column that can be sorted;
+- **filters**: a global search, per-column faceted filters (status, owner,
+  tag…), date-range where there are dates, and a "Reset" that clears them;
+- pagination with page size, row selection with bulk actions, column
+  visibility, and a row actions menu (`DropdownMenu`);
+- loading skeletons, an empty state and a no-results state.
+
+### 3. Charts have filters too
+
+Every chart can be filtered: a date range or period toggle (7d / 30d / 90d /
+custom), and a segment or series filter where the data has one. Filters
+drive the chart and its KPI tiles together, and the chart has a tooltip, a
+legend and a loading and an empty state.
+
+### 4. Auth pages come with it
+
+Every dashboard ships its auth screens: **sign in, sign up, forgot password,
+reset password**, and a verify/OTP step (shadcn `input-otp`) — built from
+shadcn's login blocks (`npx shadcn@latest add login-03` and the like), with
+validation (`react-hook-form` + `zod`), error and success states, and a
+sign-out that returns to them. Auth is mocked locally unless a backend is
+given, but every flow goes somewhere.
+
+### 5. Every screen is functional
+
+No dead UI. Every screen in the sidebar exists and works: buttons do what
+they say, forms validate and submit, create / edit / delete update the data
+(local state or a mock store) with a toast, dialogs and sheets open and
+close, search and filters filter, settings save. A link to nowhere or a
+button with no handler is a bug.
+
+### 6. Light and dark mode
+
+Both themes, always, with a toggle in the header (system / light / dark,
+remembered). Every colour is a token with a light and a dark value in
+`index.css`; charts, tables, badges and shadows are checked in both.
+
+### 7. Micro-interactions
+
+Design them with the `animate` skill and check them with
+`review-animations`: button press, hover on rows and cards, toggles, a
+copied state, optimistic updates, toasts, skeleton-to-content, number
+count-ups on KPIs, sidebar collapse, sort indicators, filter chips appearing.
+Small, fast and purposeful — and every hidden state (open dialog, filter
+popover, empty state, error) registered with `useCanvasAction` (section 11).
