@@ -235,6 +235,151 @@
     },
     {
       "type": "remix",
+      "id": "castwell-social",
+      "name": "Castwell — AI Social Media Manager",
+      "version": "1.0.1",
+      "description": "A five-page template for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
+      "designedFor": [
+        "Social media management, scheduling and creator tools",
+        "AI marketing and AI video generation products",
+        "SaaS teams that want a calm, editorial, cream-and-ink landing page with night diagram sections",
+        "Seeing scroll-pinned tours, pixel wipes and streaming text the editor can drive"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "social-media",
+        "marketing",
+        "scheduler",
+        "video-generator",
+        "saas",
+        "multi-page",
+        "pricing",
+        "serif",
+        "pixel",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-09-30",
+      "updated": "2026-09-30",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3220
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/marketing-manager",
+          "title": "AI Marketing Manager"
+        },
+        {
+          "path": "/video-studio",
+          "title": "AI Video Studio"
+        },
+        {
+          "path": "/scheduler",
+          "title": "Scheduler"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "AI Marketing Manager",
+            "image": "previews/pages/marketing-manager.jpg"
+          },
+          {
+            "title": "AI Video Studio",
+            "image": "previews/pages/video-studio.jpg"
+          },
+          {
+            "title": "Scheduler",
+            "image": "previews/pages/scheduler.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          }
+        ]
+      },
+      "path": "remixes/castwell-social",
+      "thumbnailUrl": "remixes/castwell-social/preview.png",
+      "iconUrl": "remixes/castwell-social/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/castwell-social/previews/desktop.jpg",
+        "mobile": "remixes/castwell-social/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/castwell-social/previews/pages/home.jpg"
+          },
+          {
+            "title": "AI Marketing Manager",
+            "image": "remixes/castwell-social/previews/pages/marketing-manager.jpg"
+          },
+          {
+            "title": "AI Video Studio",
+            "image": "remixes/castwell-social/previews/pages/video-studio.jpg"
+          },
+          {
+            "title": "Scheduler",
+            "image": "remixes/castwell-social/previews/pages/scheduler.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/castwell-social/previews/pages/pricing.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/castwell-social-1.0.1.tgz",
+        "format": "tar+gzip",
+        "sha256": "d3c65369f766a18cfe33cf110cbf503a740916aef4097241606dd1abfbb12185",
+        "size": 548352,
+        "files": 99
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/castwell-social"
+      },
+      "demoUrl": "demos/castwell-social/"
+    },
+    {
+      "type": "remix",
       "id": "cirrus-cloud",
       "name": "Cirrus — Cloud Dev Environments",
       "version": "1.0.0",
@@ -655,7 +800,7 @@
         "styling": "tailwindcss@4",
         "installCommand": "npm install",
         "devCommand": "npm run dev",
-        "port": 3220
+        "port": 3290
       },
       "pages": [
         {
@@ -690,7 +835,7 @@
       "archive": {
         "url": "archives/remixes/glovebox-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "c4cf54f849aa907e5532dcb1092fd2181a93f539827e8bc1041e9becfb126df9",
+        "sha256": "6a9a4ee4095222bcf0a1636f93e1423c25742e7278c6b692c3239b2cd0fd61fa",
         "size": 338432,
         "files": 57
       },

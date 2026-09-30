@@ -5,7 +5,7 @@ policy in one place, shops renewals and handles claims.
 
 ```bash
 npm install
-npm run dev     # → http://localhost:3220
+npm run dev     # → http://localhost:3290
 ```
 
 ## The page
