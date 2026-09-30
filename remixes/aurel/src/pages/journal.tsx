@@ -46,7 +46,7 @@ export function JournalPage() {
 }
 
 /** A feature on the sideways row; every other one sits lower and narrower. */
-function FeatureCard({ kicker, title, excerpt, image, alt, index }: { kicker: string; title: string; excerpt: string; image: string; alt: string; index: number }) {
+export function FeatureCard({ kicker, title, excerpt, image, alt, index }: { kicker: string; title: string; excerpt: string; image: string; alt: string; index: number }) {
   const wide = index % 2 === 0
   return (
     <Link href="/journal" className={cn("group flex shrink-0 flex-col gap-4 md:w-[38vw]", !wide && "md:mt-[18vh] md:w-[28vw]")}>

@@ -50,6 +50,9 @@ const ISOCONS = {
 
 export type IsoconName = keyof typeof ISOCONS
 
+/** Every icon the set carries, for the style guide. */
+export const ISOCON_NAMES = Object.keys(ISOCONS) as IsoconName[]
+
 export function Isocon({
   name,
   stroke = 1,

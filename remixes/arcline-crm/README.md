@@ -19,8 +19,31 @@ npm run dev     # → http://localhost:3160
 | `/pricing` | Four plans, a monthly/annual switch, every feature side by side, FAQ |
 | `/changelog` | Every release, filterable by kind |
 
+| `/brand` | Brand guidelines: the system the site is built from |
+
 A forty-line router (`src/lib/router.tsx`) switches pages without a reload,
 on real paths, so the address bar and the editor's Pages list agree.
+
+## The style guide at `/brand`
+
+`/brand` is Arcline's brand guidelines page, linked as "Brand guidelines"
+in the footer's Resources column: the wordmark on dark and light with its
+clear space and minimum size, the voice in do/don't lines, every colour
+token in `src/index.css` (and the shadcn names and status-pill colours
+pointed at them) with its value and hex and WCAG contrast for the real
+text pairs, the fonts and the whole type scale, spacing, radii, all 22
+shadows, borders, every easing (playable) and loop, icons, logos and
+photography — then every component live in its variants and states with a
+copyable snippet: `components/ui`, the agent-UI atoms and primitives, the
+mockup kit, every product mockup, the motion components, the blocks from
+the pricing, agents, customers and changelog pages, and each home section
+in a frame that opens to full height.
+
+Every value is read off the rendered element at runtime
+(`src/components/brand/read-style.ts`), so changing a token changes the
+page. It lives in `src/pages/brand.tsx` and `src/components/brand/`; a
+component added to the site is added there in the same change. The sample
+sheet and menu on it are the "Sample sheet" and "Sample menu" actions.
 
 ## The look
 

@@ -1,6 +1,7 @@
 /**
  * Aurel — a fashion house's site: home, the collection, a product, the
- * atelier, the journal, the house and appointments.
+ * atelier, the journal, the house and appointments — and `/brand`, its
+ * brand guidelines.
  *
  * Every section is a named component and every piece of motion is its own
  * (see `components/motion/`), so the canvas editor's layers panel reads
@@ -20,6 +21,7 @@ import { SiteHeader } from "@/components/site/site-header"
 import { Toaster } from "@/components/ui/sonner"
 import { AppointmentsPage } from "@/pages/appointments"
 import { AtelierPage } from "@/pages/atelier"
+import { BrandPage } from "@/pages/brand"
 import { CollectionPage } from "@/pages/collection"
 import { HomePage } from "@/pages/home"
 import { HousePage } from "@/pages/house"
@@ -38,6 +40,7 @@ function Page({ pathname }: { pathname: string }) {
   if (path === "/journal") return <JournalPage />
   if (path === "/house") return <HousePage />
   if (path === "/appointments") return <AppointmentsPage />
+  if (path === "/brand") return <BrandPage />
   return <NotFoundPage />
 }
 
