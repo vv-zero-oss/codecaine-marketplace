@@ -701,3 +701,30 @@ copied state, optimistic updates, toasts, skeleton-to-content, number
 count-ups on KPIs, sidebar collapse, sort indicators, filter chips appearing.
 Small, fast and purposeful — and every hidden state (open dialog, filter
 popover, empty state, error) registered with `useCanvasAction` (remix section 11).
+
+### 12. A brand guidelines page, always
+
+Every dashboard — and every remix — ships a **Brand guidelines** page
+(`/brand`, linked from the sidebar or footer) that documents the system it
+is built on, rendered from the real tokens and components, never from
+screenshots or copies:
+
+- **Brand**: logo and icon with clear space and minimum size, light and dark
+  versions, and the voice in a few do/don't lines.
+- **Colour**: every token from `index.css` as a swatch with its name and
+  value in light and dark, grouped (surface, text, border, accent, status,
+  chart), with contrast ratios for text pairs.
+- **Typography**: the families, the whole type scale with size, weight,
+  line-height and letter-spacing, and numerals.
+- **Spacing, radii, shadows, borders and motion**: each token shown on a
+  sample, and the motion easings and durations played on a demo element.
+- **Iconography and imagery**: the icon set in use, and how photography and
+  illustrations are treated.
+- **Every component** in `components/ui/` and the composed ones (data table,
+  charts, command palette, AI composer, auth forms, empty states…), each in
+  all its variants, sizes and states (default, hover, focus, disabled,
+  loading, error), live and interactive, with a copyable usage snippet.
+
+It reads the tokens at runtime, so it can never drift from the product,
+follows the theme toggle, and a component added to the app is added here in
+the same change.
