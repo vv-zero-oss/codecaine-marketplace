@@ -7,7 +7,7 @@
       "type": "remix",
       "id": "ai-canvas",
       "name": "AI Canvas",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A launch page for an AI canvas tool: a night-black WebGL infinite canvas that never stops drifting — photos, labelled frames, live pages and an agent at work, with velocity motion blur — washing out to a white page of blur-in scenes, a stepped-word mauve panel, a pinned three-step product walk, gathering multiplayer cursors, an agent wiring a button to its tokens, and one enormous black call to action.",
       "designedFor": [
         "AI design, canvas and prototyping tools launching or raising",
@@ -46,7 +46,7 @@
         "SaaS"
       ],
       "created": "2026-09-29",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -60,6 +60,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -76,11 +80,11 @@
         "pages": []
       },
       "archive": {
-        "url": "archives/remixes/ai-canvas-1.0.0.tgz",
+        "url": "archives/remixes/ai-canvas-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "d211ea410f22dd8595823ae11e38440d8c487fd3afce97bd76a4fb8a0248fb9a",
-        "size": 647168,
-        "files": 61
+        "sha256": "64db53793074b03f4a1be420662c2b1d5319fe596c21c36e7a8d1b17838344a4",
+        "size": 731648,
+        "files": 67
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -93,7 +97,7 @@
       "type": "remix",
       "id": "alpine-hotel",
       "name": "Alpine Hotel",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "description": "Hotel Arven — a one-page guide to a small, family-run hotel at the top of Zermatt, set like a printed hotel guide on warm paper: a cover with a fill-in availability line, the house's story, a pinned film that splits into the season calendar, a day's timetable with snowboard footage printed inside the type, a rate card, a drawn trail map of nearby spots, arrival routes and what's included, and a registration-card booking form.",
       "designedFor": [
         "Small, independent hotels, inns and mountain lodges that take bookings direct",
@@ -142,6 +146,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -169,11 +177,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/alpine-hotel-1.1.0.tgz",
+        "url": "archives/remixes/alpine-hotel-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "93cab9e090ca506afd26cec7c4cdc2bd5ac9d114f89da0493d4b329023f2c4b7",
-        "size": 439808,
-        "files": 63
+        "sha256": "115fdeff1079a6821df6314435fe0ae8439cf9dfd216ae06bc38221c3ce3d09d",
+        "size": 529408,
+        "files": 69
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -186,7 +194,7 @@
       "type": "remix",
       "id": "arcline-crm",
       "name": "Arcline — AI CRM",
-      "version": "2.0.0",
+      "version": "2.1.0",
       "description": "A minimal, dark five-page site for Arcline, an AI CRM: a hero app window that answers a question live, a sticky five-chapter platform tour with HTML product mockups (table and email composer, workflow builder, pipeline board, analyst, charts), a Deal Memory band with isometric line icons, pricing with a comparison table, customers, an agents page and a changelog.",
       "designedFor": [
         "AI and SaaS products that want a calm, precise, hairline-grid landing page",
@@ -224,7 +232,7 @@
         "SaaS"
       ],
       "created": "2026-09-29",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "meta": {
         "framework": "vite",
         "language": "typescript",
@@ -253,6 +261,10 @@
         {
           "path": "/changelog",
           "title": "Changelog"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -313,11 +325,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/arcline-crm-2.0.0.tgz",
+        "url": "archives/remixes/arcline-crm-2.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "bc84f00c836454911c54c3de5deb1c6e3bbf857f99f379f7d76f401c4d1e40dc",
-        "size": 757760,
-        "files": 99
+        "sha256": "353a7c7deb3e9ea669b316141c9393baf9c1637cf570af250c4a4ad38c79e0c0",
+        "size": 872448,
+        "files": 104
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -330,7 +342,7 @@
       "type": "remix",
       "id": "aurel",
       "name": "Aurel",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A high-end fashion house's site in bone, ink and burnt orange: a film that folds into the header, a garment rising through its headline, sticky split columns, a drifting archive wall and a turning silver seal — across home, collection, product, atelier, journal, house and appointments.",
       "designedFor": [
         "Fashion houses, boutiques and ateliers selling a small, considered collection",
@@ -402,6 +414,10 @@
         {
           "path": "/appointments",
           "title": "Appointments"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -477,11 +493,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/aurel-1.0.0.tgz",
+        "url": "archives/remixes/aurel-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "a0b15feb1a7e6be7baf2b4631f265254d71cf222193bcc452192b26ab44c42a6",
-        "size": 478720,
-        "files": 84
+        "sha256": "4c6ec05069252fc5fea714b5b647f58ac3719e4c32dbe04329c809183028df1a",
+        "size": 579584,
+        "files": 89
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -494,7 +510,7 @@
       "type": "remix",
       "id": "castwell-social",
       "name": "Castwell — AI Social Media Manager",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "description": "A five-page template for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
       "designedFor": [
         "Social media management, scheduling and creator tools",
@@ -563,6 +579,10 @@
         {
           "path": "/pricing",
           "title": "Pricing"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -622,11 +642,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/castwell-social-1.0.1.tgz",
+        "url": "archives/remixes/castwell-social-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "d3c65369f766a18cfe33cf110cbf503a740916aef4097241606dd1abfbb12185",
-        "size": 548352,
-        "files": 99
+        "sha256": "de0c51d6a59dbc6b4ae5802714863e7690d391aea18c898d9012fb44638c6407",
+        "size": 654336,
+        "files": 104
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -639,7 +659,7 @@
       "type": "remix",
       "id": "cirrus-cloud",
       "name": "Cirrus — Cloud Dev Environments",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A pixel-matrix landing page for Cirrus, cloud development environments: white paper under a faint 9px grid, big grotesk type and a navy, cobalt, gold, red and lime palette that only ever appears as squares — a hero of drifting diagonal pixel weather that erodes as you scroll, headlines that type themselves in, photographs that bleed in through fog, two particle-stream diagrams of how it works, hairline pricing and FAQ, a pixel-text marquee and a playable Tetris skyline for a footer.",
       "designedFor": [
         "Developer tools, cloud platforms and infrastructure products",
@@ -695,6 +715,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -722,11 +746,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/cirrus-cloud-1.0.0.tgz",
+        "url": "archives/remixes/cirrus-cloud-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "1f882a655475e84b344128807a477df319e3739abf48c00ed36e7a6364bdd92d",
-        "size": 332800,
-        "files": 59
+        "sha256": "57c562ad64fe0e802f8650dadeeff8daadd741e79fa0060f9c8a099cfaae6c39",
+        "size": 414720,
+        "files": 65
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -739,7 +763,7 @@
       "type": "remix",
       "id": "coastal-residence",
       "name": "Coastal Residence",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "Luna Residence — a cinematic one-page site for a small gated development on the coast: an arch that opens onto the hero, a day/night switch, pinned chapters, a sideways coastline story, residence types, amenities and an olive contact footer.",
       "designedFor": [
         "Boutique residential developments and off-plan launches selling a handful of homes",
@@ -775,7 +799,7 @@
         "Marketing"
       ],
       "created": "2026-09-29",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -789,6 +813,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -816,11 +844,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/coastal-residence-1.0.0.tgz",
+        "url": "archives/remixes/coastal-residence-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "52b490abc4861f2d6a8be4837404ecdfae88e2889528decfdd85ffeabfec6e53",
-        "size": 399360,
-        "files": 55
+        "sha256": "c3df8e46220e480c90c53fd91d05c1ab3e6813259b2d22cc3e8b1868790c495f",
+        "size": 495104,
+        "files": 61
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -833,7 +861,7 @@
       "type": "remix",
       "id": "ember-cards",
       "name": "Ember Cards",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A dark, metallic landing page for a virtual card company: machined-metal cards (chrome, titanium, champagne, graphite, copper) with brushing, film grain and a pointer-tracked highlight; two live 3D iPhones (React Three Fiber); a manifesto that lights up word by word; a pinned four-step “how it works”; a sideways-scrolling row of use cases; a customer video that zooms to fill the screen; a dotted world map, reviews, an FAQ and a champagne sign-up band.",
       "designedFor": [
         "Fintech, card and wallet apps launching with a single clear offer",
@@ -892,6 +920,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -919,11 +951,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/ember-cards-1.0.0.tgz",
+        "url": "archives/remixes/ember-cards-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "4d53860db7ca77ace38dc908260de653fb47b0834ffc5dfa4485587d2897a867",
-        "size": 3687936,
-        "files": 84
+        "sha256": "7f5f93e54e56d94b8e63f71abf2ba51a366ac123d29a1b83113d1a064ab77513",
+        "size": 3784192,
+        "files": 90
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -936,7 +968,7 @@
       "type": "remix",
       "id": "food-joint",
       "name": "Food Joint",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A loud one-page site for a restaurant: a preloader that flicks through the menu, a hero photo in a morphing SVG cushion under huge type, a scroll-inked statement with food set into the words, a tabbed menu with a pointer-chasing blob preview, a zoom through a word cut out over a wood-fire film, a pinned sideways walk through the kitchen, stickers you can move, and a booking form.",
       "designedFor": [
         "Restaurants, burger and fried-chicken joints, bakeries and street-food kitchens with a big personality",
@@ -974,7 +1006,7 @@
         "Restaurant"
       ],
       "created": "2026-09-29",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -988,6 +1020,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -995,11 +1031,11 @@
       "thumbnailUrl": "remixes/food-joint/preview.png",
       "iconUrl": "remixes/food-joint/icon.svg",
       "archive": {
-        "url": "archives/remixes/food-joint-1.0.0.tgz",
+        "url": "archives/remixes/food-joint-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "58dea2063df950ebb6fa829efe7e8cc4322589c07fd0066a75a987471897f7b9",
-        "size": 369152,
-        "files": 61
+        "sha256": "d9bfd2523142eea7f50429156c580036c30fb4206bf94da218f5c64e9a1d8287",
+        "size": 458752,
+        "files": 67
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -1012,7 +1048,7 @@
       "type": "remix",
       "id": "glovebox",
       "name": "Glovebox — Car Insurance Manager",
-      "version": "1.0.1",
+      "version": "1.1.0",
       "description": "A warm, editorial landing page for Glovebox, an AI that manages car insurance: a pinned hero whose footage a clip-path closes in on while the camera zooms to the centre, three blurred-video feature cards that pin and stack over one another with live task panels, a pinned statistic with work drifting past it, a dot map of members with stories sliding over it, how it works, FAQ and a closing frame that clips open.",
       "designedFor": [
         "Insurance, fintech and admin-automation products that want a calm, human, serif-led page",
@@ -1063,6 +1099,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -1090,11 +1130,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/glovebox-1.0.1.tgz",
+        "url": "archives/remixes/glovebox-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "ade107c3e1b6487abbd9ea8b97ca78f4cdb7969cb50c6c4bf73927582af1ebdd",
-        "size": 339968,
-        "files": 57
+        "sha256": "2bf9283a88d3b4b59e0aab43c3c77b61ee1b601d93218555f476ab281b26feca",
+        "size": 428544,
+        "files": 63
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -1107,7 +1147,7 @@
       "type": "remix",
       "id": "overtime",
       "name": "Overtime",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A long-read sports magazine on an infinite WebGL canvas: eighty-four athletes on an endless, draggable sheet that clips and motion-blurs as it moves, with a list view, a full-screen gallery, a profile per athlete and an about page with the issue’s writers.",
       "designedFor": [
         "Sports magazines, clubs and federations with a face and a profile per athlete",
@@ -1141,7 +1181,7 @@
         "Creative"
       ],
       "created": "2026-09-29",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -1171,6 +1211,10 @@
         {
           "path": "/about",
           "title": "About"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -1230,11 +1274,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/overtime-1.0.0.tgz",
+        "url": "archives/remixes/overtime-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "b6891ed95dc4fda4b0d8f98669fc60333f2735374e602dc7089cbdb0be1631c7",
-        "size": 432128,
-        "files": 54
+        "sha256": "66e3c2df5b37589e4e7492a399e25f60ce384a8d81a6d141c312fcdeeaea3690",
+        "size": 508928,
+        "files": 59
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -1247,7 +1291,7 @@
       "type": "remix",
       "id": "photographer-portfolio",
       "name": "Photographer Portfolio",
-      "version": "1.1.2",
+      "version": "1.2.0",
       "description": "An editorial portfolio for a working photographer: home, portfolio with category filter, a page per gallery, about, services with FAQ, and an enquiry form.",
       "designedFor": [
         "Wedding, portrait and editorial photographers showing whole stories rather than single frames",
@@ -1280,7 +1324,7 @@
         "Creative"
       ],
       "created": "2026-09-25",
-      "updated": "2026-09-29",
+      "updated": "2026-09-30",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -1314,6 +1358,10 @@
         {
           "path": "/contact",
           "title": "Contact"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "previews": {
@@ -1381,11 +1429,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/photographer-portfolio-1.1.2.tgz",
+        "url": "archives/remixes/photographer-portfolio-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "4d1366ec7fad72f1c21b3c451eceb0591a05ff2ef647b63970c0d9fc57730e94",
-        "size": 261632,
-        "files": 43
+        "sha256": "6924798b0b32f1a5d8ba3e7dd28ac5713ffc6f8ac03290ae06d61d5263e4c5a6",
+        "size": 326144,
+        "files": 48
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -1398,7 +1446,7 @@
       "type": "remix",
       "id": "postwise",
       "name": "Postwise — AI Email",
-      "version": "1.1.1",
+      "version": "1.2.0",
       "description": "A sea-glass landing page for Postwise, an AI email assistant: a hero lit by a drifting teal, mint and apricot glow, a hairline numbers band, a deep-lagoon copilot section with floating notes and drifting signals, three how-it-works cards, a clickable feature deck, persona tabs, a team dashboard over a sunlit desk, a results bento, a duotone customer-story carousel, monthly/yearly pricing with a border-beam plan, an FAQ, a wall of love and poster-type calls to action.",
       "designedFor": [
         "AI email, inbox and productivity tools",
@@ -1453,6 +1501,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -1480,11 +1532,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/postwise-1.1.1.tgz",
+        "url": "archives/remixes/postwise-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "c588d2c72b5729ed4017703a6f3478434dccaa37acb718e247ca62a917ee2c1b",
-        "size": 551936,
-        "files": 93
+        "sha256": "3b59f86bb2f2f8e507e06903237cbf6f9088359182c31e6006e4a176beec8357",
+        "size": 670208,
+        "files": 99
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
@@ -1592,7 +1644,7 @@
       "type": "remix",
       "id": "tidemark",
       "name": "Tidemark — Fintech",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A poster-loud fintech landing page for Tidemark, business banking for startups: oxblood, cream, pink and coral, heavy extended caps, square edges and warm moody photography — a photo hero with the account form, a metal card and a live balance strip over the name set edge to edge, a colour-block product grid with working mini-UIs, a treasury yield calculator and chart, security, customer stories, monthly/yearly pricing, an FAQ and a disclosures footer.",
       "designedFor": [
         "Fintech, banking, payments and treasury products",
@@ -1645,6 +1697,10 @@
         {
           "path": "/",
           "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
         }
       ],
       "icon": "icon.svg",
@@ -1672,11 +1728,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/tidemark-1.0.0.tgz",
+        "url": "archives/remixes/tidemark-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "c34cd9ad9ba4240783c15a7a4620bec8270b1be368f64c5fd501e9585255ac4a",
-        "size": 451584,
-        "files": 76
+        "sha256": "f026dbe9d1805935103a42c8ca6ce02f3b85c8f48b202cc46ab9b3937fc41c2b",
+        "size": 555008,
+        "files": 82
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
