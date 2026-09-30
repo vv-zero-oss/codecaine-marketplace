@@ -11,5 +11,5 @@ import { cn } from "@/lib/utils"
  * pickable passes `data-canvas-ignore={false}`.
  */
 export function Container({ className, ...props }: React.ComponentProps<"div">) {
-  return <div data-canvas-ignore className={cn("mx-auto w-full max-w-[90rem] px-gutter", className)} {...props} />
+  return <div data-canvas-ignore className={cn("mx-auto w-full max-w-[96rem] px-gutter", className)} {...props} />
 }

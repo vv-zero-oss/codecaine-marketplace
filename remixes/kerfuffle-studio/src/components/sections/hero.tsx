@@ -3,87 +3,65 @@ import { motion } from "motion/react"
 import { useCanvasDesignMode } from "@canvas/react"
 
 import { ImageTrail } from "@/components/motion/image-trail"
-import { Marquee } from "@/components/motion/marquee"
 import { ArrowLink } from "@/components/ui/arrow-link"
-import { Eyebrow } from "@/components/ui/heading"
-import { CLIENTS, TRAIL } from "@/content"
-import { cn } from "@/lib/utils"
+import { Container } from "@/components/ui/container"
+import { TRAIL } from "@/content"
 
-const EASE = [0.22, 1, 0.36, 1] as const
+const EASE = [0.23, 1, 0.32, 1] as const
+
+const FACTS = [
+  { label: "Studio", value: "Rotterdam, NL" },
+  { label: "Since", value: "2019" },
+  { label: "People", value: "Eight" },
+]
 
 /**
- * The opening screen: a big left-set headline — heavy caps, then italic serif
- * words — with our work dropping under the pointer, a short hello beside it,
- * and the clients we make things for rolling along the bottom.
+ * The opening screen: one plain sentence about what the studio does, set big
+ * across the grid, with finished work dropping under the pointer behind it.
  */
 export function Hero({
-  eyebrow = "Animation · Video · Social",
-  bold = "Motion that makes",
-  serif = "some noise",
-  intro = "We're a small Rotterdam crew turning brands into things people watch twice — and send to a friend.",
+  title = "Animation, film and social content that people choose to watch.",
 }: {
-  eyebrow?: string
-  bold?: string
-  serif?: string
-  intro?: string
+  title?: string
 }) {
   const { designing } = useCanvasDesignMode()
-  const rise = (delay: number) =>
-    designing
-      ? {}
-      : {
-          initial: { y: "105%" },
-          animate: { y: "0%" },
-          transition: { duration: 1, delay, ease: EASE },
-        }
-  const fade = (delay: number) =>
-    designing ? {} : { initial: { opacity: 0, y: 12 }, animate: { opacity: 1, y: 0 }, transition: { duration: 0.8, delay, ease: EASE } }
+  const words = title.split(" ")
   return (
-    <section id="top" data-tone="light" className="relative flex min-h-svh flex-col overflow-hidden pt-28">
-      <ImageTrail images={TRAIL.join("|")} />
-      <div className="pointer-events-none relative z-10 flex flex-1 flex-col justify-end px-gutter pb-10 md:pb-14">
-        <motion.div {...fade(0.05)}>
-          <Eyebrow>{eyebrow}</Eyebrow>
-        </motion.div>
-        <h1 className="mt-6 text-[clamp(3.25rem,10vw,10rem)] leading-[0.88]">
-          <span className="block overflow-hidden pb-[0.04em]">
-            <motion.span className="block display" {...rise(0.15)}>
-              {bold}
-            </motion.span>
-          </span>
-          <span className="block overflow-hidden pb-[0.08em]">
-            <motion.span className="block display-serif text-flame" {...rise(0.27)}>
-              {serif}
-            </motion.span>
-          </span>
+    <section id="top" data-tone="light" className="relative flex min-h-svh flex-col overflow-hidden pt-24">
+      <ImageTrail images={TRAIL.join("|")} size={260} tilt={0} />
+      <Container className="pointer-events-none relative z-10 flex flex-1 flex-col justify-end pb-8 md:pb-10">
+        <h1 className="display max-w-[15ch] text-[clamp(3rem,7.6vw,8rem)]">
+          {words.map((word, i) => (
+            <span key={i} className="inline-block overflow-hidden pb-[0.08em] align-bottom">
+              <motion.span
+                className="inline-block"
+                initial={designing ? false : { y: "110%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.9, delay: 0.1 + i * 0.035, ease: EASE }}
+              >
+                {word}
+                {i < words.length - 1 ? " " : ""}
+              </motion.span>
+            </span>
+          ))}
         </h1>
-        <motion.div {...fade(0.45)} className="mt-8 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <p className="max-w-[34ch] text-lg leading-snug md:text-xl">{intro}</p>
-          <div className="pointer-events-auto">
-            <ArrowLink label="Scroll for the good stuff" href="/#intro" direction="down" />
+        <motion.div
+          initial={designing ? false : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
+          className="mt-12 grid grid-cols-2 gap-6 border-t border-line pt-5 md:grid-cols-12"
+        >
+          {FACTS.map((fact) => (
+            <dl key={fact.label} className="md:col-span-3">
+              <dt className="label text-ink-mute">{fact.label}</dt>
+              <dd className="mt-1 text-sm">{fact.value}</dd>
+            </dl>
+          ))}
+          <div className="pointer-events-auto flex items-end md:col-span-3 md:justify-end">
+            <ArrowLink label="Selected work" href="/#work" direction="down" />
           </div>
         </motion.div>
-      </div>
-      <ClientRow className="relative z-10 border-t border-line pb-6" />
+      </Container>
     </section>
-  )
-}
-
-/** The clients, rolling past. */
-export function ClientRow({ className }: { className?: string }) {
-  return (
-    <div className={cn("pt-6", className)}>
-      <p className="sr-only">Some of the brands we make things for</p>
-      <Marquee duration={36} gap={72}>
-        {CLIENTS.map((client) => (
-          <span key={client.name} className="flex items-center gap-[72px]">
-            <span className={cn("text-2xl whitespace-nowrap text-ink/70 md:text-3xl", client.style)}>{client.name}</span>
-            <svg aria-hidden viewBox="0 0 20 20" className="size-3 text-flame">
-              <path d="M10 0l2.2 7.8L20 10l-7.8 2.2L10 20l-2.2-7.8L0 10l7.8-2.2z" fill="currentColor" />
-            </svg>
-          </span>
-        ))}
-      </Marquee>
-    </div>
   )
 }

@@ -70,7 +70,7 @@ export function ContactForm() {
   )}`
 
   return (
-    <div className="relative rounded-card border-2 border-ink bg-card p-6 md:p-10">
+    <div className="relative">
       <AnimatePresence mode="wait" initial={false}>
         {status === "sent" ? (
           <motion.div
@@ -79,23 +79,23 @@ export function ContactForm() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-            className="flex min-h-[28rem] flex-col items-center justify-center text-center"
+            className="flex min-h-[28rem] flex-col items-start justify-center"
           >
             <motion.span
-              initial={{ scale: 0, rotate: -30 }}
-              animate={{ scale: 1, rotate: -6 }}
-              transition={{ type: "spring", stiffness: 420, damping: 14, delay: 0.1 }}
-              className="flex size-20 items-center justify-center rounded-full border-2 border-ink bg-lime text-ink shadow-sticker"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", duration: 0.5, bounce: 0.2, delay: 0.1 }}
+              className="flex size-14 items-center justify-center rounded-full bg-ink text-snow"
             >
-              <Check className="size-10" strokeWidth={3} />
+              <Check className="size-6" strokeWidth={2.5} />
             </motion.span>
-            <h3 className="mt-6 display text-5xl">Thanks{fields.name ? `, ${fields.name.split(" ")[0]}` : ""}!</h3>
+            <h3 className="mt-6 display text-4xl">Thanks{fields.name ? `, ${fields.name.split(" ")[0]}` : ""}.</h3>
             <p className="mt-3 max-w-[34ch] text-lg leading-snug">
-              Your brief landed on our big screen. Idris or Noor will reply within one working day.
+              Your brief is with Idris and Noor. You will hear back within one working day.
             </p>
             <p className="mt-4 text-sm text-ink-soft">
               Rather send it from your own inbox?{" "}
-              <a href={mail} className="text-flame underline underline-offset-2">
+              <a href={mail} className="underline underline-offset-2">
                 Open it as an email
               </a>
               .
@@ -107,7 +107,7 @@ export function ContactForm() {
                 setFields(EMPTY)
                 setTouched({})
               }}
-              className="mt-8 label text-sm text-flame underline-offset-4 hover:underline"
+              className="mt-8 text-sm underline underline-offset-4 hover:opacity-60"
             >
               Send another brief
             </button>
@@ -135,7 +135,7 @@ export function ContactForm() {
               <Input id="company" autoComplete="organization" value={fields.company} onChange={set("company")} placeholder="Where you work" />
             </Field>
             <fieldset>
-              <legend className="mb-2 label text-sm">What do you need?</legend>
+              <legend className="mb-3 label text-ink-mute">What do you need?</legend>
               <div className="flex flex-wrap gap-2">
                 {KINDS.map((kind) => (
                   <Chip key={kind} selected={kinds.includes(kind)} onClick={() => setKinds((all) => (all.includes(kind) ? all.filter((k) => k !== kind) : [...all, kind]))} role="checkbox">
@@ -145,7 +145,7 @@ export function ContactForm() {
               </div>
             </fieldset>
             <fieldset>
-              <legend className="mb-2 label text-sm">Rough budget</legend>
+              <legend className="mb-3 label text-ink-mute">Rough budget</legend>
               <div className="flex flex-wrap gap-2">
                 {BUDGETS.map((b) => (
                   <Chip key={b} selected={budget === b} onClick={() => setBudget(b)} role="radio">
@@ -158,7 +158,7 @@ export function ContactForm() {
               <Textarea id="message" rows={5} value={fields.message} onChange={set("message")} onBlur={blur("message")} aria-invalid={!!shown("message")} placeholder="The product, the problem, the deadline — whatever you have." />
             </Field>
             <div className="flex flex-wrap items-center gap-4">
-              <Button type="submit" tone="flame" size="lg" icon={Send} label={status === "sending" ? "Sending…" : "Send your brief"} loading={status === "sending"} />
+              <Button type="submit" tone="ink" size="lg" icon={Send} label={status === "sending" ? "Sending…" : "Send brief"} loading={status === "sending"} />
               <p className="text-sm text-ink-soft">We reply within one working day.</p>
             </div>
           </motion.form>
@@ -172,7 +172,7 @@ function Field({ id, label, error, hint, children }: { id: string; label: string
   return (
     <div className="grid gap-2">
       <div className="flex items-baseline justify-between">
-        <Label htmlFor={id} className="label text-sm">
+        <Label htmlFor={id} className="label font-medium text-ink-mute">
           {label}
         </Label>
         {hint ? <span className="font-mono text-[11px] text-ink-mute">{hint}</span> : null}
@@ -185,7 +185,7 @@ function Field({ id, label, error, hint, children }: { id: string; label: string
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.2 }}
-            className="text-sm text-red"
+            className="text-sm text-danger"
             role="alert"
           >
             {error}
@@ -204,8 +204,8 @@ function Chip({ selected, children, onClick, role }: { selected: boolean; childr
       aria-checked={selected}
       onClick={onClick}
       className={cn(
-        "inline-flex h-11 items-center gap-1.5 rounded-pill border-2 px-4 label text-xs transition-[background-color,color,border-color,transform] duration-(--duration-fast) active:scale-[0.97]",
-        selected ? "border-ink bg-lime text-ink" : "border-line bg-paper text-ink hover:border-ink",
+        "inline-flex h-10 items-center gap-1.5 rounded-sm border px-4 text-sm transition-[background-color,color,border-color,transform] duration-(--duration-fast) active:scale-[0.97]",
+        selected ? "border-ink bg-ink text-snow" : "border-line text-ink hover:border-ink",
       )}
     >
       {selected ? <Check className="size-3.5" strokeWidth={3} /> : null}

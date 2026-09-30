@@ -98,7 +98,7 @@ export function ImageTrail({
       if (!idle.current || document.hidden) return
       t += 0.42
       const { width, height } = host.getBoundingClientRect()
-      spawn(width / 2 + Math.sin(t) * width * 0.3, height * 0.46 + Math.sin(t * 2) * height * 0.16)
+      spawn(width / 2 + Math.sin(t) * width * 0.3, height * 0.3 + Math.sin(t * 2) * height * 0.1)
     }, interval)
     return () => window.clearInterval(tick)
   }, [autoplay, allowed, designing, interval, images])
@@ -116,7 +116,7 @@ export function ImageTrail({
             animate={{ opacity: 1, scale: 1, rotate: drop.rotate }}
             exit={{ opacity: 0, scale: 0.85, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] } }}
             transition={{ type: "spring", stiffness: 420, damping: 30 }}
-            className="absolute rounded-card border-2 border-ink object-cover"
+            className="absolute object-cover"
             style={{
               left: drop.x - w / 2,
               top: drop.y - (w * 0.75) / 2,

@@ -6,15 +6,15 @@ import { useCanvasAction } from "@canvas/react"
 import { CtaBand } from "@/components/layout/site-footer"
 import { Reveal } from "@/components/motion/reveal"
 import { Container } from "@/components/ui/container"
-import { DisplayHeading } from "@/components/ui/heading"
+import { SectionHeader } from "@/components/ui/heading"
 import { WorkCard } from "@/components/work/work-card"
 import { CASES, type ServiceKey } from "@/content"
 import { cn } from "@/lib/utils"
 
 const FILTERS: { key: "all" | ServiceKey; label: string }[] = [
-  { key: "all", label: "All work" },
+  { key: "all", label: "All" },
   { key: "animation", label: "Animation" },
-  { key: "video", label: "Video" },
+  { key: "video", label: "Film" },
   { key: "social", label: "Social" },
 ]
 
@@ -27,13 +27,13 @@ export function WorkPage() {
   const shown = CASES.filter((c) => filter === "all" || c.services.includes(filter))
   return (
     <>
-      <section data-tone="light" className="pt-36 pb-section md:pt-44">
+      <section data-tone="light" className="pt-40 pb-section md:pt-48">
         <Container>
           <Reveal>
-            <DisplayHeading as="h1" eyebrow="Selected projects, 2023 – 2026" bold="The" serif="archive" inline size="xl" align="left" />
+            <SectionHeader as="h1" size="xl" label="Work" title="Selected projects, 2023–2026." />
           </Reveal>
           <LayoutGroup>
-            <div role="tablist" aria-label="Filter work" className="mt-10 flex flex-wrap gap-2">
+            <div role="tablist" aria-label="Filter work" className="mt-16 flex flex-wrap gap-x-6 gap-y-2 border-b border-line pb-4 md:ml-[25%]">
               {FILTERS.map((f) => {
                 const active = filter === f.key
                 const count = f.key === "all" ? CASES.length : CASES.filter((c) => c.services.includes(f.key as ServiceKey)).length
@@ -43,33 +43,28 @@ export function WorkPage() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setFilter(f.key)}
-                    className={cn(
-                      "relative h-11 rounded-pill border-2 border-ink px-5 label text-xs transition-colors duration-(--duration-fast)",
-                      active ? "text-ink" : "bg-card text-ink hover:bg-paper",
-                    )}
+                    className={cn("relative h-10 text-sm transition-opacity duration-(--duration-fast)", active ? "opacity-100" : "opacity-50 hover:opacity-100")}
                   >
+                    {f.label} <sup className="font-mono text-[10px]">{count}</sup>
                     {active ? (
-                      <motion.span layoutId="work-filter" className="absolute -inset-[2px] rounded-pill border-2 border-ink bg-lime" transition={{ type: "spring", stiffness: 500, damping: 38 }} />
+                      <motion.span layoutId="work-filter" className="absolute inset-x-0 -bottom-[17px] h-px bg-ink" transition={{ type: "spring", duration: 0.4, bounce: 0 }} />
                     ) : null}
-                    <span className="relative">
-                      {f.label} <span className="font-mono text-[11px] font-normal opacity-70">{count}</span>
-                    </span>
                   </button>
                 )
               })}
             </div>
-            <motion.ul layout className="mt-14 grid gap-x-6 gap-y-14 sm:grid-cols-2 md:mt-16 lg:grid-cols-3">
+            <motion.ul layout className="mt-12 grid gap-x-6 gap-y-16 md:grid-cols-2">
               <AnimatePresence mode="popLayout">
                 {shown.map((item) => (
                   <motion.li
                     key={item.slug}
                     layout
-                    initial={{ opacity: 0, scale: 0.94 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.94 }}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
                   >
-                    <WorkCard item={item} />
+                    <WorkCard item={item} index={CASES.indexOf(item)} />
                   </motion.li>
                 ))}
               </AnimatePresence>

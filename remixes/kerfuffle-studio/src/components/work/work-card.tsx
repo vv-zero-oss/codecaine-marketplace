@@ -1,41 +1,31 @@
-import { ArrowUpRight } from "lucide-react"
-
-import { CASE_BG, servicesLine } from "@/components/work/tones"
+import { servicesLine } from "@/components/work/meta"
 import { photo, type Case } from "@/content"
 import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
-/**
- * A case in the work grid: a rounded picture that lifts on hover over a block
- * of its case colour, then the client, the year and what we made in one row.
- */
-export function WorkCard({ item, className }: { item: Case; className?: string }) {
+/** A case in the grid: the picture, then number, client, title and year on one hairline. */
+export function WorkCard({ item, index, className }: { item: Case; index?: number; className?: string }) {
   return (
     <Link href={`/work/${item.slug}`} className={cn("group/card block", className)}>
-      <div className={cn("rounded-card border-2 border-ink", CASE_BG[item.color])}>
-        <div className="aspect-[4/5] overflow-hidden rounded-[18px] border-ink transition-transform duration-(--duration-base) ease-out group-hover/card:-translate-x-1.5 group-hover/card:-translate-y-1.5 group-hover/card:border-2">
-          <img
-            src={photo(item.image, 800)}
-            alt={`${item.client}: ${item.title}`}
-            loading="lazy"
-            className="size-full object-cover transition-transform duration-(--duration-slow) ease-out group-hover/card:scale-[1.04]"
-          />
+      <div className="aspect-[4/3] overflow-hidden bg-line">
+        <img
+          src={photo(item.image, 1100)}
+          alt={`${item.client}: ${item.title}`}
+          loading="lazy"
+          className="size-full object-cover transition-transform duration-(--duration-slow) ease-out group-hover/card:scale-[1.03]"
+        />
+      </div>
+      <div className="mt-3 grid grid-cols-12 gap-3 border-t border-line pt-3 text-sm">
+        <span className="label col-span-2 pt-0.5 text-ink-mute">{index !== undefined ? String(index + 1).padStart(2, "0") : ""}</span>
+        <div className="col-span-7">
+          <h3 className="font-medium">{item.client}</h3>
+          <p className="text-ink-soft">{item.title}</p>
+        </div>
+        <div className="col-span-3 text-right text-ink-mute">
+          <p>{servicesLine(item.services)}</p>
+          <p>{item.year}</p>
         </div>
       </div>
-      <div className="mt-4 flex items-start justify-between gap-4">
-        <div className="min-w-0">
-          <h3 className="display text-[clamp(1.9rem,2.8vw,2.6rem)]">{item.client}</h3>
-          <p className="mt-1 font-serif text-lg leading-tight italic">{item.title}</p>
-        </div>
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full border-2 border-ink transition-[transform,background-color,color] duration-(--duration-base) group-hover/card:rotate-45 group-hover/card:bg-ink group-hover/card:text-snow">
-          <ArrowUpRight className="size-4" strokeWidth={2.5} />
-        </span>
-      </div>
-      <p className="mt-2 flex gap-2 font-mono text-[11px] text-ink-mute uppercase">
-        <span>{item.year}</span>
-        <span>·</span>
-        <span>{servicesLine(item.services)}</span>
-      </p>
     </Link>
   )
 }

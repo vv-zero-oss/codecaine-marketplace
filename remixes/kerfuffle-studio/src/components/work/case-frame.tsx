@@ -1,33 +1,23 @@
-import { ArrowUpRight } from "lucide-react"
-
-import { CASE_BG, servicesLine } from "@/components/work/tones"
+import { servicesLine } from "@/components/work/meta"
 import { photo, type Case } from "@/content"
 import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
-/** A case as a rounded colour card: the picture inset, the client and what we
- *  made in a cream strip along the bottom — the cards in the reel. */
-export function CaseFrame({ item, className }: { item: Case; className?: string }) {
+/** A case in the reel: a full-bleed picture with a caption row under it. */
+export function CaseFrame({ item, index, className }: { item: Case; index?: number; className?: string }) {
   return (
-    <Link
-      href={`/work/${item.slug}`}
-      className={cn("group/frame flex size-full flex-col gap-2 rounded-card border-2 border-ink p-2 shadow-lift", CASE_BG[item.color], className)}
-    >
-      <div className="relative min-h-0 flex-1 overflow-hidden rounded-[14px]">
+    <Link href={`/work/${item.slug}`} className={cn("group/frame flex size-full flex-col bg-night", className)}>
+      <div className="relative min-h-0 flex-1 overflow-hidden">
         <img
-          src={photo(item.image, 1000)}
+          src={photo(item.image, 1400)}
           alt={`${item.client}: ${item.title}`}
-          className="size-full object-cover transition-transform duration-(--duration-slow) ease-out group-hover/frame:scale-[1.04]"
+          className="size-full object-cover transition-transform duration-(--duration-slow) ease-out group-hover/frame:scale-[1.03]"
         />
       </div>
-      <div className="flex items-center justify-between gap-3 rounded-[14px] bg-card px-4 py-3 text-ink">
-        <div className="min-w-0">
-          <p className="truncate display text-2xl md:text-3xl">{item.client}</p>
-          <p className="truncate font-serif text-base italic">{servicesLine(item.services)}</p>
-        </div>
-        <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-ink text-snow transition-transform duration-(--duration-base) group-hover/frame:rotate-45">
-          <ArrowUpRight className="size-4" strokeWidth={2.5} />
-        </span>
+      <div className="grid grid-cols-12 gap-4 pt-3 text-sm text-snow">
+        <span className="label col-span-2 text-snow-mute">{index !== undefined ? String(index + 1).padStart(2, "0") : ""}</span>
+        <span className="col-span-5 truncate font-medium">{item.client}</span>
+        <span className="col-span-5 truncate text-right text-snow-mute">{servicesLine(item.services)}</span>
       </div>
     </Link>
   )

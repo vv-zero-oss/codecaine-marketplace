@@ -33,10 +33,10 @@ export function CardStack({
     <div ref={ref} className={cn("relative", className)} style={{ height: reduced ? "auto" : `${100 + pin * 100}svh` }}>
       <div
         data-canvas-ignore
-        className={cn("flex flex-col items-center justify-center gap-8 py-24 md:gap-10", !reduced && "sticky top-0 h-svh py-0")}
+        className={cn("flex flex-col items-center justify-center gap-8 py-24 md:gap-10", !reduced && "sticky top-0 h-svh pt-20 pb-6")}
       >
         {header}
-        <div className="relative w-full max-w-[40rem]" style={{ height: "min(50svh, 28rem)" }}>
+        <div className="relative w-full max-w-[64rem] px-gutter" style={{ height: "min(62svh, 38rem)" }}>
           {items.map((item, i) => (
             <StackCard key={i} index={i} count={items.length} progress={scrollYProgress} step={step} reduced={!!reduced}>
               {item}
@@ -68,10 +68,10 @@ function StackCard({
   const start = index === 0 ? -1 : (index - 1) / (count - 1)
   const end = index === 0 ? 0 : index / (count - 1)
   const y = useTransform(progress, [start, end], ["110svh", `${-(count - 1 - index) * 0 - index * step}px`])
-  const scale = useTransform(progress, [end, 1], [1, 1 - (count - 1 - index) * 0.02])
+  const scale = useTransform(progress, [end, 1], [1, 1 - (count - 1 - index) * 0.02 * Math.min(1, step)])
   return (
     <motion.div
-      className="absolute inset-x-gutter top-0 h-full"
+      className="absolute inset-x-gutter top-0 h-full bg-night"
       style={reduced ? { top: index * -step } : { y, scale, zIndex: index, transformOrigin: "top center" }}
     >
       {children}

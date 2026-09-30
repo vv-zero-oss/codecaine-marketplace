@@ -3,64 +3,49 @@ import type * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * The house headline: a small tag, then a heavy condensed line answered by
- * italic serif words in lower case. `inline` puts both on one line
- * (“RECENT work”), otherwise they stack.
+ * The start of every section, on the page grid: a numbered mono label in the
+ * first three columns, the heading across the rest, and an optional line
+ * beside it. A hairline runs above.
  */
-export function DisplayHeading({
-  eyebrow,
-  bold,
-  serif,
-  inline = false,
-  size = "lg",
-  align = "center",
+export function SectionHeader({
+  index,
+  label,
+  title,
+  aside,
   as: Tag = "h2",
+  size = "lg",
   className,
 }: {
-  eyebrow?: string
-  bold: string
-  serif?: string
-  inline?: boolean
-  size?: "md" | "lg" | "xl"
-  align?: "left" | "center"
-  as?: "h1" | "h2" | "h3"
+  index?: string
+  label: string
+  title: string
+  aside?: React.ReactNode
+  as?: "h1" | "h2"
+  size?: "lg" | "xl"
   className?: string
 }) {
-  const sizes = {
-    md: "text-[clamp(2.5rem,6vw,4.75rem)]",
-    lg: "text-[clamp(3rem,8.5vw,7.5rem)]",
-    xl: "text-[clamp(3.25rem,10.5vw,10rem)]",
-  }
   return (
-    <div className={cn(align === "center" ? "text-center" : "text-left", className)}>
-      {eyebrow ? <Eyebrow className="mb-5 md:mb-6">{eyebrow}</Eyebrow> : null}
-      <Tag className={cn(sizes[size], "leading-[0.88] text-balance")}>
-        <span className="display">{bold}</span>
-        {serif ? (
-          <>
-            {inline ? " " : <br />}
-            <span className="display-serif">{serif}</span>
-          </>
-        ) : null}
-      </Tag>
+    <div className={cn("grid gap-y-6 border-t border-current/15 pt-5 md:grid-cols-12 md:gap-x-6", className)}>
+      <p className="label md:col-span-3">
+        {index ? <span className="mr-3 opacity-50">{index}</span> : null}
+        {label}
+      </p>
+      <div className="md:col-span-9">
+        <Tag
+          className={cn(
+            "display max-w-[18ch] text-balance",
+            size === "xl" ? "text-[clamp(3rem,8.4vw,8.5rem)]" : "text-[clamp(2.25rem,4.6vw,4.5rem)]",
+          )}
+        >
+          {title}
+        </Tag>
+        {aside ? <div className="mt-6 max-w-[48ch] text-lg leading-snug text-current/70">{aside}</div> : null}
+      </div>
     </div>
   )
 }
 
-/** A small caps tag with a spark in front — what a section is about. */
-export function Eyebrow({ className, children, ...props }: React.ComponentProps<"p">) {
-  return (
-    <p
-      className={cn(
-        "inline-flex max-w-full items-center gap-2 rounded-pill border border-current/20 px-3.5 py-1.5 label text-xs text-balance",
-        className,
-      )}
-      {...props}
-    >
-      <svg aria-hidden viewBox="0 0 20 20" className="size-2.5 shrink-0 text-flame">
-        <path d="M10 0l2.2 7.8L20 10l-7.8 2.2L10 20l-2.2-7.8L0 10l7.8-2.2z" fill="currentColor" />
-      </svg>
-      {children}
-    </p>
-  )
+/** A mono label on its own. */
+export function Label({ className, ...props }: React.ComponentProps<"p">) {
+  return <p className={cn("label", className)} {...props} />
 }

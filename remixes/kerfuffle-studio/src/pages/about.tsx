@@ -1,87 +1,73 @@
 import { CtaBand } from "@/components/layout/site-footer"
 import { CountUp } from "@/components/motion/count-up"
+import { Parallax } from "@/components/motion/parallax"
 import { Reveal } from "@/components/motion/reveal"
-import { StickerBurst } from "@/components/motion/sticker-burst"
 import { Team } from "@/components/sections/team"
 import { Container } from "@/components/ui/container"
-import { DisplayHeading, Eyebrow } from "@/components/ui/heading"
-import { ArrowLink } from "@/components/ui/arrow-link"
-import { Sticker } from "@/components/ui/sticker"
+import { SectionHeader } from "@/components/ui/heading"
+import { photo } from "@/content"
 
 const NUMBERS = [
-  { value: 2019, label: "The year it all kicked off" },
-  { value: 8, label: "Makers under one warehouse roof" },
-  { value: 140, suffix: "+", label: "Films, loops and series shipped" },
-  { value: 38, label: "Clients who came back for more" },
+  { value: 2019, label: "Founded" },
+  { value: 8, label: "People" },
+  { value: 140, suffix: "+", label: "Projects shipped" },
+  { value: 38, label: "Returning clients" },
 ]
 
-const RULES = [
-  { sticker: "Keyframe club", tone: "flame" as const, title: "Show, don’t pitch", body: "No decks about decks. We show a first sketch in the first week, and you tell us if it moves you." },
-  { sticker: "Render & chill", tone: "lime" as const, title: "Makers, not middlemen", body: "The people on the call are the people who animate, shoot and cut. Nothing gets lost in a handover." },
-  { sticker: "Loop de loop", tone: "violet" as const, title: "Made to be shared", body: "Everything we make is made for where it will live — the feed, the big screen, the pocket." },
+const PRINCIPLES = [
+  { title: "Show it early", body: "A first sketch or rough cut in week one. It is easier to react to something than to a deck about it." },
+  { title: "No handovers", body: "The people on the first call write, shoot, animate and edit. Nothing gets lost between teams." },
+  { title: "Made for where it lives", body: "A feed, a lobby screen and a keynote need different films. We cut for each one on purpose." },
 ]
 
 export function AboutPage() {
   return (
     <>
-      <section data-tone="light" className="pt-36 pb-16 md:pt-44">
+      <section data-tone="light" className="pt-40 pb-section md:pt-48">
         <Container>
-          <StickerBurst count={7} className="mx-auto max-w-6xl py-8">
-            <div className="flex flex-col items-center text-center">
-              <Eyebrow>About the studio</Eyebrow>
-              <h1 className="mt-6 text-[clamp(3.25rem,11vw,10rem)] leading-[0.88]">
-                <span className="display">Makers</span> <span className="display-serif text-flame">at heart</span>
-              </h1>
-              <p className="mt-6 max-w-[40ch] text-[clamp(1.1rem,1.6vw,1.35rem)] leading-snug">
-                Kerfuffle started in 2019 with two people, one borrowed laptop and a stubborn belief that brand content
-                can be fun to watch. Today we are eight — still hands-on, still a little noisy, still making every frame
-                ourselves.
-              </p>
-              <p className="mt-3 font-mono text-xs text-ink-mute">(Go on — click anywhere up here to add a sticker.)</p>
-            </div>
-          </StickerBurst>
-          <div className="mt-8 flex justify-center">
-            <ArrowLink label="Meet the crew" href="/about#team" direction="down" />
-          </div>
-        </Container>
-      </section>
-
-      <section data-tone="light" className="pb-8">
-        <Container>
-          <dl className="grid grid-cols-2 gap-3 md:grid-cols-4">
+          <Reveal>
+            <SectionHeader
+              as="h1"
+              size="xl"
+              label="About"
+              title="A small studio that makes the whole thing."
+              aside="Kerfuffle started in 2019 with two people and a borrowed laptop. Today we are eight — animators, directors, editors and a producer — working for clubs, archives, start-ups and brands you know, from a warehouse on the Rotterdam waterfront."
+            />
+          </Reveal>
+          <dl className="mt-20 grid grid-cols-2 border-t border-line md:grid-cols-4">
             {NUMBERS.map((n, i) => (
-              <Reveal key={n.label} delay={i * 0.06} className="rounded-card border-2 border-ink bg-card p-5 md:p-7">
-                <dt className="sr-only">{n.label}</dt>
+              <Reveal key={n.label} delay={i * 0.05} className="border-b border-line py-6 md:border-b-0 md:border-l md:pl-6 md:first:border-l-0 md:first:pl-0">
+                <dt className="label text-ink-mute">{n.label}</dt>
                 <dd>
-                  <CountUp value={n.value} suffix={n.suffix} className="display block text-[clamp(3rem,6vw,5.5rem)] text-flame tabular-nums" />
-                  <p className="mt-2 max-w-[20ch] text-base leading-snug">{n.label}</p>
+                  <CountUp value={n.value} suffix={n.suffix} className="display mt-2 block text-[clamp(3rem,6vw,5.5rem)] tabular-nums" />
                 </dd>
               </Reveal>
             ))}
           </dl>
+          <Parallax speed={0.05} className="mt-20">
+            <img src={photo(11489970, 1800)} alt="The crew on a wrap day" className="aspect-[21/9] w-full object-cover" />
+          </Parallax>
         </Container>
       </section>
 
-      <Team eyebrow="Eight of us" bold="Who does" serif="what" showRoles />
+      <Team index="01" title="Who does what." showLines />
 
       <section data-tone="light" className="pb-section">
         <Container>
           <Reveal>
-            <DisplayHeading eyebrow="How we roll" bold="Studio" serif="manifesto" inline size="md" />
+            <SectionHeader index="02" label="How we work" title="Three habits we keep." />
           </Reveal>
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {RULES.map((rule, i) => (
-              <Reveal key={rule.title} delay={i * 0.08}>
-                <article className="relative h-full rounded-card border-2 border-ink bg-card p-8 pt-14">
-                  <div className="absolute -top-6 left-6">
-                    <Sticker text={rule.sticker} tone={rule.tone} rotate={i % 2 ? 5 : -6} className="text-base md:text-xl" />
-                  </div>
-                  <h3 className="display text-4xl">{rule.title}</h3>
-                  <p className="mt-3 text-lg leading-snug">{rule.body}</p>
-                </article>
+          <ol className="mt-16 grid gap-10 md:grid-cols-12 md:gap-6">
+            {PRINCIPLES.map((p, i) => (
+              <Reveal key={p.title} delay={i * 0.06} className="md:col-span-3 md:first:col-start-4">
+                <li className="border-t border-ink pt-4">
+                  <span className="label text-ink-mute">0{i + 1}</span>
+                  <h3 className="mt-6 text-2xl font-medium tracking-[-0.03em]">{p.title}</h3>
+                  <p className="mt-3 text-base leading-snug text-ink-soft">{p.body}</p>
+                </li>
               </Reveal>
             ))}
-          </div>
+          </ol>
         </Container>
       </section>
 

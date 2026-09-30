@@ -17,7 +17,7 @@ export function GuideSection({
 }) {
   return (
     <section id={id} className="scroll-mt-24 border-t border-line py-14 first:border-t-0 first:pt-0">
-      <h2 className="display text-5xl md:text-6xl">{title}</h2>
+      <h2 className="display text-4xl md:text-5xl">{title}</h2>
       {blurb ? <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-soft">{blurb}</p> : null}
       <div className="mt-8">{children}</div>
     </section>
@@ -26,7 +26,7 @@ export function GuideSection({
 
 /** A small caps label over a group of samples. */
 export function GroupLabel({ children }: { children: string }) {
-  return <h3 className="mb-3 label text-xs tracking-widest text-ink-mute">{children}</h3>
+  return <h3 className="mb-3 label text-ink-mute">{children}</h3>
 }
 
 /** Copies a snippet, and says so for a moment. */
@@ -50,7 +50,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
       onClick={copy}
       aria-label={copied ? "Copied" : "Copy code"}
       className={cn(
-        "relative inline-flex size-9 items-center justify-center rounded-none text-ink-mute transition-colors hover:bg-card/10 hover:text-white focus-visible:ring-2 focus-visible:ring-flame focus-visible:outline-none active:scale-95",
+        "relative inline-flex size-9 items-center justify-center rounded-sm text-ink-mute transition-colors hover:bg-card/10 hover:text-white focus-visible:ring-2 focus-visible:ring-accent focus-visible:outline-none active:scale-95",
         className,
       )}
     >
@@ -62,7 +62,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
       />
       <Check
         className={cn(
-          "absolute size-4 text-green transition-[opacity,transform] duration-150 ease-out",
+          "absolute size-4 text-success transition-[opacity,transform] duration-150 ease-out",
           copied ? "scale-100 opacity-100" : "scale-50 opacity-0",
         )}
       />
@@ -73,7 +73,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
 /** A code block with a copy button, for a component's usage. */
 export function CodeSnippet({ code }: { code: string }) {
   return (
-    <div className="relative rounded-none bg-night text-snow">
+    <div className="relative rounded-sm bg-night text-snow">
       <CopyButton text={code} className="absolute top-2 right-2" />
       <pre className="overflow-x-auto p-4 pr-14 font-mono text-xs leading-relaxed">
         <code>{code}</code>
@@ -99,9 +99,9 @@ export function ComponentSpecimen({
   previewClassName?: string
 }) {
   return (
-    <article className="overflow-hidden rounded-card border-2 border-ink bg-card">
+    <article className="overflow-hidden border border-line bg-card">
       <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line px-5 py-4 sm:px-6">
-        <h3 className="label text-lg">{name}</h3>
+        <h3 className="text-base font-medium">{name}</h3>
         <code className="font-mono text-xs text-ink-mute">{source}</code>
         <p className="w-full text-sm text-ink-soft">{description}</p>
       </header>

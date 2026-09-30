@@ -1,40 +1,32 @@
 import { Parallax } from "@/components/motion/parallax"
 import { Reveal } from "@/components/motion/reveal"
-import { ButtonLink } from "@/components/ui/button"
+import { ArrowLink } from "@/components/ui/arrow-link"
 import { Container } from "@/components/ui/container"
-import { DisplayHeading } from "@/components/ui/heading"
-import { Polaroid } from "@/components/ui/polaroid"
-import { Sticker } from "@/components/ui/sticker"
+import { SectionHeader } from "@/components/ui/heading"
 import { photo } from "@/content"
 
-/** Who is behind it: a short hello on the left, two snapshots of the crew on the right. */
-export function Intro() {
+/** The studio in two photographs and a paragraph. */
+export function Intro({ index = "03" }: { index?: string }) {
   return (
-    <section id="intro" data-tone="light" className="scroll-mt-0 py-section">
-      <Container className="grid items-center gap-16 md:grid-cols-[1.1fr_1fr] md:gap-12">
-        <div className="flex flex-col items-start">
-          <Reveal>
-            <DisplayHeading eyebrow="Hello, we're Kerfuffle" bold="Small crew," serif="big commotion" size="md" align="left" />
-          </Reveal>
-          <Reveal delay={0.1}>
-            <p className="mt-6 max-w-[42ch] text-lg leading-snug">
-              Eight people, one warehouse, no account-manager relay race. The animators, directors and editors you meet
-              on the first call are the ones who make the thing — so ideas move fast and nothing gets lost on the way.
-            </p>
-          </Reveal>
-          <Reveal delay={0.18} className="mt-8">
-            <ButtonLink href="/about" label="Meet the studio" />
-          </Reveal>
-        </div>
-        <div className="relative mx-auto aspect-[5/4] w-full max-w-[40rem]">
-          <Parallax speed={0.06} className="absolute top-0 right-0 w-[62%]">
-            <Polaroid src={photo(6141089, 900)} alt="The crew outside the studio on a sunny afternoon" rotate={4} className="aspect-[4/5]" />
+    <section id="studio" data-tone="light" className="pb-section">
+      <Container>
+        <Reveal>
+          <SectionHeader
+            index={index}
+            label="Studio"
+            title="The people you brief are the people who make it."
+            aside="Eight animators, directors, editors and producers in one former harbour warehouse. No account layer, no handovers to a production partner — which is most of the reason things move quickly here."
+          />
+        </Reveal>
+        <div className="mt-16 grid gap-6 md:grid-cols-12">
+          <Parallax speed={0.04} className="md:col-span-7">
+            <img src={photo(6141089, 1400)} alt="Three of the team outside the studio" loading="lazy" className="aspect-[4/3] w-full object-cover" />
           </Parallax>
-          <Parallax speed={0.18} className="absolute bottom-0 left-0 w-[50%]">
-            <Polaroid src={photo(11489970, 800)} alt="The team celebrating a wrap day on the street" rotate={-5} className="aspect-[4/5]" />
-          </Parallax>
-          <div className="absolute top-[8%] left-[6%] z-10">
-            <Sticker text="Made in Rotterdam" tone="violet" rotate={-10} />
+          <div className="flex flex-col justify-between gap-8 md:col-span-4 md:col-start-9">
+            <Parallax speed={0.12}>
+              <img src={photo(11489970, 900)} alt="The crew on a wrap day" loading="lazy" className="aspect-[4/5] w-full object-cover" />
+            </Parallax>
+            <ArrowLink href="/about" label="About the studio" />
           </div>
         </div>
       </Container>

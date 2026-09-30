@@ -3,7 +3,7 @@
  * into `@canvas/react` (see `main.tsx`).
  *
  * Six pages and a style guide: home, about, work, a case study per project,
- * what we do, contact and `/brand`. Every page change runs through the flame
+ * what we do, contact and `/brand`. Every page change runs through the ink
  * brush stroke in `components/motion/brush-transition.tsx`; Lenis carries the
  * scroll; everything else moves with Motion or CSS.
  */

@@ -1,4 +1,4 @@
-import { ArrowLeft, Menu, X } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { useState } from "react"
 
 import { useCanvasAction } from "@canvas/react"
@@ -11,22 +11,28 @@ import { isActive, Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 /**
- * The header floats over every page: the name on the left (ink over
- * light sections, cream over dark), the three-link pill in the middle, and
- * “Start a project” on the right — or a way back, on a case study.
+ * A thin bar over every page: the name on the left, the pages in the middle
+ * of the grid, and a way to get in touch on the right. It takes the colour of
+ * the section under it — ink on paper, paper on ink.
  */
 export function SiteHeader({ pathname }: { pathname: string }) {
   const tone = useHeaderTone(pathname)
   const onCase = pathname.startsWith("/work/")
   return (
-    <header data-site-header className="pointer-events-none fixed inset-x-0 top-0 z-50">
-      <div data-canvas-ignore className="flex items-start justify-between gap-3 px-gutter pt-4 md:pt-5">
-        <Link href="/" aria-label={`${STUDIO.name} home`} className="pointer-events-auto mt-1.5 transition-transform duration-(--duration-base) ease-(--ease-pop) hover:-rotate-3">
-          <Wordmark tone={tone === "dark" ? "snow" : "ink"} className="text-[1.6rem] md:text-[2rem]" />
+    <header
+      data-site-header
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 backdrop-blur-md transition-colors duration-(--duration-base)",
+        tone === "dark" ? "bg-night/85 text-snow" : "bg-paper/85 text-ink",
+      )}
+    >
+      <div data-canvas-ignore className="grid grid-cols-2 items-center gap-6 px-gutter py-4 md:grid-cols-12">
+        <Link href="/" aria-label={`${STUDIO.name} home`} className="pointer-events-auto md:col-span-3">
+          <Wordmark tone={tone === "dark" ? "snow" : "ink"} />
         </Link>
-        <NavPill pathname={pathname} />
-        <div className="pointer-events-auto flex items-center gap-2">
-          {onCase ? <BackButton /> : <ContactPill active={pathname === "/contact"} />}
+        <NavLinks pathname={pathname} />
+        <div className="pointer-events-auto flex items-center justify-end gap-6 md:col-span-3">
+          {onCase ? <BackLink /> : <ContactLink active={pathname === "/contact"} />}
           <MobileMenu pathname={pathname} />
         </div>
       </div>
@@ -34,10 +40,10 @@ export function SiteHeader({ pathname }: { pathname: string }) {
   )
 }
 
-export function NavPill({ pathname }: { pathname: string }) {
+export function NavLinks({ pathname }: { pathname: string }) {
   return (
-    <nav aria-label="Main" className="pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 md:block">
-      <ul className="flex items-center gap-1 rounded-pill bg-ink p-1.5 shadow-lift">
+    <nav aria-label="Main" className="pointer-events-auto hidden md:col-span-6 md:block">
+      <ul className="flex items-center gap-7 text-sm">
         {NAV.map((item) => {
           const active = isActive(pathname, item.href)
           return (
@@ -45,12 +51,10 @@ export function NavPill({ pathname }: { pathname: string }) {
               <Link
                 href={item.href}
                 aria-current={active ? "page" : undefined}
-                className={cn(
-                  "relative flex h-9 items-center gap-2 rounded-pill px-4 label text-xs leading-none transition-colors duration-(--duration-fast)",
-                  active ? "bg-lime text-ink" : "text-snow hover:bg-night-raised",
-                )}
+                className={cn("transition-opacity duration-(--duration-fast)", active ? "opacity-100" : "opacity-60 hover:opacity-100")}
               >
                 {item.label}
+                {active ? <span className="ml-1.5 inline-block size-1.5 -translate-y-px rounded-full bg-accent align-middle" /> : null}
               </Link>
             </li>
           )
@@ -60,81 +64,71 @@ export function NavPill({ pathname }: { pathname: string }) {
   )
 }
 
-export function ContactPill({ active = false }: { active?: boolean }) {
+export function ContactLink({ active = false }: { active?: boolean }) {
   return (
     <Link
       href="/contact"
       aria-current={active ? "page" : undefined}
-      className="group/contact hidden h-12 items-center gap-2 rounded-pill bg-flame px-5 label text-xs text-snow shadow-lift transition-colors duration-(--duration-fast) hover:bg-flame-deep sm:inline-flex"
+      className="hidden text-sm transition-opacity duration-(--duration-fast) hover:opacity-60 sm:inline"
     >
-      Start a project
-      <span className="size-1.5 rounded-full bg-lime transition-transform duration-(--duration-base) ease-(--ease-pop) group-hover/contact:scale-[2]" />
+      Start a project →
     </Link>
   )
 }
 
-export function BackButton() {
+export function BackLink() {
   return (
-    <Link
-      href="/work"
-      aria-label="Back to all work"
-      className="inline-flex size-12 items-center justify-center rounded-full bg-ink text-snow shadow-lift transition-colors duration-(--duration-fast) hover:bg-flame"
-    >
-      <ArrowLeft className="size-5 transition-transform duration-(--duration-base) ease-out hover:-translate-x-0.5" strokeWidth={2.5} />
+    <Link href="/work" className="inline-flex items-center gap-2 text-sm transition-opacity hover:opacity-60">
+      <ArrowLeft className="size-4" strokeWidth={2} />
+      <span className="hidden sm:inline">All work</span>
+      <span className="sr-only sm:hidden">Back to all work</span>
     </Link>
   )
 }
 
-/** Below `md`, the pill folds into a full-screen green menu. */
+/** Below `md`, the links fold into a full-screen menu. */
 export function MobileMenu({ pathname }: { pathname: string }) {
   const [open, setOpen] = useState(false)
   useCanvasAction("Mobile menu", (next) => setOpen(next ?? !open), { group: "Header", on: open })
   const links = [...NAV, { label: "Contact", href: "/contact" }]
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger
-        aria-label="Open menu"
-        className="inline-flex h-11 items-center gap-2 rounded-pill bg-ink px-4 label text-xs text-snow shadow-lift md:hidden"
-      >
-        <Menu className="size-4" strokeWidth={2.5} />
+      <SheetTrigger aria-label="Open menu" className="h-11 text-sm md:hidden">
         Menu
       </SheetTrigger>
       <SheetContent
         side="top"
         showCloseButton={false}
-        className="h-svh gap-0 border-0 bg-night p-0 text-snow data-[state=closed]:animate-[sheet-out_380ms_var(--ease-in-out)] data-[state=open]:animate-[sheet-in_520ms_var(--ease-out)]"
+        className="h-svh gap-0 border-0 bg-night p-0 text-snow data-[state=closed]:animate-[sheet-out_300ms_var(--ease-in-out)] data-[state=open]:animate-[sheet-in_420ms_var(--ease-out)]"
       >
         <SheetTitle className="sr-only">Menu</SheetTitle>
         <SheetDescription className="sr-only">Pages on this site</SheetDescription>
-        <div className="flex items-start justify-between px-gutter pt-4">
-          <Wordmark tone="snow" className="text-[1.6rem]" />
-          <SheetClose aria-label="Close menu" className="inline-flex size-11 items-center justify-center rounded-full bg-lime text-ink">
-            <X className="size-5" strokeWidth={2.5} />
+        <div className="flex items-center justify-between px-gutter py-5">
+          <Wordmark tone="snow" />
+          <SheetClose aria-label="Close menu" className="h-11 text-sm">
+            Close
           </SheetClose>
         </div>
-        <nav aria-label="Mobile" className="flex flex-1 flex-col justify-center px-gutter">
-          <ul className="space-y-1">
+        <nav aria-label="Mobile" className="flex flex-1 flex-col justify-end px-gutter pb-10">
+          <ul className="border-t border-line-dark">
             {links.map((item, i) => (
-              <li key={item.href} className="overflow-hidden">
+              <li key={item.href} className="border-b border-line-dark">
                 <Link
                   href={item.href}
                   onClick={() => setOpen(false)}
-                  className={cn(
-                    "block py-1 text-[clamp(3rem,15vw,5rem)] leading-[0.9]",
-                    i % 2 ? "display-serif" : "display",
-                    isActive(pathname, item.href) && "text-lime",
-                  )}
+                  className="flex items-baseline justify-between py-4 display text-5xl"
                 >
                   {item.label}
+                  <span className={cn("label", isActive(pathname, item.href) ? "text-accent" : "text-snow-mute")}>0{i + 1}</span>
                 </Link>
               </li>
             ))}
           </ul>
+          <div className="mt-8 flex flex-col gap-1 text-snow-mute">
+            <a href={`mailto:${STUDIO.email}`}>{STUDIO.email}</a>
+            <a href={STUDIO.phoneHref}>{STUDIO.phone}</a>
+          </div>
         </nav>
-        <div className="flex flex-wrap gap-x-6 gap-y-2 px-gutter pb-8 font-serif text-xl">
-          <a href={`mailto:${STUDIO.email}`}>{STUDIO.email}</a>
-          <a href={STUDIO.phoneHref}>{STUDIO.phone}</a>
-        </div>
       </SheetContent>
     </Sheet>
   )

@@ -8,7 +8,7 @@ import { useMotionAllowed } from "@/components/motion/use-motion"
 import { navigate, onNavigateRequest } from "@/lib/router"
 
 /**
- * The page change: one fat flame brush stroke loops across the screen until
+ * The page change: one fat ink brush stroke loops across the screen until
  * nothing else shows, the page swaps underneath, and the stroke pulls its tail
  * through and off the other end.
  *
@@ -20,7 +20,7 @@ const PATH =
   "M -420 120 C 300 -260, 1500 -180, 1800 260 C 2050 640, 1500 1180, 820 1110 C 180 1040, -160 700, 260 470 C 640 260, 1320 360, 1300 640 C 1280 880, 980 900, 820 820"
 
 export function BrushTransition({
-  color = "var(--color-flame)",
+  color = "var(--color-night)",
   cover = 0.9,
   hold = 0.12,
   reveal = 0.7,

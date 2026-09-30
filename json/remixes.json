@@ -1319,12 +1319,12 @@
       "type": "remix",
       "id": "kerfuffle-studio",
       "name": "Kerfuffle Studio",
-      "version": "1.1.0",
-      "description": "A warm, loud site for a motion studio: cream paper, flame orange, acid lime and deep forest green; heavy condensed caps answered by italic serif words; rounded ink-outlined cards and pill buttons; photos that drop under the cursor in the hero; a flame brush stroke that sweeps the screen on every page change; a pinned reel of case cards that pile up as you scroll; numbered service cards that fan out; pill stickers you can slap onto the page; a crew grid with name tags; a filterable project archive with case studies; a brief form and a full style guide.",
+      "version": "1.2.0",
+      "description": "A restrained, editorial site for a motion studio: paper and ink with a single accent, one typeface (Instrument Sans) plus a mono for labels, a twelve-column grid with numbered section labels and hairlines. Finished work drops under the cursor in the hero, an ink brush stroke sweeps the screen on every page change, recent projects pile up in a pinned reel, services show a spring-following preview on hover, and the team, a filterable project archive with case studies, a brief form and a full style guide complete it.",
       "designedFor": [
-        "Animation, video and social-content studios, and creative agencies with a lot of personality",
-        "Portfolios that want motion to be the first thing a visitor notices — page transitions, cursor trails, scroll-pinned reels",
-        "Multi-page sites: home, about, work with case studies, services and contact",
+        "Animation, film and social-content studios that want the work to do the talking",
+        "Editorial portfolio sites built on a strict grid, with motion used sparingly",
+        "Multi-page studio sites: home, about, work with case studies, services and contact",
         "Seeing Motion, Lenis and CSS animation on one page the canvas editor can pause, reduce and edit"
       ],
       "sdkVersion": "0.1.1",
@@ -1344,19 +1344,16 @@
         "portfolio",
         "page-transition",
         "cursor-trail",
-        "stickers",
         "scroll",
         "sticky",
-        "serif",
-        "playful",
         "multi-page",
         "react",
         "vite",
         "tailwind",
         "shadcn",
-        "rounded",
-        "cream",
-        "lime"
+        "editorial",
+        "minimal",
+        "grid"
       ],
       "categories": [
         "Agency",
@@ -1477,11 +1474,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/kerfuffle-studio-1.1.0.tgz",
+        "url": "archives/remixes/kerfuffle-studio-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "314886e5ea818ad3174b0a8bf0bfb02b1465e9e9694590c8ca81ba119161cc4a",
-        "size": 488960,
-        "files": 78
+        "sha256": "ca6a20ed2630bada6f1cfd2fe35bf18b00568bf1c0abb7dc1dea4c229bf9d3b4",
+        "size": 457216,
+        "files": 75
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
