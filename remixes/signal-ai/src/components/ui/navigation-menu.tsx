@@ -1,18 +1,30 @@
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu"
 import { ChevronDown } from "lucide-react"
+import { useLayoutEffect, useRef, useState } from "react"
 import type * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-function NavigationMenu({ className, children, ...props }: React.ComponentProps<typeof NavigationMenuPrimitive.Root>) {
+/** The viewport is positioned under whichever trigger is open, so each dropdown starts at its own label. */
+function NavigationMenu({ className, children, value, ...props }: React.ComponentProps<typeof NavigationMenuPrimitive.Root>) {
+  const ref = useRef<HTMLElement>(null)
+  const [left, setLeft] = useState(0)
+  useLayoutEffect(() => {
+    const root = ref.current
+    const trigger = root?.querySelector<HTMLElement>('button[data-state="open"]')
+    if (!root || !trigger) return
+    setLeft(trigger.getBoundingClientRect().left - root.getBoundingClientRect().left)
+  }, [value])
   return (
     <NavigationMenuPrimitive.Root
+      ref={ref}
+      value={value}
       data-canvas-ignore
       className={cn("relative flex max-w-max flex-1 items-center justify-center", className)}
       {...props}
     >
       {children}
-      <div className="absolute top-full left-0 flex justify-start">
+      <div className="absolute top-full flex justify-start transition-[left] duration-200 ease-out" style={{ left }}>
         <NavigationMenuPrimitive.Viewport
           className={cn(
             "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-top-left overflow-hidden bg-paper shadow-pop",
@@ -42,11 +54,11 @@ function NavigationMenuTrigger({ className, children, ...props }: React.Componen
 }
 
 const NavigationMenuContent = ({ className, ...props }: React.ComponentProps<typeof NavigationMenuPrimitive.Content>) => (
-  <NavigationMenuPrimitive.Content className={cn("w-full", className)} {...props} />
+  <NavigationMenuPrimitive.Content className={cn("w-max max-w-[92vw]", className)} {...props} />
 )
 
 const NavigationMenuLink = ({ className, ...props }: React.ComponentProps<typeof NavigationMenuPrimitive.Link>) => (
-  <NavigationMenuPrimitive.Link className={cn(triggerClass, className)} {...props} />
+  <NavigationMenuPrimitive.Link className={className} {...props} />
 )
 
 export {

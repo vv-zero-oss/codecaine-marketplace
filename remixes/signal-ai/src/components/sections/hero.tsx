@@ -11,7 +11,7 @@ export function AnnouncementPill({ tag = "New", text = "Meet Vantage 4", detail 
   return (
     <a
       href="#news"
-      className="group inline-flex items-center gap-2 border border-line bg-paper py-1 pr-1 pl-1.5 text-[12px] shadow-card transition-shadow duration-200 hover:shadow-pop"
+      className="group inline-flex min-h-11 items-center gap-2 border border-line bg-paper py-1 pr-1 pl-1.5 sm:min-h-0 text-[12px] shadow-card transition-shadow duration-200 hover:shadow-pop"
     >
       <span className="bg-sky px-1.5 py-px text-[9px] font-medium tracking-wide text-sky-ink uppercase">{tag}</span>
       <span className="font-medium text-ink">{text}</span>

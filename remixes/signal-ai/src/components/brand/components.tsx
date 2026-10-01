@@ -120,18 +120,16 @@ export function ComponentLibrary() {
         source="components/ui/art-tile.tsx"
         description="A framed sky tile with a pixel mosaic and one large line icon, for numbered lists."
         code={`<ArtTile icon={Gauge} seed={3} tilt={160} />`}
-        previewClassName="grid max-w-md"
       >
-        <ArtTile icon={Gauge} seed={3} />
+        <div className="max-w-md"><ArtTile icon={Gauge} seed={3} /></div>
       </ComponentSpecimen>
       <ComponentSpecimen
         name="TestimonialCard"
         source="components/ui/testimonial-card.tsx"
         description="A serif quote, then who said it."
         code={`<TestimonialCard quote="…" name="Maya Lindqvist" role="Head of Platform, Northwind Health" />`}
-        previewClassName="max-w-md"
       >
-        <TestimonialCard quote="We had it in front of customers by Thursday." name="Maya Lindqvist" role="Head of Platform, Northwind Health" />
+        <div className="max-w-md"><TestimonialCard quote="We had it in front of customers by Thursday." name="Maya Lindqvist" role="Head of Platform, Northwind Health" /></div>
       </ComponentSpecimen>
       <ComponentSpecimen
         name="Accordion"

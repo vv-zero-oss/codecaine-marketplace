@@ -20,7 +20,7 @@ export function BrandPage() {
   return (
     <>
       <header className="sticky top-0 z-40 border-b border-line bg-paper/80 backdrop-blur-xl">
-        <Container className="flex h-[50px] items-center justify-between gap-4">
+        <Container className="flex h-[50px] max-w-6xl items-center justify-between gap-4">
           <div className="flex min-w-0 items-center gap-3">
             <Link href="/" aria-label="Vantage home"><Wordmark /></Link>
             <span className="text-line-strong">/</span>

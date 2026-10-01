@@ -25,7 +25,7 @@ export function Steps() {
               <Reveal delay={i * 0.07}>
                 <figure className="group">
                   <div className="overflow-hidden">
-                    <img src={`${base}img/${s.img}.jpg`} alt={s.alt} loading="lazy" className="aspect-square w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
+                    <img src={`${base}img/${s.img}.jpg`} alt={s.alt} loading="lazy" className="aspect-[4/3] w-full object-cover sm:aspect-square transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
                   </div>
                   <figcaption className="mt-5">
                     <p className="font-mono text-[10px] text-ink-3">0{i + 1}</p>
