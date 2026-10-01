@@ -2225,6 +2225,110 @@
     },
     {
       "type": "remix",
+      "id": "signal-ai",
+      "name": "Vantage — AI Models",
+      "version": "1.2.0",
+      "description": "A sky-blue and white landing page for a frontier AI lab: a serif headline that types its own verb, a live product bento, pixel-mosaic edges that fade into sky washes, one API in three languages, and the sections a launch page needs: steps, reasons to switch, a platform split, testimonials, FAQ and a closing call.",
+      "designedFor": [
+        "AI model, API or developer-platform launch pages",
+        "Products with several modalities (chat, code, voice, image, agents) to show at once",
+        "Teams who want a calm, white, editorial look instead of a dark gradient hero",
+        "Studying editor-ready motion: typed headline, looping previews, count-ups"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Linnea Okafor-Brandt"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "llm",
+        "api",
+        "landing",
+        "developer",
+        "saas",
+        "bento",
+        "react",
+        "vite",
+        "tailwind",
+        "motion"
+      ],
+      "categories": [
+        "Marketing",
+        "AI"
+      ],
+      "created": "2026-10-01",
+      "updated": "2026-10-01",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3330
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/signal-ai",
+      "thumbnailUrl": "remixes/signal-ai/preview.png",
+      "iconUrl": "remixes/signal-ai/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/signal-ai/previews/desktop.jpg",
+        "mobile": "remixes/signal-ai/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/signal-ai/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/signal-ai/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/signal-ai-1.2.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "87e4cc34e595d8c63346ffda18e4a5f7a7a4f3cc5e0bb1f77d680eafd5cb12fd",
+        "size": 790528,
+        "files": 83
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/signal-ai"
+      },
+      "demoUrl": "demos/signal-ai/"
+    },
+    {
+      "type": "remix",
       "id": "tidemark",
       "name": "Tidemark — Fintech",
       "version": "1.1.0",

@@ -1,0 +1,181 @@
+@import "tailwindcss";
+
+/* Every colour, shadow, radius, easing and duration on the page lives here.
+   Light values on :root, dark values on [data-theme="dark"]. */
+:root,
+[data-theme="light"] {
+  --paper: #ffffff;
+  --surface: #f4f4f3;
+  --surface-2: #ebebea;
+  --ink: #0b0b0b;
+  --ink-2: #5c5c5c;
+  --ink-3: #9a9a98;
+  --line: rgb(0 0 0 / 0.08);
+  --line-strong: rgb(0 0 0 / 0.14);
+  --bubble: #ffffff;
+  --bubble-dark: #0b0b0b;
+  --terminal: #121212;
+  --terminal-ink: #e8e8e6;
+  --terminal-dim: #7b7b78;
+  --diff-add: rgb(64 160 90 / 0.28);
+  --diff-del: rgb(200 60 60 / 0.3);
+  --panel: #0e0e0e;
+  --panel-ink: #f4f4f2;
+  --panel-dim: #7d7d7a;
+  --accent: #4a9ee0;
+  --accent-2: #8ec5f0;
+  --accent-3: #cfe8fa;
+  --good: #2f9d62;
+  --good-soft: #e1f5e8;
+  --warn: #9a7a12;
+  --warn-soft: #fbf3d2;
+  --sky: #b9dcf6;
+  --sky-2: #a2cff0;
+  --sky-ink: #1f5f94;
+  --code-bg: #ffffff;
+  --code-key: #a8324e;
+  --code-str: #1d2b6b;
+  --code-var: #2f5fb3;
+  --code-ink: #1a1a2e;
+  --frame-from: #a9d4f3;
+  --frame-to: #e3f2fd;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-pop: 0 0 0 1px var(--line), 0 12px 40px rgb(0 0 0 / 0.12), 0 2px 6px rgb(0 0 0 / 0.04);
+  --shadow-button: 0 1px 2px rgb(0 0 0 / 0.08), inset 0 1px 0 rgb(255 255 255 / 0.12);
+  --shadow-frame: 0 20px 50px -20px rgb(0 0 0 / 0.25);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 240ms;
+  --duration-slow: 600ms;
+}
+
+[data-theme="dark"] {
+  --paper: #0a0a0a;
+  --surface: #151514;
+  --surface-2: #1f1f1d;
+  --ink: #f4f4f2;
+  --ink-2: #a2a2a0;
+  --ink-3: #6f6f6d;
+  --line: rgb(255 255 255 / 0.09);
+  --line-strong: rgb(255 255 255 / 0.16);
+  --bubble: #1f1f1d;
+  --sky: #18364f;
+  --sky-2: #1f4a6e;
+  --sky-ink: #9ccbf0;
+  --good-soft: #14301f;
+  --warn-soft: #3a3110;
+  --frame-from: #1f4a6e;
+  --frame-to: #3c7db3;
+  --bubble-dark: #f4f4f2;
+  --terminal: #0d0d0d;
+  --code-bg: #141414;
+  --code-key: #ff8fa8;
+  --code-str: #a9b8ff;
+  --code-var: #7fb0ff;
+  --code-ink: #e8e8f0;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-pop: 0 0 0 1px var(--line), 0 12px 40px rgb(0 0 0 / 0.6);
+  --shadow-button: 0 1px 2px rgb(0 0 0 / 0.4);
+  --shadow-frame: 0 20px 50px -20px rgb(0 0 0 / 0.7);
+}
+
+@theme inline {
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-bubble: var(--bubble);
+  --color-bubble-dark: var(--bubble-dark);
+  --color-terminal: var(--terminal);
+  --color-terminal-ink: var(--terminal-ink);
+  --color-terminal-dim: var(--terminal-dim);
+  --color-diff-add: var(--diff-add);
+  --color-diff-del: var(--diff-del);
+  --color-panel: var(--panel);
+  --color-panel-ink: var(--panel-ink);
+  --color-panel-dim: var(--panel-dim);
+  --color-accent: var(--accent);
+  --color-accent-2: var(--accent-2);
+  --color-accent-3: var(--accent-3);
+  --color-good: var(--good);
+  --color-good-soft: var(--good-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-sky: var(--sky);
+  --color-sky-2: var(--sky-2);
+  --color-sky-ink: var(--sky-ink);
+  --color-code-bg: var(--code-bg);
+  --color-code-key: var(--code-key);
+  --color-code-str: var(--code-str);
+  --color-code-var: var(--code-var);
+  --color-code-ink: var(--code-ink);
+  --color-frame-from: var(--frame-from);
+  --color-frame-to: var(--frame-to);
+  --shadow-card: var(--shadow-card);
+  --shadow-pop: var(--shadow-pop);
+  --shadow-button: var(--shadow-button);
+  --shadow-frame: var(--shadow-frame);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --animate-chat-loop: chat-loop 28s linear infinite;
+  --animate-underline: underline-shift 4s linear infinite;
+  --animate-orb: orb-spin 80s linear infinite;
+  --animate-pixel: pixel-in 480ms var(--ease-out) both;
+  --animate-accordion-down: accordion-down 240ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-dot: dot-pulse 1.2s var(--ease-in-out) infinite;
+}
+
+@keyframes chat-loop {
+  from { transform: translateY(0); }
+  to { transform: translateY(-50%); }
+}
+@keyframes underline-shift {
+  from { background-position: 0% 0; }
+  to { background-position: 200% 0; }
+}
+@keyframes orb-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes pixel-in {
+  from { opacity: 0; transform: scale(0.6); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes dot-pulse {
+  0%, 100% { opacity: 0.35; transform: scale(0.85); }
+  50% { opacity: 1; transform: scale(1); }
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
