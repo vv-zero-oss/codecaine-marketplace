@@ -43,7 +43,7 @@ function GrainFrame({ children }: { children: React.ReactNode }) {
       />
       <div
         aria-hidden
-        className="absolute inset-0 opacity-60 mix-blend-overlay"
+        className="absolute inset-0 opacity-40 mix-blend-soft-light"
         style={{ backgroundImage: GRAIN, maskImage: "linear-gradient(200deg, #000 0%, transparent 60%)" }}
       />
       <span aria-hidden className={`${corner} top-0 left-0`} />
@@ -61,7 +61,7 @@ export function Developers() {
       <Container className="grid items-center gap-12 lg:grid-cols-[1fr_1.05fr] lg:gap-16">
         <div>
           <p className="text-[12px] text-ink-3">For developers</p>
-          <h2 className="mt-5 text-[clamp(2rem,5vw,2.9rem)] leading-[0.98] font-normal tracking-[-0.045em]">
+          <h2 className="mt-5 font-serif text-[clamp(2.6rem,6vw,4rem)] leading-[0.9] font-normal tracking-[-0.02em]">
             One API.
             <br />
             <span className="text-ink-3">Every modality.</span>

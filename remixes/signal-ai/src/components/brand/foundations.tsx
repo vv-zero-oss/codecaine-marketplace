@@ -11,8 +11,8 @@ const GROUPS: { title: string; tokens: string[] }[] = [
   { title: "Surface", tokens: ["paper", "surface", "surface-2", "bubble", "bubble-dark", "terminal", "code-bg"] },
   { title: "Text", tokens: ["ink", "ink-2", "ink-3", "terminal-ink", "terminal-dim", "code-ink"] },
   { title: "Border", tokens: ["line", "line-strong"] },
-  { title: "Accent", tokens: ["accent", "accent-2", "accent-3", "frame-from", "frame-to"] },
-  { title: "Status and diff", tokens: ["good", "diff-add", "diff-del"] },
+  { title: "Sky and accent", tokens: ["sky", "sky-2", "sky-ink", "accent", "accent-2", "accent-3", "frame-from", "frame-to"] },
+  { title: "Status and diff", tokens: ["good", "good-soft", "warn", "warn-soft", "diff-add", "diff-del"] },
   { title: "Code", tokens: ["code-key", "code-str", "code-var"] },
 ]
 
@@ -119,10 +119,10 @@ export function ColourTokens() {
 }
 
 const SCALE = [
-  { name: "Display", cls: "text-[56px] leading-[0.94] tracking-[-0.045em]", sample: "Frontier AI models" },
-  { name: "Section title", cls: "text-[46px] leading-[0.98] tracking-[-0.045em]", sample: "One API. Every modality." },
-  { name: "Heading", cls: "text-[26px] tracking-[-0.04em]", sample: "Latest news" },
-  { name: "Card title", cls: "text-[19px] tracking-[-0.03em]", sample: "Build on your own" },
+  { name: "Display (serif)", cls: "font-serif text-[72px] leading-[0.9] tracking-[-0.02em]", sample: "Frontier AI models" },
+  { name: "Section title (serif)", cls: "font-serif text-[48px] leading-[0.92] tracking-[-0.02em]", sample: "One API. Every modality." },
+  { name: "Heading (serif)", cls: "font-serif text-[38px] leading-none tracking-[-0.01em]", sample: "Latest news" },
+  { name: "Card title", cls: "text-[19px] font-semibold tracking-[-0.03em]", sample: "Built by teams who ship." },
   { name: "Body", cls: "text-[15px] leading-relaxed tracking-[-0.01em]", sample: "Reasoning, code, voice, images, and video." },
   { name: "UI", cls: "text-[13px]", sample: "Get API Access" },
   { name: "Caption", cls: "text-[11px]", sample: "API calls per day" },
@@ -146,8 +146,8 @@ export function Typography() {
     <>
       <div className="grid gap-4 sm:grid-cols-2">
         <div className="rounded-panel bg-surface p-6">
-          <p className="text-[56px] leading-none tracking-[-0.045em]">Aa</p>
-          <p className="mt-3 text-[13px] text-ink-2">Inter Tight, 400 and 500. Every word on the page; tracking tightens as size grows.</p>
+          <p className="font-serif text-[64px] leading-none">Aa</p>
+          <p className="mt-3 text-[13px] text-ink-2">Instrument Serif for display: the hero, section titles and the product names on news covers. Inter Tight for everything else — 400, 500 and 600.</p>
         </div>
         <div className="rounded-panel bg-surface p-6">
           <p className="font-mono text-[40px] leading-none">{"{ }"}</p>
@@ -169,10 +169,11 @@ export function Typography() {
 }
 
 const RADII = [
-  ["rounded-lg", "8px — thumbnails, bubbles"],
-  ["rounded-card", "14px — product cards"],
-  ["rounded-panel", "18px — plan cards, menus"],
-  ["rounded-full", "pill — buttons, tabs"],
+  ["rounded-[3px]", "3px — buttons, tabs, tags: the sharp control"],
+  ["rounded-lg", "8px — thumbnails, grouped rows"],
+  ["rounded-card", "12px — product cards"],
+  ["rounded-panel", "16px — plan cards, menus"],
+  ["rounded-full", "circle — avatars, dots"],
 ]
 const SHADOWS = [
   ["shadow-card", "Resting cards"],
@@ -198,7 +199,7 @@ export function SpaceAndSurface() {
       </div>
       <div>
         <GroupLabel>Radii</GroupLabel>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
           {RADII.map(([cls, note]) => (
             <div key={cls}>
               <div className={cn("h-20 border border-line-strong bg-surface", cls)} />
@@ -297,7 +298,7 @@ export function Iconography() {
       <div>
         <GroupLabel>Imagery</GroupLabel>
         <p className="max-w-xl text-[13px] text-ink-2">
-          Real photography from Pexels, art-directed to the product it illustrates: clean, high-contrast subjects on simple backdrops. Gradients are reserved for the news covers and the code frame; the voice orb is the only illustration.
+          Real photography from Pexels, art-directed to the product it illustrates: clean, high-contrast subjects on simple backdrops. Blue gradients are reserved for the news covers and the code frame; the voice orb is the only illustration. The pixel mosaic — square cells, sparse toward the content and dense at the edge — is the page's one graphic motif.
         </p>
       </div>
     </>

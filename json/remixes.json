@@ -2130,8 +2130,8 @@
       "type": "remix",
       "id": "signal-ai",
       "name": "Vantage — AI Models",
-      "version": "1.0.0",
-      "description": "A landing page for a frontier AI lab: a headline that types its own verb, a live product bento, one API in three languages, and two ways to get started.",
+      "version": "1.1.0",
+      "description": "A sky-blue and white landing page for a frontier AI lab: a serif headline that types its own verb, a live product bento, a pixel-mosaic edge, one API in three languages and a card of what teams shipped.",
       "designedFor": [
         "AI model, API or developer-platform launch pages",
         "Products with several modalities (chat, code, voice, image, agents) to show at once",
@@ -2217,11 +2217,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/signal-ai-1.0.0.tgz",
+        "url": "archives/remixes/signal-ai-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "1418c7152d3df7ee230b4c2643560cd39d02bc8f302066446f354a9767c509fa",
-        "size": 412160,
-        "files": 63
+        "sha256": "435bd735cf0c7bee3233fdd536ccc82e4d6325e1bf1fe5c1cda2acb583b682e8",
+        "size": 529920,
+        "files": 67
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

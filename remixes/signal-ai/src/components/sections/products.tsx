@@ -4,7 +4,7 @@ import { ProductCard } from "@/components/ui/product-card"
 /** The five products as a live bento: three across, then two. */
 export function Products() {
   return (
-    <section id="products" className="pb-24 sm:pb-36">
+    <section id="products" className="pt-4 pb-24 sm:pb-36">
       <Container>
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-6">
           <ProductCard product="chat" label="Chat" index={0} className="lg:col-span-2" />

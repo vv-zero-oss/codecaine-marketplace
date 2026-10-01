@@ -3,8 +3,8 @@
   "type": "remix",
   "id": "signal-ai",
   "name": "Vantage — AI Models",
-  "version": "1.0.0",
-  "description": "A landing page for a frontier AI lab: a headline that types its own verb, a live product bento, one API in three languages, and two ways to get started.",
+  "version": "1.1.0",
+  "description": "A sky-blue and white landing page for a frontier AI lab: a serif headline that types its own verb, a live product bento, a pixel-mosaic edge, one API in three languages and a card of what teams shipped.",
   "designedFor": [
     "AI model, API or developer-platform launch pages",
     "Products with several modalities (chat, code, voice, image, agents) to show at once",

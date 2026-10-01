@@ -12,7 +12,7 @@ const TabsList = ({ className, ...props }: React.ComponentProps<typeof TabsPrimi
 const TabsTrigger = ({ className, ...props }: React.ComponentProps<typeof TabsPrimitive.Trigger>) => (
   <TabsPrimitive.Trigger
     className={cn(
-      "inline-flex h-9 items-center rounded-full px-3.5 text-[13px] text-ink-3 transition-colors duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 data-[state=active]:bg-surface-2 data-[state=active]:text-ink",
+      "inline-flex h-9 items-center rounded-[3px] px-3.5 text-[11px] tracking-[0.06em] uppercase text-ink-3 transition-colors duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 data-[state=active]:bg-surface-2 data-[state=active]:text-ink",
       className,
     )}
     {...props}

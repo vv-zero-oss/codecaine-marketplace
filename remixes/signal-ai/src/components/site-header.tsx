@@ -80,7 +80,7 @@ function MobileMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <button aria-label="Open menu" className="inline-flex size-11 items-center justify-center rounded-full text-ink transition-colors hover:bg-surface md:hidden">
+        <button aria-label="Open menu" className="inline-flex size-11 items-center justify-center rounded-[3px] text-ink transition-colors hover:bg-surface md:hidden">
           <Menu className="size-5" />
         </button>
       </SheetTrigger>
@@ -170,8 +170,8 @@ export function SiteHeader() {
           <ButtonLink href="#start" variant="outline" className="hidden sm:inline-flex">
             Contact Sales
           </ButtonLink>
-          <div className="inline-flex items-stretch overflow-hidden rounded-full bg-ink shadow-button">
-            <a href="#start" className="flex h-9 items-center pr-3 pl-4 text-[13px] font-medium text-paper transition-colors hover:bg-paper/10 active:bg-paper/15">
+          <div className="inline-flex items-stretch overflow-hidden rounded-[3px] bg-ink shadow-button">
+            <a href="#start" className="flex h-9 items-center whitespace-nowrap pr-3 pl-4 text-[11px] font-medium tracking-[0.06em] text-paper uppercase transition-colors hover:bg-paper/10 active:bg-paper/15">
               Try for free
             </a>
             <DropdownMenu>

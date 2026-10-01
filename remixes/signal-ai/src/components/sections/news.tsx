@@ -4,10 +4,10 @@ import { motion } from "motion/react"
 import { Container } from "@/components/ui/container"
 
 const POSTS = [
-  { date: "Sep 12, 2026", title: "Introducing Vantage 4", cover: "Vantage 4", bg: "radial-gradient(120% 90% at 80% 60%, #e9e9ee 0%, #5a5c6a 28%, #1a1b22 60%, #0d0d12 100%)" },
-  { date: "Sep 14, 2026", title: "Vantage 4 in your editor", cover: "4 in your editor", bg: "radial-gradient(90% 90% at 30% 90%, #12b5c4 0%, #0b5f95 40%, #0a2f63 100%)" },
-  { date: "Sep 11, 2026", title: "Introducing Vantage Bot", cover: "Vantage Bot", bg: "radial-gradient(90% 90% at 25% 15%, #d6eaff 0%, #8fc3ff 45%, #4f9bff 100%)" },
-  { date: "Sep 7, 2026", title: "Imagine Frame 2.0", cover: "Frame 2.0", bg: "radial-gradient(100% 100% at 85% 40%, #ff6a3d 0%, #a4403c 45%, #4a2a34 100%)" },
+  { date: "Sep 12, 2026", title: "Introducing Vantage 4", cover: "Vantage 4", bg: "radial-gradient(120% 90% at 80% 60%, #dff0fc 0%, #4f7fa8 30%, #14263a 65%, #0b1622 100%)", ink: "#fff" },
+  { date: "Sep 14, 2026", title: "Vantage 4 in your editor", cover: "4 in your editor", bg: "radial-gradient(90% 90% at 30% 90%, #8ec5f0 0%, #3b86c6 45%, #17406b 100%)", ink: "#fff" },
+  { date: "Sep 11, 2026", title: "Introducing Vantage Bot", cover: "Vantage Bot", bg: "radial-gradient(90% 90% at 25% 15%, #ffffff 0%, #cfe8fa 45%, #9ccbf0 100%)", ink: "#0b0b0b" },
+  { date: "Sep 7, 2026", title: "Imagine Frame 2.0", cover: "Frame 2.0", bg: "radial-gradient(100% 100% at 85% 40%, #e6f4fe 0%, #78b5e6 40%, #2a5f93 100%)", ink: "#fff" },
 ]
 
 /** Four posts: the cover is the title, in a gradient the post owns. */
@@ -16,7 +16,7 @@ export function News() {
     <section id="news" className="pb-24 sm:pb-28">
       <Container>
         <div className="flex items-baseline justify-between">
-          <h2 className="text-[26px] font-normal tracking-[-0.04em]">Latest news</h2>
+          <h2 className="font-serif text-[clamp(2rem,4vw,2.6rem)] leading-none font-normal tracking-[-0.01em]">Latest news</h2>
           <a href="#news" className="inline-flex items-center gap-1 text-[12px] text-ink-3 transition-colors hover:text-ink">
             All posts <ArrowRight className="size-3" />
           </a>
@@ -32,8 +32,8 @@ export function News() {
               transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
               className="group block"
             >
-              <div className="grid aspect-[1.9] place-items-center overflow-hidden rounded-lg shadow-card" style={{ backgroundImage: p.bg }}>
-                <span className="px-3 text-center text-[clamp(1rem,2vw,1.3rem)] tracking-[-0.03em] text-white transition-transform duration-500 ease-out group-hover:scale-[1.04]">
+              <div className="grid aspect-[1.9] place-items-center overflow-hidden rounded-[6px] shadow-card" style={{ backgroundImage: p.bg, color: p.ink }}>
+                <span className="px-3 text-center font-serif text-[clamp(1.3rem,2.4vw,1.8rem)] leading-none transition-transform duration-500 ease-out group-hover:scale-[1.04]">
                   {p.cover}
                 </span>
               </div>

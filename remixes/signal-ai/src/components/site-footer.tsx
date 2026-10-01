@@ -50,7 +50,7 @@ export function SiteFooter() {
           </div>
           <div className="flex items-center gap-1 lg:mt-auto lg:pt-40">
             <ThemeToggle />
-            <Link href="/brand" className="rounded-full border border-line px-3 py-1.5 text-[10px] text-ink-3 transition-colors hover:text-ink">
+            <Link href="/brand" className="rounded-[3px] border border-line px-3 py-1.5 text-[10px] text-ink-3 transition-colors hover:text-ink">
               Brand guidelines
             </Link>
           </div>

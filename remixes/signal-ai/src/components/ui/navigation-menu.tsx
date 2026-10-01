@@ -15,7 +15,7 @@ function NavigationMenu({ className, children, ...props }: React.ComponentProps<
       <div className="absolute top-full left-0 flex justify-start">
         <NavigationMenuPrimitive.Viewport
           className={cn(
-            "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-top-left overflow-hidden rounded-[18px] bg-paper shadow-pop",
+            "relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-[var(--radix-navigation-menu-viewport-width)] origin-top-left overflow-hidden rounded-[12px] bg-paper shadow-pop",
             "transition-[width,height,opacity,transform] duration-200 ease-out data-[state=closed]:scale-[0.97] data-[state=closed]:opacity-0 data-[state=open]:scale-100 data-[state=open]:opacity-100",
           )}
         />
@@ -30,7 +30,7 @@ const NavigationMenuList = ({ className, ...props }: React.ComponentProps<typeof
 const NavigationMenuItem = NavigationMenuPrimitive.Item
 
 const triggerClass =
-  "group inline-flex h-9 items-center gap-1 rounded-full px-3 text-[13px] text-ink-2 transition-colors duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 data-[state=open]:text-ink"
+  "group inline-flex h-9 items-center gap-1 rounded-[3px] px-3 text-[13px] text-ink-2 transition-colors duration-150 hover:text-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink/30 data-[state=open]:text-ink"
 
 function NavigationMenuTrigger({ className, children, ...props }: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
   return (

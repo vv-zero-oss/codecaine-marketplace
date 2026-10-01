@@ -5,7 +5,7 @@ export function GetStarted() {
   return (
     <section id="start" className="border-t border-line pt-20 pb-24 sm:pt-24">
       <Container>
-        <h2 className="text-center text-[clamp(1.4rem,3vw,1.7rem)] font-normal tracking-[-0.04em]">Choose how to get started</h2>
+        <h2 className="text-center font-serif text-[clamp(2rem,4vw,2.6rem)] leading-none font-normal tracking-[-0.01em]">Choose how to get started</h2>
         <div className="mt-10 grid gap-4 md:grid-cols-2">
           <PlanCard
             title="Build on your own"

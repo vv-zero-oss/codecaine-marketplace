@@ -11,7 +11,7 @@ const DropdownMenuContent = ({ className, sideOffset = 8, ...props }: React.Comp
     <DropdownPrimitive.Content
       sideOffset={sideOffset}
       className={cn(
-        "z-50 min-w-48 origin-top-right rounded-2xl bg-paper p-1.5 shadow-pop outline-none data-[state=closed]:animate-none data-[state=open]:duration-150",
+        "z-50 min-w-48 origin-top-right rounded-xl bg-paper p-1.5 shadow-pop outline-none data-[state=closed]:animate-none data-[state=open]:duration-150",
         className,
       )}
       {...props}
@@ -22,7 +22,7 @@ const DropdownMenuContent = ({ className, sideOffset = 8, ...props }: React.Comp
 const DropdownMenuItem = ({ className, ...props }: React.ComponentProps<typeof DropdownPrimitive.Item>) => (
   <DropdownPrimitive.Item
     className={cn(
-      "flex cursor-pointer flex-col gap-0.5 rounded-xl px-3 py-2 text-[13px] text-ink outline-none transition-colors data-[highlighted]:bg-surface",
+      "flex cursor-pointer flex-col gap-0.5 rounded-lg px-3 py-2 text-[13px] text-ink outline-none transition-colors data-[highlighted]:bg-surface",
       className,
     )}
     {...props}

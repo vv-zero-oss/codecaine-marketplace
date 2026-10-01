@@ -1,5 +1,7 @@
 import { ArrowRight } from "lucide-react"
 
+import { PixelEdge } from "@/components/motion/pixel-edge"
+import { ActivityCard, ActivityGroup, ActivityRow } from "@/components/ui/activity-card"
 import { WordRotator } from "@/components/motion/word-rotator"
 import { CountUp } from "@/components/motion/count-up"
 import { VoiceOrb } from "@/components/motion/voice-orb"
@@ -19,7 +21,7 @@ export function ComponentLibrary() {
       <ComponentSpecimen
         name="Button"
         source="components/ui/button.tsx"
-        description="Pill buttons. Filled for the one main action, outline for the second, ghost for quiet ones."
+        description="Sharp, small-caps buttons. Filled for the one main action, outline for the second, ghost for quiet ones."
         code={`<Button>Get API Access <ArrowRight /></Button>\n<ButtonLink href="#start" variant="outline" size="lg">Contact Sales</ButtonLink>`}
       >
         <div className="flex flex-wrap gap-6">
@@ -46,7 +48,7 @@ export function ComponentLibrary() {
         description="Types a word, holds, clears, types the next. Knobs: words, hold, typeSpeed, gap, paused."
         code={`<WordRotator words="build,reason,imagine" hold={3000} typeSpeed={100} />`}
       >
-        <p className="text-[32px] tracking-[-0.045em]">for everything you <WordRotator /></p>
+        <p className="font-serif text-[44px] leading-none tracking-[-0.02em]">for everything you <WordRotator /></p>
       </ComponentSpecimen>
       <ComponentSpecimen
         name="ProductCard"
@@ -97,7 +99,31 @@ export function ComponentLibrary() {
         description="A figure that counts up once when it scrolls into view."
         code={`<CountUp to={400} suffix="M+" duration={1.6} />`}
       >
-        <CountUp to={400} suffix="M+" className="text-[48px] tracking-[-0.045em]" />
+        <CountUp to={400} suffix="M+" className="text-[40px] font-semibold tracking-[-0.03em]" />
+      </ComponentSpecimen>
+      <ComponentSpecimen
+        name="PixelEdge"
+        source="components/motion/pixel-edge.tsx"
+        description="A mosaic of square pixels along a section edge: sparse toward the content, dense at the edge. A few squares flicker. Knobs: cell, rows, color, altColor, altShare, edge, density, seed, flicker, interval."
+        code={`<section className="relative pb-[170px]">…<PixelEdge rows={5} cell={30} color="var(--sky)" /></section>`}
+        previewClassName="p-0"
+      >
+        <div className="relative h-56 bg-paper">
+          <PixelEdge rows={5} cell={30} />
+        </div>
+      </ComponentSpecimen>
+      <ComponentSpecimen
+        name="ActivityCard"
+        source="components/ui/activity-card.tsx"
+        description="The white card on the sky field: dated groups of rows with a chip, avatar, badge and action, then three counted figures."
+        code={`<ActivityCard title="Built by teams who ship." stats={[…]}>\n  <ActivityGroup label="Today" date="Sep 30"><ActivityRow … /></ActivityGroup>\n</ActivityCard>`}
+        previewClassName="grid place-items-center bg-sky"
+      >
+        <ActivityCard title="Built by teams who ship." stats={[{ to: 400, suffix: "M+", label: "Requests a day" }, { to: 200, suffix: "K", label: "GPUs online" }, { to: 12, suffix: "+", label: "Regions" }]}>
+          <ActivityGroup label="Today" date="Sep 30">
+            <ActivityRow chip="Newest release" name="vantage-4" meta="Reasoning · code · voice" badge="New" action="Try" />
+          </ActivityGroup>
+        </ActivityCard>
       </ComponentSpecimen>
       <ComponentSpecimen
         name="PlanCard"
