@@ -32,7 +32,7 @@ export function BrandPage() {
       <main data-canvas-ignore>
         <Container className="py-16 sm:py-20">
           <div className="max-w-2xl">
-            <p className="font-mono text-[11px] tracking-wider text-ember uppercase">Style guide</p>
+            <p className="font-mono text-[11px] tracking-wider text-iris uppercase">Style guide</p>
             <h1 className="scanline mt-3 text-[clamp(30px,4vw,52px)] leading-[1.2] tracking-[-0.03em] text-balance">Halo, as a system</h1>
             <p className="mt-4 text-lg text-muted">The tokens, type and components the site is built from — one place to look before changing any of them.</p>
           </div>

@@ -4,14 +4,14 @@ import type * as React from "react"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-pill text-sm font-medium outline-none transition-[transform,background-color,color,border-color,box-shadow] duration-150 ease-out-expo active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-ember focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex shrink-0 items-center justify-center gap-2 whitespace-nowrap rounded-pill text-sm font-medium outline-none transition-[transform,background-color,color,border-color,box-shadow] duration-150 ease-out-expo active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-iris focus-visible:ring-offset-2 focus-visible:ring-offset-bg disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         pill: "bg-text text-onlight shadow-pill hover:bg-white",
         ghost: "text-text hover:bg-white/8",
         outline: "border border-line-strong bg-white/3 text-text hover:bg-white/8",
-        accent: "border border-ember/60 text-ember hover:bg-ember-soft",
+        accent: "border border-iris/60 text-iris hover:bg-iris-soft",
       },
       size: {
         default: "h-11 px-5",

@@ -1,7 +1,9 @@
 import { ArrowRight, Check, Loader2, X } from "lucide-react"
 import { useState } from "react"
+import { VoiceBeam } from "voice-glow"
 import { useCanvasAction } from "@canvas/react"
 
+import { useVoiceColors } from "@/components/sections/voice-composer"
 import { ScrambleText } from "@/components/motion/scramble-text"
 import { Button } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
@@ -30,6 +32,7 @@ function DigitField() {
 export function CallToAction() {
   const [email, setEmail] = useState("")
   const [status, setStatus] = useState<Status>("idle")
+  const colors = useVoiceColors()
   useCanvasAction("CTA: success", (next) => setStatus(next === false ? "idle" : "sent"), { on: status === "sent", group: "Contact form" })
   useCanvasAction("CTA: error", (next) => setStatus(next === false ? "idle" : "error"), { on: status === "error", group: "Contact form" })
 
@@ -53,10 +56,11 @@ export function CallToAction() {
         <p className="mt-5 max-w-[520px] text-[14px] leading-relaxed text-muted">{CTA.body}</p>
 
         <form onSubmit={submit} noValidate className="mt-9 w-full max-w-[500px]">
+          <VoiceBeam type="pill" processing={status === "sending"} colors={colors} theme="dark" scale={1.6} active={status !== "idle" || email.length > 0}>
           <div
             className={cn(
               "flex h-14 items-center gap-2 rounded-full border bg-white/5 pr-2 pl-5 transition-[border-color,box-shadow] duration-200 focus-within:border-line-strong focus-within:shadow-[0_0_0_4px_rgb(255_255_255/0.04)]",
-              status === "error" ? "border-ember" : "border-line",
+              status === "error" ? "border-iris" : "border-line",
             )}
           >
             <Input
@@ -78,7 +82,8 @@ export function CallToAction() {
               {status === "sending" ? <Loader2 className="animate-spin" /> : status === "sent" ? <Check /> : <ArrowRight />}
             </Button>
           </div>
-          <p role="status" className={cn("mt-3 min-h-5 text-[12px]", status === "error" ? "text-ember" : "text-good")}>
+          </VoiceBeam>
+          <p role="status" className={cn("mt-3 min-h-5 text-[12px]", status === "error" ? "text-iris" : "text-good")}>
             {status === "error" ? "That doesn't look like an email — try name@company.com." : status === "sent" ? "Thanks — we'll be in touch within one working day." : ""}
           </p>
         </form>

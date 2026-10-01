@@ -20,7 +20,7 @@ export function CaseStudy() {
         <article className="mt-8 grid gap-6 rounded-[18px] border border-line bg-surface p-3 shadow-card sm:mt-12 sm:p-5 lg:grid-cols-[minmax(0,710px)_1fr] lg:gap-[52px]">
           <div className="relative min-h-[420px] overflow-hidden rounded-xl sm:min-h-[560px]">
             <img src={photo} alt={CASE_STUDY.photoAlt} className="absolute inset-0 size-full object-cover object-[50%_58%]" loading="lazy" />
-            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-glow-red)_0%,rgb(255_46_26/0.55)_26%,transparent_58%)]" />
+            <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-glow-violet)_0%,rgb(106_76_255/0.55)_26%,transparent_58%)]" />
             <div aria-hidden className="absolute top-[48%] left-[44%] size-[14%] min-h-20 min-w-20 border border-white/60">
               <span className="absolute -top-1.5 left-1/2 h-3 w-px bg-white/80" />
               <span className="absolute -bottom-1.5 left-1/2 h-3 w-px bg-white/80" />
@@ -37,8 +37,8 @@ export function CaseStudy() {
           </div>
 
           <div className="flex flex-col py-2 pr-2 sm:py-5 sm:pr-5">
-            <p className="flex items-center gap-2 text-[22px] font-semibold tracking-[0.14em] text-[#ff3b30]">
-              <span className="inline-block size-5 rounded-[5px] bg-[#ff3b30] [clip-path:polygon(0_20%,100%_0,70%_100%,0_70%)]" aria-hidden />
+            <p className="flex items-center gap-2 text-[22px] font-semibold tracking-[0.14em] text-iris">
+              <span className="inline-block size-5 rounded-[5px] bg-iris [clip-path:polygon(0_20%,100%_0,70%_100%,0_70%)]" aria-hidden />
               {CASE_STUDY.company}
             </p>
             <h3 className="mt-6 max-w-[440px] text-[clamp(22px,2.2vw,28px)] leading-[1.5] font-normal tracking-[-0.01em]">{CASE_STUDY.title}</h3>

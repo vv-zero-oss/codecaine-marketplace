@@ -30,7 +30,7 @@ function Pill({ children, tone = "good" }: { children: React.ReactNode; tone?: "
     <span
       className={cn(
         "inline-flex items-center gap-1 rounded-[5px] px-1.5 py-0.5 text-[10px] font-medium",
-        tone === "good" ? "bg-good-soft text-good" : "bg-info/20 text-[#a99cff]",
+        tone === "good" ? "bg-good-soft text-good" : "bg-info/20 text-iris",
       )}
     >
       {children}
@@ -46,11 +46,11 @@ export function ConsoleMock() {
   useCanvasAction("Auto-improve switch", (next) => setAuto(next ?? !auto), { on: auto, group: "Console" })
 
   return (
-    <div className="overflow-hidden rounded-[14px] border border-line bg-[#0d0d0f] text-text shadow-panel">
+    <div className="overflow-hidden rounded-[14px] border border-line bg-panel text-text shadow-panel">
       <div className="flex h-[58px] items-center justify-between border-b border-line px-4 text-[13px]">
         <div className="flex min-w-0 items-center gap-3">
           <PanelLeft className="size-3.5 text-faint" />
-          <span className="size-2.5 rounded-[3px] bg-ember" />
+          <span className="size-2.5 rounded-[3px] bg-iris" />
           <span className="truncate font-medium">Northwind Parcel</span>
           <span className="text-faint">/</span>
           <span className="hidden text-muted sm:inline">Operations</span>

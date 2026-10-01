@@ -25,7 +25,7 @@ const rise = (i: number) => ({
   transition: { delay: 0.15 + i * 0.12, duration: 0.5, ease: [0.23, 1, 0.32, 1] as const },
 })
 
-const FRAME = "w-[min(100%,440px)] rounded-[14px] border border-line-strong bg-[#101012]/90 text-[12px] shadow-panel backdrop-blur-md"
+const FRAME = "w-[min(100%,440px)] rounded-[14px] border border-line-strong bg-panel/90 text-[12px] shadow-panel backdrop-blur-md"
 
 /* ── Build ───────────────────────────────────────────────────────────── */
 
@@ -35,7 +35,7 @@ export function NewAgentVisual() {
     <div className={cn(FRAME, "p-4")}>
       <div className="flex justify-between text-[11px] text-muted"><span>New agent</span><X className="size-3" /></div>
       <motion.div {...rise(0)} className="mt-5 text-center">
-        <p className="text-[22px] font-medium tracking-tight">Ask <Navigation className="inline size-4 fill-ember text-ember" /> Pilot</p>
+        <p className="text-[22px] font-medium tracking-tight">Ask <Navigation className="inline size-4 fill-iris text-iris" /> Pilot</p>
         <p className="mt-1.5 text-muted">What would you like to accomplish?</p>
       </motion.div>
       <motion.div {...rise(1)} className="mt-4 flex flex-wrap justify-center gap-1.5">
@@ -80,9 +80,9 @@ export function AgentChatVisual({ step }: { step: 1 | 2 }) {
 export function SegmentVisual() {
   const typed = useTyped("show me conversations we resolved successfully", 0.04, 0.4)
   return (
-    <div className="w-[min(100%,540px)] rounded-xl border border-line-strong bg-[#101012]/90 px-3.5 py-3.5 text-[13px] shadow-panel">
+    <div className="w-[min(100%,540px)] rounded-xl border border-line-strong bg-panel/90 px-3.5 py-3.5 text-[13px] shadow-panel">
       <div className="flex items-center gap-3">
-        <span className="size-5 rounded-md bg-gradient-to-br from-ember via-[#ff9a3c] to-info" />
+        <span className="size-5 rounded-md bg-gradient-to-br from-iris via-voice-4 to-voice-3" />
         <p className="flex-1 truncate">{typed}<span className="ml-px inline-block h-3.5 w-px bg-text align-middle [animation:caret_1s_steps(1)_infinite]" /></p>
         <span className="flex size-7 items-center justify-center rounded-full bg-text text-onlight"><ArrowUp className="size-3.5" /></span>
       </div>
@@ -104,7 +104,7 @@ export function ThreadsVisual() {
       {rows.map(([q, a, b], i) => (
         <motion.div key={q} {...rise(i)} className="rounded-lg border border-line bg-surface/90 px-3 py-2.5">
           <p><span className="mr-2 font-mono text-[9px] text-faint">USER</span>{q}</p>
-          <p className="mt-1 text-[10px]"><span className="text-ember">{a}</span> <span className="text-faint">›</span> <span className="text-good">{b}</span></p>
+          <p className="mt-1 text-[10px]"><span className="text-iris">{a}</span> <span className="text-faint">›</span> <span className="text-good">{b}</span></p>
         </motion.div>
       ))}
     </div>
@@ -119,7 +119,7 @@ export function TrendVisual() {
   }, [])
   const up = !flip
   return (
-    <div className="w-[min(100%,620px)] rounded-xl border border-line bg-[#0e0e10]/90 p-5 shadow-panel">
+    <div className="w-[min(100%,620px)] rounded-xl border border-line bg-panel/90 p-5 shadow-panel">
       <p className="font-mono text-[9px] tracking-wider text-faint uppercase">{up ? "Frustrated conversations" : "Escalations"} · last 30 days</p>
       <p className="mt-3 text-[11px] text-muted">{up ? "Resolution rate" : "Escalation rate"}</p>
       <p className="text-[44px] leading-none font-medium tracking-tight tabular-nums">{up ? "52%" : "9%"} <span className="text-[11px] font-normal text-good">{up ? "↗ +23 pts since March" : "↘ −4 pts since March"}</span></p>
@@ -135,7 +135,7 @@ export function ObjectiveVisual() {
   const rows = [["Resolution Rate", "52.4%", true], ["Customer Satisfaction", "4.6 / 5", true], ["Abandonment Rate", "6.1%", false], ["Escalation Rate", "9.0%", false]] as const
   const [on, setOn] = useState(0)
   return (
-    <div className="w-[min(100%,640px)] rounded-2xl border border-line bg-[#0e0e10]/90 p-5 shadow-panel sm:p-7">
+    <div className="w-[min(100%,640px)] rounded-2xl border border-line bg-panel/90 p-5 shadow-panel sm:p-7">
       <h4 className="text-[26px] font-medium tracking-tight">Choose an objective</h4>
       <p className="mt-2 text-[13px] text-muted">Pick a metric — Pilot keeps improving it for you.</p>
       <ul className="mt-6 max-w-[320px] space-y-1">
@@ -160,7 +160,7 @@ export function OpportunitiesVisual() {
     ["Adopted", []],
   ] as const
   return (
-    <div className="w-[min(100%,680px)] rounded-2xl border border-line bg-[#0e0e10]/90 p-5 shadow-panel sm:p-7">
+    <div className="w-[min(100%,680px)] rounded-2xl border border-line bg-panel/90 p-5 shadow-panel sm:p-7">
       <div className="flex items-start justify-between"><h4 className="text-[26px] font-medium tracking-tight">Opportunities</h4><span className="rounded-full bg-text px-3 py-1 text-[11px] font-medium text-onlight">Resolution Rate</span></div>
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
         {cols.map(([name, cards], c) => (
@@ -180,7 +180,7 @@ export function OpportunitiesVisual() {
 
 export function ExperimentVisual() {
   return (
-    <div className="w-[min(100%,680px)] rounded-2xl border border-line bg-[#0e0e10]/90 p-5 shadow-panel sm:p-7">
+    <div className="w-[min(100%,680px)] rounded-2xl border border-line bg-panel/90 p-5 shadow-panel sm:p-7">
       <div className="flex items-start justify-between"><h4 className="text-[22px] font-medium tracking-tight">Quick-issue menu before live transfer</h4><span className="hidden rounded bg-good-soft px-1.5 py-0.5 font-mono text-[9px] text-good sm:block">Collecting data</span></div>
       <div className="mt-4 flex gap-8 text-[11px] text-muted">
         <div><p className="font-mono text-[9px] tracking-wider text-faint uppercase">Lift vs control</p><p className="text-[28px] font-medium text-good tabular-nums">+1.2 <span className="text-[11px]">pts</span></p></div>

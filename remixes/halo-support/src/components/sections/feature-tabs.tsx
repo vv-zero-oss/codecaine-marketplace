@@ -57,7 +57,7 @@ export function FeatureTabs({
                     {open ? (
                       <motion.span
                         key={`${step}-${paused}`}
-                        className="absolute -top-px left-0 h-px w-full origin-left bg-ember"
+                        className="absolute -top-px left-0 h-px w-full origin-left bg-iris"
                         initial={{ scaleX: still ? 1 : 0 }}
                         animate={{ scaleX: 1 }}
                         transition={{ duration: still ? 0 : cycleSeconds, ease: "linear" }}
@@ -80,7 +80,7 @@ export function FeatureTabs({
             </ol>
           </div>
 
-          <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-panel border border-line bg-[#0e0e10] p-4 sm:p-8 lg:h-[630px]">
+          <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-panel border border-line bg-panel p-4 sm:p-8 lg:h-[630px]">
             <Glow tone={feature.tone} intensity={0.7} />
             <AnimatePresence mode="wait">
               <motion.div

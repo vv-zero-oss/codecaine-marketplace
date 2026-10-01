@@ -54,6 +54,12 @@ export const HERO = {
   metrics: "Resolution Rate,CSAT,Revenue Recovery",
   body: "Pick the number you answer to. Halo runs small, safe experiments on live conversations, keeps what works and shows you the proof — no dashboards to babysit.",
   cta: "See a demo",
+  hint: "Try it: tap the mic and say something.",
+  prompts: [
+    { ask: "show me refund chats that ended well", answer: "412 conversations resolved in one touch this week. Refund requests under $50 resolve fastest, at 94%." },
+    { ask: "why did escalations climb on Tuesday?", answer: "A carrier delay sent 38% more “where is my order” chats. Two of them needed a human; Halo drafted the fix." },
+    { ask: "ship the quick-issue menu to 100%", answer: "Done. It beat control by +1.2 pts across 2,431 conversations, and it now runs on every chat." },
+  ],
 }
 
 export const LOGOS = [
@@ -89,13 +95,13 @@ export type FeatureGroup = "build" | "observe" | "improve"
 
 export const FEATURES: Record<
   FeatureGroup,
-  { eyebrow: string; title: string; body: string; tone: "amber" | "teal" | "green"; steps: { title: string; body: string }[] }
+  { eyebrow: string; title: string; body: string; tone: "iris" | "teal" | "green"; steps: { title: string; body: string }[] }
 > = {
   build: {
     eyebrow: "Build",
     title: "Go from policy docs to a working agent before your coffee cools.",
     body: "Point Pilot at your help centre, macros and past tickets. It drafts an agent that sounds like your best teammate.",
-    tone: "amber",
+    tone: "iris",
     steps: [
       { title: "Describe the job to Pilot", body: "Say what the agent should own. Pilot reads your knowledge base and drafts the playbook." },
       { title: "Teach it your voice", body: "Pilot picks up tone from your brand guide and your best-rated replies, so every answer sounds like you." },

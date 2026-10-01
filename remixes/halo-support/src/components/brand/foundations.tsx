@@ -24,7 +24,7 @@ export function BrandIdentity() {
       <div>
         <GroupLabel>Logo on dark</GroupLabel>
         <div className="flex h-44 items-center justify-center rounded-card border border-line bg-bg">
-          <div className="rounded-lg p-6 outline-1 outline-dashed outline-ember/50"><Wordmark className="text-[28px]" /></div>
+          <div className="rounded-lg p-6 outline-1 outline-dashed outline-iris/50"><Wordmark className="text-[28px]" /></div>
         </div>
       </div>
       <div>
@@ -44,7 +44,7 @@ export function BrandIdentity() {
           {VOICE.map((line) => (
             <li key={line.do} className="grid gap-2 p-5 sm:grid-cols-2 sm:gap-6">
               <p className="flex gap-2.5"><span className="text-good">✓</span>{line.do}</p>
-              <p className="flex gap-2.5 text-faint"><span className="text-ember">✕</span>{line.dont}</p>
+              <p className="flex gap-2.5 text-faint"><span className="text-iris">✕</span>{line.dont}</p>
             </li>
           ))}
         </ul>
@@ -56,13 +56,14 @@ export function BrandIdentity() {
 /* ── Colour ──────────────────────────────────────────────────────────── */
 
 const COLOUR_GROUPS: { label: string; tokens: string[] }[] = [
-  { label: "Surface", tokens: ["bg", "surface", "raised", "bar"] },
+  { label: "Surface", tokens: ["bg", "surface", "raised", "panel", "bar"] },
   { label: "Text", tokens: ["text", "display", "muted", "faint", "ghost", "onlight"] },
   { label: "Border", tokens: ["line", "line-strong"] },
-  { label: "Accent", tokens: ["ember", "ember-soft"] },
+  { label: "Accent", tokens: ["iris", "iris-soft"] },
   { label: "Status", tokens: ["good", "good-soft", "info", "warn"] },
-  { label: "Atmosphere", tokens: ["glow-amber", "glow-teal", "glow-green", "glow-red"] },
-  { label: "Chart", tokens: ["chart", "chart-amber"] },
+  { label: "Atmosphere", tokens: ["glow-iris", "glow-teal", "glow-green", "glow-violet"] },
+  { label: "Chart", tokens: ["chart", "chart-cyan"] },
+  { label: "Voice glow lobes", tokens: ["voice-1", "voice-2", "voice-3", "voice-4", "voice-5", "voice-6", "voice-7"] },
 ]
 
 function Swatch({ token }: { token: string }) {
@@ -79,7 +80,7 @@ function Swatch({ token }: { token: string }) {
   )
 }
 
-const PAIRS = [["text", "bg", "Body on page"], ["muted", "bg", "Secondary on page"], ["faint", "bg", "Tertiary on page"], ["onlight", "text", "Button label"], ["ember", "bg", "Eyebrow on page"], ["good", "bg", "Positive on page"]]
+const PAIRS = [["text", "bg", "Body on page"], ["muted", "bg", "Secondary on page"], ["faint", "bg", "Tertiary on page"], ["onlight", "text", "Button label"], ["iris", "bg", "Eyebrow on page"], ["good", "bg", "Positive on page"]]
 
 function PairRow({ fg, bg, label }: { fg: string; bg: string; label: string }) {
   const [ref, v] = useComputed<HTMLSpanElement>(["color"])
@@ -123,7 +124,7 @@ const SCALE = [
   { name: "Body large", cls: "text-[18px] leading-relaxed text-muted", sample: "Pick the number you answer to." },
   { name: "Body", cls: "text-[15px] leading-relaxed text-muted", sample: "Halo runs small, safe experiments on live conversations." },
   { name: "UI", cls: "text-[13px]", sample: "Auto-improve this KPI with Pilot" },
-  { name: "Label (mono)", cls: "font-mono text-[11px] tracking-[0.04em] uppercase text-ember", sample: "Experiment 497442" },
+  { name: "Label (mono)", cls: "font-mono text-[11px] tracking-[0.04em] uppercase text-iris", sample: "Experiment 497442" },
 ]
 
 function ScaleRow({ name, cls, sample }: (typeof SCALE)[number]) {
@@ -175,7 +176,7 @@ export function SpaceAndSurface() {
         <ul className="flex flex-wrap items-end gap-4 rounded-card border border-line bg-surface p-5">
           {[1, 2, 3, 4, 6, 8, 12, 16].map((n) => (
             <li key={n} className="flex flex-col items-center gap-2 font-mono text-[11px] text-faint">
-              <span className="block rounded-sm bg-ember/70" style={{ width: n * 4, height: n * 4 }} />{n * 4}
+              <span className="block rounded-sm bg-iris/70" style={{ width: n * 4, height: n * 4 }} />{n * 4}
             </li>
           ))}
         </ul>
@@ -205,7 +206,7 @@ export function SpaceAndSurface() {
       <div>
         <GroupLabel>Borders</GroupLabel>
         <div className="grid gap-4 md:grid-cols-3">
-          {[["line", "border-line", "Hairline between rows and cards"], ["line-strong", "border-line-strong", "Inputs, popovers, raised panels"], ["ember", "border-ember/60", "The one outlined action"]].map(([n, c, note]) => (
+          {[["line", "border-line", "Hairline between rows and cards"], ["line-strong", "border-line-strong", "Inputs, popovers, raised panels"], ["iris", "border-iris/60", "The one outlined action"]].map(([n, c, note]) => (
             <div key={n} className={cn("rounded-card border bg-surface p-5", c)}><p className="font-mono text-[12px]">--color-{n}</p><p className="mt-1 text-xs text-faint">{note}</p></div>
           ))}
         </div>
@@ -213,8 +214,8 @@ export function SpaceAndSurface() {
       <div>
         <GroupLabel>Atmosphere</GroupLabel>
         <div className="grid gap-4 md:grid-cols-3">
-          {(["amber", "teal", "green"] as const).map((t) => (
-            <div key={t} className="relative h-40 overflow-hidden rounded-card border border-line bg-[#0e0e10]"><Glow tone={t} intensity={0.8} /><p className="relative p-4 font-mono text-[12px]">Glow tone="{t}"</p></div>
+          {(["iris", "teal", "green"] as const).map((t) => (
+            <div key={t} className="relative h-40 overflow-hidden rounded-card border border-line bg-panel"><Glow tone={t} intensity={0.8} /><p className="relative p-4 font-mono text-[12px]">Glow tone="{t}"</p></div>
           ))}
         </div>
       </div>
@@ -246,7 +247,7 @@ export function Motion() {
           <li key={e.name} className="grid gap-3 p-5 md:grid-cols-[220px_1fr] md:items-center">
             <div><p className="font-mono text-[12px]">--{e.name}</p><p className="mt-1 text-xs text-faint">{e.note}</p></div>
             <div className="relative h-8 rounded-full bg-white/5">
-              <motion.span key={run} className="absolute top-1 left-1 size-6 rounded-full bg-ember" initial={{ x: 0 }} animate={{ x: "var(--travel)" }} style={{ "--travel": "min(calc(100cqw - 32px), 560px)" } as React.CSSProperties} transition={{ duration: 1, ease: e.curve as unknown as [number, number, number, number] }} />
+              <motion.span key={run} className="absolute top-1 left-1 size-6 rounded-full bg-iris" initial={{ x: 0 }} animate={{ x: "var(--travel)" }} style={{ "--travel": "min(calc(100cqw - 32px), 560px)" } as React.CSSProperties} transition={{ duration: 1, ease: e.curve as unknown as [number, number, number, number] }} />
             </div>
           </li>
         ))}
@@ -276,7 +277,7 @@ export function Iconography() {
         <GroupLabel>Photography — Pexels</GroupLabel>
         <div className="relative h-60 overflow-hidden rounded-card border border-line">
           <img src={photo} alt="A smiling courier handing a paper bag to a customer" className="absolute inset-0 size-full object-cover object-[50%_58%]" loading="lazy" />
-          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-glow-red),transparent_60%)]" />
+          <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-glow-violet),transparent_60%)]" />
         </div>
         <p className="mt-3 text-xs leading-relaxed text-faint">Real people in real moments, never grey boxes. One colour wash rises from the bottom edge; overlay data in mono caps. Credit: Mizuno K on Pexels.</p>
       </div>

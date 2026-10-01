@@ -47,7 +47,7 @@ export function LanguageMap({ lon, lat, className }: { lon: number; lat: number;
           if (WORLD_GRID[y][x] !== "1") continue
           const near = Math.hypot((x - hx) / 1.6, y - hy) < 2.6 && hash(x, y) > 0.35
           const h = hash(x, y)
-          ctx.fillStyle = near ? "#ff5a24" : `rgba(236,236,230,${0.28 + h * 0.6})`
+          ctx.fillStyle = near ? "#8f85ff" : `rgba(236,236,230,${0.28 + h * 0.6})`
           ctx.fillText(CHARS[Math.floor(h * CHARS.length)], x * cw + cw / 2, y * ch + ch / 2)
         }
       }

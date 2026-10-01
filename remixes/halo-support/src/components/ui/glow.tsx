@@ -1,16 +1,16 @@
 import { cn } from "@/lib/utils"
 
 const TONES = {
-  amber: "var(--color-glow-amber)",
+  iris: "var(--color-glow-iris)",
   teal: "var(--color-glow-teal)",
   green: "var(--color-glow-green)",
-  red: "var(--color-glow-red)",
+  violet: "var(--color-glow-violet)",
 } as const
 
 /** The light behind a block: a vertical beam and a low wash rising from the
  *  bottom edge. Purely atmosphere — it sits behind the content. */
 export function Glow({
-  tone = "amber",
+  tone = "iris",
   intensity = 0.55,
   wide = false,
   className,
@@ -36,7 +36,7 @@ export function Glow({
           className="absolute inset-0"
           style={{
             opacity: intensity * 0.55,
-            background: "radial-gradient(60% 55% at 0% 100%, var(--color-glow-red) 0%, transparent 70%), radial-gradient(45% 40% at 100% 100%, var(--color-glow-amber) 0%, transparent 70%)",
+            background: "radial-gradient(60% 55% at 0% 100%, var(--color-glow-violet) 0%, transparent 70%), radial-gradient(45% 40% at 100% 100%, var(--color-glow-iris) 0%, transparent 70%)",
           }}
         />
       ) : null}

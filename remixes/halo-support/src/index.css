@@ -3,40 +3,49 @@
 /* Every colour, shadow, radius, font and motion value on the page is a token
    here. Components read them through Tailwind (`bg-surface`, `text-muted`,
    `shadow-card`, `ease-out-expo`); the style guide at /brand reads them back. */
-@theme {
+@theme static {
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-display: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  /* Surface */
-  --color-bg: #0a0a0b;
-  --color-surface: #131314;
-  --color-raised: #1a1a1c;
-  --color-bar: #050505;
+  /* Surface: a blue-black ink, a step lighter for glass */
+  --color-bg: #080a10;
+  --color-surface: #10121a;
+  --color-raised: #171a24;
+  --color-panel: #0b0d14;
+  --color-bar: #04050a;
   /* Text */
-  --color-text: #f4f4f2;
-  --color-display: #dcdcd8;
-  --color-muted: #a3a3a0;
-  --color-faint: #6c6c6a;
-  --color-ghost: #46464a;
+  --color-text: #f2f4f8;
+  --color-display: #d7dbe4;
+  --color-muted: #9ea5b3;
+  --color-faint: #646b7a;
+  --color-ghost: #444a58;
   /* Border */
   --color-line: rgb(255 255 255 / 0.07);
   --color-line-strong: rgb(255 255 255 / 0.14);
-  /* Accent + status */
-  --color-ember: #ff5a24;
-  --color-ember-soft: rgb(255 90 36 / 0.14);
-  --color-good: #2fbf71;
-  --color-good-soft: rgb(47 191 113 / 0.14);
-  --color-info: #6c5ce7;
-  --color-warn: #e0a43a;
-  --color-onlight: #0a0a0b;
+  /* Accent (iris) + status */
+  --color-iris: #8f85ff;
+  --color-iris-soft: rgb(143 133 255 / 0.16);
+  --color-good: #3ddc97;
+  --color-good-soft: rgb(61 220 151 / 0.14);
+  --color-info: #5aa9ff;
+  --color-warn: #d8c75a;
+  --color-onlight: #080a10;
   /* Atmosphere: the light behind each block */
-  --color-glow-amber: #b4501a;
+  --color-glow-iris: #3d33c9;
   --color-glow-teal: #1d6f78;
   --color-glow-green: #1f7a45;
-  --color-glow-red: #ff2e1a;
-  --color-chart: #2c9a68;
-  --color-chart-amber: #c9a43a;
+  --color-glow-violet: #5b43ff;
+  --color-chart: #34c28a;
+  --color-chart-cyan: #4cc9f0;
+  /* The voice glow's seven lobes, left to right across the beam */
+  --color-voice-1: #5b43ff;
+  --color-voice-2: #8f85ff;
+  --color-voice-3: #4cc9f0;
+  --color-voice-4: #7df9d0;
+  --color-voice-5: #c58bff;
+  --color-voice-6: #4361ee;
+  --color-voice-7: #9ae6ff;
 
   /* shadcn's semantic names, mapped onto the palette above, so components added
    with the CLI pick up Halo without being edited. */
@@ -56,7 +65,7 @@
   --color-destructive: #ef4444;
   --color-border: var(--color-line);
   --color-input: var(--color-line-strong);
-  --color-ring: var(--color-ember);
+  --color-ring: var(--color-iris);
 
   --radius-pill: 9999px;
   --radius-card: 14px;
@@ -120,7 +129,7 @@ body {
 
 section[id] { scroll-margin-top: 5rem; }
 
-::selection { background: var(--color-ember); color: var(--color-onlight); }
+::selection { background: var(--color-iris); color: var(--color-onlight); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }

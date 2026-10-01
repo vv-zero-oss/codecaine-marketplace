@@ -2,6 +2,8 @@ import { ArrowRight, Loader2, Plus } from "lucide-react"
 import { useState } from "react"
 
 import { ComponentSpecimen, StateLabel } from "@/components/brand/specimen"
+import { WordReveal } from "@/components/motion/word-reveal"
+import { VoiceComposer } from "@/components/sections/voice-composer"
 import { CountUp } from "@/components/motion/count-up"
 import { LineChart } from "@/components/motion/line-chart"
 import { LogoMarquee } from "@/components/motion/logo-marquee"
@@ -24,7 +26,7 @@ export function ComponentLibrary() {
   const [words, setWords] = useState(0)
   return (
     <div className="space-y-6">
-      <ComponentSpecimen name="Button" source="components/ui/button.tsx" description="A pill. White is the one primary action on a screen; outline-ember is the quiet secondary." code={`<Button variant="pill" size="lg">See a demo</Button>\n<ButtonLink variant="accent" href="#cta">Read the story</ButtonLink>`}>
+      <ComponentSpecimen name="Button" source="components/ui/button.tsx" description="A pill. White is the one primary action on a screen; outline-iris is the quiet secondary." code={`<Button variant="pill" size="lg">See a demo</Button>\n<ButtonLink variant="accent" href="#cta">Read the story</ButtonLink>`}>
         <div className="flex flex-wrap gap-6">
           {(["pill", "ghost", "outline", "accent"] as const).map((v) => <StateLabel key={v} label={v}><Button variant={v}>See a demo</Button></StateLabel>)}
           <StateLabel label="sizes"><div className="flex items-center gap-2"><Button size="sm">sm</Button><Button>default</Button><Button size="lg">lg</Button><Button size="icon" aria-label="Add"><Plus /></Button></div></StateLabel>
@@ -38,7 +40,7 @@ export function ComponentLibrary() {
         <div className="grid max-w-md gap-4">
           <StateLabel label="default"><Input placeholder="Work email" className="h-11 border-line bg-white/5" /></StateLabel>
           <StateLabel label="filled"><Input defaultValue="maren@parcelo.example" className="h-11 border-line bg-white/5" /></StateLabel>
-          <StateLabel label="error"><Input aria-invalid defaultValue="maren@" className="h-11 border-ember bg-white/5" /></StateLabel>
+          <StateLabel label="error"><Input aria-invalid defaultValue="maren@" className="h-11 border-iris bg-white/5" /></StateLabel>
           <StateLabel label="disabled"><Input disabled placeholder="Work email" className="h-11 bg-white/5" /></StateLabel>
         </div>
       </ComponentSpecimen>
@@ -65,6 +67,10 @@ export function ComponentLibrary() {
         <div className="flex flex-wrap items-center gap-10"><p className="text-[28px] font-medium tracking-tight">Improve <Rotator words={["Resolution Rate", "CSAT", "Revenue Recovery"]} index={words} /></p><CountUp to={99} className="scanline text-[72px] leading-none" /></div>
       </ComponentSpecimen>
 
+      <ComponentSpecimen name="VoiceComposer" source="components/sections/voice-composer.tsx" description="The hero's prompt box, wrapped in Voice Glow. It types, thinks (the glow gathers into a travelling beam) and answers; the mic hands the glow to the real microphone. Props: prompts, thinkSeconds, holdSeconds, typeSpeed." code={`<VoiceComposer prompts={[{ ask: "…", answer: "…" }]} thinkSeconds={1.9} />`} previewClassName="py-12"><VoiceComposer prompts={[{ ask: "which agent saved the most time?", answer: "Pickup & drop-off: 312 hours this month, mostly by resolving address changes before dispatch." }]} /></ComponentSpecimen>
+
+      <ComponentSpecimen name="WordReveal" source="components/motion/word-reveal.tsx" description="A sentence arriving word by word out of a blur. Props: text, stagger, duration, blur." code={`<WordReveal text="Done. It now runs on every chat." stagger={0.045} />`}><p key={words} className="text-[18px] text-muted"><WordReveal text="Done. It beat control by +1.2 pts and now runs on every chat." /></p><Button variant="outline" size="sm" className="mt-4" onClick={() => setWords((w) => w + 1)}>Replay</Button></ComponentSpecimen>
+
       <ComponentSpecimen name="LineChart" source="components/motion/line-chart.tsx" description="A self-drawing line. Props: trend, seed, color, area, draw, duration." code={`<LineChart trend="up" seed={5} area />`} previewClassName="h-64">
         <div className="h-full"><LineChart trend="dip-rise" seed={4} area key={words} /></div>
       </ComponentSpecimen>
@@ -75,7 +81,7 @@ export function ComponentLibrary() {
 
       <ComponentSpecimen name="CliCard" source="components/sections/cli-card.tsx" description="The hero's terminal card: types a command, holds, clears." code={`<CliCard title="Introducing Halo CLI" length="1:08" />`}><CliCard /></ComponentSpecimen>
 
-      <ComponentSpecimen name="Glow" source="components/ui/glow.tsx" description="The light behind a block. Props: tone, intensity, wide." code={`<Glow tone="amber" intensity={0.7} wide />`}><div className="relative h-48 overflow-hidden rounded-card border border-line"><Glow tone="amber" intensity={0.8} wide /></div></ComponentSpecimen>
+      <ComponentSpecimen name="Glow" source="components/ui/glow.tsx" description="The light behind a block. Props: tone, intensity, wide." code={`<Glow tone="iris" intensity={0.7} wide />`}><div className="relative h-48 overflow-hidden rounded-card border border-line"><Glow tone="iris" intensity={0.8} wide /></div></ComponentSpecimen>
 
       <ComponentSpecimen name="Walkthrough screens" source="components/visuals/visuals.tsx" description="The screens inside the three walkthroughs: agent chat, objective picker, opportunities, experiment, trend, threads." code={`<AgentChatVisual step={1} />\n<ObjectiveVisual />`} previewClassName="grid gap-8 lg:grid-cols-2"><AgentChatVisual step={1} /><ObjectiveVisual /></ComponentSpecimen>
 

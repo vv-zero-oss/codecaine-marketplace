@@ -10,7 +10,7 @@ export function HaloMark({ className }: { className?: string }) {
         cx="16"
         cy="16"
         r="10"
-        stroke="var(--color-ember)"
+        stroke="var(--color-iris)"
         strokeWidth="4"
         strokeLinecap="round"
         strokeDasharray="17 80"

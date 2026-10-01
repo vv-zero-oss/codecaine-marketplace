@@ -23,7 +23,7 @@ function MenuPanel({ group }: { group: (typeof NAV)[number] }) {
             href="#top"
             className="group/item flex gap-3 rounded-lg p-3 transition-colors hover:bg-white/6"
           >
-            <IconByName name={item.icon} className="mt-0.5 size-4 shrink-0 text-muted transition-colors group-hover/item:text-ember" />
+            <IconByName name={item.icon} className="mt-0.5 size-4 shrink-0 text-muted transition-colors group-hover/item:text-iris" />
             <span className="flex flex-col gap-0.5">
               <span className="text-[13px] font-medium text-text">{item.title}</span>
               {"body" in item ? <span className="text-xs leading-snug text-faint">{item.body}</span> : null}
