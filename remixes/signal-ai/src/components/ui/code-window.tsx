@@ -39,7 +39,7 @@ export function CodeWindow({ code, className }: { code: string; className?: stri
         <button
           type="button"
           onClick={copy}
-          className="ml-auto inline-flex min-h-8 items-center gap-1.5 px-2 text-[11px] text-ink-2 transition-[color,transform] hover:text-ink active:scale-95"
+          className="ml-auto inline-flex min-h-11 items-center sm:min-h-8 gap-1.5 px-2 text-[11px] text-ink-2 transition-[color,transform] hover:text-ink active:scale-95"
         >
           {copied ? <Check className="size-3 text-good" /> : <Copy className="size-3" />}
           {copied ? "Copied" : "Copy"}

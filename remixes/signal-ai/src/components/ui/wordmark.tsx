@@ -18,7 +18,7 @@ export function Wordmark({ href, className }: { href?: string; className?: strin
       <span className="text-[17px] font-medium tracking-[0.04em] uppercase">Vantage</span>
     </>
   )
-  const shared = cn("flex items-center gap-2 text-ink", className)
+  const shared = cn("flex items-center gap-2 text-ink", href && "min-h-11", className)
   if (href) {
     return (
       <a href={href} className={shared} aria-label="Vantage home">

@@ -3,6 +3,7 @@ import { Moon, Sun } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { Wordmark } from "@/components/ui/wordmark"
 import { Link } from "@/lib/router"
+import { cn } from "@/lib/utils"
 import { useTheme } from "@/lib/theme"
 
 const COLUMNS: { title: string; links: string[] }[][] = [
@@ -39,10 +40,11 @@ export function ThemeToggle() {
   )
 }
 
-export function SiteFooter() {
+/** `wide` matches the style guide's wider column. */
+export function SiteFooter({ wide = false }: { wide?: boolean }) {
   return (
     <footer className="border-t border-line">
-      <Container className="grid gap-10 py-12 lg:grid-cols-[1fr_2.6fr]">
+      <Container className={cn("grid gap-10 py-12 lg:grid-cols-[1fr_2.6fr]", wide && "max-w-6xl")}>
         <div className="flex flex-row items-start justify-between gap-6 lg:flex-col lg:justify-start">
           <div>
             <Wordmark />
@@ -76,7 +78,7 @@ export function SiteFooter() {
           ))}
         </div>
       </Container>
-      <Container className="pb-8 text-[10px] text-ink-3">
+      <Container className={cn("pb-8 text-[10px] text-ink-3", wide && "max-w-6xl")}>
         Photography by Pexels contributors.
       </Container>
     </footer>

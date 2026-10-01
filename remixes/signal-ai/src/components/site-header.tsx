@@ -50,8 +50,10 @@ function ProductsMenu() {
           </li>
         ))}
       </ul>
-      <div className="h-[300px] overflow-hidden bg-surface-2">
-        <ProductPreview key={active} product={active} />
+      <div className="relative min-h-[300px] overflow-hidden bg-surface-2">
+        <div className="absolute inset-0">
+          <ProductPreview key={active} product={active} />
+        </div>
       </div>
     </div>
   )
@@ -80,7 +82,7 @@ function MobileMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <button aria-label="Open menu" className="inline-flex size-11 items-center justify-center text-ink transition-colors hover:bg-surface md:hidden">
+        <button aria-label="Open menu" className="inline-flex size-11 items-center justify-center text-ink transition-colors hover:bg-surface lg:hidden">
           <Menu className="size-5" />
         </button>
       </SheetTrigger>
@@ -136,9 +138,9 @@ export function SiteHeader() {
         scrolled ? "border-line bg-paper/80 backdrop-blur-xl" : "border-transparent bg-transparent",
       )}
     >
-      <Container className="flex h-[50px] items-center gap-6">
+      <Container className="flex h-[50px] items-center gap-3 sm:gap-6">
         <Wordmark href="#top" />
-        <NavigationMenu value={menu} onValueChange={setMenu} className="hidden md:flex" delayDuration={80}>
+        <NavigationMenu value={menu} onValueChange={setMenu} className="hidden lg:flex" delayDuration={80}>
           <NavigationMenuList>
             <NavigationMenuItem value="products">
               <NavigationMenuTrigger>Products</NavigationMenuTrigger>
@@ -166,17 +168,17 @@ export function SiteHeader() {
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
-        <div className="ml-auto flex items-center gap-2">
-          <ButtonLink href="#start" variant="outline" className="hidden sm:inline-flex">
+        <div className="ml-auto flex items-center gap-1 sm:gap-2">
+          <ButtonLink href="#start" variant="outline" className="hidden md:inline-flex">
             Contact Sales
           </ButtonLink>
           <div className="inline-flex items-stretch overflow-hidden bg-ink shadow-button">
-            <a href="#start" className="flex h-9 items-center whitespace-nowrap pr-3 pl-4 text-[11px] font-medium tracking-[0.06em] text-paper uppercase transition-colors hover:bg-paper/10 active:bg-paper/15">
+            <a href="#start" className="flex h-11 items-center whitespace-nowrap pr-3 pl-4 sm:h-9 text-[11px] font-medium tracking-[0.06em] text-paper uppercase transition-colors hover:bg-paper/10 active:bg-paper/15">
               Try for free
             </a>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button aria-label="More ways to try" className="flex w-9 items-center justify-center border-l border-paper/20 text-paper transition-colors hover:bg-paper/10 data-[state=open]:bg-paper/10">
+                <button aria-label="More ways to try" className="flex w-11 items-center justify-center border-l sm:w-9 border-paper/20 text-paper transition-colors hover:bg-paper/10 data-[state=open]:bg-paper/10">
                   <ChevronDown className="size-3.5" />
                 </button>
               </DropdownMenuTrigger>

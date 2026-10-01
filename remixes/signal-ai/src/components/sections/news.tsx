@@ -17,7 +17,7 @@ export function News() {
       <Container>
         <div className="flex items-baseline justify-between">
           <h2 className="font-serif text-[clamp(2rem,4vw,2.6rem)] leading-none font-normal tracking-[-0.01em]">Latest news</h2>
-          <a href="#news" className="inline-flex items-center gap-1 text-[12px] text-ink-3 transition-colors hover:text-ink">
+          <a href="#news" className="inline-flex min-h-11 items-center gap-1 text-[12px] text-ink-3 transition-colors hover:text-ink">
             All posts <ArrowRight className="size-3" />
           </a>
         </div>

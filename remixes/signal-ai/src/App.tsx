@@ -29,7 +29,7 @@ export default function App() {
     return (
       <div className="bg-paper text-ink" data-canvas-ignore>
         <BrandPage />
-        <SiteFooter />
+        <SiteFooter wide />
       </div>
     )
   }
