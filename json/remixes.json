@@ -1311,6 +1311,103 @@
     },
     {
       "type": "remix",
+      "id": "halo-support",
+      "name": "Halo Support",
+      "version": "1.2.0",
+      "description": "A dark, iris-lit landing page for an AI support platform whose agents improve their own metrics — scanline display type, a voice-reactive prompt box that types, thinks and answers, auto-advancing product walkthroughs, a dotted language map and a customer story, authored as named components the editor can read.",
+      "designedFor": [
+        "Launching an AI or agent product that sells on a measurable outcome",
+        "A dark, product-led marketing site with live-looking dashboard mockups",
+        "Designers who want to restyle atmosphere, type and motion from tokens",
+        "Trying the editor's motion and action channels on a motion-heavy page"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Linnea Castellane"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "support",
+        "agents",
+        "saas",
+        "landing",
+        "dark",
+        "dashboard",
+        "scanline",
+        "framer-motion",
+        "lenis",
+        "tailwind",
+        "voice"
+      ],
+      "categories": [
+        "Marketing",
+        "AI"
+      ],
+      "created": "2026-10-01",
+      "updated": "2026-10-01",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3330
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/halo-support",
+      "thumbnailUrl": "remixes/halo-support/preview.png",
+      "iconUrl": "remixes/halo-support/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/halo-support/previews/desktop.jpg",
+        "mobile": "remixes/halo-support/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/halo-support/previews/pages/home.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/halo-support-1.2.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "bad270f2bdf15008a2d9eaf10f7053445f77f830feffaee0fd76e55b94d6ea53",
+        "size": 774144,
+        "files": 71
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/halo-support"
+      },
+      "demoUrl": "demos/halo-support/"
+    },
+    {
+      "type": "remix",
       "id": "kerfuffle-studio",
       "name": "Kerfuffle Studio",
       "version": "1.2.0",
