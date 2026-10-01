@@ -50,8 +50,6 @@ export const NAV = [
 
 export const HERO = {
   title: "Your metrics deserve better than a Monday meeting",
-  lead: "AI support agents that quietly improve",
-  metrics: "Resolution Rate,CSAT,Revenue Recovery",
   body: "Pick the number you answer to. Halo runs small, safe experiments on live conversations, keeps what works and shows you the proof — no dashboards to babysit.",
   cta: "See a demo",
   hint: "Try it: tap the mic and say something.",

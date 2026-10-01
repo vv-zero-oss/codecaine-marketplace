@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "halo-support",
   "name": "Halo Support",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A dark, iris-lit landing page for an AI support platform whose agents improve their own metrics \u2014 scanline display type, a voice-reactive prompt box that types, thinks and answers, auto-advancing product walkthroughs, a dotted language map and a customer story, authored as named components the editor can read.",
   "designedFor": [
     "Launching an AI or agent product that sells on a measurable outcome",

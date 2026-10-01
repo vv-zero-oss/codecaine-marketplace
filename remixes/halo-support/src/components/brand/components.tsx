@@ -1,3 +1,4 @@
+import { BorderBeam } from "border-beam"
 import { ArrowRight, Loader2, Plus } from "lucide-react"
 import { useState } from "react"
 
@@ -68,6 +69,12 @@ export function ComponentLibrary() {
       </ComponentSpecimen>
 
       <ComponentSpecimen name="VoiceComposer" source="components/sections/voice-composer.tsx" description="The hero's prompt box, wrapped in Voice Glow. It types, thinks (the glow gathers into a travelling beam) and answers; the mic hands the glow to the real microphone. Props: prompts, thinkSeconds, holdSeconds, typeSpeed." code={`<VoiceComposer prompts={[{ ask: "…", answer: "…" }]} thinkSeconds={1.9} />`} previewClassName="py-12"><VoiceComposer prompts={[{ ask: "which agent saved the most time?", answer: "Pickup & drop-off: 312 hours this month, mostly by resolving address changes before dispatch." }]} /></ComponentSpecimen>
+
+      <ComponentSpecimen name="BorderBeam" source="border-beam (Libraries.dev)" description="A glow that rides around a panel's border. Used on the console window, the walkthrough screens and the customer story, and nowhere else: it marks what is live. Give the wrapper the child's radius." code={`<BorderBeam size="md" colorVariant="ocean" borderRadius={18} glowSize={1.5} duration={3.2}>\n  <Card />\n</BorderBeam>`} previewClassName="py-10">
+        <BorderBeam size="md" colorVariant="ocean" borderRadius={18} glowSize={1.5} duration={3.2} className="mx-auto max-w-md">
+          <div className="rounded-[18px] border border-line bg-surface p-6"><p className="text-[18px] font-medium tracking-tight">Quick-issue menu</p><p className="mt-2 text-sm text-muted">+1.2 pts over control, 2,431 conversations.</p></div>
+        </BorderBeam>
+      </ComponentSpecimen>
 
       <ComponentSpecimen name="WordReveal" source="components/motion/word-reveal.tsx" description="A sentence arriving word by word out of a blur. Props: text, stagger, duration, blur." code={`<WordReveal text="Done. It now runs on every chat." stagger={0.045} />`}><p key={words} className="text-[18px] text-muted"><WordReveal text="Done. It beat control by +1.2 pts and now runs on every chat." /></p><Button variant="outline" size="sm" className="mt-4" onClick={() => setWords((w) => w + 1)}>Replay</Button></ComponentSpecimen>
 

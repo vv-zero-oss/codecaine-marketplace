@@ -1,3 +1,4 @@
+import { BorderBeam } from "border-beam"
 import { AnimatePresence, motion } from "motion/react"
 import { useState } from "react"
 import { useCanvasAction } from "@canvas/react"
@@ -80,7 +81,8 @@ export function FeatureTabs({
             </ol>
           </div>
 
-          <div className="relative flex min-h-[420px] items-center justify-center overflow-hidden rounded-panel border border-line bg-panel p-4 sm:p-8 lg:h-[630px]">
+          <BorderBeam size="md" glowSize={1.5} duration={3.2} colorVariant="ocean" borderRadius={18} strength={1} brightness={1.6} active={!still} className="min-w-0">
+          <div className="relative flex h-full min-h-[420px] items-center justify-center overflow-hidden rounded-panel border border-line bg-panel p-4 sm:p-8 lg:h-[630px]">
             <Glow tone={feature.tone} intensity={0.7} />
             <AnimatePresence mode="wait">
               <motion.div
@@ -95,6 +97,7 @@ export function FeatureTabs({
               </motion.div>
             </AnimatePresence>
           </div>
+          </BorderBeam>
         </div>
       </Container>
     </section>

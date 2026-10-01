@@ -2,9 +2,12 @@ import {
   Bell, BarChart3, ChevronsUpDown, CircleCheck, CreditCard, Home, Inbox, LineChart as TrendIcon, PanelLeft,
   Sparkles, SquareTerminal, Ticket, TrendingUp, ArrowUp, Navigation, Plus,
 } from "lucide-react"
+import { BorderBeam } from "border-beam"
 import { motion, useScroll, useTransform } from "motion/react"
 import { useRef, useState } from "react"
 import { useCanvasAction } from "@canvas/react"
+
+import { useStill } from "@/components/motion"
 
 import { LineChart } from "@/components/motion/line-chart"
 import { HaloMark } from "@/components/ui/wordmark"
@@ -169,6 +172,7 @@ export function ConsoleMock() {
 /** The headline and the window rising into view as the page scrolls, fading
  *  at its bottom edge into the next block. */
 export function ConsoleShowcase() {
+  const still = useStill()
   const ref = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "start 35%"] })
   const scale = useTransform(scrollYProgress, [0, 1], [0.94, 1])
@@ -181,7 +185,9 @@ export function ConsoleShowcase() {
       <Container className="relative">
         <h2 className="max-w-[700px] text-[clamp(22px,2.4vw,32px)] leading-[1.15] font-medium tracking-[-0.025em]">{SHOWCASE.title}</h2>
         <motion.div style={{ scale, y: lift, opacity }} className="mt-8 origin-top [mask-image:linear-gradient(to_bottom,#000_72%,transparent)]">
-          <ConsoleMock />
+          <BorderBeam size="md" glowSize={1.5} duration={3.2} colorVariant="ocean" borderRadius={14} strength={1} brightness={1.6} active={!still}>
+            <ConsoleMock />
+          </BorderBeam>
         </motion.div>
       </Container>
     </section>

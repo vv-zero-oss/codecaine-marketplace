@@ -16,7 +16,7 @@ Announcement bar, header (shadcn navigation menu, a `Sheet` on small screens),
 hero (a centred, scrambling scanline headline, a rotating metric word, and a
 prompt box wrapped in Voice Glow that types a question, thinks while the glow
 gathers into a travelling beam, then answers word by word; the mic button
-hands the glow to the real microphone; plus a logo marquee), a console window you can click,
+hands the glow to the real microphone; plus a logo marquee), a console window you can click (wrapped in a border beam, as are the walkthrough screens and the customer story),
 an industries carousel, three auto-advancing walkthroughs (Build, Observe,
 Improve), a dotted language map, a customer story, the call to action and
 the footer. `/brand` is the style guide, rendered from the real tokens.
@@ -44,7 +44,7 @@ the page is being designed.
 ## Credits
 
 Photography from [Pexels](https://www.pexels.com) (Mizuno K; the portrait is
-by Rupinder Singh). The voice glow is [Voice](https://libraries.dev/voice.html) from Libraries.dev (`voice-glow`). Fonts are Google Fonts, linked from `index.html`. Social
+by Rupinder Singh). The border glow is [Beam](https://libraries.dev/beam.html) (`border-beam`); the voice glow is [Voice](https://libraries.dev/voice.html) from Libraries.dev (`voice-glow`). Fonts are Google Fonts, linked from `index.html`. Social
 marks come from [SVGL](https://svgl.app). Customer names on the page are
 fictional. The world map is Natural Earth land data (public domain), rasterised
 by `scripts/world-grid.mjs`.

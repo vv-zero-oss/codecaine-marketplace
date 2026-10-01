@@ -1,5 +1,7 @@
+import { BorderBeam } from "border-beam"
 import { ChevronRight } from "lucide-react"
 
+import { useStill } from "@/components/motion"
 import { ScrambleText } from "@/components/motion/scramble-text"
 import { ButtonLink } from "@/components/ui/button"
 import { Container } from "@/components/ui/container"
@@ -9,6 +11,7 @@ import photo from "@/assets/pexels-13443810.jpg"
 import portrait from "@/assets/pexels-11091115.jpg"
 
 export function CaseStudy() {
+  const still = useStill()
   return (
     <section id="customers" className="relative py-16 sm:py-24">
       <Container>
@@ -17,7 +20,8 @@ export function CaseStudy() {
           <ScrambleText text={CASE_STUDY.heading} duration={1} scanlines={false} />
         </h2>
 
-        <article className="mt-8 grid gap-6 rounded-[18px] border border-line bg-surface p-3 shadow-card sm:mt-12 sm:p-5 lg:grid-cols-[minmax(0,710px)_1fr] lg:gap-[52px]">
+        <BorderBeam size="md" glowSize={1.5} duration={3.2} colorVariant="ocean" borderRadius={18} strength={1} brightness={1.6} active={!still} className="mt-8 sm:mt-12">
+        <article className="grid gap-6 rounded-[18px] border border-line bg-surface p-3 shadow-card sm:p-5 lg:grid-cols-[minmax(0,710px)_1fr] lg:gap-[52px]">
           <div className="relative min-h-[420px] overflow-hidden rounded-xl sm:min-h-[560px]">
             <img src={photo} alt={CASE_STUDY.photoAlt} className="absolute inset-0 size-full object-cover object-[50%_58%]" loading="lazy" />
             <div aria-hidden className="absolute inset-0 bg-[linear-gradient(to_top,var(--color-glow-violet)_0%,rgb(106_76_255/0.55)_26%,transparent_58%)]" />
@@ -53,6 +57,7 @@ export function CaseStudy() {
             <p className="mt-auto pt-8 text-[11px] leading-5 text-faint">{CASE_STUDY.footnote}</p>
           </div>
         </article>
+        </BorderBeam>
       </Container>
     </section>
   )
