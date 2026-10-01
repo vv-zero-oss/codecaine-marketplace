@@ -32,7 +32,7 @@ export function News() {
               transition={{ duration: 0.55, delay: i * 0.06, ease: [0.22, 1, 0.36, 1] }}
               className="group block"
             >
-              <div className="grid aspect-[1.9] place-items-center overflow-hidden rounded-[6px] shadow-card" style={{ backgroundImage: p.bg, color: p.ink }}>
+              <div className="grid aspect-[1.9] place-items-center overflow-hidden shadow-card" style={{ backgroundImage: p.bg, color: p.ink }}>
                 <span className="px-3 text-center font-serif text-[clamp(1.3rem,2.4vw,1.8rem)] leading-none transition-transform duration-500 ease-out group-hover:scale-[1.04]">
                   {p.cover}
                 </span>

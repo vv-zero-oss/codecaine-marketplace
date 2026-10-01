@@ -39,7 +39,7 @@ export function BrandPage() {
               <ul className="sticky top-20 space-y-0.5 text-[13px]">
                 {CHAPTERS.map((c) => (
                   <li key={c.id}>
-                    <a href={`#${c.id}`} className="block rounded-lg px-3 py-1.5 text-ink-2 transition-colors hover:bg-surface hover:text-ink">{c.title}</a>
+                    <a href={`#${c.id}`} className="block px-3 py-1.5 text-ink-2 transition-colors hover:bg-surface hover:text-ink">{c.title}</a>
                   </li>
                 ))}
               </ul>

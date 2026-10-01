@@ -1,7 +1,6 @@
 import { ArrowRight } from "lucide-react"
 
 import { PixelEdge } from "@/components/motion/pixel-edge"
-import { ActivityCard, ActivityGroup, ActivityRow } from "@/components/ui/activity-card"
 import { WordRotator } from "@/components/motion/word-rotator"
 import { CountUp } from "@/components/motion/count-up"
 import { VoiceOrb } from "@/components/motion/voice-orb"
@@ -10,6 +9,10 @@ import { BotPreview } from "@/components/previews/bot-preview"
 import { AnnouncementPill } from "@/components/sections/hero"
 import { Button } from "@/components/ui/button"
 import { CodeWindow } from "@/components/ui/code-window"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { ArtTile } from "@/components/ui/art-tile"
+import { TestimonialCard } from "@/components/ui/testimonial-card"
+import { Gauge } from "lucide-react"
 import { PlanCard } from "@/components/ui/plan-card"
 import { ProductCard } from "@/components/ui/product-card"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
@@ -113,17 +116,33 @@ export function ComponentLibrary() {
         </div>
       </ComponentSpecimen>
       <ComponentSpecimen
-        name="ActivityCard"
-        source="components/ui/activity-card.tsx"
-        description="The white card on the sky field: dated groups of rows with a chip, avatar, badge and action, then three counted figures."
-        code={`<ActivityCard title="Built by teams who ship." stats={[…]}>\n  <ActivityGroup label="Today" date="Sep 30"><ActivityRow … /></ActivityGroup>\n</ActivityCard>`}
-        previewClassName="grid place-items-center bg-sky"
+        name="ArtTile"
+        source="components/ui/art-tile.tsx"
+        description="A framed sky tile with a pixel mosaic and one large line icon, for numbered lists."
+        code={`<ArtTile icon={Gauge} seed={3} tilt={160} />`}
+        previewClassName="grid max-w-md"
       >
-        <ActivityCard title="Built by teams who ship." stats={[{ to: 400, suffix: "M+", label: "Requests a day" }, { to: 200, suffix: "K", label: "GPUs online" }, { to: 12, suffix: "+", label: "Regions" }]}>
-          <ActivityGroup label="Today" date="Sep 30">
-            <ActivityRow chip="Newest release" name="vantage-4" meta="Reasoning · code · voice" badge="New" action="Try" />
-          </ActivityGroup>
-        </ActivityCard>
+        <ArtTile icon={Gauge} seed={3} />
+      </ComponentSpecimen>
+      <ComponentSpecimen
+        name="TestimonialCard"
+        source="components/ui/testimonial-card.tsx"
+        description="A serif quote, then who said it."
+        code={`<TestimonialCard quote="…" name="Maya Lindqvist" role="Head of Platform, Northwind Health" />`}
+        previewClassName="max-w-md"
+      >
+        <TestimonialCard quote="We had it in front of customers by Thursday." name="Maya Lindqvist" role="Head of Platform, Northwind Health" />
+      </ComponentSpecimen>
+      <ComponentSpecimen
+        name="Accordion"
+        source="components/ui/accordion.tsx"
+        description="Questions on hairlines; the plus turns to a cross when open."
+        code={`<Accordion type="single" collapsible>…</Accordion>`}
+      >
+        <Accordion type="single" collapsible defaultValue="a" className="border-t border-line">
+          <AccordionItem value="a"><AccordionTrigger>Which models can I use?</AccordionTrigger><AccordionContent>Every model is on the same API.</AccordionContent></AccordionItem>
+          <AccordionItem value="b"><AccordionTrigger>How is pricing calculated?</AccordionTrigger><AccordionContent>By usage, with no seats.</AccordionContent></AccordionItem>
+        </Accordion>
       </ComponentSpecimen>
       <ComponentSpecimen
         name="PlanCard"

@@ -19,6 +19,9 @@
   --terminal-dim: #7b7b78;
   --diff-add: rgb(64 160 90 / 0.28);
   --diff-del: rgb(200 60 60 / 0.3);
+  --panel: #0e0e0e;
+  --panel-ink: #f4f4f2;
+  --panel-dim: #7d7d7a;
   --accent: #4a9ee0;
   --accent-2: #8ec5f0;
   --accent-3: #cfe8fa;
@@ -96,6 +99,9 @@
   --color-terminal-dim: var(--terminal-dim);
   --color-diff-add: var(--diff-add);
   --color-diff-del: var(--diff-del);
+  --color-panel: var(--panel);
+  --color-panel-ink: var(--panel-ink);
+  --color-panel-dim: var(--panel-dim);
   --color-accent: var(--accent);
   --color-accent-2: var(--accent-2);
   --color-accent-3: var(--accent-3);
@@ -117,13 +123,13 @@
   --shadow-pop: var(--shadow-pop);
   --shadow-button: var(--shadow-button);
   --shadow-frame: var(--shadow-frame);
-  --radius-card: 12px;
-  --radius-panel: 16px;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --animate-chat-loop: chat-loop 28s linear infinite;
   --animate-underline: underline-shift 4s linear infinite;
   --animate-orb: orb-spin 80s linear infinite;
   --animate-pixel: pixel-in 480ms var(--ease-out) both;
+  --animate-accordion-down: accordion-down 240ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
   --animate-dot: dot-pulse 1.2s var(--ease-in-out) infinite;
 }
 
@@ -141,6 +147,14 @@
 @keyframes pixel-in {
   from { opacity: 0; transform: scale(0.6); }
   to { opacity: 1; transform: scale(1); }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
 }
 @keyframes dot-pulse {
   0%, 100% { opacity: 0.35; transform: scale(0.85); }

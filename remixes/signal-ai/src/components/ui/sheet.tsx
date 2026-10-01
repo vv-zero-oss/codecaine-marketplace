@@ -22,7 +22,7 @@ function SheetContent({ className, children, ...props }: React.ComponentProps<ty
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className="absolute top-3 right-3 inline-flex size-11 items-center justify-center rounded-full text-ink-2 transition-colors hover:bg-surface hover:text-ink" aria-label="Close menu">
+        <SheetPrimitive.Close className="absolute top-3 right-3 inline-flex size-11 items-center justify-center text-ink-2 transition-colors hover:bg-surface hover:text-ink" aria-label="Close menu">
           <X className="size-4" />
         </SheetPrimitive.Close>
       </SheetPrimitive.Content>

@@ -34,9 +34,9 @@ export function TerminalPreview({ duration = 22, className }: { duration?: numbe
   return (
     <div className={cn("flex h-full flex-col bg-terminal font-mono text-[10px] leading-[1.7] text-terminal-ink", className)}>
       <div className="flex items-center gap-1.5 px-3 pt-2.5 pb-2">
-        <span className="size-2 rounded-full bg-[#ff5f57]" />
-        <span className="size-2 rounded-full bg-[#febc2e]" />
-        <span className="size-2 rounded-full bg-[#28c840]" />
+        <span className="size-2 bg-[#ff5f57]" />
+        <span className="size-2 bg-[#febc2e]" />
+        <span className="size-2 bg-[#28c840]" />
         <span className="ml-5 text-terminal-dim">projects/main</span>
         <span className="ml-auto flex items-center gap-1.5 text-terminal-dim tabular-nums">
           <span className="h-1.5 w-6 overflow-hidden bg-white/10">

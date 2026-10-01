@@ -4,7 +4,7 @@ const base = import.meta.env.BASE_URL
 
 /** The image product's mosaic: three generated frames, one large and two stacked. */
 export function ImaginePreview({ className }: { className?: string }) {
-  const tile = "overflow-hidden rounded-lg bg-surface-2"
+  const tile = "overflow-hidden bg-surface-2"
   const img = "size-full object-cover transition-transform duration-500 ease-out group-hover/card:scale-[1.03]"
   return (
     <div className={cn("grid h-full grid-cols-[1.8fr_1fr] gap-0.5 p-0.5", className)}>

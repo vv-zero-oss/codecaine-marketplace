@@ -22,7 +22,7 @@ function Swatch({ token, theme }: { token: string; theme: "light" | "dark" }) {
   const value = v[`--${token}`] ?? ""
   return (
     <div ref={ref} data-theme={theme} className="flex items-center gap-2">
-      <span className="size-9 shrink-0 rounded-lg border border-line-strong" style={{ background: `var(--${token})` }} />
+      <span className="size-9 shrink-0 border border-line-strong" style={{ background: `var(--${token})` }} />
       <span className="min-w-0 font-mono text-[10px] leading-tight text-ink-2">
         <span className="block text-ink-3">{theme}</span>
         {toHex(value)}
@@ -36,7 +36,7 @@ function ContrastRow({ fg, bg, label }: { fg: string; bg: string; label: string 
   const ratio = contrast(v[`--${fg}`], v[`--${bg}`])
   const pass = ratio !== null && ratio >= 4.5
   return (
-    <div ref={ref} className="flex items-center justify-between rounded-lg border border-line px-3 py-2 text-[12px]" style={{ background: `var(--${bg})`, color: `var(--${fg})` }}>
+    <div ref={ref} className="flex items-center justify-between border border-line px-3 py-2 text-[12px]" style={{ background: `var(--${bg})`, color: `var(--${fg})` }}>
       <span>{label}</span>
       <span className="font-mono text-[11px]">
         {ratio ? ratio.toFixed(2) : "—"}:1 {pass ? "AA" : "large text only"}
@@ -50,7 +50,7 @@ export function BrandIdentity() {
     <>
       <div className="grid gap-4 sm:grid-cols-2">
         {(["light", "dark"] as const).map((t) => (
-          <div key={t} data-theme={t} className="flex flex-col items-center gap-6 rounded-panel border border-line bg-paper p-10 text-ink">
+          <div key={t} data-theme={t} className="flex flex-col items-center gap-6 border border-line bg-paper p-10 text-ink">
             <Wordmark />
             <div className="flex items-center gap-4">
               <Mark className="size-10" />
@@ -68,12 +68,12 @@ export function BrandIdentity() {
       <div>
         <GroupLabel>Voice</GroupLabel>
         <div className="grid gap-3 sm:grid-cols-2">
-          <ul className="space-y-2 rounded-panel bg-surface p-5 text-[13px]">
+          <ul className="space-y-2 bg-surface p-5 text-[13px]">
             <li className="flex gap-2"><Check className="mt-0.5 size-3.5 shrink-0 text-good" />Plain, specific and calm: "Usage-based pricing".</li>
             <li className="flex gap-2"><Check className="mt-0.5 size-3.5 shrink-0 text-good" />Lead with what you can do, then how.</li>
             <li className="flex gap-2"><Check className="mt-0.5 size-3.5 shrink-0 text-good" />Short sentences, sentence case, no exclamation marks.</li>
           </ul>
-          <ul className="space-y-2 rounded-panel bg-surface p-5 text-[13px]">
+          <ul className="space-y-2 bg-surface p-5 text-[13px]">
             <li className="flex gap-2"><X className="mt-0.5 size-3.5 shrink-0 text-accent" />No hype: "revolutionary", "magical", "game-changing".</li>
             <li className="flex gap-2"><X className="mt-0.5 size-3.5 shrink-0 text-accent" />No emoji as decoration.</li>
             <li className="flex gap-2"><X className="mt-0.5 size-3.5 shrink-0 text-accent" />No claims without a number behind them.</li>
@@ -92,7 +92,7 @@ export function ColourTokens() {
           <GroupLabel>{g.title}</GroupLabel>
           <div className="grid gap-x-6 gap-y-4 sm:grid-cols-2">
             {g.tokens.map((t) => (
-              <div key={t} className="rounded-xl border border-line p-3">
+              <div key={t} className="border border-line p-3">
                 <code className="font-mono text-[11px] text-ink">--{t}</code>
                 <div className="mt-2 grid grid-cols-2 gap-3">
                   <Swatch token={t} theme="light" />
@@ -145,11 +145,11 @@ export function Typography() {
   return (
     <>
       <div className="grid gap-4 sm:grid-cols-2">
-        <div className="rounded-panel bg-surface p-6">
+        <div className="bg-surface p-6">
           <p className="font-serif text-[64px] leading-none">Aa</p>
           <p className="mt-3 text-[13px] text-ink-2">Instrument Serif for display: the hero, section titles and the product names on news covers. Inter Tight for everything else — 400, 500 and 600.</p>
         </div>
-        <div className="rounded-panel bg-surface p-6">
+        <div className="bg-surface p-6">
           <p className="font-mono text-[40px] leading-none">{"{ }"}</p>
           <p className="mt-3 text-[13px] text-ink-2">JetBrains Mono, 400 and 500. Code, the terminal and tokens only.</p>
         </div>
@@ -168,13 +168,6 @@ export function Typography() {
   )
 }
 
-const RADII = [
-  ["rounded-[3px]", "3px — buttons, tabs, tags: the sharp control"],
-  ["rounded-lg", "8px — thumbnails, grouped rows"],
-  ["rounded-card", "12px — product cards"],
-  ["rounded-panel", "16px — plan cards, menus"],
-  ["rounded-full", "circle — avatars, dots"],
-]
 const SHADOWS = [
   ["shadow-card", "Resting cards"],
   ["shadow-pop", "Menus and hovered cards"],
@@ -192,29 +185,25 @@ export function SpaceAndSurface() {
           {SPACING.map((s) => (
             <div key={s} className="flex items-center gap-3 font-mono text-[10px] text-ink-3">
               <span className="w-8">{s}px</span>
-              <span className="h-2 rounded-sm bg-ink/80" style={{ width: s * 2 }} />
+              <span className="h-2 bg-ink/80" style={{ width: s * 2 }} />
             </div>
           ))}
         </div>
       </div>
       <div>
-        <GroupLabel>Radii</GroupLabel>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5">
-          {RADII.map(([cls, note]) => (
-            <div key={cls}>
-              <div className={cn("h-20 border border-line-strong bg-surface", cls)} />
-              <p className="mt-2 font-mono text-[10px] text-ink-2">{cls}</p>
-              <p className="text-[11px] text-ink-3">{note}</p>
-            </div>
-          ))}
+        <GroupLabel>Corners</GroupLabel>
+        <div className="grid gap-4 sm:grid-cols-3">
+          <div className="border border-line-strong bg-surface p-6 text-[13px]">0px everywhere<br /><span className="text-[11px] text-ink-3">buttons, cards, tabs, menus, avatars, images</span></div>
+          <div className="border border-line-strong bg-surface p-6 text-[13px]">Square pixels<br /><span className="text-[11px] text-ink-3">the mosaic and the illustrations are built from squares</span></div>
+          <div className="grid place-items-center border border-line-strong bg-surface p-6"><span className="size-12 rounded-full bg-[radial-gradient(circle_at_35%_30%,#3a2a66,#07060f)]" /><span className="mt-2 text-[11px] text-ink-3">the voice orb: the only sphere</span></div>
         </div>
       </div>
       <div>
         <GroupLabel>Shadows</GroupLabel>
-        <div className="grid grid-cols-2 gap-4 rounded-panel bg-surface-2 p-6 sm:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 bg-surface-2 p-6 sm:grid-cols-4">
           {SHADOWS.map(([cls, note]) => (
             <div key={cls}>
-              <div className={cn("h-20 rounded-card bg-paper", cls)} />
+              <div className={cn("h-20 bg-paper", cls)} />
               <p className="mt-3 font-mono text-[10px] text-ink-2">{cls}</p>
               <p className="text-[11px] text-ink-3">{note}</p>
             </div>
@@ -224,9 +213,9 @@ export function SpaceAndSurface() {
       <div>
         <GroupLabel>Borders</GroupLabel>
         <div className="grid gap-4 sm:grid-cols-3">
-          <div className="rounded-card border border-line p-4 text-[12px]">Hairline · <code className="font-mono text-[10px]">border-line</code><br /><span className="text-ink-3">cards, header, footer</span></div>
-          <div className="rounded-card border border-line-strong p-4 text-[12px]">Strong · <code className="font-mono text-[10px]">border-line-strong</code><br /><span className="text-ink-3">outline buttons</span></div>
-          <div className="rounded-card border border-dashed border-line-strong p-4 text-[12px]">Dashed · <br /><span className="text-ink-3">the footer column rule</span></div>
+          <div className="border border-line p-4 text-[12px]">Hairline · <code className="font-mono text-[10px]">border-line</code><br /><span className="text-ink-3">cards, header, footer</span></div>
+          <div className="border border-line-strong p-4 text-[12px]">Strong · <code className="font-mono text-[10px]">border-line-strong</code><br /><span className="text-ink-3">outline buttons</span></div>
+          <div className="border border-dashed border-line-strong p-4 text-[12px]">Dashed · <br /><span className="text-ink-3">the footer column rule</span></div>
         </div>
       </div>
     </>
@@ -249,10 +238,10 @@ export function Motion() {
               <span>{e.name} · cubic-bezier({e.bezier.join(", ")})</span>
               <span>{e.note}</span>
             </div>
-            <div className="relative h-12 overflow-hidden rounded-full bg-surface">
+            <div className="relative h-12 overflow-hidden bg-surface">
               <motion.span
                 key={`${e.name}-${round}`}
-                className="absolute top-1/2 left-1 size-8 -translate-y-1/2 rounded-full bg-ink"
+                className="absolute top-1/2 left-1 size-8 -translate-y-1/2 bg-ink"
                 initial={{ left: 4 }}
                 animate={{ left: "calc(100% - 36px)" }}
                 transition={{ duration: 0.9, ease: [...e.bezier] }}
@@ -260,7 +249,7 @@ export function Motion() {
             </div>
           </div>
         ))}
-        <button onClick={() => setRound((r) => r + 1)} className="inline-flex h-9 items-center gap-1.5 rounded-full bg-ink px-4 text-[13px] text-paper transition-transform active:scale-95">
+        <button onClick={() => setRound((r) => r + 1)} className="inline-flex h-9 items-center gap-1.5 bg-ink px-4 text-[13px] text-paper transition-transform active:scale-95">
           <Play className="size-3 fill-current" /> Play
         </button>
       </div>
@@ -270,7 +259,7 @@ export function Motion() {
           ["240ms", "Menus, popovers, state swaps"],
           ["600ms", "Section entrances, with a 60–70ms stagger"],
         ].map(([d, n]) => (
-          <div key={d} className="rounded-xl border border-line p-4">
+          <div key={d} className="border border-line p-4">
             <p className="font-mono text-[15px]">{d}</p>
             <p className="mt-1 text-[12px] text-ink-3">{n}</p>
           </div>
@@ -289,7 +278,7 @@ export function Iconography() {
         <GroupLabel>Icons — Lucide, 1.5–2px stroke, 12–16px</GroupLabel>
         <div className="flex flex-wrap gap-3">
           {icons.map((I, i) => (
-            <span key={i} className="grid size-11 place-items-center rounded-xl border border-line text-ink-2">
+            <span key={i} className="grid size-11 place-items-center border border-line text-ink-2">
               <I className="size-4" />
             </span>
           ))}

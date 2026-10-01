@@ -36,7 +36,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
       type="button"
       onClick={copy}
       aria-label={copied ? "Copied" : "Copy code"}
-      className={cn("relative inline-flex size-9 items-center justify-center rounded-lg text-terminal-dim transition-[color,transform] hover:text-white active:scale-95", className)}
+      className={cn("relative inline-flex size-9 items-center justify-center text-terminal-dim transition-[color,transform] hover:text-white active:scale-95", className)}
     >
       <Copy className={cn("absolute size-4 transition-[opacity,transform] duration-150", copied ? "scale-50 opacity-0" : "opacity-100")} />
       <Check className={cn("absolute size-4 text-good transition-[opacity,transform] duration-150", copied ? "opacity-100" : "scale-50 opacity-0")} />
@@ -46,7 +46,7 @@ export function CopyButton({ text, className }: { text: string; className?: stri
 
 export function CodeSnippet({ code }: { code: string }) {
   return (
-    <div className="relative rounded-xl bg-terminal text-terminal-ink">
+    <div className="relative bg-terminal text-terminal-ink">
       <CopyButton text={code} className="absolute top-2 right-2" />
       <pre className="overflow-x-auto p-4 pr-14 font-mono text-[11px] leading-relaxed">
         <code>{code}</code>
@@ -58,7 +58,7 @@ export function CodeSnippet({ code }: { code: string }) {
 /** A live component, its states side by side, and how to use it. */
 export function ComponentSpecimen({ name, source, description, code, children, previewClassName }: { name: string; source: string; description: string; code: string; children: ReactNode; previewClassName?: string }) {
   return (
-    <article className="overflow-hidden rounded-panel border border-line bg-paper">
+    <article className="overflow-hidden border border-line bg-paper">
       <header className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 border-b border-line px-5 py-4">
         <h3 className="text-[15px] font-medium tracking-[-0.02em]">{name}</h3>
         <code className="font-mono text-[11px] text-ink-3">{source}</code>

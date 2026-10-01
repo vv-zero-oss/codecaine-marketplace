@@ -27,7 +27,7 @@ export function ProductCard({
       viewport={{ once: true, margin: "-6% 0px" }}
       transition={{ duration: 0.6, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
       className={cn(
-        "group/card relative block h-[200px] overflow-hidden rounded-card border border-line bg-surface shadow-card transition-[box-shadow,transform] duration-300 ease-out hover:shadow-pop sm:h-[222px]",
+        "group/card relative block h-[200px] overflow-hidden border border-line bg-surface shadow-card transition-[box-shadow,transform] duration-300 ease-out hover:shadow-pop sm:h-[222px]",
         tone === "dark" && "border-transparent bg-terminal",
         className,
       )}

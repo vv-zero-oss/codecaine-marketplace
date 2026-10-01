@@ -82,7 +82,7 @@ export function WordRotator({
       ))}
       <span
         aria-hidden
-        className="absolute inset-x-0 -bottom-[0.06em] h-[2px] animate-underline rounded-full bg-[length:200%_100%]"
+        className="absolute inset-x-0 -bottom-[0.06em] h-[2px] animate-underline bg-[length:200%_100%]"
         style={{
           backgroundImage:
             "linear-gradient(90deg, var(--accent-3), var(--accent), var(--accent-2), var(--accent), var(--accent-3))",

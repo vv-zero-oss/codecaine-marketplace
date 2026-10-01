@@ -31,15 +31,15 @@ export function CodeWindow({ code, className }: { code: string; className?: stri
     timer.current = window.setTimeout(() => setCopied(false), 1400)
   }
   return (
-    <div className={cn("overflow-hidden rounded-xl bg-code-bg shadow-frame", className)}>
+    <div className={cn("overflow-hidden bg-code-bg shadow-frame", className)}>
       <div className="flex items-center gap-1.5 border-b border-line px-4 py-2.5">
-        <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-        <span className="size-2.5 rounded-full bg-[#febc2e]" />
-        <span className="size-2.5 rounded-full bg-[#28c840]" />
+        <span className="size-2.5 bg-[#ff5f57]" />
+        <span className="size-2.5 bg-[#febc2e]" />
+        <span className="size-2.5 bg-[#28c840]" />
         <button
           type="button"
           onClick={copy}
-          className="ml-auto inline-flex min-h-8 items-center gap-1.5 rounded-md px-2 text-[11px] text-ink-2 transition-[color,transform] hover:text-ink active:scale-95"
+          className="ml-auto inline-flex min-h-8 items-center gap-1.5 px-2 text-[11px] text-ink-2 transition-[color,transform] hover:text-ink active:scale-95"
         >
           {copied ? <Check className="size-3 text-good" /> : <Copy className="size-3" />}
           {copied ? "Copied" : "Copy"}

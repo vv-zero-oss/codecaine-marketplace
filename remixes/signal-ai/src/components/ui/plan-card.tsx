@@ -17,7 +17,7 @@ export function PlanCard({
   primary?: boolean
 }) {
   return (
-    <article className="flex flex-col rounded-panel bg-surface p-6 shadow-card sm:p-8">
+    <article className="flex flex-col bg-surface p-6 shadow-card sm:p-8">
       <h3 className="font-serif text-[28px] leading-none font-normal tracking-[-0.01em]">{title}</h3>
       <p className="mt-2 text-[14px] text-ink-2">{blurb}</p>
       <ul className="mt-8 flex flex-1 flex-col gap-3 text-[13px]">

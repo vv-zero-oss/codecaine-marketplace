@@ -39,7 +39,7 @@ function ProductsMenu() {
                 onMouseEnter={() => setActive(p.key)}
                 onFocus={() => setActive(p.key)}
                 className={cn(
-                  "flex flex-col gap-0.5 rounded-xl px-3 py-2.5 transition-colors duration-150",
+                  "flex flex-col gap-0.5 px-3 py-2.5 transition-colors duration-150",
                   active === p.key ? "bg-surface-2" : "hover:bg-surface",
                 )}
               >
@@ -50,7 +50,7 @@ function ProductsMenu() {
           </li>
         ))}
       </ul>
-      <div className="h-[300px] overflow-hidden rounded-xl bg-surface-2">
+      <div className="h-[300px] overflow-hidden bg-surface-2">
         <ProductPreview key={active} product={active} />
       </div>
     </div>
@@ -63,7 +63,7 @@ function SimpleMenu({ items }: { items: string[] }) {
       {items.map((item) => (
         <li key={item}>
           <NavigationMenuLink asChild>
-            <a href="#top" className="block rounded-xl px-3 py-2 text-[13px] text-ink transition-colors hover:bg-surface">
+            <a href="#top" className="block px-3 py-2 text-[13px] text-ink transition-colors hover:bg-surface">
               {item}
             </a>
           </NavigationMenuLink>
@@ -80,7 +80,7 @@ function MobileMenu() {
   return (
     <Sheet open={open} onOpenChange={setOpen}>
       <SheetTrigger asChild>
-        <button aria-label="Open menu" className="inline-flex size-11 items-center justify-center rounded-[3px] text-ink transition-colors hover:bg-surface md:hidden">
+        <button aria-label="Open menu" className="inline-flex size-11 items-center justify-center text-ink transition-colors hover:bg-surface md:hidden">
           <Menu className="size-5" />
         </button>
       </SheetTrigger>
@@ -91,7 +91,7 @@ function MobileMenu() {
           <p className="px-3 pb-1 text-[11px] tracking-wide text-ink-3 uppercase">Products</p>
           {PRODUCTS.map((p) => (
             <SheetClose asChild key={p.key}>
-              <a href="#products" className="flex min-h-11 items-center rounded-xl px-3 text-[15px] text-ink hover:bg-surface">
+              <a href="#products" className="flex min-h-11 items-center px-3 text-[15px] text-ink hover:bg-surface">
                 {p.name}
               </a>
             </SheetClose>
@@ -99,7 +99,7 @@ function MobileMenu() {
           <div className="my-2 h-px bg-line" />
           {["Developer", "Pricing", "News"].map((l) => (
             <SheetClose asChild key={l}>
-              <a href={l === "Pricing" ? "#start" : l === "News" ? "#news" : "#developers"} className="flex min-h-11 items-center rounded-xl px-3 text-[15px] text-ink hover:bg-surface">
+              <a href={l === "Pricing" ? "#start" : l === "News" ? "#news" : "#developers"} className="flex min-h-11 items-center px-3 text-[15px] text-ink hover:bg-surface">
                 {l}
               </a>
             </SheetClose>
@@ -170,7 +170,7 @@ export function SiteHeader() {
           <ButtonLink href="#start" variant="outline" className="hidden sm:inline-flex">
             Contact Sales
           </ButtonLink>
-          <div className="inline-flex items-stretch overflow-hidden rounded-[3px] bg-ink shadow-button">
+          <div className="inline-flex items-stretch overflow-hidden bg-ink shadow-button">
             <a href="#start" className="flex h-9 items-center whitespace-nowrap pr-3 pl-4 text-[11px] font-medium tracking-[0.06em] text-paper uppercase transition-colors hover:bg-paper/10 active:bg-paper/15">
               Try for free
             </a>

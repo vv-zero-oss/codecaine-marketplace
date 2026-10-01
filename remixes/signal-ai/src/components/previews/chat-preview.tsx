@@ -22,8 +22,8 @@ export function ChatPreview({ duration = 28, className }: { duration?: number; c
           className={cn(
             "max-w-[86%] px-3 py-2 text-[11px] leading-[1.45] tracking-[-0.005em]",
             m.from === "user"
-              ? "self-end rounded-full border border-line bg-bubble text-ink shadow-card"
-              : "self-start rounded-lg border border-line bg-bubble text-ink-2 shadow-card",
+              ? "self-end border border-line bg-bubble text-ink shadow-card"
+              : "self-start border border-line bg-bubble text-ink-2 shadow-card",
           )}
         >
           {m.text}
