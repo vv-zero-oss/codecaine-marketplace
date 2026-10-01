@@ -57,7 +57,7 @@ export function Hero() {
           </ButtonLink>
         </motion.div>
       </Container>
-      <PixelEdge rows={5} cell={30} seed={3} density={0.92} />
+      <PixelEdge rows={5} cell={30} seed={3} density={1} solidEdge />
     </section>
   )
 }

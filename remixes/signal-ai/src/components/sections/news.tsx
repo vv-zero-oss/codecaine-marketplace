@@ -13,7 +13,7 @@ const POSTS = [
 /** Four posts: the cover is the title, in a gradient the post owns. */
 export function News() {
   return (
-    <section id="news" className="pb-24 sm:pb-28">
+    <section id="news" className="pt-20 pb-24 sm:pt-28 sm:pb-28">
       <Container>
         <div className="flex items-baseline justify-between">
           <h2 className="font-serif text-[clamp(2rem,4vw,2.6rem)] leading-none font-normal tracking-[-0.01em]">Latest news</h2>

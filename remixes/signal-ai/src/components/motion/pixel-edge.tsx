@@ -25,6 +25,7 @@ export function PixelEdge({
   altShare = 0,
   edge = "bottom",
   density = 0.9,
+  solidEdge = false,
   seed = 5,
   flicker = true,
   interval = 1100,
@@ -41,6 +42,8 @@ export function PixelEdge({
   edge?: "top" | "bottom"
   /** 0–1: how full the row at the page edge is. */
   density?: number
+  /** Keep the row at the page edge fully filled, so the band runs into a field of the same colour. */
+  solidEdge?: boolean
   seed?: number
   flicker?: boolean
   /** Ms between flickers. */
@@ -69,7 +72,9 @@ export function PixelEdge({
       setFlipped((prev) => {
         const next = new Set(prev)
         for (let i = 0; i < 3; i++) {
-          const key = `${Math.floor(Math.random() * rows)}:${Math.floor(Math.random() * cols)}`
+          const row = Math.floor(Math.random() * rows)
+          if (solidEdge && row === (edge === "bottom" ? rows - 1 : 0)) continue
+          const key = `${row}:${Math.floor(Math.random() * cols)}`
           if (next.has(key)) next.delete(key)
           else next.add(key)
         }
@@ -77,7 +82,7 @@ export function PixelEdge({
       })
     }, interval)
     return () => window.clearInterval(id)
-  }, [flicker, reduced, designing, cols, rows, interval])
+  }, [flicker, reduced, designing, cols, rows, interval, solidEdge, edge])
 
   const cells = useMemo(() => {
     const out: { r: number; c: number; fill: string; on: boolean }[] = []
@@ -87,12 +92,13 @@ export function PixelEdge({
       const p = Math.pow(depth, 1.35) * density
       for (let c = 0; c < cols; c++) {
         const base = hash(r, c, seed) < p
-        const on = flipped.has(`${r}:${c}`) ? !base : base
+        const edgeRow = r === (edge === "bottom" ? rows - 1 : 0)
+        const on = solidEdge && edgeRow ? true : flipped.has(`${r}:${c}`) ? !base : base
         out.push({ r, c, on, fill: hash(c, r, seed + 11) < altShare ? altColor : color })
       }
     }
     return out
-  }, [rows, cols, edge, density, seed, flipped, color, altColor, altShare])
+  }, [rows, cols, edge, density, solidEdge, seed, flipped, color, altColor, altShare])
 
   return (
     <div
