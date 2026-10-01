@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/* Every colour, shadow, radius, font and motion value on the page is a token
+   here. Components read them through Tailwind (`bg-surface`, `text-muted`,
+   `shadow-card`, `ease-out-expo`); the style guide at /brand reads them back. */
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-display: "Space Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Surface */
+  --color-bg: #0a0a0b;
+  --color-surface: #131314;
+  --color-raised: #1a1a1c;
+  --color-bar: #050505;
+  /* Text */
+  --color-text: #f4f4f2;
+  --color-display: #dcdcd8;
+  --color-muted: #a3a3a0;
+  --color-faint: #6c6c6a;
+  --color-ghost: #46464a;
+  /* Border */
+  --color-line: rgb(255 255 255 / 0.07);
+  --color-line-strong: rgb(255 255 255 / 0.14);
+  /* Accent + status */
+  --color-ember: #ff5a24;
+  --color-ember-soft: rgb(255 90 36 / 0.14);
+  --color-good: #2fbf71;
+  --color-good-soft: rgb(47 191 113 / 0.14);
+  --color-info: #6c5ce7;
+  --color-warn: #e0a43a;
+  --color-onlight: #0a0a0b;
+  /* Atmosphere: the light behind each block */
+  --color-glow-amber: #b4501a;
+  --color-glow-teal: #1d6f78;
+  --color-glow-green: #1f7a45;
+  --color-glow-red: #ff2e1a;
+  --color-chart: #2c9a68;
+  --color-chart-amber: #c9a43a;
+
+  /* shadcn's semantic names, mapped onto the palette above, so components added
+   with the CLI pick up Halo without being edited. */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-text);
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-text);
+  --color-popover: var(--color-surface);
+  --color-popover-foreground: var(--color-text);
+  --color-primary: var(--color-text);
+  --color-primary-foreground: var(--color-onlight);
+  --color-secondary: var(--color-raised);
+  --color-secondary-foreground: var(--color-text);
+  --color-muted-foreground: var(--color-muted);
+  --color-accent: rgb(255 255 255 / 0.08);
+  --color-accent-foreground: var(--color-text);
+  --color-destructive: #ef4444;
+  --color-border: var(--color-line);
+  --color-input: var(--color-line-strong);
+  --color-ring: var(--color-ember);
+
+  --radius-pill: 9999px;
+  --radius-card: 14px;
+  --radius-panel: 18px;
+  --radius-chip: 6px;
+
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.04) inset, 0 12px 32px -12px rgb(0 0 0 / 0.6);
+  --shadow-panel: 0 0 0 1px rgb(255 255 255 / 0.05), 0 40px 80px -24px rgb(0 0 0 / 0.7), 0 2px 6px rgb(0 0 0 / 0.4);
+  --shadow-pill: 0 1px 0 rgb(255 255 255 / 0.9) inset, 0 6px 16px -6px rgb(0 0 0 / 0.5);
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 280ms;
+  --duration-slow: 700ms;
+  --duration-cycle: 5600ms;
+}
+
+html {
+  background: var(--color-bg);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Scanline display type: monospaced letters cut by a hairline raster, so a big
+   headline reads as a screen rather than as print. */
+.scanline {
+  font-family: var(--font-display);
+  color: var(--color-display);
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 2.2px, transparent 2.2px 3.4px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 2.2px, transparent 2.2px 3.4px);
+}
+.scanline-soft {
+  -webkit-mask-image: repeating-linear-gradient(to bottom, #000 0 2.5px, rgb(0 0 0 / 0.55) 2.5px 3.5px);
+  mask-image: repeating-linear-gradient(to bottom, #000 0 2.5px, rgb(0 0 0 / 0.55) 2.5px 3.5px);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+@keyframes caret {
+  50% { opacity: 0; }
+}
+@keyframes beam-breathe {
+  0%, 100% { opacity: 0.75; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.06); }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -6px, 0); }
+}
+
+section[id] { scroll-margin-top: 5rem; }
+
+::selection { background: var(--color-ember); color: var(--color-onlight); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
