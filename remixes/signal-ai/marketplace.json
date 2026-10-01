@@ -1,0 +1,75 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "signal-ai",
+  "name": "Vantage — AI Models",
+  "version": "1.0.0",
+  "description": "A landing page for a frontier AI lab: a headline that types its own verb, a live product bento, one API in three languages, and two ways to get started.",
+  "designedFor": [
+    "AI model, API or developer-platform launch pages",
+    "Products with several modalities (chat, code, voice, image, agents) to show at once",
+    "Teams who want a calm, white, editorial look instead of a dark gradient hero",
+    "Studying editor-ready motion: typed headline, looping previews, count-ups"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Linnea Okafor-Brandt"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ai",
+    "llm",
+    "api",
+    "landing",
+    "developer",
+    "saas",
+    "bento",
+    "react",
+    "vite",
+    "tailwind",
+    "motion"
+  ],
+  "categories": [
+    "Marketing",
+    "AI"
+  ],
+  "created": "2026-10-01",
+  "updated": "2026-10-01",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3330
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}
