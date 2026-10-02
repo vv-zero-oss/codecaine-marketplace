@@ -96,3 +96,7 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes rise {
   from { opacity: 0; transform: translateY(8px); }
 }
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}

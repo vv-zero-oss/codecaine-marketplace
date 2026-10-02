@@ -1582,7 +1582,7 @@
       "type": "remix",
       "id": "meadow-workspace",
       "name": "Meadow Workspace",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "description": "A sky-and-meadow landing page for an everything-workspace, set in Inter: floating pill nav, hero over the product window, value props, tabbed tour, how it works, a pinned video that grows to full screen, case studies, testimonials, context graph, bento, pricing and a closing CTA.",
       "designedFor": [
         "SaaS or productivity-app landing pages with a calm, editorial feel",
@@ -1666,11 +1666,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/meadow-workspace-1.1.0.tgz",
+        "url": "archives/remixes/meadow-workspace-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "0c0783f728c3cd41dad5a31ee60ba45fce2ef67603ebafb01d16d356f5ec2f3a",
-        "size": 5174272,
-        "files": 72
+        "sha256": "32a6dcc9ea80a3d8bc36f7efed8e14e1ae660cade167d104e7173a9e2c8741de",
+        "size": 5191680,
+        "files": 74
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

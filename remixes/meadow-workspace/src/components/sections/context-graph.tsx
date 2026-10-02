@@ -45,7 +45,16 @@ export function ContextGraph() {
     <section id="graph" className="rounded-t-[28px] bg-page py-16 shadow-[0_-8px_30px_rgb(20_40_80/0.06)] sm:py-24">
       <Container>
         <Reveal><SectionHeading align="center" title="Powered by you and your team's own context graph" description="Hundreds of integrations bring your data together into one connected workspace." /></Reveal>
-        <Reveal delay={0.1} className="relative mt-10 hidden h-[360px] md:block" >
+        <Reveal delay={0.1} className="relative mt-10 hidden h-[400px] md:block" >
+          <svg aria-hidden="true" viewBox="0 0 1000 400" preserveAspectRatio="none" className="absolute inset-0 size-full text-ink-200">
+            <g fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="3 5" vectorEffect="non-scaling-stroke">
+              <path d="M340 70 L240 150 M340 70 L560 170 M640 60 L560 170 M240 150 L130 230 M560 170 L650 250 M240 150 L560 170" vectorEffect="non-scaling-stroke" />
+              <path d="M130 230 L560 170" vectorEffect="non-scaling-stroke" />
+            </g>
+          </svg>
+          {[["left-[6%] top-[8%]", "bg-sky-100"], ["left-[88%] top-[40%]", "bg-teal/25"], ["left-[48%] top-[88%]", "bg-lilac/25"], ["left-[26%] top-[84%]", "bg-apricot/30"], ["left-[84%] top-[84%]", "bg-coral/20"], ["left-[22%] top-[6%]", "bg-leaf/20"]].map(([pos, tone], i) => (
+            <span key={i} aria-hidden="true" className={`absolute size-8 rounded-lg shadow-card ${pos} ${tone}`} />
+          ))}
           {NODES.map((node, i) => (
             <div key={node.title} className={`absolute ${node.pos}`} style={{ animation: `drift ${6 + i}s ease-in-out ${i * -1.3}s infinite` }}>
               <NodeCard node={node} />

@@ -1,5 +1,5 @@
 import { BorderBeam } from "border-beam"
-import { Check } from "lucide-react"
+import { Check, Lock, RotateCcw, Sparkles, Users } from "lucide-react"
 import { useState } from "react"
 import { useCanvasAction } from "@canvas/react"
 
@@ -25,8 +25,9 @@ export function Pricing() {
   useCanvasAction("Yearly billing", (next) => setBilling((next ?? billing !== "yearly") ? "yearly" : "monthly"), { on: billing === "yearly", group: "Pricing" })
 
   return (
-    <section id="pricing" className="bg-page py-12 sm:py-20">
-      <Container>
+    <section id="pricing" className="relative overflow-hidden border-t border-ink-100 bg-surface py-14 sm:py-24">
+      <span aria-hidden="true" className="absolute inset-x-0 top-0 -z-0 h-72 bg-gradient-to-b from-sky-100/80 to-transparent" />
+      <Container className="relative">
         <Reveal className="flex flex-col items-center gap-6">
           <SectionHeading align="center" title="Simple pricing that grows with you" description="Start free. Pay when the team joins. Cancel from the settings page, any time." />
           <Tabs value={billing} onValueChange={setBilling}>
@@ -40,7 +41,7 @@ export function Pricing() {
           {PLANS.map((plan, i) => {
             const price = plan.monthly === null ? null : billing === "yearly" ? Math.round((plan.monthly * 10) / 12) : plan.monthly
             const card = (
-              <article className={cn("flex h-full flex-col gap-6 rounded-[var(--radius-card)] bg-surface p-6 shadow-card sm:p-7", plan.featured && "shadow-lift")}>
+              <article className={cn("flex h-full flex-col gap-6 rounded-[var(--radius-card)] p-6 sm:p-7", plan.featured ? "bg-surface shadow-lift" : "bg-page shadow-card")}>
                 <div>
                   <h3 className="flex items-center gap-2 text-[15px] font-semibold">{plan.name}{plan.featured ? <span className="rounded-md bg-sky-100 px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-sky-600 uppercase">Most chosen</span> : null}</h3>
                   <p className="mt-1.5 text-[13px] leading-snug text-ink-500">{plan.blurb}</p>
@@ -66,6 +67,11 @@ export function Pricing() {
             )
           })}
         </ul>
+        <Reveal className="mt-8">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[14px] bg-page px-5 py-4 text-[13px] text-ink-700 sm:grid-cols-4">
+            {[[Sparkles, "Assistant on every plan"], [Lock, "Encryption at rest"], [Users, "Unlimited guests"], [RotateCcw, "Cancel any time"]].map(([I, l]) => { const Icon = I as typeof Lock; return <li key={l as string} className="flex items-center gap-2"><Icon className="size-4 text-sky-600" />{l as string}</li> })}
+          </ul>
+        </Reveal>
       </Container>
     </section>
   )
