@@ -5,7 +5,7 @@ import { Link } from "@/lib/router"
 /** Photography credit lives here, as the Pexels licence asks. */
 export function SiteFooter() {
   return (
-    <footer className="border-t border-line py-12">
+    <footer className="bg-[linear-gradient(var(--color-paper),color-mix(in_oklab,var(--color-pastel-lilac)_45%,white))] py-12">
       <Container className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <Wordmark />

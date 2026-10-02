@@ -15,6 +15,13 @@
   --color-night-2: #26272d;
   --color-forest: #0e3a32;
   --color-forest-2: #17594a;
+  /* pastel washes — backdrops, cards and panels */
+  --color-pastel-lilac: #dcd0fa;
+  --color-pastel-peach: #ffd8c2;
+  --color-pastel-mint: #c4eedb;
+  --color-pastel-sky: #c3defa;
+  --color-pastel-butter: #ffe9a8;
+  --color-pastel-rose: #f8cbdd;
   /* text */
   --color-ink: #14161b;
   --color-ink-2: #5b6575;
@@ -72,6 +79,10 @@
 @keyframes accordion-up {
   from { height: var(--radix-accordion-content-height); }
   to { height: 0; }
+}
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(var(--drift-x, 24px), var(--drift-y, -18px), 0) scale(1.08); }
 }
 @keyframes dash { from { stroke-dashoffset: var(--dash-from, 100); } }
 @keyframes pop-in { from { opacity: 0; transform: translateY(6px) scale(0.97); } }

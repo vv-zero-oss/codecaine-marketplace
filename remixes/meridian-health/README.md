@@ -24,7 +24,7 @@ Why not an off-the-shelf frame? Magic UI's iPhone takes an image or video; pure-
 
 ## Editor-ready
 
-`Reveal`, `Marquee`, `Floating`, `CountUp` and `Ring` (`src/components/motion/`) take scalar props only. Hidden states are registered with `useCanvasAction`: **Mobile menu**, **Coach voice: next**, **Feature: next**.
+`Aurora` (drifting pastel backdrop), `Reveal`, `Marquee`, `Floating`, `CountUp` and `Ring` (`src/components/motion/`) take scalar props only. Hidden states are registered with `useCanvasAction`: **Mobile menu**, **Coach voice: next**, **Feature: next**.
 
 ## Credits
 

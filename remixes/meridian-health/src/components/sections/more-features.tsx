@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useCanvasAction, useCanvasDesignMode } from "@canvas/react"
 
+import { Aurora } from "@/components/motion/aurora"
 import { PhoneFrame } from "@/components/device/phone-frame"
 import { Ring } from "@/components/motion/ring"
 import { Reveal } from "@/components/motion/reveal"
@@ -42,7 +43,8 @@ export function MoreFeatures() {
 
   const current = FEATURES.find((f) => f.id === active)!
   return (
-    <section className="pt-24 sm:pt-32">
+    <section className="relative overflow-hidden py-20 sm:py-28">
+      <Aurora tone="lilac" intensity={0.75} />
       <Container>
         <div className="grid items-center gap-10 lg:grid-cols-[1fr_auto] lg:gap-20" onPointerEnter={() => setHeld(true)} onPointerLeave={() => setHeld(false)}>
           <div>

@@ -1,5 +1,6 @@
 import { Star } from "lucide-react"
 
+import { Aurora } from "@/components/motion/aurora"
 import { Marquee } from "@/components/motion/marquee"
 import { Reveal } from "@/components/motion/reveal"
 import { Container } from "@/components/ui/container"
@@ -21,7 +22,8 @@ const REVIEWS = [
 /** Real members, real days: a photo mosaic and a drifting wall of reviews. Hover to pause and read. */
 export function Community() {
   return (
-    <section className="overflow-hidden pt-24 sm:pt-32">
+    <section className="relative overflow-hidden py-20 sm:py-28">
+      <Aurora tone="peach" intensity={0.8} />
       <Container>
         <Reveal>
           <div className="mx-auto flex max-w-[760px] items-end justify-center gap-2 sm:gap-3">
@@ -40,7 +42,7 @@ export function Community() {
       <Reveal delay={0.1} className="mt-10">
         <Marquee duration={70} direction="right" className="[mask-image:linear-gradient(90deg,transparent,#000_6%,#000_94%,transparent)]">
           {REVIEWS.map((r) => (
-            <figure key={r.by} className="w-[290px] shrink-0 rounded-3xl bg-tint p-5 sm:w-[320px]">
+            <figure key={r.by} className="w-[290px] shrink-0 rounded-3xl bg-paper/70 p-5 shadow-card backdrop-blur sm:w-[320px]">
               <div className="flex text-amber" aria-label="5 out of 5 stars">{Array.from({ length: 5 }, (_, i) => <Star key={i} className="size-3.5 fill-current" />)}</div>
               <figcaption className="mt-3 text-[15px] font-semibold tracking-tight">{r.title}</figcaption>
               <div className="text-xs text-ink-3">{r.by}, {r.date}</div>

@@ -1,6 +1,7 @@
 import { Award, Heart } from "lucide-react"
 import { useState } from "react"
 
+import { Aurora } from "@/components/motion/aurora"
 import { CountUp } from "@/components/motion/count-up"
 import { Marquee } from "@/components/motion/marquee"
 import { Reveal } from "@/components/motion/reveal"
@@ -37,7 +38,8 @@ function StoryCard({ id, tag, name }: { id: number; tag: string; name: string })
 /** Social proof: how many people, the awards, and a strip of real days. */
 export function Proof() {
   return (
-    <section id="about" className="scroll-mt-20 pt-16 sm:pt-24">
+    <section id="about" className="relative scroll-mt-20 overflow-hidden pt-16 pb-16 sm:pt-24 sm:pb-24">
+      <Aurora tone="lilac" intensity={0.8} />
       <Container className="text-center">
         <Reveal className="flex items-center justify-center gap-6 text-ink-3">
           {["Editors’ Choice", "App of the Day"].map((label) => (

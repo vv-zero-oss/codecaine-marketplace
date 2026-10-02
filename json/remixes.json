@@ -1582,8 +1582,8 @@
       "type": "remix",
       "id": "meridian-health",
       "name": "Meridian — Health Coach",
-      "version": "1.1.0",
-      "description": "A soft sky-blue landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal — plus three scroll-driven chapters (a manifesto that reads itself in, a pinned day-with-Meridian timeline, a horizontal signal ribbon), privacy, reviews and a closing call.",
+      "version": "1.2.0",
+      "description": "A soft pastel-gradient landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal — plus three scroll-driven chapters (a manifesto that reads itself in, a pinned day-with-Meridian timeline, a horizontal signal ribbon), privacy, reviews and a closing call.",
       "designedFor": [
         "Health, fitness, wellness and wearable app launch pages",
         "Mobile-app landing pages that need the product itself on show, not screenshots",
@@ -1672,11 +1672,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/meridian-health-1.1.0.tgz",
+        "url": "archives/remixes/meridian-health-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "5a76aefe90c58ca375349115e2d94efc01fe6e8a5510ccc95e6f491bf5749dea",
-        "size": 427008,
-        "files": 73
+        "sha256": "e5358be10616dcd098eb8876302161179867cbbe34bd4139300bc4186514d03e",
+        "size": 434176,
+        "files": 74
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

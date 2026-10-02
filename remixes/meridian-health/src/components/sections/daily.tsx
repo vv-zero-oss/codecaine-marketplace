@@ -1,3 +1,4 @@
+import { Aurora } from "@/components/motion/aurora"
 import { Reveal } from "@/components/motion/reveal"
 import { PhoneFrame } from "@/components/device/phone-frame"
 import { RecoveryScreen, SleepScreen, StrainScreen } from "@/components/screens/daily"
@@ -13,7 +14,8 @@ const CARDS = [
 /** Three daily signals, each with a phone that works: scrub the strain, tap a sleep stage, switch the recovery metric. */
 export function Daily() {
   return (
-    <section className="pt-24 sm:pt-32">
+    <section className="relative overflow-hidden py-20 sm:py-28">
+      <Aurora tone="sky" intensity={0.7} />
       <Container>
         <Reveal className="text-center">
           <h2 className="display text-[clamp(2rem,5vw,3.25rem)]">Start the day with clarity</h2>

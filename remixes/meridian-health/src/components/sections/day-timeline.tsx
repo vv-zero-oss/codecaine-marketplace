@@ -2,6 +2,7 @@ import { motion, useMotionValueEvent, useReducedMotion, useScroll } from "motion
 import { useRef, useState } from "react"
 import { useCanvasAction, useCanvasDesignMode } from "@canvas/react"
 
+import { Aurora } from "@/components/motion/aurora"
 import { PhoneFrame } from "@/components/device/phone-frame"
 import { DAY, DayScreen } from "@/components/screens/day"
 import { Container } from "@/components/ui/container"
@@ -30,7 +31,8 @@ export function DayTimeline({ stepHeight = 85 }: { stepHeight?: number }) {
 
   return (
     <section ref={ref} id="day" className="relative mt-24 sm:mt-32" style={{ height: pinned ? `${DAY.length * stepHeight + 15}vh` : "auto" }}>
-      <div className={cn("flex items-center overflow-hidden", pinned ? "sticky top-0 h-screen pt-16 lg:pt-0" : "py-10")}>
+      <div className={cn("relative flex items-center overflow-hidden", pinned ? "sticky top-0 h-screen pt-16 lg:pt-0" : "py-10")}>
+        <Aurora tone="mint" intensity={0.95} />
         <Container className="grid items-center gap-8 lg:grid-cols-[1fr_auto] lg:gap-24">
           <div className="order-2 lg:order-1">
             <p className="text-xs font-medium tracking-widest text-ink-3 uppercase">A day with Meridian</p>
@@ -54,7 +56,8 @@ export function DayTimeline({ stepHeight = 85 }: { stepHeight?: number }) {
               ))}
             </div>
           </div>
-          <div className="order-1 mx-auto w-[min(200px,44vw)] sm:w-[min(230px,52vw)] lg:order-2 lg:w-[290px]">
+          <div className="relative order-1 mx-auto w-[min(200px,44vw)] sm:w-[min(230px,52vw)] lg:order-2 lg:w-[290px]">
+            <span aria-hidden="true" className="absolute -inset-10 -z-10 rounded-full bg-[radial-gradient(closest-side,var(--color-pastel-peach),var(--color-pastel-lilac)_55%,transparent)] blur-2xl" />
             <PhoneFrame tone="titanium"><DayScreen step={step} onStep={jump} /></PhoneFrame>
           </div>
         </Container>
