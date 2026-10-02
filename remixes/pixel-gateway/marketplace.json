@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "pixel-gateway",
   "name": "Pixelkeep",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A pixel-art secure web gateway site on a golden-ratio type and spacing system: a dusk-sky hero, value proposition, decrypting feature board, a sticky 3D dashboard riding three sections, how it works with a request simulator, case studies, pricing with a seat calculator, a get-started wizard and a random landing-page generator.",
   "designedFor": [
     "A pixel-art / 8-bit product or game-adjacent landing page with real depth",
