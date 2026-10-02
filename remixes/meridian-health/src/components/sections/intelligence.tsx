@@ -35,12 +35,16 @@ function Orb({ persona, active, onPick }: { persona: Persona; active: boolean; o
 }
 
 /** A stack of sticky cards, each with a working phone: logging food, chatting, check-ins, sources, a plan. */
-function Card({ title, body, children, index }: { title: string; body: string; children: React.ReactNode; index: number }) {
+function Card({ title, body, chips, hint, children, index }: { title: string; body: string; chips: readonly string[]; hint: string; children: React.ReactNode; index: number }) {
   return (
     <article className="top-24 grid items-center gap-6 overflow-hidden rounded-card bg-[linear-gradient(120deg,#e9ecfb,#efe4f6_55%,#f9e8ee)] p-7 text-ink shadow-card sm:p-10 lg:sticky lg:h-[600px] lg:grid-cols-2 lg:gap-0 lg:px-14" style={{ top: 96 + index * 14 }}>
       <div className="lg:max-w-sm">
         <h3 className="display text-[clamp(1.75rem,3.5vw,2.6rem)]">{title}</h3>
         <p className="mt-3 text-[15px] leading-snug text-ink-2">{body}</p>
+        <div className="mt-5 flex flex-wrap gap-2">
+          {chips.map((c) => <span key={c} className="rounded-pill bg-paper/70 px-3.5 py-1.5 text-xs font-medium text-ink-2 shadow-chip backdrop-blur">{c}</span>)}
+        </div>
+        <p className="mt-6 hidden items-center gap-2 text-sm font-medium text-ink-3 lg:flex">{hint} <span aria-hidden="true">→</span></p>
       </div>
       <div className="mx-auto w-[min(250px,70vw)] lg:mt-0 lg:justify-self-center">{children}</div>
     </article>
@@ -70,19 +74,19 @@ export function Intelligence() {
         </div>
 
         <div className="mt-14 space-y-5 sm:mt-20">
-          <Card index={0} title="Understand what you eat" body="Log a meal in a tap and watch calories and macros settle against what your training needs today.">
+          <Card index={0} title="Understand what you eat" chips={["Calories vs training","Protein target","Type any meal"]} hint="Tap meals, or type your own" body="Log a meal in a tap and watch calories and macros settle against what your training needs today.">
             <PhoneFrame><FoodScreen /></PhoneFrame>
           </Card>
-          <Card index={1} title="Get answers from your data" body="Ask anything in plain words. Switch the voice above and the same question gets a different kind of answer.">
+          <Card index={1} title="Get answers from your data" chips={["Sleep","Strain","Labs","Three coaching voices"]} hint="Ask a question, or switch voice" body="Ask anything in plain words. Switch the voice above and the same question gets a different kind of answer.">
             <PhoneFrame><ChatScreen persona={persona} onPersona={setPersona} /></PhoneFrame>
           </Card>
-          <Card index={2} title="Proactive check-ins" body="Reminders, daily summaries and nudges that arrive when they help — and stay quiet when they don’t.">
+          <Card index={2} title="Proactive check-ins" chips={["Morning brief","Hydration","Wind-down","Quiet hours"]} hint="Flip a switch, drag quiet hours" body="Reminders, daily summaries and nudges that arrive when they help — and stay quiet when they don’t.">
             <PhoneFrame><CheckinScreen /></PhoneFrame>
           </Card>
-          <Card index={3} title="Finds sources you can trust" body="When Meridian explains something, it shows the research it read — and the sentence that mattered.">
+          <Card index={3} title="Finds sources you can trust" chips={["Peer-reviewed","Quoted, not paraphrased","Saved to your journal"]} hint="Open a source, ask a follow-up" body="When Meridian explains something, it shows the research it read — and the sentence that mattered.">
             <PhoneFrame><SourcesScreen /></PhoneFrame>
           </Card>
-          <Card index={4} title="Personalized training plans" body="Workouts built from your recovery and your week, with a timer and a checklist to keep you honest.">
+          <Card index={4} title="Personalized training plans" chips={["Built from recovery","Sets you tick off","Rest-aware timer"]} hint="Tick sets, start the timer" body="Workouts built from your recovery and your week, with a timer and a checklist to keep you honest.">
             <PhoneFrame><PlanScreen /></PhoneFrame>
           </Card>
         </div>

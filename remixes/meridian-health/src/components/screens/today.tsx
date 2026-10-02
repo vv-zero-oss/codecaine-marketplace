@@ -14,7 +14,10 @@ const SERIES = {
 type Metric = keyof typeof SERIES
 
 /** The hero phone: pick a range, tap a metric, scrub its chart, switch tabs. */
+const PLAN = ["Tempo run, 35 min", "Mobility, 10 min", "Protein at lunch", "Screens off by 10 p.m."] as const
+
 export function TodayScreen() {
+  const [plan, setPlan] = useState<string[]>([])
   const [range, setRange] = useState<(typeof RANGES)[number]>("7D")
   const [metric, setMetric] = useState<Metric>("Strain")
   const [tab, setTab] = useState("today")
@@ -28,10 +31,16 @@ export function TodayScreen() {
       <h3 className="text-[30px] font-semibold tracking-tight">{tab === "today" ? "Today" : tab === "trends" ? "Trends" : "Coach"}</h3>
 
       {tab === "coach" ? (
-        <div className="mt-4 rounded-3xl bg-tint p-5 text-[15px] leading-snug">
-          <div className="mb-1 font-semibold">Morning, Alex.</div>
-          Your recovery is 70% and sleep was long. Today is a good day for the tempo run — keep the effort steady and drink before you’re thirsty.
-        </div>
+        <>
+          <div className="mt-4 rounded-3xl bg-tint p-5 text-[15px] leading-snug">
+            <div className="mb-1 font-semibold">Morning, Alex.</div>
+            Your recovery is 70% and sleep was long. Today is a good day for the tempo run — keep the effort steady and drink before you’re thirsty.
+          </div>
+          <div className="mt-4 text-[13px] font-semibold text-ink-2">Today’s plan · {plan.length}/{PLAN.length}</div>
+          <ul className="mt-2 space-y-2">
+            {PLAN.map((item) => { const on = plan.includes(item); return <li key={item}><button onClick={() => setPlan(on ? plan.filter((x) => x !== item) : [...plan, item])} aria-pressed={on} className={cn("flex w-full items-center gap-3 rounded-2xl p-3.5 text-left text-[14px] font-medium transition-colors", on ? "bg-mint/10 text-ink-3 line-through" : "bg-tint/70")}><span className={cn("grid size-5 place-items-center rounded-full border-2", on ? "border-mint bg-mint" : "border-ink-3/40")} />{item}</button></li> })}
+          </ul>
+        </>
       ) : (
         <>
           <div className="mt-4 flex items-center gap-4 rounded-3xl bg-paper p-4 shadow-card">

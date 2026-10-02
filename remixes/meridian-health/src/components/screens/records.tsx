@@ -1,6 +1,7 @@
 import { ChevronRight, FlaskConical, Plus, X } from "lucide-react"
 import { useState } from "react"
 
+import { Ring } from "@/components/motion/ring"
 import { NavRow, Screen } from "@/components/screens/kit"
 import { cn } from "@/lib/utils"
 
@@ -58,6 +59,10 @@ export function RecordsScreen() {
         </div>
       ))}
       {list.length === 0 && <p className="mt-10 text-center text-[14px] text-ink-3">Nothing here yet.</p>}
+      <div className="mt-5 flex items-center gap-4 rounded-3xl bg-paper p-4 shadow-card">
+        <Ring value={(11 / 12) * 100} size={64} stroke={7}><b className="text-[14px] tabular-nums">11/12</b></Ring>
+        <p className="text-[13px] leading-snug text-ink-2"><b className="text-ink">{records.length} records</b> on file. 11 of 12 biomarkers are in range — ferritin is the one to watch.</p>
+      </div>
     </Screen>
   )
 }

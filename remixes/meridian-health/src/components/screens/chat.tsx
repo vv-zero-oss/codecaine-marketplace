@@ -77,9 +77,16 @@ export function ChatScreen({ persona = "Friend", onPersona }: { persona?: Person
       </div>
       <div data-lenis-prevent className="mt-4 flex-1 space-y-2.5 overflow-y-auto pb-3 [scrollbar-width:none]">
         {messages.length === 0 && (
-          <div className="pt-6 text-center">
+          <div className="pt-4 text-center">
             <span className="mx-auto grid size-12 place-items-center rounded-2xl bg-paper shadow-card"><Sparkles className="size-5 text-violet" /></span>
             <p className="mx-auto mt-3 max-w-[240px] text-[14px] leading-snug text-ink-2">Ask about your sleep, strain, recovery or labs. I’ve read all of it.</p>
+            <div className="mt-5 space-y-2 text-left">
+              {ASKS.map((q, i) => (
+                <button key={q} onClick={() => ask(q, i)} className="flex w-full items-center justify-between rounded-2xl bg-paper px-4 py-3.5 text-[14px] font-medium shadow-card transition-transform active:scale-[0.98]">
+                  {q}<ArrowUp className="size-4 rotate-45 text-ink-3" />
+                </button>
+              ))}
+            </div>
           </div>
         )}
         {messages.map((m, i) => (
@@ -93,7 +100,7 @@ export function ChatScreen({ persona = "Friend", onPersona }: { persona?: Person
         <div ref={end} />
       </div>
       <div className="-mx-4 border-t border-line bg-paper/90 px-4 pt-2.5 pb-8 backdrop-blur">
-        {messages.length < 2 && (
+        {messages.length >= 2 && (
           <div className="mb-2 flex gap-2 overflow-x-auto [scrollbar-width:none]">
             {ASKS.map((q, i) => <button key={q} onClick={() => ask(q, i)} className="shrink-0 rounded-full bg-tint px-3 py-1.5 text-[12px] font-medium text-ink-2 transition-colors hover:bg-tint-2">{q}</button>)}
           </div>

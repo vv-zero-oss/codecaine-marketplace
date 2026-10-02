@@ -14,10 +14,19 @@ const MARKERS = [
 ] as const
 
 /** Biological age: pick a biomarker and the headline age and advice follow. */
+const HABITS = [
+  { id: "sleep", label: "+30 min sleep", gain: 0.4 },
+  { id: "zone2", label: "2 zone-2 runs a week", gain: 0.7 },
+  { id: "dinner", label: "Finish eating by 8 p.m.", gain: 0.3 },
+  { id: "strength", label: "Lift twice a week", gain: 0.5 },
+] as const
+
 export function AgeScreen() {
   const [sel, setSel] = useState<string | null>(null)
+  const [habits, setHabits] = useState<string[]>([])
   const chosen = MARKERS.find((m) => m.id === sel)
-  const total = chosen ? 28.8 + chosen.years / 5 : 23.3
+  const gain = HABITS.filter((h) => habits.includes(h.id)).reduce((a, h) => a + h.gain, 0)
+  const total = (chosen ? 28.8 + chosen.years / 5 : 23.3) - gain
   return (
     <Screen className="bg-[linear-gradient(#e4f5ee,#fff_260px)]">
       <NavRow title="Biological Age" />
@@ -44,6 +53,14 @@ export function AgeScreen() {
           </li>
         ))}
       </ul>
+      <div className="mt-5 text-[13px] font-semibold text-ink-2">What if you…</div>
+      <div className="mt-2 flex flex-wrap gap-2">
+        {HABITS.map((h) => {
+          const on = habits.includes(h.id)
+          return <button key={h.id} aria-pressed={on} onClick={() => setHabits(on ? habits.filter((x) => x !== h.id) : [...habits, h.id])} className={cn("h-9 rounded-full px-3.5 text-[13px] font-medium transition-[background-color,color,transform] duration-150 active:scale-95", on ? "bg-mint text-white" : "bg-tint text-ink-2")}>{h.label}</button>
+        })}
+      </div>
+      <p className="mt-3 rounded-2xl bg-ink p-4 text-[13px] leading-snug text-white/85">{gain ? `That could take ${gain.toFixed(1)} years off in a year — ${total.toFixed(1)} would be your new age.` : "Pick a habit to see what it could do in a year."}</p>
     </Screen>
   )
 }

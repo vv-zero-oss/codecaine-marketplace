@@ -12,7 +12,14 @@ const PROMISES: { id: string; label: string; icon: LucideIcon; body: string }[] 
 ]
 
 /** Three promises; tap one to read what it means in practice. */
+const PERMISSIONS = [
+  { id: "coach", label: "Coach can read my lab results", note: "Used only to answer your questions", on: true },
+  { id: "doctor", label: "Share a weekly summary with my doctor", note: "A PDF you can review first", on: false },
+  { id: "research", label: "Contribute anonymised data to research", note: "Off by default, always opt-in", on: false },
+] as const
+
 export function Privacy() {
+  const [perm, setPerm] = useState<Record<string, boolean>>(Object.fromEntries(PERMISSIONS.map((p) => [p.id, p.on])))
   const [open, setOpen] = useState(PROMISES[0].id)
   const current = PROMISES.find((p) => p.id === open)!
   return (
@@ -32,6 +39,17 @@ export function Privacy() {
             ))}
           </div>
           <p key={current.id} className="mx-auto mt-6 min-h-12 max-w-md animate-[pop-in_260ms_var(--ease-out)] text-[15px] leading-snug text-white/75">{current.body}</p>
+          <ul className="mx-auto mt-8 max-w-lg divide-y divide-white/10 overflow-hidden rounded-3xl bg-white/[0.07] text-left backdrop-blur ring-1 ring-white/10">
+            {PERMISSIONS.map((p) => (
+              <li key={p.id}>
+                <button role="switch" aria-checked={perm[p.id]} onClick={() => setPerm({ ...perm, [p.id]: !perm[p.id] })} className="flex min-h-16 w-full items-center gap-4 px-5 py-3 text-left">
+                  <span className="flex-1"><span className="block text-[15px] font-medium">{p.label}</span><span className="text-xs text-white/55">{p.note}</span></span>
+                  <span className={cn("relative h-7 w-12 shrink-0 rounded-full transition-colors duration-200", perm[p.id] ? "bg-mint" : "bg-white/20")}><span className={cn("absolute top-0.5 left-0.5 size-6 rounded-full bg-white shadow transition-transform duration-200 ease-out", perm[p.id] && "translate-x-5")} /></span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-3 text-xs text-white/50" aria-live="polite">{Object.values(perm).filter(Boolean).length} of {PERMISSIONS.length} permissions on — change them any time.</p>
         </Container>
       </div>
     </section>
