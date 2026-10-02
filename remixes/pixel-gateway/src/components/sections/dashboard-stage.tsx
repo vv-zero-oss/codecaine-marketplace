@@ -9,7 +9,15 @@ import { TiltCard } from "@/components/motion/tilt-card"
 import { Badge } from "@/components/ui/badge"
 import { Container } from "@/components/ui/container"
 import { STAGES, type StageId } from "@/content"
+import { buttonVariants } from "@/components/ui/button"
+import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
+
+const STAGE_LINK: Record<StageId, { href: string; label: string }> = {
+  block: { href: "/products#tls", label: "See TLS inspection" },
+  detect: { href: "/products#radar", label: "See the AI radar" },
+  control: { href: "/products#policy", label: "See policy push" },
+}
 
 const ACCENT: Record<StageId, string> = {
   block: "var(--color-bad)",
@@ -283,6 +291,7 @@ export function StageSection({ index, onActive }: { index: number; onActive: (in
               </li>
             ))}
           </ul>
+          <Link href={STAGE_LINK[stage.id].href} className={cn(buttonVariants({ variant: "outline" }), "mt-8")}>{STAGE_LINK[stage.id].label}</Link>
         </div>
         <TiltCard maxTilt={6} glare={false} perspective={1200} className="overflow-hidden">
           <Visual />

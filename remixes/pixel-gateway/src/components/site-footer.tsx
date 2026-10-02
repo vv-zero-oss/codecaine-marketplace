@@ -1,6 +1,7 @@
 import { Wordmark } from "@/components/pixel/wordmark"
 import { Container } from "@/components/ui/container"
-import { NAV } from "@/content"
+import { MORE_PAGES, NAV } from "@/content"
+import { Newsletter } from "@/components/newsletter"
 import { Link } from "@/lib/router"
 
 export function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
@@ -15,13 +16,15 @@ export function FooterColumn({ title, children }: { title: string; children: Rea
 export function SiteFooter() {
   return (
     <footer className="border-t-4 border-line bg-surface">
-      <Container className="grid gap-10 py-14 md:grid-cols-[1.4fr_repeat(3,1fr)]">
+      <Container className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div className="max-w-xs">
           <Wordmark />
           <p className="mt-4 text-lg text-fg-muted">A secure web gateway that checks on the device and lets traffic go direct.</p>
+          <p className="mb-3 mt-6 font-display text-[10px] uppercase text-fg-subtle">Release notes, monthly</p>
+          <Newsletter />
         </div>
         <FooterColumn title="Site">
-          {NAV.map((item) => (
+          {[...NAV, ...MORE_PAGES].map((item) => (
             <li key={item.href}>
               <Link href={item.href} className="hover:text-fg">{item.label}</Link>
             </li>

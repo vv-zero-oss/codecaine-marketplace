@@ -4,6 +4,8 @@ import { TiltCard } from "@/components/motion/tilt-card"
 import { Container } from "@/components/ui/container"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { TESTIMONIALS } from "@/content"
+import { buttonVariants } from "@/components/ui/button"
+import { Link } from "@/lib/router"
 
 export function Hearts({ count = 5, of = 5 }: { count?: number; of?: number }) {
   return (
@@ -34,6 +36,7 @@ export function Testimonials() {
             </Reveal>
           ))}
         </div>
+        <Link href="/customers" className={buttonVariants({ variant: "outline", size: "lg", className: "mt-12" })}>Read the case files</Link>
       </Container>
     </section>
   )

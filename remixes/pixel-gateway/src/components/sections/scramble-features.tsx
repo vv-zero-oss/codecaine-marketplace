@@ -4,6 +4,7 @@ import { ScrambleText } from "@/components/motion/scramble-text"
 import { Container } from "@/components/ui/container"
 import { FEATURES } from "@/content"
 import { Link } from "@/lib/router"
+import { buttonVariants } from "@/components/ui/button"
 
 /**
  * Eight capabilities as a departure board: each row is a link that decrypts
@@ -37,6 +38,10 @@ export function ScrambleFeatures() {
             </li>
           ))}
         </ul>
+        <div className="mt-10 flex flex-wrap gap-4">
+          <Link href="/products" className={buttonVariants({ variant: "primary", size: "lg" })}>See all eight checks</Link>
+          <Link href="/how-it-works#try" className={buttonVariants({ variant: "outline", size: "lg" })}>Try it on a request</Link>
+        </div>
       </Container>
     </section>
   )

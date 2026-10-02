@@ -6,9 +6,17 @@ import type { SpriteName } from "@/components/pixel/sprites"
 
 export const NAV = [
   { label: "Products", href: "/products" },
+  { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
   { label: "Customers", href: "/customers" },
   { label: "Generator", href: "/generator" },
+] as const
+
+/** Pages that live in the footer, the mobile menu and ⌘K rather than the top bar. */
+export const MORE_PAGES = [
+  { label: "Get started", href: "/get-started" },
+  { label: "Security", href: "/security" },
+  { label: "About", href: "/about" },
   { label: "Brand", href: "/brand" },
 ] as const
 
@@ -219,3 +227,45 @@ export const FAQ = [
 ]
 
 export const PALETTE_NAMES = ["Dusk", "Lava", "Mint", "Sunset", "Arcade", "Ice"] as const
+
+export const HOW_STEPS = [
+  { id: "install", index: "01", title: "Install the agent", body: "Push one small agent with your device manager. It runs beside the browser, starts in under a second and needs no tunnel.", detail: "Works on macOS, Windows, ChromeOS and Linux. Silent install, signed and notarised.", tone: "accent" as const },
+  { id: "inspect", index: "02", title: "It checks every request", body: "Each request is inspected on the device: the address, the certificate, and for AI tools, the prompt and files going out.", detail: "TLS inspection respects pinned apps and leaves banking alone.", tone: "warn" as const },
+  { id: "decide", index: "03", title: "Your policy decides", body: "Block it, mask it, coach the person, or let it through. The decision is made locally in milliseconds from the rules you wrote.", detail: "Every rule shows a diff before it ships and has an undo.", tone: "good" as const },
+  { id: "direct", index: "04", title: "Traffic goes direct", body: "Allowed requests head straight to where they were going. Nothing is backhauled, so nothing slows down.", detail: "Median overhead across all customers: three milliseconds.", tone: "sky" as const },
+]
+
+export const SCENARIOS = [
+  { id: "phish", label: "Open a phishing link", detail: "login-secure-bank.example", stop: 1, verdict: "BLOCK", tone: "bad", log: "Newly registered domain, matches a known phishing kit.", ms: 2 },
+  { id: "secret", label: "Paste an API key into an AI chat", detail: "chat.ai-notes.app", stop: 2, verdict: "MASK", tone: "warn", log: "Key pattern found in the prompt. Replaced with [REDACTED] before sending.", ms: 3 },
+  { id: "mail", label: "Upload a file to personal mail", detail: "mail.personal-inbox.example", stop: 2, verdict: "COACH", tone: "accent", log: "Company file headed for personal mail. Person shown a note, upload held.", ms: 3 },
+  { id: "docs", label: "Read the framework docs", detail: "docs.framework.example", stop: 3, verdict: "ALLOW", tone: "good", log: "Known good category. Went direct, nothing logged beyond the count.", ms: 1 },
+] as const
+
+export const GET_STARTED = [
+  { id: "account", title: "Make your workspace", body: "Name it and pick the region your policies and logs will live in.", cta: "Create workspace" },
+  { id: "policy", title: "Pick a starting policy", body: "Choose how strict to begin. You can change any rule later and every change has an undo.", cta: "Use this policy" },
+  { id: "agent", title: "Protect a device", body: "Copy the install command, or send the agent to your device manager. Your first device appears here in seconds.", cta: "Finish setup" },
+]
+
+export const TRUST = [
+  { title: "Audited", body: "Independent SOC 2 Type II and ISO 27001 reports, shared under NDA on request.", sprite: "shield" as SpriteName },
+  { title: "Stays on the device", body: "Traffic contents are inspected locally and never copied to our servers.", sprite: "lock" as SpriteName },
+  { title: "Your region", body: "Policies and audit logs are stored in the region you choose: US, EU or APAC.", sprite: "globe" as SpriteName },
+  { title: "Keys you hold", body: "Bring your own key for audit-log encryption on Boss Level plans.", sprite: "key" as SpriteName },
+  { title: "Fast disclosure", body: "A public security contact and a 72-hour acknowledgement promise.", sprite: "bolt" as SpriteName },
+  { title: "Open about changes", body: "A plain-language changelog for every agent release, with a rollback.", sprite: "chip" as SpriteName },
+]
+
+export const VALUES = [
+  { title: "Quiet by default", body: "The best security tool is the one nobody has to think about." },
+  { title: "Explain it", body: "Every block comes with a reason a person can read in one breath." },
+  { title: "Undo everything", body: "If a change can hurt, it can also be rolled back in a click." },
+]
+
+export const TEAM = [
+  { name: "Ottilie Moreau", role: "Founder, security", sprite: "shield" as SpriteName },
+  { name: "Kenji Arai", role: "Agent engineering", sprite: "chip" as SpriteName },
+  { name: "Sade Okafor", role: "Policy and research", sprite: "eye" as SpriteName },
+  { name: "Lars Nilsen", role: "Customer success", sprite: "heart" as SpriteName },
+]

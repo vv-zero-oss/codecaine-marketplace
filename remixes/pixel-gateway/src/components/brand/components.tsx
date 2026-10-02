@@ -27,6 +27,9 @@ import { Switch } from "@/components/ui/switch"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip"
 import { PLANS } from "@/content"
+import { CtaBand } from "@/components/cta-band"
+import { Newsletter } from "@/components/newsletter"
+import { RequestSimulator } from "@/components/request-simulator"
 import { Specimen, SubHeading } from "./specimen"
 
 const VARIANTS = ["default", "primary", "accent", "outline", "ghost", "glass"] as const
@@ -132,6 +135,15 @@ export function ComponentLibrary() {
       </Specimen>
       <Specimen title="PlanCard" code={`<PlanCard plan={PLANS[1]} annual={false} />`} className="grid gap-8 bg-surface p-6 shadow-px md:grid-cols-2 [--px-edge:var(--color-line)]">
         <PlanCard plan={PLANS[0]} annual={false} /><PlanCard plan={PLANS[1]} annual />
+      </Specimen>
+      <Specimen title="CtaBand" note="Between sections: one line, a primary link and a softer button." code={`<CtaBand title="Ready to try it?" primary="Get started" to="/get-started" />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
+        <div className="w-full"><CtaBand title="Ready to try it?" body="No card, no call." className="py-4" /></div>
+      </Specimen>
+      <Specimen title="Newsletter" code={`<Newsletter />`}>
+        <Newsletter />
+      </Specimen>
+      <Specimen title="RequestSimulator" note="Four stops; each scenario stops or passes at its own." code={`<RequestSimulator stepMs={650} />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
+        <div className="w-full"><RequestSimulator /></div>
       </Specimen>
       <Specimen title="DashboardHero" note="The sticky panel. In the page it follows the scroll; here it is driven by hand." code={`<DashboardHero active={0} progress={0.33} onSelect={go} />`} className="bg-surface p-4 shadow-px [--px-edge:var(--color-line)]">
         <DashboardDemo />

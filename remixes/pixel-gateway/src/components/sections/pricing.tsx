@@ -11,6 +11,8 @@ import { SectionHeading } from "@/components/ui/section-heading"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { PLANS } from "@/content"
 import { openDialog } from "@/lib/ui-events"
+import { buttonVariants } from "@/components/ui/button"
+import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 export function PlanCard({ plan, annual }: { plan: (typeof PLANS)[number]; annual: boolean }) {
@@ -73,6 +75,7 @@ export function Pricing({ heading = true }: { heading?: boolean }) {
             </Reveal>
           ))}
         </div>
+        {heading ? <Link href="/pricing" className={buttonVariants({ variant: "ghost", size: "lg", className: "mt-10" })}>Compare every plan →</Link> : null}
       </Container>
     </section>
   )

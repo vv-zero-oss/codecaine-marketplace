@@ -1,4 +1,4 @@
-import { CornerDownLeft, Dices, LogIn, Palette, Presentation } from "lucide-react"
+import { CornerDownLeft, Dices, FlaskConical, LogIn, Palette, Presentation, Rocket } from "lucide-react"
 import { useEffect } from "react"
 
 import {
@@ -11,7 +11,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
-import { NAV } from "@/content"
+import { MORE_PAGES, NAV } from "@/content"
 import { navigate } from "@/lib/router"
 import { applyTheme } from "@/lib/theme"
 import { openDialog } from "@/lib/ui-events"
@@ -43,7 +43,7 @@ export function CommandMenu({ open, onOpenChange }: { open: boolean; onOpenChang
           <CommandItem onSelect={() => run(() => navigate("/"))}>
             Home <CommandShortcut>H</CommandShortcut>
           </CommandItem>
-          {NAV.map((item) => (
+          {[...NAV, ...MORE_PAGES].map((item) => (
             <CommandItem key={item.href} onSelect={() => run(() => navigate(item.href))}>
               {item.label}
               <CommandShortcut>
@@ -56,6 +56,12 @@ export function CommandMenu({ open, onOpenChange }: { open: boolean; onOpenChang
         <CommandGroup heading="Actions">
           <CommandItem onSelect={() => run(() => navigate("/generator?roll=1"))}>
             <Dices /> Roll a random template
+          </CommandItem>
+          <CommandItem onSelect={() => run(() => navigate("/get-started"))}>
+            <Rocket /> Get started free
+          </CommandItem>
+          <CommandItem onSelect={() => run(() => navigate("/how-it-works#try"))}>
+            <FlaskConical /> Try the request simulator
           </CommandItem>
           <CommandItem onSelect={() => run(() => openDialog("demo"))}>
             <Presentation /> Book a demo

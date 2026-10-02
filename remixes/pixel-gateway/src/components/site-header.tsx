@@ -5,9 +5,9 @@ import { useCanvasAction } from "@canvas/react"
 import { CommandMenu } from "@/components/command-menu"
 import { Wordmark } from "@/components/pixel/wordmark"
 import { DemoDialog, LoginDialog } from "@/components/site-dialogs"
-import { Button } from "@/components/ui/button"
+import { Button, buttonVariants } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
-import { NAV } from "@/content"
+import { MORE_PAGES, NAV } from "@/content"
 import { Link, usePathname } from "@/lib/router"
 import { cn } from "@/lib/utils"
 import { onDialog } from "@/lib/ui-events"
@@ -76,12 +76,15 @@ export function SiteHeader() {
           <Button variant="ghost" size="icon" className="hidden sm:inline-flex" aria-label="Open command menu" onClick={() => setCommand(true)}>
             <Command />
           </Button>
-          <Button variant="default" size="sm" className="hidden sm:inline-flex" onClick={() => setDemo(true)}>
+          <Button variant="default" size="sm" className="hidden xl:inline-flex" onClick={() => setDemo(true)}>
             Book a demo
           </Button>
-          <Button variant="outline" size="sm" className="hidden sm:inline-flex" onClick={() => setLogin(true)}>
+          <Button variant="outline" size="sm" className="hidden md:inline-flex" onClick={() => setLogin(true)}>
             Log in
           </Button>
+          <Link href="/get-started" className={buttonVariants({ variant: "accent", size: "sm" })}>
+            Get started
+          </Link>
           <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu" onClick={() => setMenu(true)}>
             <Menu />
           </Button>
@@ -95,7 +98,7 @@ export function SiteHeader() {
             <SheetDescription className="sr-only">Site navigation</SheetDescription>
           </SheetHeader>
           <nav className="grid p-3" aria-label="Mobile">
-            {[{ label: "Home", href: "/" }, ...NAV].map((item) => (
+            {[{ label: "Home", href: "/" }, ...NAV, ...MORE_PAGES].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -108,6 +111,9 @@ export function SiteHeader() {
             ))}
           </nav>
           <div className="mt-auto grid gap-3 p-5">
+            <Link href="/get-started" onClick={() => setMenu(false)} className={buttonVariants({ variant: "accent" })}>
+              Get started
+            </Link>
             <Button
               variant="default"
               onClick={() => {
