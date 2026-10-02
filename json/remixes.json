@@ -2131,6 +2131,109 @@
     },
     {
       "type": "remix",
+      "id": "school-gazette",
+      "name": "Marlowe Gazette",
+      "version": "1.0.0",
+      "description": "A vintage school magazine: a tossed-in newspaper front page, a working tabletop radio that reads the daily brief, an embossed 3D LED scoreboard, retro keys, knobs and switches, and CSS-3D cubes and carousels on the margins.",
+      "designedFor": [
+        "School and college magazines, yearbooks and student newsrooms",
+        "Anything that should feel like a printed broadsheet with a retro workshop on top",
+        "Pages that mix editorial type with tactile controls: radios, LED boards, stamps and switches",
+        "Learning how to build editor-ready motion and 3D components with @canvas/react"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ottilie Moreau"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "school",
+        "magazine",
+        "newspaper",
+        "retro",
+        "vintage",
+        "radio",
+        "led",
+        "3d",
+        "paper",
+        "editorial"
+      ],
+      "categories": [
+        "Editorial",
+        "Education"
+      ],
+      "created": "2026-10-02",
+      "updated": "2026-10-02",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3340
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/school-gazette",
+      "thumbnailUrl": "remixes/school-gazette/preview.png",
+      "iconUrl": "remixes/school-gazette/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/school-gazette/previews/desktop.jpg",
+        "mobile": "remixes/school-gazette/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/school-gazette/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/school-gazette/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/school-gazette-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "1e3b27604f384adaa592fbc9ce6fda76a15d3b4dac0c9a4f553278aed4b062d8",
+        "size": 1341952,
+        "files": 77
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/school-gazette"
+      },
+      "demoUrl": "demos/school-gazette/"
+    },
+    {
+      "type": "remix",
       "id": "sdk-scaffold",
       "name": "SDK Scaffold",
       "version": "1.2.1",
