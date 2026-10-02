@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "tally-money",
   "name": "Tally",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A personal-finance landing page: dropping-objects hero, one-switch bank link, dashboard and phone, self-typing search, a cash-flow chart and a dark closing band — authored as named components for the editor.",
   "designedFor": [
     "Launching a money, budgeting or banking app",

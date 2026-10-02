@@ -1,9 +1,10 @@
-import { Check, Landmark } from "lucide-react"
+import { Landmark } from "lucide-react"
 import { useInView, useReducedMotion } from "motion/react"
 import { useEffect, useRef, useState } from "react"
 import { useCanvasAction, useCanvasDesignMode } from "@canvas/react"
 
 import { Container } from "@/components/ui/container"
+import { Switch } from "@/components/ui/switch"
 import { Reveal } from "@/components/motion/reveal"
 import { cn } from "@/lib/utils"
 
@@ -35,33 +36,18 @@ export function BankLinkCard({ delay = 900, className }: { delay?: number; class
           )}
         />
         <div className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-full bg-brand-50 text-brand-600">
+          <span className="relative grid size-10 place-items-center rounded-full bg-brand-50 text-brand-600">
+            <span key={String(linked)} className={cn("pointer-events-none absolute inset-0 rounded-full ring-2 ring-leaf-500", linked ? "animate-[ping-once_700ms_var(--ease-out)_both]" : "hidden")} />
             <Landmark className="size-5" />
           </span>
           <div className="min-w-0 flex-1 text-left">
             <p className="truncate text-sm font-bold">Harbor National Bank</p>
-            <p className="text-xs text-ink-400">Checking · ••4821</p>
+            <p className="relative h-4 overflow-hidden text-xs text-ink-400">
+              <span className={cn("absolute inset-0 transition-[opacity,transform] duration-300 ease-[var(--ease-out)]", linked ? "-translate-y-full opacity-0" : "")}>Checking · ••4821</span>
+              <span className={cn("absolute inset-0 font-semibold text-leaf-500 transition-[opacity,transform] duration-300 ease-[var(--ease-out)]", linked ? "" : "translate-y-full opacity-0")}>Connected · read-only</span>
+            </p>
           </div>
-          <button
-            type="button"
-            role="switch"
-            aria-checked={linked}
-            aria-label="Link Harbor National Bank"
-            onClick={() => setLinked(!linked)}
-            className={cn(
-              "relative h-8 w-14 shrink-0 rounded-full transition-colors duration-300 ease-[var(--ease-out)] active:scale-95",
-              linked ? "bg-leaf-500" : "bg-ink-200",
-            )}
-          >
-            <span
-              className={cn(
-                "absolute top-1 left-1 grid size-6 place-items-center rounded-full bg-white shadow-card transition-transform duration-300 ease-[var(--ease-out)]",
-                linked && "translate-x-6",
-              )}
-            >
-              <Check className={cn("size-3.5 text-leaf-500 transition-opacity duration-200", linked ? "opacity-100" : "opacity-0")} strokeWidth={3} />
-            </span>
-          </button>
+          <Switch checked={linked} onCheckedChange={setLinked} label="Link Harbor National Bank" />
         </div>
       </div>
     </div>

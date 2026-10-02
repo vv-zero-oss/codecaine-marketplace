@@ -19,6 +19,7 @@ import { Manifesto } from "@/components/sections/manifesto"
 import { Merchants } from "@/components/sections/merchants"
 import { SearchRecall } from "@/components/sections/search-recall"
 import { Showcase } from "@/components/sections/showcase"
+import { ScrollProgress } from "@/components/motion/scroll-progress"
 import { QrCode } from "@/components/qr-code"
 import { usePathname } from "@/lib/router"
 import { BrandPage } from "@/pages/brand"
@@ -56,6 +57,7 @@ export default function App() {
 
   return (
     <div className="bg-white text-ink-900" data-canvas-ignore>
+      <ScrollProgress />
       <SiteHeader />
       <main data-canvas-ignore>
         {sections().map(({ id, Section }) => (

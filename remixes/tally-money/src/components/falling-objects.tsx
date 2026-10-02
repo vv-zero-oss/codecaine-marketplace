@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "motion/react"
 import { useCanvasDesignMode } from "@canvas/react"
 
+import { useFinePointer } from "@/components/motion/use-fine-pointer"
+
 import { Cup, Mango, Notebook, Pizza, Popcorn, PlayTile, Scissors, Ticket } from "@/components/illustrations/objects"
 import { cn } from "@/lib/utils"
 
@@ -22,28 +24,44 @@ const PILE = [
  * `stagger` is the gap between objects in seconds, `distance` how far above the
  * stage they start in px, `bounce` how springy the landing is (0 to 1).
  * Reduced motion and design mode both leave the pile already landed.
+ * With a mouse, every object can be picked up and flung; it springs home when
+ * let go (`drag` on, `elastic` is how far it follows the pointer, 0 to 1).
+ * On touch, a tap makes it hop. Purpose: delight, at the very top of the page.
  */
 export function FallingObjects({
   stagger = 0.09,
   distance = 520,
   bounce = 0.28,
+  elastic = 0.6,
+  drag = true,
   className,
 }: {
   stagger?: number
   distance?: number
   bounce?: number
+  elastic?: number
+  drag?: boolean
   className?: string
 }) {
   const reduced = useReducedMotion()
   const { designing } = useCanvasDesignMode()
   const still = reduced || designing
+  const fine = useFinePointer()
+  const canDrag = drag && fine && !reduced
   return (
     <div className={cn("relative mx-auto aspect-[4/3] w-full max-w-[30rem]", className)} aria-hidden="true">
       {PILE.map(({ Art, x, y, w, rotate, z }, index) => (
         <motion.div
           key={index}
           className="absolute"
-          style={{ left: `${x}%`, top: `${y}%`, width: `${w}%`, zIndex: z }}
+          style={{ left: `${x}%`, top: `${y}%`, width: `${w}%`, zIndex: z, cursor: canDrag ? "grab" : undefined }}
+          drag={canDrag}
+          dragSnapToOrigin
+          dragElastic={elastic}
+          dragTransition={{ bounceStiffness: 260, bounceDamping: 14 }}
+          whileDrag={{ scale: 1.1, zIndex: 20, cursor: "grabbing" }}
+          whileHover={canDrag ? { rotate: [rotate, rotate + 5, rotate - 4, rotate + 2, rotate], transition: { duration: 0.5 } } : undefined}
+          whileTap={canDrag || reduced ? undefined : { scale: 1.08, rotate: rotate + 6 }}
           initial={still ? false : { y: -distance, rotate: rotate - 40, opacity: 0 }}
           animate={{ y: 0, rotate, opacity: 1 }}
           transition={{

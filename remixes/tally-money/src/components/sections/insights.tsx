@@ -3,11 +3,12 @@ import { Sparkles } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { AppIcon } from "@/components/ui/app-icon"
 import { PhoneFrame } from "@/components/ui/phone-frame"
+import { Tilt } from "@/components/motion/tilt"
 import { Reveal } from "@/components/motion/reveal"
 import { Parallax } from "@/components/motion/parallax"
 import { CashFlowChart } from "@/components/motion/cash-flow-chart"
 
-const NOTES = ["Cash flow keeps spending in check", "Spot slow drifts before they compound", "Balance income against what you invest"]
+const NOTES = ["Drag across the chart to read any month", "Spot slow drifts before they compound", "Balance income against what you invest"]
 
 export function Insights() {
   return (
@@ -33,6 +34,7 @@ export function Insights() {
           </ul>
         </Reveal>
         <Parallax distance={24} className="mx-auto w-56 sm:w-64">
+          <Tilt max={9} lift={1.03}>
           <PhoneFrame tone="dark">
             <div className="flex h-full flex-col px-4 pb-5 text-white">
               <p className="text-center text-xs font-bold">Cash flow</p>
@@ -43,6 +45,7 @@ export function Insights() {
               <CashFlowChart className="mt-8" />
             </div>
           </PhoneFrame>
+          </Tilt>
         </Parallax>
       </Container>
     </section>

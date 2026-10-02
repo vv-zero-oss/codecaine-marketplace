@@ -2,6 +2,7 @@ import { Bell, CalendarDays, Home, Receipt, Settings2, User, Zap } from "lucide-
 
 import { Container } from "@/components/ui/container"
 import { PhoneFrame } from "@/components/ui/phone-frame"
+import { Tilt } from "@/components/motion/tilt"
 import { Reveal } from "@/components/motion/reveal"
 import { Parallax } from "@/components/motion/parallax"
 import { CountUp } from "@/components/motion/count-up"
@@ -29,6 +30,32 @@ function AreaChart({ className }: { className?: string }) {
   )
 }
 
+const DUE: Record<number, [string, string]> = {
+  4: ["Streaming", "$13"],
+  10: ["Phone plan", "$45"],
+  13: ["Cloud storage", "$10"],
+  18: ["Gym membership", "$30"],
+  23: ["Rent", "$1,360"],
+}
+
+/** A day on the calendar. Days with a payment pop on hover or focus and name it. */
+function CalendarDay({ day }: { day: number }) {
+  const due = DUE[day]
+  if (!due) return <span className="grid aspect-square place-items-center rounded-md bg-white/5 text-[9px] text-white/40">{day}</span>
+  return (
+    <button
+      type="button"
+      aria-label={`${due[0]}, ${due[1]}, on the ${day}th`}
+      className="group relative grid aspect-square place-items-center rounded-md bg-brand-500 text-[9px] text-white transition-transform duration-150 ease-[var(--ease-out)] active:scale-90 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none [@media(hover:hover)_and_(pointer:fine)]:hover:scale-110"
+    >
+      {day}
+      <span className="pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 origin-bottom -translate-x-1/2 scale-95 rounded-md bg-white px-2 py-1 text-[10px] font-semibold whitespace-nowrap text-ink-900 opacity-0 shadow-lift transition-[opacity,transform] duration-150 ease-[var(--ease-out)] group-hover:scale-100 group-hover:opacity-100 group-focus-visible:scale-100 group-focus-visible:opacity-100">
+        {due[0]} · {due[1]}
+      </span>
+    </button>
+  )
+}
+
 function RecurringPanel() {
   return (
     <div className="flex flex-col overflow-hidden rounded-xl bg-white shadow-card">
@@ -38,12 +65,7 @@ function RecurringPanel() {
         </p>
         <div className="mt-4 grid grid-cols-7 gap-1.5">
           {Array.from({ length: 28 }, (_, i) => (
-            <span
-              key={i}
-              className={`grid aspect-square place-items-center rounded-md text-[9px] ${[3, 9, 12, 17, 22].includes(i) ? "bg-brand-500 text-white" : "bg-white/5 text-white/40"}`}
-            >
-              {i + 1}
-            </span>
+            <CalendarDay key={i} day={i + 1} />
           ))}
         </div>
       </div>
@@ -138,11 +160,15 @@ export function Showcase() {
       <Container>
         <Reveal distance={40}>
           <div className="relative mx-auto max-w-5xl">
-            <DesktopMock />
+            <Tilt max={2} lift={1.005}>
+              <DesktopMock />
+            </Tilt>
             <Parallax distance={30} className="mx-auto mt-6 w-44 sm:absolute sm:top-[-2rem] sm:right-[-0.5rem] sm:mt-0 sm:w-52 lg:right-6 lg:w-60">
-              <PhoneFrame>
-                <PhoneScreen />
-              </PhoneFrame>
+              <Tilt max={9} lift={1.03}>
+                <PhoneFrame>
+                  <PhoneScreen />
+                </PhoneFrame>
+              </Tilt>
             </Parallax>
           </div>
         </Reveal>

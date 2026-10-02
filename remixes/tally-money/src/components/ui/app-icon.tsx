@@ -7,7 +7,7 @@ export function AppIcon({ icon: Glyph, className }: { icon: LucideIcon; classNam
   return (
     <span
       className={cn(
-        "grid size-12 place-items-center rounded-[0.9rem] bg-gradient-to-b from-brand-500 to-brand-700 text-white shadow-lift ring-1 ring-white/30 ring-inset",
+        "grid size-12 place-items-center transition-transform duration-200 ease-[var(--ease-out)] active:scale-95 [@media(hover:hover)_and_(pointer:fine)]:hover:-rotate-6 [@media(hover:hover)_and_(pointer:fine)]:hover:scale-110 rounded-[0.9rem] bg-gradient-to-b from-brand-500 to-brand-700 text-white shadow-lift ring-1 ring-white/30 ring-inset",
         className,
       )}
     >

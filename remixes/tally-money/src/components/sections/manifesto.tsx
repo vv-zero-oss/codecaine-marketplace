@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react"
 import { Container } from "@/components/ui/container"
 import { ButtonLink } from "@/components/ui/button"
 import { Reveal } from "@/components/motion/reveal"
+import { Magnetic } from "@/components/motion/magnetic"
 import { SpinningCoin } from "@/components/motion/coin"
 
 /** The closing argument, and the last thing to ask for. */
@@ -21,9 +22,11 @@ export function Manifesto() {
             design, in their limited reach, do to pull the pair apart? That is the question we asked
             ourselves.
           </p>
-          <ButtonLink href="#download" variant="primary" size="lg" className="mt-8">
-            Read our manifesto <ArrowRight />
-          </ButtonLink>
+          <Magnetic className="mt-8">
+            <ButtonLink href="#download" variant="primary" size="lg">
+              Read our manifesto <ArrowRight />
+            </ButtonLink>
+          </Magnetic>
         </Reveal>
         <SpinningCoin className="mt-12 w-28 sm:absolute sm:top-6 sm:right-4 sm:mt-0 sm:w-36 lg:right-24 lg:w-44" />
       </Container>

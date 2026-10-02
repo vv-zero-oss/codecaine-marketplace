@@ -2648,7 +2648,7 @@
       "type": "remix",
       "id": "tally-money",
       "name": "Tally",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "description": "A personal-finance landing page: dropping-objects hero, one-switch bank link, dashboard and phone, self-typing search, a cash-flow chart and a dark closing band — authored as named components for the editor.",
       "designedFor": [
         "Launching a money, budgeting or banking app",
@@ -2731,11 +2731,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/tally-money-1.0.0.tgz",
+        "url": "archives/remixes/tally-money-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "b6584047d0ca3aaf342250bc1da55e8aa59ccda4d0fd3dfeacdb43e41a6a9eb3",
-        "size": 357888,
-        "files": 62
+        "sha256": "c02de520b276aefbd3d4ee59e69c1504899860e0e865329e17448e26f796ced3",
+        "size": 392192,
+        "files": 68
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

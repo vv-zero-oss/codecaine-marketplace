@@ -18,8 +18,9 @@ const RIGHT = [
 
 export function NavLink({ href, children }: { href: string; children: string }) {
   return (
-    <Link href={href} className="text-sm font-medium text-ink-600 transition-colors duration-150 hover:text-ink-900">
+    <Link href={href} className="group relative text-sm font-medium text-ink-600 transition-colors duration-150 hover:text-ink-900">
       {children}
+      <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-ink-900 transition-transform duration-200 ease-[var(--ease-out)] [@media(hover:hover)_and_(pointer:fine)]:group-hover:scale-x-100" />
     </Link>
   )
 }

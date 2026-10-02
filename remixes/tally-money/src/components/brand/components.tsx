@@ -13,6 +13,11 @@ import { Container } from "@/components/ui/container"
 import { PhoneFrame } from "@/components/ui/phone-frame"
 import { SectionHeading } from "@/components/ui/section-heading"
 import { Wordmark } from "@/components/ui/wordmark"
+import { Switch } from "@/components/ui/switch"
+import { Magnetic } from "@/components/motion/magnetic"
+import { Tilt } from "@/components/motion/tilt"
+import { SplitText } from "@/components/motion/split-text"
+import { useState } from "react"
 import { QrCode } from "@/components/qr-code"
 import { CountUp } from "@/components/motion/count-up"
 import { CashFlowChart } from "@/components/motion/cash-flow-chart"
@@ -98,6 +103,7 @@ export function ButtonSpecimen() {
 }
 
 export function ComponentLibrary() {
+  const [on, setOn] = useState(true)
   return (
     <div className="space-y-8">
       <ButtonSpecimen />
@@ -134,9 +140,9 @@ export function ComponentLibrary() {
         </ComponentSpecimen>
       </div>
 
-      <ComponentSpecimen name="TransactionRow" source="components/sections/auto-log.tsx" description="One payment: merchant, time, amount and category." code={`<TransactionRow merchant="Blue Bottle" when="Today" amount="$5" tag="Food & drinks" icon={Coffee} />`}>
+      <ComponentSpecimen name="TransactionRow" source="components/sections/auto-log.tsx" description="One payment: merchant, time, amount and category." code={`<TransactionRow merchant="Blue Bottle" when="Today" amount="$5" tag="Food & drinks" />`}>
         <div className="max-w-sm">
-          <TransactionRow merchant="Blue Bottle" when="Today, 11:17 AM" amount="$5" tag="Food & drinks" icon={Coffee} />
+          <TransactionRow merchant="Blue Bottle" when="Today, 11:17 AM" amount="$5" tag="Food & drinks" />
         </div>
       </ComponentSpecimen>
 
@@ -168,6 +174,28 @@ export function ComponentLibrary() {
             <CountUp value={71034} className="tabular text-4xl font-extrabold tracking-tight" />
             <SpinningCoin className="w-20" />
           </div>
+        </ComponentSpecimen>
+      </div>
+
+      <div className="grid gap-8 lg:grid-cols-2">
+        <ComponentSpecimen name="Switch" source="components/ui/switch.tsx" description="A pill switch on transitions, so a quick double flip retargets. 44px tall hit area." code={`<Switch checked={on} onCheckedChange={setOn} label="Keep phone plan" />`}>
+          <Switch checked={on} onCheckedChange={setOn} label="Keep phone plan" />
+        </ComponentSpecimen>
+
+        <ComponentSpecimen name="Magnetic" source="components/motion/magnetic.tsx" description="Leans toward a mouse pointer and springs back. Off on touch and in reduced motion. Prop: strength." code={`<Magnetic strength={0.25}><ButtonLink …/></Magnetic>`}>
+          <Magnetic>
+            <ButtonLink href="#" variant="primary" size="lg">Move the pointer near me</ButtonLink>
+          </Magnetic>
+        </ComponentSpecimen>
+
+        <ComponentSpecimen name="Tilt" source="components/motion/tilt.tsx" description="Tilts a device toward the pointer. Props: max (deg), lift (scale)." code={`<Tilt max={9} lift={1.03}><PhoneFrame/></Tilt>`}>
+          <Tilt max={10} lift={1.04} className="mx-auto w-28">
+            <PhoneFrame />
+          </Tilt>
+        </ComponentSpecimen>
+
+        <ComponentSpecimen name="SplitText" source="components/motion/split-text.tsx" description="Words rise out of a mask in reading order. Props: text, as, delay, stagger, duration." code={`<SplitText text="Spend with your eyes open." delay={0.2} />`}>
+          <SplitText text="Spend with your eyes open." as="p" delay={0.1} className="text-3xl font-extrabold tracking-tight" />
         </ComponentSpecimen>
       </div>
 
