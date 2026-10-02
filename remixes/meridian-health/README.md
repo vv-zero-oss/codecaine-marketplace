@@ -11,6 +11,9 @@ A landing page for a connected health-coach app, built so the product is on the 
 | Records | Tap provider tiles to connect them; filter and expand records inside the phone. |
 | Intelligence | Pick a coaching voice (Friend, Guardian, Data nerd) — the chat answers in it. Log meals, toggle check-ins, expand sources, run the workout timer. |
 | And that's not all | An accordion that drives the phone: biological age, cycle, a lifting log, a journal. It auto-advances and stops when you hover. |
+| Why Meridian | Scroll: the paragraph lights up word by word (`ScrollText`). |
+| A day with Meridian | Scroll: the phone is pinned and the hour follows the scroll; tap the hour chips to jump. |
+| Seven signals | Scroll: vertical scroll slides a horizontal ribbon; tap a card to flip it. |
 | Privacy | Tap each promise to read what it means. |
 
 ## Device mockups

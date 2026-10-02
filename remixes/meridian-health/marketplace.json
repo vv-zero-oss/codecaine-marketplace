@@ -3,8 +3,8 @@
   "type": "remix",
   "id": "meridian-health",
   "name": "Meridian — Health Coach",
-  "version": "1.0.0",
-  "description": "A soft sky-blue landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal — plus privacy, reviews and a closing call.",
+  "version": "1.1.0",
+  "description": "A soft sky-blue landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal — plus three scroll-driven chapters (a manifesto that reads itself in, a pinned day-with-Meridian timeline, a horizontal signal ribbon), privacy, reviews and a closing call.",
   "designedFor": [
     "Health, fitness, wellness and wearable app launch pages",
     "Mobile-app landing pages that need the product itself on show, not screenshots",
@@ -15,7 +15,7 @@
   "canvasVersion": ">=0.0.1",
   "authors": [
     {
-      "name": "Ottilie Moreau"
+      "name": "Tavish Lindqvist-Rao"
     }
   ],
   "license": "MIT",
