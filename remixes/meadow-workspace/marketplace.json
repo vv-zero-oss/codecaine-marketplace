@@ -3,8 +3,8 @@
   "type": "remix",
   "id": "meadow-workspace",
   "name": "Meadow Workspace",
-  "version": "1.0.0",
-  "description": "A sky-and-meadow landing page for an everything-workspace: a floating pill nav, a serif hero over the product window, tabbed feature tour, assistant panels, filterable skills, a context-graph cluster and a bento of proof.",
+  "version": "1.1.0",
+  "description": "A sky-and-meadow landing page for an everything-workspace, set in Inter: floating pill nav, hero over the product window, value props, tabbed tour, how it works, a pinned video that grows to full screen, case studies, testimonials, context graph, bento, pricing and a closing CTA.",
   "designedFor": [
     "SaaS or productivity-app landing pages with a calm, editorial feel",
     "Products that bundle mail, CRM, meetings and an AI assistant",

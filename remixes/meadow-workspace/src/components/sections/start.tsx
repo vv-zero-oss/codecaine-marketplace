@@ -27,11 +27,11 @@ export function Start() {
         <Reveal delay={0.1} className="mt-12 flex h-[260px] items-end justify-center gap-3 sm:h-[300px]">
           <div className="relative flex h-full w-[clamp(110px,26vw,170px)] flex-col justify-between rounded-t-md bg-teal p-3 text-left text-white shadow-lift [mask-image:linear-gradient(to_bottom,black_70%,transparent)]">
             <Mark className="size-4 border-[2.5px]" />
-            <span className="font-serif text-[22px] font-semibold tracking-[-0.03em]">Starter</span>
+            <span className="font-display text-[22px] font-semibold tracking-[-0.03em]">Starter</span>
           </div>
           {BOOKS.map((b, i) => (
             <div key={b.title} className={cn("flex w-[clamp(34px,8vw,54px)] justify-center rounded-t-md pt-4 shadow-lift [mask-image:linear-gradient(to_bottom,black_70%,transparent)]", b.className)} style={{ height: `${100 - i * 3}%` }}>
-              <span className="font-serif text-[14px] font-semibold text-white [writing-mode:vertical-rl]">Starter · {b.title}</span>
+              <span className="font-display text-[14px] font-semibold text-white [writing-mode:vertical-rl]">Starter · {b.title}</span>
             </div>
           ))}
         </Reveal>

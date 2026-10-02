@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils"
 
 const LINKS = [
   { label: "Product", href: "#overview", menu: true },
-  { label: "Resources", href: "#skills", menu: true },
-  { label: "Pricing", href: "#start" },
+  { label: "Resources", href: "#how", menu: true },
+  { label: "Pricing", href: "#pricing" },
   { label: "Careers", href: "#footer" },
 ]
 
@@ -106,7 +106,7 @@ export function SiteHeader() {
             </Button>
           </SheetTrigger>
           <SheetContent>
-            <SheetTitle className="font-serif text-2xl font-semibold tracking-[-0.03em]">Menu</SheetTitle>
+            <SheetTitle className="font-display text-2xl font-semibold tracking-[-0.03em]">Menu</SheetTitle>
             <SheetDescription className="sr-only">Site navigation</SheetDescription>
             <nav className="flex flex-col">
               {LINKS.map((link) => (

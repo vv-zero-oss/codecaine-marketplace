@@ -112,7 +112,7 @@ export function Overview() {
                     value={f.id}
                     className="group h-auto w-full flex-col items-stretch gap-0 rounded-none border-b border-ink-100 bg-transparent px-1 py-4 text-left last:border-b-0 hover:bg-transparent data-[state=active]:bg-transparent"
                   >
-                    <span className={cn("flex items-center gap-3 font-serif text-[20px] font-semibold tracking-[-0.02em] transition-colors duration-200", open ? "text-ink-900" : "text-ink-500")}>
+                    <span className={cn("flex items-center gap-3 font-display text-[20px] font-semibold tracking-[-0.02em] transition-colors duration-200", open ? "text-ink-900" : "text-ink-500")}>
                       <Icon className="size-4 shrink-0 text-ink-500" strokeWidth={1.75} />
                       {f.title}
                     </span>

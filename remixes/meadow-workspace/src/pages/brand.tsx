@@ -37,9 +37,9 @@ function Swatch({ token }: { token: string }) {
 }
 
 const SCALE = [
-  ["Display", "font-serif text-[64px] leading-[0.98] font-semibold tracking-[-0.045em]", "64 / 0.98 · 600 · −4.5%"],
-  ["Heading", "font-serif text-[38px] leading-[1.08] font-semibold tracking-[-0.035em]", "38 / 1.08 · 600 · −3.5%"],
-  ["Title", "font-serif text-[20px] font-semibold tracking-[-0.02em]", "20 / 1.3 · 600 · −2%"],
+  ["Display", "font-display text-[64px] leading-[0.98] font-semibold tracking-[-0.045em]", "64 / 0.98 · 600 · −4.5%"],
+  ["Heading", "font-display text-[38px] leading-[1.08] font-semibold tracking-[-0.035em]", "38 / 1.08 · 600 · −3.5%"],
+  ["Title", "font-display text-[20px] font-semibold tracking-[-0.02em]", "20 / 1.3 · 600 · −2%"],
   ["Body", "text-[15px] leading-relaxed", "15 / 1.6 · 400"],
   ["UI", "text-[13px] font-medium", "13 / 1.4 · 500"],
   ["Mono", "font-mono text-[12px]", "12 / 1.6 · 400"],
@@ -107,7 +107,7 @@ export function BrandPage() {
               ))}
             </div>
           </GuideSection>
-          <GuideSection id="type" title="Typography" blurb="Newsreader for anything a person reads first; Inter for everything they work in; JetBrains Mono for code and keys. Numerals are tabular in tables and counts.">
+          <GuideSection id="type" title="Typography" blurb="Inter for everything — headlines set tight at 600, body at 400–500; JetBrains Mono for code and keys. Numerals are tabular in tables and counts.">
             <div className="flex flex-col divide-y divide-ink-200 rounded-xl bg-surface shadow-card">
               {SCALE.map(([name, cls, spec]) => (
                 <div key={name} className="flex flex-col gap-1 p-4 sm:flex-row sm:items-baseline sm:justify-between"><span className={cls + " min-w-0 truncate"}>{name} — Open space</span><code className="shrink-0 font-mono text-[11px] text-ink-400">{spec}</code></div>

@@ -47,7 +47,7 @@ export function Hero({
         </motion.a>
         <motion.h1
           {...rise(0.06)}
-          className="mt-5 max-w-[760px] font-serif text-[clamp(40px,8vw,64px)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-white drop-shadow-[0_2px_24px_rgb(30_90_170/0.25)]"
+          className="mt-5 max-w-[760px] font-display text-[clamp(40px,8vw,64px)] leading-[0.98] font-semibold tracking-[-0.045em] text-balance text-white drop-shadow-[0_2px_24px_rgb(30_90_170/0.25)]"
         >
           {title}
         </motion.h1>

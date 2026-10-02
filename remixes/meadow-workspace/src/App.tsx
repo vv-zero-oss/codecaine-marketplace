@@ -6,6 +6,13 @@
  */
 
 import { useSmoothScroll } from "@/components/motion"
+import { CaseStudies } from "@/components/sections/case-studies"
+import { Cta } from "@/components/sections/cta"
+import { HowItWorks } from "@/components/sections/how-it-works"
+import { Pricing } from "@/components/sections/pricing"
+import { StickyVideo } from "@/components/sections/sticky-video"
+import { Testimonials } from "@/components/sections/testimonials"
+import { ValueProps } from "@/components/sections/value-props"
 import { Assistant } from "@/components/sections/assistant"
 import { ContextGraph } from "@/components/sections/context-graph"
 import { Developers } from "@/components/sections/developers"
@@ -42,14 +49,21 @@ export default function App() {
       <main data-canvas-ignore>
         <Hero />
         <Trust />
+        <ValueProps />
         <Overview />
+        <HowItWorks />
         <Assistant />
+        <StickyVideo />
         <Skills />
+        <CaseStudies />
         <Testimonial />
+        <Testimonials />
         <ContextGraph />
         <Developers />
         <Scale />
+        <Pricing />
         <Start />
+        <Cta />
       </main>
       <SiteFooter />
     </div>

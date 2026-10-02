@@ -19,7 +19,7 @@ export function SectionHeading({
     <div className={cn("flex flex-col gap-3", align === "center" && "items-center text-center", className)}>
       <h2
         className={cn(
-          "font-serif text-[clamp(28px,4.4vw,38px)] leading-[1.08] font-semibold tracking-[-0.035em] text-balance",
+          "font-display text-[clamp(28px,4.4vw,38px)] leading-[1.08] font-semibold tracking-[-0.035em] text-balance",
           tone === "light" ? "text-white" : "text-ink-900",
         )}
       >

@@ -32,7 +32,7 @@ export function Scale() {
           <Reveal className="md:col-span-4">
             <Card className="h-full" title="Collaboration" body="Work on documents, tasks and shared views with your team, together, in real time.">
               <div className="relative w-full pt-2 pb-8 text-[14px] leading-relaxed text-ink-700">
-                <p className="font-serif text-[18px] font-semibold text-ink-900">Spring launch plan</p>
+                <p className="font-display text-[18px] font-semibold text-ink-900">Spring launch plan</p>
                 <p className="mt-2">Finalise the <mark className="rounded-sm bg-highlight px-0.5 text-sky-600">launch timeline</mark> and assign owners to each milestone.</p>
                 <p className="mt-2 pl-16">Draft the messaging, line up deadlines, and keep the team aligned on launch-day tasks.</p>
                 <Cursor name="Brett G." tone="bg-sky-600" className="top-0 left-[42%]" />
@@ -64,7 +64,7 @@ export function Scale() {
               <div className="flex flex-col items-center gap-1 pt-2 text-center">
                 <ShieldCheck className="size-14 text-ink-400" strokeWidth={1.25} />
                 <p className="text-[10px] tracking-[0.18em] text-ink-400 uppercase">Audited</p>
-                <p className="font-serif text-[18px] font-semibold">Tier 3 certified</p>
+                <p className="font-display text-[18px] font-semibold">Tier 3 certified</p>
               </div>
             </Card>
           </Reveal>

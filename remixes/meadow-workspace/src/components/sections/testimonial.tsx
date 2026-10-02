@@ -18,7 +18,7 @@ export function Testimonial({
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-sky-500/40 to-transparent" />
       <Container>
         <Reveal className="max-w-[640px]">
-          <blockquote className="font-serif text-[clamp(26px,4.6vw,38px)] leading-[1.18] font-semibold tracking-[-0.03em] text-pretty text-white drop-shadow-[0_1px_16px_rgb(20_70_140/0.35)]">
+          <blockquote className="font-display text-[clamp(26px,4.6vw,38px)] leading-[1.18] font-semibold tracking-[-0.03em] text-pretty text-white drop-shadow-[0_1px_16px_rgb(20_70_140/0.35)]">
             “{quote}”
           </blockquote>
           <figcaption className="mt-6 flex items-center gap-3 text-white">
