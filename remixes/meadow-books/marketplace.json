@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "meadow-books",
+  "name": "Meadow Books",
+  "version": "2.0.0",
+  "description": "A sky-and-meadow landing page for AI accounting software: a live bookkeeping dashboard in the hero, value props, a tabbed feature tour, how it works, a pinned full-screen video, case studies, testimonials, a traceable-ledger graph, pricing and a closing CTA — set in Inter.",
+  "designedFor": [
+    "Accounting, bookkeeping and finance-automation SaaS landing pages",
+    "Products that read receipts and bank feeds with AI and show their working",
+    "Practices and fintechs who want a calm, trustworthy look rather than a spreadsheet one",
+    "Trying the editor's motion and action channels on a real marketing page"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Tobias Wren"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "accounting",
+    "bookkeeping",
+    "finance",
+    "ai",
+    "saas",
+    "landing",
+    "invoicing",
+    "fintech"
+  ],
+  "categories": [
+    "Marketing",
+    "SaaS",
+    "AI",
+    "Finance"
+  ],
+  "created": "2026-10-02",
+  "updated": "2026-10-02",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3350
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

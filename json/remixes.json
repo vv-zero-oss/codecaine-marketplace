@@ -1683,14 +1683,14 @@
     },
     {
       "type": "remix",
-      "id": "meadow-workspace",
-      "name": "Meadow Workspace",
-      "version": "1.3.0",
-      "description": "A sky-and-meadow landing page for an everything-workspace, set in Inter: floating pill nav, hero over the product window, value props, tabbed tour, how it works, a pinned video that grows to full screen, case studies, testimonials, context graph, bento, pricing and a closing CTA.",
+      "id": "meadow-books",
+      "name": "Meadow Books",
+      "version": "2.0.0",
+      "description": "A sky-and-meadow landing page for AI accounting software: a live bookkeeping dashboard in the hero, value props, a tabbed feature tour, how it works, a pinned full-screen video, case studies, testimonials, a traceable-ledger graph, pricing and a closing CTA — set in Inter.",
       "designedFor": [
-        "SaaS or productivity-app landing pages with a calm, editorial feel",
-        "Products that bundle mail, CRM, meetings and an AI assistant",
-        "Teams who want a serif-and-sky token set to restyle from one stylesheet",
+        "Accounting, bookkeeping and finance-automation SaaS landing pages",
+        "Products that read receipts and bank feeds with AI and show their working",
+        "Practices and fintechs who want a calm, trustworthy look rather than a spreadsheet one",
         "Trying the editor's motion and action channels on a real marketing page"
       ],
       "sdkVersion": "0.1.1",
@@ -1702,18 +1702,20 @@
       ],
       "license": "MIT",
       "keywords": [
+        "accounting",
+        "bookkeeping",
+        "finance",
+        "ai",
         "saas",
         "landing",
-        "workspace",
-        "ai",
-        "serif",
-        "sky",
-        "bento",
-        "productivity"
+        "invoicing",
+        "fintech"
       ],
       "categories": [
         "Marketing",
-        "SaaS"
+        "SaaS",
+        "AI",
+        "Finance"
       ],
       "created": "2026-10-02",
       "updated": "2026-10-02",
@@ -1751,36 +1753,36 @@
           }
         ]
       },
-      "path": "remixes/meadow-workspace",
-      "thumbnailUrl": "remixes/meadow-workspace/preview.png",
-      "iconUrl": "remixes/meadow-workspace/icon.svg",
+      "path": "remixes/meadow-books",
+      "thumbnailUrl": "remixes/meadow-books/preview.png",
+      "iconUrl": "remixes/meadow-books/icon.svg",
       "previewUrls": {
-        "desktop": "remixes/meadow-workspace/previews/desktop.jpg",
-        "mobile": "remixes/meadow-workspace/previews/mobile.jpg",
+        "desktop": "remixes/meadow-books/previews/desktop.jpg",
+        "mobile": "remixes/meadow-books/previews/mobile.jpg",
         "pages": [
           {
             "title": "Home",
-            "image": "remixes/meadow-workspace/previews/pages/home.jpg"
+            "image": "remixes/meadow-books/previews/pages/home.jpg"
           },
           {
             "title": "Brand guidelines",
-            "image": "remixes/meadow-workspace/previews/pages/brand.jpg"
+            "image": "remixes/meadow-books/previews/pages/brand.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/remixes/meadow-workspace-1.3.0.tgz",
+        "url": "archives/remixes/meadow-books-2.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "1d84c511991cdce311e57c58c12f0c3d5f01e2034e60d647f7235f57fe6198d3",
-        "size": 5199872,
+        "sha256": "b5de73c7c0ef5d9d5a7f4121b64a59f9f43dedbc3581cc025453e4ceadbf064d",
+        "size": 5206016,
         "files": 74
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "remixes/meadow-workspace"
+        "path": "remixes/meadow-books"
       },
-      "demoUrl": "demos/meadow-workspace/"
+      "demoUrl": "demos/meadow-books/"
     },
     {
       "type": "remix",
