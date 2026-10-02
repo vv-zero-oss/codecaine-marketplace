@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "school-gazette",
+  "name": "Marlowe Gazette",
+  "version": "1.0.0",
+  "description": "A vintage school magazine: a tossed-in newspaper front page, a working tabletop radio that reads the daily brief, an embossed 3D LED scoreboard, retro keys, knobs and switches, and CSS-3D cubes and carousels on the margins.",
+  "designedFor": [
+    "School and college magazines, yearbooks and student newsrooms",
+    "Anything that should feel like a printed broadsheet with a retro workshop on top",
+    "Pages that mix editorial type with tactile controls: radios, LED boards, stamps and switches",
+    "Learning how to build editor-ready motion and 3D components with @canvas/react"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Ottilie Moreau"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "school",
+    "magazine",
+    "newspaper",
+    "retro",
+    "vintage",
+    "radio",
+    "led",
+    "3d",
+    "paper",
+    "editorial"
+  ],
+  "categories": [
+    "Editorial",
+    "Education"
+  ],
+  "created": "2026-10-02",
+  "updated": "2026-10-02",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3340
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

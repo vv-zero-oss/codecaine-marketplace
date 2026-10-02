@@ -1,0 +1,273 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────────────────────────────────
+   Tokens. Every colour, shadow, radius, font and easing on the page is one of
+   these — a component never carries a raw hex or a one-off shadow. The brand
+   page reads them back from the stylesheet, so it cannot drift from the page.
+   ────────────────────────────────────────────────────────────────────────── */
+:root {
+  /* paper */
+  --paper: #d0c8bc;
+  --paper-light: #e9e1d2;
+  --paper-bright: #f3ecdd;
+  --paper-dark: #b8ae9f;
+  --paper-fold: #a89e90;
+
+  /* ink */
+  --ink: #1c1b18;
+  --ink-soft: #3b382f;
+  --ink-faint: #554f45;
+  --ink-reverse: #e9e1d2;
+
+  /* spot colours */
+  --rust: #e5532b;
+  --rust-deep: #b73a18;
+  --rust-light: #f4825f;
+  --brass: #c9a24a;
+  --brass-deep: #8e6d22;
+  --teal: #2f6f73;
+  --teal-deep: #1d4a4d;
+  --sky: #6d8fc4;
+  --cocoa: #85695a;
+
+  /* objects */
+  --bakelite: #2a1d18;
+  --bakelite-light: #4a362c;
+  --wood: #7a4b27;
+  --wood-light: #a2683a;
+  --wood-dark: #4a2b14;
+  --desk: #1d1c19;
+  --glass: rgb(255 255 255 / 0.18);
+
+  /* LED */
+  --led-amber: #ffb224;
+  --led-red: #ff4136;
+  --led-green: #55f08c;
+  --led-off: rgb(0 0 0 / 0.12);
+  --led-glow: var(--led-amber);
+  --lcd-glass: #17120d;
+
+  /* shadows — hard offsets for keys, soft stacks for emboss */
+  --shadow-key: 0 4px 0 var(--ink), 0 6px 10px rgb(28 27 24 / 0.3);
+  --shadow-key-down: 0 1px 0 var(--ink), 0 2px 4px rgb(28 27 24 / 0.3);
+  --shadow-card: 0 1px 0 rgb(255 255 255 / 0.5) inset, 0 12px 28px -12px rgb(28 27 24 / 0.45);
+  --shadow-stamp: 0 1px 0 rgb(255 255 255 / 0.6) inset, 0 2px 0 rgb(28 27 24 / 0.18);
+  --shadow-emboss:
+    inset 2px 2px 1px rgb(255 255 255 / 0.55), inset -2px -2px 2px rgb(28 27 24 / 0.35),
+    0 10px 22px -8px rgb(28 27 24 / 0.55), 0 2px 0 var(--paper-fold);
+  --shadow-deboss:
+    inset 3px 3px 6px rgb(0 0 0 / 0.75), inset -1px -1px 2px rgb(255 255 255 / 0.12),
+    0 1px 0 rgb(255 255 255 / 0.5);
+  --shadow-cabinet:
+    inset 0 2px 0 rgb(255 255 255 / 0.25), inset 0 -6px 12px rgb(0 0 0 / 0.45),
+    0 24px 40px -14px rgb(0 0 0 / 0.6), 0 3px 0 var(--wood-dark);
+  --shadow-knob:
+    inset 0 2px 1px rgb(255 255 255 / 0.35), inset 0 -4px 6px rgb(0 0 0 / 0.55),
+    0 6px 8px rgb(0 0 0 / 0.45), 0 1px 0 rgb(0 0 0 / 0.8);
+  --shadow-led-glow: 0 0 6px var(--led-glow), 0 0 14px color-mix(in srgb, var(--led-glow) 55%, transparent);
+
+  /* borders and radii */
+  --border-ink: 2px solid var(--ink);
+  --border-hair: 1px solid var(--ink);
+  --border-faint: 1px solid color-mix(in srgb, var(--ink) 35%, transparent);
+  --radius-sharp: 2px;
+  --radius-card: 4px;
+  --radius-cabinet: 28px;
+  --radius-key: 8px;
+
+  /* motion — one vocabulary, used by every animation */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-press: cubic-bezier(0.2, 0, 0, 1);
+  --duration-press: 90ms;
+  --duration-fast: 160ms;
+  --duration-base: 280ms;
+  --duration-toss: 1150ms;
+
+  /* texture */
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .11  0 0 0 0 .1  0 0 0 0 .09  0 0 0 .3 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+  --fibres: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='fractalNoise' baseFrequency='.012 .35' numOctaves='2' seed='4'/><feColorMatrix values='0 0 0 0 .3  0 0 0 0 .25  0 0 0 0 .2  0 0 0 .16 0'/></filter><rect width='100%' height='100%' filter='url(%23f)'/></svg>");
+  --halftone: radial-gradient(circle at center, rgb(28 27 24 / 0.5) 0.7px, transparent 1.2px) 0 0 / 3px 3px;
+}
+
+[data-led="red"] { --led-glow: var(--led-red); }
+[data-led="green"] { --led-glow: var(--led-green); }
+[data-led="amber"] { --led-glow: var(--led-amber); }
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-paper-light: var(--paper-light);
+  --color-paper-bright: var(--paper-bright);
+  --color-paper-dark: var(--paper-dark);
+  --color-paper-fold: var(--paper-fold);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-faint: var(--ink-faint);
+  --color-ink-reverse: var(--ink-reverse);
+  --color-rust: var(--rust);
+  --color-rust-deep: var(--rust-deep);
+  --color-rust-light: var(--rust-light);
+  --color-brass: var(--brass);
+  --color-brass-deep: var(--brass-deep);
+  --color-teal: var(--teal);
+  --color-teal-deep: var(--teal-deep);
+  --color-sky: var(--sky);
+  --color-cocoa: var(--cocoa);
+  --color-bakelite: var(--bakelite);
+  --color-bakelite-light: var(--bakelite-light);
+  --color-wood: var(--wood);
+  --color-wood-light: var(--wood-light);
+  --color-wood-dark: var(--wood-dark);
+  --color-desk: var(--desk);
+  --color-lcd: var(--lcd-glass);
+  --color-led: var(--led-glow);
+
+  --font-display: "Abril Fatface", "Bodoni 72", Didot, serif;
+  --font-condensed: "Instrument Serif", "Bodoni 72", Didot, Georgia, serif;
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-type: "Special Elite", "Courier New", ui-monospace, monospace;
+
+  --shadow-key: var(--shadow-key);
+  --shadow-key-down: var(--shadow-key-down);
+  --shadow-card: var(--shadow-card);
+  --shadow-stamp: var(--shadow-stamp);
+  --shadow-emboss: var(--shadow-emboss);
+  --shadow-deboss: var(--shadow-deboss);
+  --shadow-cabinet: var(--shadow-cabinet);
+  --shadow-knob: var(--shadow-knob);
+  --shadow-led-glow: var(--shadow-led-glow);
+
+  --radius-sharp: var(--radius-sharp);
+  --radius-card: var(--radius-card);
+  --radius-cabinet: var(--radius-cabinet);
+  --radius-key: var(--radius-key);
+
+  --ease-out: var(--ease-out);
+  --ease-in-out: var(--ease-in-out);
+  --ease-press: var(--ease-press);
+
+  --animate-accordion-down: accordion-down 240ms var(--ease-out);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out);
+  --animate-ticker: ticker 40s linear infinite;
+  --animate-cube: cube-spin 18s linear infinite;
+  --animate-spin-slow: spin 24s linear infinite;
+  --animate-blink: blink 1.6s steps(2, jump-none) infinite;
+  --animate-slam: slam 520ms var(--ease-out) both;
+  --animate-wobble: wobble 3.2s var(--ease-in-out) infinite;
+}
+
+@keyframes accordion-down { from { height: 0; } to { height: var(--radix-accordion-content-height); } }
+@keyframes accordion-up { from { height: var(--radix-accordion-content-height); } to { height: 0; } }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes cube-spin {
+  from { transform: rotateX(-24deg) rotateY(0deg); }
+  to { transform: rotateX(-24deg) rotateY(360deg); }
+}
+@keyframes blink { 50% { opacity: 0.25; } }
+@keyframes wobble { 0%, 100% { transform: rotate(-2deg); } 50% { transform: rotate(2.5deg); } }
+@keyframes slam {
+  0% { opacity: 0; transform: scale(2.6) rotate(-18deg); }
+  55% { opacity: 1; transform: scale(0.92) rotate(-9deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-8deg); }
+}
+@keyframes flicker { 0%, 100% { opacity: 1; } 47% { opacity: 1; } 50% { opacity: 0.82; } 53% { opacity: 1; } }
+
+html { background: var(--desk); }
+
+body {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  color: var(--ink);
+  background: var(--paper);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--ink); color: var(--paper-light); }
+
+/* Lenis carries the scroll; these are the classes it asks for. */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+
+@layer components {
+  /** The page itself: greige stock, grain on top, fibres under it. */
+  .paper-sheet {
+    background-color: var(--paper);
+    background-image: var(--grain), var(--fibres);
+    background-blend-mode: multiply, multiply;
+  }
+  .paper-card {
+    background-color: var(--paper-light);
+    background-image: var(--grain);
+    background-blend-mode: multiply;
+  }
+
+  /** Condensed display type: Instrument Serif thickened with a hairline stroke,
+   *  which is what makes it read like a tall, heavy broadsheet face. */
+  .display {
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 0.88;
+    letter-spacing: -0.015em;
+    -webkit-text-stroke: 0.045em currentColor;
+    paint-order: stroke fill;
+  }
+
+  .kicker {
+    font-family: var(--font-type);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /** A photograph the way a newspaper prints it: warm, a little flat, dotted. */
+  .photo {
+    position: relative;
+    overflow: hidden;
+    background: var(--cocoa);
+    isolation: isolate;
+  }
+  .photo > img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(0.5) saturate(0.85) contrast(1.06) brightness(0.98);
+    transition: filter var(--duration-base) var(--ease-out), transform 700ms var(--ease-out);
+  }
+  .photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--halftone);
+    mix-blend-mode: multiply;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  @media (hover: hover) {
+    .photo:hover > img { filter: sepia(0.15) saturate(1) contrast(1.05); transform: scale(1.03); }
+  }
+
+  /** Letterpress: type pressed into the surface it sits on. */
+  .letterpress { text-shadow: 0 1px 0 rgb(255 255 255 / 0.55), 0 -1px 0 rgb(0 0 0 / 0.25); }
+  .engraved-light { text-shadow: 0 1px 0 rgb(0 0 0 / 0.7); }
+
+  .rule-double { border-top: 4px double var(--ink); }
+
+  /** Faint ruled lines behind condensed headlines, as in a ledger. */
+  .ledger {
+    background-image: repeating-linear-gradient(to bottom, transparent 0, transparent calc(0.88em - 1px), color-mix(in srgb, var(--ink) 22%, transparent) calc(0.88em - 1px), color-mix(in srgb, var(--ink) 22%, transparent) 0.88em);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+@keyframes sheet-in { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes sheet-out { from { transform: translateX(0); } to { transform: translateX(100%); } }
