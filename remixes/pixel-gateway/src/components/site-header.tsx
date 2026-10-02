@@ -19,8 +19,8 @@ export function NavLink({ href, children }: { href: string; children: string }) 
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "whitespace-nowrap px-phi-2 py-phi-1 font-display text-label-sm uppercase tracking-wide text-fg-muted transition-colors duration-100 hover:text-fg",
-        active && "text-fg underline decoration-accent decoration-4 underline-offset-8",
+        "whitespace-nowrap py-phi-1 font-display text-label uppercase tracking-wide text-fg-muted transition-colors duration-100 hover:text-fg",
+        active && "text-fg underline decoration-accent decoration-4 underline-offset-[10px]",
       )}
     >
       {children}
@@ -60,32 +60,26 @@ export function SiteHeader() {
       id="nav"
       className="fixed inset-x-0 top-0 z-50 h-(--header-h) border-b-2 border-fg/15 bg-bg/60 backdrop-blur-[3px]"
     >
-      <div data-canvas-ignore className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-phi-2 px-phi-3 sm:px-phi-4 lg:px-phi-5">
-        <div className="flex items-center gap-phi-3">
-          <Wordmark href="/" />
-          <span aria-hidden className="hidden h-(--header-h) w-0.5 bg-fg/15 lg:block" />
-        </div>
-        <nav aria-label="Primary" className="hidden items-center gap-1 lg:flex">
+      <div data-canvas-ignore className="mx-auto grid h-full w-full max-w-7xl grid-cols-[auto_1fr_auto] items-center gap-phi-4 px-phi-3 sm:px-phi-4 lg:px-phi-5">
+        <Wordmark href="/" />
+        <nav aria-label="Primary" className="hidden items-center justify-center gap-phi-4 xl:flex">
           {NAV.map((item) => (
             <NavLink key={item.href} href={item.href}>
               {item.label}
             </NavLink>
           ))}
         </nav>
-        <div className="flex items-center gap-phi-1 sm:gap-phi-2">
-          <Button variant="ghost" size="icon" className="hidden sm:inline-flex" aria-label="Open command menu" onClick={() => setCommand(true)}>
-            <Command />
+        <div className="col-start-3 flex items-center justify-end gap-phi-2 xl:gap-phi-3">
+          <Button variant="ghost" size="sm" className="hidden gap-phi-1 text-fg-subtle 2xl:inline-flex" aria-label="Open command menu" onClick={() => setCommand(true)}>
+            <Command /> K
           </Button>
-          <Button variant="default" size="sm" className="hidden xl:inline-flex" onClick={() => setDemo(true)}>
-            Book a demo
-          </Button>
-          <Button variant="outline" size="sm" className="hidden md:inline-flex" onClick={() => setLogin(true)}>
+          <Button variant="outline" size="sm" className="hidden sm:inline-flex" onClick={() => setLogin(true)}>
             Log in
           </Button>
           <Link href="/get-started" className={buttonVariants({ variant: "accent", size: "sm" })}>
             Get started
           </Link>
-          <Button variant="ghost" size="icon" className="lg:hidden" aria-label="Open menu" onClick={() => setMenu(true)}>
+          <Button variant="ghost" size="icon" className="xl:hidden" aria-label="Open menu" onClick={() => setMenu(true)}>
             <Menu />
           </Button>
         </div>
