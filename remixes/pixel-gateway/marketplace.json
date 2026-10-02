@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "pixel-gateway",
+  "name": "Pixelkeep",
+  "version": "1.0.0",
+  "description": "A pixel-art secure web gateway site: a dusk-sky hero, a decrypting feature board, a sticky 3D dashboard that rides three sections, four inner pages and a random landing-page generator.",
+  "designedFor": [
+    "A pixel-art / 8-bit product or game-adjacent landing page with real depth",
+    "Seeing a sticky, scroll-linked dashboard header driving three sections",
+    "Pointer-tilt 3D cards, CSS 3D cubes and a radar built from plain transforms",
+    "Rolling a random, shareable template from a seed and painting the whole site with it"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine",
+      "url": "https://github.com/vv-zero-oss"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "pixel-art",
+    "8-bit",
+    "retro",
+    "security",
+    "saas",
+    "landing",
+    "3d",
+    "generator",
+    "framer-motion",
+    "lenis"
+  ],
+  "categories": [
+    "Marketing",
+    "Creative"
+  ],
+  "created": "2026-10-02",
+  "updated": "2026-10-02",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3340
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/products",
+      "title": "Products"
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing"
+    },
+    {
+      "path": "/customers",
+      "title": "Customers"
+    },
+    {
+      "path": "/generator",
+      "title": "Template generator"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Products",
+        "image": "previews/pages/products.jpg"
+      },
+      {
+        "title": "Pricing",
+        "image": "previews/pages/pricing.jpg"
+      },
+      {
+        "title": "Customers",
+        "image": "previews/pages/customers.jpg"
+      },
+      {
+        "title": "Template generator",
+        "image": "previews/pages/generator.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

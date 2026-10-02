@@ -1,0 +1,253 @@
+@import "tailwindcss";
+
+/*
+ * Pixelkeep tokens.
+ *
+ * Every colour, shadow, radius, font and easing the site uses is a custom
+ * property here, exposed through Tailwind's @theme. A component never carries a
+ * raw hex or a one-off shadow: re-skin the site by changing a token — which is
+ * exactly what the /generator page does when it applies a rolled palette.
+ */
+@theme static {
+  /* Type: a chunky pixel grotesk for reading, a wide 8-bit face for labels. */
+  --font-sans: "Pixelify Sans", ui-monospace, "Courier New", monospace;
+  --font-display: "Press Start 2P", "Pixelify Sans", ui-monospace, monospace;
+  --font-mono: "VT323", ui-monospace, "Courier New", monospace;
+
+  /* Surface */
+  --color-bg: #0a0a0c;
+  --color-surface: #111114;
+  --color-surface-2: #1a1a20;
+  --color-surface-3: #25252e;
+
+  /* Text */
+  --color-fg: #ffffff;
+  --color-fg-muted: #a9a9b4;
+  --color-fg-subtle: #62626e;
+
+  /* Border */
+  --color-line: #34343e;
+  --color-line-strong: #5a5a68;
+
+  /* Accent */
+  --color-accent: #8b5cf6;
+  --color-accent-hi: #b79cff;
+  --color-accent-fg: #ffffff;
+
+  /* The dusk sky: the five stops the hero is washed with. */
+  --color-sky-1: #0c1060;
+  --color-sky-2: #1d2190;
+  --color-sky-3: #5b3fb8;
+  --color-sky-4: #c76fae;
+  --color-sky-5: #f6b98f;
+  --color-cloud: #ffd9b8;
+
+  /* Status */
+  --color-good: #5df2a0;
+  --color-warn: #ffcf5c;
+  --color-bad: #ff5c7a;
+
+  /* Chart */
+  --color-chart-1: #8b5cf6;
+  --color-chart-2: #f6b98f;
+  --color-chart-3: #5df2a0;
+  --color-chart-4: #ff5c7a;
+
+  /* shadcn's names, pointed at the tokens above. */
+  --color-background: var(--color-bg);
+  --color-foreground: var(--color-fg);
+  --color-card: var(--color-surface);
+  --color-card-foreground: var(--color-fg);
+  --color-popover: var(--color-surface);
+  --color-popover-foreground: var(--color-fg);
+  --color-primary: var(--color-fg);
+  --color-primary-foreground: var(--color-bg);
+  --color-secondary: var(--color-surface-2);
+  --color-secondary-foreground: var(--color-fg);
+  --color-muted: var(--color-surface-2);
+  --color-muted-foreground: var(--color-fg-muted);
+  --color-accent-surface: var(--color-surface-3);
+  --color-destructive: var(--color-bad);
+  --color-border: var(--color-line);
+  --color-input: var(--color-line);
+  --color-ring: var(--color-accent);
+
+  /* Radii: none. Pixels have corners. */
+  --radius-xs: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+
+  /* Shadows. The border is four hard 4px offsets, which leaves each corner
+     notched like a sprite; the drop is one hard layer, no blur. */
+  --shadow-px: 0 -4px 0 0 var(--px-edge), 0 4px 0 0 var(--px-edge), -4px 0 0 0 var(--px-edge),
+    4px 0 0 0 var(--px-edge);
+  --shadow-px-sm: 0 -2px 0 0 var(--px-edge), 0 2px 0 0 var(--px-edge), -2px 0 0 0 var(--px-edge),
+    2px 0 0 0 var(--px-edge);
+  --shadow-px-drop: 0 -4px 0 0 var(--px-edge), 0 4px 0 0 var(--px-edge), -4px 0 0 0 var(--px-edge),
+    4px 0 0 0 var(--px-edge), 8px 8px 0 0 var(--px-drop);
+  --shadow-px-lift: 0 -4px 0 0 var(--px-edge), 0 4px 0 0 var(--px-edge), -4px 0 0 0 var(--px-edge),
+    4px 0 0 0 var(--px-edge), 12px 12px 0 0 var(--px-drop);
+  --shadow-px-glow: 0 -4px 0 0 var(--px-edge), 0 4px 0 0 var(--px-edge), -4px 0 0 0 var(--px-edge),
+    4px 0 0 0 var(--px-edge), 0 0 0 8px var(--px-halo);
+
+  /* Motion: stepped for sprites, eased out for panels. */
+  --ease-step: steps(4, end);
+  --ease-step-fine: steps(8, end);
+  --ease-out: cubic-bezier(0.22, 0.9, 0.24, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 120ms;
+  --duration-base: 240ms;
+  --duration-slow: 600ms;
+
+  --animate-blink: blink 1s steps(2, end) infinite;
+  --animate-float: float 4s steps(8, end) infinite;
+  --animate-drift: drift 60s linear infinite;
+  --animate-spin-cube: spin-cube 14s linear infinite;
+  --animate-marquee: marquee 30s linear infinite;
+  --animate-twinkle: twinkle 2.4s steps(2, end) infinite;
+  --animate-accordion-down: accordion-down var(--duration-base) var(--ease-step);
+  --animate-accordion-up: accordion-up var(--duration-base) var(--ease-step);
+
+  @keyframes blink {
+    0%, 49% { opacity: 1; }
+    50%, 100% { opacity: 0; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+  @keyframes drift {
+    from { transform: translateX(-20%); }
+    to { transform: translateX(120vw); }
+  }
+  @keyframes spin-cube {
+    from { transform: rotateX(-24deg) rotateY(0deg); }
+    to { transform: rotateX(-24deg) rotateY(360deg); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.9; }
+    50% { opacity: 0.15; }
+  }
+  @keyframes accordion-down {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  }
+  @keyframes accordion-up {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  }
+}
+
+:root {
+  --px-edge: var(--color-line);
+  --px-drop: rgba(0, 0, 0, 0.55);
+  --px-halo: rgba(139, 92, 246, 0.35);
+  --header-h: 56px;
+  --status-h: 40px;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.35;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  overflow-x: clip;
+  padding-bottom: var(--status-h);
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-accent-fg);
+}
+
+/* Lenis owns the scroll; these are the classes it asks for. */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+
+/* Sprites stay square-edged at any size. */
+img.pixelated, .pixelated {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* A raised, notched panel. */
+@utility px-panel {
+  background: var(--color-surface);
+  box-shadow: var(--shadow-px);
+}
+
+/* A 2px checker, laid over a flat colour to fake a dither. */
+@utility px-dither {
+  background-image:
+    linear-gradient(45deg, rgba(255, 255, 255, 0.06) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.06) 75%),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.06) 25%, transparent 25%, transparent 75%, rgba(255, 255, 255, 0.06) 75%);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+/* CRT scanlines, for a screen-like panel. */
+@utility px-scanlines {
+  background-image: repeating-linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0 3px,
+    rgba(0, 0, 0, 0.22) 3px 4px
+  );
+}
+
+/* The dotted underline the problem statement hangs on one word. */
+@utility px-underline {
+  text-decoration: underline dotted;
+  text-decoration-thickness: 4px;
+  text-underline-offset: 8px;
+}
+
+@utility preserve-3d {
+  transform-style: preserve-3d;
+}
+
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+
+@utility font-display-caps {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Reduced motion: nothing loops, nothing slides. Entrances still resolve. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@theme {
+  --animate-fly: fly 7s steps(48, end) infinite;
+  @keyframes fly {
+    from { transform: translateX(-70%); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    to { transform: translateX(100%); opacity: 0; }
+  }
+}
