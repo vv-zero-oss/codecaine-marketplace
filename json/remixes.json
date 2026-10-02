@@ -2088,6 +2088,216 @@
     },
     {
       "type": "remix",
+      "id": "pixel-gateway",
+      "name": "Pixelkeep",
+      "version": "1.2.0",
+      "description": "A pixel-art secure web gateway site on a golden-ratio type and spacing system: a dusk-sky hero, value proposition, decrypting feature board, a sticky 3D dashboard riding three sections, how it works with a request simulator, case studies, pricing with a seat calculator, a get-started wizard and a random landing-page generator.",
+      "designedFor": [
+        "A pixel-art / 8-bit product or game-adjacent landing page with real depth",
+        "Seeing a sticky, scroll-linked dashboard header driving three sections",
+        "Pointer-tilt 3D cards, CSS 3D cubes and a radar built from plain transforms",
+        "Rolling a random, shareable template from a seed and painting the whole site with it"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "pixel-art",
+        "8-bit",
+        "retro",
+        "security",
+        "saas",
+        "landing",
+        "3d",
+        "generator",
+        "framer-motion",
+        "lenis"
+      ],
+      "categories": [
+        "Marketing",
+        "Creative"
+      ],
+      "created": "2026-10-02",
+      "updated": "2026-10-02",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3340
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/products",
+          "title": "Products"
+        },
+        {
+          "path": "/how-it-works",
+          "title": "How it works"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/customers",
+          "title": "Customers"
+        },
+        {
+          "path": "/case-studies",
+          "title": "Case studies"
+        },
+        {
+          "path": "/get-started",
+          "title": "Get started"
+        },
+        {
+          "path": "/security",
+          "title": "Security"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/generator",
+          "title": "Template generator"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Products",
+            "image": "previews/pages/products.jpg"
+          },
+          {
+            "title": "How it works",
+            "image": "previews/pages/how-it-works.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "previews/pages/customers.jpg"
+          },
+          {
+            "title": "Case studies",
+            "image": "previews/pages/case-studies.jpg"
+          },
+          {
+            "title": "Get started",
+            "image": "previews/pages/get-started.jpg"
+          },
+          {
+            "title": "Security",
+            "image": "previews/pages/security.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Template generator",
+            "image": "previews/pages/generator.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/pixel-gateway",
+      "iconUrl": "remixes/pixel-gateway/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/pixel-gateway/previews/desktop.jpg",
+        "mobile": "remixes/pixel-gateway/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/pixel-gateway/previews/pages/home.jpg"
+          },
+          {
+            "title": "Products",
+            "image": "remixes/pixel-gateway/previews/pages/products.jpg"
+          },
+          {
+            "title": "How it works",
+            "image": "remixes/pixel-gateway/previews/pages/how-it-works.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/pixel-gateway/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "remixes/pixel-gateway/previews/pages/customers.jpg"
+          },
+          {
+            "title": "Case studies",
+            "image": "remixes/pixel-gateway/previews/pages/case-studies.jpg"
+          },
+          {
+            "title": "Get started",
+            "image": "remixes/pixel-gateway/previews/pages/get-started.jpg"
+          },
+          {
+            "title": "Security",
+            "image": "remixes/pixel-gateway/previews/pages/security.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/pixel-gateway/previews/pages/about.jpg"
+          },
+          {
+            "title": "Template generator",
+            "image": "remixes/pixel-gateway/previews/pages/generator.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/pixel-gateway/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/pixel-gateway-1.2.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "fd14ecb6a260fe057220c4ac618b451ffc13e7907a1a5fce8bd7ba5eddd8b94d",
+        "size": 640512,
+        "files": 104
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/pixel-gateway"
+      },
+      "demoUrl": "demos/pixel-gateway/"
+    },
+    {
+      "type": "remix",
       "id": "postwise",
       "name": "Postwise — AI Email",
       "version": "1.2.0",
