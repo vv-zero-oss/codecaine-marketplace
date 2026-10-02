@@ -1,8 +1,9 @@
-import { Lock, MonitorSmartphone, Search } from "lucide-react"
+import { Check, Lock, MonitorSmartphone, Search } from "lucide-react"
 import { useState } from "react"
 import { useCanvasAction } from "@canvas/react"
 
 import { Container } from "@/components/ui/container"
+import { Display } from "@/components/ui/display"
 import { AppIcon } from "@/components/ui/app-icon"
 import { Reveal } from "@/components/motion/reveal"
 import { Switch } from "@/components/ui/switch"
@@ -24,11 +25,11 @@ export function BankSite() {
   const monthly = PAYMENTS.filter((p) => paused.includes(p.id)).reduce((sum, p) => sum + p.amount, 0)
   const toggle = (id: string) => setPaused((cur) => (cur.includes(id) ? cur.filter((x) => x !== id) : [...cur, id]))
   return (
-    <section className="bg-night-800 py-16 text-white sm:py-24">
+    <section className="bg-night-800 py-20 text-white sm:py-32">
       <Container>
         <Reveal>
           <div className="flex items-center gap-3">
-            <AppIcon icon={MonitorSmartphone} className="size-11 from-brand-500 to-leaf-500" />
+            <AppIcon icon={MonitorSmartphone} tone="green" className="size-12" />
             <div className="flex h-11 min-w-0 flex-1 items-center gap-2 rounded-xl bg-white px-3 text-sm text-ink-900 sm:max-w-lg">
               <Lock className="size-4 shrink-0" />
               <span className="truncate font-medium">
@@ -37,17 +38,25 @@ export function BankSite() {
               <span className="ml-auto shrink-0 rounded-full border border-ink-200 px-2.5 py-0.5 text-xs font-semibold">Early access</span>
             </div>
           </div>
-          <h2 className="mt-8 max-w-3xl text-[clamp(2.5rem,7vw,5rem)] leading-[0.98] font-extrabold tracking-[-0.04em] text-balance">
+          <Display tone="dark" size="xl" className="mt-8 max-w-5xl">
             Never open your bank’s website again.
-          </h2>
+          </Display>
         </Reveal>
-        <div className="mt-12 grid gap-8 lg:grid-cols-[0.8fr_1.6fr]">
+        <div className="mt-14 grid gap-10 lg:grid-cols-[0.8fr_1.5fr] lg:gap-16">
           <Reveal delay={0.1}>
-            <p className="max-w-xs text-sm leading-relaxed text-white/70 lg:ml-auto lg:text-right">
+            <p className="max-w-md text-lg leading-relaxed text-white/75">
               As good as your bank’s infrastructure is, it still hasn’t caught up with the rest of
               the industry, software wise. Good software shows you what is due, what just left and
               what is coming, without a login screen in between.
             </p>
+            <ul className="mt-8 space-y-3 text-[15px] text-white/85">
+              {["See every upcoming payment before it lands", "Pause a plan and watch the year change", "One screen for every account you own"].map((line) => (
+                <li key={line} className="flex items-center gap-3">
+                  <span className="grid size-5 place-items-center rounded-full bg-leaf-500 text-night-950"><Check className="size-3" strokeWidth={3} /></span>
+                  {line}
+                </li>
+              ))}
+            </ul>
           </Reveal>
           <Reveal delay={0.2}>
             <div className="grid overflow-hidden rounded-2xl bg-white text-ink-900 shadow-device sm:grid-cols-[1.1fr_1fr]">
@@ -81,7 +90,16 @@ export function BankSite() {
                 <p className="mt-1 text-xs font-semibold text-ink-600">It’s the 15th of January, a Sunday</p>
                 <p className="mt-6 text-[11px] font-semibold tracking-wider text-ink-400 uppercase">Balance in 12 months</p>
                 <CountUp value={BASE + monthly * 12} className="tabular mt-1 block text-4xl font-extrabold tracking-tight" />
-                <p className="mt-1 min-h-8 text-xs font-medium text-leaf-500">{monthly ? `Pausing ${paused.length} saves $${(monthly * 12).toLocaleString("en-US")} a year.` : "Switch a plan off to see what a year of it adds."}</p>
+                <div className="mt-5 flex h-24 items-end gap-1.5" aria-hidden="true">
+                  {Array.from({ length: 12 }, (_, m) => (
+                    <div key={m} className="relative flex-1" style={{ height: `${44 + m * 4.5}%` }}>
+                      <span className="absolute inset-0 rounded-t-md bg-ink-200" />
+                      <span className="absolute inset-x-0 bottom-0 origin-bottom rounded-t-md bg-leaf-500 transition-transform duration-500 ease-[var(--ease-out)]" style={{ height: "100%", transform: `scaleY(${Math.min(1, (monthly * (m + 1)) / 1300)})` }} />
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-1.5 flex justify-between text-[9px] font-medium text-ink-400"><span>Now</span><span>12 months</span></div>
+                <p className="mt-3 min-h-8 text-xs font-medium text-leaf-500">{monthly ? `Pausing ${paused.length} saves $${(monthly * 12).toLocaleString("en-US")} a year.` : "Switch a plan off to see what a year of it adds."}</p>
               </div>
             </div>
           </Reveal>

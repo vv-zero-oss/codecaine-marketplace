@@ -1,24 +1,25 @@
 import { Sheet, Tags } from "lucide-react"
 
 import { Container } from "@/components/ui/container"
+import { Display } from "@/components/ui/display"
 import { AppIcon } from "@/components/ui/app-icon"
 import { Reveal } from "@/components/motion/reveal"
 import { MerchantMatch } from "@/components/motion/merchant-match"
 
 export function Merchants() {
   return (
-    <section className="bg-white py-16 sm:py-24">
+    <section className="bg-white py-20 sm:py-28">
       <Container className="text-center">
         <Reveal>
           <div className="flex justify-center">
-            <AppIcon icon={Sheet} />
+            <AppIcon icon={Sheet} tone="amber" />
           </div>
-          <h2 className="mx-auto mt-5 max-w-2xl text-[clamp(2rem,5vw,3.5rem)] leading-[1.02] font-extrabold tracking-[-0.03em] text-balance">
+          <Display className="mx-auto mt-6 max-w-3xl">
             More than a row in a spreadsheet.
-          </h2>
-          <p className="mt-3 text-sm text-ink-400 sm:text-base">Not just the numbers, but the story as well.</p>
+          </Display>
+          <p className="mt-4 text-lg text-ink-600">Not just the numbers, but the story as well.</p>
         </Reveal>
-        <Reveal delay={0.1} className="mx-auto mt-12 max-w-4xl text-left">
+        <Reveal delay={0.1} className="mx-auto mt-12 max-w-5xl text-left">
           <MerchantMatch />
           <div className="mt-6 grid gap-6 text-sm text-ink-600 sm:grid-cols-2 sm:text-base">
             <p className="sm:text-right">Merchants are found automatically, from where and when you made the purchase.</p>

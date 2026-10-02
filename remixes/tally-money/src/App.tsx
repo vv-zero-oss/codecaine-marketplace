@@ -15,6 +15,11 @@ import { BankLink } from "@/components/sections/bank-link"
 import { BankSite } from "@/components/sections/bank-site"
 import { Hero } from "@/components/sections/hero"
 import { Insights } from "@/components/sections/insights"
+import { Closing } from "@/components/sections/closing"
+import { Faq } from "@/components/sections/faq"
+import { Numbers } from "@/components/sections/numbers"
+import { Pricing } from "@/components/sections/pricing"
+import { Testimonials } from "@/components/sections/testimonials"
 import { Manifesto } from "@/components/sections/manifesto"
 import { Merchants } from "@/components/sections/merchants"
 import { SearchRecall } from "@/components/sections/search-recall"
@@ -32,8 +37,13 @@ const SECTIONS = [
   { id: "merchants", Section: Merchants },
   { id: "search", Section: SearchRecall },
   { id: "insights", Section: Insights },
+  { id: "numbers", Section: Numbers },
   { id: "site", Section: BankSite },
+  { id: "proof", Section: Testimonials },
+  { id: "pricing", Section: Pricing },
+  { id: "faq", Section: Faq },
   { id: "manifesto", Section: Manifesto },
+  { id: "closing", Section: Closing },
 ]
 
 /** `?only=<id>` renders one block on its own — handy for a section at a time. */

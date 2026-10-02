@@ -136,7 +136,7 @@ export function SearchDemo({ typingSpeed = 110, hold = 2600, className }: { typi
         {chip("Today", range === "today", () => setRange(range === "today" ? null : "today"))}
         {chip("This week", range === "week", () => setRange(range === "week" ? null : "week"))}
       </div>
-      <div className="mt-6 min-h-[16rem]">
+      <div className="mt-6 min-h-[15rem]">
         <ul className="mx-auto max-w-sm space-y-3" aria-live="polite">
           <AnimatePresence mode="popLayout" initial={false}>
             {results.map((t, i) => (

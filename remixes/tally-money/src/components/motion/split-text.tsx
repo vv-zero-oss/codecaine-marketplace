@@ -1,5 +1,6 @@
 import { motion, useReducedMotion } from "motion/react"
 import { useCanvasDesignMode } from "@canvas/react"
+import { Fragment } from "react"
 import type * as React from "react"
 
 /**
@@ -29,18 +30,20 @@ export function SplitText({
   if (reduced || designing) return <Tag className={className}>{text}</Tag>
   return (
     <Tag className={className} aria-label={text}>
-      {text.split(" ").map((word, index) => (
-        <span key={index} aria-hidden="true" className="inline-block overflow-hidden pb-[0.14em] align-bottom">
-          <motion.span
-            className="inline-block"
-            initial={{ transform: "translateY(110%)" }}
-            animate={{ transform: "translateY(0%)" }}
-            transition={{ duration, delay: delay + index * stagger, ease: [0.23, 1, 0.32, 1] }}
-          >
-            {word}
-          </motion.span>
-          {index < text.split(" ").length - 1 ? " " : ""}
-        </span>
+      {text.split(" ").map((word, index, words) => (
+        <Fragment key={index}>
+          <span aria-hidden="true" className="inline-block overflow-hidden pb-[0.14em] align-bottom">
+            <motion.span
+              className="inline-block"
+              initial={{ transform: "translateY(110%)" }}
+              animate={{ transform: "translateY(0%)" }}
+              transition={{ duration, delay: delay + index * stagger, ease: [0.23, 1, 0.32, 1] }}
+            >
+              {word}
+            </motion.span>
+          </span>
+          {index < words.length - 1 ? " " : null}
+        </Fragment>
       ))}
     </Tag>
   )

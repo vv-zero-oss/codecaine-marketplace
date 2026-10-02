@@ -18,6 +18,11 @@ import { Magnetic } from "@/components/motion/magnetic"
 import { Tilt } from "@/components/motion/tilt"
 import { SplitText } from "@/components/motion/split-text"
 import { useState } from "react"
+import { Display } from "@/components/ui/display"
+import { Marquee } from "@/components/motion/marquee"
+import { FloatChip } from "@/components/motion/float-chip"
+import { QuoteCard } from "@/components/sections/testimonials"
+import { BillingToggle } from "@/components/sections/pricing"
 import { QrCode } from "@/components/qr-code"
 import { CountUp } from "@/components/motion/count-up"
 import { CashFlowChart } from "@/components/motion/cash-flow-chart"
@@ -104,6 +109,7 @@ export function ButtonSpecimen() {
 
 export function ComponentLibrary() {
   const [on, setOn] = useState(true)
+  const [yearly, setYearly] = useState(true)
   return (
     <div className="space-y-8">
       <ButtonSpecimen />
@@ -198,6 +204,34 @@ export function ComponentLibrary() {
           <SplitText text="Spend with your eyes open." as="p" delay={0.1} className="text-3xl font-extrabold tracking-tight" />
         </ComponentSpecimen>
       </div>
+
+      <div className="grid gap-8 lg:grid-cols-2">
+        <ComponentSpecimen name="Display" source="components/ui/display.tsx" description="The headline voice: 800 weight, tight tracking, balanced lines. Sizes: xl, lg, md." code={`<Display size="lg">More than a row in a spreadsheet.</Display>`}>
+          <Display size="md">More than a row in a spreadsheet.</Display>
+        </ComponentSpecimen>
+
+        <ComponentSpecimen name="BillingToggle" source="components/sections/pricing.tsx" description="A sliding pill on a shared layout, so the thumb glides between the two." code={`<BillingToggle yearly={yearly} onChange={setYearly} />`}>
+          <BillingToggle yearly={yearly} onChange={setYearly} />
+        </ComponentSpecimen>
+
+        <ComponentSpecimen name="FloatChip" source="components/motion/float-chip.tsx" description="A payment toast that pops in, then bobs. Props: delay, duration, rise." code={`<FloatChip label="Blue Bottle · Coffee" amount="−$5.00" icon={Coffee} />`}>
+          <div className="relative h-20">
+            <FloatChip className="left-0" label="Blue Bottle · Coffee" amount="−$5.00" icon={Coffee} delay={0.2} />
+          </div>
+        </ComponentSpecimen>
+
+        <ComponentSpecimen name="QuoteCard" source="components/sections/testimonials.tsx" description="A quote, the plan it changed, and the person, with a Pexels portrait." code={`<QuoteCard name="…" role="…" photo="amara.jpg" quote="…" chip="…" offset="" />`}>
+          <QuoteCard name="Amara Okafor" role="Product designer" photo="amara.jpg" quote="I cancelled three subscriptions I had forgotten about." chip="Cancelled 3 plans" offset="" />
+        </ComponentSpecimen>
+      </div>
+
+      <ComponentSpecimen name="Marquee" source="components/motion/marquee.tsx" description="A row that scrolls forever, on a CSS animation. Props: speed (s per loop), direction, pauseOnHover." code={`<Marquee speed={45}>…</Marquee>`}>
+        <Marquee speed={30}>
+          {["Harbor", "Citrine", "Northline", "Oakmont", "Meridian"].map((n) => (
+            <span key={n} className="rounded-full border border-ink-100 bg-white px-4 py-2 text-sm font-semibold">{n}</span>
+          ))}
+        </Marquee>
+      </ComponentSpecimen>
 
       <ComponentSpecimen name="FallingObjects" source="components/falling-objects.tsx" description="The hero pile. Props: stagger, distance, bounce." code={`<FallingObjects stagger={0.09} distance={520} bounce={0.28} />`} previewClassName="bg-ink-100">
         <FallingObjects className="max-w-xs" />

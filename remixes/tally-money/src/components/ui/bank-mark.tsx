@@ -10,10 +10,10 @@ const TONES = {
 export type BankTone = keyof typeof TONES
 
 /** A round monogram standing in for a bank's logo. */
-export function BankMark({ tone, className }: { tone: BankTone; className?: string }) {
+export function BankMark({ tone, letter, className }: { tone: BankTone; letter?: string; className?: string }) {
   return (
     <span aria-hidden="true" className={cn("grid size-5 shrink-0 place-items-center rounded-full text-[9px] font-extrabold uppercase", TONES[tone], className)}>
-      {tone[0]}
+      {letter ?? tone[0]}
     </span>
   )
 }

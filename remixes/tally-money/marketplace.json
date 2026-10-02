@@ -3,8 +3,8 @@
   "type": "remix",
   "id": "tally-money",
   "name": "Tally",
-  "version": "1.1.1",
-  "description": "A personal-finance landing page: dropping-objects hero, one-switch bank link, dashboard and phone, self-typing search, a cash-flow chart and a dark closing band — authored as named components for the editor.",
+  "version": "1.2.0",
+  "description": "A personal-finance landing page: inked-object hero with payment toasts, a three-bank link scene, a dense dashboard and phone, a live payment feed, self-typing search, proof, pricing with a border beam, FAQ and a closing — authored as named components for the editor.",
   "designedFor": [
     "Launching a money, budgeting or banking app",
     "A calm, friendly fintech look with real product mockups",
@@ -24,6 +24,8 @@
     "finance",
     "landing",
     "app",
+    "pricing",
+    "testimonials",
     "framer-motion",
     "lenis",
     "tailwind"

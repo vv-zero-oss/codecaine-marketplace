@@ -1,6 +1,7 @@
 import { ChevronLeft, Maximize2, Sparkles, TriangleAlert } from "lucide-react"
 
 import { Container } from "@/components/ui/container"
+import { Display } from "@/components/ui/display"
 import { AppIcon } from "@/components/ui/app-icon"
 import { PhoneFrame } from "@/components/ui/phone-frame"
 import { Tilt } from "@/components/motion/tilt"
@@ -12,14 +13,12 @@ const NOTES = ["Drag across the chart to read any month", "Spot slow drifts befo
 
 export function Insights() {
   return (
-    <section className="overflow-hidden bg-white py-16 sm:py-24">
+    <section className="overflow-hidden bg-white py-20 sm:py-28">
       <Container className="grid items-center gap-12 md:grid-cols-[1fr_auto] md:gap-16">
-        <Reveal direction="right" distance={20} className="max-w-md">
-          <AppIcon icon={Sparkles} />
-          <h2 className="mt-5 text-[clamp(2rem,4.5vw,3.25rem)] leading-[1.02] font-extrabold tracking-[-0.03em] text-balance">
-            Inform &amp; delight.
-          </h2>
-          <p className="mt-5 text-base leading-relaxed text-ink-600">
+        <Reveal direction="right" distance={20} className="max-w-lg">
+          <AppIcon icon={Sparkles} tone="coral" />
+          <Display className="mt-6">Inform &amp; delight.</Display>
+          <p className="mt-5 text-lg leading-relaxed text-ink-600">
             Understand your financial health without drowning in numbers. Each month, Tally turns
             swooping highs and calm plateaus into real, actionable insights. Make decisions backed
             by your own data.
@@ -56,7 +55,7 @@ export function Insights() {
                   </li>
                 ))}
               </ul>
-              <span className="mt-auto flex h-8 items-center justify-center rounded-lg bg-white/10 text-[10px] font-bold">Pause spending alerts</span>
+              <span className="mt-auto hidden h-8 items-center justify-center rounded-lg bg-white/10 text-[10px] font-bold sm:flex">Pause spending alerts</span>
             </div>
           </PhoneFrame>
           </Tilt>
