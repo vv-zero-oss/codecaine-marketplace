@@ -203,7 +203,7 @@
   --px-edge: var(--color-line);
   --px-drop: rgba(0, 0, 0, 0.55);
   --px-halo: rgba(139, 92, 246, 0.35);
-  --header-h: 56px;
+  --header-h: 64px;
   --status-h: 40px;
   color-scheme: dark;
 }
