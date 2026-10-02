@@ -2,6 +2,7 @@ import { motion, useInView, useReducedMotion, useSpring } from "motion/react"
 import { useRef, useState } from "react"
 
 import { CountUp } from "@/components/motion/count-up"
+import { smoothPath } from "@/lib/chart"
 import { cn } from "@/lib/utils"
 
 const MONTHS = ["Feb", "Mar", "Apr", "May", "Jun", "Jul"]
@@ -14,21 +15,10 @@ const COLORS = { income: "var(--color-leaf-400)", spent: "var(--color-coral-500)
 const W = 280
 const MAX = 60000
 const x = (i: number) => (i * W) / (MONTHS.length - 1)
-const y = (v: number) => 104 - (v / MAX) * 96
+const H = 140
+const y = (v: number) => H - 6 - ((v - 10000) / (MAX - 10000)) * (H - 18)
 
-/** A smooth path through the points (Catmull-Rom, turned into cubic Béziers). */
-function smooth(values: number[]): string {
-  const pts = values.map((v, i) => [x(i), y(v)] as const)
-  let d = `M${pts[0][0]} ${pts[0][1]}`
-  for (let i = 0; i < pts.length - 1; i++) {
-    const p0 = pts[i - 1] ?? pts[i]
-    const p1 = pts[i]
-    const p2 = pts[i + 1]
-    const p3 = pts[i + 2] ?? p2
-    d += ` C${p1[0] + (p2[0] - p0[0]) / 6} ${p1[1] + (p2[1] - p0[1]) / 6} ${p2[0] - (p3[0] - p1[0]) / 6} ${p2[1] - (p3[1] - p1[1]) / 6} ${p2[0]} ${p2[1]}`
-  }
-  return d
-}
+const smooth = (values: number[]) => smoothPath(values.map((v, i) => [x(i), y(v)] as const))
 
 /**
  * Three cash-flow lines that draw themselves in over `duration` seconds, `stagger`
@@ -52,7 +42,15 @@ export function CashFlowChart({ duration = 1.4, stagger = 0.2, className }: { du
 
   return (
     <div ref={ref} className={cn("relative touch-pan-y select-none", className)} onPointerMove={scrub} onPointerDown={scrub}>
-      <svg viewBox={`0 0 ${W} 110`} className="w-full overflow-visible" aria-label="Cash flow, February to July. Move across it to read a month." role="img">
+      <div className="mb-4 grid grid-cols-3 gap-2 text-left">
+        {[["Income", "income", "+$", "text-leaf-400"], ["Spent", "spent", "−$", "text-coral-500"], ["Saved", "saved", "$", "text-brand-500"]].map(([label, key, prefix, tone]) => (
+          <div key={key} className="rounded-lg bg-white/5 px-2 py-1.5">
+            <p className="text-[8px] font-semibold tracking-wider text-white/50 uppercase">{label}</p>
+            <CountUp value={DATA[key as keyof typeof DATA][index]} prefix={prefix} duration={0.5} className={cn("tabular block text-[10px] font-extrabold whitespace-nowrap", tone)} />
+          </div>
+        ))}
+      </div>
+      <svg viewBox={`0 0 ${W} ${H}`} className="w-full overflow-visible" aria-label="Cash flow, February to July. Move across it to read a month." role="img">
         {keys.map((key, i) => (
           <motion.path
             key={key}
@@ -67,22 +65,11 @@ export function CashFlowChart({ duration = 1.4, stagger = 0.2, className }: { du
             transition={{ duration, delay: i * stagger, ease: [0.77, 0, 0.175, 1] }}
           />
         ))}
-        <motion.line x1="0" x2="0" y1="0" y2="110" stroke="white" strokeOpacity="0.5" style={{ x: guide }} />
+        <motion.line x1="0" x2="0" y1="0" y2={H} stroke="white" strokeOpacity="0.5" style={{ x: guide }} />
         {keys.map((key) => (
           <motion.circle key={key} r="3.5" fill={COLORS[key]} stroke="white" strokeWidth="1.5" initial={false} animate={{ cx: x(index), cy: y(DATA[key][index]) }} transition={{ type: "spring", stiffness: 300, damping: 30 }} />
         ))}
       </svg>
-      <div className="pointer-events-none absolute top-1 right-0 flex flex-col items-end gap-1.5 text-[10px] font-bold">
-        <span className="rounded-md bg-leaf-500 px-1.5 py-0.5 text-night-950">
-          <CountUp value={DATA.income[index]} prefix="+$" duration={0.5} />
-        </span>
-        <span className="rounded-md bg-coral-500 px-1.5 py-0.5 text-white">
-          <CountUp value={DATA.spent[index]} prefix="−$" duration={0.5} />
-        </span>
-        <span className="rounded-md bg-brand-500 px-1.5 py-0.5 text-white">
-          <CountUp value={DATA.saved[index]} prefix="$" duration={0.5} />
-        </span>
-      </div>
       <div className="mt-2 flex justify-between text-[10px] text-white/50">
         {MONTHS.map((month, i) => (
           <span key={month} className={cn("transition-colors duration-150", i === index && "font-bold text-white")}>{month}</span>
