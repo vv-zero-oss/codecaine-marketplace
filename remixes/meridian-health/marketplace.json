@@ -2,9 +2,9 @@
   "$schema": "../../schemas/marketplace-item.schema.json",
   "type": "remix",
   "id": "meridian-health",
-  "name": "Meridian \u2014 Health Coach",
+  "name": "Meridian — Health Coach",
   "version": "1.3.0",
-  "description": "A soft pastel-gradient landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal \u2014 plus three scroll-driven chapters (a manifesto that reads itself in, a pinned day-with-Meridian timeline, a horizontal signal ribbon), privacy, reviews and a closing call.",
+  "description": "A soft pastel-gradient landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal — plus three scroll-driven chapters (a manifesto that reads itself in, a pinned day-with-Meridian timeline, a horizontal signal ribbon), privacy, reviews and a closing call.",
   "designedFor": [
     "Health, fitness, wellness and wearable app launch pages",
     "Mobile-app landing pages that need the product itself on show, not screenshots",
