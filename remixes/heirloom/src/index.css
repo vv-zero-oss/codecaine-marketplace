@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Every colour, shadow, radius, font and motion curve on the page lives here.
+   Components use the utilities these generate (bg-ink, text-fg-muted,
+   shadow-pill, rounded-card, ease-soft…) and never a raw value. */
+@theme {
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", "Iowan Old Style", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Surface */
+  --color-ink: #000000;
+  --color-surface: #0d0d0d;
+  --color-surface-raised: #1a1a1a;
+  --color-paper: #ffffff;
+  --color-glass: rgb(255 255 255 / 0.14);
+  --color-glass-strong: rgb(255 255 255 / 0.22);
+  --color-warm-glass: rgb(217 185 154 / 0.28);
+
+  /* Text */
+  --color-fg: #ffffff;
+  --color-fg-muted: rgb(255 255 255 / 0.62);
+  --color-fg-subtle: rgb(255 255 255 / 0.4);
+  --color-on-paper: #0a0a0a;
+
+  /* Border */
+  --color-line: rgb(255 255 255 / 0.14);
+  --color-line-strong: rgb(255 255 255 / 0.26);
+
+  /* Radii */
+  --radius-card: 10px;
+  --radius-tile: 8px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-pill: 0 1px 2px rgb(0 0 0 / 0.25), 0 10px 28px -10px rgb(0 0 0 / 0.5);
+  --shadow-card: 0 28px 60px -28px rgb(0 0 0 / 0.9), 0 0 0 1px rgb(255 255 255 / 0.06);
+  --shadow-glass: inset 0 1px 0 rgb(255 255 255 / 0.18), 0 6px 20px -8px rgb(0 0 0 / 0.5);
+
+  /* Motion */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-reveal: 0.9s;
+  --duration-fade: 1.6s;
+  --duration-press: 0.16s;
+
+  --animate-marquee: marquee var(--marquee-duration, 48s) linear infinite;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes drift {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.1); }
+}
+
+html {
+  background: var(--color-ink);
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  font-feature-settings: "ss01";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-paper);
+  color: var(--color-on-paper);
+}
+
+/* Lenis owns the scroll: native smooth scrolling would fight it. */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
