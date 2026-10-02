@@ -1,0 +1,69 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "fathom-analytics",
+  "name": "Fathom Analytics",
+  "version": "1.0.0",
+  "description": "An AI analytics landing page built from pinned, scroll-scrubbed scenes: widgets that assemble into a product window, sticky feature tabs, a sticky testimonial slider with video, a clip-path video expand, stacked sticky cards and a door that opens.",
+  "designedFor": [
+    "AI, data and analytics product launches",
+    "Pages that explain a product through scroll rather than a feature grid",
+    "Teams who want sticky video, sticky tabs and sticky testimonial patterns as editable components",
+    "Serif-and-italic editorial type on a soft gradient wash"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Maren Kowalczyk"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "analytics",
+    "ai",
+    "saas",
+    "landing",
+    "scrollytelling",
+    "sticky",
+    "video",
+    "framer-motion",
+    "lenis"
+  ],
+  "categories": [
+    "Marketing",
+    "SaaS"
+  ],
+  "created": "2026-10-02",
+  "updated": "2026-10-02",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3340
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      }
+    ]
+  }
+}
