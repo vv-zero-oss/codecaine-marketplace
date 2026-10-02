@@ -36,9 +36,9 @@ export function StickyVideo({
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] })
   const grow = useTransform(scrollYProgress, [0, 0.7], [0, 1], { clamp: true })
 
-  const inset = useTransform(grow, (g) => `${(still ? 0 : startInset * (1 - g))}vw`)
-  const vInset = useTransform(grow, (g) => `${(still ? 0 : 12 * (1 - g))}vh`)
-  const radius = useTransform(grow, (g) => (still ? 0 : 28 * (1 - g)))
+  const inset = useTransform(grow, (g) => `${(still ? 0.8 : 0.8 + (startInset - 0.8) * (1 - g))}vw`)
+  const vInset = useTransform(grow, (g) => `${(still ? 1.2 : 1.2 + 10.8 * (1 - g))}vh`)
+  const radius = useTransform(grow, (g) => (still ? 24 : 24 + 4 * (1 - g)))
   const textOpacity = useTransform(grow, [0, 0.45], [1, 0])
   const textY = useTransform(grow, [0, 0.45], [0, -24])
   const [playing, setPlaying] = useState(true)

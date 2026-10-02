@@ -40,7 +40,7 @@ export function Developers() {
         <Reveal delay={0.14}>
           <ul className="flex flex-col gap-3">
             {[[Braces, "REST API and SDKs", "Typed clients for TypeScript, Python and Rust."], [Terminal, "A CLI for scripts", "Pipe contacts, threads and tasks anywhere."], [Webhook, "Webhooks and agents", "React to events and let your own agents act safely."]].map(([I, t, b]) => { const Icon = I as typeof Braces; return (
-              <li key={t as string} className="flex gap-3.5 rounded-[14px] bg-surface p-4 shadow-card">
+              <li key={t as string} className="flex gap-3.5 rounded-[var(--radius-card)] bg-surface p-4 shadow-card">
                 <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-sky-100 text-sky-600"><Icon className="size-4" /></span>
                 <div><h3 className="text-[14px] font-semibold">{t as string}</h3><p className="mt-0.5 text-[13px] leading-snug text-ink-500">{b as string}</p></div>
               </li>) })}

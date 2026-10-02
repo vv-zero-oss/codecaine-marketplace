@@ -86,7 +86,7 @@ export function Skills() {
               <li
                 key={title}
                 style={{ animationDelay: `${i * 45}ms` }}
-                className="group flex gap-3 rounded-[14px] bg-surface p-4 shadow-card transition-[box-shadow,transform] duration-200 ease-out [animation:rise_420ms_var(--ease-out)_both] hover:-translate-y-0.5 hover:shadow-lift"
+                className="group flex gap-3 rounded-[var(--radius-card)] bg-surface p-4 shadow-card transition-[box-shadow,transform] duration-200 ease-out [animation:rise_420ms_var(--ease-out)_both] hover:-translate-y-0.5 hover:shadow-lift"
               >
                 <span className={`grid size-8 shrink-0 place-items-center rounded-lg ${tone}`}><Icon className="size-4" /></span>
                 <div>

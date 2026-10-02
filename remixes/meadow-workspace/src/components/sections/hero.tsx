@@ -1,5 +1,8 @@
 import { ArrowUpRight } from "lucide-react"
-import { motion, useReducedMotion } from "motion/react"
+import { CheckCircle2, CalendarCheck } from "lucide-react"
+import { motion, useReducedMotion, useScroll, useTransform } from "motion/react"
+import { useRef } from "react"
+import { useCanvasDesignMode } from "@canvas/react"
 
 import { AppWindow } from "@/components/mocks/app-window"
 import { ButtonLink } from "@/components/ui/button"
@@ -20,6 +23,15 @@ export function Hero({
   badge?: string
 }) {
   const reduce = useReducedMotion()
+  const { designing } = useCanvasDesignMode()
+  const section = useRef<HTMLElement>(null)
+  // The board starts tipped back and a little small, and settles flat as the
+  // page scrolls past it — so the product seems to rise into place.
+  const { scrollYProgress } = useScroll({ target: section, offset: ["start start", "end start"] })
+  const flat = reduce || designing
+  const tilt = useTransform(scrollYProgress, [0, 0.45], [flat ? 0 : 9, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.45], [flat ? 1 : 0.95, 1])
+  const lift = useTransform(scrollYProgress, [0, 0.45], [flat ? 0 : 18, 0])
   const rise = (delay: number) =>
     reduce
       ? {}
@@ -29,7 +41,8 @@ export function Hero({
           transition: { duration: 0.8, delay, ease: [0.23, 1, 0.32, 1] as const },
         }
   return (
-    <section id="top" className="relative isolate overflow-hidden bg-gradient-to-b from-sky-400 via-sky-300 to-sky-300">
+    <section ref={section} id="top" className="bg-page p-2 sm:p-3">
+      <div className="relative isolate overflow-hidden rounded-[var(--radius-section)] bg-gradient-to-b from-sky-400 via-sky-300 to-sky-300">
       <img
         src="/images/hero.jpg"
         alt=""
@@ -62,10 +75,31 @@ export function Hero({
             Talk to sales <ArrowUpRight className="opacity-50" />
           </ButtonLink>
         </motion.div>
-        <motion.div {...rise(0.3)} className="mt-14 w-full max-w-[900px] sm:mt-[72px]">
-          <AppWindow className="h-[380px] sm:h-[440px]" />
+        <motion.div {...rise(0.3)} className="relative mt-14 w-full max-w-[900px] [perspective:1400px] sm:mt-[72px]">
+          {/* Notifications that hang off the board's corners, drifting out of
+              step with each other. Large screens only: on a phone they would
+              sit on top of the content they describe. */}
+          <Chip icon={CheckCircle2} className="top-28 -left-[170px]" delay="0s">Follow-up drafted for Noor</Chip>
+          <Chip icon={CalendarCheck} className="top-52 -right-[150px]" delay="-2.4s">3 meetings prepped</Chip>
+          <motion.div style={{ rotateX: tilt, scale, y: lift, transformOrigin: "50% 100%" }}>
+            <AppWindow className="h-[380px] sm:h-[440px]" />
+          </motion.div>
         </motion.div>
       </Container>
+      </div>
     </section>
+  )
+}
+
+/** A small floating notification. Hidden below `xl`. */
+function Chip({ icon: Icon, children, className, delay }: { icon: React.ComponentType<{ className?: string }>; children: React.ReactNode; className?: string; delay: string }) {
+  return (
+    <span
+      style={{ animation: `drift 6s ease-in-out ${delay} infinite` }}
+      className={`absolute z-20 hidden items-center gap-2 rounded-[var(--radius-panel)] bg-surface/95 px-3 py-2 text-[12px] font-medium whitespace-nowrap shadow-lift backdrop-blur xl:flex ${className ?? ""}`}
+    >
+      <span className="grid size-5 place-items-center rounded-full bg-leaf/15 text-leaf"><Icon className="size-3" /></span>
+      {children}
+    </span>
   )
 }

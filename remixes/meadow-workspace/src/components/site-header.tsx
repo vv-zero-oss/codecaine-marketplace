@@ -54,7 +54,7 @@ export function SiteHeader() {
         <motion.nav
           aria-label="Primary"
           className={cn(
-            "pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-[14px] p-1 text-[13px] font-medium md:flex",
+            "pointer-events-auto absolute left-1/2 hidden -translate-x-1/2 items-center gap-1 rounded-[var(--radius-panel)] p-1 text-[13px] font-medium md:flex",
             condensed ? "bg-surface/95 text-ink-700 shadow-lift backdrop-blur" : "bg-white/25 text-ink-900/75 shadow-card backdrop-blur-md",
           )}
           layout={!reduce}

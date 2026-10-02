@@ -62,7 +62,8 @@ const STEPS = [
  *  as its own chapter. */
 export function HowItWorks() {
   return (
-    <section id="how" className="border-y border-ink-100 bg-surface py-14 sm:py-24">
+    <section id="how" className="bg-page px-2 sm:px-3">
+      <div className="rounded-[var(--radius-section)] bg-surface py-14 shadow-card sm:py-24">
       <Container>
         <Reveal>
           <SectionHeading align="center" title="How it works" description="From first sign-in to a quieter week in three steps." />
@@ -86,6 +87,7 @@ export function HowItWorks() {
           ))}
         </ol>
       </Container>
+      </div>
     </section>
   )
 }

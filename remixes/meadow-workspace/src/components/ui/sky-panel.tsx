@@ -12,7 +12,7 @@ export function SkyPanel({ className, children, ...props }: React.ComponentProps
   return (
     <div
       className={cn(
-        "relative isolate flex items-center justify-center overflow-hidden rounded-[14px] bg-gradient-to-b from-sky-500 to-sky-200",
+        "relative isolate flex items-center justify-center overflow-hidden rounded-[var(--radius-panel)] bg-gradient-to-b from-sky-500 to-sky-200",
         className,
       )}
       {...props}

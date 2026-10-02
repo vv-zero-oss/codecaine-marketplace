@@ -42,7 +42,7 @@ function NodeCard({ node }: { node: Node }) {
  *  into a short list rather than scaling a canvas down to nothing. */
 export function ContextGraph() {
   return (
-    <section id="graph" className="rounded-t-[28px] bg-page py-16 shadow-[0_-8px_30px_rgb(20_40_80/0.06)] sm:py-24">
+    <section id="graph" className="bg-page py-16 sm:py-24">
       <Container>
         <Reveal><SectionHeading align="center" title="Powered by you and your team's own context graph" description="Hundreds of integrations bring your data together into one connected workspace." /></Reveal>
         <Reveal delay={0.1} className="relative mt-10 hidden h-[400px] md:block" >

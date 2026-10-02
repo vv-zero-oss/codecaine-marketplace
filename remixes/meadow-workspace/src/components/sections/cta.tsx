@@ -14,7 +14,7 @@ export function Cta({
 }) {
   return (
     <section id="cta" className="bg-page px-3 pb-3 sm:px-5 sm:pb-5">
-      <div className="relative isolate mx-auto max-w-[1200px] overflow-hidden rounded-[28px] bg-gradient-to-b from-sky-400 to-sky-300 py-16 text-center sm:py-24">
+      <div className="relative isolate mx-auto max-w-[1200px] overflow-hidden rounded-[var(--radius-section)] bg-gradient-to-b from-sky-400 to-sky-300 py-16 text-center sm:py-24">
         <img src="/images/hero.jpg" alt="" aria-hidden="true" className="absolute inset-x-0 bottom-0 -z-10 h-1/2 w-full object-cover object-[50%_90%] [mask-image:linear-gradient(to_bottom,transparent,black_60%)] opacity-80" />
         <Container>
           <Reveal className="flex flex-col items-center gap-5">

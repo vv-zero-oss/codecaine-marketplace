@@ -25,13 +25,14 @@ export function Pricing() {
   useCanvasAction("Yearly billing", (next) => setBilling((next ?? billing !== "yearly") ? "yearly" : "monthly"), { on: billing === "yearly", group: "Pricing" })
 
   return (
-    <section id="pricing" className="relative overflow-hidden border-t border-ink-100 bg-surface py-14 sm:py-24">
+    <section id="pricing" className="bg-page px-2 sm:px-3">
+      <div className="relative overflow-hidden rounded-[var(--radius-section)] bg-surface py-14 shadow-card sm:py-24">
       <span aria-hidden="true" className="absolute inset-x-0 top-0 -z-0 h-72 bg-gradient-to-b from-sky-100/80 to-transparent" />
       <Container className="relative">
         <Reveal className="flex flex-col items-center gap-6">
           <SectionHeading align="center" title="Simple pricing that grows with you" description="Start free. Pay when the team joins. Cancel from the settings page, any time." />
           <Tabs value={billing} onValueChange={setBilling}>
-            <TabsList aria-label="Billing period" className="rounded-[12px] bg-ink-100 p-1">
+            <TabsList aria-label="Billing period" className="rounded-[var(--radius-panel)] bg-ink-100 p-1">
               <TabsTrigger value="monthly" className="min-h-9 data-[state=active]:bg-surface data-[state=active]:shadow-card">Monthly</TabsTrigger>
               <TabsTrigger value="yearly" className="min-h-9 data-[state=active]:bg-surface data-[state=active]:shadow-card">Yearly <span className="ml-1 text-leaf">−2 months</span></TabsTrigger>
             </TabsList>
@@ -68,11 +69,12 @@ export function Pricing() {
           })}
         </ul>
         <Reveal className="mt-8">
-          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[14px] bg-page px-5 py-4 text-[13px] text-ink-700 sm:grid-cols-4">
+          <ul className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[var(--radius-card)] bg-page px-5 py-4 text-[13px] text-ink-700 sm:grid-cols-4">
             {[[Sparkles, "Assistant on every plan"], [Lock, "Encryption at rest"], [Users, "Unlimited guests"], [RotateCcw, "Cancel any time"]].map(([I, l]) => { const Icon = I as typeof Lock; return <li key={l as string} className="flex items-center gap-2"><Icon className="size-4 text-sky-600" />{l as string}</li> })}
           </ul>
         </Reveal>
       </Container>
+      </div>
     </section>
   )
 }

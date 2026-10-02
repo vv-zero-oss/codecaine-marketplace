@@ -13,7 +13,8 @@ export function Testimonial({
   role?: string
 }) {
   return (
-    <section id="testimonial" className="relative isolate overflow-hidden bg-sky-400 py-24 sm:py-36">
+    <section id="testimonial" className="bg-page px-2 py-2 sm:px-3 sm:py-3">
+      <div className="relative isolate overflow-hidden rounded-[var(--radius-section)] bg-sky-400 py-24 sm:py-36">
       <img src="/images/hero-b.jpg" alt="" aria-hidden="true" className="absolute inset-0 -z-10 size-full object-cover" />
       <div aria-hidden="true" className="absolute inset-0 -z-10 bg-gradient-to-b from-sky-500/40 to-transparent" />
       <Container>
@@ -30,6 +31,7 @@ export function Testimonial({
           </figcaption>
         </Reveal>
       </Container>
+      </div>
     </section>
   )
 }
