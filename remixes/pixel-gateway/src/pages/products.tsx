@@ -22,18 +22,18 @@ export function ProductsPage() {
       <PageHero kicker="products" title="Eight checks. One gateway." blurb="Everything runs on the device, so there is nothing to backhaul and nothing for your people to notice.">
         <Button variant="primary" size="lg" onClick={() => openDialog("demo")}>Book a demo</Button>
       </PageHero>
-      <section className="bg-bg py-24 sm:py-32">
+      <section className="bg-bg py-phi-6 sm:py-phi-7">
         <Container>
-          <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-phi-4 md:grid-cols-2 xl:grid-cols-4">
             {FEATURES.map((feature, i) => (
               <Reveal key={feature.id} delay={(i % 4) * 0.06}>
                 <div id={feature.id} className="scroll-mt-28">
-                  <TiltCard maxTilt={10} lift={12} className="flex h-full min-h-72 flex-col gap-5 bg-surface p-6 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line)]">
+                  <TiltCard maxTilt={10} lift={12} className="flex h-full min-h-72 flex-col gap-phi-3 bg-surface p-phi-3 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line)]">
                     <div className="flex h-20 items-center [transform:translateZ(44px)]">
                       <PixelSprite name={feature.sprite} scale={6} />
                     </div>
-                    <h2 className="font-display text-[11px] uppercase leading-snug">{feature.title}</h2>
-                    <p className="text-lg text-fg-muted">{feature.body}</p>
+                    <h2 className="font-display text-label uppercase leading-snug">{feature.title}</h2>
+                    <p className="text-base text-fg-muted">{feature.body}</p>
                   </TiltCard>
                 </div>
               </Reveal>
@@ -41,17 +41,17 @@ export function ProductsPage() {
           </div>
         </Container>
       </section>
-      <section className="border-y-4 border-line bg-surface py-24 sm:py-32">
+      <section className="border-y-4 border-line bg-surface py-phi-6 sm:py-phi-7">
         <Container>
           <SectionHeading kicker="how it works" title="From install to protected in an afternoon." />
-          <ol className="mt-16 grid gap-12 md:grid-cols-3">
+          <ol className="mt-phi-5 grid gap-phi-5 md:grid-cols-3">
             {STEPS.map((step, i) => (
               <li key={step.title}>
                 <Reveal delay={i * 0.1}>
-                  <IsoCube tone={step.tone} size={84} speed={12 + i * 3} className="mb-8" />
-                  <p className="font-mono text-xl text-fg-subtle">STEP 0{i + 1}</p>
-                  <h3 className="mt-1 text-2xl font-semibold">{step.title}</h3>
-                  <p className="mt-2 text-lg text-fg-muted">{step.body}</p>
+                  <IsoCube tone={step.tone} size={84} speed={12 + i * 3} className="mb-phi-4" />
+                  <p className="font-mono text-lg text-fg-subtle">STEP 0{i + 1}</p>
+                  <h3 className="mt-1 text-xl font-semibold">{step.title}</h3>
+                  <p className="mt-phi-1 text-base text-fg-muted">{step.body}</p>
                 </Reveal>
               </li>
             ))}

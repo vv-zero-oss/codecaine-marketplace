@@ -19,12 +19,12 @@ export function BrandPage() {
     <>
       <PageHero kicker="brand guidelines" title="Pixelkeep, as a system." blurb="The tokens, type and components the site is built from — one place to look before changing any of them." />
       <main data-canvas-ignore className="bg-bg">
-        <Container className="grid grid-cols-[minmax(0,1fr)] gap-12 py-16 sm:py-24 lg:grid-cols-[12rem_minmax(0,1fr)]">
+        <Container className="grid grid-cols-[minmax(0,1fr)] gap-phi-5 py-phi-5 sm:py-phi-6 lg:grid-cols-[12rem_minmax(0,1fr)]">
           <nav aria-label="Style guide" className="hidden lg:block">
             <ul className="sticky top-24 grid gap-1">
               {CHAPTERS.map((c) => (
                 <li key={c.id}>
-                  <a href={`#${c.id}`} className="block px-3 py-2 font-display text-[9px] uppercase text-fg-muted transition-colors duration-100 hover:bg-surface-2 hover:text-fg">{c.title}</a>
+                  <a href={`#${c.id}`} className="block px-phi-2 py-phi-1 font-display text-label-sm uppercase text-fg-muted transition-colors duration-100 hover:bg-surface-2 hover:text-fg">{c.title}</a>
                 </li>
               ))}
             </ul>

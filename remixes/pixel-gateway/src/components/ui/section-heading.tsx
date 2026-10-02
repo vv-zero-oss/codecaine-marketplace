@@ -17,12 +17,12 @@ export function SectionHeading({
   return (
     <div className={cn("max-w-3xl", align === "center" && "mx-auto text-center", className)}>
       {kicker ? (
-        <p className="font-mono text-xl uppercase tracking-widest text-accent-hi">{`> ${kicker}`}</p>
+        <p className="font-mono text-lg uppercase tracking-widest text-accent-hi">{`> ${kicker}`}</p>
       ) : null}
-      <h2 className="mt-2 text-balance text-[clamp(2rem,5vw,3.75rem)] font-bold leading-[0.95] tracking-tight">
+      <h2 className="mt-phi-1 text-balance text-4xl font-bold">
         {title}
       </h2>
-      {blurb ? <p className="mt-4 max-w-2xl text-pretty text-lg text-fg-muted sm:text-xl">{blurb}</p> : null}
+      {blurb ? <p className="mt-phi-2 max-w-measure text-pretty text-base text-fg-muted sm:text-lg">{blurb}</p> : null}
     </div>
   )
 }

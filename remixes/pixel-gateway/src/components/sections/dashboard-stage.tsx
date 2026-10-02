@@ -105,15 +105,15 @@ export function DashboardHero({ active, progress, onSelect }: { active: number; 
   return (
     <TiltCard maxTilt={3} perspective={1400} glare={false} className="mx-auto w-full max-w-7xl">
       <div className="bg-bg/90 shadow-px-drop backdrop-blur-[3px] [--px-edge:var(--color-line-strong)] [--px-drop:rgba(0,0,0,0.5)]">
-        <div className="flex flex-wrap items-center gap-x-6 gap-y-2 border-b-2 border-line px-4 py-2.5 sm:px-6">
+        <div className="flex flex-wrap items-center gap-x-phi-3 gap-y-phi-1 border-b-2 border-line px-phi-2 py-2.5 sm:px-phi-3">
           <div className="flex items-center gap-2.5">
             <PixelSprite name="shield" scale={2} />
-            <span className="font-display text-[10px] uppercase">Gateway</span>
-            <span className="inline-flex items-center gap-1.5 font-mono text-xl text-good">
+            <span className="font-display text-label uppercase">Gateway</span>
+            <span className="inline-flex items-center gap-1.5 font-mono text-lg text-good">
               <span className="size-2.5 animate-blink bg-good" /> LIVE
             </span>
           </div>
-          <div role="tablist" aria-label="Gateway stages" className="order-last flex w-full gap-2 sm:order-none sm:ml-auto sm:w-auto">
+          <div role="tablist" aria-label="Gateway stages" className="order-last flex w-full gap-phi-1 sm:order-none sm:ml-auto sm:w-auto">
             {STAGES.map((s, i) => (
               <button
                 key={s.id}
@@ -121,7 +121,7 @@ export function DashboardHero({ active, progress, onSelect }: { active: number; 
                 aria-selected={i === active}
                 onClick={() => onSelect(i)}
                 className={cn(
-                  "min-h-11 flex-1 px-3 font-display text-[9px] uppercase shadow-px-sm transition-colors duration-100 ease-[steps(2,end)] sm:flex-none",
+                  "min-h-11 flex-1 px-phi-2 font-display text-label-sm uppercase shadow-px-sm transition-colors duration-100 ease-[steps(2,end)] sm:flex-none",
                   i === active ? "bg-accent text-accent-fg [--px-edge:var(--color-accent)]" : "bg-surface-2 text-fg-muted [--px-edge:var(--color-surface-2)] hover:text-fg",
                 )}
               >
@@ -129,20 +129,20 @@ export function DashboardHero({ active, progress, onSelect }: { active: number; 
               </button>
             ))}
           </div>
-          <span className="ml-auto font-mono text-xl tabular-nums text-fg-muted sm:ml-0">UTC {clock}</span>
+          <span className="ml-auto font-mono text-lg tabular-nums text-fg-muted sm:ml-0">UTC {clock}</span>
         </div>
 
-        <div className="grid gap-4 px-4 py-3 sm:px-6 md:grid-cols-[1.1fr_1fr_1fr] md:gap-6 md:py-4">
+        <div className="grid gap-phi-2 px-phi-2 py-phi-2 sm:px-phi-3 md:grid-cols-[1.1fr_1fr_1fr] md:gap-phi-3 md:py-phi-2">
           <div>
-            <p className="font-mono text-xl uppercase text-fg-muted">{stage.metric.label}</p>
-            <p className="font-display text-[clamp(1.1rem,3.4vw,2.1rem)] leading-tight" style={{ color: ACCENT[stage.id] }}>
+            <p className="font-mono text-lg uppercase text-fg-muted">{stage.metric.label}</p>
+            <p className="font-display text-xl leading-tight" style={{ color: ACCENT[stage.id] }}>
               <Metric value={stage.metric.value} reduced={reduced} />
             </p>
           </div>
           <div className="hidden h-16 md:block">
             <PixelBars stage={stage.id} paused={reduced || designing} />
           </div>
-          <ul className="hidden gap-0.5 font-mono text-lg leading-tight text-fg-muted md:grid" aria-label="Live feed">
+          <ul className="hidden gap-0.5 font-mono text-base leading-tight text-fg-muted md:grid" aria-label="Live feed">
             {feed.map((line, i) => (
               <li key={`${stage.id}-${i}`} className={cn("truncate", i === 0 && "text-fg")}>
                 <ScrambleText text={line} duration={0.5} delay={i * 0.1} trigger="mount" band={3} />
@@ -151,7 +151,7 @@ export function DashboardHero({ active, progress, onSelect }: { active: number; 
           </ul>
         </div>
 
-        <div className="flex gap-1 px-4 pb-3 sm:px-6" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)} aria-label="Stage progress">
+        <div className="flex gap-1 px-phi-2 pb-phi-2 sm:px-phi-3" role="progressbar" aria-valuemin={0} aria-valuemax={100} aria-valuenow={Math.round(progress * 100)} aria-label="Stage progress">
           {STAGES.map((s, i) => {
             const fill = Math.min(1, Math.max(0, progress * STAGES.length - i))
             return (
@@ -171,7 +171,7 @@ function BrickWall() {
   const tiles = useMemo(() => Array.from({ length: 24 }, (_, i) => ({ i, bad: [3, 8, 13, 18, 22].includes(i) })), [])
   return (
     <div className="relative mx-auto aspect-square w-full max-w-md [perspective:1100px]">
-      <div className="absolute inset-[8%] grid grid-cols-6 gap-2 preserve-3d [transform:rotateX(58deg)_rotateZ(-38deg)]">
+      <div className="absolute inset-[8%] grid grid-cols-6 gap-phi-1 preserve-3d [transform:rotateX(58deg)_rotateZ(-38deg)]">
         {tiles.map(({ i, bad }) => (
           <motion.div
             key={i}
@@ -245,10 +245,10 @@ function PolicyStack() {
         {cards.map((c, i) => (
           <div
             key={c.name}
-            className="absolute inset-x-[6%] top-[22%] flex h-[28%] items-center justify-between gap-3 bg-surface-2 px-4 shadow-px-drop [--px-drop:rgba(0,0,0,0.45)] [--px-edge:var(--color-line-strong)]"
+            className="absolute inset-x-[6%] top-[22%] flex h-[28%] items-center justify-between gap-phi-2 bg-surface-2 px-phi-2 shadow-px-drop [--px-drop:rgba(0,0,0,0.45)] [--px-edge:var(--color-line-strong)]"
             style={{ transform: `translateZ(${i * (6 + t * 44)}px) translateY(${i * t * -10}px)` }}
           >
-            <span className="font-display text-[10px] uppercase leading-tight">{c.name}</span>
+            <span className="font-display text-label uppercase leading-tight">{c.name}</span>
             <span className={cn("h-5 w-10 p-0.5 shadow-px-sm", c.on ? "bg-good/30 [--px-edge:var(--color-good)]" : "bg-surface-3 [--px-edge:var(--color-line-strong)]")}>
               <span className={cn("block size-4 bg-fg", c.on && "translate-x-5")} />
             </span>
@@ -273,25 +273,25 @@ export function StageSection({ index, onActive }: { index: number; onActive: (in
     return () => io.disconnect()
   }, [index, onActive])
   return (
-    <section ref={ref} id={`stage-${stage.id}`} className="flex min-h-svh scroll-mt-48 items-center py-16 lg:py-10">
-      <Container className={cn("grid items-center gap-10 lg:grid-cols-2 lg:gap-16", index % 2 === 1 && "lg:[&>*:first-child]:order-2")}>
+    <section ref={ref} id={`stage-${stage.id}`} className="flex min-h-svh scroll-mt-48 items-center py-phi-5 lg:py-phi-4">
+      <Container className={cn("grid items-center gap-phi-4 lg:gap-phi-5", index % 2 === 1 ? "lg:grid-cols-[1.618fr_1fr] lg:[&>*:first-child]:order-2" : "lg:grid-cols-[1fr_1.618fr]")}>
         <div>
           <Reveal>
             <Badge tone="outline">Stage {stage.index} / 03</Badge>
-            <h3 className="mt-4 text-balance text-[clamp(2rem,5vw,3.6rem)] font-bold leading-[0.95] tracking-tight">{stage.title}</h3>
-            <p className="mt-5 max-w-xl text-pretty text-xl text-fg-muted">{stage.body}</p>
+            <h3 className="mt-phi-2 text-balance text-3xl font-bold">{stage.title}</h3>
+            <p className="mt-phi-3 max-w-measure text-pretty text-lg text-fg-muted">{stage.body}</p>
           </Reveal>
-          <ul className="mt-6 grid gap-2.5">
+          <ul className="mt-phi-3 grid gap-2.5">
             {stage.bullets.map((bullet, i) => (
               <li key={bullet}>
-                <Reveal delay={0.08 * i} distance={10} className="flex items-start gap-3 text-lg">
+                <Reveal delay={0.08 * i} distance={10} className="flex items-start gap-phi-2 text-base">
                   <PixelSprite name="star" scale={3} className="mt-1.5" />
                   {bullet}
                 </Reveal>
               </li>
             ))}
           </ul>
-          <Link href={STAGE_LINK[stage.id].href} className={cn(buttonVariants({ variant: "outline" }), "mt-8")}>{STAGE_LINK[stage.id].label}</Link>
+          <Link href={STAGE_LINK[stage.id].href} className={cn(buttonVariants({ variant: "outline" }), "mt-phi-4")}>{STAGE_LINK[stage.id].label}</Link>
         </div>
         <TiltCard maxTilt={6} glare={false} perspective={1200} className="overflow-hidden">
           <Visual />
@@ -320,19 +320,21 @@ export function DashboardStage() {
 
   return (
     <section id="gateway" className="relative bg-bg">
-      <Container className="pb-10 pt-24 sm:pt-32">
+      <Container className="pb-phi-4 pt-phi-6 sm:pt-phi-7">
         <Reveal>
-          <p className="font-mono text-xl uppercase tracking-widest text-accent-hi">{"> the gateway, live"}</p>
-          <h2 className="mt-2 max-w-4xl text-balance text-[clamp(2.2rem,6vw,4.5rem)] font-bold leading-[0.95] tracking-tight">
+          <p className="font-mono text-lg uppercase tracking-widest text-accent-hi">{"> the gateway, live"}</p>
+          <h2 className="mt-phi-1 max-w-4xl text-balance text-4xl font-bold">
             One dashboard. Three jobs. It never leaves your screen.
           </h2>
         </Reveal>
       </Container>
       <div ref={ref} className="relative">
-        <div className="pointer-events-none sticky top-(--header-h) z-30 px-3 pt-3 sm:px-6">
-          <div className="pointer-events-auto">
-            <DashboardHero active={active} progress={progress} onSelect={go} />
-          </div>
+        <div className="pointer-events-none sticky top-(--header-h) z-30 pt-phi-2">
+          <Container>
+            <div className="pointer-events-auto">
+              <DashboardHero active={active} progress={progress} onSelect={go} />
+            </div>
+          </Container>
         </div>
         {STAGES.map((_, i) => (
           <StageSection key={i} index={i} onActive={setActive} />

@@ -7,8 +7,8 @@ import { Link } from "@/lib/router"
 export function FooterColumn({ title, children }: { title: string; children: React.ReactNode }) {
   return (
     <div>
-      <h3 className="font-display text-[10px] uppercase text-fg-subtle">{title}</h3>
-      <ul className="mt-4 grid gap-2.5 text-lg text-fg-muted">{children}</ul>
+      <h3 className="font-display text-label uppercase text-fg-subtle">{title}</h3>
+      <ul className="mt-phi-2 grid gap-2.5 text-base text-fg-muted">{children}</ul>
     </div>
   )
 }
@@ -16,11 +16,11 @@ export function FooterColumn({ title, children }: { title: string; children: Rea
 export function SiteFooter() {
   return (
     <footer className="border-t-4 border-line bg-surface">
-      <Container className="grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
+      <Container className="grid gap-phi-4 py-phi-5 md:grid-cols-2 lg:grid-cols-[1.4fr_repeat(3,1fr)]">
         <div className="max-w-xs">
           <Wordmark />
-          <p className="mt-4 text-lg text-fg-muted">A secure web gateway that checks on the device and lets traffic go direct.</p>
-          <p className="mb-3 mt-6 font-display text-[10px] uppercase text-fg-subtle">Release notes, monthly</p>
+          <p className="mt-phi-2 text-base text-fg-muted">A secure web gateway that checks on the device and lets traffic go direct.</p>
+          <p className="mb-phi-2 mt-phi-3 font-display text-label uppercase text-fg-subtle">Release notes, monthly</p>
           <Newsletter />
         </div>
         <FooterColumn title="Site">
@@ -46,7 +46,7 @@ export function SiteFooter() {
           <li>Type: Pixelify Sans, Press Start 2P, VT323.</li>
         </FooterColumn>
       </Container>
-      <Container className="flex flex-col gap-2 border-t-2 border-line py-6 font-mono text-xl text-fg-subtle sm:flex-row sm:justify-between">
+      <Container className="flex flex-col gap-phi-1 border-t-2 border-line py-phi-3 font-mono text-lg text-fg-subtle sm:flex-row sm:justify-between">
         <span>© 2026 Pixelkeep. A fictional product.</span>
         <span>Press START to continue</span>
       </Container>

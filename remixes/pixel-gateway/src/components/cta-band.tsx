@@ -30,15 +30,15 @@ export function CtaBand({
   className?: string
 }) {
   return (
-    <section className={cn("bg-bg py-12 sm:py-16", className)}>
+    <section className={cn("bg-bg py-phi-5 sm:py-phi-5", className)}>
       <Container>
         <Reveal>
-          <div className={cn("flex flex-col items-start justify-between gap-6 p-6 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] sm:p-8 md:flex-row md:items-center", tone === "accent" ? "bg-accent/15 [--px-edge:var(--color-accent)]" : "bg-surface [--px-edge:var(--color-line-strong)]")}>
-            <div className="max-w-xl">
-              <h2 className="font-display text-base uppercase leading-snug sm:text-lg">{title}</h2>
-              {body ? <p className="mt-3 text-xl text-fg-muted">{body}</p> : null}
+          <div className={cn("flex flex-col items-start justify-between gap-phi-3 p-phi-3 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] sm:p-phi-4 md:flex-row md:items-center", tone === "accent" ? "bg-accent/15 [--px-edge:var(--color-accent)]" : "bg-surface [--px-edge:var(--color-line-strong)]")}>
+            <div className="max-w-measure">
+              <h2 className="font-display text-base uppercase leading-snug sm:text-base">{title}</h2>
+              {body ? <p className="mt-phi-2 text-lg text-fg-muted">{body}</p> : null}
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-phi-2">
               <Link href={to} className={buttonVariants({ variant: "accent", size: "lg" })}>{primary} <ArrowRight /></Link>
               <Button variant="outline" size="lg" onClick={() => openDialog("demo")}>{secondary}</Button>
             </div>

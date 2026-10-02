@@ -18,6 +18,7 @@ import { restoreTheme } from "@/lib/theme"
 import { usePathname } from "@/lib/router"
 import { AboutPage } from "@/pages/about"
 import { BrandPage } from "@/pages/brand"
+import { CaseStudiesPage } from "@/pages/case-studies"
 import { CustomersPage } from "@/pages/customers"
 import { GetStartedPage } from "@/pages/get-started"
 import { GeneratorPage } from "@/pages/generator"
@@ -33,6 +34,7 @@ const PAGES: Record<string, () => React.JSX.Element> = {
   "/products": ProductsPage,
   "/pricing": PricingPage,
   "/customers": CustomersPage,
+  "/case-studies": CaseStudiesPage,
   "/generator": GeneratorPage,
   "/brand": BrandPage,
   "/how-it-works": HowItWorksPage,
@@ -46,6 +48,7 @@ const TITLES: Record<string, string> = {
   "/products": "Products — Pixelkeep",
   "/pricing": "Pricing — Pixelkeep",
   "/customers": "Customers — Pixelkeep",
+  "/case-studies": "Case studies — Pixelkeep",
   "/generator": "Template generator — Pixelkeep",
   "/brand": "Brand guidelines — Pixelkeep",
   "/how-it-works": "How it works — Pixelkeep",

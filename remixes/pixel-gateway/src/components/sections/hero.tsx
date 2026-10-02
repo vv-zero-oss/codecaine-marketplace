@@ -22,24 +22,24 @@ export function AccessPass({ title = "Start your free run", from = "Legacy", to 
     <TiltCard maxTilt={7} perspective={1100} lift={10} className={className}>
       <div className="relative bg-fg/[0.07] backdrop-blur-[3px] shadow-px-lift [--px-drop:rgba(8,6,40,0.5)] [--px-edge:color-mix(in_oklab,var(--color-fg)_60%,transparent)] [clip-path:polygon(0_28px,28px_0,100%_0,100%_100%,0_100%)]">
         <div aria-hidden className="absolute inset-y-0 left-0 w-0 border-l-4 border-dotted border-fg/35" />
-        <div className="grid gap-8 p-6 pr-24 sm:p-10 sm:pr-32 md:min-h-[480px]">
-          <div className="flex items-center gap-3 text-fg/45 [transform:translateZ(18px)]">
+        <div className="grid gap-phi-4 p-phi-3 pr-phi-6 sm:p-phi-4 sm:pr-phi-7 md:min-h-[480px]">
+          <div className="flex items-center gap-phi-2 text-fg/45 [transform:translateZ(18px)]">
             <PixelSprite name="globe" scale={3} />
-            <span className="font-display text-[11px] uppercase tracking-wide">Access pass</span>
+            <span className="font-display text-label uppercase tracking-wide">Access pass</span>
           </div>
-          <dl className="flex gap-10 text-fg/40 [transform:translateZ(14px)]">
+          <dl className="flex gap-phi-4 text-fg/40 [transform:translateZ(14px)]">
             <div>
-              <dt className="font-mono text-lg uppercase">Origin</dt>
+              <dt className="font-mono text-base uppercase">Origin</dt>
               <dd className="font-display text-sm uppercase sm:text-base">{from}</dd>
             </div>
             <div aria-hidden className="self-end pb-1 font-display text-xs">{">>"}</div>
             <div>
-              <dt className="font-mono text-lg uppercase">Destination</dt>
+              <dt className="font-mono text-base uppercase">Destination</dt>
               <dd className="font-display text-sm uppercase sm:text-base">{to}</dd>
             </div>
           </dl>
-          <div className="mt-auto grid gap-4 [transform:translateZ(36px)]">
-            <h2 className="text-3xl font-semibold sm:text-4xl">{title}</h2>
+          <div className="mt-auto grid gap-phi-2 [transform:translateZ(36px)]">
+            <h2 className="text-2xl font-semibold sm:text-3xl">{title}</h2>
             <Button variant="glass" size="lg" className="w-full" onClick={() => openDialog("login")}>
               <Mail /> Start with email
             </Button>
@@ -57,14 +57,14 @@ export function AccessPass({ title = "Start your free run", from = "Legacy", to 
 /** Hero: the dusk sky, the headline in two voices, the plane and the pass. */
 export function Hero() {
   return (
-    <section id="top" className="relative isolate overflow-hidden pb-24 pt-[calc(var(--header-h)+3rem)] sm:pt-[calc(var(--header-h)+4rem)] lg:min-h-svh">
+    <section id="top" className="relative isolate overflow-hidden pb-phi-6 pt-[calc(var(--header-h)+3rem)] sm:pt-[calc(var(--header-h)+4rem)] lg:min-h-svh">
       <SkyBackdrop image={sky} />
-      <Container className="relative grid items-center gap-12 lg:min-h-[calc(100svh-var(--header-h)-10rem)] lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+      <Container className="relative grid items-center gap-phi-5 lg:min-h-[calc(100svh-var(--header-h)-10rem)] lg:grid-cols-[1.618fr_1fr] lg:gap-phi-4">
         <div>
           <Reveal>
-            <p className="mb-6 font-mono text-xl uppercase tracking-widest text-fg/70">{`> ${HERO.kicker}`}</p>
+            <p className="mb-phi-4 font-mono text-lg uppercase tracking-widest text-fg/70">{`> ${HERO.kicker}`}</p>
           </Reveal>
-          <h1 className="text-[clamp(2.6rem,6.2vw,5.25rem)] font-bold leading-[0.95] tracking-tight">
+          <h1 className="text-5xl font-bold">
             {HERO.lines.map((line, i) => (
               <Reveal key={i} delay={0.08 * i} className="block">
                 {line.map((part) => (
@@ -86,10 +86,10 @@ export function Hero() {
           </h1>
           <PixelFlight className="my-5 max-w-lg" />
           <Reveal delay={0.4}>
-            <p className="max-w-md text-balance text-xl font-semibold leading-tight sm:text-2xl">{HERO.sub}</p>
+            <p className="max-w-measure text-balance text-lg font-semibold leading-tight sm:text-xl">{HERO.sub}</p>
           </Reveal>
-          <Reveal delay={0.5} className="mt-8 flex items-center gap-4">
-            <span className="text-2xl">{HERO.videoLabel}</span>
+          <Reveal delay={0.5} className="mt-phi-4 flex items-center gap-phi-2">
+            <span className="text-xl">{HERO.videoLabel}</span>
             <Button variant="glass" size="icon" aria-label="Play the 90 second walkthrough" className="size-14 [--px-edge:var(--color-fg)]" onClick={() => openDialog("demo")}>
               <Play className="size-5 fill-accent-hi text-accent-hi" />
             </Button>

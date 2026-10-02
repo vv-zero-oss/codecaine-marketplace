@@ -24,7 +24,7 @@ export function AccordionTrigger({
     <AccordionPrimitive.Header className="flex">
       <AccordionPrimitive.Trigger
         className={cn(
-          "group flex min-h-14 flex-1 items-center justify-between gap-4 px-5 py-4 text-left text-lg font-semibold text-fg outline-none focus-visible:bg-surface-2 sm:text-xl",
+          "group flex min-h-14 flex-1 items-center justify-between gap-phi-2 px-phi-3 py-phi-2 text-left text-base font-semibold text-fg outline-none focus-visible:bg-surface-2 sm:text-lg",
           className,
         )}
         {...props}
@@ -46,7 +46,7 @@ export function AccordionContent({
       className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down"
       {...props}
     >
-      <div className={cn("px-5 pb-5 text-lg text-fg-muted", className)}>{children}</div>
+      <div className={cn("px-phi-3 pb-phi-3 text-base text-fg-muted", className)}>{children}</div>
     </AccordionPrimitive.Content>
   )
 }

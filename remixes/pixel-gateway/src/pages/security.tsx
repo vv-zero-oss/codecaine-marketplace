@@ -16,16 +16,16 @@ export function SecurityPage() {
       <PageHero kicker="security" title="A security product should be easy to trust." blurb="What we collect, where it lives, and who has checked our work.">
         <Button variant="primary" size="lg" onClick={() => openDialog("demo")}>Request the reports</Button>
       </PageHero>
-      <section className="bg-bg py-24 sm:py-32">
+      <section className="bg-bg py-phi-6 sm:py-phi-7">
         <Container>
           <SectionHeading kicker="the short version" title="Six promises, in plain words." />
-          <div className="mt-14 grid gap-8 md:grid-cols-2 xl:grid-cols-3">
+          <div className="mt-phi-5 grid gap-phi-4 md:grid-cols-2 xl:grid-cols-3">
             {TRUST.map((t, i) => (
               <Reveal key={t.title} delay={(i % 3) * 0.07}>
-                <TiltCard maxTilt={8} lift={10} className="flex h-full flex-col gap-4 bg-surface p-6 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line)]">
+                <TiltCard maxTilt={8} lift={10} className="flex h-full flex-col gap-phi-2 bg-surface p-phi-3 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line)]">
                   <PixelSprite name={t.sprite} scale={5} className="[transform:translateZ(36px)]" />
-                  <h3 className="font-display text-[11px] uppercase">{t.title}</h3>
-                  <p className="text-lg text-fg-muted">{t.body}</p>
+                  <h3 className="font-display text-label uppercase">{t.title}</h3>
+                  <p className="text-base text-fg-muted">{t.body}</p>
                 </TiltCard>
               </Reveal>
             ))}

@@ -19,7 +19,7 @@ export function NavLink({ href, children }: { href: string; children: string }) 
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "px-3 py-2 font-display text-[9px] uppercase tracking-wide text-fg-muted transition-colors duration-100 hover:text-fg",
+        "whitespace-nowrap px-phi-2 py-phi-1 font-display text-label-sm uppercase tracking-wide text-fg-muted transition-colors duration-100 hover:text-fg",
         active && "text-fg underline decoration-accent decoration-4 underline-offset-8",
       )}
     >
@@ -60,8 +60,8 @@ export function SiteHeader() {
       id="nav"
       className="fixed inset-x-0 top-0 z-50 h-(--header-h) border-b-2 border-fg/15 bg-bg/60 backdrop-blur-[3px]"
     >
-      <div data-canvas-ignore className="mx-auto flex h-full w-full max-w-[1600px] items-center justify-between gap-4 px-5 sm:px-6">
-        <div className="flex items-center gap-6">
+      <div data-canvas-ignore className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-phi-2 px-phi-3 sm:px-phi-4 lg:px-phi-5">
+        <div className="flex items-center gap-phi-3">
           <Wordmark href="/" />
           <span aria-hidden className="hidden h-(--header-h) w-0.5 bg-fg/15 lg:block" />
         </div>
@@ -72,7 +72,7 @@ export function SiteHeader() {
             </NavLink>
           ))}
         </nav>
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-phi-1 sm:gap-phi-2">
           <Button variant="ghost" size="icon" className="hidden sm:inline-flex" aria-label="Open command menu" onClick={() => setCommand(true)}>
             <Command />
           </Button>
@@ -93,24 +93,24 @@ export function SiteHeader() {
 
       <Sheet open={menu} onOpenChange={setMenu}>
         <SheetContent side="right" className="w-[min(88vw,360px)] gap-0 bg-bg p-0">
-          <SheetHeader className="border-b-2 border-line p-5">
+          <SheetHeader className="border-b-2 border-line p-phi-3">
             <SheetTitle className="font-display text-xs uppercase">Menu</SheetTitle>
             <SheetDescription className="sr-only">Site navigation</SheetDescription>
           </SheetHeader>
-          <nav className="grid p-3" aria-label="Mobile">
+          <nav className="grid p-phi-2" aria-label="Mobile">
             {[{ label: "Home", href: "/" }, ...NAV, ...MORE_PAGES].map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenu(false)}
-                className="flex min-h-14 items-center justify-between px-3 font-display text-[11px] uppercase text-fg hover:bg-surface-2"
+                className="flex min-h-14 items-center justify-between px-phi-2 font-display text-label uppercase text-fg hover:bg-surface-2"
               >
                 {item.label}
                 <span className="text-accent-hi">&gt;</span>
               </Link>
             ))}
           </nav>
-          <div className="mt-auto grid gap-3 p-5">
+          <div className="mt-auto grid gap-phi-2 p-phi-3">
             <Link href="/get-started" onClick={() => setMenu(false)} className={buttonVariants({ variant: "accent" })}>
               Get started
             </Link>

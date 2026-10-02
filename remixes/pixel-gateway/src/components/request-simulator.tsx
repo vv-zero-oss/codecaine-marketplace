@@ -58,8 +58,8 @@ export function RequestSimulator({ stepMs = 650 }: { stepMs?: number }) {
   useCanvasAction("Show verdict", () => { setAt(scenario.stop); setDone(true) }, { on: done, group: "How it works" })
 
   return (
-    <div className="grid gap-8 bg-surface p-5 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line-strong)] sm:p-8 lg:grid-cols-[18rem_1fr]">
-      <div role="radiogroup" aria-label="Choose a request" className="grid content-start gap-3">
+    <div className="grid gap-phi-4 bg-surface p-phi-3 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line-strong)] sm:p-phi-4 lg:grid-cols-[18rem_1fr]">
+      <div role="radiogroup" aria-label="Choose a request" className="grid content-start gap-phi-2">
         {SCENARIOS.map((s) => (
           <button
             key={s.id}
@@ -67,7 +67,7 @@ export function RequestSimulator({ stepMs = 650 }: { stepMs?: number }) {
             aria-checked={s.id === id}
             onClick={() => { setId(s.id); reset() }}
             className={cn(
-              "min-h-14 px-4 py-3 text-left text-lg leading-tight shadow-px-sm transition-colors duration-100 ease-[steps(2,end)]",
+              "min-h-14 px-phi-2 py-phi-2 text-left text-base leading-tight shadow-px-sm transition-colors duration-100 ease-[steps(2,end)]",
               s.id === id ? "bg-accent text-accent-fg [--px-edge:var(--color-accent)]" : "bg-surface-2 text-fg-muted [--px-edge:var(--color-surface-2)] hover:text-fg",
             )}
           >
@@ -75,38 +75,38 @@ export function RequestSimulator({ stepMs = 650 }: { stepMs?: number }) {
           </button>
         ))}
       </div>
-      <div className="grid content-between gap-8">
-        <div className="font-mono text-xl text-fg-muted">GET <span className="text-fg">{scenario.detail}</span></div>
-        <ol className="relative grid grid-cols-4 gap-2" aria-label="Request path">
+      <div className="grid content-between gap-phi-4">
+        <div className="font-mono text-lg text-fg-muted">GET <span className="text-fg">{scenario.detail}</span></div>
+        <ol className="relative grid grid-cols-4 gap-phi-1" aria-label="Request path">
           <span aria-hidden className="absolute left-[12.5%] right-[12.5%] top-8 h-1 bg-[repeating-linear-gradient(to_right,var(--color-line-strong)_0_8px,transparent_8px_16px)]" />
           {NODES.map((n, i) => {
             const reached = at >= i
             const stopped = done && i === scenario.stop && scenario.verdict !== "ALLOW"
             return (
-              <li key={n.label} className="relative grid justify-items-center gap-3 text-center">
+              <li key={n.label} className="relative grid justify-items-center gap-phi-2 text-center">
                 <span className={cn("grid size-16 place-items-center bg-bg shadow-px transition-colors duration-100 ease-[steps(2,end)]", stopped ? "[--px-edge:var(--color-bad)]" : reached ? "[--px-edge:var(--color-good)]" : "[--px-edge:var(--color-line)]")}>
                   <PixelSprite name={n.sprite} scale={3} className={cn(!reached && "opacity-30")} />
                 </span>
-                <span className="font-display text-[8px] uppercase sm:text-[9px]">{n.label}</span>
+                <span className="font-display text-label-sm uppercase sm:text-label-sm">{n.label}</span>
                 {at === i && !done ? <span aria-hidden className="absolute -top-1 size-3 animate-blink bg-accent-hi" /> : null}
               </li>
             )
           })}
         </ol>
-        <div className="min-h-28 bg-bg p-4 shadow-px-sm [--px-edge:var(--color-line)]" aria-live="polite">
+        <div className="min-h-28 bg-bg p-phi-2 shadow-px-sm [--px-edge:var(--color-line)]" aria-live="polite">
           {done ? (
-            <div className="grid gap-2">
-              <div className="flex items-center gap-3">
+            <div className="grid gap-phi-1">
+              <div className="flex items-center gap-phi-2">
                 <Badge tone={scenario.tone === "bad" ? "bad" : scenario.tone === "warn" ? "warn" : scenario.tone === "good" ? "good" : "accent"}>{scenario.verdict}</Badge>
-                <span className="font-mono text-xl text-fg-muted">decided in {scenario.ms}ms, on the device</span>
+                <span className="font-mono text-lg text-fg-muted">decided in {scenario.ms}ms, on the device</span>
               </div>
-              <p className="text-lg">{scenario.log}</p>
+              <p className="text-base">{scenario.log}</p>
             </div>
           ) : (
-            <p className="text-lg text-fg-subtle">{at < 0 ? "Press run to send the request." : "Checking…"}</p>
+            <p className="text-base text-fg-subtle">{at < 0 ? "Press run to send the request." : "Checking…"}</p>
           )}
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-phi-2">
           <Button variant="accent" onClick={run}><Play /> Run request</Button>
           <Button variant="ghost" onClick={reset}><RotateCcw /> Reset</Button>
         </div>

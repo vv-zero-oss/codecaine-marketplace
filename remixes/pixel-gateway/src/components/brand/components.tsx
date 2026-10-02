@@ -29,6 +29,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip
 import { PLANS } from "@/content"
 import { CtaBand } from "@/components/cta-band"
 import { Newsletter } from "@/components/newsletter"
+import { SeatCalculator } from "@/components/seat-calculator"
+import { CaseStrip } from "@/components/sections/case-strip"
+import { ValueProposition } from "@/components/sections/value-proposition"
 import { RequestSimulator } from "@/components/request-simulator"
 import { Specimen, SubHeading } from "./specimen"
 
@@ -63,8 +66,8 @@ export function ComponentLibrary() {
       <Specimen title="Badge" code={`<Badge tone="good">Online</Badge>\n// neutral · accent · good · warn · bad · outline`}>
         {(["neutral", "accent", "good", "warn", "bad", "outline"] as const).map((t) => <Badge key={t} tone={t}>{t}</Badge>)}
       </Specimen>
-      <Specimen title="Accordion" code={`<Accordion type="single" collapsible>\n  <AccordionItem value="a">\n    <AccordionTrigger>Question</AccordionTrigger>\n    <AccordionContent>Answer</AccordionContent>\n  </AccordionItem>\n</Accordion>`} className="bg-surface p-6 shadow-px [--px-edge:var(--color-line)]">
-        <Accordion type="single" collapsible className="grid w-full gap-3">
+      <Specimen title="Accordion" code={`<Accordion type="single" collapsible>\n  <AccordionItem value="a">\n    <AccordionTrigger>Question</AccordionTrigger>\n    <AccordionContent>Answer</AccordionContent>\n  </AccordionItem>\n</Accordion>`} className="bg-surface p-phi-3 shadow-px [--px-edge:var(--color-line)]">
+        <Accordion type="single" collapsible className="grid w-full gap-phi-2">
           <AccordionItem value="a"><AccordionTrigger>Does it slow browsing down?</AccordionTrigger><AccordionContent>No — about three milliseconds.</AccordionContent></AccordionItem>
           <AccordionItem value="b"><AccordionTrigger>Do I still need a VPN?</AccordionTrigger><AccordionContent>Most teams switch theirs off.</AccordionContent></AccordionItem>
         </Accordion>
@@ -72,16 +75,16 @@ export function ComponentLibrary() {
       <Specimen title="Tabs" code={`<Tabs defaultValue="a">\n  <TabsList><TabsTrigger value="a">Monthly</TabsTrigger>…</TabsList>\n  <TabsContent value="a">…</TabsContent>\n</Tabs>`}>
         <Tabs defaultValue="a" className="w-full">
           <TabsList className="h-auto gap-1 bg-surface-2 p-1">
-            <TabsTrigger value="a" className="min-h-11 px-5 font-display text-[9px] uppercase data-[state=active]:bg-fg data-[state=active]:text-bg">Monthly</TabsTrigger>
-            <TabsTrigger value="b" className="min-h-11 px-5 font-display text-[9px] uppercase data-[state=active]:bg-fg data-[state=active]:text-bg">Yearly</TabsTrigger>
+            <TabsTrigger value="a" className="min-h-11 px-phi-3 font-display text-label-sm uppercase data-[state=active]:bg-fg data-[state=active]:text-bg">Monthly</TabsTrigger>
+            <TabsTrigger value="b" className="min-h-11 px-phi-3 font-display text-label-sm uppercase data-[state=active]:bg-fg data-[state=active]:text-bg">Yearly</TabsTrigger>
           </TabsList>
-          <TabsContent value="a" className="mt-4 text-lg text-fg-muted">Billed every month.</TabsContent>
-          <TabsContent value="b" className="mt-4 text-lg text-fg-muted">Billed once a year, 20% off.</TabsContent>
+          <TabsContent value="a" className="mt-phi-2 text-base text-fg-muted">Billed every month.</TabsContent>
+          <TabsContent value="b" className="mt-phi-2 text-base text-fg-muted">Billed once a year, 20% off.</TabsContent>
         </Tabs>
       </Specimen>
       <Specimen title="Switch, Slider, Progress" code={`<Switch />\n<Slider value={[40]} max={100} />\n<Progress value={60} />`}>
-        <div className="grid w-full gap-6 sm:grid-cols-3">
-          <label className="flex items-center gap-3 text-lg"><Switch /> Auto-roll</label>
+        <div className="grid w-full gap-phi-3 sm:grid-cols-3">
+          <label className="flex items-center gap-phi-2 text-base"><Switch /> Auto-roll</label>
           <Slider value={value} onValueChange={setValue} max={100} aria-label="Level" />
           <Progress value={value[0]} aria-label="Level progress" />
         </div>
@@ -105,7 +108,7 @@ export function ComponentLibrary() {
         <Button variant="outline" onClick={() => toast.success("Toast, on a two-step")}>Toast</Button>
       </Specimen>
       <Specimen title="Navigation menu" code={`<NavigationMenu><NavigationMenuList>\n  <NavigationMenuItem><NavigationMenuLink href="/products">Products</NavigationMenuLink></NavigationMenuItem>\n</NavigationMenuList></NavigationMenu>`}>
-        <NavigationMenu><NavigationMenuList>{["Products", "Pricing", "Customers"].map((n) => <NavigationMenuItem key={n}><NavigationMenuLink href={`/${n.toLowerCase()}`} className="font-display text-[9px] uppercase">{n}</NavigationMenuLink></NavigationMenuItem>)}</NavigationMenuList></NavigationMenu>
+        <NavigationMenu><NavigationMenuList>{["Products", "Pricing", "Customers"].map((n) => <NavigationMenuItem key={n}><NavigationMenuLink href={`/${n.toLowerCase()}`} className="font-display text-label-sm uppercase">{n}</NavigationMenuLink></NavigationMenuItem>)}</NavigationMenuList></NavigationMenu>
       </Specimen>
       <Specimen title="Command palette" note="Opens anywhere with ⌘K / Ctrl+K." code={`<Command><CommandInput placeholder="Type a command…" /><CommandList>…</CommandList></Command>`}>
         <Command className="w-full max-w-md shadow-px-sm [--px-edge:var(--color-line)]">
@@ -116,11 +119,11 @@ export function ComponentLibrary() {
 
       <SubHeading>composed</SubHeading>
       <Specimen title="TiltCard" code={`<TiltCard maxTilt={10} lift={12} perspective={900}>…</TiltCard>`}>
-        <TiltCard maxTilt={12} lift={12} className="bg-surface-2 p-8 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line-strong)]"><span className="font-display text-xs uppercase [transform:translateZ(30px)]">Lean on me</span></TiltCard>
+        <TiltCard maxTilt={12} lift={12} className="bg-surface-2 p-phi-4 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line-strong)]"><span className="font-display text-xs uppercase [transform:translateZ(30px)]">Lean on me</span></TiltCard>
       </Specimen>
       <Specimen title="ScrambleText, CountUp, Hearts" code={`<ScrambleText text="SHADOW AI RADAR" trigger="hover" />\n<CountUp value={14200} />\n<Hearts count={4} />`}>
         <ScrambleText text="HOVER TO DECRYPT" trigger="hover" className="font-display text-sm" />
-        <CountUp value={14200} className="font-display text-xl" />
+        <CountUp value={14200} className="font-display text-lg" />
         <Hearts count={4} />
       </Specimen>
       <Specimen title="IsoCube" code={`<IsoCube size={96} speed={14} tone="accent" />`}>
@@ -130,14 +133,14 @@ export function ComponentLibrary() {
         <Marquee speed={18} className="w-full"><span className="font-display text-xs uppercase">Block · Detect · Control ·</span></Marquee>
         <PixelSprite name="shield" scale={5} /><PixelSprite name="plane" scale={5} /><PixelCode seed="brand" cols={8} rows={10} className="size-16" />
       </Specimen>
-      <Specimen title="AccessPass" code={`<AccessPass title="Start your free run" from="Legacy" to="Keep" />`} className="grid place-items-center overflow-x-auto bg-[linear-gradient(to_bottom,var(--color-sky-2),var(--color-sky-4))] p-4 sm:p-8">
+      <Specimen title="AccessPass" code={`<AccessPass title="Start your free run" from="Legacy" to="Keep" />`} className="grid place-items-center overflow-x-auto bg-[linear-gradient(to_bottom,var(--color-sky-2),var(--color-sky-4))] p-phi-2 sm:p-phi-4">
         <div className="w-full max-w-lg"><AccessPass /></div>
       </Specimen>
-      <Specimen title="PlanCard" code={`<PlanCard plan={PLANS[1]} annual={false} />`} className="grid gap-8 bg-surface p-6 shadow-px md:grid-cols-2 [--px-edge:var(--color-line)]">
+      <Specimen title="PlanCard" code={`<PlanCard plan={PLANS[1]} annual={false} />`} className="grid gap-phi-4 bg-surface p-phi-3 shadow-px md:grid-cols-2 [--px-edge:var(--color-line)]">
         <PlanCard plan={PLANS[0]} annual={false} /><PlanCard plan={PLANS[1]} annual />
       </Specimen>
       <Specimen title="CtaBand" note="Between sections: one line, a primary link and a softer button." code={`<CtaBand title="Ready to try it?" primary="Get started" to="/get-started" />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
-        <div className="w-full"><CtaBand title="Ready to try it?" body="No card, no call." className="py-4" /></div>
+        <div className="w-full"><CtaBand title="Ready to try it?" body="No card, no call." className="py-phi-2" /></div>
       </Specimen>
       <Specimen title="Newsletter" code={`<Newsletter />`}>
         <Newsletter />
@@ -145,7 +148,16 @@ export function ComponentLibrary() {
       <Specimen title="RequestSimulator" note="Four stops; each scenario stops or passes at its own." code={`<RequestSimulator stepMs={650} />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
         <div className="w-full"><RequestSimulator /></div>
       </Specimen>
-      <Specimen title="DashboardHero" note="The sticky panel. In the page it follows the scroll; here it is driven by hand." code={`<DashboardHero active={0} progress={0.33} onSelect={go} />`} className="bg-surface p-4 shadow-px [--px-edge:var(--color-line)]">
+      <Specimen title="SeatCalculator" note="Seats in, a monthly bill out, assumptions printed beneath." code={`<SeatCalculator initialSeats={120} />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
+        <div className="w-full"><SeatCalculator /></div>
+      </Specimen>
+      <Specimen title="ValueProposition" code={`<ValueProposition />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
+        <div className="w-full"><ValueProposition /></div>
+      </Specimen>
+      <Specimen title="CaseStrip" code={`<CaseStrip />`} className="bg-bg shadow-px [--px-edge:var(--color-line)]">
+        <div className="w-full"><CaseStrip /></div>
+      </Specimen>
+      <Specimen title="DashboardHero" note="The sticky panel. In the page it follows the scroll; here it is driven by hand." code={`<DashboardHero active={0} progress={0.33} onSelect={go} />`} className="bg-surface p-phi-2 shadow-px [--px-edge:var(--color-line)]">
         <DashboardDemo />
       </Specimen>
     </>

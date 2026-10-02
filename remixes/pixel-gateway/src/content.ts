@@ -8,13 +8,14 @@ export const NAV = [
   { label: "Products", href: "/products" },
   { label: "How it works", href: "/how-it-works" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Customers", href: "/customers" },
+  { label: "Case studies", href: "/case-studies" },
   { label: "Generator", href: "/generator" },
 ] as const
 
 /** Pages that live in the footer, the mobile menu and ⌘K rather than the top bar. */
 export const MORE_PAGES = [
   { label: "Get started", href: "/get-started" },
+  { label: "Customers", href: "/customers" },
   { label: "Security", href: "/security" },
   { label: "About", href: "/about" },
   { label: "Brand", href: "/brand" },
@@ -268,4 +269,64 @@ export const TEAM = [
   { name: "Kenji Arai", role: "Agent engineering", sprite: "chip" as SpriteName },
   { name: "Sade Okafor", role: "Policy and research", sprite: "eye" as SpriteName },
   { name: "Lars Nilsen", role: "Customer success", sprite: "heart" as SpriteName },
+]
+
+export const PILLARS = [
+  { value: 3, suffix: "ms", title: "Faster", body: "Checks run beside the browser, so a page loads about as fast as it would with nothing in the way." },
+  { value: 412, suffix: "", title: "Safer", body: "Four hundred and twelve AI tools fingerprinted and scored, plus the phishing and malware feeds you would expect." },
+  { value: 1, suffix: "s", title: "Calmer", body: "A rule reaches every device in about a second, with a diff to read first and an undo if you change your mind." },
+]
+
+export const COMPARE = [
+  { row: "Added latency", legacy: "80–200 ms per request", keep: "About 3 ms" },
+  { row: "Where traffic goes", legacy: "Detours through a proxy", keep: "Straight to the destination" },
+  { row: "AI tools", legacy: "Blocked or ignored", keep: "Mapped, scored and coached" },
+  { row: "Rollout", legacy: "Weeks, with a tunnel", keep: "An afternoon, no tunnel" },
+  { row: "Changing a rule", legacy: "A ticket and a wait", keep: "One save, under a second" },
+  { row: "Undo", legacy: "Restore a backup", keep: "One click" },
+]
+
+export const CASE_STUDIES = [
+  {
+    id: "kestrel",
+    company: "Kestrel Freight",
+    industry: "Logistics · 6,200 people",
+    title: "Switched off the VPN for six thousand drivers and dispatchers.",
+    challenge: "Every request from depots and cabs was tunnelled back to a head-office proxy. Pages crawled on weak signal and the help desk spent half its week on tunnel tickets.",
+    approach: "A pilot of 300 devices in two depots, then the whole fleet in a fortnight. Policies started in coach-only mode and tightened once the logs were quiet.",
+    results: [
+      { value: 38, suffix: "%", label: "Faster page loads" },
+      { value: 71, suffix: "%", label: "Fewer help-desk tickets" },
+      { value: 14, suffix: " days", label: "From pilot to everyone" },
+    ],
+    quote: { text: "We turned off the VPN and nobody noticed, which is the nicest thing a security tool can earn.", name: "Tomás Oliveira", role: "CISO" },
+  },
+  {
+    id: "halcyon",
+    company: "Halcyon Games",
+    industry: "Games studio · 900 people",
+    title: "Found sixty-one AI tools nobody had told security about.",
+    challenge: "Artists and engineers were pasting build notes, concept art and source into AI tools. Leadership wanted a policy; the studio wanted to keep the speed.",
+    approach: "The shadow AI radar mapped every tool in a week. Eleven were blocked, forty were coached with a short note, and the rest were approved with masking on.",
+    results: [
+      { value: 61, suffix: "", label: "Tools reviewed" },
+      { value: 100, suffix: "%", label: "Secrets masked before sending" },
+      { value: 3, suffix: " hrs", label: "To write the AI policy" },
+    ],
+    quote: { text: "The radar gave us facts to argue with, instead of fear. The policy took an afternoon.", name: "Mei Tanaka", role: "Platform Lead" },
+  },
+  {
+    id: "northwind",
+    company: "Northwind Labs",
+    industry: "Biotech · 1,400 people",
+    title: "Cut leak alerts down to the ones that matter.",
+    challenge: "The old DLP flagged thousands of harmless uploads a week. Analysts had stopped reading them, which is worse than having none.",
+    approach: "Document fingerprinting for the three data sets that count, masking for everything else, and a weekly review of what was coached rather than blocked.",
+    results: [
+      { value: 92, suffix: "%", label: "Fewer false alarms" },
+      { value: 4, suffix: "×", label: "Faster incident triage" },
+      { value: 0, suffix: "", label: "Missed real leaks in the audit" },
+    ],
+    quote: { text: "Alerts became rare enough to read. That alone changed how the team felt about the tool.", name: "Priya Raman", role: "Head of IT" },
+  },
 ]

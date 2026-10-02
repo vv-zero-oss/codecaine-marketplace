@@ -2,6 +2,8 @@ import { CallToAction } from "@/components/sections/call-to-action"
 import { DashboardStage } from "@/components/sections/dashboard-stage"
 import { CtaBand } from "@/components/cta-band"
 import { HowItWorks } from "@/components/sections/how-it-works"
+import { CaseStrip } from "@/components/sections/case-strip"
+import { ValueProposition } from "@/components/sections/value-proposition"
 import { Faq } from "@/components/sections/faq"
 import { Hero } from "@/components/sections/hero"
 import { LogoStrip } from "@/components/sections/logo-strip"
@@ -15,11 +17,13 @@ import { Testimonials } from "@/components/sections/testimonials"
 const SECTIONS = [
   { id: "top", Section: Hero },
   { id: "logos", Section: LogoStrip },
+  { id: "value", Section: ValueProposition },
   { id: "what", Section: ScrambleFeatures },
   { id: "gateway", Section: DashboardStage },
   { id: "problem", Section: Problem },
   { id: "how", Section: HowItWorks },
   { id: "stats", Section: Stats },
+  { id: "cases", Section: CaseStrip },
   { id: "players", Section: Testimonials },
   { id: "try", Section: TryBand },
   { id: "pricing", Section: Pricing },

@@ -1880,8 +1880,8 @@
       "type": "remix",
       "id": "pixel-gateway",
       "name": "Pixelkeep",
-      "version": "1.1.0",
-      "description": "A pixel-art secure web gateway site: a dusk-sky hero, a decrypting feature board, a sticky 3D dashboard riding three sections, an interactive how-it-works simulator, a get-started wizard, eight pages and a random landing-page generator.",
+      "version": "1.2.0",
+      "description": "A pixel-art secure web gateway site on a golden-ratio type and spacing system: a dusk-sky hero, value proposition, decrypting feature board, a sticky 3D dashboard riding three sections, how it works with a request simulator, case studies, pricing with a seat calculator, a get-started wizard and a random landing-page generator.",
       "designedFor": [
         "A pixel-art / 8-bit product or game-adjacent landing page with real depth",
         "Seeing a sticky, scroll-linked dashboard header driving three sections",
@@ -1945,6 +1945,10 @@
           "title": "Customers"
         },
         {
+          "path": "/case-studies",
+          "title": "Case studies"
+        },
+        {
           "path": "/get-started",
           "title": "Get started"
         },
@@ -1989,6 +1993,10 @@
           {
             "title": "Customers",
             "image": "previews/pages/customers.jpg"
+          },
+          {
+            "title": "Case studies",
+            "image": "previews/pages/case-studies.jpg"
           },
           {
             "title": "Get started",
@@ -2039,6 +2047,10 @@
             "image": "remixes/pixel-gateway/previews/pages/customers.jpg"
           },
           {
+            "title": "Case studies",
+            "image": "remixes/pixel-gateway/previews/pages/case-studies.jpg"
+          },
+          {
             "title": "Get started",
             "image": "remixes/pixel-gateway/previews/pages/get-started.jpg"
           },
@@ -2061,11 +2073,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/pixel-gateway-1.1.0.tgz",
+        "url": "archives/remixes/pixel-gateway-1.2.0.tgz",
         "format": "tar+gzip",
-        "sha256": "b699d50f0847e84494546541ad0ed1192a52edd05ad7a444b3b4df120a5b07f9",
-        "size": 611328,
-        "files": 100
+        "sha256": "fd14ecb6a260fe057220c4ac618b451ffc13e7907a1a5fce8bd7ba5eddd8b94d",
+        "size": 640512,
+        "files": 104
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

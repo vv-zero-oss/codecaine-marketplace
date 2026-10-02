@@ -10,7 +10,7 @@ export function Wordmark({ href, className }: { href?: string; className?: strin
   const content = (
     <>
       <PixelSprite name="shield" scale={2} />
-      <span className="font-display text-[11px] uppercase leading-none">
+      <span className="font-display text-label uppercase leading-none">
         Pixel<span className="text-accent-hi">keep</span>
       </span>
     </>

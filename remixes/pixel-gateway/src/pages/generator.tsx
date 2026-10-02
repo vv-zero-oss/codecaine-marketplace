@@ -21,45 +21,45 @@ import { cn } from "@/lib/utils"
 import sky from "@/assets/sky-pixel.png"
 
 const HEADING: Record<Spec["face"], string> = {
-  sans: "font-sans font-bold text-5xl leading-[0.95]",
-  display: "font-display uppercase text-3xl leading-tight",
-  mono: "font-mono uppercase text-7xl leading-[0.9]",
+  sans: "font-sans font-bold text-3xl",
+  display: "font-display uppercase text-2xl leading-tight",
+  mono: "font-mono uppercase text-5xl",
 }
 
 /** The generated page, drawn at a fixed 1100px and scaled to fit its frame. */
 function Page({ spec }: { spec: Spec }) {
   const heading = HEADING[spec.face]
   const hero = (
-    <div className="relative isolate overflow-hidden px-10 pb-14 pt-12">
+    <div className="relative isolate overflow-hidden px-phi-4 pb-phi-5 pt-phi-5">
       <div aria-hidden className="absolute inset-0 -z-10 bg-[linear-gradient(to_bottom,var(--color-sky-1),var(--color-sky-2)_30%,var(--color-sky-3)_58%,var(--color-sky-4)_82%,var(--color-bg))]" />
       <div aria-hidden className="pixelated absolute inset-0 -z-10 bg-cover bg-center opacity-30 mix-blend-soft-light" style={{ backgroundImage: `url(${sky})` }} />
       {spec.layout === "center" ? (
         <div className="mx-auto max-w-2xl text-center">
           <h1 className={heading}>{spec.tagline}</h1>
-          <p className="mt-5 text-xl text-fg/80">{spec.sub}</p>
-          <div className="mt-8 flex justify-center gap-3"><Button variant="primary">{spec.cta}</Button><Button variant="glass">Demo</Button></div>
-          <PixelSprite name="plane" scale={4} className="mx-auto mt-10 rotate-90" />
+          <p className="mt-phi-3 text-lg text-fg/80">{spec.sub}</p>
+          <div className="mt-phi-4 flex justify-center gap-phi-2"><Button variant="primary">{spec.cta}</Button><Button variant="glass">Demo</Button></div>
+          <PixelSprite name="plane" scale={4} className="mx-auto mt-phi-4 rotate-90" />
         </div>
       ) : spec.layout === "split" ? (
-        <div className="grid grid-cols-[1.2fr_1fr] items-center gap-10">
+        <div className="grid grid-cols-[1.2fr_1fr] items-center gap-phi-4">
           <div>
             <h1 className={heading}>{spec.tagline}</h1>
-            <p className="mt-5 text-xl text-fg/80">{spec.sub}</p>
-            <div className="mt-8 flex gap-3"><Button variant="primary">{spec.cta}</Button><Button variant="glass">Demo</Button></div>
+            <p className="mt-phi-3 text-lg text-fg/80">{spec.sub}</p>
+            <div className="mt-phi-4 flex gap-phi-2"><Button variant="primary">{spec.cta}</Button><Button variant="glass">Demo</Button></div>
           </div>
-          <div className="relative bg-fg/10 p-6 pr-20 shadow-px [--px-edge:color-mix(in_oklab,var(--color-fg)_60%,transparent)]">
-            <p className="font-display text-[10px] uppercase text-fg/60">Access pass</p>
-            <p className="mt-16 text-2xl font-semibold">{spec.cta}</p>
+          <div className="relative bg-fg/10 p-phi-3 pr-phi-6 shadow-px [--px-edge:color-mix(in_oklab,var(--color-fg)_60%,transparent)]">
+            <p className="font-display text-label uppercase text-fg/60">Access pass</p>
+            <p className="mt-phi-5 text-xl font-semibold">{spec.cta}</p>
             <PixelCode seed={spec.seeds.copy} className="absolute bottom-5 right-5 top-5 w-12" />
           </div>
         </div>
       ) : (
-        <div className="grid grid-cols-[auto_1fr] items-center gap-10">
+        <div className="grid grid-cols-[auto_1fr] items-center gap-phi-4">
           <IsoCube size={110} tone="accent" speed={10} />
           <div>
             <h1 className={heading}>{spec.tagline}</h1>
-            <p className="mt-4 text-xl text-fg/80">{spec.sub}</p>
-            <Button variant="primary" className="mt-6">{spec.cta}</Button>
+            <p className="mt-phi-2 text-lg text-fg/80">{spec.sub}</p>
+            <Button variant="primary" className="mt-phi-3">{spec.cta}</Button>
           </div>
         </div>
       )}
@@ -67,70 +67,70 @@ function Page({ spec }: { spec: Spec }) {
   )
   return (
     <div className="w-[1100px] bg-bg text-fg">
-      <div className="flex items-center justify-between border-b-2 border-line px-10 py-4">
-        <span className="flex items-center gap-2"><PixelSprite name="shield" scale={2} /><b className="font-display text-xs uppercase">{spec.name}</b></span>
-        <span className="flex gap-6 font-display text-[9px] uppercase text-fg-muted"><span>Product</span><span>Pricing</span><span>Docs</span></span>
+      <div className="flex items-center justify-between border-b-2 border-line px-phi-4 py-phi-2">
+        <span className="flex items-center gap-phi-1"><PixelSprite name="shield" scale={2} /><b className="font-display text-xs uppercase">{spec.name}</b></span>
+        <span className="flex gap-phi-3 font-display text-label-sm uppercase text-fg-muted"><span>Product</span><span>Pricing</span><span>Docs</span></span>
       </div>
       {hero}
       {spec.sections.map((kind) => {
         if (kind === "features")
           return (
-            <div key={kind} className="grid grid-cols-3 gap-6 px-10 py-12">
+            <div key={kind} className="grid grid-cols-3 gap-phi-3 px-phi-4 py-phi-5">
               {spec.features.map((f) => (
-                <div key={f.title} className="bg-surface p-6 shadow-px [--px-edge:var(--color-line)]">
+                <div key={f.title} className="bg-surface p-phi-3 shadow-px [--px-edge:var(--color-line)]">
                   <PixelSprite name={f.sprite} scale={4} />
-                  <p className="mt-4 font-display text-[10px] uppercase leading-snug">{f.title}</p>
-                  <p className="mt-2 text-lg text-fg-muted">{f.body}</p>
+                  <p className="mt-phi-2 font-display text-label uppercase leading-snug">{f.title}</p>
+                  <p className="mt-phi-1 text-base text-fg-muted">{f.body}</p>
                 </div>
               ))}
             </div>
           )
         if (kind === "stats")
           return (
-            <div key={kind} className="grid grid-cols-3 gap-6 border-y-4 border-line bg-surface px-10 py-10 text-center">
+            <div key={kind} className="grid grid-cols-3 gap-phi-3 border-y-4 border-line bg-surface px-phi-4 py-phi-4 text-center">
               {spec.stats.map((s) => (
                 <div key={s.label}>
-                  <p className="font-display text-3xl text-accent-hi">{s.value}</p>
-                  <p className="mt-2 font-mono text-xl text-fg-muted">{s.label}</p>
+                  <p className="font-display text-2xl text-accent-hi">{s.value}</p>
+                  <p className="mt-phi-1 font-mono text-lg text-fg-muted">{s.label}</p>
                 </div>
               ))}
             </div>
           )
         if (kind === "quote")
           return (
-            <div key={kind} className="px-10 py-12">
-              <blockquote className="mx-auto max-w-2xl bg-surface p-8 text-2xl leading-snug shadow-px [--px-edge:var(--color-accent)]">
+            <div key={kind} className="px-phi-4 py-phi-5">
+              <blockquote className="mx-auto max-w-2xl bg-surface p-phi-4 text-xl leading-snug shadow-px [--px-edge:var(--color-accent)]">
                 “{spec.quote.text}”
-                <p className="mt-4 font-display text-[10px] uppercase text-fg-muted">{spec.quote.name}</p>
+                <p className="mt-phi-2 font-display text-label uppercase text-fg-muted">{spec.quote.name}</p>
               </blockquote>
             </div>
           )
         if (kind === "pricing")
           return (
-            <div key={kind} className="grid grid-cols-2 gap-6 px-10 py-12">
+            <div key={kind} className="grid grid-cols-2 gap-phi-3 px-phi-4 py-phi-5">
               {spec.plans.map((p, i) => (
-                <div key={p.name} className={cn("bg-surface p-6 shadow-px", i ? "[--px-edge:var(--color-accent)]" : "[--px-edge:var(--color-line)]")}>
-                  <p className="font-display text-[10px] uppercase">{p.name}</p>
-                  <p className="mt-3 font-display text-3xl">{p.price}</p>
+                <div key={p.name} className={cn("bg-surface p-phi-3 shadow-px", i ? "[--px-edge:var(--color-accent)]" : "[--px-edge:var(--color-line)]")}>
+                  <p className="font-display text-label uppercase">{p.name}</p>
+                  <p className="mt-phi-2 font-display text-2xl">{p.price}</p>
                 </div>
               ))}
             </div>
           )
         if (kind === "faq")
           return (
-            <div key={kind} className="grid gap-3 px-10 py-12">
+            <div key={kind} className="grid gap-phi-2 px-phi-4 py-phi-5">
               {spec.faqs.map((q) => (
-                <p key={q} className="bg-surface px-5 py-4 text-xl shadow-px-sm [--px-edge:var(--color-line)]">{q}</p>
+                <p key={q} className="bg-surface px-phi-3 py-phi-2 text-lg shadow-px-sm [--px-edge:var(--color-line)]">{q}</p>
               ))}
             </div>
           )
         return (
-          <div key={kind} className="px-10 py-14 text-center">
-            <p className="font-display text-2xl uppercase">{spec.cta}<span className="animate-blink">_</span></p>
+          <div key={kind} className="px-phi-4 py-phi-5 text-center">
+            <p className="font-display text-xl uppercase">{spec.cta}<span className="animate-blink">_</span></p>
           </div>
         )
       })}
-      <div className="border-t-4 border-line bg-surface px-10 py-6 font-mono text-xl text-fg-subtle">© 2026 {spec.name}</div>
+      <div className="border-t-4 border-line bg-surface px-phi-4 py-phi-3 font-mono text-lg text-fg-subtle">© 2026 {spec.name}</div>
     </div>
   )
 }
@@ -235,38 +235,38 @@ export function GeneratorPage() {
   return (
     <>
       <PageHero kicker="generator" title="Roll a landing page. Keep the good one." blurb="Every roll builds a whole template — palette, layout, headline and sections — from three seeds. Lock what you like, share the link, or paint this site with it." />
-      <section className="bg-bg py-16 sm:py-24">
-        <Container className="grid gap-10 xl:grid-cols-[22rem_minmax(0,1fr)]">
-          <aside className="grid content-start gap-6 xl:sticky xl:top-24 xl:self-start">
-            <div className="grid gap-4 bg-surface p-5 shadow-px [--px-edge:var(--color-line)]">
+      <section className="bg-bg py-phi-5 sm:py-phi-6">
+        <Container className="grid gap-phi-4 xl:grid-cols-[22rem_minmax(0,1fr)]">
+          <aside className="grid content-start gap-phi-3 xl:sticky xl:top-24 xl:self-start">
+            <div className="grid gap-phi-2 bg-surface p-phi-3 shadow-px [--px-edge:var(--color-line)]">
               <Button variant="accent" size="lg" onClick={roll}><Dices /> Roll template</Button>
-              <p className="font-mono text-xl text-fg-muted">
+              <p className="font-mono text-lg text-fg-muted">
                 seed <span className="text-fg">{seedsToParam(seeds).slice(0, 9)}…</span>
               </p>
-              <div className="grid gap-3 border-t-2 border-line pt-4">
+              <div className="grid gap-phi-2 border-t-2 border-line pt-phi-2">
                 {lockRows.map(({ key, label }) => (
-                  <label key={key} className="flex min-h-11 items-center justify-between gap-3 text-lg">
+                  <label key={key} className="flex min-h-11 items-center justify-between gap-phi-2 text-base">
                     {label}
                     <Switch checked={locks[key]} onCheckedChange={(v) => setLocks((l) => ({ ...l, [key]: v }))} />
                   </label>
                 ))}
-                <label className="flex min-h-11 items-center justify-between gap-3 text-lg">
-                  <span className="flex items-center gap-2"><Timer className="size-4" /> Auto-roll</span>
+                <label className="flex min-h-11 items-center justify-between gap-phi-2 text-base">
+                  <span className="flex items-center gap-phi-1"><Timer className="size-4" /> Auto-roll</span>
                   <Switch checked={auto} onCheckedChange={setAuto} />
                 </label>
               </div>
             </div>
 
-            <div className="grid gap-3 bg-surface p-5 shadow-px [--px-edge:var(--color-line)]">
-              <p className="font-display text-[10px] uppercase text-fg-subtle">This roll</p>
-              <p className="text-2xl font-semibold">{spec.name}</p>
-              <div className="flex flex-wrap gap-2">
+            <div className="grid gap-phi-2 bg-surface p-phi-3 shadow-px [--px-edge:var(--color-line)]">
+              <p className="font-display text-label uppercase text-fg-subtle">This roll</p>
+              <p className="text-xl font-semibold">{spec.name}</p>
+              <div className="flex flex-wrap gap-phi-1">
                 <Badge tone="accent">{spec.palette.name}</Badge>
                 <Badge tone="outline">{spec.layout}</Badge>
                 <Badge tone="outline">{spec.face}</Badge>
               </div>
               <Swatches spec={spec} />
-              <div className="mt-2 grid gap-3">
+              <div className="mt-phi-1 grid gap-phi-2">
                 <Button variant="outline" onClick={() => copy(window.location.href, "Share link copied")}>
                   {copied ? <Check /> : <Copy />} Copy share link
                 </Button>
@@ -298,12 +298,12 @@ export function GeneratorPage() {
             </div>
 
             {history.length ? (
-              <div className="grid gap-2 bg-surface p-5 shadow-px [--px-edge:var(--color-line)]">
-                <p className="font-display text-[10px] uppercase text-fg-subtle">Earlier rolls</p>
+              <div className="grid gap-phi-1 bg-surface p-phi-3 shadow-px [--px-edge:var(--color-line)]">
+                <p className="font-display text-label uppercase text-fg-subtle">Earlier rolls</p>
                 {history.map((h) => {
                   const s = generate(h)
                   return (
-                    <button key={seedsToParam(h)} onClick={() => setSeeds(h)} className="flex min-h-11 items-center justify-between gap-3 px-2 text-left text-lg hover:bg-surface-2">
+                    <button key={seedsToParam(h)} onClick={() => setSeeds(h)} className="flex min-h-11 items-center justify-between gap-phi-2 px-phi-1 text-left text-base hover:bg-surface-2">
                       <span className="truncate">{s.name}</span>
                       <Swatches spec={s} />
                     </button>
@@ -316,9 +316,9 @@ export function GeneratorPage() {
           <div className="min-w-0">
             <TiltCard maxTilt={2.5} glare={false} perspective={1800}>
               <div className="bg-surface shadow-px-lift [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line-strong)]">
-                <div className="flex items-center gap-3 border-b-2 border-line px-4 py-2.5">
+                <div className="flex items-center gap-phi-2 border-b-2 border-line px-phi-2 py-2.5">
                   <span className="size-3 bg-bad" /><span className="size-3 bg-warn" /><span className="size-3 bg-good" />
-                  <span className="ml-3 truncate font-mono text-xl text-fg-muted">https://{spec.name.toLowerCase()}.example</span>
+                  <span className="ml-3 truncate font-mono text-lg text-fg-muted">https://{spec.name.toLowerCase()}.example</span>
                 </div>
                 <div aria-live="polite" aria-label={`Preview of ${spec.name}`}>
                   <Preview spec={spec} />

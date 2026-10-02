@@ -19,16 +19,18 @@ export function StatusBar({ origin = "Direct mode", product = "Secure Web Gatewa
   return (
     <div
       data-canvas-ignore
-      className="fixed inset-x-0 bottom-0 z-40 flex h-(--status-h) items-center justify-between gap-4 border-t-2 border-fg/10 bg-bg/70 px-5 font-mono text-xl text-fg-muted backdrop-blur-[3px] sm:px-8"
+      className="fixed inset-x-0 bottom-0 z-40 h-(--status-h) border-t-2 border-fg/10 bg-bg/70 font-mono text-lg text-fg-muted backdrop-blur-[3px]"
     >
-      <div className="flex min-w-0 items-center gap-4 sm:gap-8">
+      <div data-canvas-ignore className="mx-auto flex h-full w-full max-w-7xl items-center justify-between gap-phi-2 px-phi-3 sm:px-phi-4 lg:px-phi-5">
+      <div className="flex min-w-0 items-center gap-phi-2 sm:gap-phi-4">
         <span aria-hidden className="text-fg-subtle">+</span>
         <span className="truncate">{origin}</span>
         <span className="hidden truncate sm:inline">{product}</span>
       </div>
-      <div className="flex items-center gap-4">
-        <span className="whitespace-nowrap text-lg tabular-nums sm:text-xl">{coords}</span>
+      <div className="flex items-center gap-phi-2">
+        <span className="whitespace-nowrap text-base tabular-nums sm:text-lg">{coords}</span>
         <PixelSprite name="heart" scale={2} className="animate-blink" title="Lives" />
+      </div>
       </div>
     </div>
   )

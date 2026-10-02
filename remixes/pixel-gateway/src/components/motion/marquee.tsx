@@ -24,7 +24,7 @@ export function Marquee({
     <div className={cn("flex overflow-hidden", className)}>
       <div
         data-canvas-ignore
-        className="flex min-w-max shrink-0 animate-marquee items-center gap-10 pr-10"
+        className="flex min-w-max shrink-0 animate-marquee items-center gap-phi-4 pr-phi-4"
         style={{
           animationDuration: `${speed}s`,
           animationDirection: direction === "right" ? "reverse" : "normal",
@@ -32,7 +32,7 @@ export function Marquee({
         }}
       >
         {children}
-        <div data-canvas-ignore aria-hidden className="flex items-center gap-10">
+        <div data-canvas-ignore aria-hidden className="flex items-center gap-phi-4">
           {children}
         </div>
       </div>

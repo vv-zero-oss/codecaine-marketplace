@@ -19,24 +19,24 @@ export function Hearts({ count = 5, of = 5 }: { count?: number; of?: number }) {
 
 export function Testimonials() {
   return (
-    <section id="players" className="bg-bg py-24 sm:py-32">
+    <section id="players" className="bg-bg py-phi-6 sm:py-phi-7">
       <Container>
         <SectionHeading kicker="player reviews" title="Teams that stopped thinking about it." />
-        <div className="mt-14 grid gap-8 lg:grid-cols-3">
+        <div className="mt-phi-5 grid gap-phi-4 lg:grid-cols-3">
           {TESTIMONIALS.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.08}>
-              <TiltCard maxTilt={9} lift={10} className="flex h-full flex-col gap-6 bg-surface p-6 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line)] sm:p-8">
+              <TiltCard maxTilt={9} lift={10} className="flex h-full flex-col gap-phi-3 bg-surface p-phi-3 shadow-px-drop [--px-drop:rgba(0,0,0,0.5)] [--px-edge:var(--color-line)] sm:p-phi-4">
                 <Hearts count={t.hearts} />
-                <blockquote className="text-xl leading-snug [transform:translateZ(22px)]">“{t.quote}”</blockquote>
-                <figcaption className="mt-auto border-t-2 border-line pt-4">
-                  <p className="font-display text-[10px] uppercase">{t.name}</p>
-                  <p className="mt-1.5 font-mono text-xl text-fg-muted">{t.role}</p>
+                <blockquote className="text-lg leading-snug [transform:translateZ(22px)]">“{t.quote}”</blockquote>
+                <figcaption className="mt-auto border-t-2 border-line pt-phi-2">
+                  <p className="font-display text-label uppercase">{t.name}</p>
+                  <p className="mt-1.5 font-mono text-lg text-fg-muted">{t.role}</p>
                 </figcaption>
               </TiltCard>
             </Reveal>
           ))}
         </div>
-        <Link href="/customers" className={buttonVariants({ variant: "outline", size: "lg", className: "mt-12" })}>Read the case files</Link>
+        <Link href="/customers" className={buttonVariants({ variant: "outline", size: "lg", className: "mt-phi-5" })}>Read the case files</Link>
       </Container>
     </section>
   )

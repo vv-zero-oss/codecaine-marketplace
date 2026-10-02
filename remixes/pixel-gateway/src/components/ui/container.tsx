@@ -12,7 +12,7 @@ export function Container({ className, ...props }: React.ComponentProps<"div">) 
   return (
     <div
       data-canvas-ignore
-      className={cn("mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-12", className)}
+      className={cn("mx-auto w-full max-w-7xl px-phi-3 sm:px-phi-4 lg:px-phi-5", className)}
       {...props}
     />
   )
