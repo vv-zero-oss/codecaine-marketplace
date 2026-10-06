@@ -920,6 +920,135 @@
     },
     {
       "type": "remix",
+      "id": "codecaine-homepage",
+      "name": "Codecaine Homepage",
+      "version": "1.0.0",
+      "description": "The Codecaine homepage and features page, built on a token-driven design system: every colour, shadow, radius, duration and easing is a named token, light and dark, with 61 shadcn/ui components bridged onto the same tokens.",
+      "designedFor": [
+        "Launching a product homepage with a sticky mega-menu nav, feature cards and a marquee gallery",
+        "Teams who want one token layer that drives their marketing pages and their shadcn/ui components alike",
+        "Showing an AI agent's workflow beside the work it does, card by card as the page scrolls",
+        "Starting a design system with brand guidelines rendered from the live tokens, in light and dark"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "homepage",
+        "landing",
+        "saas",
+        "design-system",
+        "tokens",
+        "shadcn",
+        "dark-mode",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS",
+        "Starter"
+      ],
+      "created": "2026-10-06",
+      "updated": "2026-10-06",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3360
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/features",
+          "title": "Features"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        },
+        {
+          "path": "/shadcn",
+          "title": "shadcn/ui components"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Features",
+            "image": "previews/pages/features.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          },
+          {
+            "title": "shadcn/ui components",
+            "image": "previews/pages/shadcn.jpg"
+          }
+        ]
+      },
+      "path": "remixes/codecaine-homepage",
+      "thumbnailUrl": "remixes/codecaine-homepage/preview.png",
+      "iconUrl": "remixes/codecaine-homepage/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/codecaine-homepage/previews/desktop.jpg",
+        "mobile": "remixes/codecaine-homepage/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/codecaine-homepage/previews/pages/home.jpg"
+          },
+          {
+            "title": "Features",
+            "image": "remixes/codecaine-homepage/previews/pages/features.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/codecaine-homepage/previews/pages/brand.jpg"
+          },
+          {
+            "title": "shadcn/ui components",
+            "image": "remixes/codecaine-homepage/previews/pages/shadcn.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/codecaine-homepage-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "a3e45c5de42eddfe8896d7d324f332e132460e90431b96c969199a73a36b46c3",
+        "size": 937472,
+        "files": 142
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/codecaine-homepage"
+      },
+      "demoUrl": "demos/codecaine-homepage/"
+    },
+    {
+      "type": "remix",
       "id": "drape",
       "name": "Drape — AI Try-On",
       "version": "1.0.1",

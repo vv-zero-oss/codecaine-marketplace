@@ -1,0 +1,1749 @@
+/* ============================================================================
+   Landing — the `/` page's brand layer
+   ----------------------------------------------------------------------------
+   A light marketing surface on the same primitive layer. It reuses `@theme`
+   from theme.css — the Inter face, the pill radius, every duration and easing —
+   and adds only what this page needs that the product UI palette does not:
+   its ink, its grey wash, its display type and its section rhythm.
+
+   The desktop sizes are the base values, made fluid: the two breakpoints
+   below step them down rather than letting anything sit at a hand-placed
+   position.
+
+   Colors live under `--lp-*` so they can never collide with `--ui-*`. The
+   page is light-only by design — so
+   this file has no `[data-theme]` branch. If one is ever added it goes here as
+   one block, and no component class below changes.
+   ========================================================================== */
+
+/* -- 1. Tokens -------------------------------------------------------------- */
+:root {
+  /* Ground + ink */
+  --lp-bg: #ffffff;
+  --lp-ink: #141414;                        /* headings, primary button       */
+  --lp-ink-hover: #2e2e2e;                  /* primary button hover           */
+  --lp-fg-muted: #717171;                   /* lede, card copy                */
+  --lp-fg-faint: #adadad;                   /* idle tab label                 */
+  --lp-on-ink: #ffffff;
+  --lp-wash: rgb(64 64 64 / 0.06);          /* media wells, ghost hover       */
+  --lp-wash-strong: rgb(64 64 64 / 0.1);    /* ghost press                    */
+  --lp-line: rgb(65 65 65 / 0.16);          /* outline button ring            */
+  --lp-shine: rgb(255 255 255 / 0.1);       /* CTA highlight sweep            */
+  --lp-focus: #141414;
+
+  /* Shadow recipes — borders are inset shadows, never `border` */
+  --lp-ring: inset 0 0 0 1px var(--lp-line);
+  --lp-shadow-tab: 0 1px 2px 0 rgb(0 0 0 / 0.04);
+
+  /* Type — display roles carry their own tracking */
+  --lp-text-display: 80px;   --lp-text-display--lh: 80px;
+  --lp-text-h2: 56px;        --lp-text-h2--lh: 56px;
+  --lp-text-lede: 20px;      --lp-text-lede--lh: 26px;
+  --lp-text-h3: 20px;        --lp-text-h3--lh: 26px;
+  --lp-text-body: 16px;      --lp-text-body--lh: 22px;
+  --lp-tracking-display: -0.6px;
+  --lp-tracking-body: -0.16px;
+  --lp-tracking-label: 0.2px;
+  --lp-weight-display: 900;
+  --lp-weight-h2: 652;
+  --lp-weight-body: 456;
+  --lp-weight-light: 300;
+
+  /* Spacing — a 4px scale; every gap and pad below is one of these.
+     The two half steps are the nav items' own (Tailwind's 1.5 / 2.5). */
+  --lp-space-1: 4px;
+  --lp-space-1-5: 6px;
+  --lp-space-2: 8px;
+  --lp-space-2-5: 10px;
+  --lp-space-3: 12px;
+  --lp-space-3-5: 14px;
+  --lp-space-4: 16px;
+  --lp-space-5: 20px;
+  --lp-space-7: 28px;
+  --lp-space-8: 32px;
+  --lp-space-10: 40px;
+  --lp-space-20: 80px;
+  --lp-space-28: 112px;
+  --lp-space-30: 120px;
+  --lp-space-45: 180px;
+
+  /* Section rhythm */
+  --lp-gutter: var(--lp-space-5);           /* page edge → content            */
+  --lp-section-top: var(--lp-space-45);
+  --lp-section-bottom: var(--lp-space-20);
+  --lp-section-gap: var(--lp-space-20);     /* title block → its content      */
+  --lp-hero-bottom: var(--lp-space-28);
+
+  /* Measures */
+  --lp-measure-text: 834px;
+  --lp-measure-wide: 1262px;
+  --lp-measure-page: 1240px;
+
+  /* Radii */
+  --lp-radius-cover: 24px;
+  --lp-radius-media: 16px;
+  --lp-radius-phone: 24px;
+
+  /* Media geometry */
+  --lp-cover-ratio: 1.89967;
+  --lp-cover-inset-top: 6.45%;              /* 80 / 1240                      */
+  --lp-cover-inset-x: 7.1%;                 /* 88 / 1240                      */
+  --lp-cover-media-ratio: 1.5;
+  --lp-card-ratio: 1.0992;
+  --lp-phone-ratio: 0.439655;
+  --lp-phone-width: 268px;
+  --lp-logo: 88px;
+  --lp-cta-height: 44px;
+  --lp-tabs-height: 42px;
+
+  /* Motion — the ticker is ambient, so it is the one long duration */
+  --lp-ticker-duration: 60s;
+
+  /* Gallery — two marquee rows of shipped sites */
+  --lp-text-h2-sm: 44px;     --lp-text-h2-sm--lh: 48.4px;
+  --lp-tracking-h2-sm: -0.04em;                  /* -1.76px at 44px           */
+  --lp-text-label: 14px;     --lp-text-label--lh: 14px;
+  --lp-tracking-label-tight: -0.02em;            /* -0.28px at 14px           */
+  --lp-weight-label: 540;
+  --lp-gallery-pad-block: var(--lp-space-30);
+  --lp-gallery-gap: var(--lp-space-10);          /* header → rows             */
+  --lp-gallery-shot-gap: var(--lp-space-2-5);    /* between shots and rows    */
+  --lp-gallery-width: 1200px;
+  --lp-gallery-row: 450px;                       /* shot height               */
+  --lp-gallery-wide-ratio: 1.5556;               /* 700 / 450 — desktop shot  */
+  --lp-gallery-tall-ratio: 0.4889;               /* 220 / 450 — phone shot    */
+  --lp-radius-shot: 15px;
+  --lp-radius-gallery-cta: var(--radius-md);     /* 8px                       */
+  --lp-gallery-cta-height: 34px;
+  --lp-gallery-duration: 40s;                    /* one loop of a row         */
+  --lp-gallery-drift: 120px;                     /* scroll push, each way     */
+  --lp-gallery-rise: 24px;                       /* header entrance distance  */
+
+  /* Site nav — two pill groups and a mega menu. Its warm greys are its
+     own, so they get their own names. */
+  --lp-nav-surface: oklch(0.982 0.002 84.559);   /* home tile, panel ink      */
+  --lp-nav-wash: oklch(0.965 0.004 84.559);      /* the two pill groups       */
+  --lp-nav-ink: oklch(0.289 0 0);                /* labels, panel, CTA        */
+  --lp-nav-ink-hover: color-mix(in oklch, var(--lp-nav-ink) 85%, transparent);
+  --lp-nav-on-ink: var(--lp-nav-surface);
+  --lp-nav-on-ink-soft: color-mix(in oklch, var(--lp-nav-on-ink) 80%, transparent);
+  --lp-nav-on-ink-muted: color-mix(in oklch, var(--lp-nav-on-ink) 70%, transparent);
+  --lp-nav-divider: color-mix(in oklch, var(--lp-nav-on-ink) 10%, transparent);
+  --lp-nav-hover-fade: 0.7;
+  --lp-shadow-nav-xs: 0 1px 1px 0 rgb(0 0 0 / 0.05), 0 1px 1px -0.5px rgb(0 0 0 / 0.05);
+  --lp-shadow-nav-lg:
+    var(--lp-shadow-nav-xs),
+    0 3px 3px -1.5px rgb(0 0 0 / 0.06),
+    0 6px 6px -3px rgb(0 0 0 / 0.07),
+    0 12px 12px -6px rgb(0 0 0 / 0.08);
+  --lp-radius-nav: var(--radius-lg);             /* 10px                      */
+  --lp-radius-nav-item: var(--radius-md);        /* 8px                       */
+  --lp-radius-nav-icon: 2px;
+  --lp-text-nav: 14px;       --lp-text-nav--lh: 20px;
+  --lp-text-nav-xs: 12px;    --lp-text-nav-xs--lh: 16px;
+  --lp-leading-nav-snug: 1.375;
+  --lp-nav-control: 32px;                        /* tile + item height        */
+  --lp-nav-mark: 18px;
+  --lp-nav-icon: 16px;
+  --lp-nav-max: 1280px;
+  --lp-ease-nav: cubic-bezier(0.4, 0, 0.2, 1);
+  --lp-z-nav: 50;
+
+  /* Agent showcase — black product-UI cards, so its greys get their own
+     names. */
+  --lp-space-0-5: 2px;
+  --lp-space-0-75: 3px;
+  --lp-space-1-25: 5px;                          /* the half step */
+  --lp-space-15: 60px;
+  --lp-space-17-5: 70px;
+
+  --lp-agent-card: #000000;                      /* card, mock site ground    */
+  --lp-agent-well: #171717;                      /* device + footer wells     */
+  --lp-agent-panel: #111111;                     /* sticky chat panel         */
+  --lp-agent-bubble: #242424;                    /* user bubble, inputs       */
+  --lp-agent-composer: #1f1f1f;
+  --lp-agent-key: #303030;                       /* composer icon buttons     */
+  --lp-agent-key-hover: #3d3d3d;
+  --lp-agent-copy: #333333;                      /* bubble copy button        */
+  --lp-agent-thumb: #383838;                     /* segmented thumb           */
+  --lp-agent-menu: #050505;                      /* mega menu surface         */
+  --lp-agent-swatch: #666666;
+  --lp-agent-on: #ffffff;
+  --lp-agent-fg-muted: rgb(255 255 255 / 0.6);   /* caption copy, mock links  */
+  --lp-agent-fg-soft: #cccccc;                   /* agent reply, field labels */
+  --lp-agent-fg-faint: #999999;                  /* model name, placeholders  */
+  --lp-agent-fg-dim: #666666;                    /* "Thought 32s"             */
+  --lp-agent-accent: #0099ff;                    /* selection, device chips   */
+  --lp-agent-accent-wash: color-mix(in srgb, var(--lp-agent-accent) 10%, transparent);
+  --lp-agent-accent-tint: color-mix(in srgb, var(--lp-agent-accent) 20%, transparent);
+  --lp-agent-accent-line: color-mix(in srgb, var(--lp-agent-accent) 38%, transparent);
+  --lp-agent-track: rgb(255 255 255 / 0.2);
+  --lp-agent-cta: rgb(255 255 255 / 0.15);
+  --lp-agent-glass: rgb(0 0 0 / 0.4);
+
+  --lp-agent-ring-menu: inset 0 0 0 1px rgb(255 255 255 / 0.08);
+  --lp-agent-ring-thumb: inset 0 0 0 1px rgb(255 255 255 / 0.03);
+  --lp-agent-shadow-shot: 1px -1px 12px 0 rgb(20 20 20 / 0.5);
+  --lp-agent-shadow-thumb: 0 2px 4px 0 rgb(0 0 0 / 0.1);
+  --lp-agent-shadow-knob: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 0.5px 0 0 rgb(0 0 0 / 0.1);
+
+  --lp-agent-radius-card: 25px;
+  --lp-agent-radius-well: var(--lp-radius-shot);  /* 15px                     */
+  --lp-agent-radius-bar: var(--radius-lg);        /* 10px — device bar        */
+  --lp-agent-radius-field: var(--radius-md);      /* 8px                      */
+  --lp-agent-radius-thumb: var(--radius-sm);      /* 6px                      */
+  --lp-agent-radius-key: var(--radius-xs);        /* 5px                      */
+  --lp-agent-radius-swatch: 4px;
+  --lp-agent-radius-menu: var(--radius-3xl);      /* 20px                     */
+  --lp-agent-radius-shot: 7px;
+
+  --lp-agent-text-caption: 18px;  --lp-agent-text-caption--lh: 24.3px;
+  --lp-agent-tracking-caption: -0.2px;
+  --lp-agent-text-ui: 12px;       --lp-agent-text-ui--lh: 16.8px;
+  --lp-agent-text-ui-tight--lh: 14.4px;
+  --lp-agent-text-menu: 15px;     --lp-agent-text-menu--lh: 20px;
+  --lp-agent-text-pill: 14px;
+  --lp-agent-text-mini: 9px;      --lp-agent-text-mini--lh: 12.5px;
+
+  --lp-agent-width: 1200px;                       /* cards + gap + panel       */
+  --lp-agent-card-w: 930px;
+  --lp-agent-card-h: 640px;
+  --lp-agent-panel-w: 260px;
+  --lp-agent-panel-top: var(--lp-space-30);       /* sticky offset            */
+  --lp-agent-stage-w: 910px;                      /* every visual's own frame */
+  --lp-agent-stage-h: 473px;
+  --lp-agent-caption-wide: 548px;
+  --lp-agent-caption-mid: 500px;
+  --lp-agent-caption-narrow: 440px;
+  --lp-agent-field-label: 81px;
+  --lp-agent-field: 134px;
+  --lp-agent-field-half: 62px;
+  --lp-agent-field-h: 30px;
+  --lp-agent-thumb-h: 26px;
+  --lp-agent-section-h: 50px;
+  --lp-agent-key-size: 20px;
+  --lp-agent-swatch-size: 22px;
+  --lp-agent-icon: 12px;
+  --lp-agent-icon-sm: 10px;
+  --lp-agent-icon-xs: 8px;
+  --lp-agent-attach: 40px;
+  --lp-agent-composer-h: 120px;
+  --lp-agent-input-h: 70px;
+  --lp-agent-dot: 2px;
+  --lp-agent-title-measure: 480px;                /* two lines */
+  --lp-agent-divider-h: 14px;
+  --lp-agent-blur: 8px;
+  --lp-agent-line: rgb(255 255 255 / 0.08);       /* mock-site hairlines       */
+
+  /* Visual geometry, on the 910 × 473 frame */
+  --lp-agent-ideate-w: 713px;    --lp-agent-ideate-h: 388px;
+  --lp-agent-ideate-x: 78.5px;   --lp-agent-ideate-y: 43px;
+  --lp-agent-shot-1-w: 270px;    --lp-agent-shot-1-h: 180px;
+  --lp-agent-shot-1-x: 371px;    --lp-agent-shot-1-y: 15px;
+  --lp-agent-shot-2-w: 300px;    --lp-agent-shot-2-h: 200px;
+  --lp-agent-shot-2-x: 221px;    --lp-agent-shot-2-y: 84px;
+  --lp-agent-shot-3-w: 330px;    --lp-agent-shot-3-h: 220px;
+  --lp-agent-shot-3-x: 77px;     --lp-agent-shot-3-y: 153px;
+  --lp-agent-tablet-w: 420px;
+  --lp-agent-phone-w: 240px;
+  --lp-agent-device-h: 375px;
+  --lp-agent-footer-w: 680px;
+  --lp-agent-footer-h: 413px;
+  --lp-agent-footer-gap: 79px;
+  --lp-agent-footer-stack: 15px;                 /* mark → rule → legal       */
+  --lp-agent-mark-fade: 0.4;
+  --lp-agent-device-stage-h: 505px;               /* the device well runs taller */
+  --lp-agent-footer-mark-w: 660px;
+  --lp-agent-footer-mark-size: 132px;            /* the wordmark's cap band   */
+  --lp-agent-footer-mark-tracking: -0.06em;
+  --lp-agent-menu-media: 230px;
+  --lp-agent-asset-w: 215px;     --lp-agent-asset-h: 300px;
+  --lp-agent-zoom-w: 243px;
+
+  /* Motion. The reveal is a page-level moment; everything else stays short. */
+  --lp-agent-reveal-from: 0.25;                   /* card opacity before view  */
+  --lp-agent-reveal-shift: 20px;                  /* comes in from down-left   */
+  --lp-agent-reveal-duration: 900ms;
+  --lp-agent-step: 450ms;                         /* chat beat                 */
+  --lp-agent-select-duration: 4.8s;               /* one selection sweep       */
+  --lp-agent-dots-duration: 2.4s;
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --lp-text-display: 60px;  --lp-text-display--lh: 60px;
+    --lp-text-h2: 44px;       --lp-text-h2--lh: 46px;
+    --lp-section-top: 128px;
+    --lp-hero-bottom: var(--lp-space-20);
+    --lp-gallery-row: 360px;
+  }
+}
+
+@media (max-width: 767px) {
+  :root {
+    --lp-text-display: 44px;  --lp-text-display--lh: 46px;
+    --lp-text-h2: 34px;       --lp-text-h2--lh: 38px;
+    --lp-text-lede: 18px;     --lp-text-lede--lh: 24px;
+    --lp-section-top: 96px;
+    --lp-section-bottom: var(--lp-space-10);
+    --lp-section-gap: var(--lp-space-10);
+    --lp-hero-bottom: var(--lp-space-10);
+    --lp-radius-cover: 16px;
+    --lp-radius-media: 12px;
+    --lp-radius-phone: 18px;
+    --lp-phone-width: 200px;
+    --lp-logo: 72px;
+    --lp-text-h2-sm: 32px;    --lp-text-h2-sm--lh: 36px;
+    --lp-gallery-pad-block: var(--lp-space-20);
+    --lp-gallery-row: 280px;
+    --lp-gallery-drift: 60px;
+  }
+}
+
+/* -- 2. Components ---------------------------------------------------------- */
+@layer components {
+  .lp-page {
+    background: var(--lp-bg);
+    color: var(--lp-ink);
+    font-family: var(--font-sans);
+    overflow-x: clip;
+  }
+
+  /* A centred column with the page gutter. Variants pick the measure. */
+  .lp-container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: calc(var(--lp-measure-page) + 2 * var(--lp-gutter));
+    margin-inline: auto;
+    padding-inline: var(--lp-gutter);
+  }
+  .lp-container-text {
+    max-width: calc(var(--lp-measure-text) + 2 * var(--lp-gutter));
+  }
+
+  .lp-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-section-gap);
+    padding-top: var(--lp-section-top);
+    padding-bottom: var(--lp-section-bottom);
+  }
+
+  /* -- Type roles -- */
+  .lp-display {
+    margin: 0;
+    font-size: var(--lp-text-display);
+    line-height: var(--lp-text-display--lh);
+    font-weight: var(--lp-weight-display);
+    letter-spacing: var(--lp-tracking-display);
+    text-align: center;
+    text-wrap: balance;
+    color: var(--lp-ink);
+  }
+  .lp-h2 {
+    margin: 0;
+    font-size: var(--lp-text-h2);
+    line-height: var(--lp-text-h2--lh);
+    font-weight: var(--lp-weight-h2);
+    letter-spacing: var(--lp-tracking-display);
+    text-align: center;
+    text-wrap: balance;
+    color: var(--lp-ink);
+  }
+  .lp-lede {
+    margin: 0;
+    font-size: var(--lp-text-lede);
+    line-height: var(--lp-text-lede--lh);
+    font-weight: var(--lp-weight-light);
+    text-align: center;
+    text-wrap: balance;
+    color: var(--lp-fg-muted);
+  }
+  .lp-h3 {
+    margin: 0;
+    font-size: var(--lp-text-h3);
+    line-height: var(--lp-text-h3--lh);
+    font-weight: var(--font-weight-semibold);
+    text-align: center;
+    color: var(--lp-ink);
+  }
+  .lp-body {
+    margin: 0;
+    font-size: var(--lp-text-body);
+    line-height: var(--lp-text-body--lh);
+    font-weight: var(--lp-weight-body);
+    letter-spacing: var(--lp-tracking-body);
+    text-align: center;
+    text-wrap: balance;
+    color: var(--lp-fg-muted);
+  }
+
+  /* -- Hero -- */
+  .lp-hero {
+    padding-top: var(--lp-section-top);
+    padding-bottom: var(--lp-hero-bottom);
+  }
+  .lp-hero-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-space-10);
+  }
+  .lp-hero-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-space-5);
+  }
+  .lp-logo {
+    display: block;
+    width: var(--lp-logo);
+    height: var(--lp-logo);
+    object-fit: cover;
+    opacity: 0.8;
+  }
+  .lp-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--lp-space-3);
+  }
+
+  /* -- Pill CTAs -- */
+  .lp-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    height: var(--lp-cta-height);
+    padding-inline: var(--lp-space-4);
+    border-radius: var(--radius-pill);
+    font-size: var(--lp-text-body);
+    line-height: var(--lp-text-body--lh);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--lp-tracking-label);
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
+    overflow: clip;
+    isolation: isolate;
+    transition-property: background-color, scale;
+    transition-duration: var(--duration-micro);
+    transition-timing-function: var(--ease-smooth);
+  }
+  .lp-btn:focus-visible {
+    outline: 2px solid var(--lp-focus);
+    outline-offset: 2px;
+  }
+  .lp-btn:active { scale: 0.97; }
+
+  .lp-btn-primary {
+    background: var(--lp-ink);
+    color: var(--lp-on-ink);
+  }
+  .lp-btn-primary:hover { background: var(--lp-ink-hover); }
+
+  /* The highlight: a 45° light strip parked past the right edge, swept
+     across on hover. Hard-light keeps it a glint rather than a grey wash. */
+  .lp-btn-shine {
+    position: absolute;
+    top: -100%;
+    bottom: -100%;
+    left: calc(100% + 38px);
+    width: 32px;
+    background: var(--lp-shine);
+    mix-blend-mode: hard-light;
+    rotate: 45deg;
+    pointer-events: none;
+    z-index: 1;
+    transition: translate var(--duration-very-slow) var(--ease-smooth);
+  }
+  .lp-btn-primary:hover .lp-btn-shine { translate: -220px 0; }
+
+  .lp-btn-outline {
+    background: transparent;
+    color: var(--lp-ink);
+    box-shadow: var(--lp-ring);
+    backdrop-filter: blur(40px);
+  }
+  .lp-btn-outline:hover { background: var(--lp-wash); }
+  .lp-btn-outline:active { background: var(--lp-wash-strong); }
+
+  .lp-btn-icon {
+    width: 20px;
+    height: 20px;
+    flex: none;
+  }
+
+  /* -- Product cover: a grey well with the demo video rising out of it -- */
+  .lp-cover {
+    position: relative;
+    margin: 0;
+    aspect-ratio: var(--lp-cover-ratio);
+    min-height: 0;                          /* the ratio wins; the video is cropped */
+    padding: var(--lp-cover-inset-top) var(--lp-cover-inset-x) 0;
+    border-radius: var(--lp-radius-cover);
+    background: var(--lp-wash);
+    overflow: clip;
+  }
+  .lp-cover-media {
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--lp-cover-media-ratio);
+    border-radius: var(--lp-radius-media);
+    object-fit: cover;
+  }
+
+  /* -- Feature cards -- */
+  .lp-cards {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--lp-space-5);
+    width: 100%;
+    max-width: var(--lp-measure-wide);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lp-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-5);
+  }
+  .lp-card-media {
+    position: relative;
+    aspect-ratio: var(--lp-card-ratio);
+    border-radius: var(--lp-radius-media);
+    background: var(--lp-wash);
+    overflow: clip;
+  }
+  .lp-card-media video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .lp-card-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-1);
+  }
+  /* A text-only card, for feature lists with no media. */
+  .lp-tile {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2);
+    padding: var(--lp-space-8);
+    border-radius: var(--lp-radius-media);
+    background: var(--lp-wash);
+  }
+
+  @media (max-width: 767px) {
+    .lp-cards {
+      grid-template-columns: minmax(0, 1fr);
+      gap: var(--lp-space-10);
+      max-width: 480px;
+    }
+  }
+
+  /* -- Patterns: title block, tab switcher, tickers -- */
+  .lp-title-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-space-10);
+  }
+
+  .lp-tabs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    height: var(--lp-tabs-height);
+    padding: var(--lp-space-1);
+    border-radius: var(--radius-pill);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .lp-tabs::-webkit-scrollbar { display: none; }
+
+  /* The sliding pill. JS writes only where it sits (--tab-x / --tab-w);
+     the curve and the duration are CSS's. */
+  .lp-tabs-indicator {
+    position: absolute;
+    top: var(--lp-space-1);
+    bottom: var(--lp-space-1);
+    left: 0;
+    width: var(--tab-w, 0px);
+    translate: var(--tab-x, 0px) 0;
+    border-radius: var(--radius-pill);
+    box-shadow: var(--lp-shadow-tab);
+    pointer-events: none;
+    transition: translate var(--duration-medium) var(--ease-smooth);
+  }
+
+  .lp-tab {
+    position: relative;
+    z-index: 1;
+    flex: none;
+    padding: 6px var(--lp-space-4);
+    border: 0;
+    border-radius: var(--radius-pill);
+    background: transparent;
+    font: inherit;
+    font-size: var(--lp-text-body);
+    line-height: var(--lp-text-body--lh);
+    font-weight: var(--font-weight-semibold);
+    white-space: nowrap;
+    color: var(--lp-fg-faint);
+    cursor: pointer;
+    user-select: none;
+    transition: color var(--duration-fast) var(--ease-smooth);
+  }
+  .lp-tab:hover { color: var(--lp-fg-muted); }
+  .lp-tab[aria-selected="true"] { color: var(--lp-ink); }
+  .lp-tab:focus-visible {
+    outline: 2px solid var(--lp-focus);
+    outline-offset: -2px;
+  }
+
+  /* All four tickers share one grid cell and cross-fade. */
+  .lp-tickers {
+    display: grid;
+    width: 100%;
+  }
+  .lp-ticker {
+    grid-area: 1 / 1;
+    overflow: clip;
+    transition: opacity var(--duration-slow) var(--ease-smooth);
+  }
+  .lp-ticker[data-state="inactive"] {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* The list is rendered twice end-to-end and slides by exactly one copy,
+     so the loop has no seam. */
+  .lp-ticker-track {
+    display: flex;
+    gap: var(--lp-space-5);
+    width: max-content;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    animation: lp-ticker var(--lp-ticker-duration) linear infinite;
+  }
+  .lp-ticker[data-state="inactive"] .lp-ticker-track,
+  .lp-ticker:hover .lp-ticker-track {
+    animation-play-state: paused;
+  }
+
+  .lp-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-space-5);
+    width: var(--lp-phone-width);
+    flex: none;
+  }
+  .lp-screen-label {
+    margin: 0;
+    font-size: var(--lp-text-body);
+    line-height: var(--lp-text-body--lh);
+    font-weight: var(--lp-weight-light);
+    letter-spacing: var(--lp-tracking-label);
+    text-align: center;
+    color: var(--lp-ink);
+  }
+  .lp-screen-media {
+    display: block;
+    width: 100%;
+    aspect-ratio: var(--lp-phone-ratio);
+    border-radius: var(--lp-radius-phone);
+    background: var(--lp-wash);
+    object-fit: cover;
+  }
+
+  /* -- Site nav: two pill groups and a dark mega menu ----------------------
+     The panel opens and closes with no motion — it is opened many times a
+     session. */
+  .lp-nav {
+    position: sticky;
+    top: 0;
+    z-index: var(--lp-z-nav);
+    padding-block: var(--lp-space-2-5);
+  }
+  .lp-nav-bar {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: var(--lp-nav-max);
+    margin-inline: auto;
+    padding-inline: var(--lp-space-8);
+  }
+  .lp-nav-group {
+    display: flex;
+    align-items: center;
+    gap: var(--lp-space-1);
+    padding: var(--lp-space-1);
+    border-radius: var(--lp-radius-nav);
+    background: var(--lp-nav-wash);
+    font-size: var(--lp-text-nav);
+    line-height: var(--lp-text-nav--lh);
+    color: var(--lp-nav-ink);
+  }
+  .lp-nav-home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--lp-nav-control);
+    height: var(--lp-nav-control);
+    border-radius: var(--lp-radius-nav-item);
+    background: var(--lp-nav-surface);
+    box-shadow: var(--lp-shadow-nav-xs);
+  }
+  .lp-nav-home img {
+    display: block;
+    width: var(--lp-nav-mark);
+    height: var(--lp-nav-mark);
+    object-fit: cover;
+  }
+
+  /* Text items: Menu, Pricing, Live demo, Sign in */
+  .lp-nav-item {
+    display: block;
+    padding: var(--lp-space-1-5);
+    border: 0;
+    border-radius: var(--lp-radius-nav-item);
+    background: transparent;
+    font: inherit;
+    font-weight: var(--font-weight-medium);
+    color: var(--lp-nav-ink);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: opacity var(--duration-fast) var(--lp-ease-nav);
+  }
+  .lp-nav-item:hover { opacity: var(--lp-nav-hover-fade); }
+  .lp-nav-item-lead { padding-right: var(--lp-space-2-5); }   /* Menu    */
+  .lp-nav-item-first { padding-left: var(--lp-space-2-5); }   /* Pricing */
+
+  .lp-nav-cta {
+    display: block;
+    padding: var(--lp-space-1-5) var(--lp-space-3);
+    border-radius: var(--lp-radius-nav-item);
+    background: var(--lp-nav-ink);
+    font-weight: var(--font-weight-medium);
+    color: var(--lp-nav-on-ink);
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color var(--duration-fast) var(--lp-ease-nav);
+  }
+  .lp-nav-cta:hover { background: var(--lp-nav-ink-hover); }
+
+  .lp-nav-home:focus-visible,
+  .lp-nav-item:focus-visible,
+  .lp-nav-cta:focus-visible {
+    outline: 2px solid var(--lp-focus);
+    outline-offset: 2px;
+  }
+
+  /* The panel */
+  .lp-nav-panel {
+    position: absolute;
+    top: 100%;
+    left: var(--lp-space-8);
+    right: var(--lp-space-8);
+    margin-top: var(--lp-space-2);
+    overflow: hidden;
+    border-radius: var(--lp-radius-nav);
+    background: var(--lp-nav-ink);
+    box-shadow: var(--lp-shadow-nav-lg);
+    color: var(--lp-nav-on-ink);
+  }
+  .lp-nav-panel[hidden] { display: none; }
+  .lp-nav-cols {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .lp-nav-col {
+    padding: var(--lp-space-7);
+  }
+  .lp-nav-col + .lp-nav-col { box-shadow: inset 1px 0 0 var(--lp-nav-divider); }
+  .lp-nav-col-wide { grid-column: span 2; }
+  .lp-nav-col-stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-7);
+  }
+
+  .lp-nav-heading {
+    margin: 0;
+    font-size: var(--lp-text-nav);
+    line-height: var(--lp-text-nav--lh);
+    font-weight: var(--font-weight-medium);
+    color: var(--lp-nav-on-ink);
+  }
+  .lp-nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-7);
+    margin: var(--lp-space-5) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lp-nav-links-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-content: start;
+    gap: var(--lp-space-7) var(--lp-space-8);
+  }
+
+  .lp-nav-link {
+    display: block;
+    color: inherit;
+    text-decoration: none;
+    border-radius: var(--lp-radius-nav-icon);
+  }
+  .lp-nav-link-title {
+    display: flex;
+    align-items: center;
+    gap: var(--lp-space-1);
+    font-size: var(--lp-text-nav);
+    line-height: var(--lp-text-nav--lh);
+    font-weight: var(--font-weight-medium);
+    color: var(--lp-nav-on-ink);
+    transition: opacity var(--duration-fast) var(--lp-ease-nav);
+  }
+  .lp-nav-link:hover .lp-nav-link-title { opacity: var(--lp-nav-hover-fade); }
+  .lp-nav-link-desc {
+    display: block;
+    margin-top: var(--lp-space-1);
+    font-size: var(--lp-text-nav);
+    line-height: var(--lp-leading-nav-snug);
+    color: var(--lp-nav-on-ink-muted);
+  }
+  .lp-nav-arrow {
+    width: var(--lp-nav-icon);
+    height: var(--lp-nav-icon);
+    flex: none;
+  }
+
+  /* Integration groups */
+  .lp-nav-group-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--lp-space-3);
+  }
+  .lp-nav-see-all {
+    flex: none;
+    font-size: var(--lp-text-nav-xs);
+    line-height: var(--lp-text-nav-xs--lh);
+    font-weight: var(--font-weight-medium);
+    color: var(--lp-nav-on-ink-muted);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--lp-ease-nav);
+  }
+  .lp-nav-see-all:hover { color: var(--lp-nav-on-ink); }
+  .lp-nav-chips {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--lp-space-2) var(--lp-space-4);
+    margin: var(--lp-space-3) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lp-nav-chip {
+    display: flex;
+    align-items: center;
+    gap: var(--lp-space-2);
+    font-size: var(--lp-text-nav);
+    line-height: var(--lp-text-nav--lh);
+    color: var(--lp-nav-on-ink-soft);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--lp-ease-nav);
+  }
+  .lp-nav-chip:hover { color: var(--lp-nav-on-ink); }
+  .lp-nav-chip img {
+    display: block;
+    width: var(--lp-nav-icon);
+    height: var(--lp-nav-icon);
+    flex: none;
+    border-radius: var(--lp-radius-nav-icon);
+    object-fit: contain;
+  }
+
+  .lp-nav-panel :is(.lp-nav-link, .lp-nav-see-all, .lp-nav-chip):focus-visible {
+    outline: 2px solid var(--lp-nav-on-ink);
+    outline-offset: 2px;
+  }
+
+  /* Narrower screens: the panel re-flows, the secondary links fold away */
+  @media (max-width: 1023px) {
+    .lp-nav-bar { padding-inline: var(--lp-gutter); }
+    .lp-nav-panel { left: var(--lp-gutter); right: var(--lp-gutter); }
+    .lp-nav-cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* Product + integrations share the first row; Docs takes the second */
+    .lp-nav-col-wide {
+      grid-column: 1 / -1;
+      order: 1;
+      box-shadow: inset 0 1px 0 var(--lp-nav-divider);
+    }
+  }
+  @media (max-width: 767px) {
+    .lp-nav-optional { display: none; }
+    .lp-nav-panel {
+      max-height: calc(100dvh - 2 * var(--lp-nav-control) - var(--lp-space-5));
+      overflow-y: auto;
+    }
+    .lp-nav-cols { grid-template-columns: minmax(0, 1fr); }
+    .lp-nav-col + .lp-nav-col { box-shadow: inset 0 1px 0 var(--lp-nav-divider); }
+    .lp-nav-links-grid { grid-template-columns: minmax(0, 1fr); }
+  }
+  /* -- Gallery: built on the canvas ---------------------------------------
+     Two rows of shots drift in opposite directions (the track's transform);
+     scroll pushes each row the other way on top (the row's translate), so
+     the two never fight over one property. */
+  .lp-gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-gallery-gap);
+    padding: var(--lp-gallery-pad-block) var(--lp-gutter);
+    overflow-x: clip;
+  }
+  .lp-gallery-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--lp-space-4);
+    width: 100%;
+    max-width: var(--lp-gallery-width);
+  }
+  .lp-gallery-title {
+    margin: 0;
+    font-size: var(--lp-text-h2-sm);
+    line-height: var(--lp-text-h2-sm--lh);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--lp-tracking-h2-sm);
+    color: var(--lp-ink);
+  }
+  .lp-gallery-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: var(--lp-gallery-cta-height);
+    padding: var(--lp-space-2-5) var(--lp-space-3-5);
+    border-radius: var(--lp-radius-gallery-cta);
+    background: var(--lp-wash);
+    font-size: var(--lp-text-label);
+    line-height: var(--lp-text-label--lh);
+    font-weight: var(--lp-weight-label);
+    letter-spacing: var(--lp-tracking-label-tight);
+    color: var(--lp-ink);
+    text-decoration: none;
+    white-space: nowrap;
+    cursor: pointer;
+    transition-property: background-color, scale;
+    transition-duration: var(--duration-micro);
+    transition-timing-function: var(--ease-smooth);
+  }
+  .lp-gallery-cta:hover { background: var(--lp-wash-strong); }
+  .lp-gallery-cta:active { scale: 0.97; }
+  .lp-gallery-cta:focus-visible {
+    outline: 2px solid var(--lp-focus);
+    outline-offset: 2px;
+  }
+
+  .lp-gallery-rows {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-gallery-shot-gap);
+    width: 100%;
+    max-width: var(--lp-gallery-width);
+    overflow: clip;
+  }
+  .lp-gallery-row { display: flex; }
+  .lp-gallery-track {
+    display: flex;
+    gap: var(--lp-gallery-shot-gap);
+    width: max-content;
+    margin: 0;
+    margin-inline-start: calc(-1 * var(--lp-gallery-drift));  /* room for the scroll push */
+    padding: 0;
+    list-style: none;
+    animation: lp-gallery-drift var(--lp-gallery-duration) linear infinite;
+  }
+  .lp-gallery-row:nth-child(even) .lp-gallery-track {
+    animation-direction: reverse;
+  }
+  .lp-gallery-shot {
+    flex: none;
+    height: var(--lp-gallery-row);
+    aspect-ratio: var(--lp-gallery-wide-ratio);
+    border-radius: var(--lp-radius-shot);
+    background: var(--lp-wash);
+    overflow: clip;
+  }
+  .lp-gallery-shot[data-shape="tall"] { aspect-ratio: var(--lp-gallery-tall-ratio); }
+  .lp-gallery-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Scroll: rows slide apart as the section crosses the viewport, and the
+     header rises in on entry. Browsers without view() timelines keep the
+     drift and show everything at rest. */
+  @supports (animation-timeline: view()) {
+    .lp-gallery-row {
+      animation: lp-gallery-push linear both;
+      animation-timeline: view();
+    }
+    .lp-gallery-row:nth-child(even) { animation-direction: reverse; }
+    .lp-gallery-head {
+      animation: lp-gallery-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .lp-gallery-row,
+    .lp-gallery-head { animation: none; }
+  }
+}
+
+@keyframes lp-gallery-drift {
+  to { transform: translateX(calc(-50% - var(--lp-gallery-shot-gap) / 2)); }
+}
+@keyframes lp-gallery-push {
+  from { translate: var(--lp-gallery-drift) 0; }
+  to { translate: calc(-1 * var(--lp-gallery-drift)) 0; }
+}
+@keyframes lp-gallery-rise {
+  from { opacity: 0; translate: 0 var(--lp-gallery-rise); }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes lp-ticker {
+  to { transform: translateX(calc(-50% - var(--lp-space-5) / 2)); }
+}
+
+/* -- 3. Agent showcase --------------------------------------------------------
+   Five black cards
+   in a 930px column beside a 260px agent panel that sticks 120px from the
+   top. The header reuses the gallery's (same type, same CTA). Every visual is
+   drawn on a 910 × 473 frame and scaled down whole on narrow
+   screens (`--lp-agent-stage-scale`, set by the component's ResizeObserver).
+   JS sets only `data-seen` (reveal, once) and `data-active` (the card in the
+   middle of the viewport); the panel plays that card's conversation.
+   ========================================================================== */
+@layer components {
+  .lp-agent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-gallery-gap);
+    padding: var(--lp-gallery-pad-block) var(--lp-gutter);
+  }
+  .lp-agent-title { max-width: var(--lp-agent-title-measure); text-wrap: balance; }
+
+  .lp-agent-body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--lp-space-2-5);
+    width: 100%;
+    max-width: var(--lp-agent-width);
+  }
+  .lp-agent-cards {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-20);
+    flex: 0 1 var(--lp-agent-card-w);
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* -- Card -- */
+  .lp-agent-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    height: var(--lp-agent-card-h);
+    box-sizing: border-box;
+    padding: var(--lp-space-2-5);
+    border-radius: var(--lp-agent-radius-card);
+    background: var(--lp-agent-card);
+    overflow: clip;
+    scroll-margin-top: var(--lp-agent-panel-top);
+    opacity: var(--lp-agent-reveal-from);
+    translate: calc(-1 * var(--lp-agent-reveal-shift)) var(--lp-agent-reveal-shift);
+    transition-property: opacity, translate;
+    transition-duration: var(--lp-agent-reveal-duration);
+    transition-timing-function: var(--ease-smooth);
+  }
+  .lp-agent-card[data-seen] { opacity: 1; translate: 0 0; }
+
+  .lp-agent-well {
+    --lp-agent-stage-scale: 1;
+    position: relative;
+    height: calc(var(--lp-agent-stage-h) * var(--lp-agent-stage-scale));
+    border-radius: var(--lp-agent-radius-well);
+    background: var(--lp-agent-card);
+    overflow: clip;
+  }
+  .lp-agent-well[data-kind="responsive"],
+  .lp-agent-well[data-kind="reference"] { background: var(--lp-agent-well); }
+  .lp-agent-well[data-kind="responsive"] { --lp-agent-stage-h: var(--lp-agent-device-stage-h); flex: none; }
+  .lp-agent-card:has(> [data-kind="responsive"]) { gap: 0; }
+  .lp-agent-stage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: var(--lp-agent-stage-w);
+    height: var(--lp-agent-stage-h);
+    translate: -50% 0;
+    scale: var(--lp-agent-stage-scale);
+    transform-origin: top center;
+  }
+
+  .lp-agent-caption {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1 1 auto;
+    min-height: 0;
+    padding: var(--lp-space-5);
+    font-size: var(--lp-agent-text-caption);
+    line-height: var(--lp-agent-text-caption--lh);
+    letter-spacing: var(--lp-agent-tracking-caption);
+    font-weight: var(--font-weight-normal);
+  }
+  .lp-agent-caption-title,
+  .lp-agent-caption-body {
+    max-width: var(--lp-agent-caption-wide);
+    margin: 0;
+    font: inherit;
+    letter-spacing: inherit;
+    color: var(--lp-agent-on);
+  }
+  .lp-agent-caption-body { color: var(--lp-agent-fg-muted); }
+  .lp-agent-caption[data-measure="mid"] > * { max-width: var(--lp-agent-caption-mid); }
+  .lp-agent-caption[data-measure="narrow"] > * { max-width: var(--lp-agent-caption-narrow); }
+
+  /* -- Selection sweep: the agent "touching" parts of a visual in turn -- */
+  .lp-agent-select {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px var(--lp-agent-accent);
+    background: var(--lp-agent-accent-wash);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .lp-agent-card[data-active] .lp-agent-select {
+    animation: lp-agent-select var(--lp-agent-select-duration) var(--ease-smooth) infinite;
+    animation-delay: calc(var(--lp-agent-sel, 0) * var(--lp-agent-select-duration) / var(--lp-agent-sel-count, 3));
+  }
+
+  /* -- 1. Ideate: three hero previews, fanned -- */
+  .lp-agent-ideate {
+    position: absolute;
+    left: var(--lp-agent-ideate-x);
+    top: var(--lp-agent-ideate-y);
+    width: var(--lp-agent-ideate-w);
+    height: var(--lp-agent-ideate-h);
+  }
+  .lp-agent-shot {
+    position: absolute;
+    margin: 0;
+    border-radius: var(--lp-agent-radius-shot);
+  }
+  .lp-agent-shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+  .lp-agent-shot[data-i="0"] {
+    --lp-agent-sel: 2;
+    left: var(--lp-agent-shot-1-x); top: var(--lp-agent-shot-1-y);
+    width: var(--lp-agent-shot-1-w); height: var(--lp-agent-shot-1-h);
+  }
+  .lp-agent-shot[data-i="1"] {
+    --lp-agent-sel: 1;
+    left: var(--lp-agent-shot-2-x); top: var(--lp-agent-shot-2-y);
+    width: var(--lp-agent-shot-2-w); height: var(--lp-agent-shot-2-h);
+    box-shadow: var(--lp-agent-shadow-shot);
+  }
+  .lp-agent-shot[data-i="2"] {
+    --lp-agent-sel: 0;
+    left: var(--lp-agent-shot-3-x); top: var(--lp-agent-shot-3-y);
+    width: var(--lp-agent-shot-3-w); height: var(--lp-agent-shot-3-h);
+    box-shadow: var(--lp-agent-shadow-shot);
+    z-index: 1;
+  }
+
+  /* -- 2. Responsive: tablet + phone frames -- */
+  .lp-agent-devices {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: var(--lp-space-5);
+    height: 100%;
+    box-sizing: border-box;
+  }
+  .lp-agent-device {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    margin: 0;
+  }
+  .lp-agent-device img { display: block; height: var(--lp-agent-device-h); object-fit: cover; }
+  .lp-agent-device[data-kind="tablet"] img { width: var(--lp-agent-tablet-w); }
+  .lp-agent-device[data-kind="phone"] img { width: var(--lp-agent-phone-w); }
+  .lp-agent-device-bar {
+    display: flex;
+    align-items: center;
+    gap: var(--lp-space-2-5);
+    padding: var(--lp-space-1-25);
+    border-radius: var(--lp-agent-radius-bar);
+    background: var(--lp-agent-accent-wash);
+    font-size: var(--lp-agent-text-ui);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-accent);
+  }
+  .lp-agent-device-name { font-weight: var(--font-weight-semibold); }
+  .lp-agent-device-width { flex: 1; }
+  .lp-agent-device-key {
+    width: var(--lp-agent-key-size);
+    height: var(--lp-agent-key-size);
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-accent-tint);
+  }
+  .lp-agent-dots {
+    display: grid;
+    grid-template-columns: repeat(4, var(--lp-agent-dot));
+    gap: var(--lp-agent-dot) var(--lp-space-0-75);
+    padding: var(--lp-space-0-5);
+    width: var(--lp-space-4);
+    box-sizing: content-box;
+  }
+  .lp-agent-dots span {
+    width: var(--lp-agent-dot);
+    height: var(--lp-agent-dot);
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.3;
+  }
+  .lp-agent-card[data-active] .lp-agent-dots span {
+    animation: lp-agent-dots var(--lp-agent-dots-duration) linear infinite;
+    animation-delay: calc(var(--i) * var(--lp-agent-dots-duration) / -7);
+  }
+
+  /* -- 3. A footer rebuilt from a screenshot -- */
+  .lp-agent-footer {
+    position: absolute;
+    left: 50%;
+    bottom: var(--lp-space-15);
+    translate: -50% 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--lp-agent-footer-gap);
+    width: var(--lp-agent-footer-w);
+    height: var(--lp-agent-footer-h);
+    box-sizing: border-box;
+    padding: var(--lp-space-10) var(--lp-space-2-5) var(--lp-space-2-5);
+    background: var(--lp-agent-card);
+    font-size: var(--lp-agent-text-mini);
+    line-height: var(--lp-agent-text-mini--lh);
+    color: var(--lp-agent-fg-muted);
+  }
+  .lp-agent-footer p { margin: 0; }
+  .lp-agent-footer-cols {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: var(--lp-space-2-5);
+    width: 100%;
+  }
+  .lp-agent-footer-col {
+    --lp-agent-sel-count: 6;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-1-25);
+  }
+  .lp-agent-footer-col[data-i="1"] { --lp-agent-sel: 1; }
+  .lp-agent-footer-col[data-i="2"] { --lp-agent-sel: 2; }
+  .lp-agent-footer-col[data-i="3"] { --lp-agent-sel: 3; }
+  .lp-agent-footer-col[data-i="4"] { --lp-agent-sel: 4; }
+  .lp-agent-footer-col[data-i="5"] { --lp-agent-sel: 5; }
+  .lp-agent-footer-title { color: var(--lp-agent-on); }
+  .lp-agent-footer-base {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-agent-footer-stack);
+    width: 100%;
+  }
+  .lp-agent-footer-mark {
+    display: block;
+    width: var(--lp-agent-footer-mark-w);
+    font-size: var(--lp-agent-footer-mark-size);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1;
+    letter-spacing: var(--lp-agent-footer-mark-tracking);
+    white-space: nowrap;
+    opacity: var(--lp-agent-mark-fade);
+  }
+  .lp-agent-footer-legal {
+    display: flex;
+    justify-content: space-between;
+    gap: var(--lp-space-5);
+    padding-top: var(--lp-agent-footer-stack);
+    box-shadow: inset 0 1px 0 var(--lp-agent-line);
+    white-space: nowrap;
+  }
+
+  /* -- 4. Interactions: an open mega menu -- */
+  .lp-agent-well[data-kind="interactions"] .lp-agent-stage { padding: var(--lp-space-15); box-sizing: border-box; }
+  .lp-agent-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-5);
+    padding: var(--lp-space-5);
+    border-radius: var(--lp-agent-radius-menu);
+    background: var(--lp-agent-menu);
+    box-shadow: var(--lp-agent-ring-menu);
+    font-size: var(--lp-agent-text-menu);
+    line-height: var(--lp-agent-text-menu--lh);
+    color: var(--lp-agent-on);
+  }
+  .lp-agent-menu p { margin: 0; }
+  .lp-agent-menu-nav,
+  .lp-agent-menu-body {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) var(--lp-agent-menu-media);
+  }
+  .lp-agent-menu-nav { padding-bottom: var(--lp-space-5); box-shadow: inset 0 -1px 0 var(--lp-agent-line); }
+  .lp-agent-menu-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .lp-agent-card[data-active] .lp-agent-menu-col li {
+    animation: lp-agent-beat var(--duration-slow) var(--ease-smooth) both;
+    animation-delay: calc(var(--i) * var(--duration-micro) / 2);
+  }
+  .lp-agent-menu-media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: var(--lp-agent-menu-media);
+    height: var(--lp-agent-menu-media);
+    margin: 0;
+    border-radius: var(--lp-agent-radius-bar);
+    overflow: clip;
+  }
+  .lp-agent-menu-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .lp-agent-menu-media figcaption {
+    position: relative;
+    padding: var(--lp-space-1-25) var(--lp-space-3);
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-glass);
+    backdrop-filter: blur(var(--lp-agent-blur));
+    font-size: var(--lp-agent-text-pill);
+    line-height: var(--lp-agent-text-menu--lh);
+  }
+
+  /* -- 5. Canvas: three social assets, the middle one selected -- */
+  .lp-agent-social {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--lp-space-5);
+    padding-top: var(--lp-space-15);
+  }
+  .lp-agent-assets { display: flex; gap: var(--lp-space-5); }
+  .lp-agent-asset {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    margin: 0;
+    font-size: var(--lp-agent-text-ui);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-fg-dim);
+  }
+  .lp-agent-asset[data-selected] { color: var(--lp-agent-accent); }
+  .lp-agent-asset-frame { position: relative; width: var(--lp-agent-asset-w); height: var(--lp-agent-asset-h); }
+  .lp-agent-asset-frame img { display: block; width: 100%; height: 100%; object-fit: cover; }
+  .lp-agent-asset[data-selected] .lp-agent-asset-frame { box-shadow: 0 0 0 1px var(--lp-agent-accent-line); }
+  .lp-agent-asset-pick {
+    position: absolute;
+    inset: 15% 6% 50%;
+    box-shadow: inset 0 0 0 1px var(--lp-agent-accent);
+  }
+  .lp-agent-zoom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: var(--lp-agent-zoom-w);
+    box-sizing: border-box;
+    padding: var(--lp-space-2);
+    border-radius: var(--lp-agent-radius-bar);
+    background: var(--lp-agent-well);
+  }
+  .lp-agent-zoom-key {
+    width: var(--lp-agent-key-size);
+    height: var(--lp-agent-key-size);
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-key);
+  }
+  .lp-agent-zoom-level {
+    padding: var(--lp-space-0-75) var(--lp-space-3);
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-bubble);
+    font-size: var(--lp-agent-text-ui);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-on);
+  }
+
+  /* -- Sticky agent panel -- */
+  .lp-agent-panel {
+    position: sticky;
+    top: var(--lp-agent-panel-top);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: none;
+    width: var(--lp-agent-panel-w);
+    height: var(--lp-agent-card-h);
+    box-sizing: border-box;
+    padding: var(--lp-space-2-5);
+    border-radius: var(--lp-agent-radius-card);
+    background: var(--lp-agent-panel);
+    overflow: clip;
+    font-size: var(--lp-agent-text-ui);
+    line-height: var(--lp-agent-text-ui--lh);
+    font-weight: var(--font-weight-medium);
+    color: var(--lp-agent-on);
+  }
+  .lp-agent-panel p { margin: 0; }
+  .lp-agent-states { display: grid; flex: 1; min-height: 0; }
+  .lp-agent-state {
+    grid-area: 1 / 1;
+    min-height: 0;
+    opacity: 0;
+    transition: opacity var(--duration-fast) var(--ease-smooth);
+  }
+  .lp-agent-state[data-active] {
+    opacity: 1;
+    transition-duration: var(--duration-medium);
+  }
+  /* The inspector runs the panel's full height; the composer steps aside. */
+  .lp-agent-states:has(> [data-kind="inspector"][data-active]) + .lp-agent-composer {
+    opacity: 0;
+    translate: 0 var(--motion-distance-lg);
+    visibility: hidden;
+  }
+
+  /* One beat per message; opens slower than the panel swap. */
+  .lp-agent-beat { opacity: 0; }
+  .lp-agent-state[data-active] .lp-agent-beat {
+    animation: lp-agent-beat var(--duration-slow) var(--ease-smooth) both;
+    animation-delay: calc(var(--lp-agent-beat, 0) * var(--lp-agent-step));
+  }
+  [data-beat="1"] { --lp-agent-beat: 1; }
+  [data-beat="2"] { --lp-agent-beat: 2; }
+  [data-beat="3"] { --lp-agent-beat: 3; }
+  [data-beat="4"] { --lp-agent-beat: 4; }
+
+  .lp-agent-chat { display: flex; flex-direction: column; gap: var(--lp-space-5); }
+  .lp-agent-bubble {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    padding: var(--lp-space-2-5) var(--lp-space-10) var(--lp-space-2-5) var(--lp-space-2-5);
+    border-radius: var(--lp-agent-radius-well);
+    background: var(--lp-agent-bubble);
+  }
+  .lp-agent-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--lp-space-0-75);
+    margin-inline-end: var(--lp-space-0-5);
+    padding: 0 var(--lp-space-0-75);
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-accent-wash);
+    color: var(--lp-agent-accent);
+    vertical-align: top;
+    white-space: nowrap;
+  }
+  .lp-agent-attach {
+    width: var(--lp-agent-attach);
+    height: var(--lp-agent-attach);
+    border-radius: var(--lp-agent-radius-field);
+    object-fit: cover;
+  }
+  .lp-agent-copy {
+    position: absolute;
+    right: var(--lp-space-2-5);
+    bottom: var(--lp-space-2-5);
+    display: grid;
+    place-items: center;
+    width: var(--lp-agent-key-size);
+    height: var(--lp-agent-key-size);
+    padding: 0;
+    border: 0;
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-copy);
+    color: var(--lp-agent-fg-soft);
+    cursor: pointer;
+  }
+
+  .lp-agent-answer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    padding-left: var(--lp-space-2-5);
+  }
+  .lp-agent-think {
+    display: grid;
+    font-size: var(--lp-agent-text-ui);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-fg-dim);
+  }
+  .lp-agent-think > * { grid-area: 1 / 1; }
+  .lp-agent-think span span { margin-inline-start: var(--lp-space-1-25); }
+  .lp-agent-think-done { opacity: 0; }
+  .lp-agent-state[data-active] .lp-agent-think-live {
+    animation: lp-agent-think-out var(--duration-fast) var(--ease-smooth) both;
+    animation-delay: calc(2 * var(--lp-agent-step));
+  }
+  .lp-agent-state[data-active] .lp-agent-think-done {
+    animation: lp-agent-beat var(--duration-slow) var(--ease-smooth) both;
+    animation-delay: calc(2 * var(--lp-agent-step));
+  }
+  .lp-agent-plan {
+    display: flex;
+    align-items: center;
+    gap: var(--lp-space-2-5);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-fg-soft);
+  }
+  .lp-agent-plan span:first-of-type { flex: 1; }
+  .lp-agent-plan-time { color: var(--lp-agent-fg-dim); }
+  .lp-agent-reply { color: var(--lp-agent-fg-soft); }
+
+  .lp-agent-icon { width: var(--lp-agent-icon); height: var(--lp-agent-icon); flex: none; }
+  .lp-agent-icon-sm { width: var(--lp-agent-icon-sm); height: var(--lp-agent-icon-sm); flex: none; }
+  .lp-agent-icon-xs { width: var(--lp-agent-icon-xs); height: var(--lp-agent-icon-xs); flex: none; }
+
+  /* Composer */
+  .lp-agent-composer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--lp-space-2-5);
+    height: var(--lp-agent-composer-h);
+    box-sizing: border-box;
+    padding: var(--lp-space-2-5);
+    border-radius: var(--lp-agent-radius-well);
+    background: var(--lp-agent-composer);
+    transition-property: opacity, translate, visibility;
+    transition-duration: var(--duration-medium);
+    transition-timing-function: var(--ease-smooth);
+  }
+  .lp-agent-input {
+    flex: 1;
+    min-height: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    resize: none;
+    font: inherit;
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-on);
+    outline: none;
+  }
+  .lp-agent-input::placeholder { color: var(--lp-agent-fg-dim); }
+  .lp-agent-composer:has(.lp-agent-input:focus-visible) { box-shadow: inset 0 0 0 1px var(--lp-agent-accent-line); }
+  .lp-agent-composer-bar { display: flex; align-items: center; justify-content: space-between; }
+  .lp-agent-model {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--lp-space-1);
+    padding: 0;
+    border: 0;
+    background: none;
+    font: inherit;
+    color: var(--lp-agent-fg-faint);
+    white-space: nowrap;
+    cursor: pointer;
+    transition: color var(--duration-micro) var(--ease-smooth);
+  }
+  .lp-agent-model:hover { color: var(--lp-agent-fg-soft); }
+  .lp-agent-keys { display: flex; gap: var(--lp-space-1-25); }
+  .lp-agent-key {
+    display: grid;
+    place-items: center;
+    width: var(--lp-agent-key-size);
+    height: var(--lp-agent-key-size);
+    padding: 0;
+    border: 0;
+    border-radius: var(--lp-agent-radius-key);
+    background: var(--lp-agent-key);
+    color: var(--lp-agent-on);
+    cursor: pointer;
+    transition-property: background-color, scale;
+    transition-duration: var(--duration-micro);
+    transition-timing-function: var(--ease-smooth);
+  }
+  .lp-agent-key:hover,
+  .lp-agent-copy:hover { background: var(--lp-agent-key-hover); }
+  .lp-agent-key:active,
+  .lp-agent-copy:active,
+  .lp-agent-model:active { scale: 0.96; }
+  .lp-agent-key:focus-visible,
+  .lp-agent-copy:focus-visible,
+  .lp-agent-model:focus-visible {
+    outline: 2px solid var(--lp-agent-accent);
+    outline-offset: 2px;
+  }
+  .lp-agent-sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* Inspector (fifth card) */
+  .lp-agent-inspector { display: flex; flex-direction: column; padding-inline: var(--lp-space-1-25); }
+  .lp-agent-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--lp-agent-section-h);
+    padding-inline: var(--lp-space-2-5);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+    color: var(--lp-agent-on);
+  }
+  .lp-agent-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--lp-agent-field-h);
+    margin-bottom: var(--lp-space-2-5);
+    padding-left: var(--lp-space-2-5);
+    line-height: var(--lp-agent-text-ui-tight--lh);
+  }
+  .lp-agent-row-label { width: var(--lp-agent-field-label); color: var(--lp-agent-fg-soft); }
+  .lp-agent-row-control { display: flex; align-items: center; gap: var(--lp-space-2-5); width: var(--lp-agent-field); }
+  .lp-agent-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--lp-space-1-25);
+    height: var(--lp-agent-field-h);
+    box-sizing: border-box;
+    padding: 0 var(--lp-space-2);
+    border-radius: var(--lp-agent-radius-field);
+    background: var(--lp-agent-bubble);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .lp-agent-field[data-size="half"] { width: var(--lp-agent-field-half); }
+  .lp-agent-field[data-size="full"] { width: var(--lp-agent-field); }
+  .lp-agent-field[data-swatch] { justify-content: flex-start; padding-left: var(--lp-space-1); gap: var(--lp-space-2); }
+  .lp-agent-field[data-swatch] .lp-agent-icon-xs { margin-inline-start: auto; }
+  .lp-agent-swatch {
+    flex: none;
+    width: var(--lp-agent-swatch-size);
+    height: var(--lp-agent-swatch-size);
+    border-radius: var(--lp-agent-radius-swatch);
+    background: var(--lp-agent-swatch);
+  }
+  .lp-agent-field[data-swatch="white"] .lp-agent-swatch { background: var(--lp-agent-on); }
+  .lp-agent-field[data-swatch="accent"] .lp-agent-swatch { background: var(--lp-agent-accent); }
+  .lp-agent-placeholder { color: var(--lp-agent-fg-faint); }
+  .lp-agent-slider {
+    position: relative;
+    width: var(--lp-agent-field-half);
+    height: var(--lp-agent-dot);
+    border-radius: 1px;
+    background: var(--lp-agent-track);
+  }
+  .lp-agent-slider-knob {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    width: var(--lp-agent-icon-sm);
+    height: var(--lp-agent-icon-sm);
+    translate: 0 -50%;
+    border-radius: 50%;
+    background: var(--lp-agent-on);
+    box-shadow: var(--lp-agent-shadow-knob);
+  }
+  .lp-agent-segments { gap: 0; padding: var(--lp-space-0-5); }
+  .lp-agent-segment {
+    display: grid;
+    place-items: center;
+    flex: 1;
+    height: var(--lp-agent-thumb-h);
+    border-radius: var(--lp-agent-radius-thumb);
+    color: var(--lp-agent-fg-faint);
+  }
+  .lp-agent-segment[data-on] {
+    background: var(--lp-agent-thumb);
+    box-shadow: var(--lp-agent-shadow-thumb), var(--lp-agent-ring-thumb);
+    color: var(--lp-agent-on);
+  }
+  .lp-agent-divider { flex: none; width: 1px; height: var(--lp-agent-divider-h); background: var(--lp-agent-fg-faint); }
+
+  /* Below the desktop band the panel goes. */
+  @media (max-width: 1023px) {
+    .lp-agent-panel { display: none; }
+    .lp-agent-cards { flex-basis: auto; width: 100%; max-width: var(--lp-agent-card-w); }
+  }
+  @media (max-width: 767px) {
+    .lp-agent-cards { gap: var(--lp-space-10); }
+    .lp-agent-card { height: auto; }
+  }
+}
+
+@keyframes lp-agent-beat {
+  from { opacity: 0; translate: 0 var(--motion-distance-sm); }
+  to { opacity: 1; translate: 0 0; }
+}
+@keyframes lp-agent-think-out {
+  to { opacity: 0; }
+}
+@keyframes lp-agent-select {
+  0%, 2% { opacity: 0; }
+  6%, 28% { opacity: 1; }
+  33%, 100% { opacity: 0; }
+}
+@keyframes lp-agent-dots {
+  0%, 18% { opacity: 1; }
+  35% { opacity: 0.6; }
+  50%, 100% { opacity: 0.3; }
+}

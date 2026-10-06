@@ -1,0 +1,498 @@
+/* ============================================================================
+   Codecaine design system — shadcn/ui bridge
+   ----------------------------------------------------------------------------
+   shadcn components are written against a fixed set of variable names
+   (`--background`, `--primary`, `--border`, `--ring`, …) and against Tailwind's
+   default shadow scale. This file is the ONLY place those names exist: every
+   one of them is an alias onto a `--ui-*` token from theme.css.
+
+   Consequences:
+     · No shadcn color, radius, shadow or font ever reaches the page — a
+       component that asks for `bg-popover` gets `--ui-surface-raised`.
+     · Nothing here needs a dark-mode branch. The `--ui-*` tokens already swap
+       on [data-theme="dark"], and an alias declared on :root recomputes with
+       them.
+     · Adding a new shadcn component needs no restyling to stay on-theme.
+
+   Never hardcode a color here. If a shadcn slot has no semantic equivalent,
+   add the token to theme.css first, then alias it.
+   ========================================================================== */
+
+:root {
+  /* Radius — shadcn reads `var(--radius)` directly in a few places. */
+  --radius: var(--radius-md);
+
+  /* Ground + text */
+  --background: var(--ui-bg);
+  --foreground: var(--ui-fg);
+
+  /* Containers */
+  --card: var(--ui-surface);
+  --card-foreground: var(--ui-fg);
+  --popover: var(--ui-surface-raised);
+  --popover-foreground: var(--ui-fg);
+
+  /* Primary = the high-contrast fill, same skin as .btn-solid */
+  --primary: var(--ui-fg);
+  --primary-foreground: var(--ui-fg-onaccent);
+
+  /* Secondary = the tinted flat fill, same skin as .btn-soft */
+  --secondary: var(--ui-fill);
+  --secondary-foreground: var(--ui-fg-subtle);
+
+  /* Muted = inset wells and their captions */
+  --muted: var(--ui-surface-sunken);
+  --muted-foreground: var(--ui-fg-muted);
+
+  /* shadcn's "accent" is the row-hover wash, not the brand hue */
+  --accent: var(--ui-item-hover);
+  --accent-foreground: var(--ui-fg);
+
+  /* The brand hue lives under its own name for components that want it */
+  --brand: var(--ui-accent);
+  --brand-foreground: var(--ui-fg-onaccent);
+
+  --destructive: var(--ui-danger-solid);
+  --destructive-foreground: var(--ui-fg-ondanger);
+
+  --border: var(--ui-line);
+  --input: var(--ui-line-strong);
+  --ring: var(--ui-accent);
+
+  /* Charts reuse the five category accents from the suggestion chips */
+  --chart-1: var(--ui-cat-easing);
+  --chart-2: var(--ui-cat-duration);
+  --chart-3: var(--ui-cat-scale);
+  --chart-4: var(--ui-cat-blur);
+  --chart-5: var(--ui-cat-delay);
+
+  /* Sidebar */
+  --sidebar: var(--ui-surface);
+  --sidebar-foreground: var(--ui-fg);
+  --sidebar-primary: var(--ui-fg);
+  --sidebar-primary-foreground: var(--ui-fg-onaccent);
+  --sidebar-accent: var(--ui-item-hover);
+  --sidebar-accent-foreground: var(--ui-fg);
+  --sidebar-border: var(--ui-line);
+  --sidebar-ring: var(--ui-accent);
+}
+
+/* -- Bridge: shadcn aliases → Tailwind utilities ----------------------------
+   `@theme inline` emits `var(--…)`, so `bg-popover` follows the theme
+   attribute at runtime exactly like `bg-surface` does.                       */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-brand: var(--brand);
+  --color-brand-foreground: var(--brand-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Tailwind's default shadow scale, rewritten onto the house recipes, so a
+     shadcn `shadow-xs` / `shadow-lg` renders a house shadow — including the
+     dark-mode light-top-edge treatment. */
+  --shadow-2xs: var(--ui-shadow-drop);
+  --shadow-xs: var(--ui-shadow-drop);
+  --shadow-sm: var(--ui-shadow-card);
+  --shadow-md: var(--ui-shadow-card);
+  --shadow-lg: var(--ui-shadow-menu);
+  --shadow-xl: var(--ui-shadow-panel);
+  --shadow-2xl: var(--ui-shadow-modal);
+}
+
+/* -- Motion defaults --------------------------------------------------------
+   Unlayered on purpose: tw-animate-css ships its `animate-in` / `animate-out`
+   utilities in the utilities layer, and unlayered rules outrank every layer,
+   so these win without an `!important` or a specificity hack.
+
+   Opens are slower than closes and use the house curve — the same asymmetry
+   the `.m-dropdown` recipe in components.css uses.                           */
+.animate-in {
+  animation-duration: var(--duration-medium);
+  animation-timing-function: var(--ease-smooth);
+}
+
+.animate-out {
+  animation-duration: var(--duration-fast);
+  animation-timing-function: var(--ease-smooth);
+}
+
+/* ============================================================================
+   House conventions applied to shadcn slots
+   ----------------------------------------------------------------------------
+   Colors, radii, shadows and fonts already arrive through the aliases above.
+   What is left are the four house rules shadcn does not share, applied by
+   `data-slot` so they hold for every component — including one added later —
+   without editing 60 files:
+
+     1. One focus ring for the whole system.
+     2. Borders are inset shadows, never `border` — so a control's box never
+        changes size between rest, hover and focus.
+     3. Menus, popovers and dialogs are the `.menu` / modal surfaces, not
+        shadcn's bordered card.
+     4. Press feedback is `scale: .96`.
+
+   Unlayered on purpose: shadcn's styling is Tailwind utilities, which live in
+   the utilities layer, and unlayered rules outrank every layer — so none of
+   this needs `!important` or a specificity hack.
+   ========================================================================== */
+
+/* -- 1. Focus -------------------------------------------------------------- */
+
+/* shadcn draws a 3px outer glow and suppresses the outline. Both are replaced
+   by the single house ring from the base layer. */
+[data-slot]:focus-visible {
+  --tw-ring-shadow: 0 0 #0000;
+  --tw-ring-offset-shadow: 0 0 #0000;
+  outline: 2px solid var(--ui-accent);
+  outline-offset: 2px;
+}
+
+/* Text wells focus inward instead, so a focused field stays inside its row. */
+[data-slot="input"]:focus-visible,
+[data-slot="textarea"]:focus-visible,
+[data-slot="command-input"]:focus-visible,
+[data-slot="sidebar-input"]:focus-visible,
+[data-slot="combobox-chip-input"]:focus-visible {
+  outline: none;
+  box-shadow: var(--ui-shadow-focus);
+}
+
+/* Menu rows get the same inset hairline the house `.menu-item` uses. */
+[data-slot$="-item"]:focus-visible,
+[data-slot="command-item"]:focus-visible {
+  outline: none;
+  background: transparent;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--ui-accent) 45%, transparent);
+}
+
+/* -- 2. Wells -------------------------------------------------------------- */
+
+[data-slot="input"],
+[data-slot="textarea"],
+[data-slot="sidebar-input"],
+[data-slot="command-input"] {
+  border: 0;
+  background: var(--ui-input);
+  box-shadow: inset 0 0 0 1px transparent;
+}
+
+[data-slot="input"]:hover:not(:disabled):not(:focus-visible),
+[data-slot="textarea"]:hover:not(:disabled):not(:focus-visible) {
+  background: var(--ui-fill-hover);
+}
+
+[data-slot="select-trigger"],
+[data-slot="native-select"],
+[data-slot="combobox-trigger"] {
+  border: 0;
+  background: var(--ui-input-flat);
+  color: var(--ui-fg-strong);
+}
+
+[data-slot="select-trigger"]:hover:not(:disabled),
+[data-slot="native-select"]:hover:not(:disabled),
+[data-slot="combobox-trigger"]:hover:not(:disabled) {
+  background: var(--ui-fill-hover);
+}
+
+/* -- 3. Floating surfaces -------------------------------------------------- */
+
+[data-slot="dropdown-menu-content"],
+[data-slot="dropdown-menu-sub-content"],
+[data-slot="context-menu-content"],
+[data-slot="context-menu-sub-content"],
+[data-slot="menubar-content"],
+[data-slot="menubar-sub-content"],
+[data-slot="select-content"],
+[data-slot="combobox-content"],
+[data-slot="popover-content"],
+[data-slot="hover-card-content"],
+[data-slot="command"],
+[data-slot="navigation-menu-viewport"] {
+  border: 0;
+  border-radius: var(--radius-xl);
+  background: var(--ui-surface-raised);
+  box-shadow: var(--ui-shadow-menu);
+}
+
+[data-slot="tooltip-content"] {
+  border: 0;
+  border-radius: var(--radius-md);
+  color: var(--ui-fg-strong);
+  background: var(--ui-surface-raised);
+  box-shadow: var(--ui-shadow-menu);
+}
+
+/* Radix draws the tooltip arrow with the content's own background; keep it on
+   the raised surface rather than the inverted fill shadcn ships. */
+[data-slot="tooltip-content"] .bg-primary,
+[data-slot="tooltip-content"] > svg {
+  fill: var(--ui-surface-raised);
+  background: var(--ui-surface-raised);
+}
+
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"],
+[data-slot="sheet-content"],
+[data-slot="drawer-content"] {
+  border: 0;
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-modal);
+}
+
+[data-slot="dialog-content"],
+[data-slot="alert-dialog-content"] {
+  border-radius: var(--radius-2xl);
+}
+
+[data-slot="dialog-overlay"],
+[data-slot="alert-dialog-overlay"],
+[data-slot="sheet-overlay"],
+[data-slot="drawer-overlay"] {
+  background: var(--ui-overlay);
+}
+
+/* Menu rows: the house row height and hover wash. */
+[data-slot="dropdown-menu-item"],
+[data-slot="dropdown-menu-checkbox-item"],
+[data-slot="dropdown-menu-radio-item"],
+[data-slot="dropdown-menu-sub-trigger"],
+[data-slot="context-menu-item"],
+[data-slot="context-menu-checkbox-item"],
+[data-slot="context-menu-radio-item"],
+[data-slot="context-menu-sub-trigger"],
+[data-slot="menubar-item"],
+[data-slot="menubar-checkbox-item"],
+[data-slot="menubar-radio-item"],
+[data-slot="menubar-sub-trigger"],
+[data-slot="select-item"],
+[data-slot="combobox-item"],
+[data-slot="command-item"] {
+  min-height: var(--spacing-control-sm);
+  border-radius: var(--radius-md);
+}
+
+/* Section labels and separators match `.menu-section` / `.menu-divider`. */
+[data-slot="dropdown-menu-label"],
+[data-slot="context-menu-label"],
+[data-slot="menubar-label"],
+[data-slot="select-label"],
+[data-slot="combobox-label"],
+[data-slot="command-group"] [cmdk-group-heading] {
+  font-size: var(--text-2xs);
+  line-height: var(--text-2xs--line-height);
+  font-weight: var(--font-weight-normal);
+  color: var(--ui-fg-faint);
+}
+
+[data-slot="dropdown-menu-separator"],
+[data-slot="context-menu-separator"],
+[data-slot="menubar-separator"],
+[data-slot="select-separator"],
+[data-slot="combobox-separator"],
+[data-slot="command-separator"] {
+  background: var(--ui-line-soft);
+}
+
+/* -- 4. Press feedback ----------------------------------------------------- */
+
+[data-slot="button"]:active:not(:disabled),
+[data-slot="input-group-button"]:active:not(:disabled),
+[data-slot="pagination-link"]:active:not([aria-disabled="true"]),
+[data-slot="carousel-previous"]:active:not(:disabled),
+[data-slot="carousel-next"]:active:not(:disabled) {
+  scale: 0.96;
+}
+
+/* -- Odds and ends that carry a literal shadcn value ----------------------- */
+
+/* Switch: the house knob token and knob shadow, not a bare white circle. */
+[data-slot="switch-thumb"] {
+  background: var(--ui-knob);
+  box-shadow: var(--ui-shadow-knob);
+}
+[data-slot="switch"][data-state="checked"] {
+  background: var(--ui-accent);
+}
+[data-slot="switch"][data-state="unchecked"] {
+  background: var(--ui-fill-hover);
+}
+
+/* Slider + progress read the same track / accent tokens as the scrubber. */
+[data-slot="slider-track"],
+[data-slot="progress"] {
+  background: var(--ui-track);
+}
+[data-slot="slider-range"],
+[data-slot="progress-indicator"] {
+  background: var(--ui-accent);
+}
+[data-slot="slider-thumb"] {
+  border: 0;
+  background: var(--ui-knob);
+  box-shadow: var(--ui-shadow-knob), inset 0 0 0 1px var(--ui-line-strong);
+}
+
+/* Keycaps are the house `.kbd`. */
+[data-slot="kbd"] {
+  color: var(--ui-fg-muted);
+  background: var(--ui-item-hover);
+  box-shadow: inset 0 0 0 1px var(--ui-line-strong);
+}
+
+/* Skeletons pulse on the interaction fill, not on a gray literal. */
+[data-slot="skeleton"] {
+  background: var(--ui-fill-hover);
+}
+
+/* Tables and separators use the structural line token. */
+[data-slot="separator"],
+[data-slot="item-separator"],
+[data-slot="field-separator"],
+[data-slot="button-group-separator"] {
+  background: var(--ui-line);
+}
+[data-slot="table-row"],
+[data-slot="table-footer"],
+[data-slot="table-head"] {
+  border-color: var(--ui-line);
+}
+
+/* Cards are the house card: no border, the card shadow recipe. */
+[data-slot="card"] {
+  border: 0;
+  border-radius: var(--radius-xl);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-card);
+}
+
+/* Tabs: the house pill. The `line` variant keeps its underline treatment. */
+[data-slot="tabs-list"][data-variant="default"] {
+  border-radius: var(--radius-pill);
+  padding: 2px;
+  background: var(--ui-fill);
+}
+[data-slot="tabs-list"][data-variant="default"] [data-slot="tabs-trigger"] {
+  border: 0;
+  border-radius: var(--radius-pill);
+  color: var(--ui-fg-muted);
+}
+[data-slot="tabs-list"][data-variant="default"] [data-slot="tabs-trigger"]:hover {
+  color: var(--ui-fg);
+}
+[data-slot="tabs-list"][data-variant="default"] [data-slot="tabs-trigger"][data-state="active"] {
+  color: var(--ui-fg);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-drop), 0 0 0 1px var(--ui-line-strong);
+}
+
+/* Badges: the house badge geometry, one skin per variant. */
+[data-slot="badge"] {
+  height: var(--spacing-badge);
+  border: 0;
+  padding-block: 0;
+  font-size: var(--text-2xs);
+  line-height: var(--text-2xs--line-height);
+}
+[data-slot="badge"][data-variant="outline"] {
+  color: var(--ui-fg-subtle);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-hairline);
+}
+[data-slot="badge"][data-variant="secondary"] {
+  color: var(--ui-fg-muted);
+  background: var(--ui-fill);
+}
+[data-slot="badge"][data-variant="default"] {
+  box-shadow: var(--ui-shadow-drop);
+}
+
+/* Toggle / toggle group read the ghost-button skin. */
+[data-slot="toggle"],
+[data-slot="toggle-group-item"] {
+  color: var(--ui-fg-strong);
+}
+[data-slot="toggle"]:hover,
+[data-slot="toggle-group-item"]:hover {
+  background: var(--ui-ghost-hover);
+}
+[data-slot="toggle"][data-state="on"],
+[data-slot="toggle-group-item"][data-state="on"] {
+  color: var(--ui-fg);
+  background: var(--ui-fill);
+}
+
+/* Checkbox and radio: inset ring at rest, accent fill when checked. */
+[data-slot="checkbox"],
+[data-slot="radio-group-item"] {
+  border: 0;
+  background: var(--ui-input);
+  box-shadow: inset 0 0 0 1px var(--ui-line-strong);
+}
+[data-slot="checkbox"][data-state="checked"],
+[data-slot="radio-group-item"][data-state="checked"] {
+  color: var(--ui-fg-onaccent);
+  background: var(--ui-accent);
+  box-shadow: var(--ui-accent-ring);
+}
+
+/* OTP slots are wells, not bordered boxes: one inset hairline each, the house
+   focus ring on the active cell. */
+[data-slot="input-otp-slot"] {
+  border: 0;
+  background: var(--ui-input);
+  box-shadow: inset 0 0 0 1px var(--ui-line-strong);
+}
+[data-slot="input-otp-slot"][data-active="true"] {
+  box-shadow: var(--ui-shadow-focus);
+}
+
+/* Accordion / collapsible triggers take the ghost row treatment. */
+[data-slot="accordion-item"] {
+  border-color: var(--ui-line);
+}
+
+/* Alert is a flat card, not a bordered box. */
+[data-slot="alert"] {
+  border: 0;
+  border-radius: var(--radius-xl);
+  background: var(--ui-surface);
+  box-shadow: var(--ui-shadow-hairline);
+}
+
+/* Avatar falls back onto the interaction fill. */
+[data-slot="avatar-fallback"] {
+  color: var(--ui-fg-muted);
+  background: var(--ui-fill);
+}

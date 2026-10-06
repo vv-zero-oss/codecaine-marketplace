@@ -1,0 +1,19 @@
+/* ============================================================================
+   Codecaine homepage — build entry
+   ----------------------------------------------------------------------------
+   Import order is load-bearing:
+     tailwindcss    → the framework and its default theme
+     tw-animate-css → the enter/exit utilities shadcn components animate with
+     theme.css      → primitives, semantic tokens, the light/dark token blocks
+     shadcn.css     → shadcn's variable names aliased onto those tokens
+     components.css → the house component layer
+     landing.css    → the marketing pages' brand layer (--lp-*)
+   ========================================================================== */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./styles/theme.css";
+@import "./styles/shadcn.css";
+@import "./styles/components.css";
+@import "./styles/landing.css";
+
+@source "./";

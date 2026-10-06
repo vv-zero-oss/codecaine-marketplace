@@ -1,0 +1,442 @@
+/* ============================================================================
+   Codecaine design system — theme layer (Tailwind v4, CSS-first)
+   ----------------------------------------------------------------------------
+   Structure
+     1. Dark variant                — one `dark:` variant, two attribute hooks
+     2. Primitives (@theme)         — raw scales: fonts, sizes, radii, motion
+     3. Semantic runtime vars       — :root (light) + [data-theme=dark] (dark)
+     4. @theme inline bridge        — exposes semantic vars as Tailwind utilities
+     5. Base layer                  — page defaults, focus ring, reduced motion
+
+   Why the split: values in `@theme` are baked into utilities at build time, so
+   they cannot swap at runtime. Everything that changes between light and dark
+   lives in plain custom properties and is surfaced through `@theme inline`,
+   which emits `var(--ui-*)` instead of a copy. One attribute flip retints the
+   whole system — no duplicated dark rules in component CSS.
+   ========================================================================== */
+
+/* -- 1. Dark variant --------------------------------------------------------
+   `data-theme`    → page chrome (site nav, hero, demo surfaces)
+   `data-tl-theme` → embedded panel + its body-portaled menus/toasts
+   Either one turns on `dark:` so a host page and an embedded panel can be
+   themed together or independently.                                          */
+@custom-variant dark (&:where(
+  [data-theme="dark"], [data-theme="dark"] *,
+  [data-tl-theme="dark"], [data-tl-theme="dark"] *
+));
+
+/* -- 2. Primitives ---------------------------------------------------------- */
+@theme {
+  /* Type families — Inter and Roboto Mono, linked from Google Fonts in
+     index.html (no font package is installed). Inter is the one UI face; the display
+     role is Inter too, differentiated by size, weight and tracking rather
+     than by a second family. */
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "Roboto Mono", ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+  --font-display: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  /* Font weights — named roles so a component never writes a raw number. */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  /* Default transition — Tailwind's bare `transition` utility now runs on the
+     house curve at the micro duration instead of its own 150ms ease. */
+  --default-transition-duration: 120ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Type scale — px-locked because this is dense tool UI, not flowing prose.
+     Every size in the source page maps to exactly one step below.            */
+  --text-2xs: 11px;   --text-2xs--line-height: 14px;   /* meta, keycaps, version   */
+  --text-xs: 12px;    --text-xs--line-height: 16px;    /* captions, helper text    */
+  --text-sm: 13px;    --text-sm--line-height: 18px;    /* body — the UI default    */
+  --text-base: 14px;  --text-base--line-height: 20px;  /* prose body               */
+  --text-md: 15px;    --text-md--line-height: 21px;    /* card + section titles    */
+  --text-lg: 16px;    --text-lg--line-height: 24px;    /* lead paragraph           */
+  --text-xl: 18px;    --text-xl--line-height: 24px;    /* eyebrow                  */
+  --text-2xl: 26px;   --text-2xl--line-height: 32px;   /* page title (small vp)    */
+  --text-3xl: 36px;   --text-3xl--line-height: 34px;   /* hero                     */
+
+  /* Tracking — tight on display sizes, neutral in UI */
+  --tracking-display: -0.01em;
+  --tracking-eyebrow: -0.005em;
+
+  /* Radii */
+  --radius-xs: 5px;
+  --radius-sm: 6px;
+  --radius-md: 8px;    /* default control radius */
+  --radius-lg: 10px;
+  --radius-xl: 12px;   /* menus, cards, panels   */
+  --radius-2xl: 14px;
+  --radius-3xl: 20px;
+  --radius-pill: 999px;
+
+  /* Control heights — three sizes, nothing else */
+  --spacing-control-sm: 32px;
+  --spacing-control-md: 36px;
+  --spacing-control-lg: 40px;
+  --spacing-chip: 24px;
+  --spacing-badge: 20px;
+
+  /* Motion — durations  */
+  --duration-micro: 120ms;      /* hover / press feedback           */
+  --duration-fast: 150ms;       /* quick state changes, closes      */
+  --duration-medium: 250ms;     /* standard UI motion, opens        */
+  --duration-slow: 400ms;       /* larger surfaces, panels          */
+  --duration-very-slow: 600ms;  /* page-level moments               */
+
+  /* Motion — easing */
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);        /* the house curve       */
+  --ease-morph: cubic-bezier(0.34, 1.25, 0.64, 1);      /* size morphs           */
+  --ease-bounce: cubic-bezier(0.34, 1.36, 0.64, 1);     /* badge pop             */
+  --ease-bounce-strong: cubic-bezier(0.34, 3.85, 0.64, 1);
+
+  /* Motion — distances, pre-scales and blurs */
+  --motion-distance-sm: 8px;
+  --motion-distance-md: 10px;
+  --motion-distance-lg: 40px;
+  --motion-distance-xl: 100px;
+  --motion-scale-lg: 0.96;   /* modal open/close     */
+  --motion-scale-md: 0.97;   /* dropdown open        */
+  --motion-scale-sm: 0.98;   /* tooltip open         */
+  --motion-scale-xs: 0.99;   /* dropdown close       */
+  --blur-motion-sm: 2px;
+  --blur-motion-md: 3px;
+  --blur-motion-lg: 8px;
+}
+
+/* -- 3. Semantic runtime vars ---------------------------------------------- */
+:root {
+  color-scheme: light;
+
+  /* Surfaces */
+  --ui-bg: #fdfdfd;                       /* page ground                       */
+  --ui-bg-alt: #eeeeee;                   /* alternate demo ground             */
+  --ui-surface: #ffffff;                  /* panels, cards, buttons at rest    */
+  --ui-surface-raised: #ffffff;           /* menus, toasts, popovers           */
+  --ui-surface-sunken: #f6f6f7;           /* inset wells: curve, preview track */
+  --ui-overlay: rgb(15 17 21 / 0.45);     /* modal scrim                       */
+
+  /* Text */
+  --ui-fg: #17181c;
+  --ui-fg-strong: #1b1b1b;
+  --ui-fg-muted: #585858;
+  --ui-fg-subtle: #696969;
+  --ui-fg-faint: #979797;
+  --ui-fg-disabled: #9294a6;
+  --ui-fg-onaccent: #ffffff;
+
+  /* Lines */
+  --ui-line: #ededf0;                     /* structural dividers               */
+  --ui-line-soft: #f0f0f0;                /* in-surface hairlines              */
+  --ui-line-strong: rgb(0 0 0 / 0.08);    /* chip / card rings                 */
+
+  /* Interaction fills */
+  --ui-fill: rgb(170 170 170 / 0.1);
+  --ui-fill-hover: rgb(170 170 170 / 0.2);
+  --ui-fill-active: rgb(170 170 170 / 0.28);
+  --ui-ghost-hover: #f7f7f7;
+  --ui-ghost-active: #f0f0f0;
+  --ui-raised: #ffffff;                   /* white raised button rest          */
+  --ui-raised-hover: #f9f9f9;
+  --ui-input: rgb(238 238 239 / 0.51);    /* scrubber field well               */
+  --ui-input-flat: #f7f7f7;               /* select trigger                    */
+  --ui-input-fill: rgb(219 219 219 / 0.4);/* scrubber progress                 */
+  --ui-track: #eeeeef;
+  --ui-track-hover: #e9e9e9;
+  --ui-thumb: #767676;
+  --ui-item-hover: #f4f4f5;               /* menu rows                         */
+  --ui-item-active: #ededee;
+
+  /* Accent (blue) */
+  --ui-accent: #0071e2;
+  --ui-accent-strong: #0073e5;
+  --ui-accent-bg: rgb(0 117 237 / 0.06);
+  --ui-accent-bg-hover: rgb(0 117 237 / 0.1);
+  --ui-accent-bg-active: rgb(0 117 237 / 0.14);
+  --ui-accent-ring: inset 0 0 0 1px rgb(0 101 208 / 0.1),
+                    inset 0 -1px 0 0 rgb(3 66 142 / 0.15);
+
+  /* Status */
+  --ui-success: #18a32f;
+  --ui-success-strong: #118c25;
+  --ui-success-bg: rgb(132 211 125 / 0.1);
+  --ui-success-fill: rgb(68 167 84 / 0.1);
+  --ui-success-dot: #34cc20;
+  --ui-danger: #c0392b;
+  --ui-danger-bg: rgb(192 57 43 / 0.06);
+  --ui-danger-solid: #e5484d;              /* destructive button fill          */
+  --ui-danger-solid-hover: #d93b40;
+  --ui-fg-ondanger: #ffffff;
+  --ui-warn: #c2410c;
+
+  /* Knobs + indicator dots */
+  --ui-knob: #ffffff;                      /* switch / slider knob             */
+  --ui-dot-off: #a1a1a1;                   /* idle status dot                  */
+
+  /* Category accents (suggestion chips) — text tint only, bg/ring derived */
+  --ui-cat-easing: #a830fd;
+  --ui-cat-duration: #3097fd;
+  --ui-cat-scale: #26953b;
+  --ui-cat-blur: #0e9aa7;
+  --ui-cat-delay: #c35c00;
+
+  /* Shadow recipes — drop + inset ring composed into one token each.
+     Borders are drawn with inset rings, never `border`, so a control's box
+     size never shifts between states.                                        */
+  --ui-shadow-ring: inset 0 0 0 1px rgb(0 0 0 / 0.06),
+                    inset 0 -1px 0 0 rgb(0 0 0 / 0.06),
+                    inset 0 0 0 1px rgb(196 196 196 / 0.1);
+  --ui-shadow-drop: 0 1px 3px 0 rgb(0 0 0 / 0.04);
+  --ui-shadow-drop-accent: 0 1px 3px 0 rgb(4 41 117 / 0.08);
+  --ui-shadow-btn: 0 1px 3px 0 rgb(0 0 0 / 0.04),
+                   inset 0 0 0 1px rgb(0 0 0 / 0.06),
+                   inset 0 -1px 0 0 rgb(0 0 0 / 0.1),
+                   inset 0 0 0 1px rgb(196 196 196 / 0.1);
+  --ui-shadow-btn-inset: inset 0 0 0 1px rgb(0 0 0 / 0.06),
+                         inset 0 -1px 0 0 rgb(0 0 0 / 0.1),
+                         inset 0 0 0 1px rgb(196 196 196 / 0.1);
+  --ui-shadow-input: inset 0 0 0 1px rgb(0 0 0 / 0.02),
+                     inset 0 -1px 0 0 rgb(0 0 0 / 0.08),
+                     inset 0 0 0 1px rgb(191 191 191 / 0.1),
+                     0 1px 3px 0 rgb(0 0 0 / 0.06);
+  --ui-shadow-focus: inset 0 0 0 1px rgb(0 0 0 / 0.14),
+                     inset 0 0 0 0.5px rgb(255 255 255 / 0.06);
+  --ui-shadow-hairline: 0 0 0 1px rgb(0 0 0 / 0.08);
+  --ui-shadow-card: 0 0 0 1px rgb(0 0 0 / 0.05),
+                    0 1px 2px rgb(0 0 0 / 0.04),
+                    0 8px 24px rgb(0 0 0 / 0.06);
+  --ui-shadow-menu: 0 0 0 1px rgb(0 0 0 / 0.06),
+                    0 2px 6px rgb(0 0 0 / 0.05),
+                    0 4px 42px rgb(0 0 0 / 0.06);
+  --ui-shadow-panel: 0 0 0 1px rgb(0 0 0 / 0.08),
+                     0 2px 6px 0 rgb(0 0 0 / 0.05),
+                     0 4px 42px 0 rgb(0 0 0 / 0.06);
+  --ui-shadow-modal: 0 10px 40px rgb(0 0 0 / 0.18);
+  --ui-shadow-knob: 0 1px 2px rgb(0 0 0 / 0.25);
+}
+
+/* Specificity matters here: these must outrank `:root` (0,1,0). `:where()`
+   is zero-specificity, so it would silently lose — hence the bare element
+   + attribute selectors (0,1,1). Do not wrap this block in :where().    */
+html[data-theme="dark"],
+html[data-tl-theme="dark"] {
+  color-scheme: dark;
+
+  --ui-bg: #121212;
+  --ui-bg-alt: #0d0d0d;
+  --ui-surface: #1b1b1b;
+  --ui-surface-raised: #202020;
+  --ui-surface-sunken: rgb(255 255 255 / 0.04);
+  --ui-overlay: rgb(0 0 0 / 0.6);
+
+  --ui-fg: #fbfbfb;
+  --ui-fg-strong: #fbfbfb;
+  --ui-fg-muted: #979797;
+  --ui-fg-subtle: #979797;
+  --ui-fg-faint: #8b8b8b;
+  --ui-fg-disabled: #6b6b6b;
+  --ui-fg-onaccent: #10131a;
+
+  --ui-line: #262626;
+  --ui-line-soft: #262626;
+  --ui-line-strong: rgb(255 255 255 / 0.1);
+
+  --ui-fill: rgb(255 255 255 / 0.06);
+  --ui-fill-hover: rgb(255 255 255 / 0.1);
+  --ui-fill-active: rgb(255 255 255 / 0.12);
+  --ui-ghost-hover: rgb(255 255 255 / 0.04);
+  --ui-ghost-active: rgb(255 255 255 / 0.06);
+  --ui-raised: rgb(255 255 255 / 0.06);
+  --ui-raised-hover: rgb(255 255 255 / 0.1);
+  --ui-input: rgb(255 255 255 / 0.04);
+  --ui-input-flat: rgb(255 255 255 / 0.04);
+  --ui-input-fill: rgb(255 255 255 / 0.1);
+  --ui-track: rgb(255 255 255 / 0.1);
+  --ui-track-hover: rgb(255 255 255 / 0.14);
+  --ui-thumb: #767676;
+  --ui-item-hover: rgb(255 255 255 / 0.04);
+  --ui-item-active: rgb(255 255 255 / 0.06);
+
+  --ui-accent: #90dcff;
+  --ui-accent-strong: #b3e6ff;
+  --ui-accent-bg: rgb(0 128 255 / 0.17);
+  --ui-accent-bg-hover: rgb(0 128 255 / 0.25);
+  --ui-accent-bg-active: rgb(0 128 255 / 0.3);
+  --ui-accent-ring: inset 0 0 0 1px rgb(85 207 255 / 0.04),
+                    inset 0 1px 0 0 rgb(85 207 255 / 0.06);
+
+  --ui-success: #70e984;
+  --ui-success-strong: #8ef09e;
+  --ui-success-bg: rgb(151 251 142 / 0.1);
+  --ui-success-fill: rgb(68 167 84 / 0.1);
+  --ui-success-dot: #34cc20;
+  --ui-danger: #ff8a7a;
+  --ui-danger-bg: rgb(192 57 43 / 0.14);
+  --ui-danger-solid: #e5484d;
+  --ui-danger-solid-hover: #ec5f63;
+  --ui-fg-ondanger: #ffffff;
+  --ui-warn: #f99032;
+
+  --ui-knob: #ffffff;
+  --ui-dot-off: #6b6b6b;
+
+  --ui-cat-easing: #c471ff;
+  --ui-cat-duration: #50a7ff;
+  --ui-cat-scale: #64d378;
+  --ui-cat-blur: #3ec9d6;
+  --ui-cat-delay: #f99032;
+
+  /* Dark elevation is a light top edge, not a heavier drop shadow. */
+  --ui-shadow-ring: inset 0 0 0 1px rgb(255 255 255 / 0.04),
+                    inset 0 1px 0 0 rgb(255 255 255 / 0.06);
+  --ui-shadow-drop: 0 1px 1px 0 rgb(0 0 0 / 0.24);
+  --ui-shadow-drop-accent: 0 1px 1px 0 rgb(0 0 0 / 0.24);
+  --ui-shadow-btn: 0 1px 1px 0 rgb(0 0 0 / 0.24),
+                   inset 0 0 0 1px rgb(255 255 255 / 0.04),
+                   inset 0 1px 0 0 rgb(255 255 255 / 0.06);
+  --ui-shadow-btn-inset: inset 0 0 0 1px rgb(255 255 255 / 0.04),
+                         inset 0 1px 0 0 rgb(255 255 255 / 0.06);
+  --ui-shadow-input: 0 1px 1px 0 rgb(0 0 0 / 0.24),
+                     inset 0 0 0 1px rgb(255 255 255 / 0.04),
+                     inset 0 1px 0 0 rgb(255 255 255 / 0.06);
+  --ui-shadow-focus: inset 0 0 0 1px rgb(255 255 255 / 0.14),
+                     inset 0 0 0 0.5px rgb(255 255 255 / 0.06);
+  --ui-shadow-hairline: 0 0 0 1px rgb(255 255 255 / 0.08);
+  --ui-shadow-card: 0 0 0 1px rgb(255 255 255 / 0.06),
+                    0 1px 2px rgb(0 0 0 / 0.4),
+                    0 8px 24px rgb(0 0 0 / 0.5);
+  --ui-shadow-menu: 0 0 0 1px rgb(0 0 0 / 0.06),
+                    0 2px 6px rgb(0 0 0 / 0.05),
+                    0 4px 42px rgb(0 0 0 / 0.24),
+                    inset 0 0 0 1px rgb(255 255 255 / 0.04),
+                    inset 0 1px 0 0 rgb(255 255 255 / 0.03);
+  --ui-shadow-panel: 0 2px 6px 0 rgb(0 0 0 / 0.05),
+                     0 4px 42px 0 rgb(0 0 0 / 0.24),
+                     inset 0 0 0 1px rgb(255 255 255 / 0.04),
+                     inset 0 1px 0 0 rgb(255 255 255 / 0.02);
+  --ui-shadow-modal: 0 10px 40px rgb(0 0 0 / 0.6);
+  --ui-shadow-knob: 0 1px 2px rgb(0 0 0 / 0.4);
+}
+
+/* -- 4. Bridge: semantic vars → Tailwind utilities --------------------------
+   `@theme inline` emits `var(--ui-*)` in the generated utility instead of a
+   copied literal, so `bg-surface` follows the theme attribute at runtime.    */
+@theme inline {
+  --color-bg: var(--ui-bg);
+  --color-bg-alt: var(--ui-bg-alt);
+  --color-surface: var(--ui-surface);
+  --color-surface-raised: var(--ui-surface-raised);
+  --color-surface-sunken: var(--ui-surface-sunken);
+  --color-overlay: var(--ui-overlay);
+
+  --color-fg: var(--ui-fg);
+  --color-fg-strong: var(--ui-fg-strong);
+  --color-fg-muted: var(--ui-fg-muted);
+  --color-fg-subtle: var(--ui-fg-subtle);
+  --color-fg-faint: var(--ui-fg-faint);
+  --color-fg-disabled: var(--ui-fg-disabled);
+  --color-fg-onaccent: var(--ui-fg-onaccent);
+
+  --color-line: var(--ui-line);
+  --color-line-soft: var(--ui-line-soft);
+  --color-line-strong: var(--ui-line-strong);
+
+  --color-fill: var(--ui-fill);
+  --color-fill-hover: var(--ui-fill-hover);
+  --color-fill-active: var(--ui-fill-active);
+  --color-ghost-hover: var(--ui-ghost-hover);
+  --color-raised: var(--ui-raised);
+  --color-raised-hover: var(--ui-raised-hover);
+  --color-input: var(--ui-input);
+  --color-input-flat: var(--ui-input-flat);
+  --color-track: var(--ui-track);
+  --color-thumb: var(--ui-thumb);
+  --color-item-hover: var(--ui-item-hover);
+  --color-item-active: var(--ui-item-active);
+
+  --color-accent-brand: var(--ui-accent);
+  --color-accent-strong: var(--ui-accent-strong);
+  --color-accent-bg: var(--ui-accent-bg);
+  --color-success: var(--ui-success);
+  --color-danger: var(--ui-danger);
+  --color-danger-solid: var(--ui-danger-solid);
+  --color-warn: var(--ui-warn);
+  --color-knob: var(--ui-knob);
+
+  --shadow-knob: var(--ui-shadow-knob);
+
+  --shadow-ring: var(--ui-shadow-ring);
+  --shadow-drop: var(--ui-shadow-drop);
+  --shadow-btn: var(--ui-shadow-btn);
+  --shadow-input: var(--ui-shadow-input);
+  --shadow-hairline: var(--ui-shadow-hairline);
+  --shadow-card: var(--ui-shadow-card);
+  --shadow-menu: var(--ui-shadow-menu);
+  --shadow-panel: var(--ui-shadow-panel);
+  --shadow-modal: var(--ui-shadow-modal);
+}
+
+/* -- 5. Base --------------------------------------------------------------- */
+@layer base {
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--ui-bg);
+    color: var(--ui-fg);
+    font-family: var(--font-sans);
+    /* 13px is the UI default; long-form blocks opt up to text-base. */
+    font-size: var(--text-sm);
+    line-height: var(--text-sm--line-height);
+    transition: background-color var(--duration-medium) var(--ease-smooth),
+                color var(--duration-medium) var(--ease-smooth);
+  }
+
+  h1, h2, h3, h4, p, figure { margin: 0; }
+
+  /* One focus ring for the whole system. */
+  :focus-visible {
+    outline: 2px solid var(--ui-accent);
+    outline-offset: 2px;
+  }
+
+  ::selection { background: var(--ui-accent-bg-active); }
+
+  /* Thin overlay scrollbars on opted-in scroll containers only — never the
+     host page's own scrollbar. */
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in srgb, var(--ui-fg) 18%, transparent) transparent;
+  }
+  .scroll-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scroll-thin::-webkit-scrollbar-track { background: transparent; }
+  .scroll-thin::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--ui-fg) 18%, transparent);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background-clip: padding-box;
+  }
+  .scroll-thin::-webkit-scrollbar-thumb:hover {
+    background: color-mix(in srgb, var(--ui-fg) 28%, transparent);
+    background-clip: padding-box;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

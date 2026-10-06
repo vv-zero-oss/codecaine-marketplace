@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="A design canvas that works on your real code." />
+    <link rel="icon" type="image/png" href="./landing/codecaine-pup.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
+    />
+    <!-- Theme before first paint, so the page never flashes the wrong one.
+         Mirrors themeInitScript in src/lib/theme.ts. -->
+    <script>
+      (function () {
+        try {
+          var pref = localStorage.getItem("ds:theme") || "system";
+          var dark = pref === "dark" || (pref === "system" && window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches);
+          var r = document.documentElement;
+          r.setAttribute("data-theme", dark ? "dark" : "light");
+          r.setAttribute("data-tl-theme", dark ? "dark" : "light");
+          r.setAttribute("data-theme-pref", pref);
+        } catch (e) {}
+      })();
+    </script>
+    <title>Codecaine — The canvas for your real code</title>
+    <script type="module" crossorigin src="./assets/index-G2wnn0vp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-t5EL26XQ.css">
+  </head>
+  <body class="min-h-screen bg-bg text-fg antialiased">
+    <div id="root" data-canvas-ignore></div>
+  </body>
+</html>

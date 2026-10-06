@@ -6,11 +6,11 @@
   "root": "../",
   "site": "https://vv-zero-oss.github.io/codecaine-marketplace",
   "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
-  "updated": "2026-10-02",
+  "updated": "2026-10-06",
   "catalogs": {
     "remix": {
       "url": "json/remixes.json",
-      "count": 24
+      "count": 25
     },
     "app": {
       "url": "json/apps.json",

@@ -1,0 +1,134 @@
+/**
+ * The icon set the page uses, lifted verbatim from the original markup.
+ * Every path is `currentColor` / `stroke-width: 1.5–1.6` so icons inherit the
+ * text token of whatever control they sit in — no icon carries a color.
+ */
+import type { SVGProps } from "react";
+
+type IconProps = SVGProps<SVGSVGElement>;
+
+const stroke = {
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+export function MoonIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M13.5 9.2A5.5 5.5 0 016.8 2.5a5.5 5.5 0 106.7 6.7z" stroke="currentColor" strokeWidth={1.4} strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+export function SunIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <circle cx="8" cy="8" r="3" stroke="currentColor" strokeWidth={1.4} />
+      <path
+        d="M8 1v1.6M8 13.4V15M15 8h-1.6M2.6 8H1M12.9 3.1l-1.1 1.1M4.2 11.8l-1.1 1.1M12.9 12.9l-1.1-1.1M4.2 4.2L3.1 3.1"
+        stroke="currentColor"
+        strokeWidth={1.4}
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}
+
+export function ChevronDown(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M4.5 6.5L8 10l3.5-3.5" {...stroke} />
+    </svg>
+  );
+}
+
+export function ChevronRight(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M6 4l4 4-4 4" {...stroke} strokeWidth={1.5} />
+    </svg>
+  );
+}
+
+export function CheckIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M4 8.43l2.46 2.76L12 4.97" {...stroke} strokeWidth={1.5} />
+    </svg>
+  );
+}
+
+export function SparkIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path
+        d="M8.67 9.33l-2-2M10.01 2.33v-1M12.63 3.37l.71-.7M12.63 8.67l.71.7M7.34 3.37l-.71-.7M13.67 6h1M4.09 13.91l6.16-6.16c.26-.26.39-.4.44-.55a.7.7 0 000-.41c-.05-.16-.18-.29-.44-.55l-.5-.5c-.26-.26-.39-.39-.54-.44a.7.7 0 00-.41 0c-.16.05-.29.18-.55.44L2.09 11.9c-.27.27-.4.4-.45.55a.7.7 0 000 .41c.05.16.18.29.44.55l.5.5c.26.26.39.39.54.44.14.04.28.04.41 0 .16-.05.29-.18.55-.44z"
+        {...stroke}
+      />
+    </svg>
+  );
+}
+
+export function GearIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M8 10a2 2 0 100-4 2 2 0 000 4z" stroke="currentColor" strokeWidth={1.6} />
+      <path
+        d="M12.5 9.8a1 1 0 00.2.6l.04.04a1.2 1.2 0 11-1.7 1.7l-.04-.04a1 1 0 00-1.1-.2 1 1 0 00-.6.92v.1a1.2 1.2 0 11-2.42 0v-.06a1 1 0 00-.65-.9 1 1 0 00-1.1.2l-.04.05a1.2 1.2 0 11-1.71-1.71l.04-.04a1 1 0 00.2-1.1 1 1 0 00-.91-.6h-.11a1.2 1.2 0 010-2.43h.06a1 1 0 00.9-.65 1 1 0 00-.2-1.1l-.05-.04a1.2 1.2 0 111.71-1.71l.04.04a1 1 0 001.1.2h.05a1 1 0 00.6-.91v-.11a1.2 1.2 0 012.42 0v.06a1 1 0 00.6.9 1 1 0 001.1-.2l.04-.05a1.2 1.2 0 111.71 1.71l-.04.04a1 1 0 00-.2 1.1v.05a1 1 0 00.92.6h.1a1.2 1.2 0 010 2.42h-.06a1 1 0 00-.9.6z"
+        {...stroke}
+      />
+    </svg>
+  );
+}
+
+export function DotsIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="currentColor" aria-hidden {...props}>
+      <circle cx="8" cy="3.3" r="1.3" />
+      <circle cx="8" cy="8" r="1.3" />
+      <circle cx="8" cy="12.7" r="1.3" />
+    </svg>
+  );
+}
+
+export function CaretIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M4 6l4 4 4-4" {...stroke} />
+    </svg>
+  );
+}
+
+export function CollapseIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path d="M4 6.5L8 10l4-3.5" {...stroke} />
+    </svg>
+  );
+}
+
+export function CopyIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path
+        d="M5.6 5.6V3.92c0-.67 0-1.01.13-1.26.12-.23.3-.41.53-.53.26-.13.6-.13 1.27-.13h4.56c.67 0 1.01 0 1.26.13.23.12.42.3.53.53.13.26.13.6.13 1.26v4.56c0 .67 0 1.01-.13 1.26-.12.23-.3.42-.53.53-.26.13-.6.13-1.26.13H10.4M3.92 14h4.56c.67 0 1.01 0 1.26-.13.23-.12.42-.3.53-.53.13-.26.13-.6.13-1.26V7.52c0-.67 0-1.01-.13-1.26a1.2 1.2 0 00-.53-.53c-.26-.13-.6-.13-1.26-.13H3.92c-.67 0-1.01 0-1.26.13-.23.12-.42.3-.53.53-.13.26-.13.6-.13 1.26v4.56c0 .67 0 1.01.13 1.26.12.23.3.42.53.53.26.13.6.13 1.26.13z"
+        {...stroke}
+        strokeWidth={1.5}
+      />
+    </svg>
+  );
+}
+
+export function RescanIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden {...props}>
+      <path
+        d="M9.2 12.75s.52-.07 2.67-2.18a5.09 5.09 0 000-7.64 5.1 5.1 0 00-2.67-1.45M9.2 9.15v3.6h3.67M6.76.75s-.52.07-2.67 2.18a5.09 5.09 0 000 7.64 5.1 5.1 0 002.67 1.45M6.76 4.35V.75H3.1"
+        {...stroke}
+        strokeWidth={1.5}
+      />
+    </svg>
+  );
+}
