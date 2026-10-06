@@ -1,5 +1,5 @@
 /* ============================================================================
-   Codecaine design system — component layer
+   Refine Design System — component layer
    ----------------------------------------------------------------------------
    Every class below reads only from the semantic tokens in theme.css, so none
    of them carries a dark-mode override. Flip [data-theme="dark"] and the whole

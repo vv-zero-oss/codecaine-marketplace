@@ -9,7 +9,7 @@ import { CheckIcon, ChevronDown, DotsIcon, SparkIcon } from "../icons";
 
 const BEZIER = ["0.22", "1", "0.36", "1"] as const;
 
-/** The motion inspector panel, assembled entirely from the component layer. */
+/** The Refine panel, assembled entirely from the component layer. */
 export function AppShell() {
   const [selected, setSelected] = useState<string>(
     TIMELINE_ROWS.find((row) => row.selected)?.id ?? TIMELINE_ROWS[0].id,
@@ -19,7 +19,7 @@ export function AppShell() {
     <section className="mt-12" id="shell">
       <h2 className="type-title">Application shell</h2>
       <p className="type-caption mt-1.5 max-w-[62ch]">
-        A motion inspector assembled entirely from the component layer — no bespoke CSS. Toolbar,
+        The Refine panel assembled entirely from the component layer — no bespoke CSS. Toolbar,
         timeline and inspector all inherit the theme.
       </p>
 
@@ -83,7 +83,7 @@ export function AppShell() {
 
           <button className="btn btn-accent btn-pill">
             <SparkIcon />
-            <span className="hidden sm:inline">Generate</span>
+            <span className="hidden sm:inline">Refine</span>
           </button>
         </div>
 

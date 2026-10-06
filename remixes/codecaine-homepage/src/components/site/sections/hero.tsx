@@ -12,12 +12,12 @@ export function Hero() {
   return (
     <section className="flex flex-col items-center pt-7 pb-12 text-center">
       <p className="type-eyebrow inline-flex items-center gap-1.5">
-        Codecaine <span className="badge-soft">Design system</span>
+        Refine <span className="badge-soft">Beta</span>
       </p>
-      <h1 className="type-display mt-2.5">Brand guidelines</h1>
+      <h1 className="type-display mt-2.5">Live demo</h1>
       <p className="type-lead mt-4 max-w-[417px]">
-        The tokens, components and motion this site is built from — read live from the same
-        stylesheet the pages use, so this page can never drift from them.
+        A design system extracted from the Refine panel — tokens, components and motion, rebuilt on
+        Next.js and Tailwind v4.
       </p>
 
       <div className="mt-4 flex w-full justify-center">
@@ -51,7 +51,7 @@ export function Hero() {
             <span className="menu-item-icon">
               <RescanIcon className="size-4" />
             </span>
-            <span className="menu-item-text">Rescan tokens</span>
+            <span className="menu-item-text">Rescan transitions</span>
           </button>
           <div className="menu-divider" />
           <button type="button" className="menu-item" role="menuitem">
@@ -67,9 +67,9 @@ export function Hero() {
           <div className="menu-divider" />
           <div className="menu-footer">
             <span>
-              Codecaine <span className="text-fg-muted">DS</span>
+              Transitions.dev <span className="text-fg-muted">Refine</span>
             </span>
-            <span className="tabular-nums">1.0.0</span>
+            <span className="tabular-nums">0.3.5</span>
           </div>
         </Dropdown>
       </div>

@@ -1,5 +1,5 @@
 /* ============================================================================
-   Codecaine design system — theme layer (Tailwind v4, CSS-first)
+   Refine Design System — theme layer (Tailwind v4, CSS-first)
    ----------------------------------------------------------------------------
    Structure
      1. Dark variant                — one `dark:` variant, two attribute hooks
@@ -27,8 +27,9 @@
 
 /* -- 2. Primitives ---------------------------------------------------------- */
 @theme {
-  /* Type families — Inter and Roboto Mono, linked from Google Fonts in
-     index.html (no font package is installed). Inter is the one UI face; the display
+  /* Type families — the `--font-*-face` vars are emitted by next/font in
+     app/layout.tsx, so the files are self-hosted and there is no font CDN
+     request (and no FOUT) at runtime. Inter is the one UI face; the display
      role is Inter too, differentiated by size, weight and tracking rather
      than by a second family. */
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -78,7 +79,7 @@
   --spacing-chip: 24px;
   --spacing-badge: 20px;
 
-  /* Motion — durations  */
+  /* Motion — durations (transitions.dev tokens) */
   --duration-micro: 120ms;      /* hover / press feedback           */
   --duration-fast: 150ms;       /* quick state changes, closes      */
   --duration-medium: 250ms;     /* standard UI motion, opens        */

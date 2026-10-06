@@ -1,4 +1,3 @@
-import { Link } from "@/lib/router";
 import { SiteShell } from "@/components/landing/site-shell";
 import { PageHeader } from "@/components/landing/page-header";
 import { ArrowRight } from "@/components/landing/hero";
@@ -16,14 +15,14 @@ export function FeaturesPage() {
         title="Everything the canvas does"
         lede="A design tool that works on the code you already have."
       >
-        <Link className="lp-btn lp-btn-primary" href="/">
-          Back to the homepage
+        <a className="lp-btn lp-btn-primary" href="/signup">
+          Join for free
           <span className="lp-btn-shine" aria-hidden />
-        </Link>
-        <Link className="lp-btn lp-btn-outline" href="/brand">
-          See the design system
+        </a>
+        <a className="lp-btn lp-btn-outline" href="/pricing">
+          See our plans
           <ArrowRight />
-        </Link>
+        </a>
       </PageHeader>
       <AgentShowcase />
       <ProductCover />

@@ -33,7 +33,7 @@ export function FormsGallery() {
         <Button variant="outline">Reset</Button>
         <Button variant="secondary">Secondary</Button>
         <Button variant="ghost">Ghost</Button>
-        <Button variant="accent">Generate</Button>
+        <Button variant="accent">Refine</Button>
         <Button variant="destructive">Delete</Button>
         <Button variant="link">Docs</Button>
         <Button disabled>Disabled</Button>

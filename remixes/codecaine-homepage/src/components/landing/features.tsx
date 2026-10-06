@@ -1,20 +1,18 @@
-import { FEATURE_CLIPS } from "@/lib/media";
-
 const FEATURES = [
   {
-    title: "Import anything",
-    body: "Drop a PDF, a CSV, a doc, an HTML file or a live website onto the board and keep designing from it.",
-    video: FEATURE_CLIPS.import,
+    title: "Import Anything...",
+    body: "We are out to build a truly open canvas you can import all types of multimedia files PDF, CSV, HTML, Doc and even Live website",
+    video: "https://framerusercontent.com/assets/MkRqx95luhv3HrzWUVBPk3lbk.mp4",
   },
   {
-    title: "@mention anything on the board",
-    body: "Point the agent at a layer, a page or a file by name, and it works on exactly that.",
-    video: FEATURE_CLIPS.mention,
+    title: "@mention your anything on the board",
+    body: "Refer anything that you would like too",
+    video: "https://framerusercontent.com/assets/jqYjBn39McfA2B8VkBvj3Ca2U0.mp4",
   },
   {
     title: "Leave comments",
-    body: "Pin a note to the layer it is about, so the reason behind a change is still there next month.",
-    video: FEATURE_CLIPS.comments,
+    body: "Take notes upon saving so you'll never forget the context in the future.",
+    video: "https://framerusercontent.com/assets/DpMFb4zuxQzqPqM9HQtesX9P6AE.mp4",
   },
 ];
 
@@ -29,7 +27,7 @@ export function Features() {
         {FEATURES.map((f) => (
           <li key={f.title} className="lp-card">
             <div className="lp-card-media">
-              <video src={f.video.src} poster={f.video.poster} autoPlay muted loop playsInline preload="metadata" aria-hidden />
+              <video src={f.video} autoPlay muted loop playsInline aria-hidden />
             </div>
             <div className="lp-card-meta">
               <h3 className="lp-h3">{f.title}</h3>

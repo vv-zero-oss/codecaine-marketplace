@@ -32,7 +32,7 @@ export function ComponentGallery() {
           <button className="btn btn-ghost">Ghost</button>
           <button className="btn btn-accent">
             <SparkIcon />
-            Generate
+            Refine
           </button>
           <button className="btn btn-danger">Delete</button>
           <button className="btn btn-raised" disabled>

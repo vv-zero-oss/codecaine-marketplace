@@ -1,5 +1,3 @@
-import { COVER_CLIP } from "@/lib/media";
-
 /**
  * The product demo: a grey well with the recording rising out of its bottom
  * edge. The well's aspect ratio and the video's inset are tokens, so it
@@ -7,17 +5,17 @@ import { COVER_CLIP } from "@/lib/media";
  */
 export function ProductCover() {
   return (
-    <div className="lp-container" data-canvas-ignore>
+    <div className="lp-container">
       <figure id="hero-layer" className="lp-cover">
         <video
           className="lp-cover-media"
-          src={COVER_CLIP.src}
-          poster={COVER_CLIP.poster}
+          src="https://framerusercontent.com/assets/TcvHfVe9bKWL2Gwru24KshXLEno.mp4"
+          poster="https://framerusercontent.com/images/ARMKwbXsfo5M0Z7swIQNL0cwvlo.webp?width=3840&height=2560"
           autoPlay
           muted
           loop
           playsInline
-          aria-label="A designer working on a layout"
+          aria-label="The canvas editing a live app"
         />
       </figure>
     </div>

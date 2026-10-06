@@ -7,7 +7,7 @@
  */
 
 export const TYPE_SCALE = [
-  { token: "text-3xl", metrics: "36/34", role: "type-display", sample: "Brand guidelines" },
+  { token: "text-3xl", metrics: "36/34", role: "type-display", sample: "Live demo" },
   { token: "text-2xl", metrics: "26/32", role: "type-title", sample: "Section title" },
   { token: "text-xl", metrics: "18/24", role: "type-eyebrow", sample: "Eyebrow" },
   { token: "text-lg", metrics: "16/24", role: "type-lead", sample: "Lead paragraph for hero subtitles" },

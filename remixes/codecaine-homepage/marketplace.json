@@ -3,7 +3,7 @@
   "type": "remix",
   "id": "codecaine-homepage",
   "name": "Codecaine Homepage",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "The Codecaine homepage and features page, built on a token-driven design system: every colour, shadow, radius, duration and easing is a named token, light and dark, with 61 shadcn/ui components bridged onto the same tokens.",
   "designedFor": [
     "Launching a product homepage with a sticky mega-menu nav, feature cards and a marquee gallery",

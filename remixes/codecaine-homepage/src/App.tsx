@@ -25,9 +25,9 @@ import { ShadcnPage } from "@/pages/shadcn"
 const TITLES: Record<string, string> = {
   "/": "Codecaine — The canvas for your real code",
   "/features": "Features — Codecaine",
-  "/brand": "Brand guidelines — Codecaine",
-  "/design-system": "Brand guidelines — Codecaine",
-  "/shadcn": "shadcn/ui on Codecaine tokens",
+  "/brand": "Transitions — Refine design system",
+  "/design-system": "Transitions — Refine design system",
+  "/shadcn": "shadcn/ui on Refine tokens",
 }
 
 export default function App() {

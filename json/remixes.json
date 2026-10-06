@@ -922,7 +922,7 @@
       "type": "remix",
       "id": "codecaine-homepage",
       "name": "Codecaine Homepage",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "description": "The Codecaine homepage and features page, built on a token-driven design system: every colour, shadow, radius, duration and easing is a named token, light and dark, with 61 shadcn/ui components bridged onto the same tokens.",
       "designedFor": [
         "Launching a product homepage with a sticky mega-menu nav, feature cards and a marquee gallery",
@@ -1034,11 +1034,11 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/codecaine-homepage-1.0.0.tgz",
+        "url": "archives/remixes/codecaine-homepage-1.0.1.tgz",
         "format": "tar+gzip",
-        "sha256": "a3e45c5de42eddfe8896d7d324f332e132460e90431b96c969199a73a36b46c3",
-        "size": 937472,
-        "files": 142
+        "sha256": "211527ced69f6e1e9550797b7313dba07224075388e52af5959faef816fef13c",
+        "size": 983552,
+        "files": 154
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

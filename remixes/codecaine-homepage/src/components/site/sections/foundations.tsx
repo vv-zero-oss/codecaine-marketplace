@@ -126,7 +126,7 @@ export function Foundations() {
         <h3 className="type-heading">Motion</h3>
         <p className="type-caption mt-1">
           Durations and curves are tokens too — an off-grid 300&nbsp;ms{" "}
-          <code className="type-code">ease</code> is exactly what a review flags.
+          <code className="type-code">ease</code> is exactly what Refine flags.
         </p>
         <div className="mt-5 grid gap-4 sm:grid-cols-2">
           <div>

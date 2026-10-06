@@ -3,15 +3,16 @@
    ----------------------------------------------------------------------------
    A light marketing surface on the same primitive layer. It reuses `@theme`
    from theme.css — the Inter face, the pill radius, every duration and easing —
-   and adds only what this page needs that the product UI palette does not:
+   and adds only what this page needs that the Refine tool palette does not:
    its ink, its grey wash, its display type and its section rhythm.
 
-   The desktop sizes are the base values, made fluid: the two breakpoints
-   below step them down rather than letting anything sit at a hand-placed
-   position.
+   Every value was measured from the "Interactive frame" design on the board
+   (a 1280px reference), then made fluid: the reference sizes are the desktop
+   values, and the two breakpoints below step them down rather than letting
+   anything sit at a hand-placed position.
 
    Colors live under `--lp-*` so they can never collide with `--ui-*`. The
-   page is light-only by design — so
+   page is light-only by design — the reference has no dark counterpart — so
    this file has no `[data-theme]` branch. If one is ever added it goes here as
    one block, and no component class below changes.
    ========================================================================== */
@@ -84,7 +85,7 @@
   --lp-radius-media: 16px;
   --lp-radius-phone: 24px;
 
-  /* Media geometry */
+  /* Media geometry (the reference's own ratios) */
   --lp-cover-ratio: 1.89967;
   --lp-cover-inset-top: 6.45%;              /* 80 / 1240                      */
   --lp-cover-inset-x: 7.1%;                 /* 88 / 1240                      */
@@ -99,7 +100,7 @@
   /* Motion — the ticker is ambient, so it is the one long duration */
   --lp-ticker-duration: 60s;
 
-  /* Gallery — two marquee rows of shipped sites */
+  /* Gallery — Shipped with Framer, measured from framer.com at 1440px */
   --lp-text-h2-sm: 44px;     --lp-text-h2-sm--lh: 48.4px;
   --lp-tracking-h2-sm: -0.04em;                  /* -1.76px at 44px           */
   --lp-text-label: 14px;     --lp-text-label--lh: 14px;
@@ -119,8 +120,8 @@
   --lp-gallery-drift: 120px;                     /* scroll push, each way     */
   --lp-gallery-rise: 24px;                       /* header entrance distance  */
 
-  /* Site nav — two pill groups and a mega menu. Its warm greys are its
-     own, so they get their own names. */
+  /* Site nav — measured one to one from kobbe.io's header and mega menu.
+     Its warm greys are its own, so they get their own names. */
   --lp-nav-surface: oklch(0.982 0.002 84.559);   /* home tile, panel ink      */
   --lp-nav-wash: oklch(0.965 0.004 84.559);      /* the two pill groups       */
   --lp-nav-ink: oklch(0.289 0 0);                /* labels, panel, CTA        */
@@ -149,11 +150,12 @@
   --lp-ease-nav: cubic-bezier(0.4, 0, 0.2, 1);
   --lp-z-nav: 50;
 
-  /* Agent showcase — black product-UI cards, so its greys get their own
-     names. */
+  /* Agent showcase — framer.com's "Faster ideas. Better designs. Still
+     yours." section, measured one to one at 1440px. Its cards are the
+     reference's own black product UI, so its greys get their own names. */
   --lp-space-0-5: 2px;
   --lp-space-0-75: 3px;
-  --lp-space-1-25: 5px;                          /* the half step */
+  --lp-space-1-25: 5px;                          /* the reference's half step */
   --lp-space-15: 60px;
   --lp-space-17-5: 70px;
 
@@ -230,7 +232,7 @@
   --lp-agent-composer-h: 120px;
   --lp-agent-input-h: 70px;
   --lp-agent-dot: 2px;
-  --lp-agent-title-measure: 480px;                /* two lines */
+  --lp-agent-title-measure: 480px;                /* two lines, as the reference */
   --lp-agent-divider-h: 14px;
   --lp-agent-blur: 8px;
   --lp-agent-line: rgb(255 255 255 / 0.08);       /* mock-site hairlines       */
@@ -254,8 +256,6 @@
   --lp-agent-mark-fade: 0.4;
   --lp-agent-device-stage-h: 505px;               /* the device well runs taller */
   --lp-agent-footer-mark-w: 660px;
-  --lp-agent-footer-mark-size: 132px;            /* the wordmark's cap band   */
-  --lp-agent-footer-mark-tracking: -0.06em;
   --lp-agent-menu-media: 230px;
   --lp-agent-asset-w: 215px;     --lp-agent-asset-h: 300px;
   --lp-agent-zoom-w: 243px;
@@ -668,8 +668,8 @@
   }
 
   /* -- Site nav: two pill groups and a dark mega menu ----------------------
-     The panel opens and closes with no motion — it is opened many times a
-     session. */
+     A copy of kobbe.io's header. The panel opens and closes with no motion,
+     as the reference does — it is opened many times a session. */
   .lp-nav {
     position: sticky;
     top: 0;
@@ -905,7 +905,7 @@
     .lp-nav-col + .lp-nav-col { box-shadow: inset 0 1px 0 var(--lp-nav-divider); }
     .lp-nav-links-grid { grid-template-columns: minmax(0, 1fr); }
   }
-  /* -- Gallery: built on the canvas ---------------------------------------
+  /* -- Gallery: Shipped with Framer ---------------------------------------
      Two rows of shots drift in opposite directions (the track's transform);
      scroll pushes each row the other way on top (the row's translate), so
      the two never fight over one property. */
@@ -1037,10 +1037,10 @@
 }
 
 /* -- 3. Agent showcase --------------------------------------------------------
-   Five black cards
+   framer.com's "Faster ideas. Better designs. Still yours.": five black cards
    in a 930px column beside a 260px agent panel that sticks 120px from the
    top. The header reuses the gallery's (same type, same CTA). Every visual is
-   drawn on a 910 × 473 frame and scaled down whole on narrow
+   drawn on the reference's 910 × 473 frame and scaled down whole on narrow
    screens (`--lp-agent-stage-scale`, set by the component's ResizeObserver).
    JS sets only `data-seen` (reveal, once) and `data-active` (the card in the
    middle of the viewport); the panel plays that card's conversation.
@@ -1252,7 +1252,7 @@
     animation-delay: calc(var(--i) * var(--lp-agent-dots-duration) / -7);
   }
 
-  /* -- 3. A footer rebuilt from a screenshot -- */
+  /* -- 3. Reference: a footer rebuilt from a screenshot -- */
   .lp-agent-footer {
     position: absolute;
     left: 50%;
@@ -1301,11 +1301,7 @@
   .lp-agent-footer-mark {
     display: block;
     width: var(--lp-agent-footer-mark-w);
-    font-size: var(--lp-agent-footer-mark-size);
-    font-weight: var(--font-weight-semibold);
-    line-height: 1;
-    letter-spacing: var(--lp-agent-footer-mark-tracking);
-    white-space: nowrap;
+    height: auto;
     opacity: var(--lp-agent-mark-fade);
   }
   .lp-agent-footer-legal {
@@ -1719,7 +1715,7 @@
   }
   .lp-agent-divider { flex: none; width: 1px; height: var(--lp-agent-divider-h); background: var(--lp-agent-fg-faint); }
 
-  /* Below the desktop band the panel goes. */
+  /* Below the reference's desktop band the panel goes, as it does there. */
   @media (max-width: 1023px) {
     .lp-agent-panel { display: none; }
     .lp-agent-cards { flex-basis: auto; width: 100%; max-width: var(--lp-agent-card-w); }

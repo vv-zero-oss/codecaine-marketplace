@@ -1,6 +1,3 @@
-import { Link } from "@/lib/router";
-import { asset } from "@/lib/media";
-
 /**
  * The opening block: mark, headline, lede and the two pill CTAs.
  */
@@ -8,7 +5,7 @@ export function Hero() {
   return (
     <section className="lp-hero lp-container lp-container-text" aria-labelledby="lp-hero-title">
       <div className="lp-hero-block">
-        <img className="lp-logo" src={asset("landing/codecaine-pup.png")} alt="Codecaine" width={88} height={88} />
+        <img className="lp-logo" src={`${import.meta.env.BASE_URL}landing/codecaine-pup.png`} alt="Codecaine" width={88} height={88} />
         <div className="lp-hero-text">
           <h1 id="lp-hero-title" className="lp-display">
             Start with what you already have
@@ -16,14 +13,14 @@ export function Hero() {
           <p className="lp-lede">The canvas for your real code.</p>
         </div>
         <div className="lp-ctas">
-          <Link className="lp-btn lp-btn-primary" href="/features">
-            Start designing
+          <a className="lp-btn lp-btn-primary" href="/signup">
+            Join for free
             <span className="lp-btn-shine" aria-hidden />
-          </Link>
-          <Link className="lp-btn lp-btn-outline" href="/brand">
-            See the design system
+          </a>
+          <a className="lp-btn lp-btn-outline" href="/pricing">
+            See our plans
             <ArrowRight />
-          </Link>
+          </a>
         </div>
       </div>
     </section>

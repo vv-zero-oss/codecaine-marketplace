@@ -1,9 +1,9 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
-import { photo } from "@/lib/media";
-import { Link } from "@/lib/router";
 
-/* -- Data ------------------------------------------------------------------ */
+const FR = "https://framerusercontent.com/images";
+
+/* -- Data, in the reference's own order and words ------------------------- */
 
 type Card = {
   id: string;
@@ -16,43 +16,43 @@ type Card = {
 const CARDS: Card[] = [
   {
     id: "ideate",
-    title: "Explore directions with the agent",
-    body: "Ask for three takes on a hero, then push the one you like. Each variation is a real layer in your project, built from your own components and tokens.",
+    title: "The agent iterates & ideates with you",
+    body: "Refine a section, explore layout directions, or ask for ideas you haven’t thought of yet. The agent responds to feedback in real time, generating new variations until the design feels right.",
     measure: "wide",
     Visual: IdeateVisual,
   },
   {
     id: "responsive",
-    title: "Responsive, without the redraw",
-    body: "Say “make this work on tablet and phone.” The agent restacks columns, steps type down and recrops images in your CSS, so every breakpoint ships from the same code.",
+    title: "Make any design responsive",
+    body: "Ask the agent to “Make this responsive for tablet and phone.” It adapts your layouts across breakpoints, adjusting stacks, type sizes, spacing, and image crops until everything works.",
     measure: "wide",
     Visual: ResponsiveVisual,
   },
   {
     id: "reference",
-    title: "From a screenshot to a working section",
-    body: "Paste an image or a link and the agent lays out a section in your project to match it, using your type, colours and spacing rather than copying someone else's.",
+    title: "Turn references into editable web designs",
+    body: "Drop in images or share a URL and the agent uses it as a starting point. The layout, style, and feel of your reference, brought directly onto the canvas.",
     measure: "narrow",
     Visual: FooterVisual,
   },
   {
     id: "interactions",
-    title: "Interactions, described rather than wired",
-    body: "A sticky header, a mega menu, a carousel. Describe the behaviour and the agent writes the component, with its open and closed states on the board for you to style.",
+    title: "Complex interactions, done in seconds",
+    body: "Sticky navbars, animated menus, interactive carousels, just describe what you want. The agent handles the wiring so you can focus on the design, not the how-to.",
     measure: "mid",
     Visual: MenuVisual,
   },
   {
     id: "canvas",
-    title: "Pages, icons and posts on one board",
-    body: "Whatever the agent makes stays editable by hand: select it, nudge it, change its font in the inspector. You are never stuck re-prompting for a one-pixel fix.",
+    title: "Sites, icons, social assets. All on freeform canvas.",
+    body: "From websites to icons, every change the agent makes is fully editable. Move it, restyle it, tweak it by hand. You’re never stuck in a prompt loop.",
     measure: "narrow",
     Visual: SocialVisual,
   },
 ];
 
 /**
- * "Ideas faster, code that stays yours" — five feature cards beside a
+ * "Faster ideas. Better designs. Still yours." — five feature cards beside a
  * sticky agent panel. As each card reaches the middle of the viewport it
  * fades in from down-left and the panel plays that card's conversation.
  * JS only sets `data-seen` / `data-active` and the stage scale; every
@@ -93,7 +93,7 @@ export function AgentShowcase() {
       focus.observe(c);
     });
 
-    // Each visual is drawn on a 910px frame and scaled to fit.
+    // Each visual is drawn on the reference's 910px frame and scaled to fit.
     const fit = new ResizeObserver((entries) => {
       for (const e of entries) {
         const el = e.target as HTMLElement;
@@ -114,11 +114,11 @@ export function AgentShowcase() {
     <section className="lp-agent" aria-labelledby="lp-agent-title">
       <header className="lp-gallery-head">
         <h2 id="lp-agent-title" className="lp-gallery-title lp-agent-title">
-          Ideas faster. Code that stays yours.
+          Faster ideas. Better designs. Still yours.
         </h2>
-        <Link className="lp-gallery-cta" href="/brand">
-          See the system
-        </Link>
+        <a className="lp-gallery-cta" href="https://www.framer.com/ai/">
+          Design with AI
+        </a>
       </header>
 
       <div className="lp-agent-body">
@@ -159,38 +159,40 @@ function AgentPanel({ active }: { active: number }) {
       key="ideate"
       prompt={
         <>
-          <Chip icon={<FrameIcon />}>Hero</Chip> Show me three directions for the hero on the home page.
+          <Chip icon={<FrameIcon />}>Hero Section</Chip> Give me a couple layout variations of the hero section of my
+          front page.
         </>
       }
       thinking={false}
-      reply="Here are three takes for Northline: a misty full-bleed photo, a split panel, and a centred headline over the ridge. Shall I apply one?"
+      reply="I created three hero variations for Parallel: a split dark panel, a full-bleed image, and a centered scenic layout. Want me to apply one?"
     />,
     <Chat
       key="responsive"
       prompt={
         <>
-          <Chip icon={<FrameIcon />}>Desktop</Chip> Make this page work on tablet and phone.
+          <Chip icon={<FrameIcon />}>Desktop</Chip> Help me update my design so it is responsive across tablet and phone
+          breakpoints.
         </>
       }
-      reply="Done. On tablet the hero keeps its split and the nav folds into a menu; on phone the photo moves above the headline."
+      reply="I’ve made your design responsive. On tablet the split hero stays with the nav collapsed into a Menu; on phone the image stacks above the headline."
     />,
     <Chat
       key="reference"
-      prompt={<>Build a footer laid out like this screenshot.</>}
-      attachment={photo(17753331, 112, 112)}
-      reply="Your footer is in: six columns and a legal row, in your own type and colours."
-      followUp="Want me to fill in the real links?"
+      prompt={<>Design a footer using this screenshot as a visual reference.</>}
+      attachment={`${FR}/AcRkaX89tSlg8QFsu52TuZguPN4.png?width=112&height=112`}
+      reply="I’ve designed a footer based on your screenshot, matching its layout, columns, and spacing while keeping your site’s styling."
+      followUp="Want me to tweak any of the links?"
     />,
     <Chat
       key="interactions"
       prompt={
         <>
-          Add a sticky header with a menu of the main pages, and use{" "}
-          <Chip icon={<FileIcon />}>vase.jpg</Chip> in it
+          Create a sticky navbar component. Use my most important pages as links. Include{" "}
+          <Chip icon={<FileIcon />}>video.mp4</Chip>
         </>
       }
-      reply="The header now sticks as you scroll, and its menu opens onto your key pages with the image beside them."
-      followUp="Should it go on every page?"
+      reply="I’ve created a sticky navbar component linking your key pages, so it stays in view as visitors scroll."
+      followUp="Want me to add it across the rest of your pages?"
     />,
     <Inspector key="canvas" />,
   ];
@@ -234,7 +236,7 @@ function Chat({
       <div className="lp-agent-bubble lp-agent-beat" data-beat="0">
         <p className="lp-agent-prompt">{prompt}</p>
         {attachment && (
-          <img className="lp-agent-attach" src={attachment} alt="The screenshot attached to the message" />
+          <img className="lp-agent-attach" src={attachment} alt="Design agents chat interface image" />
         )}
         <button type="button" className="lp-agent-copy" aria-label="Copy message">
           <CopyIcon />
@@ -283,8 +285,8 @@ function Composer() {
       </label>
       <textarea id="lp-agent-input" className="lp-agent-input" rows={3} placeholder="Ask for changes…" />
       <div className="lp-agent-composer-bar">
-        <button type="button" className="lp-agent-model" aria-label="Model: Claude Sonnet">
-          Claude Sonnet
+        <button type="button" className="lp-agent-model" aria-label="Model: GPT 6 Sol">
+          GPT 6 Sol
           <ChevronIcon />
         </button>
         <div className="lp-agent-keys">
@@ -339,12 +341,12 @@ function Inspector() {
       </Field>
       <Field label="Content">
         <span className="lp-agent-field" data-size="full">
-          Quiet ridges, cle…
+          Investing on autop…
         </span>
       </Field>
       <Field label="Font">
         <span className="lp-agent-field" data-size="full">
-          Inter
+          Geist
           <ChevronIcon />
         </span>
       </Field>
@@ -454,9 +456,9 @@ function Select() {
 
 function IdeateVisual() {
   const shots = [
-    { src: photo(10786346, 1400), alt: "Hero direction: misty ridges at dawn" },
-    { src: photo(11089921, 900), alt: "Hero direction: blue ridges under fog" },
-    { src: photo(34639397, 900), alt: "Hero direction: peaks in cloud" },
+    { src: `${FR}/NGJAnJajvBrK1SEEjxh78Qdg.jpg?width=2400&height=1600`, alt: "Hero design preview" },
+    { src: `${FR}/cfgKNHtptOS5ZoQgFRDgaMANZjY.jpg?width=1314&height=876`, alt: "Hero design preview" },
+    { src: `${FR}/guwqpIEPe9mN4oB7W9fnkOtof6k.jpg?width=1314&height=876`, alt: "Hero design preview" },
   ];
   return (
     <div className="lp-agent-ideate">
@@ -476,15 +478,15 @@ function ResponsiveVisual() {
       name: "Tablet",
       width: "810",
       kind: "tablet",
-      src: photo(10786346, 840, 740),
-      alt: "The hero at tablet width",
+      src: `${FR}/B4VMaVxB1JPQso8jLQz1cNveGM.jpg?width=840&height=740`,
+      alt: "Hero design preview made in Framer",
     },
     {
       name: "Phone",
       width: "390",
       kind: "phone",
-      src: photo(10786346, 480, 740),
-      alt: "The hero at phone width",
+      src: `${FR}/g4ErSWqFZvLB29rfknyH1Xg0.jpg?width=480&height=740`,
+      alt: "Mobile design preview made in Framer",
     },
   ];
   return (
@@ -511,8 +513,8 @@ function ResponsiveVisual() {
 const FOOTER_COLUMNS = [
   { title: "Company", links: ["About", "News", "Culture", "Careers", "Security"] },
   { title: "Legal", links: ["Accessibility", "Privacy policy", "Terms of use"] },
-  { title: "Trips", links: ["Guided hikes", "Huts", "Early season", "Private", "Gear"] },
-  { title: "Resources", links: ["Trail notes", "Route guides", "Packing lists"] },
+  { title: "Product", links: ["Invest", "Portfolios", "Early access", "Advisor", "Learn"] },
+  { title: "Resources", links: ["Market insights", "Investment guides", "Planning tools"] },
   { title: "Social", links: ["Instagram", "LinkedIn", "X"] },
   { title: "Support", links: ["Contact", "Transfer account", "Help centre", "Compare plans"] },
 ];
@@ -532,9 +534,15 @@ function FooterVisual() {
         ))}
       </div>
       <div className="lp-agent-footer-base">
-        <p className="lp-agent-footer-mark">Northline</p>
+        <img
+          className="lp-agent-footer-mark"
+          src={`${FR}/c1Bn3kHyoBzB7TfAgrqwOnYgfc.png?width=3504&height=709`}
+          alt="Framer logo mark"
+          loading="lazy"
+          decoding="async"
+        />
         <div className="lp-agent-footer-legal">
-          <p>©2026 Northline Outdoors. All rights reserved.</p>
+          <p>©2026 Parallel Investing. All rights reserved.</p>
           <p>Legal disclosures</p>
         </div>
       </div>
@@ -544,7 +552,7 @@ function FooterVisual() {
 
 const MENU_COLUMNS = [
   ["About", "News", "Blog", "Careers"],
-  ["Hikes", "Huts", "Early season", "Private", "Gear"],
+  ["Invest", "Portfolios", "Early access", "Advisor", "Learn"],
   ["Contact", "Transfers", "Help centre", "Compare"],
 ];
 
@@ -552,7 +560,7 @@ function MenuVisual() {
   return (
     <div className="lp-agent-menu">
       <div className="lp-agent-menu-nav">
-        <p>Northline®</p>
+        <p>Parallel®</p>
         <p className="lp-agent-menu-tab" data-i="0">
           Product
         </p>
@@ -572,8 +580,8 @@ function MenuVisual() {
         ))}
         <figure className="lp-agent-menu-media">
           <img
-            src={photo(15028227, 600, 600)}
-            alt="A ceramic vase on a dark ground"
+            src={`${FR}/UBF85ytILrra5y9lutZNqB9ZveQ.png?width=1024&height=1024`}
+            alt="Interaction menu preview image"
             loading="lazy"
             decoding="async"
           />
@@ -586,9 +594,9 @@ function MenuVisual() {
 
 function SocialVisual() {
   const assets = [
-    { src: photo(29286722, 430, 600), selected: false },
-    { src: photo(9304545, 430, 600), selected: true },
-    { src: photo(15122652, 430, 600), selected: false },
+    { src: `${FR}/OqeBYmv5CfLeKUcIyR5AfOkJtso.jpg?width=430&height=600`, selected: false },
+    { src: `${FR}/9e6mQgfVJqEUmm9HZdfFpQiNFw.jpg?width=430&height=600`, selected: true },
+    { src: `${FR}/WcJqN5pRdus9rQEBbbjOjpBUNIs.jpg?width=430&height=600`, selected: false },
   ];
   return (
     <div className="lp-agent-social">
@@ -597,7 +605,7 @@ function SocialVisual() {
           <figure key={i} className="lp-agent-asset" data-selected={a.selected ? "" : undefined}>
             <figcaption>Social Asset {i + 1}</figcaption>
             <div className="lp-agent-asset-frame">
-              <img src={a.src} alt={`Social post ${i + 1}`} loading="lazy" decoding="async" />
+              <img src={a.src} alt="Design exploration in Framer" loading="lazy" decoding="async" />
               {a.selected && <span className="lp-agent-asset-pick" aria-hidden />}
             </div>
           </figure>

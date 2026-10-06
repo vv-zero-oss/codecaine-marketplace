@@ -1,5 +1,5 @@
 /* ============================================================================
-   Codecaine design system — shadcn/ui bridge
+   Refine Design System — shadcn/ui bridge
    ----------------------------------------------------------------------------
    shadcn components are written against a fixed set of variable names
    (`--background`, `--primary`, `--border`, `--ring`, …) and against Tailwind's
@@ -119,7 +119,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   /* Tailwind's default shadow scale, rewritten onto the house recipes, so a
-     shadcn `shadow-xs` / `shadow-lg` renders a house shadow — including the
+     shadcn `shadow-xs` / `shadow-lg` renders a Refine shadow — including the
      dark-mode light-top-edge treatment. */
   --shadow-2xs: var(--ui-shadow-drop);
   --shadow-xs: var(--ui-shadow-drop);

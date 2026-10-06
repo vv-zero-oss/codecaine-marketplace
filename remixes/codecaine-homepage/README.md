@@ -14,7 +14,7 @@ npm run build      # typecheck + production build
 
 | Route | What it is |
 |---|---|
-| `/` | The homepage: hero, feature cards, a two-row marquee gallery |
+| `/` | The homepage: hero, product video, feature cards, a two-row marquee gallery |
 | `/features` | The agent showcase, product cover, feature cards and feature list |
 | `/brand` | Brand guidelines — foundations, components, the panel shell (also `/design-system`) |
 | `/shadcn` | Every installed shadcn/ui component, rendered through the token bridge |
@@ -38,7 +38,6 @@ src/
 ├── hooks/                 use-disclosure, use-theme, use-mobile
 └── lib/
     ├── canvas-react/      @canvas/react, vendored — do not edit in place
-    ├── media.ts           every photo and clip (Pexels)
     ├── router.tsx         a small path router (real paths, base-aware)
     └── theme.ts, motion.ts, tokens.ts, timeline.ts, utils.ts
 ```
@@ -62,5 +61,5 @@ src/
 
 ## Credits
 
-Photography and video from [Pexels](https://www.pexels.com). Fonts: Inter and
-Roboto Mono from Google Fonts. Integration logos from [SVGL](https://svgl.app).
+Content, media and copy are carried over unchanged from the redine-ds
+project. Fonts: Inter and Roboto Mono from Google Fonts.

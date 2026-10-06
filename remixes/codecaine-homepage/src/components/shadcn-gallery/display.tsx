@@ -148,7 +148,7 @@ export function DisplayGallery() {
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
-              <BreadcrumbLink href="#">Codecaine</BreadcrumbLink>
+              <BreadcrumbLink href="#">Refine</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>

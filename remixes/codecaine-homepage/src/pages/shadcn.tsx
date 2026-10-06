@@ -12,7 +12,7 @@ export function ShadcnPage() {
         <h1 className="type-display mt-2.5">On our tokens</h1>
         <p className="type-lead mt-4 max-w-[520px]">
           Every component below is stock shadcn/ui. None of its colors, shadows, radii or fonts
-          reach the page — <code className="type-code">src/styles/shadcn.css</code> aliases each of its
+          reach the page — <code className="type-code">src/shadcn.css</code> aliases each of its
           variable names onto a <code className="type-code">--ui-*</code> token, so the whole set
           retints with one attribute flip.
         </p>
