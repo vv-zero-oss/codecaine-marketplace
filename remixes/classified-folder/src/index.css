@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/*
+ * Every colour, shadow, radius, font and motion curve on the page is a token
+ * here, so the folder can be repainted in one place. Components use the
+ * Tailwind names these produce (`bg-desk`, `from-folder`, `shadow-sheet`…).
+ */
+@theme static {
+  /* Type */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Surface: the warm desk everything sits on */
+  --color-desk: #f5e9df;
+  --color-desk-deep: #ead9cb;
+
+  /* The folder: a cobalt cover, lit from the top, and its darker back */
+  --color-folder: #2e5fd2;
+  --color-folder-low: #294cb0;
+  --color-folder-back: #2448a8;
+
+  /* The sheet inside */
+  --color-sheet: #ffffff;
+  --color-sheet-ink: #1d1b19;
+  --color-sheet-mute: #6d6760;
+
+  /* Text on the desk */
+  --color-ink: #2a2622;
+  --color-ink-mute: #8a8076;
+  --color-line: rgb(42 38 34 / 0.12);
+
+  /* Radii */
+  --radius-folder: 18px;
+  --radius-sheet: 16px;
+
+  /* Shadows: a soft contact shadow under the folder, a lift under the sheet */
+  --shadow-folder: 0 1px 2px rgb(31 41 99 / 0.18), 0 18px 40px -18px rgb(31 41 99 / 0.45);
+  --shadow-sheet: 0 1px 2px rgb(0 0 0 / 0.08), 0 14px 30px -14px rgb(0 0 0 / 0.35);
+
+  /* Motion: the curves and durations the folder shares */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-peek: 280ms;
+  --duration-pull: 900ms;
+}
+
+html,
+body {
+  margin: 0;
+  background: var(--color-desk);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
