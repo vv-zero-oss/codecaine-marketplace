@@ -1,0 +1,74 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "heirloom",
+  "name": "Heirloom",
+  "version": "1.0.0",
+  "description": "A dark, cinematic landing page for a private family office: a crossfading photographic hero, blur-in headlines with an italic serif accent, program cards, a founder testimonial collage, counting stats and a drifting marquee.",
+  "designedFor": [
+    "A family office, venture studio or investor network introducing itself with a point of view",
+    "Premium membership and community brands that sell on atmosphere and trust",
+    "Film-like landing pages where photography and slow, soft motion carry the story",
+    "Editors who want named motion components (BlurWords, Slideshow, CountUp, Marquee) to restyle live"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Odalys Fernsby"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "investor",
+    "family-office",
+    "cinematic",
+    "dark",
+    "photography",
+    "landing",
+    "membership",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Finance",
+    "Marketing"
+  ],
+  "created": "2026-10-02",
+  "updated": "2026-10-02",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3350
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

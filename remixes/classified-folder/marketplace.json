@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "classified-folder",
+  "name": "Classified Folder",
+  "version": "1.0.0",
+  "description": "One cobalt folder on a warm desk that keeps one secret: hover and the cover swings open on its hinge while a sheet marked \"Do not open\" slides out an inch; click and the sheet is pulled out, turned over in the air and laid on the cover so its other side can be read. A single Motion component with every knob as a prop, and a style guide.",
+  "designedFor": [
+    "A playful empty state, 404 or easter egg that rewards curiosity",
+    "Revealing terms, a secret code or launch notes behind one click",
+    "Showing how a 3D card flip and a hinged cover are built with Motion",
+    "A starting point for any 'open the folder' interaction"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Codecaine"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "folder",
+    "card-flip",
+    "3d",
+    "hover",
+    "micro-interaction",
+    "framer-motion",
+    "motion",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Component",
+    "Animation"
+  ],
+  "created": "2026-10-07",
+  "updated": "2026-10-07",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3360
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg"
+}
