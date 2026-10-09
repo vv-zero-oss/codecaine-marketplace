@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+/* Every colour, shadow, radius, easing and duration on the page lives here, so
+   changing one of them changes it everywhere. Components never hold a raw
+   value. */
+@theme {
+  --font-sans: "Figtree", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Neutrals: a cool, blue-tinted grey scale; 900 is the ink the headlines use. */
+  --color-ink-50: #f6f7fb;
+  --color-ink-100: #eceef5;
+  --color-ink-200: #dfe2ee;
+  --color-ink-400: #8b90ab;
+  --color-ink-600: #555b7a;
+  --color-ink-900: #1b1f48;
+  --color-ink-950: #12153a;
+
+  /* The dark sections and the dark phone. */
+  --color-night-800: #23274f;
+  --color-night-900: #182448;
+  --color-night-950: #0d2038;
+
+  /* Accent: one blue for actions, one green for money that is fine. */
+  --color-brand-50: #eaf4ff;
+  --color-brand-200: #bfdcfd;
+  --color-brand-500: #3b9bf8;
+  --color-brand-600: #2d8bea;
+  --color-brand-700: #2276cf;
+  --color-leaf-200: #c7f0cd;
+  --color-leaf-400: #6fdc7e;
+  --color-leaf-500: #3fc95a;
+
+  /* Status: money out, money warning. */
+  --color-coral-100: #fde4e2;
+  --color-coral-500: #ef6a63;
+  --color-amber-300: #f6c85a;
+  --color-amber-500: #e0a64a;
+  --color-coral-600: #d4524b;
+
+  /* Illustration fills. */
+  --color-paper: #fbfaf6;
+  --color-stream-red: #e0343b;
+  --color-cheese: #f6c453;
+  --color-crust: #e0a64a;
+  --color-mango: #f2a43a;
+
+  /* Radii */
+  --radius-card: 1.25rem;
+  --radius-chip: 0.5rem;
+
+  /* Shadows: one soft layer for resting cards, a deeper stack for what floats. */
+  --shadow-card: 0 1px 2px rgb(27 31 72 / 0.04), 0 8px 24px -10px rgb(27 31 72 / 0.14);
+  --shadow-lift: 0 2px 4px rgb(27 31 72 / 0.05), 0 18px 40px -12px rgb(27 31 72 / 0.22);
+  --shadow-device: 0 0 0 1px rgb(27 31 72 / 0.06), 0 30px 70px -20px rgb(27 31 72 / 0.35);
+  --shadow-button: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 6px 14px -6px rgb(45 139 234 / 0.6);
+
+  /* Motion: one easing family and a short scale of durations. */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 700ms;
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes ping-once {
+  from { transform: scale(1); opacity: 0.9; }
+  to { transform: scale(1.9); opacity: 0; }
+}
+@keyframes float-y {
+  from { transform: translateY(calc(var(--rise, 8px) * -1)); }
+  to { transform: translateY(var(--rise, 8px)); }
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes caret-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@theme {
+  --animate-accordion-down: accordion-down 200ms ease-out;
+  --animate-accordion-up: accordion-up 200ms ease-out;
+  --animate-caret: caret-blink 1s steps(1) infinite;
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: var(--color-ink-900);
+  background: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Lenis owns the scroll; these are the classes it asks for. */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+.tabular { font-variant-numeric: tabular-nums; }

@@ -823,6 +823,81 @@
     },
     {
       "type": "remix",
+      "id": "classified-folder",
+      "name": "Classified Folder",
+      "version": "1.0.0",
+      "description": "One cobalt folder on a warm desk that keeps one secret: hover and the cover swings open on its hinge while a sheet marked \"Do not open\" slides out an inch; click and the sheet is pulled out, turned over in the air and laid on the cover so its other side can be read. A single Motion component with every knob as a prop, and a style guide.",
+      "designedFor": [
+        "A playful empty state, 404 or easter egg that rewards curiosity",
+        "Revealing terms, a secret code or launch notes behind one click",
+        "Showing how a 3D card flip and a hinged cover are built with Motion",
+        "A starting point for any 'open the folder' interaction"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "folder",
+        "card-flip",
+        "3d",
+        "hover",
+        "micro-interaction",
+        "framer-motion",
+        "motion",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Component",
+        "Animation"
+      ],
+      "created": "2026-10-07",
+      "updated": "2026-10-07",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3360
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "path": "remixes/classified-folder",
+      "thumbnailUrl": "remixes/classified-folder/preview.png",
+      "iconUrl": "remixes/classified-folder/icon.svg",
+      "archive": {
+        "url": "archives/remixes/classified-folder-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "372968bcc0fa6c943370435bd37d7065a9cdb34855e302b37ec45975099bdfb1",
+        "size": 231936,
+        "files": 29
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/classified-folder"
+      },
+      "demoUrl": "demos/classified-folder/"
+    },
+    {
+      "type": "remix",
       "id": "coastal-residence",
       "name": "Coastal Residence",
       "version": "1.1.1",
@@ -1408,6 +1483,109 @@
     },
     {
       "type": "remix",
+      "id": "heirloom",
+      "name": "Heirloom",
+      "version": "1.0.0",
+      "description": "A dark, cinematic landing page for a private family office: a crossfading photographic hero, blur-in headlines with an italic serif accent, program cards, a founder testimonial collage, counting stats and a drifting marquee.",
+      "designedFor": [
+        "A family office, venture studio or investor network introducing itself with a point of view",
+        "Premium membership and community brands that sell on atmosphere and trust",
+        "Film-like landing pages where photography and slow, soft motion carry the story",
+        "Editors who want named motion components (BlurWords, Slideshow, CountUp, Marquee) to restyle live"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Odalys Fernsby"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "investor",
+        "family-office",
+        "cinematic",
+        "dark",
+        "photography",
+        "landing",
+        "membership",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Finance",
+        "Marketing"
+      ],
+      "created": "2026-10-02",
+      "updated": "2026-10-02",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3350
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/heirloom",
+      "thumbnailUrl": "remixes/heirloom/preview.png",
+      "iconUrl": "remixes/heirloom/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/heirloom/previews/desktop.jpg",
+        "mobile": "remixes/heirloom/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/heirloom/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/heirloom/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/heirloom-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "2b9b8f0ea7610a29bb46ce6c0d0370a6f21dcca4b5c270524ca05edad158bb20",
+        "size": 1928192,
+        "files": 59
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/heirloom"
+      },
+      "demoUrl": "demos/heirloom/"
+    },
+    {
+      "type": "remix",
       "id": "kerfuffle-studio",
       "name": "Kerfuffle Studio",
       "version": "1.2.0",
@@ -1577,6 +1755,113 @@
         "path": "remixes/kerfuffle-studio"
       },
       "demoUrl": "demos/kerfuffle-studio/"
+    },
+    {
+      "type": "remix",
+      "id": "meridian-health",
+      "name": "Meridian — Health Coach",
+      "version": "1.3.0",
+      "description": "A soft pastel-gradient landing page for a connected health-coach app, with working phone and watch mockups: scrub a strain chart, tap a sleep stage, connect lab providers, switch the coach's voice and chat, log meals, flip through biological age, cycle, lifts and a journal — plus three scroll-driven chapters (a manifesto that reads itself in, a pinned day-with-Meridian timeline, a horizontal signal ribbon), privacy, reviews and a closing call.",
+      "designedFor": [
+        "Health, fitness, wellness and wearable app launch pages",
+        "Mobile-app landing pages that need the product itself on show, not screenshots",
+        "Teams who want device mockups whose screens are live, interactive UI",
+        "Studying editor-ready motion: floating chips, marquees, count-ups, rings, an auto-advancing feature accordion"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Tavish Lindqvist-Rao"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "health",
+        "fitness",
+        "wellness",
+        "app",
+        "landing",
+        "mockup",
+        "iphone",
+        "watch",
+        "ai",
+        "coach",
+        "react",
+        "vite",
+        "tailwind",
+        "motion"
+      ],
+      "categories": [
+        "Marketing",
+        "Health"
+      ],
+      "created": "2026-10-02",
+      "updated": "2026-10-02",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3340
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/meridian-health",
+      "thumbnailUrl": "remixes/meridian-health/preview.png",
+      "iconUrl": "remixes/meridian-health/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/meridian-health/previews/desktop.jpg",
+        "mobile": "remixes/meridian-health/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/meridian-health/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/meridian-health/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/meridian-health-1.3.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "301648e67921112f12286754391fe9957724f2dad39bbd90b0ef38ea0812c0a2",
+        "size": 451584,
+        "files": 74
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/meridian-health"
+      },
+      "demoUrl": "demos/meridian-health/"
     },
     {
       "type": "remix",
@@ -1875,6 +2160,216 @@
         "path": "remixes/photographer-portfolio"
       },
       "demoUrl": "demos/photographer-portfolio/"
+    },
+    {
+      "type": "remix",
+      "id": "pixel-gateway",
+      "name": "Pixelkeep",
+      "version": "1.2.1",
+      "description": "A pixel-art secure web gateway site on a golden-ratio type and spacing system: a dusk-sky hero, value proposition, decrypting feature board, a sticky 3D dashboard riding three sections, how it works with a request simulator, case studies, pricing with a seat calculator, a get-started wizard and a random landing-page generator.",
+      "designedFor": [
+        "A pixel-art / 8-bit product or game-adjacent landing page with real depth",
+        "Seeing a sticky, scroll-linked dashboard header driving three sections",
+        "Pointer-tilt 3D cards, CSS 3D cubes and a radar built from plain transforms",
+        "Rolling a random, shareable template from a seed and painting the whole site with it"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Codecaine",
+          "url": "https://github.com/vv-zero-oss"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "pixel-art",
+        "8-bit",
+        "retro",
+        "security",
+        "saas",
+        "landing",
+        "3d",
+        "generator",
+        "framer-motion",
+        "lenis"
+      ],
+      "categories": [
+        "Marketing",
+        "Creative"
+      ],
+      "created": "2026-10-02",
+      "updated": "2026-10-02",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3340
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/products",
+          "title": "Products"
+        },
+        {
+          "path": "/how-it-works",
+          "title": "How it works"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/customers",
+          "title": "Customers"
+        },
+        {
+          "path": "/case-studies",
+          "title": "Case studies"
+        },
+        {
+          "path": "/get-started",
+          "title": "Get started"
+        },
+        {
+          "path": "/security",
+          "title": "Security"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/generator",
+          "title": "Template generator"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Products",
+            "image": "previews/pages/products.jpg"
+          },
+          {
+            "title": "How it works",
+            "image": "previews/pages/how-it-works.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "previews/pages/customers.jpg"
+          },
+          {
+            "title": "Case studies",
+            "image": "previews/pages/case-studies.jpg"
+          },
+          {
+            "title": "Get started",
+            "image": "previews/pages/get-started.jpg"
+          },
+          {
+            "title": "Security",
+            "image": "previews/pages/security.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Template generator",
+            "image": "previews/pages/generator.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/pixel-gateway",
+      "iconUrl": "remixes/pixel-gateway/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/pixel-gateway/previews/desktop.jpg",
+        "mobile": "remixes/pixel-gateway/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/pixel-gateway/previews/pages/home.jpg"
+          },
+          {
+            "title": "Products",
+            "image": "remixes/pixel-gateway/previews/pages/products.jpg"
+          },
+          {
+            "title": "How it works",
+            "image": "remixes/pixel-gateway/previews/pages/how-it-works.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/pixel-gateway/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "remixes/pixel-gateway/previews/pages/customers.jpg"
+          },
+          {
+            "title": "Case studies",
+            "image": "remixes/pixel-gateway/previews/pages/case-studies.jpg"
+          },
+          {
+            "title": "Get started",
+            "image": "remixes/pixel-gateway/previews/pages/get-started.jpg"
+          },
+          {
+            "title": "Security",
+            "image": "remixes/pixel-gateway/previews/pages/security.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/pixel-gateway/previews/pages/about.jpg"
+          },
+          {
+            "title": "Template generator",
+            "image": "remixes/pixel-gateway/previews/pages/generator.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/pixel-gateway/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/pixel-gateway-1.2.1.tgz",
+        "format": "tar+gzip",
+        "sha256": "8abdd8a7f21a1b97ec318e25204d2b784149f8a1a9e5159003efddc373c7fac1",
+        "size": 640000,
+        "files": 104
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/pixel-gateway"
+      },
+      "demoUrl": "demos/pixel-gateway/"
     },
     {
       "type": "remix",
@@ -2429,6 +2924,108 @@
         "path": "remixes/signal-ai"
       },
       "demoUrl": "demos/signal-ai/"
+    },
+    {
+      "type": "remix",
+      "id": "tally-money",
+      "name": "Tally",
+      "version": "1.2.0",
+      "description": "A personal-finance landing page: inked-object hero with payment toasts, a three-bank link scene, a dense dashboard and phone, a live payment feed, self-typing search, proof, pricing with a border beam, FAQ and a closing — authored as named components for the editor.",
+      "designedFor": [
+        "Launching a money, budgeting or banking app",
+        "A calm, friendly fintech look with real product mockups",
+        "Motion built as editable components: Framer Motion and Lenis",
+        "Starting a marketing site with a /brand style guide"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ottilie Moreau"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fintech",
+        "finance",
+        "landing",
+        "app",
+        "pricing",
+        "testimonials",
+        "framer-motion",
+        "lenis",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Finance"
+      ],
+      "created": "2026-10-02",
+      "updated": "2026-10-02",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3350
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/tally-money",
+      "thumbnailUrl": "remixes/tally-money/preview.png",
+      "iconUrl": "remixes/tally-money/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/tally-money/previews/desktop.jpg",
+        "mobile": "remixes/tally-money/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/tally-money/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/tally-money/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/tally-money-1.2.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "12b6729cd9d876b5a2fad297e988f0894f8c78b16dcf3ae084a0aa07160cb535",
+        "size": 517120,
+        "files": 81
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/tally-money"
+      },
+      "demoUrl": "demos/tally-money/"
     },
     {
       "type": "remix",
