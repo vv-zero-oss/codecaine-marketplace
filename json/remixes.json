@@ -1852,6 +1852,151 @@
     },
     {
       "type": "remix",
+      "id": "kestrel",
+      "name": "Kestrel — Spend Management",
+      "version": "1.0.0",
+      "description": "A calm, white-and-warm-grey fintech site for Kestrel, a spend platform run by agents: a golden-ratio type scale with tight negative tracking, one lime button, soft layered shadows and dot-grid product panels. An autoplaying hero stage (card dispensed, receipts matched, an invoice dropped and auto-coded), a customer wall that opens into photo stories, a working product bento, a pinned scroll where six disconnected tools collapse into one ledger, a pinned dollar-flow walkthrough, a live policy agent, an approval-workflow builder and a dotted globe, a savings calculator and drifting testimonials — plus Platform, Pricing and Customers pages and a live brand guide.",
+      "designedFor": [
+        "Fintech, spend management, payments and finance-ops products",
+        "B2B SaaS pages that need to show the product working, not screenshots of it",
+        "Story-led landing pages with sticky, scroll-scrubbed sections",
+        "Seeing autoplaying scenes, a scroll-pinned stage and interactive mockups built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Wren Halvorsen"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fintech",
+        "spend-management",
+        "corporate-cards",
+        "saas",
+        "ai-agents",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "golden-ratio",
+        "pricing",
+        "customers",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-10-09",
+      "updated": "2026-10-09",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3370
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/platform",
+          "title": "Platform"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/customers",
+          "title": "Customers"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Platform",
+            "image": "previews/pages/platform.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "previews/pages/customers.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/kestrel",
+      "thumbnailUrl": "remixes/kestrel/preview.png",
+      "iconUrl": "remixes/kestrel/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/kestrel/previews/desktop.jpg",
+        "mobile": "remixes/kestrel/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/kestrel/previews/pages/home.jpg"
+          },
+          {
+            "title": "Platform",
+            "image": "remixes/kestrel/previews/pages/platform.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/kestrel/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "remixes/kestrel/previews/pages/customers.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/kestrel/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/kestrel-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "66b2e539af696afd884942e591955dca2da51deb72586ce87b00ec52b704e585",
+        "size": 815104,
+        "files": 117
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/kestrel"
+      },
+      "demoUrl": "demos/kestrel/"
+    },
+    {
+      "type": "remix",
       "id": "meridian-health",
       "name": "Meridian — Health Coach",
       "version": "1.3.0",
