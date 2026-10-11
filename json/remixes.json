@@ -139,7 +139,7 @@
       "archive": {
         "url": "archives/remixes/aerie-air-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "0ba2bc7103254d272f2483c3158c6a2d75b4ae7092f93d5cba5ef9c654a4a24c",
+        "sha256": "b6a2eedbd80c03c4a987e72dde7ae4240f5c35637534b55dde8f68ae245bde18",
         "size": 4183040,
         "files": 143
       },
