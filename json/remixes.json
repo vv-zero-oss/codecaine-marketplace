@@ -5,6 +5,153 @@
   "items": [
     {
       "type": "remix",
+      "id": "aerie-air",
+      "name": "Aerie — Electric Air Taxi",
+      "version": "1.0.0",
+      "description": "A cream-and-electric-blue site for Aerie, an invented all-electric air taxi: Manrope set huge and tight on a golden-ratio scale, soft warm shadows and dusk photography. The home page is one long pinned scroll story — a rounded hero card opens to the whole window, the cabin, the wing and an original tilt-rotor drawing lift past under changing captions, then the picture lifts like a lid and the sky turns to paper. Under it: a highlights gallery with drifting thumbnails, a manifesto that inks itself in word by word, a working glass app laid over a photograph (pick pads and a time, press and hold to book), a pinned weekday that re-plans itself as you scroll, a dusk engineering band, notes, and a blue 'dream of flight' close with climbing clouds. The menu opens as a curtain of horizon stripes. Plus Experience (a pinned five-screen phone journey, a seat map, a real booking flow and fares), Aircraft (rotors that tilt on scroll, a noise slider, anatomy hotspots, a motor-failure grid, a charge-day chart), Routes (a live network map with quotes, a pinned time-back counter, the sticky partners list, careers and a waitlist) and a live brand guide.",
+      "designedFor": [
+        "Mobility, aviation, travel and hardware launch sites",
+        "Story-led landing pages built around one long scroll-pinned, scroll-scrubbed opening",
+        "Brands that want loud oversized type on a warm, quiet surface with one electric accent",
+        "Seeing working SVG mockups — a booking app, a route map, an aircraft — built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Soraya Lindqvist"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "mobility",
+        "aviation",
+        "air-taxi",
+        "evtol",
+        "travel",
+        "sticky-scroll",
+        "scroll-story",
+        "scrollytelling",
+        "interactive-mockups",
+        "booking",
+        "map",
+        "golden-ratio",
+        "oversized-typography",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Landing Page"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3445
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/experience",
+          "title": "Experience"
+        },
+        {
+          "path": "/aircraft",
+          "title": "Aircraft"
+        },
+        {
+          "path": "/routes",
+          "title": "Routes"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Experience",
+            "image": "previews/pages/experience.jpg"
+          },
+          {
+            "title": "Aircraft",
+            "image": "previews/pages/aircraft.jpg"
+          },
+          {
+            "title": "Routes",
+            "image": "previews/pages/routes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/aerie-air",
+      "thumbnailUrl": "remixes/aerie-air/preview.png",
+      "iconUrl": "remixes/aerie-air/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/aerie-air/previews/desktop.jpg",
+        "mobile": "remixes/aerie-air/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/aerie-air/previews/pages/home.jpg"
+          },
+          {
+            "title": "Experience",
+            "image": "remixes/aerie-air/previews/pages/experience.jpg"
+          },
+          {
+            "title": "Aircraft",
+            "image": "remixes/aerie-air/previews/pages/aircraft.jpg"
+          },
+          {
+            "title": "Routes",
+            "image": "remixes/aerie-air/previews/pages/routes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/aerie-air/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/aerie-air-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "0ba2bc7103254d272f2483c3158c6a2d75b4ae7092f93d5cba5ef9c654a4a24c",
+        "size": 4183040,
+        "files": 143
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/aerie-air"
+      },
+      "demoUrl": "demos/aerie-air/"
+    },
+    {
+      "type": "remix",
       "id": "ai-canvas",
       "name": "AI Canvas",
       "version": "1.1.1",

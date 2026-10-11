@@ -1,0 +1,271 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   page lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: one geometric grotesk for everything; a mono for flight codes */
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Paper: a warm cream page and the panels that sit on it */
+  --color-page: #f4f1da;
+  --color-panel: #ebe7cc;
+  --color-panel-deep: #e0dbbc;
+  --color-raised: #fbfaf0;
+
+  /* Ink: hierarchy lives in greys, all AA on the page (16.0 / 9.3 / 5.6:1) */
+  --color-ink: #12151c;
+  --color-ink-2: #3b3f47;
+  --color-ink-3: #5c5f66;
+  /* Decorative only — rules, the unread half of a scrubbed sentence */
+  --color-ink-4: #a6a698;
+
+  --color-line: #dcd7b9;
+  --color-line-strong: #c7c1a0;
+
+  /* Sky: the one loud colour. A tonal scale seeded in HCT from #056ede */
+  --color-sky: #056ede;
+  --color-sky-hover: #005bc7;
+  --color-sky-press: #0049b1;
+  --color-sky-50: #d6edff;
+  --color-sky-100: #c6dfff;
+  --color-sky-200: #a4c3ff;
+  --color-sky-300: #80a8ff;
+  --color-sky-700: #00459e;
+  --color-sky-900: #001b5c;
+  /* Text on sky: white for anything small (4.9:1), cream for display */
+  --color-on-sky: #ffffff;
+  --color-on-sky-soft: #c9dcf7;
+
+  /* Dusk: the cabin-at-sunset dark, for photo bands and the tech chapter */
+  --color-dusk: #0f0d0b;
+  --color-dusk-2: #1d1915;
+  --color-dusk-fg: #f4f1da;
+  --color-dusk-muted: #b5ae9a;
+
+  /* The horizon stripes that close every page */
+  --color-navy: #1e2d86;
+  --color-ember: #e65a1e;
+  --color-ember-ink: #b8481a;
+  --color-peach: #f6cdb4;
+  --color-haze: #b9daee;
+
+  /* Signals in the app mockups — never the only cue */
+  --color-signal-green: #1d7a45;
+  --color-signal-green-soft: #dcefdf;
+  --color-signal-red: #b3261e;
+
+  /* Golden-ratio type scale: φ half-steps (×1.272) from a 16px body, so
+     every second step is ×1.618. Tracking tightens as the size grows. */
+  --text-micro: 12.58px;
+  --text-micro--line-height: 1.4;
+  --text-micro--letter-spacing: 0;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body--letter-spacing: -0.01em;
+  --text-lead: 20.35px;
+  --text-lead--line-height: 1.38;
+  --text-lead--letter-spacing: -0.018em;
+  --text-h4: 25.89px;
+  --text-h4--line-height: 1.2;
+  --text-h4--letter-spacing: -0.024em;
+  --text-h3: clamp(25.89px, 2.6vw, 32.94px);
+  --text-h3--line-height: 1.12;
+  --text-h3--letter-spacing: -0.03em;
+  --text-h2: clamp(32.94px, 4.2vw, 53.29px);
+  --text-h2--line-height: 1.04;
+  --text-h2--letter-spacing: -0.034em;
+  --text-display: clamp(41.89px, 6.2vw, 86.23px);
+  --text-display--line-height: 0.98;
+  --text-display--letter-spacing: -0.04em;
+  --text-mega: clamp(53.29px, 8.4vw, 139.5px);
+  --text-mega--line-height: 0.92;
+  --text-mega--letter-spacing: -0.045em;
+  --text-giga: clamp(67.77px, 11.2vw, 225.6px);
+  --text-giga--line-height: 0.86;
+  --text-giga--letter-spacing: -0.05em;
+  --text-tera: clamp(86.23px, 15.4vw, 365px);
+  --text-tera--line-height: 0.82;
+  --text-tera--letter-spacing: -0.055em;
+
+  /* Radii read off the layout: generous photo cards, pill buttons */
+  --radius-chip: 6px;
+  --radius-field: 10px;
+  --radius-button: 9999px;
+  --radius-card: 14px;
+  --radius-photo: 20px;
+  --radius-stage: 44px;
+  --radius-device: 46px;
+
+  --spacing-gutter: clamp(16px, 2.7vw, 52px);
+  --spacing-section: clamp(96px, 12vw, 192px);
+
+  /* Shadows: soft, wide and low — warm-tinted so they sit on cream */
+  --shadow-hairline: 0 0 0 1px rgb(18 21 28 / 0.08);
+  --shadow-xs: 0 1px 2px rgb(40 32 10 / 0.06);
+  --shadow-card: 0 1px 2px rgb(40 32 10 / 0.04), 0 10px 30px -14px rgb(40 32 10 / 0.14);
+  --shadow-photo: 0 2px 4px rgb(40 32 10 / 0.04), 0 24px 50px -24px rgb(40 32 10 / 0.28);
+  --shadow-float: 0 2px 6px rgb(40 32 10 / 0.05), 0 22px 48px -18px rgb(40 32 10 / 0.22);
+  --shadow-device: 0 0 0 1px rgb(18 21 28 / 0.1), 0 30px 60px -30px rgb(18 21 28 / 0.4), 0 70px 120px -60px rgb(18 21 28 / 0.35);
+  --shadow-field: 0 0 0 1px rgb(18 21 28 / 0.12), 0 1px 2px rgb(40 32 10 / 0.04);
+  --shadow-button: 0 1px 1px rgb(18 21 28 / 0.12), 0 8px 18px -8px rgb(18 21 28 / 0.45);
+  --shadow-sky: 0 1px 1px rgb(0 40 110 / 0.2), 0 10px 24px -10px rgb(5 110 222 / 0.6);
+
+  /* Motion, measured off the reference at 60fps: the hero stage folds into
+     its card over ~600ms of scroll; captions cross-fade in 280ms; reveals
+     ride a long ease-out, never a bounce */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 280ms;
+  --duration-menu: 520ms;
+  --duration-scene: 800ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-accordion-down: accordion-down 260ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out-strong);
+  --animate-drift: drift var(--drift-duration, 60s) linear infinite;
+  --animate-spin-prop: spin-prop 0.24s linear infinite;
+  --animate-pulse-dot: pulse-dot 1.8s var(--ease-out-strong) infinite;
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-page);
+  --foreground: var(--color-ink);
+  --card: var(--color-raised);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-raised);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-page);
+  --secondary: var(--color-panel);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-panel);
+  --muted-foreground: var(--color-ink-3);
+  --accent: var(--color-panel);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-signal-red);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-sky);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes drift {
+  from { transform: translateX(-12%); }
+  to { transform: translateX(12%); }
+}
+@keyframes spin-prop {
+  to { transform: rotate(360deg); }
+}
+/* A rotor seen edge-on: the blade pair sweeps through, short to long */
+@keyframes blade {
+  0%, 100% { transform: scaleX(1); }
+  50% { transform: scaleX(0.08); }
+}
+@keyframes blade-y {
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.08); }
+}
+/* The craft riding the app's route arc */
+@keyframes journey {
+  0% { offset-distance: 0%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { offset-distance: 100%; opacity: 0; }
+}
+/* The car on the ride screen's map, along its road */
+@keyframes trip-car {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgb(5 110 222 / 0.5); }
+  100% { box-shadow: 0 0 0 10px rgb(5 110 222 / 0); }
+}
+
+/* Small labels: eyebrows, captions on photos, table heads */
+@utility type-eyebrow {
+  font-size: 12.58px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+/* Headline weight: between medium and semibold, as the reference sets it */
+@utility type-head {
+  font-weight: 560;
+  font-feature-settings: "ss01";
+}
+
+/* The underlined text link the reference uses for "Discover …" */
+@utility link-line {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 100% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  padding-bottom: 2px;
+  transition: background-size var(--duration-swap) var(--ease-out-strong);
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-sky); color: var(--color-on-sky); }
+  button, [role="button"] { cursor: pointer; }
+  @media (hover: hover) {
+    .link-line:hover { background-size: 0% 1px; background-position: 100% 100%; }
+  }
+}
