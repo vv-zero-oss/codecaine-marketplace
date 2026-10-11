@@ -1302,6 +1302,151 @@
     },
     {
       "type": "remix",
+      "id": "fete",
+      "name": "Fête — Events Platform",
+      "version": "1.0.0",
+      "description": "A white, loud and joyful events site for Fête, where run clubs, supper clubs and hack nights get made and filled: an oversized golden-ratio headline in tight Inter, one magenta-to-amber flare, pill buttons and soft wide shadows under poster prints. Point at the hero's button and a circle opens out of it into a mood — a starlit warp, an electric colour wash, a sky of hearts — while a dozen live-typeset posters drift at their own depths. A pinned phone tells hosting in four scroll-driven screens (the page types itself, the guest list fills, the door count climbs, the photos arrive), a real invitation turns into a ticket, and the communities and categories directory sits under it — plus Discover (live filters and an RSVP sheet), Host (a three-step builder with a live phone preview that publishes), Pricing (a payout calculator) and a live brand guide.",
+      "designedFor": [
+        "Event, ticketing, community and RSVP products",
+        "Consumer landing pages that want loud, oversized type with a light, airy surface",
+        "Story-led home pages with a scroll-pinned, scroll-scrubbed product walkthrough",
+        "Seeing hover-triggered reveals, live mockups and a working builder built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Tamsin Oduya"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "events",
+        "ticketing",
+        "rsvp",
+        "community",
+        "consumer",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "golden-ratio",
+        "oversized-typography",
+        "pricing",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Landing Page"
+      ],
+      "created": "2026-10-10",
+      "updated": "2026-10-10",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3390
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/discover",
+          "title": "Discover"
+        },
+        {
+          "path": "/create",
+          "title": "Host"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Discover",
+            "image": "previews/pages/discover.jpg"
+          },
+          {
+            "title": "Host",
+            "image": "previews/pages/create.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/fete",
+      "thumbnailUrl": "remixes/fete/preview.png",
+      "iconUrl": "remixes/fete/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/fete/previews/desktop.jpg",
+        "mobile": "remixes/fete/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/fete/previews/pages/home.jpg"
+          },
+          {
+            "title": "Discover",
+            "image": "remixes/fete/previews/pages/discover.jpg"
+          },
+          {
+            "title": "Host",
+            "image": "remixes/fete/previews/pages/create.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/fete/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/fete/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/fete-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "7972b49d5eb02e81d4cbd6f11a335fe4cf72f2e95f617c223fd0187afe6a5ecf",
+        "size": 555520,
+        "files": 74
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/fete"
+      },
+      "demoUrl": "demos/fete/"
+    },
+    {
+      "type": "remix",
       "id": "food-joint",
       "name": "Food Joint",
       "version": "1.1.1",
@@ -3661,6 +3806,151 @@
         "path": "remixes/tidemark"
       },
       "demoUrl": "demos/tidemark/"
+    },
+    {
+      "type": "remix",
+      "id": "truant-coffee",
+      "name": "Truant — Specialty Coffee Roaster",
+      "version": "1.0.0",
+      "description": "A loud, photograph-led storefront for Truant, a Lake Superior single-origin roaster: Take the long way stacked huge in a round-shouldered condensed poster face over full-bleed photography, a fixed right-hand rail, warm paper, one tomato accent and soft low shadows. Four coffee series stack over one another as you scroll, the mission lights up word by word before a photograph opens out to fill the window, NEVER RUN DRY tumbles together letter by letter, and every bag is drawn and typeset live in SVG. A live roast curve you can scrub, a working brew timer, a real cart with a discount code and checkout, and a subscription you can skip, pause and cancel — plus Shop (filters, quick view, a taste map), Subscribe (a builder with a pinned live order), Field notes (a pinned origin map and a price ledger) and a live brand guide.",
+      "designedFor": [
+        "Coffee roasters, food and drink brands, and DTC subscription shops",
+        "Storefronts that want oversized poster typography over full-bleed photography",
+        "Story-led home pages with sticky stacking sections and scroll-scrubbed reveals",
+        "Seeing working mockups — drawn product packaging, a cart, a subscription builder — built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ines Varga-Holloway"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "coffee",
+        "roaster",
+        "ecommerce",
+        "subscription",
+        "food-and-drink",
+        "storefront",
+        "sticky-scroll",
+        "scroll-story",
+        "svg-mockups",
+        "golden-ratio",
+        "oversized-typography",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "E-commerce",
+        "Marketing"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3430
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/shop",
+          "title": "Shop"
+        },
+        {
+          "path": "/subscribe",
+          "title": "Subscribe"
+        },
+        {
+          "path": "/field-notes",
+          "title": "Field notes"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "previews/pages/shop.jpg"
+          },
+          {
+            "title": "Subscribe",
+            "image": "previews/pages/subscribe.jpg"
+          },
+          {
+            "title": "Field notes",
+            "image": "previews/pages/field-notes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/truant-coffee",
+      "thumbnailUrl": "remixes/truant-coffee/preview.png",
+      "iconUrl": "remixes/truant-coffee/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/truant-coffee/previews/desktop.jpg",
+        "mobile": "remixes/truant-coffee/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/truant-coffee/previews/pages/home.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "remixes/truant-coffee/previews/pages/shop.jpg"
+          },
+          {
+            "title": "Subscribe",
+            "image": "remixes/truant-coffee/previews/pages/subscribe.jpg"
+          },
+          {
+            "title": "Field notes",
+            "image": "remixes/truant-coffee/previews/pages/field-notes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/truant-coffee/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/truant-coffee-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "328cd950b84c6d344a736193b90c74114d6fc8de2f3ad95aa5cb46772d3820f6",
+        "size": 627712,
+        "files": 94
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/truant-coffee"
+      },
+      "demoUrl": "demos/truant-coffee/"
     }
   ]
 }
