@@ -39,16 +39,16 @@ export function DreamOfFlight({ title = "Dream of flight", climb = 60 }: { title
       </div>
 
       {/* clouds that climb over the words */}
-      <motion.div style={still ? undefined : { y: far }} aria-hidden className="pointer-events-none absolute inset-x-0 top-[62svh] z-10 h-[60svh] max-sm:top-[96svh]">
+      <motion.div style={{ y: still ? `${climb}svh` : far }} aria-hidden className="pointer-events-none absolute inset-x-0 top-[62svh] z-10 h-[60svh] max-sm:top-[96svh]">
         <Drift className="absolute -left-[6%] top-[8%] w-[38vw] min-w-56" shape="long" duration={80} />
         <Drift className="absolute right-[-4%] top-0 w-[30vw] min-w-48" shape="puff" duration={95} reverse />
       </motion.div>
-      <motion.div style={still ? undefined : { y: near }} aria-hidden className="pointer-events-none absolute inset-x-0 top-[74svh] z-10 h-[70svh] max-sm:top-[104svh]">
+      <motion.div style={{ y: still ? `${climb}svh` : near }} aria-hidden className="pointer-events-none absolute inset-x-0 top-[74svh] z-10 h-[70svh] max-sm:top-[104svh]">
         <Drift className="absolute left-[18%] top-[10%] w-[56vw] min-w-72" shape="tall" duration={70} />
         <Drift className="absolute -right-[10%] top-[30%] w-[44vw] min-w-64" shape="long" duration={110} reverse />
       </motion.div>
 
-      <div className="relative z-20 flex flex-col gap-[clamp(64px,18svh,200px)] px-(--spacing-gutter) pt-[30svh] pb-(--spacing-section)">
+      <div className={cn("relative z-20 flex flex-col gap-[clamp(64px,18svh,200px)] px-(--spacing-gutter) pb-(--spacing-section)", still ? "pt-[85svh]" : "pt-[30svh]")}>
         {VISIONS.map((v, i) => (
           <Vision key={v} index={i} text={v} still={still} />
         ))}

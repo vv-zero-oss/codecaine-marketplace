@@ -196,8 +196,8 @@ function HeroStill({ headline, tagline, closing }: { headline: string; tagline: 
         <p className="absolute bottom-8 left-(--spacing-gutter) max-w-[16rem] border-l border-dusk-fg/70 pl-3 text-micro text-dusk-fg">{s.caption}</p>
       </div>
       <p className="py-[5svh] text-center text-micro text-on-sky">{tagline}</p>
-      <div data-header-tone="dark" className="bg-page px-(--spacing-gutter) pt-[clamp(64px,9svh,96px)]">
-        <h2 className="type-head text-giga max-sm:text-[13.5vw]">{closing}</h2>
+      <div data-header-tone="dark" className="bg-page px-(--spacing-gutter) pt-[clamp(64px,9svh,96px)] pb-[0.2em]">
+        <h2 className="type-head text-giga leading-[1] max-sm:text-[13.5vw]">{closing}</h2>
       </div>
     </section>
   )
