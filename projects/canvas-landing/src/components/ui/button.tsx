@@ -3,59 +3,40 @@ import type * as React from "react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * The page's one button: a pill. `ink` is the call to action, `soft` the quiet
+ * one beside it. Press scales it a touch (under 100ms back, 160ms down) so it
+ * answers the finger, and the arrow in a `soft` one leans toward where it
+ * goes.
+ */
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
+  "group/button inline-flex select-none items-center justify-center gap-2 whitespace-nowrap rounded-full font-medium tracking-[-0.01em] transition-[transform,background-color,opacity] duration-160 ease-out active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-[1.05em] [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-quartz-900 text-white hover:bg-quartz-950",
-        primary: "bg-indigo-600 text-white hover:bg-indigo-700",
-        outline: "border border-quartz-200 bg-white text-quartz-900 hover:bg-quartz-50",
-        ghost: "text-quartz-600 hover:bg-quartz-50 hover:text-quartz-900",
-        link: "text-indigo-600 underline-offset-4 hover:underline",
+        ink: "bg-ink text-white hover:bg-ink-hover",
+        soft: "bg-surface-2 text-ink hover:bg-surface-3 [&_svg]:transition-transform [&_svg]:duration-200 hover:[&_svg]:translate-x-0.5",
       },
       size: {
-        default: "h-10 px-5",
-        sm: "h-9 px-4",
-        lg: "h-12 px-6 text-base",
-        icon: "size-10",
+        default: "h-11 px-5 text-[15px]",
+        lg: "h-[50px] px-6 text-[17px] md:text-[18px]",
       },
     },
-    defaultVariants: { variant: "default", size: "default" },
+    defaultVariants: { variant: "ink", size: "default" },
   },
 )
 
 type ButtonStyle = VariantProps<typeof buttonVariants>
 
-export function Button({
-  className,
-  variant,
-  size,
-  ...props
-}: React.ComponentProps<"button"> & ButtonStyle) {
+export function Button({ className, variant, size, ...props }: React.ComponentProps<"button"> & ButtonStyle) {
   return <button className={cn(buttonVariants({ variant, size, className }))} {...props} />
 }
 
 /**
- * The same button, as a link.
- *
- * `scaffold/` writes this as shadcn does — `<Button asChild><a …/></Button>` —
- * and renders exactly the same `<a class="inline-flex …">`. Two components
- * here instead, because `asChild` puts Radix's `Slot` between the anchor and
- * `Button`, and the innermost component is the one an element is the root of:
- * the layer would read `Slot`. The markup is identical either way; which name
- * the editor can show is the whole difference, and it is the kind of thing
- * this project exists to make visible.
+ * The same button, as a link. Two components rather than `asChild`, so the
+ * editor's layers panel reads `ButtonLink` and not Radix's `Slot`.
  */
-export function ButtonLink({
-  className,
-  variant,
-  size,
-  ...props
-}: React.ComponentProps<"a"> & ButtonStyle) {
-  // Spread first, so the anchor serialises its own attributes in the order it
-  // was given them — `href` then `class`, the same as the `asChild` version in
-  // `scaffold/`. The two documents are meant to be comparable down to this.
+export function ButtonLink({ className, variant, size, ...props }: React.ComponentProps<"a"> & ButtonStyle) {
   return <a {...props} className={cn(buttonVariants({ variant, size, className }))} />
 }
 

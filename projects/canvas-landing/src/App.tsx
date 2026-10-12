@@ -1,7 +1,8 @@
 import { useSmoothScroll } from "@/components/motion"
+import { Hero } from "@/components/sections/hero"
 
 /** The page grows one section at a time, in the order they appear on it. */
-const SECTIONS: { id: string; Section: () => React.ReactNode }[] = []
+const SECTIONS: { id: string; Section: () => React.ReactNode }[] = [{ id: "top", Section: Hero }]
 
 /** `data-canvas-ignore` on the page wrapper and `<main>`: structural, with
  *  nothing of their own to design (see CLAUDE.md). */

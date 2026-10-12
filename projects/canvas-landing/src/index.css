@@ -15,6 +15,31 @@
 @theme {
   --font-sans: "Timeless Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Ink and paper: the page is white, the hierarchy lives in the greys */
+  --color-ink: #111111;
+  --color-ink-hover: #2b2b2b;
+  --color-ink-2: #6b6b6b;
+  --color-surface: #f4f4f4;
+  --color-surface-2: #efefef;
+  --color-surface-3: #e6e6e6;
+  /* One of the five tag hues, the owner's purple */
+  --color-purple: #4630eb;
+
+  /* Type: the headline scales with the page, tight, in the heavier cut */
+  --text-display: clamp(34px, 6.35vw, 100px);
+  --text-display--line-height: 1.06;
+  --text-display--letter-spacing: -0.045em;
+  --text-lead: clamp(17px, 1.75vw, 25px);
+  --text-lead--line-height: 1.35;
+  --text-lead--letter-spacing: -0.015em;
+
+  /* The frame the product sits in, and the screen inside it */
+  --radius-frame: clamp(20px, 3vw, 44px);
+  --radius-screen: clamp(12px, 1.9vw, 28px);
+
+  /* Motion */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 html {
