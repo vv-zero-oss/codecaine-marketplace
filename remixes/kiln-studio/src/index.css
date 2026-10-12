@@ -1,0 +1,258 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   site lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: a tight grotesk for everything you read, a mono for everything
+     you scan (labels, tags, clocks), and a serif for client wordmarks only */
+  --font-sans: "Inter Tight", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  /* Ground: a near-black that is never pure black, and the soot greys
+     the cells and panels sit on. An HCT ramp from one warm-neutral seed. */
+  --color-page: #070706;
+  --color-cell: #0f0e0d;
+  --color-cell-hover: #242423;
+  --color-panel: #141313;
+  --color-panel-2: #1e1d1d;
+  --color-raised: #2c2c2b;
+
+  /* Ink: hierarchy lives in greys. Ink 1–3 pass WCAG AA on page and cell */
+  --color-ink: #f4f4f2;
+  --color-ink-2: #c7c6c6;
+  --color-ink-3: #9e9e9d;
+  /* Large type and decoration only (3.6:1) — the greyed-out words */
+  --color-ink-4: #6b6a6a;
+  --color-ink-5: #4c4b4b;
+
+  /* Hairlines: the wall's cell borders, rules, chip outlines */
+  --color-line: #1e1d1d;
+  --color-line-2: #2c2c2b;
+  --color-line-3: #393938;
+
+  /* The one inverted surface: the pill nav, the primary button */
+  --color-bone: #f4f4f2;
+  --color-bone-2: #e8e8e7;
+  --color-bone-ink: #0f0e0d;
+  --color-bone-ink-2: #6b6a6a;
+
+  /* Ember: the kiln's one warm accent, an HCT tonal ramp from #f2762e.
+     ember (8.6:1 on page) carries text; the rest is fill and glow. */
+  --color-ember: #fd8e50;
+  --color-ember-2: #e3702e;
+  --color-ember-3: #c85304;
+  --color-ember-soft: #ffca93;
+  --color-ember-deep: #631100;
+
+  /* Glazes: the vessel's materials in the intro and the glaze lab */
+  --color-glaze-clay: #e3702e;
+  --color-glaze-denim: #3b5d80;
+  --color-glaze-peach: #f0623a;
+  --color-glaze-tan: #b88d63;
+  --color-glaze-rose: #e3609d;
+  --color-glaze-chrome: #c9ccd1;
+  --color-glaze-celadon: #9fc5a8;
+
+  /* Status: a semantic set from the ember seed, normalised in HCT for a
+     dark ground; always with a word or icon beside it */
+  --color-ok: #62df6e;
+  --color-warn: #fdbb34;
+  --color-error: #ff8c91;
+  --color-info: #7fcfff;
+
+  /* Golden-ratio type scale: φ half-steps (×1.272) from a 16px body, so
+     every second step is ×1.618. Tracking tightens as size grows. */
+  --text-micro: 11.09px;
+  --text-micro--line-height: 1.35;
+  --text-micro--letter-spacing: 0.02em;
+  --text-caption: 12.58px;
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: 0;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body--letter-spacing: -0.01em;
+  --text-lead: 20.35px;
+  --text-lead--line-height: 1.38;
+  --text-lead--letter-spacing: -0.018em;
+  --text-h4: 25.89px;
+  --text-h4--line-height: 1.18;
+  --text-h4--letter-spacing: -0.026em;
+  --text-h3: clamp(25.89px, 3vw, 41.89px);
+  --text-h3--line-height: 1.08;
+  --text-h3--letter-spacing: -0.034em;
+  --text-h2: clamp(32.94px, 5vw, 67.77px);
+  --text-h2--line-height: 0.98;
+  --text-h2--letter-spacing: -0.044em;
+  --text-display: clamp(41.89px, 7.6vw, 109.66px);
+  --text-display--line-height: 0.92;
+  --text-display--letter-spacing: -0.052em;
+  --text-mega: clamp(53.29px, 11vw, 177.43px);
+  --text-mega--line-height: 0.86;
+  --text-mega--letter-spacing: -0.06em;
+  --text-giga: clamp(67.77px, 16.4vw, 287.1px);
+  --text-giga--line-height: 0.8;
+  --text-giga--letter-spacing: -0.068em;
+
+  /* Radii read off the layout: pills for anything pressed, near-square cells */
+  --radius-chip: 9999px;
+  --radius-cell: 2px;
+  --radius-field: 12px;
+  --radius-card: 16px;
+  --radius-panel: 24px;
+  --radius-button: 9999px;
+  --radius-device: 44px;
+
+  --spacing-gutter: clamp(16px, 2.4vw, 40px);
+  --spacing-section: clamp(96px, 13vw, 208px);
+
+  /* Shadows: soft, wide and low. On a dark ground a shadow is mostly a
+     darker pool under the thing, so they are long and quiet. */
+  --shadow-hairline: 0 0 0 1px rgb(244 244 242 / 0.06);
+  --shadow-pill: 0 1px 1px rgb(0 0 0 / 0.25), 0 10px 30px -8px rgb(0 0 0 / 0.6);
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.3), 0 18px 40px -18px rgb(0 0 0 / 0.7);
+  --shadow-float: 0 2px 8px rgb(0 0 0 / 0.3), 0 30px 70px -24px rgb(0 0 0 / 0.75);
+  --shadow-device: 0 0 0 1px rgb(244 244 242 / 0.07), 0 30px 60px -30px rgb(0 0 0 / 0.8), 0 80px 140px -60px rgb(0 0 0 / 0.9);
+  --shadow-field: inset 0 0 0 1px var(--color-line-3);
+  --shadow-ember: 0 12px 48px -12px rgb(253 142 80 / 0.42);
+  --shadow-inset-top: inset 0 1px 0 rgb(244 244 242 / 0.06);
+
+  /* Motion, measured off the reference at 60fps: the wall fades out in
+     ~270ms and the list rises in over ~400ms with a 30ms stagger; a cell
+     lightens in ~240ms; the filter panel slides in over ~520ms. */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-hover: 240ms;
+  --duration-fade: 270ms;
+  --duration-rise: 400ms;
+  --duration-panel: 520ms;
+  --duration-scene: 900ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-accordion-down: accordion-down 260ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 200ms var(--ease-out-strong);
+  --animate-pulse-dot: pulse-dot 2s var(--ease-out-strong) infinite;
+  --animate-blink: blink 1.1s steps(2, start) infinite;
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  color-scheme: dark;
+  --radius: var(--radius-field);
+  --background: var(--color-page);
+  --foreground: var(--color-ink);
+  --card: var(--color-panel);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-panel-2);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-bone);
+  --primary-foreground: var(--color-bone-ink);
+  --secondary: var(--color-panel-2);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-panel);
+  --muted-foreground: var(--color-ink-3);
+  /* shadcn's hover surface — a soot grey, never the ember */
+  --accent: var(--color-panel-2);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-error);
+  --border: var(--color-line-2);
+  --input: var(--color-line-3);
+  --ring: var(--color-ink-3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgb(253 142 80 / 0.5); }
+  100% { box-shadow: 0 0 0 7px rgb(253 142 80 / 0); }
+}
+@keyframes sound-bar {
+  from { transform: scaleY(0.3); }
+  to { transform: scaleY(1); }
+}
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+/* The small uppercase mono of labels, tags and clocks */
+@utility type-label {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  line-height: 1.35;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Headline weight: semibold, with tight tracking supplied by the size token */
+@utility type-head {
+  font-weight: 600;
+  font-feature-settings: "ss01", "cv11";
+  text-wrap: balance;
+}
+
+/* A field of fine dots for the device stages */
+@utility dot-grid {
+  background-image: radial-gradient(var(--color-line-2) 1px, transparent 1.2px);
+  background-size: 16px 16px;
+}
+
+@layer base {
+  * { border-color: var(--color-line-2); }
+  html { -webkit-text-size-adjust: 100%; background: var(--color-page); }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-ember); color: var(--color-bone-ink); }
+  button, [role="button"] { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-ember); outline-offset: 2px; }
+}

@@ -1,0 +1,233 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   page lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: one neo-grotesk, tight, for everything; a mono for live figures */
+  --font-sans: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Paper: white page, warm grey panels the product sits in */
+  --color-page: #ffffff;
+  --color-panel: #f6f4f1;
+  --color-panel-deep: #eeebe6;
+  --color-raised: #ffffff;
+
+  /* Ink: the hierarchy lives in greys, not in weight. Ink 1–3 pass WCAG AA
+     on page, panel and panel-deep */
+  --color-ink: #151414;
+  --color-ink-2: #4a4846;
+  --color-ink-3: #6d6a67;
+  /* The grey half of a large headline: 3.2:1 on panel, so display sizes only */
+  --color-ink-soft: #8b8885;
+  --color-ink-4: #b7b3af;
+
+  /* Hairlines and the dot grid behind the product */
+  --color-line: #ebe8e3;
+  --color-line-strong: #dcd8d2;
+  --color-dot: #d6d2cc;
+
+  /* The one thing to press */
+  --color-lime: #e6f84b;
+  --color-lime-hover: #daed3f;
+  --color-lime-press: #cee131;
+  --color-lime-soft: #f4fbc6;
+  --color-lime-ink: #151414;
+
+  /* Night: the footer and the metal card */
+  --color-night: #1b191a;
+  --color-night-2: #262324;
+  --color-night-line: #3a3637;
+  --color-night-fg: #f4f2ef;
+  --color-night-muted: #9a9698;
+  --color-metal: #1d1c1c;
+  --color-metal-line: #3d3b3b;
+
+  /* Signals inside the product mockups: a semantic set derived from the
+     lime in HCT, audited for colour-blind separation; never the only cue */
+  --color-signal-blue: #0075d1;
+  --color-signal-blue-soft: #e6f1fa;
+  --color-signal-green: #007643;
+  --color-signal-green-soft: #e6f1ec;
+  --color-signal-red: #c7002c;
+  --color-signal-red-soft: #f9e6ea;
+  --color-signal-amber: #b36f00;
+  --color-signal-amber-soft: #f7f1e6;
+
+  /* Golden-ratio type scale: φ half-steps (×1.272) from a 16px body, so
+     every second step is ×1.618. Tracking tightens as size grows. */
+  --text-caption: 12.58px;
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: 0;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body--letter-spacing: -0.006em;
+  --text-lead: 20.35px;
+  --text-lead--line-height: 1.4;
+  --text-lead--letter-spacing: -0.012em;
+  --text-h4: 25.89px;
+  --text-h4--line-height: 1.24;
+  --text-h4--letter-spacing: -0.018em;
+  --text-h3: 32.94px;
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.024em;
+  --text-h2: clamp(32.94px, 4.2vw, 41.89px);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h1: clamp(41.89px, 5.4vw, 53.29px);
+  --text-h1--line-height: 1.04;
+  --text-h1--letter-spacing: -0.036em;
+  --text-display: clamp(41.89px, 6.8vw, 67.77px);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.042em;
+  --text-mega: clamp(53.29px, 8.6vw, 109.66px);
+  --text-mega--line-height: 0.94;
+  --text-mega--letter-spacing: -0.05em;
+  --text-giga: clamp(67.77px, 13vw, 177.44px);
+  --text-giga--line-height: 0.88;
+  --text-giga--letter-spacing: -0.058em;
+
+  /* Radii read off the layout */
+  --radius-chip: 4px;
+  --radius-field: 6px;
+  --radius-button: 6px;
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --radius-metal: 14px;
+
+  /* Spacing steps beyond Tailwind's 4px grid */
+  --spacing-gutter: clamp(16px, 4.5vw, 96px);
+  --spacing-section: clamp(88px, 11vw, 160px);
+
+  /* Shadows: soft, low and layered — never one hard drop */
+  --shadow-hairline: 0 0 0 1px rgb(21 20 20 / 0.06);
+  --shadow-xs: 0 1px 2px rgb(21 20 20 / 0.05);
+  --shadow-card: 0 1px 2px rgb(21 20 20 / 0.04), 0 6px 16px -6px rgb(21 20 20 / 0.08);
+  --shadow-float: 0 2px 4px rgb(21 20 20 / 0.03), 0 14px 36px -10px rgb(21 20 20 / 0.14);
+  --shadow-lift: 0 8px 18px -10px rgb(21 20 20 / 0.1), 0 30px 70px -28px rgb(21 20 20 / 0.26);
+  --shadow-field: 0 0 0 1px rgb(21 20 20 / 0.08), 0 1px 2px rgb(21 20 20 / 0.04);
+  --shadow-button: inset 0 -1px 0 rgb(21 20 20 / 0.08), 0 1px 2px rgb(21 20 20 / 0.08);
+  --shadow-metal: inset 0 1px 0 rgb(255 255 255 / 0.12), 0 12px 24px -12px rgb(10 9 9 / 0.4), 0 40px 80px -30px rgb(10 9 9 / 0.45);
+  --shadow-night: 0 0 0 1px rgb(244 242 239 / 0.08);
+
+  /* Motion, measured off the reference: quick ease-outs that settle */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 320ms;
+  --duration-scene: 700ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-accordion-down: accordion-down 220ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out-strong);
+  --animate-blink: blink 1.1s steps(2, start) infinite;
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-page);
+  --foreground: var(--color-ink);
+  --card: var(--color-raised);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-raised);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-page);
+  --secondary: var(--color-panel);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-panel);
+  --muted-foreground: var(--color-ink-3);
+  --accent: var(--color-panel);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-signal-red);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-ink-3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@keyframes blink {
+  to { visibility: hidden; }
+}
+
+/* The dot grid the reference sets the product on */
+@utility dot-grid {
+  background-image: radial-gradient(var(--color-dot) 1px, transparent 1.2px);
+  background-size: 14px 14px;
+}
+
+/* Small caps labels: eyebrows, tickers, table heads */
+@utility type-eyebrow {
+  font-size: 11.5px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* Headline weight: medium, never bold */
+@utility type-head {
+  font-weight: 500;
+  font-feature-settings: "ss01", "cv11";
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.5;
+    letter-spacing: -0.006em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-lime); color: var(--color-ink); }
+  button, [role="button"] { cursor: pointer; }
+}

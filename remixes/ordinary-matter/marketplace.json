@@ -1,0 +1,106 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "ordinary-matter",
+  "name": "Ordinary Matter — Editorial Publication",
+  "version": "1.0.0",
+  "description": "A quiet, cream-paper editorial site for Ordinary Matter, a publication about people who make things by hand: a split home page with a pinned, auto-dissolving portrait column beside scrolling dispatches; a cloth-bound volume on a timber table whose cover opens as you scroll and whose pages really turn; a pinned four-step story of how a book gets made in oversized serif; a loud index of makers with a photo that follows the cursor; a postcard that writes itself as you sign up; and drawn, draggable product mockups with a working bag and checkout — plus Stories, Shop and About pages and a live brand guide.",
+  "designedFor": [
+    "Magazines, journals, books and independent publishers",
+    "Editorial, craft, interiors and lifestyle brands with long-form stories",
+    "Shops selling a few considered objects, shown as working mockups rather than photos",
+    "Seeing sticky, scroll-scrubbed scenes and interactive mockups built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Thessaly Varga"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "editorial",
+    "magazine",
+    "publication",
+    "books",
+    "journal",
+    "craft",
+    "makers",
+    "shop",
+    "sticky-scroll",
+    "page-turn",
+    "interactive-mockups",
+    "golden-ratio",
+    "serif",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "Editorial"
+  ],
+  "created": "2026-10-10",
+  "updated": "2026-10-10",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3410
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/stories",
+      "title": "Stories"
+    },
+    {
+      "path": "/shop",
+      "title": "Shop"
+    },
+    {
+      "path": "/about",
+      "title": "About"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Stories",
+        "image": "previews/pages/stories.jpg"
+      },
+      {
+        "title": "Shop",
+        "image": "previews/pages/shop.jpg"
+      },
+      {
+        "title": "About",
+        "image": "previews/pages/about.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

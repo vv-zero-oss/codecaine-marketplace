@@ -5,6 +5,153 @@
   "items": [
     {
       "type": "remix",
+      "id": "aerie-air",
+      "name": "Aerie — Electric Air Taxi",
+      "version": "1.0.0",
+      "description": "A cream-and-electric-blue site for Aerie, an invented all-electric air taxi: Manrope set huge and tight on a golden-ratio scale, soft warm shadows and dusk photography. The home page is one long pinned scroll story — a rounded hero card opens to the whole window, the cabin, the wing and an original tilt-rotor drawing lift past under changing captions, then the picture lifts like a lid and the sky turns to paper. Under it: a highlights gallery with drifting thumbnails, a manifesto that inks itself in word by word, a working glass app laid over a photograph (pick pads and a time, press and hold to book), a pinned weekday that re-plans itself as you scroll, a dusk engineering band, notes, and a blue 'dream of flight' close with climbing clouds. The menu opens as a curtain of horizon stripes. Plus Experience (a pinned five-screen phone journey, a seat map, a real booking flow and fares), Aircraft (rotors that tilt on scroll, a noise slider, anatomy hotspots, a motor-failure grid, a charge-day chart), Routes (a live network map with quotes, a pinned time-back counter, the sticky partners list, careers and a waitlist) and a live brand guide.",
+      "designedFor": [
+        "Mobility, aviation, travel and hardware launch sites",
+        "Story-led landing pages built around one long scroll-pinned, scroll-scrubbed opening",
+        "Brands that want loud oversized type on a warm, quiet surface with one electric accent",
+        "Seeing working SVG mockups — a booking app, a route map, an aircraft — built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Soraya Lindqvist"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "mobility",
+        "aviation",
+        "air-taxi",
+        "evtol",
+        "travel",
+        "sticky-scroll",
+        "scroll-story",
+        "scrollytelling",
+        "interactive-mockups",
+        "booking",
+        "map",
+        "golden-ratio",
+        "oversized-typography",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Landing Page"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3445
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/experience",
+          "title": "Experience"
+        },
+        {
+          "path": "/aircraft",
+          "title": "Aircraft"
+        },
+        {
+          "path": "/routes",
+          "title": "Routes"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Experience",
+            "image": "previews/pages/experience.jpg"
+          },
+          {
+            "title": "Aircraft",
+            "image": "previews/pages/aircraft.jpg"
+          },
+          {
+            "title": "Routes",
+            "image": "previews/pages/routes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/aerie-air",
+      "thumbnailUrl": "remixes/aerie-air/preview.png",
+      "iconUrl": "remixes/aerie-air/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/aerie-air/previews/desktop.jpg",
+        "mobile": "remixes/aerie-air/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/aerie-air/previews/pages/home.jpg"
+          },
+          {
+            "title": "Experience",
+            "image": "remixes/aerie-air/previews/pages/experience.jpg"
+          },
+          {
+            "title": "Aircraft",
+            "image": "remixes/aerie-air/previews/pages/aircraft.jpg"
+          },
+          {
+            "title": "Routes",
+            "image": "remixes/aerie-air/previews/pages/routes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/aerie-air/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/aerie-air-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "b6a2eedbd80c03c4a987e72dde7ae4240f5c35637534b55dde8f68ae245bde18",
+        "size": 4183040,
+        "files": 143
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/aerie-air"
+      },
+      "demoUrl": "demos/aerie-air/"
+    },
+    {
+      "type": "remix",
       "id": "ai-canvas",
       "name": "AI Canvas",
       "version": "1.1.1",
@@ -507,6 +654,153 @@
     },
     {
       "type": "remix",
+      "id": "cairn",
+      "name": "Cairn — AI Map Maker",
+      "version": "1.0.0",
+      "description": "A white, quiet and confident site for Cairn, an AI map maker for guides, directories and event maps: an oversized Newsreader headline on a golden-ratio scale, one royal-blue button, soft photo cards washed with motion blur, and product shots floating on pastel skies. Every mockup is the same working SVG map of a made-up harbour city — drag it, zoom it, pick a pin — so a phone guide, a newsletter embed (switchable to phone width, with a copyable embed code) and a live spreadsheet whose edits move the pins all really work. A pinned scroll story makes a map in four steps (the prompt types itself and pins fall, the guide slides in, the style changes, the share card opens), and the closing call to action is ringed with draggable photo stickers that drift against the scroll. Plus Templates (filters, search and a full-size preview), a working Studio (Ask Cairn, click-to-add, a reorderable list, four map styles, reader preview, share dialog, saved in the browser), Pricing (billing toggle, a views calculator, comparison and FAQ) and a live brand guide.",
+      "designedFor": [
+        "Map, location, directory and travel-guide products",
+        "AI tools that want a calm, editorial landing page instead of gradients and sparkles",
+        "Story-led home pages with a scroll-pinned, step-by-step product walkthrough",
+        "Seeing interactive SVG mockups, a working builder and editor-controllable motion in one project"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ines Valcourt"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "maps",
+        "ai",
+        "saas",
+        "directory",
+        "travel",
+        "embed",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "svg",
+        "golden-ratio",
+        "oversized-typography",
+        "pricing",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Landing Page"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3440
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/templates",
+          "title": "Templates"
+        },
+        {
+          "path": "/studio",
+          "title": "Studio"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Templates",
+            "image": "previews/pages/templates.jpg"
+          },
+          {
+            "title": "Studio",
+            "image": "previews/pages/studio.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/cairn",
+      "thumbnailUrl": "remixes/cairn/preview.png",
+      "iconUrl": "remixes/cairn/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/cairn/previews/desktop.jpg",
+        "mobile": "remixes/cairn/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/cairn/previews/pages/home.jpg"
+          },
+          {
+            "title": "Templates",
+            "image": "remixes/cairn/previews/pages/templates.jpg"
+          },
+          {
+            "title": "Studio",
+            "image": "remixes/cairn/previews/pages/studio.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/cairn/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/cairn/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/cairn-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "3fcc44aaaf2cbdbff5c97b7333b29bf5faf9e0b7b0ed1c9c45bae8c7dcdc2a19",
+        "size": 612864,
+        "files": 83
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/cairn"
+      },
+      "demoUrl": "demos/cairn/"
+    },
+    {
+      "type": "remix",
       "id": "castwell-social",
       "name": "Castwell — AI Social Media Manager",
       "version": "1.1.1",
@@ -995,6 +1289,151 @@
     },
     {
       "type": "remix",
+      "id": "contrail",
+      "name": "Contrail — Flight Tracker",
+      "version": "1.0.0",
+      "description": "A day-to-night product site for Contrail, a flight tracker that tells you first: bold Inter on a golden-ratio scale with tight negative tracking, one amber accent, violet night glow and soft layered shadows. A pinned hero walks one trip through four phases on a live phone (a real flying map, an airport diagram with a taxiing plane, the arrival screen, the passport) while notifications around it light up and the page turns to night; a manifesto that lights word by word; a bento of working mockups (a glowing delay prediction, the inbound aircraft, tower advisories, a filling lock screen, a forecast); a sideways-pinned timeline of a delay seen coming; a flight importer that really parses flight numbers and booking emails; a friends section with alert switches and a story-sticker maker; a split-flap delay board; reviews and a device composition — plus Pricing (rolling prices, sticky comparison, a gift-card builder), Passport (one year switch driving a sticky route atlas, charts and a share card), About (sticky story chapters, team, live office clocks) and a live brand guide.",
+      "designedFor": [
+        "Consumer apps, travel and mobility products that want to show the app working, not screenshots of it",
+        "Story-led landing pages with sticky, scroll-driven chapters and a day-to-night colour change",
+        "Interactive phone, laptop, tablet and watch mockups drawn in CSS and SVG with real maps",
+        "Seeing scroll-pinned stages, live maps and hidden states built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Soren Achebe-Lind"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "travel",
+        "flight-tracker",
+        "mobile-app",
+        "consumer",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "maps",
+        "golden-ratio",
+        "dark-mode-sections",
+        "pricing",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Landing Page"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3460
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/passport",
+          "title": "Passport"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Passport",
+            "image": "previews/pages/passport.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/contrail",
+      "thumbnailUrl": "remixes/contrail/preview.png",
+      "iconUrl": "remixes/contrail/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/contrail/previews/desktop.jpg",
+        "mobile": "remixes/contrail/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/contrail/previews/pages/home.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/contrail/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Passport",
+            "image": "remixes/contrail/previews/pages/passport.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/contrail/previews/pages/about.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/contrail/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/contrail-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "10091c0d6633e57381719904b5a9449b8c6dc32f5a6d04331fbda580677240da",
+        "size": 671232,
+        "files": 100
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/contrail"
+      },
+      "demoUrl": "demos/contrail/"
+    },
+    {
+      "type": "remix",
       "id": "drape",
       "name": "Drape — AI Try-On",
       "version": "1.0.1",
@@ -1299,6 +1738,151 @@
         "path": "remixes/fathom-analytics"
       },
       "demoUrl": "demos/fathom-analytics/"
+    },
+    {
+      "type": "remix",
+      "id": "fete",
+      "name": "Fête — Events Platform",
+      "version": "1.0.0",
+      "description": "A white, loud and joyful events site for Fête, where run clubs, supper clubs and hack nights get made and filled: an oversized golden-ratio headline in tight Inter, one magenta-to-amber flare, pill buttons and soft wide shadows under poster prints. Point at the hero's button and a circle opens out of it into a mood — a starlit warp, an electric colour wash, a sky of hearts — while a dozen live-typeset posters drift at their own depths. A pinned phone tells hosting in four scroll-driven screens (the page types itself, the guest list fills, the door count climbs, the photos arrive), a real invitation turns into a ticket, and the communities and categories directory sits under it — plus Discover (live filters and an RSVP sheet), Host (a three-step builder with a live phone preview that publishes), Pricing (a payout calculator) and a live brand guide.",
+      "designedFor": [
+        "Event, ticketing, community and RSVP products",
+        "Consumer landing pages that want loud, oversized type with a light, airy surface",
+        "Story-led home pages with a scroll-pinned, scroll-scrubbed product walkthrough",
+        "Seeing hover-triggered reveals, live mockups and a working builder built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Tamsin Oduya"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "events",
+        "ticketing",
+        "rsvp",
+        "community",
+        "consumer",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "golden-ratio",
+        "oversized-typography",
+        "pricing",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Landing Page"
+      ],
+      "created": "2026-10-10",
+      "updated": "2026-10-10",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3390
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/discover",
+          "title": "Discover"
+        },
+        {
+          "path": "/create",
+          "title": "Host"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Discover",
+            "image": "previews/pages/discover.jpg"
+          },
+          {
+            "title": "Host",
+            "image": "previews/pages/create.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/fete",
+      "thumbnailUrl": "remixes/fete/preview.png",
+      "iconUrl": "remixes/fete/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/fete/previews/desktop.jpg",
+        "mobile": "remixes/fete/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/fete/previews/pages/home.jpg"
+          },
+          {
+            "title": "Discover",
+            "image": "remixes/fete/previews/pages/discover.jpg"
+          },
+          {
+            "title": "Host",
+            "image": "remixes/fete/previews/pages/create.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/fete/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/fete/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/fete-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "7972b49d5eb02e81d4cbd6f11a335fe4cf72f2e95f617c223fd0187afe6a5ecf",
+        "size": 555520,
+        "files": 74
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/fete"
+      },
+      "demoUrl": "demos/fete/"
     },
     {
       "type": "remix",
@@ -1852,6 +2436,300 @@
     },
     {
       "type": "remix",
+      "id": "kestrel",
+      "name": "Kestrel — Spend Management",
+      "version": "1.0.0",
+      "description": "A calm, white-and-warm-grey fintech site for Kestrel, a spend platform run by agents: a golden-ratio type scale with tight negative tracking, one lime button, soft layered shadows and dot-grid product panels. An autoplaying hero stage (card dispensed, receipts matched, an invoice dropped and auto-coded), a customer wall that opens into photo stories, a working product bento, a pinned scroll where six disconnected tools collapse into one ledger, a pinned dollar-flow walkthrough, a live policy agent, an approval-workflow builder and a dotted globe, a savings calculator and drifting testimonials — plus Platform, Pricing and Customers pages and a live brand guide.",
+      "designedFor": [
+        "Fintech, spend management, payments and finance-ops products",
+        "B2B SaaS pages that need to show the product working, not screenshots of it",
+        "Story-led landing pages with sticky, scroll-scrubbed sections",
+        "Seeing autoplaying scenes, a scroll-pinned stage and interactive mockups built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Wren Halvorsen"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fintech",
+        "spend-management",
+        "corporate-cards",
+        "saas",
+        "ai-agents",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "golden-ratio",
+        "pricing",
+        "customers",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-10-09",
+      "updated": "2026-10-09",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3370
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/platform",
+          "title": "Platform"
+        },
+        {
+          "path": "/pricing",
+          "title": "Pricing"
+        },
+        {
+          "path": "/customers",
+          "title": "Customers"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Platform",
+            "image": "previews/pages/platform.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "previews/pages/customers.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/kestrel",
+      "thumbnailUrl": "remixes/kestrel/preview.png",
+      "iconUrl": "remixes/kestrel/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/kestrel/previews/desktop.jpg",
+        "mobile": "remixes/kestrel/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/kestrel/previews/pages/home.jpg"
+          },
+          {
+            "title": "Platform",
+            "image": "remixes/kestrel/previews/pages/platform.jpg"
+          },
+          {
+            "title": "Pricing",
+            "image": "remixes/kestrel/previews/pages/pricing.jpg"
+          },
+          {
+            "title": "Customers",
+            "image": "remixes/kestrel/previews/pages/customers.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/kestrel/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/kestrel-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "66b2e539af696afd884942e591955dca2da51deb72586ce87b00ec52b704e585",
+        "size": 815104,
+        "files": 117
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/kestrel"
+      },
+      "demoUrl": "demos/kestrel/"
+    },
+    {
+      "type": "remix",
+      "id": "kiln-studio",
+      "name": "Kiln — Creative Technology Studio",
+      "version": "1.0.0",
+      "description": "A near-black, technology-led creative studio site whose home page is the work itself: every project as a cell on the inside of a sphere — the middle flat and far, the edges tilting in — that you drag in any direction, forever, drifting when nobody holds it. It opens on a canvas intro where the studio's vessel mascot arrives out of big pixels, is fired through five glazes in hard cuts and blows away as dust. A grid/list switch turns the wall into a year-by-year index with a cursor-following preview, and a filter panel sets the disciplines as one loud sentence. Below: a word-by-word manifesto, a pinned stage of three working devices (a glaze-firing web toy, a field-recording phone app, a billboard you write), oversized selected work, count-ups, a partner marquee and a closing ask in a border beam — plus Studio (stacking process cards, team, live studio clocks), Careers (filterable roles, an application sheet with CV drop), case studies, a real sound switch and a live brand guide.",
+      "designedFor": [
+        "Creative agencies, design studios and production houses showing a large body of work",
+        "Portfolios that want the work to be the home page — a draggable, curved, endless project wall",
+        "Dark, editorial sites with oversized golden-ratio type and mono labels",
+        "Seeing a canvas intro, sticky scroll stories and working device mockups built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Lior Abernethy"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "agency",
+        "studio",
+        "portfolio",
+        "creative-technology",
+        "dark",
+        "project-wall",
+        "draggable",
+        "infinite-grid",
+        "intro-animation",
+        "sticky-scroll",
+        "interactive-mockups",
+        "golden-ratio",
+        "oversized-typography",
+        "careers",
+        "case-study",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Portfolio",
+        "Marketing"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3530
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/studio",
+          "title": "Studio"
+        },
+        {
+          "path": "/careers",
+          "title": "Careers"
+        },
+        {
+          "path": "/work/flock",
+          "title": "Case study"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Studio",
+            "image": "previews/pages/studio.jpg"
+          },
+          {
+            "title": "Careers",
+            "image": "previews/pages/careers.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "previews/pages/project.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/kiln-studio",
+      "thumbnailUrl": "remixes/kiln-studio/preview.png",
+      "iconUrl": "remixes/kiln-studio/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/kiln-studio/previews/desktop.jpg",
+        "mobile": "remixes/kiln-studio/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/kiln-studio/previews/pages/home.jpg"
+          },
+          {
+            "title": "Studio",
+            "image": "remixes/kiln-studio/previews/pages/studio.jpg"
+          },
+          {
+            "title": "Careers",
+            "image": "remixes/kiln-studio/previews/pages/careers.jpg"
+          },
+          {
+            "title": "Case study",
+            "image": "remixes/kiln-studio/previews/pages/project.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/kiln-studio/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/kiln-studio-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "5f6f59cd70fe963e1998574069bb642851b921993272eed9aa1881f29502f791",
+        "size": 655872,
+        "files": 101
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/kiln-studio"
+      },
+      "demoUrl": "demos/kiln-studio/"
+    },
+    {
+      "type": "remix",
       "id": "meridian-health",
       "name": "Meridian — Health Coach",
       "version": "1.3.0",
@@ -1956,6 +2834,153 @@
         "path": "remixes/meridian-health"
       },
       "demoUrl": "demos/meridian-health/"
+    },
+    {
+      "type": "remix",
+      "id": "ordinary-matter",
+      "name": "Ordinary Matter — Editorial Publication",
+      "version": "1.0.0",
+      "description": "A quiet, cream-paper editorial site for Ordinary Matter, a publication about people who make things by hand: a split home page with a pinned, auto-dissolving portrait column beside scrolling dispatches; a cloth-bound volume on a timber table whose cover opens as you scroll and whose pages really turn; a pinned four-step story of how a book gets made in oversized serif; a loud index of makers with a photo that follows the cursor; a postcard that writes itself as you sign up; and drawn, draggable product mockups with a working bag and checkout — plus Stories, Shop and About pages and a live brand guide.",
+      "designedFor": [
+        "Magazines, journals, books and independent publishers",
+        "Editorial, craft, interiors and lifestyle brands with long-form stories",
+        "Shops selling a few considered objects, shown as working mockups rather than photos",
+        "Seeing sticky, scroll-scrubbed scenes and interactive mockups built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Thessaly Varga"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "editorial",
+        "magazine",
+        "publication",
+        "books",
+        "journal",
+        "craft",
+        "makers",
+        "shop",
+        "sticky-scroll",
+        "page-turn",
+        "interactive-mockups",
+        "golden-ratio",
+        "serif",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "Marketing",
+        "Editorial"
+      ],
+      "created": "2026-10-10",
+      "updated": "2026-10-10",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3410
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/stories",
+          "title": "Stories"
+        },
+        {
+          "path": "/shop",
+          "title": "Shop"
+        },
+        {
+          "path": "/about",
+          "title": "About"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Stories",
+            "image": "previews/pages/stories.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "previews/pages/shop.jpg"
+          },
+          {
+            "title": "About",
+            "image": "previews/pages/about.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/ordinary-matter",
+      "thumbnailUrl": "remixes/ordinary-matter/preview.png",
+      "iconUrl": "remixes/ordinary-matter/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/ordinary-matter/previews/desktop.jpg",
+        "mobile": "remixes/ordinary-matter/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/ordinary-matter/previews/pages/home.jpg"
+          },
+          {
+            "title": "Stories",
+            "image": "remixes/ordinary-matter/previews/pages/stories.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "remixes/ordinary-matter/previews/pages/shop.jpg"
+          },
+          {
+            "title": "About",
+            "image": "remixes/ordinary-matter/previews/pages/about.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/ordinary-matter/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/ordinary-matter-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "3a085dbc84cf0bb018e6c60607a645d013d4cb3c86e76407852f5f88e3ae6dbe",
+        "size": 613376,
+        "files": 80
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/ordinary-matter"
+      },
+      "demoUrl": "demos/ordinary-matter/"
     },
     {
       "type": "remix",
@@ -2917,6 +3942,154 @@
     },
     {
       "type": "remix",
+      "id": "side-b-coffee",
+      "name": "Side B Coffee — Roastery & Listening Bar",
+      "version": "1.0.0",
+      "description": "A warm, cream-and-rust site for Side B, a small-batch roaster that pours its coffee in two record bars: a condensed-serif voice on a golden-ratio scale with tight tracking, mono-caps printed-label buttons and soft warm shadows. A hero reel cutting between the roaster and a spinning record, a manifesto that inks itself in as you read, a shelf of SVG coffee bags whose labels come from the data, cards that flood rust on hover, a pinned five-track walk from cherry to cup, a turntable and footer player that genuinely play (synthesised in the browser), a merch shelf, a community board that opens into posts and RSVPs, a wholesale enquiry form and live open/closed hours — plus Shop, Subscribe and Our story pages and a live brand guide.",
+      "designedFor": [
+        "Coffee roasters, cafés, bakeries and record or listening bars",
+        "Independent food and drink brands selling online and in person",
+        "Story-led shop pages with sticky, scroll-scrubbed sections and working product mockups",
+        "Seeing SVG product mockups, a working cart and a playable audio player built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Odile Achterberg"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "coffee",
+        "roastery",
+        "cafe",
+        "record-bar",
+        "ecommerce",
+        "subscription",
+        "sticky-scroll",
+        "scroll-story",
+        "interactive-mockups",
+        "svg-mockups",
+        "web-audio",
+        "golden-ratio",
+        "serif",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "E-commerce",
+        "Hospitality",
+        "Marketing"
+      ],
+      "created": "2026-10-10",
+      "updated": "2026-10-10",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3420
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/shop",
+          "title": "Shop"
+        },
+        {
+          "path": "/subscribe",
+          "title": "Subscribe"
+        },
+        {
+          "path": "/story",
+          "title": "Our story"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "previews/pages/shop.jpg"
+          },
+          {
+            "title": "Subscribe",
+            "image": "previews/pages/subscribe.jpg"
+          },
+          {
+            "title": "Our story",
+            "image": "previews/pages/story.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/side-b-coffee",
+      "thumbnailUrl": "remixes/side-b-coffee/preview.png",
+      "iconUrl": "remixes/side-b-coffee/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/side-b-coffee/previews/desktop.jpg",
+        "mobile": "remixes/side-b-coffee/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/side-b-coffee/previews/pages/home.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "remixes/side-b-coffee/previews/pages/shop.jpg"
+          },
+          {
+            "title": "Subscribe",
+            "image": "remixes/side-b-coffee/previews/pages/subscribe.jpg"
+          },
+          {
+            "title": "Our story",
+            "image": "remixes/side-b-coffee/previews/pages/story.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/side-b-coffee/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/side-b-coffee-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "24aba85e2e2b8aeffaab64323907e574d3396ca86b573aa193f8a463a96f26f2",
+        "size": 728576,
+        "files": 113
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/side-b-coffee"
+      },
+      "demoUrl": "demos/side-b-coffee/"
+    },
+    {
+      "type": "remix",
       "id": "signal-ai",
       "name": "Vantage — AI Models",
       "version": "1.2.1",
@@ -3221,6 +4394,151 @@
         "path": "remixes/tidemark"
       },
       "demoUrl": "demos/tidemark/"
+    },
+    {
+      "type": "remix",
+      "id": "truant-coffee",
+      "name": "Truant — Specialty Coffee Roaster",
+      "version": "1.0.0",
+      "description": "A loud, photograph-led storefront for Truant, a Lake Superior single-origin roaster: Take the long way stacked huge in a round-shouldered condensed poster face over full-bleed photography, a fixed right-hand rail, warm paper, one tomato accent and soft low shadows. Four coffee series stack over one another as you scroll, the mission lights up word by word before a photograph opens out to fill the window, NEVER RUN DRY tumbles together letter by letter, and every bag is drawn and typeset live in SVG. A live roast curve you can scrub, a working brew timer, a real cart with a discount code and checkout, and a subscription you can skip, pause and cancel — plus Shop (filters, quick view, a taste map), Subscribe (a builder with a pinned live order), Field notes (a pinned origin map and a price ledger) and a live brand guide.",
+      "designedFor": [
+        "Coffee roasters, food and drink brands, and DTC subscription shops",
+        "Storefronts that want oversized poster typography over full-bleed photography",
+        "Story-led home pages with sticky stacking sections and scroll-scrubbed reveals",
+        "Seeing working mockups — drawn product packaging, a cart, a subscription builder — built as editor-controllable components"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Ines Varga-Holloway"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "coffee",
+        "roaster",
+        "ecommerce",
+        "subscription",
+        "food-and-drink",
+        "storefront",
+        "sticky-scroll",
+        "scroll-story",
+        "svg-mockups",
+        "golden-ratio",
+        "oversized-typography",
+        "framer-motion",
+        "lenis",
+        "react",
+        "vite",
+        "tailwind"
+      ],
+      "categories": [
+        "E-commerce",
+        "Marketing"
+      ],
+      "created": "2026-10-11",
+      "updated": "2026-10-11",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3430
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/shop",
+          "title": "Shop"
+        },
+        {
+          "path": "/subscribe",
+          "title": "Subscribe"
+        },
+        {
+          "path": "/field-notes",
+          "title": "Field notes"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "previews/pages/shop.jpg"
+          },
+          {
+            "title": "Subscribe",
+            "image": "previews/pages/subscribe.jpg"
+          },
+          {
+            "title": "Field notes",
+            "image": "previews/pages/field-notes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/truant-coffee",
+      "thumbnailUrl": "remixes/truant-coffee/preview.png",
+      "iconUrl": "remixes/truant-coffee/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/truant-coffee/previews/desktop.jpg",
+        "mobile": "remixes/truant-coffee/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/truant-coffee/previews/pages/home.jpg"
+          },
+          {
+            "title": "Shop",
+            "image": "remixes/truant-coffee/previews/pages/shop.jpg"
+          },
+          {
+            "title": "Subscribe",
+            "image": "remixes/truant-coffee/previews/pages/subscribe.jpg"
+          },
+          {
+            "title": "Field notes",
+            "image": "remixes/truant-coffee/previews/pages/field-notes.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/truant-coffee/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/truant-coffee-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "328cd950b84c6d344a736193b90c74114d6fc8de2f3ad95aa5cb46772d3820f6",
+        "size": 627712,
+        "files": 94
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/truant-coffee"
+      },
+      "demoUrl": "demos/truant-coffee/"
     }
   ]
 }

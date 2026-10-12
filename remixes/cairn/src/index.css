@@ -1,0 +1,372 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   page lives here — change one and it changes everywhere. The palette was
+   built and audited with the Coolors MCP: the accent's states are HCT
+   steps of the base, the map colours are harmonised to it, and every text
+   pair below is checked for contrast on the brand page.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: a tight newspaper serif for anything said out loud, a plain
+     grotesk for everything you read or press, a mono for embed codes */
+  --font-serif: "Newsreader", "Iowan Old Style", ui-serif, Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Paper: a white page, a warm cream for panels and the footer */
+  --color-page: #ffffff;
+  --color-cream: #f7f1ea;
+  --color-cream-deep: #efe6dc;
+  --color-panel: #f6f6f7;
+  --color-panel-deep: #ececee;
+  --color-raised: #ffffff;
+
+  /* Ink: hierarchy lives in greys. ink → ink-3 pass AA on page and cream */
+  --color-ink: #121316;
+  --color-ink-2: #45464d;
+  --color-ink-3: #6b6c75;
+  /* The soft grey of nav links and lead lines: large text and UI only */
+  --color-ink-soft: #85868f;
+  --color-ink-4: #b9bac0;
+
+  --color-line: #ececef;
+  --color-line-strong: #dddde2;
+
+  /* The one accent: a royal blue, 5.1:1 under white text. Hover, press and
+     focus are HCT tone steps of it */
+  --color-accent: #4a5df0;
+  --color-accent-hover: #3a53e4;
+  --color-accent-press: #264ad9;
+  --color-accent-edge: #3345d1;
+  --color-accent-soft: #e8ebfe;
+  --color-accent-ink: #2a3cc4;
+
+  /* The map. Four themes, each a land / water / park / road / label set,
+     harmonised to the accent so a map sits on the page like it belongs */
+  --color-paper-land: #f5ece3;
+  --color-paper-water: #a9c6ea;
+  --color-paper-park: #b8dba3;
+  --color-paper-road: #ffffff;
+  --color-paper-casing: #e6d6c5;
+  --color-paper-label: #8b7e70;
+  --color-paper-block: #efe3d7;
+
+  --color-harbour-land: #f6efe8;
+  --color-harbour-water: #1d36a8;
+  --color-harbour-park: #c6e0b2;
+  --color-harbour-road: #ffffff;
+  --color-harbour-casing: #e3d5c6;
+  --color-harbour-label: #7f7468;
+  --color-harbour-block: #eee4d9;
+
+  --color-dusk-land: #262a36;
+  --color-dusk-water: #121523;
+  --color-dusk-park: #2c3b35;
+  --color-dusk-road: #3a4051;
+  --color-dusk-casing: #1d2029;
+  --color-dusk-label: #8e93a6;
+  --color-dusk-block: #2c303d;
+
+  --color-meadow-land: #eef2e1;
+  --color-meadow-water: #cde2e6;
+  --color-meadow-park: #a5cd8b;
+  --color-meadow-road: #ffffff;
+  --color-meadow-casing: #d9dfc6;
+  --color-meadow-label: #6f7a5c;
+  --color-meadow-block: #e4ead2;
+
+  /* Pin categories — a semantic set seeded from the accent; always paired
+     with an icon and a label, never the only cue */
+  --color-pin-food: #e2574c;
+  --color-pin-coffee: #a8622f;
+  --color-pin-shops: #4a5df0;
+  --color-pin-culture: #9b4bd1;
+  --color-pin-outdoors: #2f8a4c;
+  --color-pin-homes: #d08a1c;
+  --color-pin-events: #d23f86;
+  --color-pin-people: #1f8b9a;
+
+  /* A browser window's three dots, in the mockups */
+  --color-window-red: #ff5f57;
+  --color-window-amber: #febc2e;
+  --color-window-green: #28c840;
+
+  --color-signal-green: #1d7a3e;
+  --color-signal-green-soft: #e6f3ea;
+  --color-signal-red: #c7002c;
+  --color-signal-red-soft: #fce8ec;
+
+  /* shadcn's names, pointed at the palette */
+  --color-background: var(--color-page);
+  --color-foreground: var(--color-ink);
+  --color-muted-foreground: var(--color-ink-3);
+  --color-primary: var(--color-accent);
+  --color-ring: var(--color-accent);
+  --color-secondary: var(--color-panel);
+
+  /* Golden-ratio type scale: √φ steps (×1.272) from a 16px body, so every
+     second step is ×1.618. Tracking tightens as the size grows. */
+  --text-micro: 11px;
+  --text-micro--line-height: 1.35;
+  --text-caption: 12.58px;
+  --text-caption--line-height: 1.45;
+  --text-small: 14px;
+  --text-small--line-height: 1.5;
+  --text-small--letter-spacing: -0.004em;
+  --text-body: 16px;
+  --text-body--line-height: 1.55;
+  --text-body--letter-spacing: -0.008em;
+  --text-lead: 20.35px;
+  --text-lead--line-height: 1.42;
+  --text-lead--letter-spacing: -0.014em;
+  --text-h4: 25.89px;
+  --text-h4--line-height: 1.18;
+  --text-h4--letter-spacing: -0.022em;
+  --text-h3: 32.94px;
+  --text-h3--line-height: 1.1;
+  --text-h3--letter-spacing: -0.028em;
+  --text-h2: clamp(32.94px, 4.2vw, 53.29px);
+  --text-h2--line-height: 1.02;
+  --text-h2--letter-spacing: -0.034em;
+  --text-display: clamp(41.89px, 5.8vw, 86.23px);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.04em;
+  --text-mega: clamp(53.29px, 7.6vw, 109.66px);
+  --text-mega--line-height: 0.92;
+  --text-mega--letter-spacing: -0.045em;
+  --text-giga: clamp(67.77px, 13vw, 177.42px);
+  --text-giga--line-height: 0.86;
+  --text-giga--letter-spacing: -0.055em;
+
+  /* Radii read off the layout: small buttons, soft photo cards */
+  --radius-chip: 6px;
+  --radius-button: 8px;
+  --radius-field: 10px;
+  --radius-card: 14px;
+  --radius-panel: 18px;
+  --radius-window: 12px;
+  --radius-sticker: 22px;
+
+  --spacing-gutter: clamp(16px, 4.5vw, 64px);
+  --spacing-section: clamp(88px, 11vw, 160px);
+
+  /* Shadows: soft, wide and low — paper resting on a table */
+  --shadow-hairline: 0 0 0 1px rgb(18 19 22 / 0.07);
+  --shadow-xs: 0 1px 2px rgb(18 19 22 / 0.05);
+  --shadow-card: 0 1px 2px rgb(18 19 22 / 0.04), 0 10px 28px -14px rgb(18 19 22 / 0.14);
+  --shadow-photo: 0 1px 2px rgb(18 19 22 / 0.06), 0 14px 30px -16px rgb(18 19 22 / 0.28);
+  --shadow-window: 0 0 0 1px rgb(18 19 22 / 0.06), 0 22px 50px -24px rgb(18 19 22 / 0.3), 0 60px 110px -60px rgb(18 19 22 / 0.3);
+  --shadow-float: 0 2px 6px rgb(18 19 22 / 0.05), 0 18px 44px -16px rgb(18 19 22 / 0.2);
+  --shadow-pin: 0 1px 2px rgb(18 19 22 / 0.18), 0 6px 14px -6px rgb(18 19 22 / 0.35);
+  --shadow-sticker: 0 2px 4px rgb(18 19 22 / 0.08), 0 16px 32px -14px rgb(18 19 22 / 0.32);
+  --shadow-field: 0 0 0 1px rgb(18 19 22 / 0.1), 0 1px 2px rgb(18 19 22 / 0.04);
+  --shadow-outline: inset 0 0 0 1px var(--color-line-strong), 0 1px 2px rgb(18 19 22 / 0.04);
+  --shadow-button: inset 0 0 0 1px var(--color-accent-edge), inset 0 1px 0 rgb(255 255 255 / 0.18), 0 1px 2px rgb(38 74 217 / 0.25), 0 8px 18px -8px rgb(38 74 217 / 0.55);
+
+  /* Motion. Measured off the reference at 60fps: Lenis carries a soft,
+     quick-settling scroll; stickers drift against it at their own depth.
+     Strong ease-outs for anything touched, a gentle spring for landings */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  /* a small overshoot, for pins landing on a photo */
+  --ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 320ms;
+  --duration-reveal: 700ms;
+  --duration-scene: 900ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-drift: drift var(--drift-duration, 9s) ease-in-out infinite alternate;
+  --animate-caret: caret 1s steps(1) infinite;
+  --animate-ping-soft: ping-soft 2.4s var(--ease-out-strong) infinite;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes drift {
+  from {
+    transform: translate3d(0, -6px, 0) rotate(var(--drift-from, -2deg));
+  }
+  to {
+    transform: translate3d(0, 6px, 0) rotate(var(--drift-to, 2deg));
+  }
+}
+@keyframes caret {
+  50% {
+    opacity: 0;
+  }
+}
+@keyframes ping-soft {
+  0% {
+    transform: scale(1);
+    opacity: 0.45;
+  }
+  80%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* ------------------------------------------------------------------------
+   Map themes: a map reads only --map-*, so one class swaps its whole look
+   and a CSS transition crossfades it.
+   ------------------------------------------------------------------------ */
+.map-paper {
+  --map-land: var(--color-paper-land);
+  --map-water: var(--color-paper-water);
+  --map-park: var(--color-paper-park);
+  --map-road: var(--color-paper-road);
+  --map-casing: var(--color-paper-casing);
+  --map-label: var(--color-paper-label);
+  --map-block: var(--color-paper-block);
+  --map-water-label: rgb(255 255 255 / 0.85);
+}
+.map-harbour {
+  --map-land: var(--color-harbour-land);
+  --map-water: var(--color-harbour-water);
+  --map-park: var(--color-harbour-park);
+  --map-road: var(--color-harbour-road);
+  --map-casing: var(--color-harbour-casing);
+  --map-label: var(--color-harbour-label);
+  --map-block: var(--color-harbour-block);
+  --map-water-label: rgb(255 255 255 / 0.7);
+}
+.map-dusk {
+  --map-land: var(--color-dusk-land);
+  --map-water: var(--color-dusk-water);
+  --map-park: var(--color-dusk-park);
+  --map-road: var(--color-dusk-road);
+  --map-casing: var(--color-dusk-casing);
+  --map-label: var(--color-dusk-label);
+  --map-block: var(--color-dusk-block);
+  --map-water-label: rgb(255 255 255 / 0.4);
+}
+.map-meadow {
+  --map-land: var(--color-meadow-land);
+  --map-water: var(--color-meadow-water);
+  --map-park: var(--color-meadow-park);
+  --map-road: var(--color-meadow-road);
+  --map-casing: var(--color-meadow-casing);
+  --map-label: var(--color-meadow-label);
+  --map-block: var(--color-meadow-block);
+  --map-water-label: rgb(60 90 100 / 0.6);
+}
+.map-svg * {
+  transition:
+    fill 600ms var(--ease-out-strong),
+    stroke 600ms var(--ease-out-strong);
+}
+
+/* ------------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------------ */
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-stopped {
+    overflow: clip;
+  }
+  body {
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    overflow-x: clip;
+  }
+  ::selection {
+    background: var(--color-accent-soft);
+    color: var(--color-accent-ink);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+  }
+  button,
+  [role="button"] {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* The headline voice: Newsreader at its display optical size, medium,
+     set tight. Every display step carries its own negative tracking */
+  .type-serif {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    font-optical-sizing: auto;
+    font-variation-settings: "opsz" 72;
+    text-wrap: balance;
+  }
+  .type-eyebrow {
+    font-size: 12.58px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  /* The sky behind the product shots: a photo washed toward lavender */
+  .sky-wash {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgb(255 255 255 / 0) 40%, rgb(255 255 255 / 0.18));
+    pointer-events: none;
+  }
+  /* The progressive blur under the sticky header: four stacked layers,
+     each blurring a little more and masked a little higher */
+  .progressive-blur > div {
+    position: absolute;
+    inset: 0;
+  }
+  .progressive-blur > div:nth-child(1) {
+    backdrop-filter: blur(1px);
+    mask-image: linear-gradient(to top, transparent 0%, black 25%, black 100%);
+  }
+  .progressive-blur > div:nth-child(2) {
+    backdrop-filter: blur(3px);
+    mask-image: linear-gradient(to top, transparent 20%, black 50%, black 100%);
+  }
+  .progressive-blur > div:nth-child(3) {
+    backdrop-filter: blur(6px);
+    mask-image: linear-gradient(to top, transparent 45%, black 75%, black 100%);
+  }
+  .progressive-blur > div:nth-child(4) {
+    backdrop-filter: blur(12px);
+    mask-image: linear-gradient(to top, transparent 65%, black 100%);
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

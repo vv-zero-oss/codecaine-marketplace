@@ -1,0 +1,269 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ------------------------------------------------------------------------
+   Side B Coffee — tokens. Every colour, shadow, radius, type step and motion
+   curve on the page lives here; change one and it changes everywhere.
+   Palette audited with the Coolors MCP: every accent stays distinct under
+   all six colour-vision deficiencies; text pairs pass WCAG AA on cream.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: a condensed old-style serif for the voice, a quiet grotesque for
+     reading, a mono for labels, prices and buttons */
+  --font-display: "Libre Caslon Condensed", "Libre Caslon Text", Georgia, serif;
+  --font-sans: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Paper */
+  --color-page: #fbf6ee;
+  --color-panel: #f3eae0;
+  --color-panel-deep: #eadcca;
+  --color-raised: #fffcf7;
+
+  /* Ink: roasted brown, three steps (all AA on page and panel) */
+  --color-ink: #3a1d14;
+  --color-ink-2: #6a4639;
+  --color-ink-3: #85614f;
+  --color-ink-4: #c2ab9b;
+
+  /* Hairlines */
+  --color-line: #e6dacb;
+  --color-line-strong: #d6c5b1;
+
+  /* Rust: the brand red — footer frame, primary buttons, hovers */
+  --color-rust: #b4310e;
+  --color-rust-hover: #9b1700;
+  --color-rust-press: #830000;
+  --color-rust-soft: #ffb888;
+
+  /* Ember: burnt orange. Large type and fills; ember-ink for small text */
+  --color-ember: #c8650e;
+  --color-ember-ink: #a2500a;
+
+  /* Honey, sky and moss: chips, stickers and the odd highlight */
+  --color-honey: #f2ae45;
+  --color-honey-soft: #fbe3b8;
+  --color-sky: #7ea7c9;
+  /* sky for display type on cream: 3.3:1, large sizes only */
+  --color-sky-display: #5f8cb3;
+  --color-sky-ink: #3f6c93;
+  --color-sky-soft: #dbe7f1;
+  --color-moss: #556141;
+  --color-moss-soft: #dfe3cf;
+  --color-lilac: #b3a6cf;
+
+  /* Night: the record player and the bag artwork */
+  --color-slate: #39424a;
+  --color-slate-2: #4a545d;
+  --color-slate-fg: #f3efe9;
+  --color-navy: #1f2a44;
+  --color-cocoa: #2a140d;
+
+  /* Hardware: the turntable's walnut plinth, deck, vinyl and chrome, and
+     the canvas, brass and cotton the merch is drawn in */
+  --color-wood: #b9814f;
+  --color-wood-deep: #8a5530;
+  --color-deck: #2b2523;
+  --color-vinyl: #1d1918;
+  --color-vinyl-hi: #2a2421;
+  --color-vinyl-lo: #141110;
+  --color-chrome: #d6d0c8;
+  --color-chrome-hi: #e8e3dc;
+  --color-chrome-mid: #b9b2aa;
+  --color-chrome-low: #8c857d;
+  --color-chrome-off: #5a524e;
+  --color-canvas: #efe4d3;
+  --color-canvas-line: #d9cbb5;
+  --color-brass: #c99a3c;
+  --color-white: #ffffff;
+
+  /* Golden-ratio type: φ half-steps (×1.272) from a 16px body, so every
+     second step is ×1.618. Tracking tightens as size grows. */
+  --text-micro: 9.89px;
+  --text-micro--line-height: 1.3;
+  --text-micro--letter-spacing: 0.06em;
+  --text-caption: 12.58px;
+  --text-caption--line-height: 1.45;
+  --text-caption--letter-spacing: 0.02em;
+  --text-body: 16px;
+  --text-body--line-height: 1.55;
+  --text-body--letter-spacing: -0.005em;
+  --text-lead: 20.35px;
+  --text-lead--line-height: 1.38;
+  --text-lead--letter-spacing: -0.012em;
+  --text-h4: 25.89px;
+  --text-h4--line-height: 1.12;
+  --text-h4--letter-spacing: -0.02em;
+  --text-h3: 32.94px;
+  --text-h3--line-height: 1.06;
+  --text-h3--letter-spacing: -0.025em;
+  --text-h2: clamp(32.94px, 4.4vw, 53.29px);
+  --text-h2--line-height: 1;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h1: clamp(41.89px, 6vw, 87.2px);
+  --text-h1--line-height: 0.94;
+  --text-h1--letter-spacing: -0.036em;
+  --text-display: clamp(53.29px, 9vw, 141.1px);
+  --text-display--line-height: 0.88;
+  --text-display--letter-spacing: -0.045em;
+  --text-mega: clamp(67.77px, 15vw, 228.4px);
+  --text-mega--line-height: 0.82;
+  --text-mega--letter-spacing: -0.055em;
+
+  /* Radii read off the layout: barely-there on chips, soft on cards */
+  --radius-chip: 2px;
+  --radius-button: 3px;
+  --radius-field: 6px;
+  --radius-card: 8px;
+  --radius-panel: 14px;
+  --radius-frame: 22px;
+
+  /* Spacing beyond the 4px grid */
+  --spacing-gutter: clamp(16px, 2.6vw, 40px);
+  --spacing-section: clamp(88px, 10vw, 152px);
+
+  /* Shadows: soft, warm, low and layered — never one hard drop */
+  --shadow-hairline: 0 0 0 1px rgb(58 29 20 / 0.08);
+  --shadow-xs: 0 1px 2px rgb(58 29 20 / 0.06);
+  --shadow-card: 0 1px 2px rgb(58 29 20 / 0.04), 0 8px 20px -10px rgb(58 29 20 / 0.12);
+  --shadow-float: 0 2px 6px rgb(58 29 20 / 0.04), 0 18px 40px -16px rgb(58 29 20 / 0.2);
+  --shadow-lift: 0 10px 20px -12px rgb(58 29 20 / 0.14), 0 36px 80px -32px rgb(58 29 20 / 0.32);
+  --shadow-bag: 0 2px 0 rgb(58 29 20 / 0.05), 0 22px 30px -18px rgb(31 20 12 / 0.45);
+  --shadow-button: inset 0 -1px 0 rgb(0 0 0 / 0.14), 0 1px 2px rgb(58 29 20 / 0.12);
+  --drop-bag: drop-shadow(0 18px 22px rgb(31 20 12 / 0.28));
+  --shadow-player: 0 20px 50px -24px rgb(20 12 8 / 0.55), inset 0 1px 0 rgb(255 255 255 / 0.06);
+
+  /* Motion: quick ease-outs that settle, a drawer curve, a breeze */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 320ms;
+  --duration-scene: 700ms;
+  --duration-crossfade: 900ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 60s) linear infinite;
+  --animate-spin-record: record-spin 1.8s linear infinite;
+  --animate-steam: steam 2.6s var(--ease-out-strong) infinite;
+  --animate-accordion-down: accordion-down 220ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out-strong);
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-page);
+  --foreground: var(--color-ink);
+  --card: var(--color-raised);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-raised);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-rust);
+  --primary-foreground: var(--color-page);
+  --secondary: var(--color-panel);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-panel);
+  --muted-foreground: var(--color-ink-3);
+  --accent: var(--color-panel);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-rust);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-ember);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes record-spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes steam {
+  0% { opacity: 0; transform: translateY(4px) scaleY(0.9); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px) scaleY(1.1); }
+}
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+  html {
+    background: var(--color-page);
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: var(--text-body--line-height);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-honey);
+    color: var(--color-ink);
+  }
+  button, a { -webkit-tap-highlight-color: transparent; }
+  img { user-select: none; }
+}
+
+@layer components {
+  /* The serif voice. Medium-weight condensed, tracked tight. */
+  .type-display {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-feature-settings: "kern", "liga", "onum" 0;
+  }
+  /* The mono label: buttons, chips, prices, eyebrows */
+  .type-label {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+  .tabular { font-variant-numeric: tabular-nums; }
+  /* A hand-drawn doodle: strokes stay hairline at any size */
+  .doodle :where(path, circle, rect, line, ellipse, polyline, polygon) {
+    vector-effect: non-scaling-stroke;
+  }
+}
+
+/* Marquees and spinning records hold still for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee, .animate-spin-record, .animate-steam { animation: none !important; }
+}

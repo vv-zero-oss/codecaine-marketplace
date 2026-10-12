@@ -1,0 +1,104 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "contrail",
+  "name": "Contrail — Flight Tracker",
+  "version": "1.0.0",
+  "description": "A day-to-night product site for Contrail, a flight tracker that tells you first: bold Inter on a golden-ratio scale with tight negative tracking, one amber accent, violet night glow and soft layered shadows. A pinned hero walks one trip through four phases on a live phone (a real flying map, an airport diagram with a taxiing plane, the arrival screen, the passport) while notifications around it light up and the page turns to night; a manifesto that lights word by word; a bento of working mockups (a glowing delay prediction, the inbound aircraft, tower advisories, a filling lock screen, a forecast); a sideways-pinned timeline of a delay seen coming; a flight importer that really parses flight numbers and booking emails; a friends section with alert switches and a story-sticker maker; a split-flap delay board; reviews and a device composition — plus Pricing (rolling prices, sticky comparison, a gift-card builder), Passport (one year switch driving a sticky route atlas, charts and a share card), About (sticky story chapters, team, live office clocks) and a live brand guide.",
+  "designedFor": [
+    "Consumer apps, travel and mobility products that want to show the app working, not screenshots of it",
+    "Story-led landing pages with sticky, scroll-driven chapters and a day-to-night colour change",
+    "Interactive phone, laptop, tablet and watch mockups drawn in CSS and SVG with real maps",
+    "Seeing scroll-pinned stages, live maps and hidden states built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Soren Achebe-Lind"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "travel",
+    "flight-tracker",
+    "mobile-app",
+    "consumer",
+    "sticky-scroll",
+    "scroll-story",
+    "interactive-mockups",
+    "maps",
+    "golden-ratio",
+    "dark-mode-sections",
+    "pricing",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "Landing Page"
+  ],
+  "created": "2026-10-11",
+  "updated": "2026-10-11",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3460
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing"
+    },
+    {
+      "path": "/passport",
+      "title": "Passport"
+    },
+    {
+      "path": "/about",
+      "title": "About"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Pricing",
+        "image": "previews/pages/pricing.jpg"
+      },
+      {
+        "title": "Passport",
+        "image": "previews/pages/passport.jpg"
+      },
+      {
+        "title": "About",
+        "image": "previews/pages/about.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

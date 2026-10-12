@@ -1,0 +1,104 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "fete",
+  "name": "Fête — Events Platform",
+  "version": "1.0.0",
+  "description": "A white, loud and joyful events site for Fête, where run clubs, supper clubs and hack nights get made and filled: an oversized golden-ratio headline in tight Inter, one magenta-to-amber flare, pill buttons and soft wide shadows under poster prints. Point at the hero's button and a circle opens out of it into a mood — a starlit warp, an electric colour wash, a sky of hearts — while a dozen live-typeset posters drift at their own depths. A pinned phone tells hosting in four scroll-driven screens (the page types itself, the guest list fills, the door count climbs, the photos arrive), a real invitation turns into a ticket, and the communities and categories directory sits under it — plus Discover (live filters and an RSVP sheet), Host (a three-step builder with a live phone preview that publishes), Pricing (a payout calculator) and a live brand guide.",
+  "designedFor": [
+    "Event, ticketing, community and RSVP products",
+    "Consumer landing pages that want loud, oversized type with a light, airy surface",
+    "Story-led home pages with a scroll-pinned, scroll-scrubbed product walkthrough",
+    "Seeing hover-triggered reveals, live mockups and a working builder built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Tamsin Oduya"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "events",
+    "ticketing",
+    "rsvp",
+    "community",
+    "consumer",
+    "sticky-scroll",
+    "scroll-story",
+    "interactive-mockups",
+    "golden-ratio",
+    "oversized-typography",
+    "pricing",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "Marketing",
+    "Landing Page"
+  ],
+  "created": "2026-10-10",
+  "updated": "2026-10-10",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3390
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/discover",
+      "title": "Discover"
+    },
+    {
+      "path": "/create",
+      "title": "Host"
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Discover",
+        "image": "previews/pages/discover.jpg"
+      },
+      {
+        "title": "Host",
+        "image": "previews/pages/create.jpg"
+      },
+      {
+        "title": "Pricing",
+        "image": "previews/pages/pricing.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}

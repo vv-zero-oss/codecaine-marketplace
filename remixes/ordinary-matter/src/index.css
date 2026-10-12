@@ -1,0 +1,258 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   page lives here — change one and it changes everywhere.
+   ------------------------------------------------------------------------ */
+@theme {
+  /* Type: a bookish serif for reading and headlines, a quiet grotesk for
+     section labels and small caps */
+  --font-serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-sans: "Inter Tight", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Paper: an unbleached cream page, a deeper sheet, and the stone band the
+     shop sits on */
+  --color-page: #fbf6ec;
+  --color-sheet: #f4eee1;
+  --color-stone: #d4d3c7;
+  --color-stone-deep: #c4c2b4;
+  --color-raised: #fffdf8;
+
+  /* Ink: the hierarchy lives in greys. Ink 1–3 pass WCAG AA on page and
+     sheet; on stone, small text stops at ink-2 */
+  --color-ink: #1f1c17;
+  --color-ink-2: #4b463d;
+  --color-ink-3: #6b655a;
+  --color-ink-4: #a49e92;
+
+  /* Rules: the 1px line under every section title, and the hairlines */
+  --color-rule: #8f897d;
+  --color-line: #e4dccb;
+  --color-line-strong: #cfc6b3;
+
+  /* Materials, read off the volumes: timber, kraft board, cloth */
+  --color-timber: #a8642f;
+  --color-timber-deep: #7a4520;
+  --color-kraft: #c9a87c;
+  --color-kraft-deep: #bf9a6c;
+  --color-cloth: #2b2620;
+  --color-moss: #2f4a3a;
+  --color-clay: #9c4f3a;
+  /* clay, lifted for error text on night */
+  --color-clay-soft: #e7a58f;
+
+  /* Night: the letters band and the footer's last line */
+  --color-night: #1f1c17;
+  --color-night-2: #2b2721;
+  --color-night-line: #3e3930;
+  --color-night-fg: #f4eee1;
+  --color-night-muted: #a8a194;
+
+  /* Golden-ratio type scale: φ half-steps (×1.272) from a 16px body, so
+     every second step is ×1.618. Tracking tightens as size grows. */
+  --text-label: 11px;
+  --text-label--line-height: 1.4;
+  --text-label--letter-spacing: 0.08em;
+  --text-caption: 12.58px;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0;
+  --text-body: 16px;
+  --text-body--line-height: 1.55;
+  --text-body--letter-spacing: -0.004em;
+  --text-lead: 20.35px;
+  --text-lead--line-height: 1.42;
+  --text-lead--letter-spacing: -0.012em;
+  --text-h4: 25.89px;
+  --text-h4--line-height: 1.22;
+  --text-h4--letter-spacing: -0.018em;
+  --text-h3: 32.94px;
+  --text-h3--line-height: 1.12;
+  --text-h3--letter-spacing: -0.024em;
+  --text-h2: clamp(32.94px, 4.4vw, 41.89px);
+  --text-h2--line-height: 1.06;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h1: clamp(41.89px, 5.6vw, 67.77px);
+  --text-h1--line-height: 1;
+  --text-h1--letter-spacing: -0.036em;
+  --text-display: clamp(53.29px, 8vw, 109.66px);
+  --text-display--line-height: 0.94;
+  --text-display--letter-spacing: -0.044em;
+  --text-mega: clamp(67.77px, 12vw, 177.44px);
+  --text-mega--line-height: 0.88;
+  --text-mega--letter-spacing: -0.052em;
+  --text-colossal: clamp(86.2px, 18.4vw, 287.1px);
+  --text-colossal--line-height: 0.8;
+  --text-colossal--letter-spacing: -0.06em;
+  /* The name set edge to edge across the footer */
+  --text-masthead: 13.2vw;
+  --text-masthead--line-height: 0.78;
+  --text-masthead--letter-spacing: -0.055em;
+
+  /* Radii: print is square; only controls and floating sheets soften */
+  --radius-none: 0px;
+  --radius-chip: 999px;
+  --radius-field: 2px;
+  --radius-button: 2px;
+  --radius-card: 4px;
+  --radius-sheet: 10px;
+
+  /* Spacing steps read off the layout, beyond Tailwind's 4px grid */
+  --spacing-gutter: clamp(16px, 3.2vw, 62px);
+  --spacing-section: clamp(88px, 11vw, 168px);
+  --spacing-masthead: 120px;
+
+  /* Shadows: soft, warm and layered — the light of a page on a table */
+  --shadow-hairline: 0 0 0 1px rgb(31 28 23 / 0.08);
+  --shadow-soft: 0 1px 2px rgb(60 44 24 / 0.05), 0 8px 24px -10px rgb(60 44 24 / 0.12);
+  --shadow-float: 0 2px 6px rgb(60 44 24 / 0.05), 0 22px 48px -18px rgb(60 44 24 / 0.22);
+  --shadow-book: 0 1px 1px rgb(30 18 8 / 0.18), 0 10px 18px -6px rgb(30 18 8 / 0.3), 0 34px 60px -24px rgb(30 18 8 / 0.42);
+  --shadow-sheet: -24px 0 60px -30px rgb(40 30 18 / 0.28);
+  --shadow-field: inset 0 0 0 1px var(--color-line-strong);
+
+  /* Motion, measured off the reference: a ~350ms cross-dissolve for the
+     photographs, quick ease-outs for everything a hand touches */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-press: 140ms;
+  --duration-hover: 220ms;
+  --duration-dissolve: 380ms;
+  --duration-swap: 320ms;
+  --duration-scene: 900ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 45s) linear infinite;
+  --animate-accordion-down: accordion-down 220ms var(--ease-out-strong);
+  --animate-accordion-up: accordion-up 180ms var(--ease-out-strong);
+}
+
+/* shadcn's semantic names, pointed at the tokens above */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-page);
+  --foreground: var(--color-ink);
+  --card: var(--color-raised);
+  --card-foreground: var(--color-ink);
+  --popover: var(--color-raised);
+  --popover-foreground: var(--color-ink);
+  --primary: var(--color-ink);
+  --primary-foreground: var(--color-page);
+  --secondary: var(--color-sheet);
+  --secondary-foreground: var(--color-ink);
+  --muted: var(--color-sheet);
+  --muted-foreground: var(--color-ink-3);
+  --accent: var(--color-sheet);
+  --accent-foreground: var(--color-ink);
+  --destructive: var(--color-clay);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-ink-3);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* The hero's active dot, filling over one slide */
+@keyframes dot-fill {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+/* The warm, slightly faded grade every photograph gets — film, not phone */
+@utility photo-grade {
+  filter: sepia(0.12) saturate(0.9) contrast(0.97) brightness(0.98);
+}
+
+/* Small caps: "VIEW MORE", places, tags */
+@utility type-label {
+  font-family: var(--font-sans);
+  font-size: var(--text-label);
+  font-weight: 500;
+  letter-spacing: var(--text-label--letter-spacing);
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+
+/* Section titles: the grotesk, medium, slightly tight */
+@utility type-title {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+}
+
+/* Display serif: optical sizing on, tight */
+@utility type-display {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 72;
+}
+
+/* The link underline that draws in from the left on hover */
+@utility link-draw {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 0% 1px;
+  transition: background-size var(--duration-hover) var(--ease-out-strong);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover { background-size: 100% 1px; }
+  }
+  &:focus-visible { background-size: 100% 1px; }
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-page);
+    color: var(--color-ink);
+    font-family: var(--font-serif);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    letter-spacing: -0.004em;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  ::selection { background: var(--color-kraft); color: var(--color-ink); }
+  button, [role="button"] { cursor: pointer; }
+  :focus-visible { outline: 2px solid var(--color-ink); outline-offset: 2px; }
+}

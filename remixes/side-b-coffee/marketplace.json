@@ -1,0 +1,107 @@
+{
+  "$schema": "../../schemas/marketplace-item.schema.json",
+  "type": "remix",
+  "id": "side-b-coffee",
+  "name": "Side B Coffee — Roastery & Listening Bar",
+  "version": "1.0.0",
+  "description": "A warm, cream-and-rust site for Side B, a small-batch roaster that pours its coffee in two record bars: a condensed-serif voice on a golden-ratio scale with tight tracking, mono-caps printed-label buttons and soft warm shadows. A hero reel cutting between the roaster and a spinning record, a manifesto that inks itself in as you read, a shelf of SVG coffee bags whose labels come from the data, cards that flood rust on hover, a pinned five-track walk from cherry to cup, a turntable and footer player that genuinely play (synthesised in the browser), a merch shelf, a community board that opens into posts and RSVPs, a wholesale enquiry form and live open/closed hours — plus Shop, Subscribe and Our story pages and a live brand guide.",
+  "designedFor": [
+    "Coffee roasters, cafés, bakeries and record or listening bars",
+    "Independent food and drink brands selling online and in person",
+    "Story-led shop pages with sticky, scroll-scrubbed sections and working product mockups",
+    "Seeing SVG product mockups, a working cart and a playable audio player built as editor-controllable components"
+  ],
+  "sdkVersion": "0.1.1",
+  "canvasVersion": ">=0.0.1",
+  "authors": [
+    {
+      "name": "Odile Achterberg"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "coffee",
+    "roastery",
+    "cafe",
+    "record-bar",
+    "ecommerce",
+    "subscription",
+    "sticky-scroll",
+    "scroll-story",
+    "interactive-mockups",
+    "svg-mockups",
+    "web-audio",
+    "golden-ratio",
+    "serif",
+    "framer-motion",
+    "lenis",
+    "react",
+    "vite",
+    "tailwind"
+  ],
+  "categories": [
+    "E-commerce",
+    "Hospitality",
+    "Marketing"
+  ],
+  "created": "2026-10-10",
+  "updated": "2026-10-10",
+  "thumbnail": "preview.png",
+  "meta": {
+    "framework": "vite",
+    "language": "typescript",
+    "styling": "tailwindcss@4",
+    "installCommand": "npm install",
+    "devCommand": "npm run dev",
+    "port": 3420
+  },
+  "pages": [
+    {
+      "path": "/",
+      "title": "Home"
+    },
+    {
+      "path": "/shop",
+      "title": "Shop"
+    },
+    {
+      "path": "/subscribe",
+      "title": "Subscribe"
+    },
+    {
+      "path": "/story",
+      "title": "Our story"
+    },
+    {
+      "path": "/brand",
+      "title": "Brand guidelines"
+    }
+  ],
+  "icon": "icon.svg",
+  "previews": {
+    "desktop": "previews/desktop.jpg",
+    "mobile": "previews/mobile.jpg",
+    "pages": [
+      {
+        "title": "Home",
+        "image": "previews/pages/home.jpg"
+      },
+      {
+        "title": "Shop",
+        "image": "previews/pages/shop.jpg"
+      },
+      {
+        "title": "Subscribe",
+        "image": "previews/pages/subscribe.jpg"
+      },
+      {
+        "title": "Our story",
+        "image": "previews/pages/story.jpg"
+      },
+      {
+        "title": "Brand guidelines",
+        "image": "previews/pages/brand.jpg"
+      }
+    ]
+  }
+}
