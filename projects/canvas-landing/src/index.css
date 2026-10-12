@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Timeless Grotesk is the one face on the page, served from public/fonts: it
+   is licensed to this project (fonts/LICENSE.pdf), not a Google Font, so it
+   is the one exception to "linked online". The variable file carries every
+   weight; the static cuts are not shipped. */
+@font-face {
+  font-family: "Timeless Grotesk";
+  src: url("/fonts/TimelessGroteskVF.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: "Timeless Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
