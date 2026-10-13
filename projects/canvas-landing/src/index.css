@@ -37,6 +37,9 @@
   /* The frame the product sits in, and the screen inside it */
   --radius-frame: clamp(20px, 3vw, 44px);
   --radius-screen: clamp(12px, 1.9vw, 28px);
+  /* A feature card, and the picture inside it (the card's radius less its padding) */
+  --radius-card: 28px;
+  --radius-card-inner: 20px;
 
   /* Motion */
   --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
