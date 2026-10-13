@@ -23,6 +23,8 @@
   --color-surface: #f4f4f4;
   --color-surface-2: #efefef;
   --color-surface-3: #e6e6e6;
+  /* The feature cards: the clips are filmed on a #f4f4f4 board and encode to #f5f5f5, so the card is that, and the clip has no edge */
+  --color-card: #f5f5f5;
   /* One of the five tag hues, the owner's purple */
   --color-purple: #4630eb;
 
