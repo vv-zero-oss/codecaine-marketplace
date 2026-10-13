@@ -67,6 +67,14 @@ If the scaffold itself changes in the canvas repository (`scaffold-sdk/` or
 `sdk/src`), bring `remixes/sdk-scaffold` up to date with it and bump its
 version, so the next project copied from it starts current.
 
+## Never invent mockup controls
+
+A page here that shows the canvas editor's own UI (a landing page, a feature
+card, a demo) shows the real thing: a capture of the running editor, or the
+real component ported whole. Never a toolbar, field, switch, segmented
+control, assistant bar or panel drawn by hand or in an image tool to look like
+it. If the real one cannot be captured yet, say so; do not stand a lookalike in.
+
 ## Building a remix — non-negotiable
 
 Every remix (a site, a landing page, a project under
