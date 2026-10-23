@@ -26,8 +26,9 @@
     }
   ],
   "props": {
-    "src": "http://localhost:3330",
-    "data-codecaine-id": "dfcb59fb-2d1b-4f30-a2c9-e1f49248372a"
+    "src": "https://github.com/",
+    "data-codecaine-id": "dfcb59fb-2d1b-4f30-a2c9-e1f49248372a",
+    "animations": "play"
   },
   "sizing": {
     "width": "fixed",
@@ -40,5 +41,6 @@
     "width": 1280,
     "height": 900,
     "backgroundColor": "#ffffff"
-  }
+  },
+  "updatedAt": "2026-10-23T10:05:30.435Z"
 }
