@@ -3,7 +3,7 @@
 Remixes, apps, design systems and skills for the canvas editor — see `README.md` for the layout, the catalog build and how to publish.
 
 Bump an item's `version` and `updated` whenever its contents change, then run
-`npm run build` and commit what it writes (`json/`, `archives/`, `index.html`)
+`npm run build` and commit what it writes (`json/`, `archives/`, `index.html`, `items/`)
 with the item — `npm run check` fails in CI otherwise. A remix's contents
 changing also means `npm run demos <id>` first, and committing `demos/<id>/`:
 the live demo the editor's item page shows and "Open in browser" opens.

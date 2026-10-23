@@ -90,7 +90,7 @@ everywhere, while gzip output depends on the zlib that produced it.
    `npm run demos <id>` at the root builds its live demo. Don't commit
    `node_modules` or `dist` (they are never packed anyway).
 3. At the root: `npm run build`, then commit the item **and** what the build
-   wrote (`json/`, `archives/`, `index.html`). `npm run check` (run in CI)
+   wrote (`json/`, `archives/`, `index.html`, `items/`). `npm run check` (run in CI)
    fails when they are stale.
 4. Merge to `main`; Pages serves it as committed.
 
@@ -141,7 +141,7 @@ npm run site      # a standalone copy of the site in _site/, to preview it local
 Pages is set to **Deploy from a branch: `main`, `/ (root)`**, and serves the
 repository exactly as committed, with no build step. So the site is committed:
 `npm run build` writes the catalogs to `json/`, one `.tgz` per item version to
-`archives/`, a landing page to `index.html`, and `.nojekyll`, which stops
+`archives/`, the website's pages to `index.html` and `items/`, and `.nojekyll`, which stops
 Jekyll turning every DESIGN.md and SKILL.md into HTML. Commit them with the
 item.
 
@@ -152,6 +152,27 @@ build is checked there as well.
 An archive is only rewritten when its contents change, because gzip output
 differs between machines even when the tar inside is identical, and the
 catalog's `sha256` is of that tar.
+
+## The website
+
+`scripts/site.mjs` writes the pages people browse: the landing page
+(`index.html`, every item three across, a one-line description each) and a
+page per item (`items/<kind>/<id>/index.html`: the full description, the
+facts, every page of a remix, a design system's palette). They are set in the
+codecainehq.com site's design — `site/site.css` holds its tokens, `site/site.js`
+does search and category filters. A remix's tile is its 1440×900 screenshot in
+`site/templates/<id>.webp` + `.avif` (the same files that site shows); a remix
+without one falls back to its `preview.png`, so add one when you add a remix.
+
+Each item page has **Open in Codecaine**, a `codecaine://` link the desktop app
+answers: `codecaine://remix/<id>` clones the remix as a new project (the app
+asks where), `codecaine://marketplace/<kind>/<id>` opens the item's page in
+the app's Marketplace (`electron/open-link.ts` in the canvas repository).
+
+```bash
+npm run build
+npx -y -p playwright@1 node scripts/check-site.mjs   # widths, grid, search, links → screenshots/site/
+```
 
 ## Design systems
 
