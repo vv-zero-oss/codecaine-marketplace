@@ -34,10 +34,9 @@ import { cp, mkdir, readdir, readFile, rm, stat, writeFile } from "node:fs/promi
 import path from "node:path"
 import { gunzipSync, gzipSync } from "node:zlib"
 
+import { REF, REPOSITORY, SITE, renderSite } from "./site.mjs"
+
 const ROOT = path.resolve(import.meta.dirname, "..")
-const REPOSITORY = "https://github.com/vv-zero-oss/codecaine-marketplace"
-const SITE = "https://vv-zero-oss.github.io/codecaine-marketplace"
-const REF = "main"
 const REGISTRY_VERSION = 1
 
 /** Folder on disk → the `type` its items declare → the catalog file. */
@@ -439,7 +438,7 @@ const serialise = (value) => JSON.stringify(value, null, 2) + "\n"
  * GitHub Pages set to "Deploy from a branch" serves the repository exactly as
  * committed, with no build — so everything the editor downloads has to be
  * committed: the catalogs in `json/`, the archives in `archives/`, and the
- * landing page. Written here by `npm run build`, and held to the items by
+ * pages (scripts/site.mjs). Written here by `npm run build`, and held to the items by
  * `npm run check`, so a commit that changes an item without rebuilding fails
  * CI instead of serving a download that no longer matches its catalog.
  *
@@ -476,7 +475,12 @@ async function writeRepoSite(json, archives) {
     await mkdir(path.dirname(file), { recursive: true })
     await writeFile(file, gzipSync(archive.bytes, { level: 9 }))
   }
-  await writeFile(path.join(ROOT, "index.html"), landing(json))
+  const pages = await sitePages(json)
+  for (const stale of await listPages()) if (!(stale in pages)) await rm(path.dirname(path.join(ROOT, stale)), { recursive: true, force: true })
+  for (const [file, html] of Object.entries(pages)) {
+    await mkdir(path.dirname(path.join(ROOT, file)), { recursive: true })
+    await writeFile(path.join(ROOT, file), html)
+  }
   // Without it Pages runs Jekyll, which turns every DESIGN.md and SKILL.md
   // into HTML and stops serving the Markdown the editor links to.
   await writeFile(path.join(ROOT, ".nojekyll"), "")
@@ -489,7 +493,11 @@ async function checkRepoSite(json, archives) {
     if (!(await archiveIsCurrent(path.join(ROOT, archive.path), archive.bytes))) problems.push(`${archive.path} is missing or out of date`)
   }
   for (const extra of await listArchives()) if (!wanted.has(extra)) problems.push(`${extra} belongs to no item`)
-  if ((await readFile(path.join(ROOT, "index.html"), "utf8").catch(() => null)) !== landing(json)) problems.push("index.html is out of date")
+  const pages = await sitePages(json)
+  for (const [file, html] of Object.entries(pages)) {
+    if ((await readFile(path.join(ROOT, file), "utf8").catch(() => null)) !== html) problems.push(`${file} is out of date`)
+  }
+  for (const extra of await listPages()) if (!(extra in pages)) problems.push(`${extra} belongs to no item`)
   if (!(await exists(path.join(ROOT, ".nojekyll")))) problems.push(".nojekyll is missing")
   return problems
 }
@@ -512,49 +520,37 @@ async function writeSite(out, json, archives) {
   }
   await cp(path.join(ROOT, "schemas"), path.join(out, "schemas"), { recursive: true })
   if (await exists(path.join(ROOT, DEMOS))) await cp(path.join(ROOT, DEMOS), path.join(out, DEMOS), { recursive: true })
-  await writeFile(path.join(out, "index.html"), landing(json))
+  await cp(path.join(ROOT, "site"), path.join(out, "site"), { recursive: true })
+  for (const [file, html] of Object.entries(await sitePages(json))) {
+    await mkdir(path.dirname(path.join(out, file)), { recursive: true })
+    await writeFile(path.join(out, file), html)
+  }
   // Pages runs Jekyll over the site unless told not to, and Jekyll drops
   // anything starting with an underscore.
   await writeFile(path.join(out, ".nojekyll"), "")
 }
 
-function escape(text) {
-  return String(text).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
+/** The pages for people who open the site in a browser (scripts/site.mjs):
+ *  the landing page and one page per item under `items/`. A remix's tile is
+ *  its screenshot in `site/templates/` when there is one. */
+async function sitePages(json) {
+  const shots = new Set(
+    (await readdir(path.join(ROOT, "site", "templates")).catch(() => []))
+      .filter((name) => name.endsWith(".webp"))
+      .map((name) => name.slice(0, -".webp".length))
+  )
+  return renderSite(json, { shots })
 }
 
-/** A page for people who open the site in a browser. The editor never reads
- *  it; it reads `json/index.json`. */
-function landing(json) {
-  const sections = KINDS.map((kind) => {
-    const items = json[kind.catalog].items
-    const cards = items
-      .map((item) => {
-        const swatches = item.designSystem
-          ? `<div class="swatches">${item.designSystem.palette.slice(0, 8).map((c) => `<span style="background:${c.value}" title="${escape(c.name)} ${c.value}"></span>`).join("")}</div>`
-          : ""
-        const thumb = item.thumbnailUrl ? `<img src="${escape(item.thumbnailUrl)}" alt="" loading="lazy">` : ""
-        // Every item names who made it, as the editor's item page does; a
-        // name with a url links to it, and only an http(s) one.
-        const byline = item.authors
-          .map((a) => (a.url && /^https?:\/\//.test(a.url) ? `<a href="${escape(a.url)}">${escape(a.name)}</a>` : escape(a.name)))
-          .join(", ")
-        return `<article>${thumb}${swatches}<h3>${escape(item.name)} <small>v${escape(item.version)}</small></h3><p class="by">by ${byline}</p><p>${escape(item.description)}</p><p class="links">${item.demoUrl ? `<a href="${escape(item.demoUrl)}">Live demo</a> · ` : ""}<a href="${escape(item.archive.url)}">Download</a> · <a href="${REPOSITORY}/tree/${REF}/${escape(item.path)}">Source</a></p></article>`
-      })
-      .join("")
-    return `<section><h2>${escape(kind.folder.replace("-", " "))} <small>${items.length}</small></h2><div class="grid">${cards}</div></section>`
-  }).join("")
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Codecaine Marketplace</title><style>
-:root{--bg:#fafafa;--fg:#171717;--muted:#666;--card:#fff;--line:#e5e5e5}
-@media (prefers-color-scheme:dark){:root{--bg:#0a0a0a;--fg:#ededed;--muted:#a1a1a1;--card:#141414;--line:#262626}}
-body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
-main{max-width:1100px;margin:0 auto;padding:48px 16px}
-h1{margin:0 0 4px;font-size:28px}h2{text-transform:capitalize;margin:48px 0 16px;font-size:18px}small{color:var(--muted);font-weight:400}
-code{font-size:13px}.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
-article{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;overflow:hidden}
-article img{width:calc(100% + 32px);margin:-16px -16px 12px;aspect-ratio:16/10;object-fit:cover;border-bottom:1px solid var(--line);display:block}
-article h3{margin:0;font-size:15px}article p{margin:6px 0 0;color:var(--muted);font-size:13px}.links a,.by a{color:inherit}
-.swatches{display:flex;height:40px;border-radius:8px;overflow:hidden;margin-bottom:12px;border:1px solid var(--line)}.swatches span{flex:1}
-</style></head><body><main><h1>Codecaine Marketplace</h1><p><small>Remixes, apps, design systems and skills for the canvas editor. The editor reads <a href="json/index.json"><code>json/index.json</code></a>.</small></p>${sections}</main></body></html>\n`
+/** Every item page on disk, so one whose item is gone is deleted (or, under
+ *  `--check`, reported) rather than served. */
+async function listPages() {
+  const found = []
+  for (const kind of KINDS) {
+    const dir = path.join(ROOT, "items", kind.folder)
+    for (const id of await readdir(dir).catch(() => [])) found.push(`items/${kind.folder}/${id}/index.html`)
+  }
+  return found.sort()
 }
 
 async function main() {
