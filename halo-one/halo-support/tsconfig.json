@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "ESNext", "moduleResolution": "bundler", "jsx": "react-jsx",
+    "strict": true, "skipLibCheck": true, "noEmit": true, "baseUrl": ".",
+    "paths": { "@/*": ["./src/*"], "@canvas/react/hook": ["./src/lib/canvas-react/install-hook.ts"], "@canvas/react": ["./src/lib/canvas-react/index.ts"] }
+  },
+  "include": ["src", "vite.config.ts"]
+}
