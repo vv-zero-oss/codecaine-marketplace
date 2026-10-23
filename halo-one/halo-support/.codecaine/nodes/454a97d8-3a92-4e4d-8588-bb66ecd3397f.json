@@ -2,7 +2,7 @@
   "id": "454a97d8-3a92-4e4d-8588-bb66ecd3397f",
   "type": "liveproject",
   "tag": "div",
-  "name": "halo-support",
+  "name": "github.com",
   "parent": "fdd39b63-26ac-4771-816b-38d3d699de05",
   "order": "V",
   "breakpoints": [
@@ -42,5 +42,5 @@
     "height": 900,
     "backgroundColor": "#ffffff"
   },
-  "updatedAt": "2026-10-23T10:05:30.435Z"
+  "updatedAt": "2026-10-23T10:06:32.483Z"
 }
