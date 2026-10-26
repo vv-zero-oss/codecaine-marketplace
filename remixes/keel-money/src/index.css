@@ -1,0 +1,244 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* The style guide builds `text-<step>` from the scale's names, so every step
+   is generated whether or not the site uses it literally. */
+@source inline("text-{hero,h2,statement,h3,lead,h4,body,caption,micro}");
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   page lives here — change one and it changes everywhere.
+   `static`, so every token is on :root even if no class uses it yet — the
+   style guide at /brand reads them from there.
+   ------------------------------------------------------------------------ */
+@theme static {
+  /* Type: one wide, friendly grotesk for headlines, its text cut for body */
+  --font-display: "Wix Madefor Display", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Wix Madefor Text", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Night: the page. Near-black with a navy cast, cards a step lighter */
+  --color-night: #000b1a;
+  --color-night-deep: #000817;
+  --color-night-glow: #062456;
+  --color-surface: #031327;
+  --color-surface-2: #071b34;
+  --color-surface-3: #0c2443;
+  --color-line: rgb(150 180 230 / 0.09);
+  --color-line-strong: rgb(150 180 230 / 0.16);
+
+  /* Text on night: the hierarchy is in greys, not in size */
+  --color-fg: #eef3fa;
+  --color-fg-2: #b9c2d0;
+  --color-fg-3: #7c8699;
+  --color-fg-4: #4a5569;
+
+  /* Headline silver: the hero's brushed-metal type */
+  --color-silver-hi: #f7f9fc;
+  --color-silver-lo: #9aa3b3;
+
+  /* Blue: the one action colour — buttons, the banner, the active tab */
+  --color-blue: #2569f4;
+  --color-blue-hover: #3477ff;
+  --color-blue-press: #1f5ddc;
+  --color-blue-banner: #2b6cf6;
+  --color-blue-soft: rgb(37 105 244 / 0.16);
+  --color-blue-ink: #ffffff;
+
+  /* Day: the wealth chapter, a pale panel that rises over the night */
+  --color-day: #f3f6fa;
+  --color-day-card: #ffffff;
+  --color-day-ink: #0f1d33;
+  --color-day-ink-2: #4b586d;
+  --color-day-ink-3: #8b96a8;
+  --color-day-line: #e5eaf1;
+
+  /* Signals: up, down, a star. Always paired with an arrow or a number */
+  --color-gain: #1fc95b;
+  --color-gain-soft: rgb(31 201 91 / 0.14);
+  --color-gain-ink: #0f9a44;
+  --color-loss: #f0473c;
+  --color-loss-soft: rgb(240 71 60 / 0.14);
+  --color-star: #ffd23f;
+  --color-warn: #f5a524;
+
+  /* Candy: the hero's floating category pills */
+  --color-candy-green: #45c94e;
+  --color-candy-violet: #9a3cf2;
+  --color-candy-red: #f2464a;
+  --color-candy-slate: #6b7487;
+  --color-candy-pink: #ec3fa2;
+  --color-candy-orange: #ff8a1e;
+
+  /* Category chips inside the app mocks */
+  --color-tag-teal: #2dd4bf;
+  --color-tag-lime: #a3e635;
+  --color-tag-orange: #fb923c;
+  --color-tag-pink: #f472b6;
+  --color-tag-amber: #fbbf24;
+  --color-tag-violet: #a78bfa;
+
+  /* Type scale read off the layout: a big, tight hero; mid headings; a
+     compact 13–16px interface */
+  --text-micro: 11px;
+  --text-micro--line-height: 1.35;
+  --text-caption: 13px;
+  --text-caption--line-height: 1.45;
+  --text-body: 15px;
+  --text-body--line-height: 1.55;
+  --text-lead: clamp(17px, 1.9vw, 22px);
+  --text-lead--line-height: 1.38;
+  --text-lead--letter-spacing: -0.005em;
+  --text-h4: 19px;
+  --text-h4--line-height: 1.25;
+  --text-h4--letter-spacing: -0.01em;
+  --text-h3: clamp(22px, 2.4vw, 28px);
+  --text-h3--line-height: 1.2;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h2: clamp(34px, 4.6vw, 52px);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.02em;
+  --text-statement: clamp(24px, 3.1vw, 36px);
+  --text-statement--line-height: 1.3;
+  --text-statement--letter-spacing: -0.005em;
+  --text-hero: clamp(52px, 9vw, 112px);
+  --text-hero--line-height: 0.94;
+  --text-hero--letter-spacing: -0.035em;
+
+  /* Radii */
+  --radius-chip: 6px;
+  --radius-button: 10px;
+  --radius-field: 12px;
+  --radius-card: 18px;
+  --radius-panel: 32px;
+  --radius-pill: 999px;
+  --radius-device: 44px;
+
+  /* Rhythm */
+  --spacing-section: clamp(96px, 13vw, 168px);
+  --spacing-gutter: clamp(16px, 4vw, 24px);
+
+  /* Shadows: soft on night, a glow under blue */
+  --shadow-card: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 0 0 1px var(--color-line), 0 20px 40px -24px rgb(0 0 0 / 0.6);
+  --shadow-inner: inset 0 1px 0 rgb(255 255 255 / 0.05), 0 0 0 1px var(--color-line);
+  --shadow-day-card: 0 0 0 1px var(--color-day-line), 0 1px 2px rgb(15 29 51 / 0.04), 0 12px 32px -18px rgb(15 29 51 / 0.18);
+  --shadow-button: inset 0 1px 0 rgb(255 255 255 / 0.22), inset 0 -1px 0 rgb(0 0 0 / 0.18), 0 0 0 1px rgb(37 105 244 / 0.6), 0 6px 20px -6px rgb(37 105 244 / 0.65);
+  --shadow-button-light: inset 0 -1px 0 rgb(15 29 51 / 0.08), 0 1px 2px rgb(0 0 0 / 0.25);
+  --shadow-pill: inset 0 2px 1px rgb(255 255 255 / 0.45), inset 0 -6px 10px rgb(0 0 0 / 0.22), 0 18px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-glass: inset 0 1px 0 rgb(255 255 255 / 0.06), 0 0 0 1px var(--color-line), 0 10px 30px -10px rgb(0 0 0 / 0.55);
+  --shadow-device: 0 0 0 1px rgb(255 255 255 / 0.08), 0 40px 80px -30px rgb(0 0 0 / 0.8);
+  --shadow-panel-day: 0 -30px 80px -40px rgb(0 0 0 / 0.6);
+
+  /* Motion, measured off the reference at 30fps: quick ease-outs for the
+     interface, long drifts for the pills, scroll does the rest */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drift: cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 280ms;
+  --duration-reveal: 700ms;
+  --duration-float: 6s;
+
+  --animate-float: float var(--float-duration, 6s) var(--ease-drift) infinite alternate;
+  --animate-pulse-dot: pulse-dot 1.8s var(--ease-out-strong) infinite;
+}
+
+/* shadcn's semantic names, pointed at the tokens above. Its `accent` is a
+   hover surface, so it points at a surface rather than the blue. */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-night);
+  --foreground: var(--color-fg);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-fg);
+  --popover: var(--color-surface-2);
+  --popover-foreground: var(--color-fg);
+  --primary: var(--color-blue);
+  --primary-foreground: var(--color-blue-ink);
+  --secondary: var(--color-surface-2);
+  --secondary-foreground: var(--color-fg);
+  --muted: var(--color-surface-2);
+  --muted-foreground: var(--color-fg-3);
+  --accent: var(--color-surface-3);
+  --accent-foreground: var(--color-fg);
+  --destructive: var(--color-loss);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-blue);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes float {
+  from { transform: translate3d(0, calc(var(--float-distance, 10px) * -1), 0) rotate(calc(var(--float-tilt, 2deg) * -1)); }
+  to { transform: translate3d(0, var(--float-distance, 10px), 0) rotate(var(--float-tilt, 2deg)); }
+}
+@keyframes pulse-dot {
+  0% { transform: scale(1); opacity: 0.6; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* The hero's brushed silver type */
+@utility text-silver {
+  background-image: linear-gradient(180deg, var(--color-silver-hi) 18%, var(--color-silver-lo) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+@utility type-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; background: var(--color-night); }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-night);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); }
+  ::selection { background: var(--color-blue); color: var(--color-blue-ink); }
+  button, [role="button"] { cursor: pointer; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-pulse-dot { animation: none; }
+}
