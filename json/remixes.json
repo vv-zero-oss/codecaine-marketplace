@@ -3091,6 +3091,109 @@
     },
     {
       "type": "remix",
+      "id": "orra-notes",
+      "name": "Orra — AI Note Taker",
+      "version": "1.0.0",
+      "description": "A dusk-lit, dark landing page for Orra, an AI note-taker: an amber-to-cobalt hero whose headline follows a device frame writing live notes for meetings, calls, interviews and ideas, a numbered feature list, a drifting wall of monochrome app tiles and HTML recorders, a fan of meeting notes, autoplaying workspace tabs (summaries, action items, Ask Orra) under a violet spotlight, customer stories, a privacy pitch on a planet of digits, support, CTA and a product rail — frosted glass, pill controls and hairlines throughout, plus brand guidelines.",
+      "designedFor": [
+        "AI productivity, note-taking and meeting tools that want a calm, premium dark landing page",
+        "Products with a live UI to show — a device frame, tabs and mockups instead of stock photography",
+        "Seeing a frosted-glass, pill-and-hairline dark design system applied end to end, editable in the canvas editor"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Tobias Lindqvist"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "ai",
+        "notes",
+        "meetings",
+        "productivity",
+        "saas",
+        "landing",
+        "dark",
+        "glass",
+        "gradient",
+        "framer-motion",
+        "lenis"
+      ],
+      "categories": [
+        "SaaS",
+        "Marketing"
+      ],
+      "created": "2026-10-26",
+      "updated": "2026-10-26",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3550
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/orra-notes",
+      "thumbnailUrl": "remixes/orra-notes/preview.png",
+      "iconUrl": "remixes/orra-notes/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/orra-notes/previews/desktop.jpg",
+        "mobile": "remixes/orra-notes/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/orra-notes/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/orra-notes/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/orra-notes-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "a0c79c351c82f6543336575cdc380f649e1c98fb0e0731cc9fa2a62e4da26413",
+        "size": 518144,
+        "files": 77
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/orra-notes"
+      },
+      "demoUrl": "demos/orra-notes/"
+    },
+    {
+      "type": "remix",
       "id": "overtime",
       "name": "Overtime",
       "version": "1.1.0",

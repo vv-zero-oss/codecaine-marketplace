@@ -1,0 +1,213 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * Orra's tokens — a dusk-lit, dark workspace. A matte near-black canvas,
+ * graphite panels, frosted glass at 10%, warm greys for text, hairline
+ * borders instead of shadows, and colour only in three gradients: the hero
+ * horizon (amber → cobalt), a violet wash, and a violet spotlight.
+ *
+ * Components use the Tailwind names these generate (`bg-canvas`, `text-ash`,
+ * `border-hairline`, `rounded-card`…) and never a raw value. The brand
+ * guidelines page (/brand) reads them back at runtime.
+ */
+:root {
+  color-scheme: dark;
+
+  /* Surfaces */
+  --canvas: #0a0a0a;
+  --graphite: #161616;
+  --raised: #1f1f1f;
+  --glass: rgb(212 212 212 / 0.1);
+  --void: #000000;
+  --snow: #ffffff;
+  --snow-dim: #e5e5e5;
+  --device: #2a2a2a;
+  --device-deep: #0f0f0f;
+  --screen: #141414;
+
+  /* Text */
+  --bone: #ededed;
+  --ash: #c2c2c2;
+  --smoke: #b2b2b2;
+  --mist: #8e8e8e;
+  --slate: #686868;
+  --on-snow: #161616;
+
+  /* Lines — the hairline colour, at the strengths it is used */
+  --hairline-color: #e5e5e5;
+  --hairline: rgb(229 229 229 / 0.12);
+  --hairline-strong: rgb(229 229 229 / 0.32);
+
+  /* Status — functional only, never decoration */
+  --mint: #5fd39a;
+  --rose: #ff6b5e;
+
+  /* The one accent, for gradients only — never a solid fill or text */
+  --violet: #6b62f2;
+  --gradient-horizon: linear-gradient(100deg, #f2a65a 0%, #e8745a 24%, #a65f8f 52%, #4a63d8 78%, #1f3fd1 100%);
+  --gradient-wash: linear-gradient(90deg, transparent, transparent 40%, rgb(107 98 242 / 0.565) 50%, transparent 60%, transparent);
+  --gradient-spotlight: radial-gradient(circle at 50% 100%, rgb(107 98 242 / 0.6), rgb(107 98 242 / 0.18) 38%, transparent 66%);
+
+  /* Elevation — hairlines and translucency; one soft stack for floating chrome */
+  --shadow-subtle: inset 0 0 0 1px rgb(255 255 255 / 0.1);
+  --shadow-float: 0 3px 4.5px rgb(255 255 255 / 0.02), 0 10px 8px rgb(0 0 0 / 0.04), 0 4px 3px rgb(0 0 0 / 0.1);
+
+  /* shadcn's names, mapped onto Orra's palette so its primitives match. */
+  --background: var(--canvas);
+  --foreground: var(--bone);
+  --card: var(--graphite);
+  --card-foreground: var(--bone);
+  --popover: var(--graphite);
+  --popover-foreground: var(--bone);
+  --primary: var(--snow);
+  --primary-foreground: var(--on-snow);
+  --secondary: var(--glass);
+  --secondary-foreground: var(--bone);
+  --muted: var(--graphite);
+  --muted-foreground: var(--ash);
+  --accent: var(--raised);
+  --accent-foreground: var(--bone);
+  --destructive: var(--rose);
+  --border: var(--hairline);
+  --input: var(--hairline-strong);
+  --ring: var(--hairline-strong);
+  --radius: 10px;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-graphite: var(--graphite);
+  --color-raised: var(--raised);
+  --color-glass: var(--glass);
+  --color-void: var(--void);
+  --color-snow: var(--snow);
+  --color-snow-dim: var(--snow-dim);
+  --color-device: var(--device);
+  --color-device-deep: var(--device-deep);
+  --color-screen: var(--screen);
+  --color-bone: var(--bone);
+  --color-ash: var(--ash);
+  --color-smoke: var(--smoke);
+  --color-mist: var(--mist);
+  --color-slate: var(--slate);
+  --color-on-snow: var(--on-snow);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-mint: var(--mint);
+  --color-rose: var(--rose);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --shadow-subtle: var(--shadow-subtle);
+  --shadow-float: var(--shadow-float);
+}
+
+/* Emitted as variables on :root, always — the style guide and inline styles read them. */
+@theme static {
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-heading: "Geist", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-icon: 4px;
+  --radius-ui: 10px;
+  --radius-nav: 19px;
+  --radius-card: 24px;
+  --radius-large: 40px;
+  --radius-panel: 42px;
+  --radius-pill: 9999px;
+
+  /* Type scale — the display sizes are fluid between 360px and 1440px. */
+  --text-caption: 13px;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.025em;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-subheading: 18px;
+  --text-subheading--line-height: 1.5;
+  --text-heading-sm: 24px;
+  --text-heading-sm--line-height: 1.33;
+  --text-heading: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem);
+  --text-heading--line-height: 1.11;
+  --text-heading--letter-spacing: -0.02em;
+  --text-heading-lg: clamp(2.25rem, 1.7rem + 2vw, 3rem);
+  --text-heading-lg--line-height: 1.04;
+  --text-heading-lg--letter-spacing: -0.025em;
+  --text-display: clamp(2.75rem, 1.8rem + 3.6vw, 4.5rem);
+  --text-display--line-height: 1;
+  --text-display--letter-spacing: -0.035em;
+
+  /* Motion */
+  --ease-out-soft: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-soft: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --duration-fast: 160ms;
+  --duration-base: 360ms;
+  --duration-slow: 640ms;
+
+  --animate-marquee: marquee var(--marquee-duration, 40s) linear infinite;
+  --animate-orbit: orbit 14s linear infinite;
+  --animate-digits: digits 1.6s steps(1) infinite;
+}
+
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
+}
+
+@keyframes orbit {
+  to { transform: rotateY(360deg); }
+}
+
+@keyframes digits {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes hero-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+html {
+  scroll-behavior: auto;
+}
+
+body {
+  margin: 0;
+  background: var(--canvas);
+  color: var(--bone);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(107 98 242 / 0.45);
+  color: var(--snow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
