@@ -1,0 +1,259 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* The style guide builds `text-<step>` from the scale's names, so every step
+   is generated whether or not the site uses it literally. */
+@source inline("text-{hero,h2,statement,h3,lead,h4,body,caption,micro}");
+
+/* ------------------------------------------------------------------------
+   Tokens. Every colour, shadow, radius, type step and motion curve on the
+   page lives here — change one and it changes everywhere.
+   `static`, so every token is on :root even if no class uses it yet — the
+   style guide at /brand reads them from there.
+   ------------------------------------------------------------------------ */
+@theme static {
+  /* Type: Inter for everything. Display is Inter Black, tightly tracked —
+     a block-letter shout reserved for the hero and section openers */
+  --font-display: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Palette: the brand's named colours. Roles below point at these */
+  --color-forest-ink: #163300;
+  --color-lime-voltage: #9fe870;
+  --color-spruce: #054d28;
+  --color-linen-mist: #e2f6d5;
+  --color-signal-blue: #0b4c72;
+  --color-alarm-red: #cb272f;
+  --color-obsidian: #0e0f0c;
+  --color-charcoal: #454745;
+  --color-slate: #6a6c6a;
+  --color-pebble: #868685;
+  --color-fog: #e8ebe6;
+  --color-paper: #ffffff;
+
+  /* Night: the page. Green-tinted black, Forest Ink cards, Spruce inside them */
+  --color-night: var(--color-obsidian);
+  --color-night-deep: #090a07;
+  --color-night-glow: #1f4a06;
+  --color-surface: #13240a;
+  --color-surface-2: var(--color-forest-ink);
+  --color-surface-3: #1d4209;
+  --color-line: rgb(226 246 213 / 0.1);
+  --color-line-strong: rgb(226 246 213 / 0.18);
+
+  /* Text on night: Paper, then Linen-tinted greys */
+  --color-fg: var(--color-paper);
+  --color-fg-2: #c9d6c1;
+  --color-fg-3: #93a08c;
+  --color-fg-4: #5d6858;
+
+  /* Lime Voltage: the one action — CTA fills, active states, emphasis on dark */
+  --color-action: var(--color-lime-voltage);
+  --color-action-hover: #b0f088;
+  --color-action-press: #8fd862;
+  --color-action-banner: var(--color-spruce);
+  --color-action-soft: rgb(159 232 112 / 0.14);
+  --color-action-ink: var(--color-forest-ink);
+
+  /* Day: the progress chapter, a Linen Mist band that rises over the night */
+  --color-day: var(--color-linen-mist);
+  --color-day-card: var(--color-paper);
+  --color-day-ink: var(--color-forest-ink);
+  --color-day-ink-2: var(--color-charcoal);
+  --color-day-ink-3: var(--color-slate);
+  --color-day-line: rgb(14 15 12 / 0.12);
+
+  /* Signals on night: up is lime, down is Alarm Red lifted for dark ground */
+  --color-gain: var(--color-lime-voltage);
+  --color-gain-soft: rgb(159 232 112 / 0.14);
+  --color-gain-ink: #2f6b12;
+  --color-loss: #e8555b;
+  --color-loss-soft: rgb(203 39 47 / 0.16);
+  --color-star: var(--color-lime-voltage);
+  --color-warn: #e9c46a;
+
+  /* Candy: the hero's floating activity pills, from the palette */
+  --color-candy-lime: var(--color-lime-voltage);
+  --color-candy-spruce: var(--color-spruce);
+  --color-candy-blue: var(--color-signal-blue);
+  --color-candy-red: var(--color-alarm-red);
+  --color-candy-mist: var(--color-linen-mist);
+  --color-candy-paper: var(--color-paper);
+
+  /* Zone and activity chips inside the app mocks: tints of the palette,
+     light enough to read on Forest Ink */
+  --color-tag-lime: var(--color-lime-voltage);
+  --color-tag-mist: var(--color-linen-mist);
+  --color-tag-sky: #7fb8db;
+  --color-tag-coral: #f0868a;
+  --color-tag-sand: #e9c46a;
+  --color-tag-sage: #a8c49a;
+
+  /* Type scale: compact UI at 14–18px, display in Inter Black with tight,
+     size-scaled tracking (-0.04em at 100px+ down to -0.003em at 12px) */
+  --text-micro: 12px;
+  --text-micro--line-height: 1.5;
+  --text-micro--letter-spacing: -0.003em;
+  --text-caption: 14px;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: -0.005em;
+  --text-body: 16px;
+  --text-body--line-height: 1.5;
+  --text-body--letter-spacing: -0.006em;
+  --text-lead: clamp(18px, 1.9vw, 25px);
+  --text-lead--line-height: 1.3;
+  --text-lead--letter-spacing: -0.009em;
+  --text-h4: 20px;
+  --text-h4--line-height: 1.2;
+  --text-h4--letter-spacing: -0.012em;
+  --text-h3: clamp(24px, 2.6vw, 36px);
+  --text-h3--line-height: 1.15;
+  --text-h3--letter-spacing: -0.015em;
+  --text-h2: clamp(44px, 6.4vw, 89px);
+  --text-h2--line-height: 0.88;
+  --text-h2--letter-spacing: -0.035em;
+  --text-statement: clamp(24px, 3vw, 36px);
+  --text-statement--line-height: 1.25;
+  --text-statement--letter-spacing: -0.011em;
+  --text-hero: clamp(48px, 8vw, 108px);
+  --text-hero--line-height: 0.85;
+  --text-hero--letter-spacing: -0.04em;
+
+  /* Radii: pills for every button, tag and nav segment; 10px for inner
+     cards and inputs; 28px for the big cards */
+  --radius-chip: 9999px;
+  --radius-button: 9999px;
+  --radius-field: 10px;
+  --radius-card: 28px;
+  --radius-panel: 32px;
+  --radius-pill: 9999px;
+  --radius-device: 44px;
+
+  /* Rhythm */
+  --spacing-section: clamp(88px, 11vw, 140px);
+  --spacing-gutter: clamp(16px, 4vw, 24px);
+
+  /* Shadows: flat by design — hairlines on cards, a real shadow only where
+     something physically floats (a pill, a device, an overlay) */
+  --shadow-card: 0 0 0 1px var(--color-line);
+  --shadow-inner: 0 0 0 1px var(--color-line);
+  --shadow-day-card: 0 0 0 1px var(--color-day-line);
+  --shadow-button: none;
+  --shadow-button-light: none;
+  --shadow-pill: inset 0 2px 1px rgb(255 255 255 / 0.35), inset 0 -6px 10px rgb(0 0 0 / 0.18), 0 18px 30px -12px rgb(0 0 0 / 0.6);
+  --shadow-glass: 0 0 0 1px var(--color-line), 0 6px 20px rgb(0 0 0 / 0.25);
+  --shadow-device: 0 0 0 1px rgb(255 255 255 / 0.08), 0 10px 32px rgb(0 0 0 / 0.35), 0 40px 40px rgb(0 0 0 / 0.12);
+  --shadow-panel-day: none;
+
+  /* Motion: quick ease-outs for the interface, long drifts for the pills,
+     scroll does the rest */
+  --ease-out-strong: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out-strong: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drift: cubic-bezier(0.45, 0, 0.55, 1);
+  --duration-press: 140ms;
+  --duration-hover: 200ms;
+  --duration-swap: 280ms;
+  --duration-reveal: 700ms;
+  --duration-float: 6s;
+
+  --animate-float: float var(--float-duration, 6s) var(--ease-drift) infinite alternate;
+  --animate-pulse-dot: pulse-dot 1.8s var(--ease-out-strong) infinite;
+}
+
+/* shadcn's semantic names, pointed at the tokens above. Its `accent` is a
+   hover surface, so it points at a surface rather than the blue. */
+:root {
+  --radius: var(--radius-field);
+  --background: var(--color-night);
+  --foreground: var(--color-fg);
+  --card: var(--color-surface);
+  --card-foreground: var(--color-fg);
+  --popover: var(--color-surface-2);
+  --popover-foreground: var(--color-fg);
+  --primary: var(--color-action);
+  --primary-foreground: var(--color-action-ink);
+  --secondary: var(--color-surface-2);
+  --secondary-foreground: var(--color-fg);
+  --muted: var(--color-surface-2);
+  --muted-foreground: var(--color-fg-3);
+  --accent: var(--color-surface-3);
+  --accent-foreground: var(--color-fg);
+  --destructive: var(--color-loss);
+  --border: var(--color-line);
+  --input: var(--color-line-strong);
+  --ring: var(--color-action);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+@keyframes float {
+  from { transform: translate3d(0, calc(var(--float-distance, 10px) * -1), 0) rotate(calc(var(--float-tilt, 2deg) * -1)); }
+  to { transform: translate3d(0, var(--float-distance, 10px), 0) rotate(var(--float-tilt, 2deg)); }
+}
+@keyframes pulse-dot {
+  0% { transform: scale(1); opacity: 0.6; }
+  80%, 100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Emphasis on night: lime type, the system's built-in highlight */
+@utility text-headline {
+  color: var(--color-paper);
+}
+@utility type-display {
+  font-family: var(--font-display);
+  font-weight: 900;
+}
+@utility type-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  * { border-color: var(--color-line); }
+  html { -webkit-text-size-adjust: 100%; background: var(--color-night); }
+  html.lenis, html.lenis body { height: auto; }
+  .lenis.lenis-smooth { scroll-behavior: auto !important; }
+  body {
+    margin: 0;
+    background: var(--color-night);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-size: var(--text-body);
+    line-height: 1.55;
+    font-feature-settings: "calt", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-display); }
+  ::selection { background: var(--color-action); color: var(--color-action-ink); }
+  button, [role="button"] { cursor: pointer; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float, .animate-pulse-dot { animation: none; }
+}
