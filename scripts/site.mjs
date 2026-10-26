@@ -136,7 +136,7 @@ function head({ title, description, root, url, image }) {
 }
 
 function nav(root, current) {
-  return `<header class="nav"><a class="wordmark" href="${root}"><img src="${root}site/logo.png" alt="" width="28" height="28">Codecaine <small>Marketplace</small></a>
+  return `<header class="nav"><a class="wordmark" href="${root}"><img src="${root}site/logo.png" alt="" width="28" height="28">Codecaine <small>Community</small></a>
 <nav class="nav-links" aria-label="Site"><a class="wide" href="${root}#remixes"${current === "remix" ? ' aria-current="page"' : ""}>Remixes</a><a class="wide" href="${root}#design-systems"${
     current === "design-system" ? ' aria-current="page"' : ""
   }>Design systems</a><a class="wide" href="${APP_SITE}/pricing">Pricing</a><span class="sep wide"></span><a class="btn solid small" href="${INSTALL_URL}">Get Codecaine</a></nav></header>`
@@ -145,7 +145,7 @@ function nav(root, current) {
 function footer(root, json) {
   const kinds = Object.values(KINDS_META).filter((k) => json[k.catalog].items.length)
   return `<footer class="footer"><div><a class="wordmark" href="${APP_SITE}"><img src="${root}site/logo.png" alt="" width="28" height="28">Codecaine</a><p class="blurb">A canvas for the code you already have. Start from anything here, design on the running project, and keep every change in your repository.</p></div>
-<div><h4>Marketplace</h4><ul>${kinds.map((k) => `<li><a href="${root}#${k.folder}">${k.plural}</a></li>`).join("")}<li><a href="${root}json/index.json">Catalog JSON</a></li></ul></div>
+<div><h4>Community</h4><ul>${kinds.map((k) => `<li><a href="${root}#${k.folder}">${k.plural}</a></li>`).join("")}<li><a href="${root}json/index.json">Catalog JSON</a></li></ul></div>
 <div><h4>Codecaine</h4><ul><li><a href="${APP_SITE}/#how-it-works">How it works</a></li><li><a href="${APP_SITE}/for/websites">For websites</a></li><li><a href="${APP_SITE}/pricing">Pricing</a></li><li><a href="${INSTALL_URL}">Install</a></li></ul></div>
 <div><h4>Contribute</h4><ul><li><a href="${REPOSITORY}">GitHub ↗</a></li><li><a href="${REPOSITORY}#adding-an-item">Publish an item ↗</a></li><li><a href="${APP_SITE}/privacy">Privacy</a></li></ul></div></footer>
 <div class="legal"><span>© Codecaine</span><span>macOS · Apple Silicon</span></div></div><script src="${root}site/site.js" type="module"></script></body></html>
@@ -178,13 +178,13 @@ function landing(json, shots) {
     .join("")
 
   return `${head({
-    title: "Codecaine Marketplace — templates to remix",
+    title: "Codecaine Community — templates to remix",
     description: "Remixes, design systems, apps and skills for Codecaine. Open any template as a new project on your machine and design on the running code.",
     root,
     url: "",
     image: shots.has("truant-coffee") ? "site/templates/truant-coffee.webp" : null,
   })}${nav(root)}<div class="hatch"></div>
-<section class="hero"><p class="eyebrow">Marketplace</p><h1>Start from something<br><em>already good.</em></h1>
+<section class="hero"><p class="eyebrow">Community</p><h1>Start from something<br><em>already good.</em></h1>
 <p class="lead">Real projects — React, Tailwind, shadcn, motion — with type, colour and movement already considered. Open one in Codecaine and it lands on your machine as a new project, running.</p>
 <div class="hero-actions"><a class="btn solid" href="#remixes">Browse remixes</a><a class="btn" href="${INSTALL_URL}">Get Codecaine ${icon("arrow")}</a></div>
 <div class="counts">${counts}</div></section>
@@ -273,13 +273,13 @@ function itemPage(item, json, shots) {
   const keywords = item.keywords.length ? `<h3>Keywords</h3><div class="keywords">${item.keywords.map((w) => `<span>${escape(w)}</span>`).join("")}</div>` : ""
 
   return `${head({
-    title: `${item.name} — Codecaine Marketplace`,
+    title: `${item.name} — Codecaine Community`,
     description: tagline(item.description),
     root,
     url: pagePath(item),
     image: isRemix ? (shots.has(item.id) ? `site/templates/${item.id}.webp` : item.thumbnailUrl) : null,
   })}${nav(root, item.type)}
-<nav class="crumbs" aria-label="Breadcrumb"><a href="${root}">Marketplace</a><span aria-hidden="true">/</span><a href="${root}#${k.folder}">${k.plural}</a><span aria-hidden="true">/</span><span>${escape(item.name)}</span></nav>
+<nav class="crumbs" aria-label="Breadcrumb"><a href="${root}">Community</a><span aria-hidden="true">/</span><a href="${root}#${k.folder}">${k.plural}</a><span aria-hidden="true">/</span><span>${escape(item.name)}</span></nav>
 <section class="item-head"><div><p class="eyebrow">${escape([k.singular, ...item.categories.slice(0, 2)].join(" · "))}</p><h1>${escape(item.name)}</h1><p class="lead">${escape(tagline(item.description))}</p><p class="byline">by ${byline(item)} · v${escape(item.version)} · updated ${formatDate(item.updated)}</p></div>${actions}</section>
 ${shot}<div class="hatch thin"></div>
 <section class="split"><div><h3>About</h3><div class="prose"><p>${escape(item.description)}</p></div>${designedFor ? `<div style="margin-top:40px">${designedFor}</div>` : ""}</div><div><h3>Details</h3>${facts(item)}${keywords ? `<div style="margin-top:40px">${keywords}</div>` : ""}</div></section>
