@@ -1,7 +1,7 @@
 {
   "$schema": "../schemas/marketplace-index.schema.json",
   "registryVersion": 1,
-  "name": "Codecaine Marketplace",
+  "name": "Codecaine Community",
   "description": "Remixes, apps, design systems and skills for the canvas editor.",
   "root": "../",
   "site": "https://vv-zero-oss.github.io/codecaine-marketplace",
