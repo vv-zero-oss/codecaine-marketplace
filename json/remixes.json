@@ -654,6 +654,113 @@
     },
     {
       "type": "remix",
+      "id": "cadence-fitness",
+      "name": "Cadence Fitness",
+      "version": "1.0.0",
+      "description": "Cadence, a fitness and vitals app's landing page on a green-black ground: an Inter Black headline ringed by drifting activity pills, a paragraph that lights up word by word, vitals and progress bentos drawn as live app UI (heart rate, HRV, sleep debt, training load, VO2 max), a Linen Mist chapter that rises over the night, honest pricing, a wall of reviews and a Forest Ink closing band. Forest Ink, Spruce and one Lime Voltage accent; pill buttons, flat hairline surfaces.",
+      "designedFor": [
+        "Launching a fitness tracker, wearable or health app",
+        "Product pages that show vitals and charts drawn in HTML rather than screenshots",
+        "Dark, confident marketing sites with block-letter headlines and scroll-driven storytelling",
+        "Teams who want every chart, pill and panel editable from the canvas editor"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Odalys Brennan"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fitness",
+        "health",
+        "vitals",
+        "heart-rate",
+        "sleep",
+        "wearable",
+        "app",
+        "landing",
+        "dark",
+        "green",
+        "react",
+        "vite",
+        "tailwind",
+        "framer-motion"
+      ],
+      "categories": [
+        "Marketing",
+        "Health"
+      ],
+      "created": "2026-10-26",
+      "updated": "2026-10-26",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3540
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "icon": "icon.svg",
+      "path": "remixes/cadence-fitness",
+      "thumbnailUrl": "remixes/cadence-fitness/preview.png",
+      "iconUrl": "remixes/cadence-fitness/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/cadence-fitness/previews/desktop.jpg",
+        "mobile": "remixes/cadence-fitness/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/cadence-fitness/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/cadence-fitness/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/cadence-fitness-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "e02701b44e9a46528e9c0dfc8a7994fc58915c6504808b430b6a457c6ab95886",
+        "size": 583168,
+        "files": 83
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/cadence-fitness"
+      },
+      "demoUrl": "demos/cadence-fitness/"
+    },
+    {
+      "type": "remix",
       "id": "cairn",
       "name": "Cairn — AI Map Maker",
       "version": "1.0.0",
@@ -3027,7 +3134,7 @@
         "styling": "tailwindcss@4",
         "installCommand": "npm install",
         "devCommand": "npm run dev",
-        "port": 3540
+        "port": 3550
       },
       "pages": [
         {
@@ -3074,7 +3181,7 @@
       "archive": {
         "url": "archives/remixes/orra-notes-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "df6c89d170562d12f63745669ea670609ae75aa992b1239e0777a4cd8ebdb373",
+        "sha256": "a0c79c351c82f6543336575cdc380f649e1c98fb0e0731cc9fa2a62e4da26413",
         "size": 518144,
         "files": 77
       },
