@@ -14,7 +14,17 @@ import { Marquee } from "@/components/motion/marquee"
 import { CallTile, QuoteTile } from "@/components/sections/founders"
 import { ProgramCard } from "@/components/sections/programs"
 import { StatCell } from "@/components/sections/network"
-import { COLLAGE, PROGRAMS, STATS } from "@/content"
+import { ArticleCard } from "@/components/sections/journal"
+import { PortraitCard } from "@/components/sections/portfolio"
+import { Principle } from "@/components/sections/principles"
+import { PullQuote } from "@/components/sections/pull-quote"
+import { Steps } from "@/components/sections/steps"
+import { TierCard } from "@/components/sections/tier-card"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { FieldError, Input, Label } from "@/components/ui/input"
+import { RadioCard, RadioGroup } from "@/components/ui/radio-group"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { ARTICLES, COLLAGE, FAQ, FOUNDER_STEPS, PORTFOLIO, PRINCIPLES, PROGRAMS, STATS, TIERS } from "@/content"
 import { Link } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
@@ -72,6 +82,13 @@ const COLOURS: { group: string; items: { name: string; token: string; role: stri
       { name: "Muted", token: "--color-fg-muted", role: "Body copy" },
       { name: "Subtle", token: "--color-fg-subtle", role: "Labels, meta" },
       { name: "On paper", token: "--color-on-paper", role: "Text on solid buttons" },
+    ],
+  },
+  {
+    group: "Status",
+    items: [
+      { name: "Danger", token: "--color-danger", role: "Field errors" },
+      { name: "Success", token: "--color-success", role: "Confirmations" },
     ],
   },
   {
@@ -376,6 +393,68 @@ function Components() {
           <CallTile {...(COLLAGE[0] as Extract<(typeof COLLAGE)[number], { kind: "call" }>)} />
           <QuoteTile {...(COLLAGE[2] as Extract<(typeof COLLAGE)[number], { kind: "quote" }>)} />
         </div>
+      </Specimen>
+      <Specimen label="Toggle group — filters" code={`<ToggleGroup type="single" value={v}><ToggleGroupItem value="Seed">Seed</ToggleGroupItem></ToggleGroup>`}>
+        <ToggleGroup type="single" defaultValue="All" aria-label="Example filter">
+          {["All", "Seed", "Series A"].map((v) => <ToggleGroupItem key={v} value={v}>{v}</ToggleGroupItem>)}
+        </ToggleGroup>
+      </Specimen>
+      <Specimen label="Radio cards" code={`<RadioGroup><RadioCard value="founder" label="I'm a founder" hint="…" /></RadioGroup>`}>
+        <RadioGroup defaultValue="a" className="w-full sm:grid-cols-3">
+          <RadioCard value="a" label="Selected" hint="Checked state" />
+          <RadioCard value="b" label="Default" hint="Hover to see the edge" />
+          <RadioCard value="c" label="Disabled" hint="Not available" disabled className="opacity-50" />
+        </RadioGroup>
+      </Specimen>
+      <Specimen label="Input — default, error, disabled" code={`<Input aria-invalid={!!error} /><FieldError id="…">{error}</FieldError>`}>
+        <div className="grid w-full gap-4 sm:grid-cols-3">
+          <div className="flex flex-col gap-2"><Label htmlFor="b-1">Name</Label><Input id="b-1" placeholder="Nadia Rowe" /></div>
+          <div className="flex flex-col gap-2">
+            <Label htmlFor="b-2">Email</Label>
+            <Input id="b-2" defaultValue="nadia@" aria-invalid aria-describedby="b-2-e" />
+            <FieldError id="b-2-e">Enter an email address, like you@studio.com.</FieldError>
+          </div>
+          <div className="flex flex-col gap-2"><Label htmlFor="b-3">Company</Label><Input id="b-3" disabled placeholder="Disabled" /></div>
+        </div>
+      </Specimen>
+      <Specimen label="Accordion" code={`<Accordion type="single" collapsible><AccordionItem value="q">…</AccordionItem></Accordion>`}>
+        <Accordion type="single" collapsible defaultValue={FAQ[0].q} className="w-full border-t border-line">
+          {FAQ.slice(0, 2).map((f) => (
+            <AccordionItem key={f.q} value={f.q}>
+              <AccordionTrigger>{f.q}</AccordionTrigger>
+              <AccordionContent>{f.a}</AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
+      </Specimen>
+      <Specimen label="TierCard — default and featured (border beam)" code={`<TierCard name price period note features featured beam />`}>
+        <div className="grid w-full gap-4 md:grid-cols-2">
+          <TierCard {...TIERS[0]} />
+          <TierCard {...TIERS[1]} />
+        </div>
+      </Specimen>
+      <Specimen label="PortraitCard and ArticleCard" code={`<PortraitCard … />  <ArticleCard … />`}>
+        <div className="grid w-full gap-4 sm:grid-cols-2 lg:max-w-2xl">
+          <PortraitCard {...PORTFOLIO[1]} />
+          <ArticleCard {...ARTICLES[1]} />
+        </div>
+      </Specimen>
+      <Specimen label="Steps" code={`<Steps steps={[{ title, body }]} />`}>
+        <Steps steps={FOUNDER_STEPS} className="w-full" />
+      </Specimen>
+      <Specimen label="Principle and PullQuote" code={`<Principle index={0} title body />  <PullQuote quote name role />`}>
+        <div className="w-full"><Principle index={0} {...PRINCIPLES[0]} /></div>
+        <PullQuote quote="Already an eleven out of ten." name="Founder" role="Seed" className="w-full py-6" />
+      </Specimen>
+      <Specimen label="Page hero" code={`<PageHero eyebrow before accent after body image alt parallax={14} />`}>
+        <p className="text-sm text-fg-muted">
+          Opens every inner page — see{" "}
+          <Link href="/founders" className="text-fg underline underline-offset-4">Founders</Link>,{" "}
+          <Link href="/membership" className="text-fg underline underline-offset-4">Membership</Link>,{" "}
+          <Link href="/journal" className="text-fg underline underline-offset-4">Journal</Link>,{" "}
+          <Link href="/manifesto" className="text-fg underline underline-offset-4">Manifesto</Link> and{" "}
+          <Link href="/contact" className="text-fg underline underline-offset-4">Contact</Link>.
+        </p>
       </Specimen>
       <Specimen label="Marquee" code={`<Marquee duration={60} direction="left" pauseOnHover>…</Marquee>`}>
         <Marquee duration={30} className="w-full">

@@ -39,8 +39,8 @@ export function Founders() {
           accent="beyond"
           after="the cheque."
           body="We back the world's best founders with storytelling, a network that opens doors, and the kind of counsel only operators can give."
-          cta="Learn more"
-          href="#join"
+          cta="Meet our founders"
+          href="/founders"
         />
         <div className="mx-auto mt-14 grid max-w-xl grid-cols-2 gap-3 sm:mt-20">
           {[[0, 2], [1, 3]].map((column, c) => (

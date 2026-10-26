@@ -19,10 +19,10 @@ export function SiteFooter() {
               <h3 className="text-[10px] font-medium tracking-[0.14em] text-fg-subtle uppercase">{column.title}</h3>
               <ul className="mt-4 space-y-2.5">
                 {column.links.map((link) => (
-                  <li key={link}>
-                    <a href="#top" className="text-[13px] text-fg-muted transition-colors hover:text-fg">
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    <Link href={link.href} className="text-[13px] text-fg-muted transition-colors hover:text-fg">
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>

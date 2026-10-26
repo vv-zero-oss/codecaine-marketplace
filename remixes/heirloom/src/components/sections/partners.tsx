@@ -10,8 +10,8 @@ export function Partners() {
           accent="patient"
           after="partners."
           body="We partner early and stay close, supporting founders who advance humanity with capital, storytelling and hands-on help from day one."
-          cta="Learn more"
-          href="#stories"
+          cta="Talk to a partner"
+          href="/contact"
         />
       </Container>
     </section>

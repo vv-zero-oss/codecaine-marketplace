@@ -18,6 +18,7 @@ export function PhotoBand({
   before,
   accent,
   cta,
+  href = "/contact",
   parallax = 12,
 }: {
   id?: string
@@ -27,6 +28,7 @@ export function PhotoBand({
   before: string
   accent: string
   cta: string
+  href?: string
   parallax?: number
 }) {
   const ref = useRef<HTMLElement>(null)
@@ -57,7 +59,7 @@ export function PhotoBand({
           className="max-w-2xl text-[clamp(1.75rem,3.6vw,2.5rem)] leading-[1.1] font-medium tracking-[-0.035em]"
         />
         <Reveal delay={0.3}>
-          <ButtonLink href="#join" variant="glass" size="sm">
+          <ButtonLink href={href} variant="glass" size="sm">
             {cta}
           </ButtonLink>
         </Reveal>

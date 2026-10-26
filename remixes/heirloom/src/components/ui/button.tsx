@@ -2,6 +2,7 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { ArrowRight } from "lucide-react"
 import type * as React from "react"
 
+import { linkProps } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
@@ -33,7 +34,8 @@ export function Button({ className, variant, size, ...props }: React.ComponentPr
 
 /**
  * The button as a link, with the trailing arrow most of this page's calls to
- * action carry. A separate component rather than `asChild`, so the editor's
+ * action carry. A path (`/membership`) changes page without a reload.
+ * A separate component rather than `asChild`, so the editor's
  * layers panel reads `ButtonLink` and not `Slot`.
  */
 export function ButtonLink({
@@ -42,10 +44,12 @@ export function ButtonLink({
   size,
   arrow = true,
   children,
+  href,
+  onClick,
   ...props
 }: React.ComponentProps<"a"> & ButtonStyle & { arrow?: boolean }) {
   return (
-    <a {...props} className={cn(buttonVariants({ variant, size, className }))}>
+    <a {...props} {...linkProps(href, onClick)} className={cn(buttonVariants({ variant, size, className }))}>
       {children}
       {arrow && <ArrowRight className="arrow" aria-hidden />}
     </a>

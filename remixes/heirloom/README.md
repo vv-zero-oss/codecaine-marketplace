@@ -9,11 +9,22 @@ npm install
 npm run dev     # http://localhost:3350
 ```
 
-## Sections
+## Pages
 
-Hero (photographs crossfade) → programs → founders collage → stats and circle
-marquee → partners → two full-bleed photo bands → footer. `/brand` is the
-style guide, read live from `src/index.css`.
+- `/` — hero (photographs crossfade) → programs → founders collage → stats and
+  circle marquee → partners → two full-bleed photo bands.
+- `/founders` — terms that count up, the portfolio filtered by stage, how a
+  raise works, a pull quote.
+- `/membership` — what members get, three tiers (the featured one carries a
+  border beam), how joining works, an FAQ accordion.
+- `/journal` — the latest essay, the rest filtered by topic, a newsletter form.
+- `/manifesto` — why the office exists, six principles beside a sticky
+  heading, a photo band and the partners' signatures.
+- `/contact` — one form whose questions change with who is writing, inboxes
+  and offices.
+- `/brand` — the style guide, read live from `src/index.css`.
+
+Every inner page opens with `PageHero` and most close with `ClosingCta`.
 
 ## Where things live
 
@@ -23,7 +34,8 @@ style guide, read live from `src/index.css`.
   `Marquee`: named components whose knobs are scalar props the editor can edit.
 - `src/components/sections/` — one file per section; `SectionIntro` repeats.
 
-The mobile menu is registered as an editor action ("Mobile menu").
+Editor actions: the mobile menu, each portfolio and journal filter, each FAQ
+answer, the contact form's error and sent states, and the newsletter's.
 
 ## Credits
 

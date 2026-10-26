@@ -2270,8 +2270,8 @@
       "type": "remix",
       "id": "heirloom",
       "name": "Heirloom",
-      "version": "1.0.0",
-      "description": "A dark, cinematic landing page for a private family office: a crossfading photographic hero, blur-in headlines with an italic serif accent, program cards, a founder testimonial collage, counting stats and a drifting marquee.",
+      "version": "1.1.0",
+      "description": "A dark, cinematic site for a private family office: a crossfading photographic hero, blur-in headlines with an italic serif accent, program cards, a founder testimonial collage, counting stats and a drifting marquee — plus Founders, Membership, Journal, Manifesto and Contact pages with filters, tiers, an FAQ and working forms.",
       "designedFor": [
         "A family office, venture studio or investor network introducing itself with a point of view",
         "Premium membership and community brands that sell on atmosphere and trust",
@@ -2303,7 +2303,7 @@
         "Marketing"
       ],
       "created": "2026-10-02",
-      "updated": "2026-10-02",
+      "updated": "2026-10-26",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -2319,6 +2319,26 @@
           "title": "Home"
         },
         {
+          "path": "/founders",
+          "title": "Founders"
+        },
+        {
+          "path": "/membership",
+          "title": "Membership"
+        },
+        {
+          "path": "/journal",
+          "title": "Journal"
+        },
+        {
+          "path": "/manifesto",
+          "title": "Manifesto"
+        },
+        {
+          "path": "/contact",
+          "title": "Contact"
+        },
+        {
           "path": "/brand",
           "title": "Brand guidelines"
         }
@@ -2331,6 +2351,26 @@
           {
             "title": "Home",
             "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Founders",
+            "image": "previews/pages/founders.jpg"
+          },
+          {
+            "title": "Membership",
+            "image": "previews/pages/membership.jpg"
+          },
+          {
+            "title": "Journal",
+            "image": "previews/pages/journal.jpg"
+          },
+          {
+            "title": "Manifesto",
+            "image": "previews/pages/manifesto.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "previews/pages/contact.jpg"
           },
           {
             "title": "Brand guidelines",
@@ -2350,17 +2390,37 @@
             "image": "remixes/heirloom/previews/pages/home.jpg"
           },
           {
+            "title": "Founders",
+            "image": "remixes/heirloom/previews/pages/founders.jpg"
+          },
+          {
+            "title": "Membership",
+            "image": "remixes/heirloom/previews/pages/membership.jpg"
+          },
+          {
+            "title": "Journal",
+            "image": "remixes/heirloom/previews/pages/journal.jpg"
+          },
+          {
+            "title": "Manifesto",
+            "image": "remixes/heirloom/previews/pages/manifesto.jpg"
+          },
+          {
+            "title": "Contact",
+            "image": "remixes/heirloom/previews/pages/contact.jpg"
+          },
+          {
             "title": "Brand guidelines",
             "image": "remixes/heirloom/previews/pages/brand.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/remixes/heirloom-1.0.0.tgz",
+        "url": "archives/remixes/heirloom-1.1.0.tgz",
         "format": "tar+gzip",
-        "sha256": "2b9b8f0ea7610a29bb46ce6c0d0370a6f21dcca4b5c270524ca05edad158bb20",
-        "size": 1928192,
-        "files": 59
+        "sha256": "a76e29ceb979ed0c969852755b530424cd97b24994ab849e62b78580eb658fd2",
+        "size": 3933696,
+        "files": 100
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",

@@ -23,6 +23,10 @@
   --color-fg-subtle: rgb(255 255 255 / 0.4);
   --color-on-paper: #0a0a0a;
 
+  /* Status */
+  --color-danger: #f2a08e;
+  --color-success: #b9d8b0;
+
   /* Border */
   --color-line: rgb(255 255 255 / 0.14);
   --color-line-strong: rgb(255 255 255 / 0.26);

@@ -1,7 +1,8 @@
 import { useEffect, useState, type ComponentProps, type MouseEvent } from "react"
 
 /**
- * A router the size of this project: two pages, the home page and `/brand`.
+ * A router the size of this project: the home page, five inner pages and
+ * `/brand`.
  *
  * Real paths rather than `#/` ones, so the editor's Pages list and a link
  * pasted from the address bar name the same page. Swap it for the router you
@@ -40,9 +41,10 @@ export function usePathname(): string {
   return pathname
 }
 
-/** An anchor that changes page without a reload — and is still an anchor, so
- *  a modified click opens a new tab the way a person expects. */
-export function Link({ href = "/", onClick, ...props }: ComponentProps<"a">) {
+/** The `href` and `onClick` an anchor needs to change page without a reload.
+ *  For components that render their own `<a>` (so the editor reads their name,
+ *  not `Link`). A modified click still opens a new tab. */
+export function linkProps(href = "/", onClick?: (event: MouseEvent<HTMLAnchorElement>) => void) {
   const handle = (event: MouseEvent<HTMLAnchorElement>) => {
     onClick?.(event)
     if (event.defaultPrevented || event.metaKey || event.ctrlKey || event.shiftKey || event.button !== 0) return
@@ -50,5 +52,10 @@ export function Link({ href = "/", onClick, ...props }: ComponentProps<"a">) {
     event.preventDefault()
     navigate(href)
   }
-  return <a href={href.startsWith("/") ? BASE + href : href} onClick={handle} {...props} />
+  return { href: href.startsWith("/") ? BASE + href : href, onClick: handle }
+}
+
+/** An anchor that changes page without a reload. */
+export function Link({ href, onClick, ...props }: ComponentProps<"a">) {
+  return <a {...props} {...linkProps(href, onClick)} />
 }

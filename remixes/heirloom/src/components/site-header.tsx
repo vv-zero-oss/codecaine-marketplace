@@ -6,10 +6,21 @@ import { useState } from "react"
 import { ButtonLink } from "@/components/ui/button"
 import { Wordmark } from "@/components/ui/wordmark"
 import { NAV } from "@/content"
+import { linkProps, usePathname } from "@/lib/router"
+import { cn } from "@/lib/utils"
 
+/** A header link; the page you are on is full white with a hairline under it. */
 export function NavLink({ href, children }: { href: string; children: string }) {
+  const current = usePathname() === href
   return (
-    <a href={href} className="text-[13px] font-medium text-fg/90 transition-colors hover:text-fg">
+    <a
+      {...linkProps(href)}
+      aria-current={current ? "page" : undefined}
+      className={cn(
+        "relative text-[13px] font-medium transition-colors hover:text-fg",
+        current ? "text-fg after:absolute after:inset-x-0 after:-bottom-1.5 after:h-px after:bg-fg/70" : "text-fg/75",
+      )}
+    >
       {children}
     </a>
   )
@@ -41,15 +52,14 @@ function MobileMenu() {
             {NAV.map((item) => (
               <a
                 key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
+                {...linkProps(item.href, () => setOpen(false))}
                 className="py-3 text-3xl tracking-[-0.03em] text-fg"
               >
                 {item.label}
               </a>
             ))}
           </nav>
-          <ButtonLink href="#join" size="lg" className="mt-auto" onClick={() => setOpen(false)}>
+          <ButtonLink href="/contact" size="lg" className="mt-auto" onClick={() => setOpen(false)}>
             Build the future
           </ButtonLink>
         </Dialog.Content>
@@ -58,12 +68,13 @@ function MobileMenu() {
   )
 }
 
-/** Fixed, transparent, over whatever photograph is behind it. */
+/** Fixed, transparent, over whatever photograph is behind it — every page
+ *  opens on one. */
 export function SiteHeader() {
   return (
     <header id="nav" className="fixed inset-x-0 top-0 z-50">
       <div data-canvas-ignore className="mx-auto flex h-16 w-full max-w-[100rem] items-center justify-between px-5 sm:h-[72px] sm:px-8">
-        <Wordmark href="#top" />
+        <Wordmark href="/" />
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-8 md:flex">
           {NAV.map((item) => (
             <NavLink key={item.href} href={item.href}>
@@ -72,7 +83,7 @@ export function SiteHeader() {
           ))}
         </nav>
         <div className="flex items-center gap-1">
-          <ButtonLink href="#join" className="hidden sm:inline-flex">
+          <ButtonLink href="/contact" className="hidden sm:inline-flex">
             Build the future
           </ButtonLink>
           <MobileMenu />

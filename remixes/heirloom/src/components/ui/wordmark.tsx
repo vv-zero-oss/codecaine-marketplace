@@ -1,3 +1,4 @@
+import { linkProps } from "@/lib/router"
 import { cn } from "@/lib/utils"
 
 /** Two nested arches: the doorway a family walks through, drawn once. */
@@ -20,7 +21,7 @@ export function Wordmark({ href, className }: { href?: string; className?: strin
   )
   const shared = cn("inline-flex items-center gap-1.5 text-fg", className)
   return href ? (
-    <a href={href} aria-label="Heirloom home" className={shared}>
+    <a {...linkProps(href)} aria-label="Heirloom home" className={shared}>
       {content}
     </a>
   ) : (
