@@ -405,7 +405,7 @@ async function build() {
     "index.json": {
       $schema: "../schemas/marketplace-index.schema.json",
       registryVersion: REGISTRY_VERSION,
-      name: "Codecaine Marketplace",
+      name: "Codecaine Community",
       description: "Remixes, apps, design systems and skills for the canvas editor.",
       // Every URL in the catalogs is relative to this, and this is relative to
       // the index — so the same files work from Pages, from a raw GitHub URL
