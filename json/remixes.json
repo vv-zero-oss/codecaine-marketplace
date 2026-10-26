@@ -2984,6 +2984,107 @@
     },
     {
       "type": "remix",
+      "id": "orra-payments",
+      "name": "Orra — Payments Platform",
+      "version": "1.0.0",
+      "description": "A warm, restrained landing page for Orra, a payments platform: a hero whose headline follows a crossfading product showcase with progress thumbnails and status chips, a drifting wall of payment-method tiles, HTML card terminals and a fanned card stack, autoplaying dashboard tabs with an assistant mockup, a customer story carousel, a lit planet of digits for developers, support, CTA and a scroll-linked product rail — plus brand guidelines.",
+      "designedFor": [
+        "Fintech, payments and banking products that need a calm, premium landing page",
+        "SaaS platforms with several products to show — tabs, cards and a product index",
+        "Seeing scene carousels, scroll-linked rails and autoplaying tabs the editor can drive"
+      ],
+      "sdkVersion": "0.1.1",
+      "canvasVersion": ">=0.0.1",
+      "authors": [
+        {
+          "name": "Tobias Lindqvist"
+        }
+      ],
+      "license": "MIT",
+      "keywords": [
+        "fintech",
+        "payments",
+        "saas",
+        "landing",
+        "warm",
+        "minimal",
+        "carousel",
+        "framer-motion",
+        "lenis"
+      ],
+      "categories": [
+        "Marketing",
+        "SaaS"
+      ],
+      "created": "2026-10-26",
+      "updated": "2026-10-26",
+      "thumbnail": "preview.png",
+      "meta": {
+        "framework": "vite",
+        "language": "typescript",
+        "styling": "tailwindcss@4",
+        "installCommand": "npm install",
+        "devCommand": "npm run dev",
+        "port": 3540
+      },
+      "pages": [
+        {
+          "path": "/",
+          "title": "Home"
+        },
+        {
+          "path": "/brand",
+          "title": "Brand guidelines"
+        }
+      ],
+      "icon": "icon.svg",
+      "previews": {
+        "desktop": "previews/desktop.jpg",
+        "mobile": "previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "path": "remixes/orra-payments",
+      "thumbnailUrl": "remixes/orra-payments/preview.png",
+      "iconUrl": "remixes/orra-payments/icon.svg",
+      "previewUrls": {
+        "desktop": "remixes/orra-payments/previews/desktop.jpg",
+        "mobile": "remixes/orra-payments/previews/mobile.jpg",
+        "pages": [
+          {
+            "title": "Home",
+            "image": "remixes/orra-payments/previews/pages/home.jpg"
+          },
+          {
+            "title": "Brand guidelines",
+            "image": "remixes/orra-payments/previews/pages/brand.jpg"
+          }
+        ]
+      },
+      "archive": {
+        "url": "archives/remixes/orra-payments-1.0.0.tgz",
+        "format": "tar+gzip",
+        "sha256": "c16c13de29850a06e2363ffcdd4e2f2d70cc6171309f9f3b13814bd63aaa8efa",
+        "size": 513536,
+        "files": 77
+      },
+      "source": {
+        "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
+        "ref": "main",
+        "path": "remixes/orra-payments"
+      },
+      "demoUrl": "demos/orra-payments/"
+    },
+    {
+      "type": "remix",
       "id": "overtime",
       "name": "Overtime",
       "version": "1.1.0",
