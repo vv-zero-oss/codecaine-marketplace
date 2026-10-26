@@ -2984,14 +2984,14 @@
     },
     {
       "type": "remix",
-      "id": "orra-payments",
-      "name": "Orra — Payments Platform",
+      "id": "orra-notes",
+      "name": "Orra — AI Note Taker",
       "version": "1.0.0",
-      "description": "A warm, restrained landing page for Orra, a payments platform: a hero whose headline follows a crossfading product showcase with progress thumbnails and status chips, a drifting wall of payment-method tiles, HTML card terminals and a fanned card stack, autoplaying dashboard tabs with an assistant mockup, a customer story carousel, a lit planet of digits for developers, support, CTA and a scroll-linked product rail — plus brand guidelines.",
+      "description": "A dusk-lit, dark landing page for Orra, an AI note-taker: an amber-to-cobalt hero whose headline follows a device frame writing live notes for meetings, calls, interviews and ideas, a numbered feature list, a drifting wall of monochrome app tiles and HTML recorders, a fan of meeting notes, autoplaying workspace tabs (summaries, action items, Ask Orra) under a violet spotlight, customer stories, a privacy pitch on a planet of digits, support, CTA and a product rail — frosted glass, pill controls and hairlines throughout, plus brand guidelines.",
       "designedFor": [
-        "Fintech, payments and banking products that need a calm, premium landing page",
-        "SaaS platforms with several products to show — tabs, cards and a product index",
-        "Seeing scene carousels, scroll-linked rails and autoplaying tabs the editor can drive"
+        "AI productivity, note-taking and meeting tools that want a calm, premium dark landing page",
+        "Products with a live UI to show — a device frame, tabs and mockups instead of stock photography",
+        "Seeing a frosted-glass, pill-and-hairline dark design system applied end to end, editable in the canvas editor"
       ],
       "sdkVersion": "0.1.1",
       "canvasVersion": ">=0.0.1",
@@ -3002,19 +3002,21 @@
       ],
       "license": "MIT",
       "keywords": [
-        "fintech",
-        "payments",
+        "ai",
+        "notes",
+        "meetings",
+        "productivity",
         "saas",
         "landing",
-        "warm",
-        "minimal",
-        "carousel",
+        "dark",
+        "glass",
+        "gradient",
         "framer-motion",
         "lenis"
       ],
       "categories": [
-        "Marketing",
-        "SaaS"
+        "SaaS",
+        "Marketing"
       ],
       "created": "2026-10-26",
       "updated": "2026-10-26",
@@ -3052,36 +3054,36 @@
           }
         ]
       },
-      "path": "remixes/orra-payments",
-      "thumbnailUrl": "remixes/orra-payments/preview.png",
-      "iconUrl": "remixes/orra-payments/icon.svg",
+      "path": "remixes/orra-notes",
+      "thumbnailUrl": "remixes/orra-notes/preview.png",
+      "iconUrl": "remixes/orra-notes/icon.svg",
       "previewUrls": {
-        "desktop": "remixes/orra-payments/previews/desktop.jpg",
-        "mobile": "remixes/orra-payments/previews/mobile.jpg",
+        "desktop": "remixes/orra-notes/previews/desktop.jpg",
+        "mobile": "remixes/orra-notes/previews/mobile.jpg",
         "pages": [
           {
             "title": "Home",
-            "image": "remixes/orra-payments/previews/pages/home.jpg"
+            "image": "remixes/orra-notes/previews/pages/home.jpg"
           },
           {
             "title": "Brand guidelines",
-            "image": "remixes/orra-payments/previews/pages/brand.jpg"
+            "image": "remixes/orra-notes/previews/pages/brand.jpg"
           }
         ]
       },
       "archive": {
-        "url": "archives/remixes/orra-payments-1.0.0.tgz",
+        "url": "archives/remixes/orra-notes-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "c16c13de29850a06e2363ffcdd4e2f2d70cc6171309f9f3b13814bd63aaa8efa",
-        "size": 513536,
+        "sha256": "df6c89d170562d12f63745669ea670609ae75aa992b1239e0777a4cd8ebdb373",
+        "size": 518144,
         "files": 77
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
         "ref": "main",
-        "path": "remixes/orra-payments"
+        "path": "remixes/orra-notes"
       },
-      "demoUrl": "demos/orra-payments/"
+      "demoUrl": "demos/orra-notes/"
     },
     {
       "type": "remix",
