@@ -36,15 +36,18 @@ npm run dev     # → http://localhost:3540
 | `src/index.css` | Every token: palette, roles, type scale, radii, shadows, easings, durations |
 | `src/components/ui/` | shadcn primitives (button, chip, switch, dialog, sheet, tooltip, container) |
 | `src/components/sections/` | The page's sections and their shared pieces (`FeatureCard`, `SectionHeading`, `Laurel`) |
-| `src/components/motion/` | `FloatingPill`, `WordReveal`, `RisingPanel`, `DrawLine`, `Reveal`, `SmoothScroll` |
+| `src/components/motion/` | `PillBurst`, `ActivityPill`, `WordReveal`, `RisingPanel`, `DrawLine`, `Reveal`, `SmoothScroll` |
 | `src/components/mock/` | The app UI: `DashboardMock`, `PhoneScreen`, devices, chart helpers |
 | `src/components/site/` | Header (splits into two pills on scroll), footer, banner, logo |
 | `src/lib/canvas-react/` | `@canvas/react`, vendored — do not edit in place |
 
 ## In the canvas editor
 
-Every animated piece is a named component with scalar props (`FloatingPill`'s
-`icon`, `colour`, `depth`, `blur`, `distance`; `WordReveal`'s `dim`, `blur`;
+The hero is quiet until clicked: `PillBurst` throws random activity pills from
+the pointer, which arc, fall under gravity and fade.
+
+Every animated piece is a named component with scalar props (`PillBurst`'s
+`count`, `gravity`, `spread`, `lift`, `duration`, `intro`; `WordReveal`'s `dim`, `blur`;
 `RisingPanel`'s `scaleTo`). Hidden states have switches in the Actions row:
 **Announcement bar**, **Mobile menu**, **Monthly billing**, **Why isn't it
 free?**, and the style guide's demo dialog and sheet. Lenis is held in a ref

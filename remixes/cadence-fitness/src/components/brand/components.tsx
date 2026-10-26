@@ -3,6 +3,7 @@ import { ArrowRight, Loader2 } from "lucide-react"
 import { useCanvasAction } from "@canvas/react"
 
 import { ComponentSpecimen, StateLabel } from "@/components/brand/specimen"
+import { ActivityPill } from "@/components/motion/activity-pill"
 import { GoalRing, Stat } from "@/components/mock/bits"
 import { DashboardMock } from "@/components/mock/dashboard"
 import { PhoneFrame, PhoneScreen } from "@/components/mock/phone"
@@ -194,6 +195,21 @@ export function ComponentLibrary() {
         <div className="grid gap-3 md:grid-cols-2">
           <ReviewCard review={{ kind: "post", name: "Theo Marsh", handle: "@theomarsh", avatar: 2, body: "Finally my ring, my watch and my scale on one screen." }} />
           <ReviewCard review={{ kind: "rating", author: "Dana K.", title: "I’ve tried all of them", body: "Cadence is the one I open every morning. Calm design, and my devices just sync." }} />
+        </div>
+      </ComponentSpecimen>
+      <ComponentSpecimen
+        name="ActivityPill"
+        source="components/motion/activity-pill.tsx"
+        description="The glossy pill the hero's PillBurst throws: an icon in a disc, a label in black caps, in six palette fills. Lime is used once in the set, so it stays an accent."
+        code={`<ActivityPill label="Running" icon="run" colour="lime" />`}
+      >
+        <div className="flex flex-wrap gap-3">
+          <ActivityPill label="Running" icon="run" colour="lime" />
+          <ActivityPill label="Yoga" icon="yoga" colour="spruce" />
+          <ActivityPill label="Cycling" icon="ride" colour="red" />
+          <ActivityPill label="Strength" icon="lift" colour="mist" />
+          <ActivityPill label="Swim" icon="swim" colour="blue" />
+          <ActivityPill label="Sleep" icon="sleep" colour="paper" />
         </div>
       </ComponentSpecimen>
       <ComponentSpecimen

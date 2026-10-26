@@ -10,7 +10,7 @@ import { contrast, toHex, trackingEm, useComputed } from "@/components/brand/rea
 import { GroupLabel, Panel } from "@/components/brand/specimen"
 import { COLOUR_GROUPS, CONTRAST_PAIRS, DURATIONS, EASINGS, RADII, SHADOWS, SPACING, TYPE_SCALE } from "@/components/brand/tokens"
 import { DrawLine } from "@/components/motion/draw-line"
-import { FloatingPill } from "@/components/motion/floating-pill"
+import { PillBurst } from "@/components/motion/pill-burst"
 import { WordReveal } from "@/components/motion/word-reveal"
 import { CadenceLogo, CadenceMark } from "@/components/site/logo"
 import { Button } from "@/components/ui/button"
@@ -335,9 +335,10 @@ export function Motion() {
         <GroupLabel>The page’s moving parts</GroupLabel>
         <div className="grid gap-3 md:grid-cols-2">
           <Panel className="relative h-48 overflow-hidden">
-            <FloatingPill label="Running" icon="run" colour="lime" x={-18} y={-12} rotate={-10} depth={0} />
-            <FloatingPill label="Swim" icon="swim" colour="blue" x={18} y={18} rotate={12} blur={1.5} depth={0} delay={0.2} />
-            <p className="absolute bottom-3 left-4 font-mono text-[11px] text-fg-4">FloatingPill — spring in, slow bob, parallax by depth</p>
+            <PillBurst intro={false} className="h-full cursor-crosshair">
+              <p className="grid h-full place-items-center text-[15px] text-fg-3">Click anywhere in here</p>
+            </PillBurst>
+            <p className="pointer-events-none absolute bottom-3 left-4 font-mono text-[11px] text-fg-4">PillBurst — pop, arc, gravity, fade</p>
           </Panel>
           <Panel className="relative h-48 p-5">
             <svg key={replay} viewBox="0 0 300 100" className="h-28 w-full overflow-visible" preserveAspectRatio="none">

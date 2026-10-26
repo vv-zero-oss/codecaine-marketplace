@@ -748,9 +748,9 @@
       "archive": {
         "url": "archives/remixes/cadence-fitness-1.0.0.tgz",
         "format": "tar+gzip",
-        "sha256": "db5c29418c5ef932925a25d751ccc9cd4de44d32376940c7d838f05ecb9e85a1",
-        "size": 578560,
-        "files": 82
+        "sha256": "e02701b44e9a46528e9c0dfc8a7994fc58915c6504808b430b6a457c6ab95886",
+        "size": 583168,
+        "files": 83
       },
       "source": {
         "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
