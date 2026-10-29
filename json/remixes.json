@@ -910,8 +910,8 @@
       "type": "remix",
       "id": "castwell-social",
       "name": "Castwell — AI Social Media Manager",
-      "version": "1.1.1",
-      "description": "A five-page template for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
+      "version": "1.1.2",
+      "description": "A five-page remix for a centralized social media manager run by an AI marketing team: floating workflow chips around a serif hero, a product window that unfolds on scroll, a pinned How-it-works tour, an AI Marketing Manager page with a streaming weekly brief, an AI Video Studio with storyboards and templates, a multi-channel scheduler with a best-time heatmap and approvals, and pricing with a comparison table.",
       "designedFor": [
         "Social media management, scheduling and creator tools",
         "AI marketing and AI video generation products",
@@ -948,7 +948,7 @@
         "SaaS"
       ],
       "created": "2026-09-30",
-      "updated": "2026-09-30",
+      "updated": "2026-10-29",
       "thumbnail": "preview.png",
       "meta": {
         "framework": "vite",
@@ -1041,9 +1041,9 @@
         ]
       },
       "archive": {
-        "url": "archives/remixes/castwell-social-1.1.1.tgz",
+        "url": "archives/remixes/castwell-social-1.1.2.tgz",
         "format": "tar+gzip",
-        "sha256": "1271ce21bee72440eda2282a249e49282a7ee2984e54a47257f1cd8e6fd2a4f7",
+        "sha256": "1a4e4fb96823aac34c151839c28c862da5d7264f7e51071b7bf5a680fcc5acd9",
         "size": 654336,
         "files": 104
       },

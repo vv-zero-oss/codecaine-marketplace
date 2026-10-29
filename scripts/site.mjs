@@ -7,14 +7,14 @@
  * They are set in the codecainehq.com site's design (site/site.css holds its
  * tokens), so the marketplace reads as part of that site rather than a file
  * listing. A remix's tile is the same 1440×900 screenshot that site uses for
- * its templates (`site/templates/<id>.webp|avif`); one without falls back to
+ * its remixes (`site/remixes/<id>.webp|avif`); one without falls back to
  * its own `preview.png`.
  *
  * Pure: catalog in, `{ path: html }` out. build.mjs writes the files and
  * `--check` compares them, so a page can never drift from its item.
  */
 
-export const SITE = "https://vv-zero-oss.github.io/codecaine-marketplace"
+export const SITE = "https://community.codecainehq.com"
 export const REPOSITORY = "https://github.com/vv-zero-oss/codecaine-marketplace"
 export const REF = "main"
 
@@ -89,7 +89,7 @@ function face(item, root, shots, { eager = false } = {}) {
   const loading = eager ? 'fetchpriority="high"' : 'loading="lazy"'
   if (item.type === "remix") {
     if (shots.has(item.id)) {
-      return `<picture><source srcset="${root}site/templates/${item.id}.avif" type="image/avif"><img src="${root}site/templates/${item.id}.webp" alt="${escape(item.name)} — home page" width="1440" height="900" ${loading} decoding="async"></picture>`
+      return `<picture><source srcset="${root}site/remixes/${item.id}.avif" type="image/avif"><img src="${root}site/remixes/${item.id}.webp" alt="${escape(item.name)} — home page" width="1440" height="900" ${loading} decoding="async"></picture>`
     }
     if (item.thumbnailUrl) return `<img src="${root}${escape(item.thumbnailUrl)}" alt="${escape(item.name)} — home page" ${loading} decoding="async">`
   }
@@ -178,20 +178,20 @@ function landing(json, shots) {
     .join("")
 
   return `${head({
-    title: "Codecaine Community — templates to remix",
-    description: "Remixes, design systems, apps and skills for Codecaine. Open any template as a new project on your machine and design on the running code.",
+    title: "Codecaine Community — remixes, design systems, apps and skills",
+    description: "Remixes, design systems, apps and skills for Codecaine. Made by the community: open any remix as a new project on your machine and design on the running code.",
     root,
     url: "",
-    image: shots.has("truant-coffee") ? "site/templates/truant-coffee.webp" : null,
+    image: shots.has("truant-coffee") ? "site/remixes/truant-coffee.webp" : null,
   })}${nav(root)}<div class="hatch"></div>
-<section class="hero"><p class="eyebrow">Community</p><h1>Start from something<br><em>already good.</em></h1>
-<p class="lead">Real projects — React, Tailwind, shadcn, motion — with type, colour and movement already considered. Open one in Codecaine and it lands on your machine as a new project, running.</p>
+<section class="hero"><p class="eyebrow">Codecaine Community</p><h1>Made by the community,<br><em>yours to remix.</em></h1>
+<p class="lead">Sites, design systems, apps and skills shared by people building with Codecaine. Open a remix and it lands on your machine as a new project, running — then make it your own, and share it back.</p>
 <div class="hero-actions"><a class="btn solid" href="#remixes">Browse remixes</a><a class="btn" href="${INSTALL_URL}">Get Codecaine ${icon("arrow")}</a></div>
 <div class="counts">${counts}</div></section>
 <div class="toolbar"><nav class="tabs" aria-label="Kinds">${kinds.map(([, k]) => `<a href="#${k.folder}">${k.plural}<small>${json[k.catalog].items.length}</small></a>`).join("")}</nav>
-<label class="search">${icon("search")}<span class="sr-only">Search the marketplace</span><input type="search" placeholder="Search templates, tags, authors…" data-search-input autocomplete="off"></label></div>
+<label class="search">${icon("search")}<span class="sr-only">Search the marketplace</span><input type="search" placeholder="Search remixes, tags, authors…" data-search-input autocomplete="off"></label></div>
 ${bands}
-<div class="hatch"></div><section class="cta"><h2>Open any of them<br><em>in Codecaine.</em></h2><p class="lead">Pick a template, press Open in Codecaine, and choose a folder. It installs, starts its dev server and opens on the canvas.</p><div class="hero-actions"><a class="btn solid" href="${INSTALL_URL}">Get Codecaine — free</a></div></section>
+<div class="hatch"></div><section class="cta"><h2>Open any of them<br><em>in Codecaine.</em></h2><p class="lead">Pick a remix, press Open in Codecaine, and choose a folder. It installs, starts its dev server and opens on the canvas.</p><div class="hero-actions"><a class="btn solid" href="${INSTALL_URL}">Get Codecaine — free</a></div></section>
 ${footer(root, json)}`
 }
 
@@ -277,7 +277,7 @@ function itemPage(item, json, shots) {
     description: tagline(item.description),
     root,
     url: pagePath(item),
-    image: isRemix ? (shots.has(item.id) ? `site/templates/${item.id}.webp` : item.thumbnailUrl) : null,
+    image: isRemix ? (shots.has(item.id) ? `site/remixes/${item.id}.webp` : item.thumbnailUrl) : null,
   })}${nav(root, item.type)}
 <nav class="crumbs" aria-label="Breadcrumb"><a href="${root}">Community</a><span aria-hidden="true">/</span><a href="${root}#${k.folder}">${k.plural}</a><span aria-hidden="true">/</span><span>${escape(item.name)}</span></nav>
 <section class="item-head"><div><p class="eyebrow">${escape([k.singular, ...item.categories.slice(0, 2)].join(" · "))}</p><h1>${escape(item.name)}</h1><p class="lead">${escape(tagline(item.description))}</p><p class="byline">by ${byline(item)} · v${escape(item.version)} · updated ${formatDate(item.updated)}</p></div>${actions}</section>

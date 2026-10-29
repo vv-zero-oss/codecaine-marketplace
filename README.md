@@ -4,7 +4,7 @@ Remixes, apps, design systems and skills for the canvas editor. The editor
 reads this repository's catalog from GitHub Pages and installs from it.
 
 ```
-https://vv-zero-oss.github.io/codecaine-marketplace/json/index.json
+https://community.codecainehq.com/json/index.json
 ```
 
 ## What is here
@@ -108,7 +108,7 @@ It writes `preview.png`, `previews/` and the `previews` field of
 Every remix also has a **live demo**: the project built to static files in
 `demos/<id>/`, which the editor's item page frames as its preview and opens
 with **Open in browser** — on Pages at
-`https://vv-zero-oss.github.io/codecaine-marketplace/demos/<id>/`.
+`https://community.codecainehq.com/demos/<id>/`.
 
 ```bash
 npm run demos              # every remix: npm ci if needed, vite build --base ./
@@ -161,7 +161,7 @@ page per item (`items/<kind>/<id>/index.html`: the full description, the
 facts, every page of a remix, a design system's palette). They are set in the
 codecainehq.com site's design — `site/site.css` holds its tokens, `site/site.js`
 does search and category filters. A remix's tile is its 1440×900 screenshot in
-`site/templates/<id>.webp` + `.avif` (the same files that site shows); a remix
+`site/remixes/<id>.webp` + `.avif` (the same files that site shows); a remix
 without one falls back to its `preview.png`, so add one when you add a remix.
 
 Each item page has **Open in Codecaine**, a `codecaine://` link the desktop app

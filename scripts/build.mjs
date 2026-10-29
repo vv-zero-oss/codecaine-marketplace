@@ -532,10 +532,10 @@ async function writeSite(out, json, archives) {
 
 /** The pages for people who open the site in a browser (scripts/site.mjs):
  *  the landing page and one page per item under `items/`. A remix's tile is
- *  its screenshot in `site/templates/` when there is one. */
+ *  its screenshot in `site/remixes/` when there is one. */
 async function sitePages(json) {
   const shots = new Set(
-    (await readdir(path.join(ROOT, "site", "templates")).catch(() => []))
+    (await readdir(path.join(ROOT, "site", "remixes")).catch(() => []))
       .filter((name) => name.endsWith(".webp"))
       .map((name) => name.slice(0, -".webp".length))
   )

@@ -4,9 +4,9 @@
   "name": "Codecaine Community",
   "description": "Remixes, apps, design systems and skills for the canvas editor.",
   "root": "../",
-  "site": "https://vv-zero-oss.github.io/codecaine-marketplace",
+  "site": "https://community.codecainehq.com",
   "repository": "https://github.com/vv-zero-oss/codecaine-marketplace",
-  "updated": "2026-10-26",
+  "updated": "2026-10-29",
   "catalogs": {
     "remix": {
       "url": "json/remixes.json",
