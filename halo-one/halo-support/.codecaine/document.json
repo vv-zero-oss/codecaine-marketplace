@@ -839,5 +839,557 @@
       "kind": "google",
       "family": "Inter"
     }
-  ]
+  ],
+  "variables": {
+    "collections": {
+      "collection:theme": {
+        "id": "collection:theme",
+        "name": "Theme",
+        "modes": [
+          {
+            "id": "collection:theme/mode:0",
+            "name": "Light"
+          },
+          {
+            "id": "mode:mvv9bimg-1",
+            "name": "Dark",
+            "selector": ".dark"
+          }
+        ],
+        "activeModeId": "collection:theme/mode:0"
+      }
+    },
+    "variables": {
+      "var:mvv9bimg-2": {
+        "id": "var:mvv9bimg-2",
+        "collectionId": "collection:theme",
+        "property": "--radius",
+        "category": "border-radius",
+        "values": {
+          "collection:theme/mode:0": "0.625rem",
+          "mode:mvv9bimg-1": "0.625rem"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-3": {
+        "id": "var:mvv9bimg-3",
+        "collectionId": "collection:theme",
+        "property": "--background",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#ffffff",
+          "mode:mvv9bimg-1": "#0a0a0a"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-4": {
+        "id": "var:mvv9bimg-4",
+        "collectionId": "collection:theme",
+        "property": "--foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#0a0a0a",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-5": {
+        "id": "var:mvv9bimg-5",
+        "collectionId": "collection:theme",
+        "property": "--card",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#ffffff",
+          "mode:mvv9bimg-1": "#171717"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-6": {
+        "id": "var:mvv9bimg-6",
+        "collectionId": "collection:theme",
+        "property": "--card-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#0a0a0a",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-7": {
+        "id": "var:mvv9bimg-7",
+        "collectionId": "collection:theme",
+        "property": "--popover",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#ffffff",
+          "mode:mvv9bimg-1": "#171717"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-8": {
+        "id": "var:mvv9bimg-8",
+        "collectionId": "collection:theme",
+        "property": "--popover-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#0a0a0a",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-9": {
+        "id": "var:mvv9bimg-9",
+        "collectionId": "collection:theme",
+        "property": "--primary",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#171717",
+          "mode:mvv9bimg-1": "#e5e5e5"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-a": {
+        "id": "var:mvv9bimg-a",
+        "collectionId": "collection:theme",
+        "property": "--primary-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#fafafa",
+          "mode:mvv9bimg-1": "#171717"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-b": {
+        "id": "var:mvv9bimg-b",
+        "collectionId": "collection:theme",
+        "property": "--secondary",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#f5f5f5",
+          "mode:mvv9bimg-1": "#262626"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimg-c": {
+        "id": "var:mvv9bimg-c",
+        "collectionId": "collection:theme",
+        "property": "--secondary-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#171717",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967880
+        }
+      },
+      "var:mvv9bimh-d": {
+        "id": "var:mvv9bimh-d",
+        "collectionId": "collection:theme",
+        "property": "--muted",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#f5f5f5",
+          "mode:mvv9bimg-1": "#262626"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-e": {
+        "id": "var:mvv9bimh-e",
+        "collectionId": "collection:theme",
+        "property": "--muted-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#737373",
+          "mode:mvv9bimg-1": "#a1a1a1"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-f": {
+        "id": "var:mvv9bimh-f",
+        "collectionId": "collection:theme",
+        "property": "--accent",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#f5f5f5",
+          "mode:mvv9bimg-1": "#262626"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-g": {
+        "id": "var:mvv9bimh-g",
+        "collectionId": "collection:theme",
+        "property": "--accent-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#171717",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-h": {
+        "id": "var:mvv9bimh-h",
+        "collectionId": "collection:theme",
+        "property": "--destructive",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#e7000b",
+          "mode:mvv9bimg-1": "#ff6467"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-i": {
+        "id": "var:mvv9bimh-i",
+        "collectionId": "collection:theme",
+        "property": "--destructive-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#fafafa",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-j": {
+        "id": "var:mvv9bimh-j",
+        "collectionId": "collection:theme",
+        "property": "--border",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#e5e5e5",
+          "mode:mvv9bimg-1": "rgba(255, 255, 255, 0.1)"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-k": {
+        "id": "var:mvv9bimh-k",
+        "collectionId": "collection:theme",
+        "property": "--input",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#e5e5e5",
+          "mode:mvv9bimg-1": "rgba(255, 255, 255, 0.15)"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-l": {
+        "id": "var:mvv9bimh-l",
+        "collectionId": "collection:theme",
+        "property": "--ring",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#a1a1a1",
+          "mode:mvv9bimg-1": "#737373"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-m": {
+        "id": "var:mvv9bimh-m",
+        "collectionId": "collection:theme",
+        "property": "--chart-1",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#f54900",
+          "mode:mvv9bimg-1": "#1447e6"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-n": {
+        "id": "var:mvv9bimh-n",
+        "collectionId": "collection:theme",
+        "property": "--chart-2",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#009689",
+          "mode:mvv9bimg-1": "#00bc7d"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-o": {
+        "id": "var:mvv9bimh-o",
+        "collectionId": "collection:theme",
+        "property": "--chart-3",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#104e64",
+          "mode:mvv9bimg-1": "#fe9a00"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-p": {
+        "id": "var:mvv9bimh-p",
+        "collectionId": "collection:theme",
+        "property": "--chart-4",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#ffb900",
+          "mode:mvv9bimg-1": "#ad46ff"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-q": {
+        "id": "var:mvv9bimh-q",
+        "collectionId": "collection:theme",
+        "property": "--chart-5",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#fe9a00",
+          "mode:mvv9bimg-1": "#ff2056"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-r": {
+        "id": "var:mvv9bimh-r",
+        "collectionId": "collection:theme",
+        "property": "--sidebar",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#fafafa",
+          "mode:mvv9bimg-1": "#171717"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-s": {
+        "id": "var:mvv9bimh-s",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#0a0a0a",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-t": {
+        "id": "var:mvv9bimh-t",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-primary",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#171717",
+          "mode:mvv9bimg-1": "#1447e6"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-u": {
+        "id": "var:mvv9bimh-u",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-primary-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#fafafa",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-v": {
+        "id": "var:mvv9bimh-v",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-accent",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#f5f5f5",
+          "mode:mvv9bimg-1": "#262626"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-w": {
+        "id": "var:mvv9bimh-w",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-accent-foreground",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#171717",
+          "mode:mvv9bimg-1": "#fafafa"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-x": {
+        "id": "var:mvv9bimh-x",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-border",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#e5e5e5",
+          "mode:mvv9bimg-1": "rgba(255, 255, 255, 0.1)"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      },
+      "var:mvv9bimh-y": {
+        "id": "var:mvv9bimh-y",
+        "collectionId": "collection:theme",
+        "property": "--sidebar-ring",
+        "category": "colors",
+        "values": {
+          "collection:theme/mode:0": "#a1a1a1",
+          "mode:mvv9bimg-1": "#737373"
+        },
+        "owner": {
+          "kind": "document",
+          "label": "Interactive frame theme",
+          "at": 1793381967881
+        }
+      }
+    },
+    "order": [
+      "var:mvv9bimg-2",
+      "var:mvv9bimg-3",
+      "var:mvv9bimg-4",
+      "var:mvv9bimg-5",
+      "var:mvv9bimg-6",
+      "var:mvv9bimg-7",
+      "var:mvv9bimg-8",
+      "var:mvv9bimg-9",
+      "var:mvv9bimg-a",
+      "var:mvv9bimg-b",
+      "var:mvv9bimg-c",
+      "var:mvv9bimh-d",
+      "var:mvv9bimh-e",
+      "var:mvv9bimh-f",
+      "var:mvv9bimh-g",
+      "var:mvv9bimh-h",
+      "var:mvv9bimh-i",
+      "var:mvv9bimh-j",
+      "var:mvv9bimh-k",
+      "var:mvv9bimh-l",
+      "var:mvv9bimh-m",
+      "var:mvv9bimh-n",
+      "var:mvv9bimh-o",
+      "var:mvv9bimh-p",
+      "var:mvv9bimh-q",
+      "var:mvv9bimh-r",
+      "var:mvv9bimh-s",
+      "var:mvv9bimh-t",
+      "var:mvv9bimh-u",
+      "var:mvv9bimh-v",
+      "var:mvv9bimh-w",
+      "var:mvv9bimh-x",
+      "var:mvv9bimh-y"
+    ]
+  }
 }

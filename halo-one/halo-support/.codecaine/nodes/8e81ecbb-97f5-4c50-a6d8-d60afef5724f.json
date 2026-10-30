@@ -1,0 +1,57 @@
+{
+  "id": "8e81ecbb-97f5-4c50-a6d8-d60afef5724f",
+  "type": "webpage",
+  "tag": "div",
+  "name": "Interactive frame",
+  "parent": "fdd39b63-26ac-4771-816b-38d3d699de05",
+  "order": "z",
+  "breakpoints": [
+    {
+      "id": "desktop",
+      "label": "Desktop",
+      "minWidth": 1280,
+      "width": 1280
+    },
+    {
+      "id": "tablet",
+      "label": "Tablet",
+      "minWidth": 800,
+      "width": 834
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile",
+      "minWidth": 0,
+      "width": 390
+    }
+  ],
+  "createdAt": "2026-10-30T17:39:27.881Z",
+  "packages": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0",
+    "motion": "13.5.0",
+    "framer-motion": "13.5.0",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.7.0",
+    "class-variance-authority": "0.7.1",
+    "radix-ui": "1.6.7",
+    "lucide-react": "1.49.0",
+    "@tailwindcss/browser": "4.3.3"
+  },
+  "props": {
+    "data-codecaine-id": "308cccd4-94e7-42c6-a527-939974765bd4"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "hug"
+  },
+  "style": {
+    "width": 1280,
+    "minHeight": 800,
+    "position": "absolute",
+    "backgroundColor": "#ffffff",
+    "left": 6570.529490335243,
+    "top": 1411.0666540823331
+  },
+  "updatedAt": "2026-10-30T17:39:27.881Z"
+}
