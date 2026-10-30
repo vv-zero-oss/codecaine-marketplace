@@ -1,0 +1,47 @@
+{
+  "id": "15672af6-a10e-4fed-b16e-b917cf856941",
+  "type": "liveproject",
+  "tag": "div",
+  "name": "Ecoriz-solar-webflow",
+  "parent": "fdd39b63-26ac-4771-816b-38d3d699de05",
+  "order": "x",
+  "breakpoints": [
+    {
+      "id": "desktop",
+      "label": "Desktop",
+      "minWidth": 1280,
+      "width": 1280
+    },
+    {
+      "id": "tablet",
+      "label": "Tablet",
+      "minWidth": 800,
+      "width": 834
+    },
+    {
+      "id": "mobile",
+      "label": "Mobile",
+      "minWidth": 0,
+      "width": 390
+    }
+  ],
+  "createdAt": "2026-10-30T13:02:14.105Z",
+  "props": {
+    "src": "https://ecoriz-solar.webflow.io/",
+    "view": "viewport",
+    "data-codecaine-id": "12777454-d847-49b1-91e6-a0ac598a4b18"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "hug"
+  },
+  "style": {
+    "width": 1280,
+    "height": 900,
+    "position": "absolute",
+    "backgroundColor": "#ffffff",
+    "left": 5718.894296776642,
+    "top": 1404.7367154367657
+  },
+  "updatedAt": "2026-10-30T13:02:15.903Z"
+}
