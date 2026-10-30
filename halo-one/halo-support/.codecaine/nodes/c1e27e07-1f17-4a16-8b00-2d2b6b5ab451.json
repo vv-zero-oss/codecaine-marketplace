@@ -1,0 +1,21 @@
+{
+  "id": "c1e27e07-1f17-4a16-8b00-2d2b6b5ab451",
+  "type": "frame",
+  "tag": "source",
+  "name": "source",
+  "parent": "744ffe7e-08ac-4db3-a052-bf0733de2578",
+  "order": "l",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "type": "image/jpeg",
+    "srcset": "/v/apple-watch-series-12/b/images/overview/on-the-go/go_hero_right__cqa1usfv1y82_large.jpg, /v/apple-watch-series-12/b/images/overview/on-the-go/go_hero_right__cqa1usfv1y82_large_2x.jpg 2x",
+    "media": "(min-width:0px)",
+    "data-codecaine-id": "cb9ebeba-c9da-43d1-b8cc-d31f816bb1ee"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

@@ -1,0 +1,33 @@
+{
+  "id": "4cca92f6-53b2-4e3e-813e-4d3733e22c04",
+  "type": "image",
+  "tag": "img",
+  "parent": "1aa2021f-f155-42d4-af89-c631812ebde7",
+  "order": "t",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "image": {
+    "fit": "fill",
+    "anchor": "center center",
+    "adjust": {
+      "exposure": 0,
+      "contrast": 0,
+      "saturation": 0,
+      "hue": 0,
+      "blur": 0,
+      "grayscale": 0,
+      "sepia": 0,
+      "invert": 0
+    }
+  },
+  "props": {
+    "src": "/v/apple-watch-series-12/b/images/overview/insights/health_hypertension__ft0cthd7scae_large.avif",
+    "alt": "",
+    "data-codecaine-id": "66bfd1ce-20a1-41a5-864d-5ef1c9d367f7"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

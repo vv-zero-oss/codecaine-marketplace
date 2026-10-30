@@ -1,0 +1,19 @@
+{
+  "id": "b64a44b3-3554-4e22-a2f8-b65351c27272",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "bdde9f15-b1ec-4a8d-941d-12b42f4de46f",
+  "order": "V",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "class": "overview-insights-health-blood-oxygen positioned-media-element pin-offset static",
+    "data-codecaine-id": "04b7a2ac-31ad-4a00-b47b-95dafaccdee3"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

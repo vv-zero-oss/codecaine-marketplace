@@ -1,0 +1,14 @@
+{
+  "id": "d8b4d173-6691-4272-98b7-7a81c11bb906",
+  "type": "text",
+  "tag": "span",
+  "parent": "864f9f4a-32b5-46eb-a70b-c63186dbb827",
+  "order": "G",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "text": "Let Apple Music choose the best playlist based on the workout you’re doing and the music you love. Time to turn it up.",
+    "data-codecaine-id": "b095068f-a423-4f9f-8d5f-50d9f31ee85b"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

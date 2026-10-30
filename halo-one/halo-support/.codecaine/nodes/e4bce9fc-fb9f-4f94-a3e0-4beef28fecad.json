@@ -1,0 +1,14 @@
+{
+  "id": "e4bce9fc-fb9f-4f94-a3e0-4beef28fecad",
+  "type": "text",
+  "tag": "span",
+  "parent": "527ba770-d176-432b-8c1c-90d3b15cada9",
+  "order": "O",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "text": " with 5G.",
+    "data-codecaine-id": "0001dd3f-acb1-445b-8c86-4eb919a83b26"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

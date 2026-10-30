@@ -1,0 +1,21 @@
+{
+  "id": "a296bc8e-c720-41df-a676-262ca844509e",
+  "type": "frame",
+  "tag": "source",
+  "name": "source",
+  "parent": "b64a44b3-3554-4e22-a2f8-b65351c27272",
+  "order": "G",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "type": "image/jpeg",
+    "srcset": "/v/apple-watch-series-12/b/images/overview/insights/health_blood_oxygen__flia6nz9sr6u_small.jpg, /v/apple-watch-series-12/b/images/overview/insights/health_blood_oxygen__flia6nz9sr6u_small_2x.jpg 2x",
+    "media": "(max-width:734px)",
+    "data-codecaine-id": "4815cfeb-057f-454c-9689-6f6cad78421f"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

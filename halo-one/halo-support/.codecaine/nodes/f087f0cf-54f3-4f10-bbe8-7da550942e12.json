@@ -1,0 +1,33 @@
+{
+  "id": "f087f0cf-54f3-4f10-bbe8-7da550942e12",
+  "type": "image",
+  "tag": "img",
+  "parent": "97a894a4-df15-4e28-a0c7-a7da9744cd36",
+  "order": "l",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "image": {
+    "fit": "fill",
+    "anchor": "center center",
+    "adjust": {
+      "exposure": 0,
+      "contrast": 0,
+      "saturation": 0,
+      "hue": 0,
+      "blur": 0,
+      "grayscale": 0,
+      "sepia": 0,
+      "invert": 0
+    }
+  },
+  "props": {
+    "src": "/v/apple-watch-series-12/b/images/overview/on-the-go/icon_smart_stack__fl3oelhv1iuu_large.avif",
+    "alt": "",
+    "data-codecaine-id": "f17da76b-357d-471c-ae41-4071c1c777e2"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

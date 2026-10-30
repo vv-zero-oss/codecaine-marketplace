@@ -1,0 +1,21 @@
+{
+  "id": "d22ae0c1-f3b8-43e5-8516-01d0b9639796",
+  "type": "frame",
+  "tag": "source",
+  "name": "source",
+  "parent": "b474ad77-6593-48d3-ad53-08851ebd1606",
+  "order": "V",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "type": "image/png",
+    "srcset": "/v/apple-watch-series-12/b/images/overview/on-the-go/icon_sos__gend00c6g2ai_large.png, /v/apple-watch-series-12/b/images/overview/on-the-go/icon_sos__gend00c6g2ai_large_2x.png 2x",
+    "media": "(min-width:0px)",
+    "data-codecaine-id": "16d853cb-6a77-44bf-b431-a46f09580a34"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

@@ -1,0 +1,14 @@
+{
+  "id": "332fe792-256a-4cb4-82f0-6b39abb4fa8b",
+  "type": "text",
+  "tag": "span",
+  "parent": "86e3efaa-735e-4912-83da-3b799a412251",
+  "order": "l",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "text": " Welcome to the new status flow.",
+    "data-codecaine-id": "ed7e203c-c37c-4c7f-a324-bdd92a3bf117"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

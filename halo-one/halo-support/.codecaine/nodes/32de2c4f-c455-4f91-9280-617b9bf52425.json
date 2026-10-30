@@ -1,0 +1,14 @@
+{
+  "id": "32de2c4f-c455-4f91-9280-617b9bf52425",
+  "type": "text",
+  "tag": "span",
+  "parent": "eed12ba2-1aa8-4185-9b70-e7be074b9e89",
+  "order": "G",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "text": "The Health app on iPhone uses data from the sensor in Apple Watch to enable you to take on-demand readings of your blood oxygen as well as background readings, day and night.",
+    "data-codecaine-id": "d53ddd86-5a2f-4d4f-bd41-b8f025281406"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

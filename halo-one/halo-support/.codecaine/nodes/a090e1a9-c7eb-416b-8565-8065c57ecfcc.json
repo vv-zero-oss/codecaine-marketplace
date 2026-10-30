@@ -1,0 +1,14 @@
+{
+  "id": "a090e1a9-c7eb-416b-8565-8065c57ecfcc",
+  "type": "text",
+  "tag": "span",
+  "parent": "406748ac-dfa5-4dc5-b38c-31d08e1af5a6",
+  "order": "G",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "text": "Series 12 can notify you if it identifies patterns of hypertension. How? The optical sensor provides data to an algorithm that can detect potential hypertension by analyzing how your blood vessels respond to beats of the heart over 30-day periods.",
+    "data-codecaine-id": "2726d579-98c5-4298-8400-b8575035fc03"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

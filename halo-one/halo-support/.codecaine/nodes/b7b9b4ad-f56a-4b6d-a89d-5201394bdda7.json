@@ -1,0 +1,19 @@
+{
+  "id": "b7b9b4ad-f56a-4b6d-a89d-5201394bdda7",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "77214b00-1fe4-4b16-bfb5-38c3c3e5cf85",
+  "order": "V",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "class": "overview-insights-health-ecg-app positioned-media-element pin-offset static",
+    "data-codecaine-id": "80abfa94-9907-4ec9-9daa-7c3a2232cb37"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

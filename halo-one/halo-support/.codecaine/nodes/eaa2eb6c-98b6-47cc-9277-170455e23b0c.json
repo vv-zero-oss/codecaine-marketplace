@@ -1,0 +1,33 @@
+{
+  "id": "eaa2eb6c-98b6-47cc-9277-170455e23b0c",
+  "type": "image",
+  "tag": "img",
+  "parent": "de1f992d-4565-4f40-a4d2-20900569f06e",
+  "order": "l",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "image": {
+    "fit": "fill",
+    "anchor": "center center",
+    "adjust": {
+      "exposure": 0,
+      "contrast": 0,
+      "saturation": 0,
+      "hue": 0,
+      "blur": 0,
+      "grayscale": 0,
+      "sepia": 0,
+      "invert": 0
+    }
+  },
+  "props": {
+    "src": "/v/apple-watch-series-12/b/images/overview/on-the-go/icon_fall_detection__cwz0zewx26aa_large.avif",
+    "alt": "",
+    "data-codecaine-id": "135b644b-1d1f-423f-a9c8-61cccb68a9c1"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

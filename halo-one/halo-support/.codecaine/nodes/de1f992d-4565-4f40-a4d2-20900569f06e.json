@@ -1,0 +1,19 @@
+{
+  "id": "de1f992d-4565-4f40-a4d2-20900569f06e",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "b83490c4-b973-404f-b97e-d8420d625ba9",
+  "order": "V",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "class": "overview-on-the-go-icon-fall-detection callout-icon",
+    "data-codecaine-id": "1f32019e-78f3-47b9-ada5-6d889df9b3b3"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

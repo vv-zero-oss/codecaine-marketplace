@@ -1,0 +1,14 @@
+{
+  "id": "fa1d480b-b354-4e4e-b0b3-e7ce74858155",
+  "type": "text",
+  "tag": "span",
+  "parent": "eec6b9fb-c877-428d-8f79-ac2dd901c7a5",
+  "order": "G",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "text": "With Series 12 heart health tracking, you can check for signs of atrial fibrillation, or AFib, right from your wrist by using the ECG app to generate a single-lead electrocardiogram.",
+    "data-codecaine-id": "dc4154f7-f6ef-4880-a0d1-074abd02e940"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

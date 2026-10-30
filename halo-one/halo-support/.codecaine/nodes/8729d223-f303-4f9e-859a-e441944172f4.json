@@ -1,0 +1,14 @@
+{
+  "id": "8729d223-f303-4f9e-859a-e441944172f4",
+  "type": "text",
+  "tag": "span",
+  "parent": "d8786acd-06af-48cc-abdd-6500196a032e",
+  "order": "G",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "text": "Know your body.",
+    "data-codecaine-id": "c2cf7ae9-4176-47c9-9080-57b485ff89ad"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

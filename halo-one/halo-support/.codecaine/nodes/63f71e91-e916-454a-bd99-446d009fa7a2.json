@@ -1,0 +1,21 @@
+{
+  "id": "63f71e91-e916-454a-bd99-446d009fa7a2",
+  "type": "frame",
+  "tag": "source",
+  "name": "source",
+  "parent": "130eb82d-c4fb-4259-b5ef-31a8573ae12c",
+  "order": "8",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "type": "image/avif",
+    "srcset": "/v/apple-watch-series-12/b/images/overview/insights/health_cycle__byxreob06bki_small.avif, /v/apple-watch-series-12/b/images/overview/insights/health_cycle__byxreob06bki_small_2x.avif 2x",
+    "media": "(max-width:734px)",
+    "data-codecaine-id": "449c1436-faad-456c-812b-e315a941a5e5"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

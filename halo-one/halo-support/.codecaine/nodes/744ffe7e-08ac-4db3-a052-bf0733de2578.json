@@ -1,0 +1,19 @@
+{
+  "id": "744ffe7e-08ac-4db3-a052-bf0733de2578",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "2dac762f-ba5e-4b19-82cc-d73dea9202d7",
+  "order": "V",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "class": "overview-on-the-go-go-hero-right media-item",
+    "data-codecaine-id": "015a5564-9bea-49ae-9c0e-eba926439b34"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

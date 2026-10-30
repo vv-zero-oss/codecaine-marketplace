@@ -1,0 +1,19 @@
+{
+  "id": "130eb82d-c4fb-4259-b5ef-31a8573ae12c",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "826459d7-7356-4010-8ca5-ca5a321e24e6",
+  "order": "V",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "class": "overview-insights-health-cycle positioned-media-element pin-offset static",
+    "data-codecaine-id": "f36b9a74-9297-43f2-94ce-55361e4ce8b7"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

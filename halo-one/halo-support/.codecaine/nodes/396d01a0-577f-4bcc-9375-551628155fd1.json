@@ -1,0 +1,19 @@
+{
+  "id": "396d01a0-577f-4bcc-9375-551628155fd1",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "d1234196-d258-4d9c-9fd9-82311da45c51",
+  "order": "V",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "class": "overview-on-the-go-icon-playlists callout-icon",
+    "data-codecaine-id": "20873a4c-ed5b-4e75-96f9-1707fc6cb232"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

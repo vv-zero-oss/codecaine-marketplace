@@ -1,0 +1,14 @@
+{
+  "id": "edbeec0e-ab38-4bbd-9ffb-9274a5ad5d9c",
+  "type": "text",
+  "tag": "span",
+  "parent": "d8786acd-06af-48cc-abdd-6500196a032e",
+  "order": "l",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "text": "Insights and out.",
+    "data-codecaine-id": "384c5792-ddf0-465e-99e3-3ac5fa4a1c9d"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

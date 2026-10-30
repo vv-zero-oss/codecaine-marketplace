@@ -1,0 +1,14 @@
+{
+  "id": "88735fdb-f4bc-422f-97d6-22bc9b19ae03",
+  "type": "text",
+  "tag": "span",
+  "parent": "8bf58ebb-229e-4fd2-a201-e9bf4571b9a8",
+  "order": "G",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "text": "If you’ve been in a severe car crash, Series 12 can automatically help call emergency services, share your location, and notify your emergency contacts.",
+    "data-codecaine-id": "f861167e-b935-4158-81e3-36935bd3680d"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

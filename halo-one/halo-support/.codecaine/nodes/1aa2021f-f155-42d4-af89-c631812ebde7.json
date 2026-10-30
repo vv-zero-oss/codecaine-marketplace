@@ -1,0 +1,19 @@
+{
+  "id": "1aa2021f-f155-42d4-af89-c631812ebde7",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "b5e8c2a2-7b40-498e-b415-8b2a1f857dfc",
+  "order": "V",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "class": "overview-insights-health-hypertension positioned-media-element pin-offset static",
+    "data-codecaine-id": "4c39d13a-3b7a-4c40-b070-c985fa293698"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}

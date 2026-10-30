@@ -1,0 +1,33 @@
+{
+  "id": "d95bfa0b-a824-4d45-a63c-ec9b177356fb",
+  "type": "image",
+  "tag": "img",
+  "parent": "396d01a0-577f-4bcc-9375-551628155fd1",
+  "order": "l",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "image": {
+    "fit": "fill",
+    "anchor": "center center",
+    "adjust": {
+      "exposure": 0,
+      "contrast": 0,
+      "saturation": 0,
+      "hue": 0,
+      "blur": 0,
+      "grayscale": 0,
+      "sepia": 0,
+      "invert": 0
+    }
+  },
+  "props": {
+    "src": "/v/apple-watch-series-12/b/images/overview/on-the-go/icon_playlists__flrm9djpsnma_large.avif",
+    "alt": "",
+    "data-codecaine-id": "7bb09b84-9bb6-4190-9e25-376dcf06d8b4"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

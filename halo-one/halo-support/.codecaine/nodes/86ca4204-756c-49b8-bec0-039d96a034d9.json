@@ -1,0 +1,19 @@
+{
+  "id": "86ca4204-756c-49b8-bec0-039d96a034d9",
+  "type": "frame",
+  "tag": "picture",
+  "name": "picture",
+  "parent": "caa43ed7-02c5-4832-a5fb-5ef5b9095107",
+  "order": "V",
+  "createdAt": "2026-10-30T12:07:35.683Z",
+  "props": {
+    "class": "overview-on-the-go-icon-apple-pay callout-icon",
+    "data-codecaine-id": "c4580100-cd41-43d4-9a93-cd62f6288d82"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:07:35.683Z"
+}

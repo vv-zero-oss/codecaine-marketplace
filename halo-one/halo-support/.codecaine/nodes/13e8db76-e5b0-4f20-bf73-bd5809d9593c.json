@@ -1,0 +1,21 @@
+{
+  "id": "13e8db76-e5b0-4f20-bf73-bd5809d9593c",
+  "type": "frame",
+  "tag": "source",
+  "name": "source",
+  "parent": "b7b9b4ad-f56a-4b6d-a89d-5201394bdda7",
+  "order": "G",
+  "createdAt": "2026-10-30T12:09:12.013Z",
+  "props": {
+    "type": "image/jpeg",
+    "srcset": "/v/apple-watch-series-12/b/images/overview/insights/health_ecg_app__dhixamzuo7sm_small.jpg, /v/apple-watch-series-12/b/images/overview/insights/health_ecg_app__dhixamzuo7sm_small_2x.jpg 2x",
+    "media": "(max-width:734px)",
+    "data-codecaine-id": "2789f696-d275-4551-bfc2-690462837ca9"
+  },
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T12:09:12.013Z"
+}
