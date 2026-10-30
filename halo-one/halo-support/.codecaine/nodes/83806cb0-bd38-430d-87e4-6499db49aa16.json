@@ -18,18 +18,18 @@
   },
   "style": {
     "boxSizing": "content-box",
-    "display": "grid",
-    "flexDirection": "row",
-    "flexWrap": "nowrap",
+    "display": "block",
+    "flexDirection": "",
+    "flexWrap": "",
     "flexGrow": "0",
     "flexShrink": "1",
     "flexBasis": "auto",
-    "alignItems": "normal",
+    "alignItems": "",
     "justifyItems": "center",
     "alignSelf": "auto",
     "justifySelf": "auto",
     "alignContent": "normal",
-    "justifyContent": "normal",
+    "justifyContent": "",
     "rowGap": "normal",
     "columnGap": "normal",
     "gridTemplateRows": "136px",
@@ -42,7 +42,7 @@
     "gridColumnStart": "auto",
     "gridRowEnd": "auto",
     "gridColumnEnd": "auto",
-    "width": "456.742px",
+    "width": 691,
     "height": "136px",
     "minWidth": "auto",
     "minHeight": "auto",
@@ -104,7 +104,8 @@
     "listStyleImage": "none",
     "listStyleType": "disc",
     "verticalAlign": "baseline",
-    "cursor": "auto"
+    "cursor": "auto",
+    "left": 0
   },
-  "updatedAt": "2026-10-30T12:09:12.013Z"
+  "updatedAt": "2026-10-30T12:38:28.509Z"
 }

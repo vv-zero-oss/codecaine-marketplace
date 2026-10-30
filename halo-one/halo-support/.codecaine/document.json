@@ -834,6 +834,10 @@
         }
       ],
       "from": "http://127.0.0.1:56233/apple-watch-series-12/"
+    },
+    {
+      "kind": "google",
+      "family": "Inter"
     }
   ]
 }

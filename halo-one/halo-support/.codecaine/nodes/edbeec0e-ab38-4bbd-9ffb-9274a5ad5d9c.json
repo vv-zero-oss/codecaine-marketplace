@@ -9,6 +9,10 @@
     "text": "Insights and out.",
     "data-codecaine-id": "384c5792-ddf0-465e-99e3-3ac5fa4a1c9d"
   },
-  "style": {},
-  "updatedAt": "2026-10-30T12:09:12.013Z"
+  "style": {
+    "fontFamily": "Inter",
+    "marginLeft": -1,
+    "marginRight": 1
+  },
+  "updatedAt": "2026-10-30T12:38:44.520Z"
 }

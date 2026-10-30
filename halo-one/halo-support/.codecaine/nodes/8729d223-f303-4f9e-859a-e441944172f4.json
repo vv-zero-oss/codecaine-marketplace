@@ -9,6 +9,14 @@
     "text": "Know your body.",
     "data-codecaine-id": "c2cf7ae9-4176-47c9-9080-57b485ff89ad"
   },
-  "style": {},
-  "updatedAt": "2026-10-30T12:09:12.013Z"
+  "sizing": {
+    "width": "fixed",
+    "height": "fixed"
+  },
+  "style": {
+    "fontFamily": "Inter",
+    "width": 532,
+    "left": 0
+  },
+  "updatedAt": "2026-10-30T12:38:32.206Z"
 }

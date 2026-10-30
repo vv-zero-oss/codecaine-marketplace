@@ -2,7 +2,7 @@
   "id": "ff80d8b4-207f-4a3c-a7f6-bd6f65cefa80",
   "type": "frame",
   "tag": "section",
-  "name": "section",
+  "name": "Know your body.",
   "parent": "fdd39b63-26ac-4771-816b-38d3d699de05",
   "order": "t",
   "createdAt": "2026-10-30T12:09:12.013Z",
@@ -109,8 +109,8 @@
     "verticalAlign": "baseline",
     "cursor": "auto",
     "position": "absolute",
-    "left": 3294.1662336540185,
-    "top": 315.0039447836374
+    "left": 3158.7651573370113,
+    "top": 1169.0044867645156
   },
-  "updatedAt": "2026-10-30T12:09:18.954Z"
+  "updatedAt": "2026-10-30T12:39:15.288Z"
 }

@@ -12,7 +12,7 @@
     "data-codecaine-id": "efae54da-2deb-46e6-8e8e-965ce61d6def"
   },
   "sizing": {
-    "width": "fixed",
+    "width": "fill",
     "height": "fixed"
   },
   "style": {
@@ -103,7 +103,10 @@
     "listStyleImage": "none",
     "listStyleType": "disc",
     "verticalAlign": "baseline",
-    "cursor": "auto"
+    "cursor": "auto",
+    "position": "absolute",
+    "left": 32,
+    "top": 0
   },
-  "updatedAt": "2026-10-30T12:09:12.013Z"
+  "updatedAt": "2026-10-30T12:38:41.821Z"
 }
