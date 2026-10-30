@@ -1,0 +1,25 @@
+{
+  "id": "531279a9-62f1-42c0-8a63-6936386019de",
+  "type": "frame",
+  "tag": "div",
+  "name": "Ring Canvas",
+  "parent": "69522343-7c37-4071-8194-5d3b096c6e9b",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "data-name": "Ring Canvas",
+    "data-ring": "",
+    "data-word": "Worldwide",
+    "aria-hidden": "true",
+    "className": "absolute inset-0",
+    "data-codecaine-id": "0c41eae3-632b-4fda-8741-8023af99099f"
+  },
+  "style": {
+    "position": "absolute",
+    "top": 0,
+    "right": 0,
+    "bottom": 0,
+    "left": 0
+  },
+  "updatedAt": "2026-10-30T17:44:37.981Z"
+}

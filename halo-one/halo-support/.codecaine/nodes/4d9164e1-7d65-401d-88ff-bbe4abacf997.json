@@ -1,0 +1,35 @@
+{
+  "id": "4d9164e1-7d65-401d-88ff-bbe4abacf997",
+  "type": "link",
+  "tag": "a",
+  "parent": "7a505e62-6443-44ae-b744-a98a22ea7804",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "href": "#assistant",
+    "className": "cursor-pointer rounded-[var(--radius)] text-[var(--muted-foreground)] transition-colors duration-150 hover:text-[var(--primary-foreground)] focus-visible:text-[var(--primary-foreground)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]",
+    "text": "Assistant",
+    "data-codecaine-id": "dabdee44-3611-4479-a4d2-b16162e8fdef"
+  },
+  "states": {
+    "hover": {
+      "style": {
+        "color": "var(--primary-foreground)"
+      }
+    },
+    "focus-visible": {
+      "style": {
+        "color": "var(--primary-foreground)"
+      }
+    }
+  },
+  "style": {
+    "color": "var(--muted-foreground)",
+    "textDecorationLine": "inherit",
+    "borderRadius": "var(--radius)",
+    "transitionProperty": "color, background-color, border-color, text-decoration-color, fill, stroke",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transitionDuration": "150ms"
+  },
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

@@ -1,0 +1,32 @@
+{
+  "id": "d6a9d24d-584b-43db-b711-a952dabe7ed9",
+  "type": "section",
+  "tag": "ul",
+  "name": "ul",
+  "parent": "41d7d4d2-d6b6-42de-9e39-c9d4c032b519",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "className": "flex flex-wrap gap-x-5 gap-y-2 max-w-[520px] sm:justify-end text-sm leading-6",
+    "data-codecaine-id": "1bf71f0a-3091-441a-a4bb-b2b524b41acb"
+  },
+  "style": {
+    "marginTop": 0,
+    "marginRight": 0,
+    "marginBottom": 0,
+    "marginLeft": 0,
+    "paddingTop": 0,
+    "paddingRight": 0,
+    "paddingBottom": 0,
+    "paddingLeft": 0,
+    "listStyle": "none",
+    "display": "flex",
+    "flexWrap": "wrap",
+    "columnGap": 20,
+    "rowGap": 8,
+    "maxWidth": 520,
+    "fontSize": 14,
+    "lineHeight": "24px"
+  },
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

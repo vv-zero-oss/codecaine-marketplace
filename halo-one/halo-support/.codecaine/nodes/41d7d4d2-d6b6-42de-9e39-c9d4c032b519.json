@@ -1,0 +1,17 @@
+{
+  "id": "41d7d4d2-d6b6-42de-9e39-c9d4c032b519",
+  "type": "frame",
+  "tag": "nav",
+  "name": "nav",
+  "parent": "a4c68d32-7c33-40c5-9ea4-a01450fa23bf",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "aria-label": "Release areas",
+    "data-name": "Area Links",
+    "className": "pointer-events-auto",
+    "data-codecaine-id": "75b0fd01-eb0c-4e3e-918e-53c3b0101a57"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

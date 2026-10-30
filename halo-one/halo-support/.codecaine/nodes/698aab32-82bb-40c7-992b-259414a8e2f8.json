@@ -1,0 +1,14 @@
+{
+  "id": "698aab32-82bb-40c7-992b-259414a8e2f8",
+  "type": "frame",
+  "tag": "li",
+  "name": "li",
+  "parent": "d6a9d24d-584b-43db-b711-a952dabe7ed9",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "data-codecaine-id": "aebf5b1f-a100-4dd7-8fcd-ea0946cac1f4"
+  },
+  "style": {},
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

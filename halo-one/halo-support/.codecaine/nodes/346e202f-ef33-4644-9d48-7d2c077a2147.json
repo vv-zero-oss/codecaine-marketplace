@@ -1,0 +1,25 @@
+{
+  "id": "346e202f-ef33-4644-9d48-7d2c077a2147",
+  "type": "text",
+  "tag": "p",
+  "parent": "a4c68d32-7c33-40c5-9ea4-a01450fa23bf",
+  "order": "G",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "data-name": "Hero Description",
+    "className": "max-w-[220px] text-sm leading-6 text-[var(--primary-foreground)] pointer-events-auto",
+    "text": "One release that reaches every storefront, till and app you sell through.",
+    "data-codecaine-id": "0565ee74-5e22-4b4b-bf46-5662e86715e4"
+  },
+  "style": {
+    "marginTop": 0,
+    "marginRight": 0,
+    "marginBottom": 0,
+    "marginLeft": 0,
+    "maxWidth": 220,
+    "fontSize": 14,
+    "lineHeight": "24px",
+    "color": "var(--primary-foreground)"
+  },
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

@@ -1,0 +1,35 @@
+{
+  "id": "7c67e20f-834c-40df-a3e2-9b12d135819e",
+  "type": "link",
+  "tag": "a",
+  "parent": "f5c2d61b-6425-4a57-8966-5ab8b489af34",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "href": "#checkout",
+    "className": "cursor-pointer rounded-[var(--radius)] text-[var(--muted-foreground)] transition-colors duration-150 hover:text-[var(--primary-foreground)] focus-visible:text-[var(--primary-foreground)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]",
+    "text": "Checkout",
+    "data-codecaine-id": "8d102dfd-8cb5-4cf0-b560-b444a66e24df"
+  },
+  "states": {
+    "hover": {
+      "style": {
+        "color": "var(--primary-foreground)"
+      }
+    },
+    "focus-visible": {
+      "style": {
+        "color": "var(--primary-foreground)"
+      }
+    }
+  },
+  "style": {
+    "color": "var(--muted-foreground)",
+    "textDecorationLine": "inherit",
+    "borderRadius": "var(--radius)",
+    "transitionProperty": "color, background-color, border-color, text-decoration-color, fill, stroke",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transitionDuration": "150ms"
+  },
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

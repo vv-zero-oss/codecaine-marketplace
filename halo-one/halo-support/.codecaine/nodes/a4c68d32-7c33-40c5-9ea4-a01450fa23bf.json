@@ -1,0 +1,28 @@
+{
+  "id": "a4c68d32-7c33-40c5-9ea4-a01450fa23bf",
+  "type": "section",
+  "tag": "div",
+  "name": "Hero Footer",
+  "parent": "69522343-7c37-4071-8194-5d3b096c6e9b",
+  "order": "l",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "data-name": "Hero Footer",
+    "className": "absolute inset-x-0 bottom-0 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-8 px-5 pb-8 sm:px-10 sm:pb-10 pointer-events-none",
+    "data-codecaine-id": "365ef151-e3d1-4b7b-bfdc-b4a9b38081a4"
+  },
+  "style": {
+    "position": "absolute",
+    "bottom": 0,
+    "display": "flex",
+    "flexDirection": "row",
+    "alignItems": "flex-end",
+    "justifyContent": "space-between",
+    "gap": 32,
+    "paddingLeft": 20,
+    "paddingRight": 20,
+    "paddingBottom": 32,
+    "flexWrap": "wrap"
+  },
+  "updatedAt": "2026-10-30T17:44:37.128Z"
+}

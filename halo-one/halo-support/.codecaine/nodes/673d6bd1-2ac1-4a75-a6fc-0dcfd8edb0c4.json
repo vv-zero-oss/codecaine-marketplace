@@ -1,0 +1,21 @@
+{
+  "id": "673d6bd1-2ac1-4a75-a6fc-0dcfd8edb0c4",
+  "type": "text",
+  "tag": "h1",
+  "parent": "69522343-7c37-4071-8194-5d3b096c6e9b",
+  "order": "G",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "id": "ring-hero-title",
+    "className": "sr-only",
+    "text": "Worldwide",
+    "data-codecaine-id": "49a76061-8a82-4c47-a197-77a409b4ab3a"
+  },
+  "style": {
+    "marginTop": 0,
+    "marginRight": 0,
+    "marginBottom": 0,
+    "marginLeft": 0
+  },
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}

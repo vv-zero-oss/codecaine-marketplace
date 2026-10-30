@@ -49,9 +49,9 @@
     "width": 1280,
     "minHeight": 800,
     "position": "absolute",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "var(--foreground)",
     "left": 6570.529490335243,
     "top": 1411.0666540823331
   },
-  "updatedAt": "2026-10-30T17:39:27.881Z"
+  "updatedAt": "2026-10-30T17:44:08.663Z"
 }

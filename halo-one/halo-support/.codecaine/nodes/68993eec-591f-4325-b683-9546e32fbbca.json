@@ -1,0 +1,35 @@
+{
+  "id": "68993eec-591f-4325-b683-9546e32fbbca",
+  "type": "link",
+  "tag": "a",
+  "parent": "698aab32-82bb-40c7-992b-259414a8e2f8",
+  "order": "V",
+  "createdAt": "2026-10-30T17:43:58.688Z",
+  "props": {
+    "href": "#fulfilment",
+    "className": "cursor-pointer rounded-[var(--radius)] text-[var(--muted-foreground)] transition-colors duration-150 hover:text-[var(--primary-foreground)] focus-visible:text-[var(--primary-foreground)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--ring)]",
+    "text": "Fulfilment",
+    "data-codecaine-id": "72f61fb1-9455-4f28-892b-3969645e225a"
+  },
+  "states": {
+    "hover": {
+      "style": {
+        "color": "var(--primary-foreground)"
+      }
+    },
+    "focus-visible": {
+      "style": {
+        "color": "var(--primary-foreground)"
+      }
+    }
+  },
+  "style": {
+    "color": "var(--muted-foreground)",
+    "textDecorationLine": "inherit",
+    "borderRadius": "var(--radius)",
+    "transitionProperty": "color, background-color, border-color, text-decoration-color, fill, stroke",
+    "transitionTimingFunction": "cubic-bezier(0.4, 0, 0.2, 1)",
+    "transitionDuration": "150ms"
+  },
+  "updatedAt": "2026-10-30T17:43:58.688Z"
+}
